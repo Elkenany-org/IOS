@@ -11,19 +11,28 @@ import JGProgressHUD
 
 class StoreVC: UIViewController {
     
-    var storData:AdsStoreDataModel?
-    
-    
     @IBOutlet weak var SectorSelected: UICollectionView!
-    
     @IBOutlet weak var secondAds: UIView!
-    
     @IBOutlet weak var firstStore: UIView!
-    
     @IBOutlet weak var thiredMassege: UIView!
+    var storData:AdsStoreDataModel?
+    private var currentpaga = 1
+    var isFeatchingImage = false
+    var subID_fromGuideHome = 0
+    var companyTitle = ""
+    private var mainDataModel: [Datum] = []
+    var modelTestSearch:Datum?
+    //---
+    private var isFeatchingData = false
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
+        FatchDataOfStore()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
         self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
@@ -35,6 +44,60 @@ class StoreVC: UIViewController {
         featchDataSelectors()
         FatchDataSelectedBySector()
     }
+    
+    
+    
+    func FatchDataOfStore(){
+        //Handeling Loading view progress
+        //        let hud = JGProgressHUD(style: .dark)
+        //        hud.textLabel.text = "جاري التحميل"
+        //        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
+            let param = ["type": "poultry" , "page": self.currentpaga]
+            print("this para", param)
+            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            print("URL", companyGuide)
+            
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                
+                
+                else {
+                    
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                    
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.mainDataModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        self.SectorSelected.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     func featchDataSelectors(){
@@ -129,3 +192,22 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
        
      }
 }
+
+
+extension StoreVC:UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for index in indexPaths {
+            if index.row >= mainDataModel.count - 1 && !isFeatchingData {
+                
+                FatchDataOfStore()
+                break
+                
+            }
+            
+        }
+    }
+    
+   
+}
+
