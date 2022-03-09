@@ -20,8 +20,6 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     //MARK:- handel validation for textfield
@@ -43,8 +41,6 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         handleAuthorizationAppleIDButtonPress()
         
     }
-    
-    
     
     
     //MARK:- Handel button to Register VC actions
@@ -114,7 +110,6 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     }
     
     
-    /// - Tag: did_complete_error
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle error.
     }
