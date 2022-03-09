@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Black.ttf">
+            <string>Cairo-Black</string>
+        </array>
+        <array key="Cairo-Bold.ttf">
+            <string>Cairo-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newsDetailsCell" id="gTV-IL-0wX" customClass="newsDetailsCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="455" height="857"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="455" height="857"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dss-6h-TNr">
+                        <rect key="frame" x="0.0" y="0.0" width="455" height="857"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="4Aa-1M-Y0O">
+                                <rect key="frame" x="10" y="10" width="435" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="lja-hq-MwM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اتحاد الدوان الزىيسسية في الوطن العربي وتعتم الفكرة هنا علي المبدا ذاته بحيث لايمكن التواصل باي حال من تلك الاحوال" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqx-NT-uLE">
+                                <rect key="frame" x="10" y="225" width="435" height="33"/>
+                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
+                                <color key="textColor" name="kenanyGreen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منذ شهرين " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfr-iZ-uIO">
+                                <rect key="frame" x="391.5" y="273" width="53.5" height="15.5"/>
+                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
+                                <color key="textColor" name="kenanyblueblack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PmW-pU-kjr">
+                                <rect key="frame" x="10" y="290.5" width="435" height="566.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="kenanyblueblack"/>
+                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES" video="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Aa-1M-Y0O" secondAttribute="trailing" constant="10" id="BUM-Xp-vyH"/>
+                            <constraint firstItem="PmW-pU-kjr" firstAttribute="leading" secondItem="Dss-6h-TNr" secondAttribute="leading" constant="10" id="Bv8-PK-v4T"/>
+                            <constraint firstItem="4Aa-1M-Y0O" firstAttribute="top" secondItem="Dss-6h-TNr" secondAttribute="top" constant="10" id="Eov-qV-0TI"/>
+                            <constraint firstItem="4Aa-1M-Y0O" firstAttribute="leading" secondItem="Dss-6h-TNr" secondAttribute="leading" constant="10" id="Jro-gu-QyE"/>
+                            <constraint firstItem="eqx-NT-uLE" firstAttribute="leading" secondItem="Dss-6h-TNr" secondAttribute="leading" constant="10" id="NqY-qc-2bF"/>
+                            <constraint firstItem="PmW-pU-kjr" firstAttribute="top" secondItem="cfr-iZ-uIO" secondAttribute="bottom" constant="2" id="S7h-MA-6js"/>
+                            <constraint firstAttribute="trailing" secondItem="cfr-iZ-uIO" secondAttribute="trailing" constant="10" id="Yvg-qw-p2B"/>
+                            <constraint firstAttribute="bottom" secondItem="PmW-pU-kjr" secondAttribute="bottom" id="Zdz-0t-WmL"/>
+                            <constraint firstAttribute="trailing" secondItem="PmW-pU-kjr" secondAttribute="trailing" constant="10" id="fdh-mX-Wgg"/>
+                            <constraint firstItem="cfr-iZ-uIO" firstAttribute="top" secondItem="eqx-NT-uLE" secondAttribute="bottom" constant="15" id="fgl-UV-e5X"/>
+                            <constraint firstItem="eqx-NT-uLE" firstAttribute="top" secondItem="4Aa-1M-Y0O" secondAttribute="bottom" constant="15" id="qqZ-Vj-Sv4"/>
+                            <constraint firstAttribute="trailing" secondItem="eqx-NT-uLE" secondAttribute="trailing" constant="10" id="rvt-Kf-B6i"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Dss-6h-TNr" secondAttribute="bottom" id="XUg-4g-kzD"/>
+                <constraint firstItem="Dss-6h-TNr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XlN-pc-wKT"/>
+                <constraint firstAttribute="trailing" secondItem="Dss-6h-TNr" secondAttribute="trailing" id="c32-1A-e8R"/>
+                <constraint firstItem="Dss-6h-TNr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xt9-x5-TcE"/>
+            </constraints>
+            <size key="customSize" width="455" height="857"/>
+            <connections>
+                <outlet property="Image" destination="4Aa-1M-Y0O" id="iHx-YC-bKV"/>
+                <outlet property="newsDate" destination="cfr-iZ-uIO" id="8f2-yE-KQ6"/>
+                <outlet property="newsDescription" destination="PmW-pU-kjr" id="Y9f-s6-m94"/>
+                <outlet property="newsTitle" destination="eqx-NT-uLE" id="SFJ-1g-FiN"/>
+            </connections>
+            <point key="canvasLocation" x="252.89855072463769" y="433.59375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+        <namedColor name="kenanyGreen">
+            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kenanyblueblack">
+            <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

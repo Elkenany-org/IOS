@@ -1,0 +1,112 @@
+//
+//  SelectionPopuVC.swift
+//  Elkenany-Project
+//
+//  Created by عبدالعزيز رضا  on 1/18/22.
+//
+
+import UIKit
+import JGProgressHUD
+
+
+class SelectionPopuVC: UIViewController {
+    
+    @IBOutlet weak var SelectedPopup: UITableView!
+    var homeDataFilter:FirstFilterModel?
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        GetFilterData()
+    }
+    
+    
+    
+    fileprivate func setupUI() {
+        SelectedPopup.delegate = self
+        SelectedPopup.dataSource = self
+        SelectedPopup.register(UINib(nibName: "SelectedCell", bundle: nil), forCellReuseIdentifier: "SelectedCell")
+    }
+    
+    
+    
+    
+    //handel tap out to hide view
+    func handelTap() {
+        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closePop))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closePop(){
+        dismiss(animated: true)
+    }
+    
+    
+    
+    //MARK:- get data of filter Popup
+    func GetFilterData(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let SectoreFilterURL = "https://elkenany.com/api/localstock/all-local-stock-sections?type="
+            let param = ["type": "poultry"]
+            APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:FirstFilterModel?, filier:FirstFilterModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.homeDataFilter = success
+                    DispatchQueue.main.async {
+                        self.SelectedPopup.reloadData()
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+
+//MARK:- tableView Methodes
+extension SelectionPopuVC:UITableViewDelegate , UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return homeDataFilter?.data?.sectors?.count ?? 0
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+        cell.SectreTitle.text = homeDataFilter?.data?.sectors?[indexPath.row].name ?? ""
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+        let typeeee = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        UserDefaults.standard.set(typeeee, forKey: "TYPE_FOR_FILTER")
+        print("foooooooooor", UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? "")
+        //        TypeDeleget?.sectorBack(typeBack: typee)
+        //        TypeDeleget.self = (typeeee as! SectoreDataBacke)
+        cell.imageSelected.image  = #imageLiteral(resourceName: "check")
+        FilterAnimation.shared.filteranmation(vieww: view)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    
+}

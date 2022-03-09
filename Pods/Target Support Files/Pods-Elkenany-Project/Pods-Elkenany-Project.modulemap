@@ -1,0 +1,6 @@
+framework module Pods_Elkenany_Project {
+  umbrella header "Pods-Elkenany-Project-umbrella.h"
+
+  export *
+  module * { export * }
+}

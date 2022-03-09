@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Bold.ttf">
+            <string>Cairo-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="socialCell" rowHeight="74" id="KGk-i7-Jjw" customClass="socialCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="464" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="464" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pld-pM-1hl">
+                        <rect key="frame" x="5" y="5" width="454" height="64"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="6S1-lM-yBi">
+                                <rect key="frame" x="20" y="15" width="424" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01027894669" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ8-Fs-oMq">
+                                        <rect key="frame" x="0.0" y="0.0" width="381" height="30"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="16"/>
+                                        <color key="textColor" name="kenanyblueblack"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-call" translatesAutoresizingMaskIntoConstraints="NO" id="GBC-eP-e4z">
+                                        <rect key="frame" x="394" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="5Pf-HS-1wH"/>
+                                            <constraint firstAttribute="height" constant="30" id="sPz-sR-YNq"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="LZ8-Fs-oMq" firstAttribute="centerY" secondItem="GBC-eP-e4z" secondAttribute="centerY" id="4Y5-aI-bqJ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="6S1-lM-yBi" secondAttribute="bottom" constant="15" id="CUK-dr-IIR"/>
+                            <constraint firstItem="6S1-lM-yBi" firstAttribute="leading" secondItem="Pld-pM-1hl" secondAttribute="leading" constant="20" id="ERQ-pQ-g3g"/>
+                            <constraint firstAttribute="trailing" secondItem="6S1-lM-yBi" secondAttribute="trailing" constant="10" id="Tzb-7U-5iW"/>
+                            <constraint firstItem="6S1-lM-yBi" firstAttribute="top" secondItem="Pld-pM-1hl" secondAttribute="top" constant="15" id="tLv-H3-Oi2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Pld-pM-1hl" secondAttribute="bottom" constant="5" id="VQi-Oc-Zx6"/>
+                    <constraint firstItem="Pld-pM-1hl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="jxG-wD-7uQ"/>
+                    <constraint firstItem="Pld-pM-1hl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="vtg-51-cR0"/>
+                    <constraint firstAttribute="trailing" secondItem="Pld-pM-1hl" secondAttribute="trailing" constant="5" id="zz3-Wq-Kc0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contact" destination="LZ8-Fs-oMq" id="A3n-ng-E7h"/>
+                <outlet property="iconee" destination="GBC-eP-e4z" id="VpH-0Z-Il8"/>
+            </connections>
+            <point key="canvasLocation" x="133.33333333333334" y="104.46428571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="phone-call" width="512" height="512"/>
+        <namedColor name="kenanyblueblack">
+            <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

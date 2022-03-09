@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Black.ttf">
+            <string>Cairo-Black</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectorsCell" id="gTV-IL-0wX" customClass="SectorsCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="290" height="295"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="290" height="295"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="PdX-6H-LFp">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="295"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="شركة الكناني للخدمات البيطرية" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKA-ca-9wf">
+                                <rect key="frame" x="10" y="216.5" width="270" height="68.5"/>
+                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
+                                <color key="textColor" name="kenanyGreen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2-2" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-a5-876">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="206.5"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PKA-ca-9wf" secondAttribute="trailing" constant="10" id="3pP-je-gvG"/>
+                            <constraint firstAttribute="bottom" secondItem="PKA-ca-9wf" secondAttribute="bottom" constant="10" id="NXz-ns-cD9"/>
+                            <constraint firstAttribute="trailing" secondItem="ijW-a5-876" secondAttribute="trailing" id="RDW-zH-r0x"/>
+                            <constraint firstItem="ijW-a5-876" firstAttribute="leading" secondItem="PdX-6H-LFp" secondAttribute="leading" id="W34-vH-wE0"/>
+                            <constraint firstItem="ijW-a5-876" firstAttribute="height" secondItem="PdX-6H-LFp" secondAttribute="height" multiplier="0.7" id="Zws-yj-Yqb"/>
+                            <constraint firstItem="ijW-a5-876" firstAttribute="top" secondItem="PdX-6H-LFp" secondAttribute="top" id="acu-mn-p9S"/>
+                            <constraint firstItem="PKA-ca-9wf" firstAttribute="leading" secondItem="PdX-6H-LFp" secondAttribute="leading" constant="10" id="qwx-pY-h4z"/>
+                            <constraint firstItem="PKA-ca-9wf" firstAttribute="top" secondItem="ijW-a5-876" secondAttribute="bottom" constant="10" id="wzx-uU-QCr"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                <point key="value" x="3" y="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="PdX-6H-LFp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Dfg-Eb-NVe"/>
+                <constraint firstItem="PdX-6H-LFp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XJE-RZ-V5N"/>
+                <constraint firstAttribute="bottom" secondItem="PdX-6H-LFp" secondAttribute="bottom" id="cDS-Fg-lTz"/>
+                <constraint firstAttribute="trailing" secondItem="PdX-6H-LFp" secondAttribute="trailing" id="xq6-oI-3f7"/>
+            </constraints>
+            <size key="customSize" width="290" height="295"/>
+            <connections>
+                <outlet property="SecrorsName" destination="PKA-ca-9wf" id="gZY-Zx-HHH"/>
+                <outlet property="sectorImgCell" destination="ijW-a5-876" id="WU6-nk-txP"/>
+            </connections>
+            <point key="canvasLocation" x="-327.536231884058" y="-25.111607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="2-2" width="300" height="300"/>
+        <namedColor name="kenanyGreen">
+            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

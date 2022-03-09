@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - Cosmos (23.0.0)
+  - IQKeyboardManager (6.5.9)
+  - JGProgressHUD (2.2)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - Charts
+  - Cosmos (~> 23.0)
+  - IQKeyboardManager
+  - JGProgressHUD
+  - Kingfisher (~> 5.0)
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Charts
+    - Cosmos
+    - IQKeyboardManager
+    - JGProgressHUD
+    - Kingfisher
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
+  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+
+PODFILE CHECKSUM: 58695788560c74bd13c0fddeda72d02e21753729
+
+COCOAPODS: 1.11.2

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="logosCell" id="gTV-IL-0wX" customClass="logosCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="216" height="181"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="216" height="181"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
+                        <rect key="frame" x="5" y="5" width="206" height="171"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="pcm-ox-ElF">
+                                <rect key="frame" x="5" y="5" width="196" height="161"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pcm-ox-ElF" firstAttribute="leading" secondItem="8D6-Zq-rCM" secondAttribute="leading" constant="5" id="7ZK-J2-a2O"/>
+                            <constraint firstAttribute="bottom" secondItem="pcm-ox-ElF" secondAttribute="bottom" constant="5" id="GPX-H2-wHF"/>
+                            <constraint firstItem="pcm-ox-ElF" firstAttribute="top" secondItem="8D6-Zq-rCM" secondAttribute="top" constant="5" id="IHY-pb-EQ1"/>
+                            <constraint firstAttribute="trailing" secondItem="pcm-ox-ElF" secondAttribute="trailing" constant="5" id="dNg-DY-2pC"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="1" green="0.55947550779999999" blue="0.18211060309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="8D6-Zq-rCM" secondAttribute="trailing" constant="5" id="X5e-Xi-POk"/>
+                <constraint firstItem="8D6-Zq-rCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Zdz-dN-Q5z"/>
+                <constraint firstAttribute="bottom" secondItem="8D6-Zq-rCM" secondAttribute="bottom" constant="5" id="xnZ-lV-aZx"/>
+                <constraint firstItem="8D6-Zq-rCM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="yUI-OK-oT4"/>
+            </constraints>
+            <size key="customSize" width="216" height="181"/>
+            <connections>
+                <outlet property="logooImage" destination="pcm-ox-ElF" id="gd6-FW-HpI"/>
+            </connections>
+            <point key="canvasLocation" x="-104.34782608695653" y="153.01339285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+    </resources>
+</document>

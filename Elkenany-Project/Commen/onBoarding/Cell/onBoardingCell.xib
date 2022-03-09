@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Cairo-Black.ttf">
+            <string>Cairo-Black</string>
+        </array>
+        <array key="Cairo-Bold.ttf">
+            <string>Cairo-Bold</string>
+        </array>
+        <array key="Cairo-SemiBold.ttf">
+            <string>Cairo-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="onBoardingCell" id="gTV-IL-0wX" customClass="onBoardingCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="844"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="388" height="844"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard 13-1" highlightedImage="Artboard 13-1" translatesAutoresizingMaskIntoConstraints="NO" id="xaR-aT-xYb">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="707"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="707" id="SgB-hJ-eDs"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني آسهل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kub-la-oRd">
+                        <rect key="frame" x="103.5" y="496" width="181.5" height="44.5"/>
+                        <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="38"/>
+                        <color key="textColor" name="kenanyGold"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هتقدر توصل الي اي معلومات عن المجال البطري وكذلك الدواجن بسهولة " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1A-GF-ubr">
+                        <rect key="frame" x="10" y="560.5" width="368" height="49"/>
+                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="21"/>
+                        <color key="textColor" name="kenanyGreen"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxT-Uu-Jfh">
+                        <rect key="frame" x="69" y="639.5" width="250" height="60"/>
+                        <color key="backgroundColor" name="kenanyGreen"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="250" id="75L-xj-mxx"/>
+                            <constraint firstAttribute="height" constant="60" id="sEa-2t-Vza"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="24"/>
+                        <state key="normal" title="المزيد">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="BTNAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="v0G-TQ-gzJ"/>
+                        </connections>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Artboard 16-1" translatesAutoresizingMaskIntoConstraints="NO" id="xRK-9b-5xd">
+                        <rect key="frame" x="44" y="162" width="291" height="326"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="326" id="yqk-wl-tBw"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="kub-la-oRd" firstAttribute="top" secondItem="xRK-9b-5xd" secondAttribute="bottom" constant="8" symbolic="YES" id="0Zz-3u-aYk"/>
+                <constraint firstItem="xRK-9b-5xd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="44" id="Hkf-Ob-8Up"/>
+                <constraint firstItem="xaR-aT-xYb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="I3M-Zf-GHp"/>
+                <constraint firstItem="xaR-aT-xYb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="K8Y-hI-xDt"/>
+                <constraint firstItem="c1A-GF-ubr" firstAttribute="top" secondItem="kub-la-oRd" secondAttribute="bottom" constant="20" id="KLi-Tw-jf3"/>
+                <constraint firstItem="xaR-aT-xYb" firstAttribute="centerX" secondItem="c1A-GF-ubr" secondAttribute="centerX" id="NZj-Iq-dFH"/>
+                <constraint firstAttribute="trailing" secondItem="xRK-9b-5xd" secondAttribute="trailing" constant="53" id="U8r-7w-DDY"/>
+                <constraint firstItem="xaR-aT-xYb" firstAttribute="centerX" secondItem="IxT-Uu-Jfh" secondAttribute="centerX" id="cZe-Il-KcO"/>
+                <constraint firstItem="c1A-GF-ubr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="e7m-4L-7lQ"/>
+                <constraint firstItem="IxT-Uu-Jfh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="md9-qB-afv"/>
+                <constraint firstItem="IxT-Uu-Jfh" firstAttribute="top" secondItem="c1A-GF-ubr" secondAttribute="bottom" constant="30" id="o8y-el-l05"/>
+                <constraint firstItem="xRK-9b-5xd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="162" id="qxu-Yb-lZp"/>
+                <constraint firstItem="xaR-aT-xYb" firstAttribute="centerX" secondItem="kub-la-oRd" secondAttribute="centerX" id="r4N-8a-nI8"/>
+            </constraints>
+            <size key="customSize" width="388" height="844"/>
+            <connections>
+                <outlet property="coverImage" destination="xRK-9b-5xd" id="l8e-OV-Lze"/>
+                <outlet property="descriotionLabel" destination="c1A-GF-ubr" id="kN4-Lh-tMO"/>
+                <outlet property="titleLabel" destination="kub-la-oRd" id="9tq-jX-wPc"/>
+                <outlet property="toSigninVC" destination="IxT-Uu-Jfh" id="ter-yj-LIL"/>
+            </connections>
+            <point key="canvasLocation" x="160.86956521739131" y="230.35714285714283"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Artboard 13-1" width="720" height="1280"/>
+        <image name="Artboard 16-1" width="720" height="1280"/>
+        <namedColor name="kenanyGold">
+            <color red="1" green="0.58823529411764708" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kenanyGreen">
+            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
