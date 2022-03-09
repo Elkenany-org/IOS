@@ -8,7 +8,7 @@
 import UIKit
 
 class SectorDetailsTable: UIViewController {
-
+    
     //outlets and variables
     //title from selected cell sectore
     var titleFromCell = ""
@@ -16,7 +16,8 @@ class SectorDetailsTable: UIViewController {
     var sectorFtomHome = ""
     //for navigation title 
     var titleeeee = ""
-    var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
+    //    var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
+    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
     @IBOutlet weak var SectorDetailsTabel: UITableView!
     
     
@@ -27,8 +28,8 @@ class SectorDetailsTable: UIViewController {
         title =  titleeeee
     }
     
-
-
+    
+    
     func setupUI() {
         SectorDetailsTabel.dataSource = self
         SectorDetailsTabel.delegate = self
@@ -47,7 +48,7 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
         return tabelData.count 
     }
     
-   
+    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,34 +60,70 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
     
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
         
-        if indexPath.row == 0 {
-            
+//        if indexPath.row == 0 {
+//
+//            let BorsaVC = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
+//            BorsaVC.Sector = sectorFtomHome
+//            navigationController?.pushViewController(BorsaVC, animated: true)
+//
+//        }else if indexPath.row == 1 {
+//
+//            let GuideVC = (storyboard?.instantiateViewController(identifier: "CompanyGuideVC"))! as CompanyGuideVC
+//            GuideVC.sectoreTypeFromHome = sectorFtomHome
+//            navigationController?.pushViewController(GuideVC, animated: true)
+//
+//        }else if indexPath.row == 2{
+//
+//            let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
+//            newsVC.typeFromhome = sectorFtomHome
+//            navigationController?.pushViewController(newsVC, animated: true)
+//        }
+//
+//        else {
+//
+//            print("dev test")
+//
+//        }
+//
+        
+        switch indexPath.row {
+        case 0:
             let BorsaVC = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
             BorsaVC.Sector = sectorFtomHome
             navigationController?.pushViewController(BorsaVC, animated: true)
             
-        }else if indexPath.row == 1 {
-            
+        case 1:
             let GuideVC = (storyboard?.instantiateViewController(identifier: "CompanyGuideVC"))! as CompanyGuideVC
             GuideVC.sectoreTypeFromHome = sectorFtomHome
             navigationController?.pushViewController(GuideVC, animated: true)
             
-        }else if indexPath.row == 2{
+        case 2:
+            let GuideVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
+//            GuideVC.sectoreTypeFromHome = sectorFtomHome
+            navigationController?.pushViewController(GuideVC, animated: true)
             
+        case 3:
             let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
             newsVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(newsVC, animated: true)
+            
+        default:
+            print("hello world")
         }
         
-        else {
-            
-         print("dev test")
-            
-        }
+        
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
