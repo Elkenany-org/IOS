@@ -146,6 +146,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = storyboard?.instantiateViewController(identifier: "CompanyGuideVC") as! CompanyGuideVC
+            vc.FatchGuidMainDataaaaaaaaa()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(identifier: "CompanyGuideVC") as! CompanyGuideVC

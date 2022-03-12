@@ -10,7 +10,7 @@ import Alamofire
 import JGProgressHUD
 
 class CompanyGuideVC: UIViewController, FilterDone {
-
+    
     func RunFilter(filter: ()) {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
@@ -33,7 +33,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
                 }else {
                     hud.dismiss()
                     self.subModel.removeAll()
-
+                    
                     let successData = success?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
@@ -45,7 +45,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
         }
     }
     
-
+    
     
     ///sectore  Type From Home
     var sectoreTypeFromHome = ""
@@ -56,11 +56,11 @@ class CompanyGuideVC: UIViewController, FilterDone {
     var companyGuideModel:GuideCompaniesDataModel?
     private var subModel: [SubSection] = []
     private var  sectorSubModel:[Sector] = []
-
+    
     @IBOutlet weak var guideCompanyCV: UICollectionView!
     @IBOutlet weak var selectedSectorCV: UICollectionView!
     @IBOutlet weak var searchBarGuidView: UISearchBar!
-
+    
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -78,15 +78,28 @@ class CompanyGuideVC: UIViewController, FilterDone {
         
         
     }
- 
     
     
-    //ViewDidLoad-----------
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //        FatchGuidMainData()
+    //MARK:- Featch sectors
+    
+    func featchDataSelectors(){
+        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
+        let sectorsUrl = "https://elkenany.com/api/guide/section/?type=farm&sort="
+        let headers:HTTPHeaders = ["app-id": api_token ]
+        APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:GuideCompaniesDataModel?, NewsError:GuideCompaniesDataModel?, error) in
+            guard let self = self else {return}
+            if let error = error{
+                print("error ===========================")
+                print(error.localizedDescription)
+            }else{
+                let successData = NewsSuccess?.data?.sectors ?? []
+                self.sectorSubModel.append(contentsOf: successData)
+                DispatchQueue.main.async {
+                    self.selectedSectorCV.reloadData()
+                }
+            }
+        }
     }
-    
     
     
     //MARK:- featch Main Data of the Guide at Main Collection view and sectors at header
@@ -107,16 +120,10 @@ class CompanyGuideVC: UIViewController, FilterDone {
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-//                    guard let success = SuccessfulRequest else {return}
-//                    self.companyGuideModel = success
                     let successData = SuccessfulRequest?.data?.subSections ?? []
-//                    print("current", self.currentpaga)
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
-//                        self.selectedSectorCV.reloadData()
-                        print( "=======================" , self.companyGuideModel?.data?.subSections)
-                        
                     }
                 }
             }
@@ -124,7 +131,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
     }
     
     
-    //MARK:- featch Main Data of the Guide at Main Collection view from recomindition
+    //MARK:- featch Main Data of the Guide at Main Collection view from recomindition at home
     
     func FatchGuidMainDataFromRecomindition(){
         //Handeling Loading view progress
@@ -143,7 +150,6 @@ class CompanyGuideVC: UIViewController, FilterDone {
                 }else {
                     hud.dismiss()
                     let successData = success?.data?.subSections ?? []
-//                    print("current", self.currentpaga)
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
@@ -154,6 +160,9 @@ class CompanyGuideVC: UIViewController, FilterDone {
             }
         }
     }
+    
+
+    
     
     //MARK:- featch Main Data of the Guide by the selsected from header of Sectors
     func FatchDataOfMainGuideBySelecteddddd(){
@@ -177,12 +186,11 @@ class CompanyGuideVC: UIViewController, FilterDone {
                     hud.dismiss()
                     self.subModel.removeAll()
                     let successData = success?.data?.subSections ?? []
-
                     self.subModel.append(contentsOf: successData)
-
+                    
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
-//                        print(self.subModel.count)
+                        //                        print(self.subModel.count)
                         print(self.companyGuideModel?.data?.subSections ?? "")
                     }
                 }
@@ -191,39 +199,26 @@ class CompanyGuideVC: UIViewController, FilterDone {
     }
     
     
-    
-    
-    
-
-    func SearchServiceeeeee(){
+    func FatchGuidMainDataaaaaaaaa(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-//        let searchValue = SearchTF.text ?? ""
-        let param = ["type": "\(self.sectoreTypeFromHome)" , "search" : self.searchBarGuidView.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers = ["Authorization": "\(api_token ?? "")" ]
-            print("this is token\(api_token ?? "")")
-           
-
-            let SearchGuide = "https://elkenany.com/api/guide/section/?type=&search="
-
-            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
+            let param = ["type": "poultry"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-//                    guard let success = success else {return}
-                    let successData = success?.data?.subSections ?? []
-//                    print("current", self.currentpaga)
+                    let successData = SuccessfulRequest?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
-//                    self.mainDataModel = success
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
-                   
                     }
                 }
             }
@@ -231,64 +226,84 @@ class CompanyGuideVC: UIViewController, FilterDone {
     }
     
     
-    func featchDataSelectors(){
-        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        let sectorsUrl = "https://elkenany.com/api/guide/section/?type=farm&sort="
-        let headers:HTTPHeaders = ["app-id": api_token ]
-        APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:GuideCompaniesDataModel?, NewsError:GuideCompaniesDataModel?, error) in
-            guard let self = self else {return}
-            if let error = error{
-                print("error ===========================")
-                print(error.localizedDescription)
-            }else{
-                let successData = NewsSuccess?.data?.sectors ?? []
-//                    print("current", self.currentpaga)
-                self.sectorSubModel.append(contentsOf: successData)
-                DispatchQueue.main.async {
-                    self.selectedSectorCV.reloadData()
+    
+    
+    
+    func SearchServiceeeeee(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        //        let searchValue = SearchTF.text ?? ""
+        let param = ["type": "\(self.sectoreTypeFromHome)" , "search" : self.searchBarGuidView.text ?? ""]
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let headers = ["Authorization": "\(api_token ?? "")" ]
+            print("this is token\(api_token ?? "")")
+            
+            
+            let SearchGuide = "https://elkenany.com/api/guide/section/?type=&search="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    //                    guard let success = success else {return}
+                    let successData = success?.data?.subSections ?? []
+                    //                    print("current", self.currentpaga)
+                    self.subModel.append(contentsOf: successData)
+                    //                    self.mainDataModel = success
+                    DispatchQueue.main.async {
+                        self.guideCompanyCV.reloadData()
+                        
+                    }
                 }
             }
         }
     }
     
     
+    
+    
     //MARK:- featch Sectors at header of guide
-//    func featchGuideFromFilter(){
-//        //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            print("Token", api_token ?? "")
-//            let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
-//            let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
-//
-//            print(" is token\(api_token ?? "")")
-//            let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
-//            print("new para" , param)
-//            let headers = ["Authorization": "Bearer \(api_token ?? "")"  ]
-//            let FilterGuide = "https://elkenany.com/api/guide/section/?type=&sort="
-//            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
-//                if let error = error{
-//                    hud.dismiss()
-//                    print("============ error \(error)")
-//                }else {
-//                    hud.dismiss()
-//                    let successData = success?.data?.subSections ?? []
-////                    print("current", self.currentpaga)
-//                    self.subModel.append(contentsOf: successData)
-//                    DispatchQueue.main.async {
-//                        self.guideCompanyCV.reloadData()
-//                        self.selectedSectorCV.reloadData()
-//
-//
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
+    //    func featchGuideFromFilter(){
+    //        //Handeling Loading view progress
+    //        let hud = JGProgressHUD(style: .dark)
+    //        hud.textLabel.text = "جاري التحميل"
+    //        hud.show(in: self.view)
+    //        DispatchQueue.global(qos: .background).async {
+    //            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+    //            print("Token", api_token ?? "")
+    //            let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
+    //            let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
+    //
+    //            print(" is token\(api_token ?? "")")
+    //            let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
+    //            print("new para" , param)
+    //            let headers = ["Authorization": "Bearer \(api_token ?? "")"  ]
+    //            let FilterGuide = "https://elkenany.com/api/guide/section/?type=&sort="
+    //            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
+    //                if let error = error{
+    //                    hud.dismiss()
+    //                    print("============ error \(error)")
+    //                }else {
+    //                    hud.dismiss()
+    //                    let successData = success?.data?.subSections ?? []
+    ////                    print("current", self.currentpaga)
+    //                    self.subModel.append(contentsOf: successData)
+    //                    DispatchQueue.main.async {
+    //                        self.guideCompanyCV.reloadData()
+    //                        self.selectedSectorCV.reloadData()
+    //
+    //
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //
     
     //MARK:- Setup UI [ delegets + register nibs ]
     func setupUI() {
@@ -310,7 +325,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
         }
     }
     
- 
+    
     //show the search view  --------------
     @IBAction func searchBTN(_ sender: Any) {
         view1.isHidden = true
@@ -337,7 +352,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
         cell.layer.masksToBounds = false
         
     }
-
+    
 }
 
 
@@ -354,7 +369,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             
         }else{
             
-//            return companyGuideModel?.data?.subSections?.count ?? 0
+            //            return companyGuideModel?.data?.subSections?.count ?? 0
             return subModel.count 
         }
     }
@@ -372,13 +387,13 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
                 if typeOfSector == sectoreTypeFromHome {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-
+                    
                 } else{
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-
+                    
                 }
                 
-
+                
                 return SectorHeaderCell
             }
             
@@ -386,19 +401,19 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             
             //Guide Collection
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"GuideCompanyCell", for:indexPath ) as? GuideCompanyCell{
-//                cell.companyTitle.text = companyGuideModel?.data?.subSections?[indexPath.row].name ?? ""
-//                cell.companiesCount.text = String (companyGuideModel?.data?.subSections?[indexPath.row].companiesCount ?? 0)
-//                if let companyimage = companyGuideModel?.data?.subSections?[indexPath.row].image{
-//                    cell.configureCell(image: companyimage )
-//                }
+                //                cell.companyTitle.text = companyGuideModel?.data?.subSections?[indexPath.row].name ?? ""
+                //                cell.companiesCount.text = String (companyGuideModel?.data?.subSections?[indexPath.row].companiesCount ?? 0)
+                //                if let companyimage = companyGuideModel?.data?.subSections?[indexPath.row].image{
+                //                    cell.configureCell(image: companyimage )
+                //                }
                 SetupCell(cell: cell)
                 cell.companyTitle.text = subModel[indexPath.item].name ?? ""
                 cell.companiesCount.text =  String (subModel[indexPath.item].companiesCount ?? 0)
-              if let imageC = subModel[indexPath.item].image{
+                if let imageC = subModel[indexPath.item].image{
                     cell.configureCell(image: imageC )
-
+                    
                 }
-
+                
                 
                 
                 return cell
@@ -437,13 +452,13 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             self.sectoreTypeFromSelecteHeader = typeOfSector
             FatchDataOfMainGuideBySelecteddddd()
-
+            
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
-
+                
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             }
-
-
+            
+            
         }else if collectionView == guideCompanyCV{
             //push companies
             if let CompanyVC  =  storyboard?.instantiateViewController(identifier: "CompaniesVC") as? CompaniesVC {
@@ -457,12 +472,12 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 print("index vc " , indexPath.item)
                 navigationController?.pushViewController(CompanyVC, animated: true)
             }
-    
+            
         }
     }
     
-
-
+    
+    
     
 }
 
@@ -499,22 +514,22 @@ extension CompanyGuideVC : UISearchBarDelegate {
             cBtn.setTitle("الغاء", for: .normal)
             
             searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-
+            
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-            searchView.isHidden = true
-           view1.isHidden = false
-            view2.isHidden = false
+        searchView.isHidden = true
+        view1.isHidden = false
+        view2.isHidden = false
         
         subModel.removeAll()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         FatchGuidMainData()
-      
+        
         hud.dismiss()
         print("cancellllld")
     }

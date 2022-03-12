@@ -54,12 +54,12 @@ class StoreVC: UIViewController {
         //        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "poultry" , "page": self.currentpaga]
-            print("this para", param)
+//            let param = ["type": "poultry" , "page": self.currentpaga]
+//            print("this para", param)
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
             print("URL", companyGuide)
             
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: nil, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 
                 if let error = error{
                     //internet error

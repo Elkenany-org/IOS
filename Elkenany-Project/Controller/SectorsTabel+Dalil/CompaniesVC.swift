@@ -310,7 +310,9 @@ extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = (storyboard?.instantiateViewController(identifier: "companyDetails"))! as companyDetails
         let idd = mainDataModel[indexPath.row].id
+        UserDefaults.standard.set(idd, forKey: "IDDD")
         vc.CompanyIdFromCompanies = idd ?? 0
+        
         print("innnnnnnnnnnnnndex", indexPath.row)
         navigationController?.pushViewController(vc, animated: true)
         
