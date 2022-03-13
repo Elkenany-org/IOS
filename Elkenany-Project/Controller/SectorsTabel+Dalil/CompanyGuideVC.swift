@@ -51,6 +51,7 @@ class CompanyGuideVC: UIViewController, FilterDone {
     var sectoreTypeFromHome = ""
     var sectoreTypeFromSelecteHeader = ""
     var sectorTypeFromRecomindition = "poultry"
+
     
     //MARK:- Outlets && Proparites
     var companyGuideModel:GuideCompaniesDataModel?
@@ -76,9 +77,19 @@ class CompanyGuideVC: UIViewController, FilterDone {
         setupSearchBar()
         title = "الدليل"
         
+
+        
         
     }
     
+//
+//    override func viewDidLayoutSubviews()
+//    {
+//        super.viewDidLayoutSubviews()
+//        let indexPath = IndexPath(item: 3, section: 0)
+//
+//
+//    }
     
     //MARK:- Featch sectors
     
@@ -387,7 +398,8 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
                 if typeOfSector == sectoreTypeFromHome {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-                    
+                    self.selectedSectorCV.scrollToItem(at: indexPath, at: [ .centeredVertically], animated: true)
+                    selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
                 } else{
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     
@@ -451,6 +463,8 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         if collectionView == selectedSectorCV {
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             self.sectoreTypeFromSelecteHeader = typeOfSector
+            selectedSectorCV.selectItem(at: indexPath , animated: true, scrollPosition: .right)
+
             FatchDataOfMainGuideBySelecteddddd()
             
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{

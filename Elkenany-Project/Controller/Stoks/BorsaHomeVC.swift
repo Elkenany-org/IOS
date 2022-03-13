@@ -40,6 +40,8 @@ class BorsaHomeVC: UIViewController  {
     private var  sectorSubModel:[Sectorss] = []
     private var  logosSubModel:[log] = []
     private var  bannersSubModel:[Banner] = []
+    var startIndex: Int! = 1
+
     
     
     
@@ -53,6 +55,14 @@ class BorsaHomeVC: UIViewController  {
         title = "البورصة اليومية"
         featchBorsaSubSections()
         setupSearchBar()
+        
+        SelectedSector.setNeedsLayout()
+        SelectedSector.layoutIfNeeded()
+        
+        SelectedSector.scrollToItem(
+            at: NSIndexPath(item: 0, section: startIndex) as IndexPath,
+            at: .right,
+                animated: false)
     }
     
     
@@ -331,6 +341,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             
             if typeeee == Sector {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
@@ -395,6 +406,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if(cell.isSelected == true)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
                 
             }
             

@@ -85,7 +85,7 @@ class NewsVC: UIViewController {
             let param = ["type": "\(self.typeFromhome)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://elkenany.com/api/news/news?type=&sort=1&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -293,6 +293,7 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let typeee = news?.data?.sections?[indexPath.row].type ?? ""
             if typeee == typeFromhome {
                 cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                SelectedBySector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{
                 cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
@@ -352,8 +353,10 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             /// to details view controller
             let vc = storyboard?.instantiateViewController(identifier: "NewsDetailsVC") as! NewsDetailsVC
             navigationController?.pushViewController(vc, animated: true)
-            let newsID = news?.data?.data?[indexPath.item].id ?? 0
-            vc.newsIdFromHome = newsID
+             let newsID = news?.data?.data?[indexPath.item].id ?? 0
+                vc.newsIdFromHome = newsID
+
+            
             //            UserDefaults.standard.setValue(newsID, forKey: "NEWS_ID")
             //            print("hellllllllllo \(UserDefaults.standard.string(forKey: "NEWS_ID") ?? "")")
         }
