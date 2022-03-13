@@ -28,7 +28,10 @@ class GuideCompanyCell: UICollectionViewCell{
         logosCollection.dataSource = self
         logosCollection.delegate = self
         self.logosCollection.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
-        FatchlogosOfCompanyAtCell()
+        
+        ///call service 
+        
+//        FatchlogosOfCompanyAtCell()
     }
     
     
@@ -83,15 +86,7 @@ extension GuideCompanyCell:UICollectionViewDelegate , UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"logosCell" , for: indexPath) as! logosCell
-//        let imageLogin = companyGuideModel?.data?.subSections?[indexPath.item].logoIn?[indexPath.item].image ?? ""
-//        let imagetest = testModel?.logoIn?[indexPath.item].image ?? ""
-//        let imageLogin = mm?.image?[indexPath.item]
-//        cell.configureImage(image: imageLogin)
-//        cell.logooImage.image = arrayTest[indexPath.item]
-//        let imageee = testModel?.logoIn?[indexPath.item].image ?? "j"
-        if let Loimage = companyGuideModel?.data?.subSections?[indexPath.item].logoIn?[indexPath.item].image{
-            cell.configureImage(image: Loimage)
-        }
+///configuer imageeeeeeee
         return cell
     }
     

@@ -120,6 +120,48 @@ class NewsVC: UIViewController {
         }
     }
     
+    func FatchDataforNewsHomeFromMore(){
+ 
+        
+        DispatchQueue.global(qos: .background).async {
+            let param = ["type": "poultry"]
+
+            print("this para", param)
+            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
+                
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                
+                
+                else {
+                    
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                    
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.subNewsModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        self.AllNews.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
     
     
     func FatchDataOfNewsSelectedBySectorHeader(){

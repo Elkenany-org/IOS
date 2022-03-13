@@ -81,7 +81,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 11
+            return 7
         case 1:
             return 0
         default:
@@ -149,29 +149,72 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             vc.FatchGuidMainDataaaaaaaaa()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            let vc = storyboard?.instantiateViewController(identifier: "CompanyGuideVC") as! CompanyGuideVC
+            let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC
+            vc.FatchDataforNewsHomeFromMore()
             navigationController?.pushViewController(vc, animated: true)
             
         case 3:
-            let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC
-            navigationController?.pushViewController(vc, animated: true)
-        case 4:
-            let vc = storyboard?.instantiateViewController(identifier: "BorsaHomeVC") as! BorsaHomeVC
-            navigationController?.pushViewController(vc, animated: true)
-        case 5:
-            let vc = storyboard?.instantiateViewController(identifier: "BorsaHomeVC") as! BorsaHomeVC
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 6:
-            print("settings")
-        case 7:
             let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
             navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            if let url = NSURL(string: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820") {
+                UIApplication.shared.openURL(url as URL)
+              }
+            
+        case 6:
+            // Setting description
+                let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
+
+                // Setting url
+                let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820")!
+                
+                // If you want to use an image
+                let image : UIImage = UIImage(named: "AppIcon")!
+                let activityViewController : UIActivityViewController = UIActivityViewController(
+                    activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
+                
+                // This lines is for the popover you need to show in iPad
+//                activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+                
+                // This line remove the arrow of the popover to show in iPad
+                activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+                activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+                
+                // Pre-configuring activity items
+                activityViewController.activityItemsConfiguration = [
+                UIActivity.ActivityType.message
+                ] as? UIActivityItemsConfigurationReading
+                
+                // Anything you want to exclude
+                activityViewController.excludedActivityTypes = [
+                    UIActivity.ActivityType.postToWeibo,
+                    UIActivity.ActivityType.print,
+                    UIActivity.ActivityType.assignToContact,
+                    UIActivity.ActivityType.saveToCameraRoll,
+                    UIActivity.ActivityType.addToReadingList,
+                    UIActivity.ActivityType.postToFlickr,
+                    UIActivity.ActivityType.postToVimeo,
+                    UIActivity.ActivityType.postToTencentWeibo,
+                    UIActivity.ActivityType.postToFacebook
+                    
+                ]
+                
+                activityViewController.isModalInPresentation = true
+                self.present(activityViewController, animated: true, completion: nil)
+            
+        case 7:
+//            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
+//            navigationController?.pushViewController(vc, animated: true)
             print("about elkenany")
             
         case 8:
-            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
-            navigationController?.pushViewController(vc, animated: true)
+//            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
+//            navigationController?.pushViewController(vc, animated: true)
+        print("jjjjjjjjjjjjj")
+            
         default:
             print("hamada")
         }

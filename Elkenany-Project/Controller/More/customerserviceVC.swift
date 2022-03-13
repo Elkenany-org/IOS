@@ -56,10 +56,7 @@ class customerserviceVC: UIViewController {
             "company":companyName.text,
             "desc":desc.text,
         ]
-        //Handel Parametars
-//        let headers:HTTPHeaders = ["lang":"ar", "Content-Type": "application/json"]
-//        let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//        let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
+    
        let CustomerServiceRequestURL =  "https://elkenany.com/api/contuct-us"
 
         //Networking

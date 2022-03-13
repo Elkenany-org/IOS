@@ -19,6 +19,8 @@ class abouUsVC: UIViewController {
         self.aboutUsCollection.register(UINib(nibName: "aboutUsCell", bundle: nil), forCellWithReuseIdentifier: "aboutUsCell")
         
         aboutUsCollection.register(UINib(nibName: "headerLine", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "headerLine")
+        
+      
     }
     
 
@@ -32,6 +34,8 @@ class abouUsVC: UIViewController {
         ss.layer.masksToBounds = false
 
     }
+    
+
     
     
     
@@ -103,19 +107,7 @@ extension abouUsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
     }
 
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        switch  {
-//        case 0:
-//            return CGSize(width:collectionView.frame.width , height: 50)
-//        case 1:
-//            return CGSize(width:collectionView.frame.width / 3 , height: 50)
-//        default:
-//            print("")
-//        }
-//        return CGSize(width:collectionView.frame.width , height: 0)
-//
-//    }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         switch indexPath.item {

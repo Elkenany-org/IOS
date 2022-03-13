@@ -30,13 +30,21 @@
                         <rect key="frame" x="5" y="5" width="498" height="474"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-YP-NIm">
-                                <rect key="frame" x="15" y="52.5" width="468" height="160"/>
+                                <rect key="frame" x="15" y="52.5" width="468" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="uBY-C1-tRg"/>
+                                    <constraint firstAttribute="height" constant="140" id="uBY-C1-tRg"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="kenanyGold"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="me0-ye-MOG">
-                                <rect key="frame" x="20" y="251.5" width="458" height="156"/>
+                                <rect key="frame" x="20" y="253.5" width="458" height="156"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nti-Qg-h1l">
                                         <rect key="frame" x="0.0" y="0.0" width="458" height="30"/>
@@ -119,33 +127,54 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="teW-fm-ony">
-                                <rect key="frame" x="453" y="227.5" width="25" height="25"/>
+                                <rect key="frame" x="453" y="229.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="fdl-nB-k2Q"/>
                                     <constraint firstAttribute="width" constant="25" id="pnL-h5-Z5f"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الدقهلية - المنصورة - شارع الترعة المنصورية - برج النبوي - بجوار مستشفي التامين " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X63-H7-6h4">
-                                <rect key="frame" x="15" y="227.5" width="423" height="14"/>
+                                <rect key="frame" x="15" y="229.5" width="423" height="14"/>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLr-8C-XRI">
+                                <rect key="frame" x="15" y="192.5" width="468" height="27"/>
+                                <color key="backgroundColor" name="kenanyGold"/>
+                                <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="14"/>
+                                <state key="normal" title="اضغط واحصل علي الاتجاهات">
+                                    <color key="titleColor" name="kenanyGreen"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="kenanyGold"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="accessMap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="2g2-NC-hCN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="me0-ye-MOG" firstAttribute="top" secondItem="X63-H7-6h4" secondAttribute="bottom" constant="10" id="3i8-QH-sPm"/>
                             <constraint firstItem="9c5-a3-CWz" firstAttribute="top" secondItem="uxs-rM-SLe" secondAttribute="top" constant="15" id="5xj-M4-gkJ"/>
-                            <constraint firstItem="X63-H7-6h4" firstAttribute="top" secondItem="2ia-YP-NIm" secondAttribute="bottom" constant="15" id="BCv-pn-NF7"/>
+                            <constraint firstAttribute="trailing" secondItem="aLr-8C-XRI" secondAttribute="trailing" constant="15" id="FCW-0g-e0q"/>
                             <constraint firstItem="X63-H7-6h4" firstAttribute="leading" secondItem="uxs-rM-SLe" secondAttribute="leading" constant="15" id="M2b-ql-7qQ"/>
-                            <constraint firstItem="teW-fm-ony" firstAttribute="top" secondItem="2ia-YP-NIm" secondAttribute="bottom" constant="15" id="MkF-sL-dbC"/>
                             <constraint firstItem="X63-H7-6h4" firstAttribute="top" secondItem="teW-fm-ony" secondAttribute="top" id="VNQ-Zg-MIa"/>
                             <constraint firstAttribute="trailing" secondItem="2ia-YP-NIm" secondAttribute="trailing" constant="15" id="aeF-Op-Nmc"/>
+                            <constraint firstItem="aLr-8C-XRI" firstAttribute="leading" secondItem="uxs-rM-SLe" secondAttribute="leading" constant="15" id="bTb-Bk-kjd"/>
                             <constraint firstAttribute="trailing" secondItem="9c5-a3-CWz" secondAttribute="trailing" constant="15" id="bvb-eW-13N"/>
+                            <constraint firstItem="X63-H7-6h4" firstAttribute="top" secondItem="aLr-8C-XRI" secondAttribute="bottom" constant="10" id="cUz-FO-mil"/>
                             <constraint firstItem="teW-fm-ony" firstAttribute="leading" secondItem="X63-H7-6h4" secondAttribute="trailing" constant="15" id="gDk-LO-U4R"/>
                             <constraint firstItem="2ia-YP-NIm" firstAttribute="top" secondItem="9c5-a3-CWz" secondAttribute="bottom" constant="20" id="gFT-tz-Qc6"/>
                             <constraint firstItem="2ia-YP-NIm" firstAttribute="leading" secondItem="uxs-rM-SLe" secondAttribute="leading" constant="15" id="jfP-AF-eje"/>
                             <constraint firstItem="me0-ye-MOG" firstAttribute="leading" secondItem="uxs-rM-SLe" secondAttribute="leading" constant="20" id="kpN-hg-NtK"/>
+                            <constraint firstItem="aLr-8C-XRI" firstAttribute="top" secondItem="2ia-YP-NIm" secondAttribute="bottom" id="mJN-B9-TjZ"/>
                             <constraint firstAttribute="trailing" secondItem="me0-ye-MOG" secondAttribute="trailing" constant="20" id="ssE-bj-MmJ"/>
                             <constraint firstAttribute="trailing" secondItem="teW-fm-ony" secondAttribute="trailing" constant="20" id="y8u-bD-7yY"/>
                         </constraints>
@@ -176,6 +205,7 @@
                 <outlet property="fax" destination="HWP-xP-lmS" id="lhJ-tC-hor"/>
                 <outlet property="locationDesc" destination="X63-H7-6h4" id="CUW-wc-nSa"/>
                 <outlet property="locationtitle" destination="9c5-a3-CWz" id="n3H-qK-j8n"/>
+                <outlet property="mapppppp" destination="2ia-YP-NIm" id="A7c-fo-Sg6"/>
                 <outlet property="mobile" destination="B4W-yk-cCc" id="KwF-Ed-WqE"/>
                 <outlet property="phone" destination="BTZ-yq-UlP" id="fcc-ID-RaS"/>
             </connections>

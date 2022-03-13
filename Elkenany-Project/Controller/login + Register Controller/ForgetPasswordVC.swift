@@ -16,7 +16,10 @@ class ForgetPasswordVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func test(_ sender: Any) {
+        
+    }
+    
 
     @IBAction func backBTN(_ sender: Any) {
         dismiss(animated: true, completion: nil)
