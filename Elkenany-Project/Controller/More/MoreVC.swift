@@ -74,7 +74,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     
@@ -143,6 +143,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
         switch indexPath.row {
         case 0:
             let vc = storyboard?.instantiateViewController(identifier: "BorsaHomeVC") as! BorsaHomeVC
+            vc.featchBorsaSubSectionsFromMore()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = storyboard?.instantiateViewController(identifier: "CompanyGuideVC") as! CompanyGuideVC

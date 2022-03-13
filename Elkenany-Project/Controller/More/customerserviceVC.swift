@@ -109,6 +109,9 @@ class customerserviceVC: UIViewController {
         
     }
     
+    @IBAction func dissmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     

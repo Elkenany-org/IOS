@@ -10,14 +10,14 @@ import Alamofire
 import JGProgressHUD
 import AuthenticationServices
 class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
-
+    
     
     
     //Outlets in screen
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var loginProviderStackView: UIStackView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -66,7 +66,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         }
         
     }
-
+    
     
     
     //MARK:- Handel Forget button in login screen
@@ -76,7 +76,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         self.present(vc, animated: true, completion:nil)
     }
     
-
+    
     /// - Tag: perform_appleid_request
     @objc
     func handleAuthorizationAppleIDButtonPress() {
@@ -89,8 +89,8 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         authorizationController.performRequests()
     }
     
-   
-
+    
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
@@ -105,8 +105,8 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion:nil)
         }
-      
-
+        
+        
     }
     
     
@@ -118,7 +118,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     
     
     
-   
+    
     //MARK:- Handel Login Data To Server
     
     func loginTap() {

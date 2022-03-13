@@ -159,6 +159,42 @@ class BorsaHomeVC: UIViewController  {
         }
     }
     
+    func featchBorsaSubSectionsFromMore(){
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let param = ["type": "poultry"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
+                if let error = error{
+                    print("============ error \(error)")
+                }else {
+                    
+                    let successData = Borsasuccess?.data?.sectors ?? []
+                    self.sectorSubModel.append(contentsOf: successData)
+                    let successDataaa = Borsasuccess?.data?.subSections ?? []
+                    self.BorsaSubModel.append(contentsOf: successDataaa)
+                    ///for banners and logs
+                    let successDataaaBanners = Borsasuccess?.data?.banners ?? []
+                    self.bannersSubModel.append(contentsOf: successDataaaBanners)
+                    let successDataLogos = Borsasuccess?.data?.logos ?? []
+                    self.logosSubModel.append(contentsOf: successDataLogos)
+                    let successDatafodder = Borsasuccess?.data?.fodSections ?? []
+                    self.fodderSubModel.append(contentsOf: successDatafodder)
+                    
+                    
+                    DispatchQueue.main.async {
+                        self.BorsaCV.reloadData()
+                        self.SelectedSector.reloadData()
+                        self.bannersCV.reloadData()
+                        self.logosCV.reloadData()
+                        
+                    }
+                }
+            }
+        }
+    }
     
     
     //MARK:- FeatchData for Borsa [Company sub_sections]

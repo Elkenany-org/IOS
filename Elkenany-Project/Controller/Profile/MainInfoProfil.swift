@@ -20,7 +20,7 @@ class MainInfoProfil: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        handelTap()
+//        handelTap()
     }
     
 
@@ -82,6 +82,8 @@ class MainInfoProfil: UIViewController {
     @IBAction func conformationBTN(_ sender: Any) {
         EditeMainInfoTap()
     }
+    
+    
     
     
     

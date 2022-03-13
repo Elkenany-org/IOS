@@ -11,7 +11,7 @@ class PrivicyProfile: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        handelTap()
+//        handelTap()
         // Do any additional setup after loading the view.
     }
     
@@ -34,4 +34,10 @@ class PrivicyProfile: UIViewController {
     @objc func closePop(){
         dismiss(animated: true)
     }
+    
+    
+    @IBAction func confirem(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
