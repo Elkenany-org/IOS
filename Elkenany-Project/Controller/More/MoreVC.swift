@@ -53,6 +53,11 @@ class MoreVC: UIViewController {
                     self.logoutmm = success
                     DispatchQueue.main.async {
                         print("yaaaaaaaaaaa")
+                        if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+                            vc.modalPresentationStyle = .fullScreen
+                            self.present(vc, animated: true, completion: nil)
+                            
+                        }
                     }
                 }
             }
@@ -63,6 +68,7 @@ class MoreVC: UIViewController {
     
     @IBAction func logOutBTN(_ sender: Any) {
         logoutService()
+      
         
     }
     

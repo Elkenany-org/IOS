@@ -24,11 +24,13 @@ class ProfileVC: UIViewController {
         
         var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         if isloggineIn {
+            print("helllllo ")
+
+        }else{
             if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
+//                vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }
-        }else{
-            print("helllllo ")
 
             
            }

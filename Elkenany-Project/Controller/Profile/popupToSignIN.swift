@@ -40,4 +40,10 @@ class popupToSignIN: UIViewController {
         }
 
     }
+    
+    
+    
+    @IBAction func exite(_ sender: Any) {
+        
+    }
 }
