@@ -66,6 +66,7 @@
 		323B2249274A482D002CEB89 /* onBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B2248274A482D002CEB89 /* onBoardingVC.swift */; };
 		323B225C274A5D38002CEB89 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323B225B274A5D38002CEB89 /* LoginVC.swift */; };
 		323D4A1427D892EE0071A1E7 /* logoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323D4A1327D892EE0071A1E7 /* logoutModel.swift */; };
+		323DDA2427DF482900B2C127 /* popupToSignIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323DDA2327DF482900B2C127 /* popupToSignIN.swift */; };
 		323ED96E275D4DB900D4620C /* homeSectorsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323ED96D275D4DB900D4620C /* homeSectorsDataModel.swift */; };
 		323ED99E275E522600D4620C /* RecomenditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323ED99C275E522600D4620C /* RecomenditionCell.swift */; };
 		323ED99F275E522600D4620C /* RecomenditionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323ED99D275E522600D4620C /* RecomenditionCell.xib */; };
@@ -285,6 +286,7 @@
 		323B2248274A482D002CEB89 /* onBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingVC.swift; sourceTree = "<group>"; };
 		323B225B274A5D38002CEB89 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		323D4A1327D892EE0071A1E7 /* logoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logoutModel.swift; sourceTree = "<group>"; };
+		323DDA2327DF482900B2C127 /* popupToSignIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popupToSignIN.swift; sourceTree = "<group>"; };
 		323ED96D275D4DB900D4620C /* homeSectorsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeSectorsDataModel.swift; sourceTree = "<group>"; };
 		323ED99C275E522600D4620C /* RecomenditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomenditionCell.swift; sourceTree = "<group>"; };
 		323ED99D275E522600D4620C /* RecomenditionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecomenditionCell.xib; sourceTree = "<group>"; };
@@ -1005,6 +1007,7 @@
 				32FAB7AD27787215002400A2 /* ProfileVC.swift */,
 				32FAB7B827789A27002400A2 /* MainInfoProfil.swift */,
 				32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */,
+				323DDA2327DF482900B2C127 /* popupToSignIN.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */,
 				32366BE3275BC81B00DC2F98 /* SectorsCell.swift in Sources */,
 				32CC184327A1A31A0004F356 /* RatingModel.swift in Sources */,
+				323DDA2427DF482900B2C127 /* popupToSignIN.swift in Sources */,
 				32579A042779E5EB009E6C30 /* headerLine.swift in Sources */,
 				32C4EFD827871B6C0034BD9F /* filterHeader.swift in Sources */,
 				32343F2D274B89BD00921D99 /* UICollectionView+Extensions.swift in Sources */,
@@ -1636,7 +1640,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1661,7 +1665,7 @@
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

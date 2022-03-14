@@ -153,6 +153,9 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
                 vc.modalPresentationStyle = .fullScreen
                 let apiToken = loginSuccess?.data?.apiToken ?? ""
                 UserDefaults.standard.set(apiToken, forKey: "API_TOKEN")
+                UserDefaults.standard.set(true, forKey: "LOGIN_STAUTS")
+                print("LOGGGG", UserDefaults.standard.bool(forKey: "LOGIN_STAUTS" ) )
+                
                 self.present(vc, animated: true, completion:nil)
                 
             }

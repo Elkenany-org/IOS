@@ -20,17 +20,21 @@ class ProfileVC: UIViewController {
         profileCollectionView.dataSource = self
         self.profileCollectionView.register(UINib(nibName: "profileCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
         self.profileCollectionView.register(UINib(nibName: "EditeProfileCell", bundle: nil), forCellWithReuseIdentifier: "EditeProfileCell")
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         FatchDataProfile()
         
+        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        if isloggineIn {
+            print("helllllo ")
+            
+        }else{
+            if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
+                self.present(vc, animated: true, completion: nil)
+            }}
+        
+        
     }
     
-    
+  
     
     func ss(ss:UICollectionViewCell){
         ss.layer.cornerRadius = 15.0

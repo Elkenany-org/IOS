@@ -22,11 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         //Manage-keybord
         IQKeyboardManager.shared().isEnabled = true
-
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
         registerForPushNotifications()
+        
+        //root view controller
+        let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+       if let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC {
+            window?.rootViewController = loginViewController
+        }
+               
         
         return true
     }
