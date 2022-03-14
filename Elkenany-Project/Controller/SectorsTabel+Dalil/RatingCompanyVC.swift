@@ -67,9 +67,22 @@ class RatingCompanyVC: UIViewController {
     
     //Doing Rating ------------------
     @IBAction func ConfirmRating(_ sender: Any) {
-        FatchDatafromHome()
-        dismiss(animated: true, completion: nil)
         
+        /// reverse the functions bc this a check only ----
+        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        
+        if isloggineIn {
+            if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
+                self.present(vc, animated: true, completion: nil)
+            }
+        }else{
+            print("helllllo ")
+            FatchDatafromHome()
+
+           }
+        
+                
     }
     
     

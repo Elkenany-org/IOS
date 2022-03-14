@@ -27,4 +27,17 @@ class popupToSignIN: UIViewController {
         dismiss(animated: true)
     }
 
+    @IBAction func toLogin(_ sender: Any) {
+//        self.navigationController!.popToRootViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+//        navigationController?.popToRootViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
+        
+        if let vc = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+        }
+
+    }
 }

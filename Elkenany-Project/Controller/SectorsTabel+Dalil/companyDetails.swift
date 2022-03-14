@@ -133,14 +133,30 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         switch indexPath.row {
         case 0:
             
-            //show rating view to do rating
-            if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
-                let comParameterID = companyDetailsModel?.data?.id ?? 0
-                vc.CompanyID = comParameterID
-                self.present(vc, animated: true, completion: nil)  }
+            /// reverse the functions bc this a check only ----
+            var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+            
+            if isloggineIn {
+                if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
+                    let comParameterID = companyDetailsModel?.data?.id ?? 0
+                    vc.CompanyID = comParameterID
+                    self.present(vc, animated: true, completion: nil)  }
+                
+            }else{
+                print("helllllo ")
+                //show rating view to do rating
+                if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+            
+            
+            
+            
             
         default:
             print("hello")
