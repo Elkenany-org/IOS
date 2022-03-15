@@ -22,6 +22,9 @@ class NewsVC: UIViewController {
     var typeOfSectors = ""
     var typeFromhome = ""
     var subNewsModel:[Dataa] = []
+//    var seeectoresMo:[sections] = []
+    var seeectoresMo:[Section] = []
+
     private var currentpaga = 1
     var isFeatchingImage = false
     var subID_fromGuideHome = 0
@@ -61,7 +64,7 @@ class NewsVC: UIViewController {
     
     func featchDataSelectors(){
         let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        let sectorsUrl = "https://elkenany.com/api/news/news?type=animal&sort=0&search="
+        let sectorsUrl = "https://elkenany.com/api/news/news?type=farm&sort=0&search="
         let headers:HTTPHeaders = ["app-id": api_token ]
         APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:AllNewsDataModel?, NewsError:AllNewsDataModel?, error) in
             guard let self = self else {return}
@@ -70,6 +73,9 @@ class NewsVC: UIViewController {
                 print(error.localizedDescription)
             }else{
                 self.news = NewsSuccess
+                let succeeeesss = NewsSuccess?.data?.sections?.reversed() ?? []
+                self.seeectoresMo.append(contentsOf: succeeeesss)
+                print(NewsSuccess?.data?.sections ?? "")
                 DispatchQueue.main.async {
                     self.SelectedBySector.reloadData()
                 }
@@ -258,15 +264,8 @@ class NewsVC: UIViewController {
         view2.isHidden = true
     }
     
-    
-//
-//    @IBAction func hideSearchView(_ sender: Any) {
-//        searchView.isHidden = true
-//        view1.isHidden = false
-//        view2.isHidden = false
-//    }
-//
 
+    
     
     
 }
@@ -276,7 +275,7 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == SelectedBySector {
             
-            return news?.data?.sections?.count ?? 0
+            return seeectoresMo.count
             
         }else{
             
@@ -289,24 +288,22 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if collectionView == SelectedBySector {
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-            cell1.titleLabel.text = news?.data?.sections?[indexPath.row].name ?? "test"
-            let typeee = news?.data?.sections?[indexPath.row].type ?? ""
+            cell1.titleLabel.text = seeectoresMo[indexPath.row].name ?? "test"
+            let typeee = seeectoresMo[indexPath.row].type ?? ""
+            
             if typeee == typeFromhome {
                 cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedBySector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{
                 cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
-            
-            //            cell1.transform = CGAffineTransform(scaleX: -1, y: 1)
-            
-            
             return cell1
             
-        }else{
+        }
+        else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "NewsCell", for: indexPath) as! NewsCell
-            cell2.newsTitle.text = subNewsModel[indexPath.item].title
-            cell2.newsDate.text = subNewsModel[indexPath.item].createdAt
+            cell2.newsTitle.text = subNewsModel[indexPath.item].title ?? ""
+            cell2.newsDate.text = subNewsModel[indexPath.item].createdAt ?? ""
             if let newsImage = subNewsModel[indexPath.item].image {
                 cell2.configureCell(image: newsImage)
             }
@@ -331,23 +328,19 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if collectionView == SelectedBySector {
             let typeOfSectorr = news?.data?.sections?[indexPath.row].type ?? ""
             self.typeOfSectors = typeOfSectorr
-            FatchDataOfNewsSelectedBySectorHeader()
-            
-            
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
             
             if(cell.isSelected == true)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                SelectedBySector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+
                 
             }
+            FatchDataOfNewsSelectedBySectorHeader()
+
             
-            
-            
-            //            let selectedCell = collectionView.cellForItem(at: indexPath)
-            //            //selectedCell?.contentView.backgroundColor = .red
-            //            selectedCell?.backgroundColor = .red
-            
+
             
         }else{
             /// to details view controller
@@ -356,9 +349,6 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
              let newsID = news?.data?.data?[indexPath.item].id ?? 0
                 vc.newsIdFromHome = newsID
 
-            
-            //            UserDefaults.standard.setValue(newsID, forKey: "NEWS_ID")
-            //            print("hellllllllllo \(UserDefaults.standard.string(forKey: "NEWS_ID") ?? "")")
         }
     }
     

@@ -17,14 +17,14 @@ struct CompaniesDataModel: Codable {
 // MARK: - DataClass
 struct Data: Codable {
     var sectors: [Sectorr]?
-    var banners, compsort: [String]?
+    var banners, compsort: [Any]?
     var logos:[Any]?
     var data: [MainData]?
     var currentPage, lastPage: Int?
     var firstPageURL, nextPageURL, lastPageURL: String?
 
     enum CodingKeys: String, CodingKey {
-        case sectors, banners, compsort, data
+        case sectors, data
         case currentPage = "current_page"
         case lastPage = "last_page"
         case firstPageURL = "first_page_url"

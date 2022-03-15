@@ -56,13 +56,6 @@ class BorsaHomeVC: UIViewController  {
         featchBorsaSubSections()
         setupSearchBar()
         
-        SelectedSector.setNeedsLayout()
-        SelectedSector.layoutIfNeeded()
-        
-        SelectedSector.scrollToItem(
-            at: NSIndexPath(item: 0, section: startIndex) as IndexPath,
-            at: .right,
-                animated: false)
     }
     
     
@@ -144,7 +137,7 @@ class BorsaHomeVC: UIViewController  {
                     print("============ error \(error)")
                 }else {
                     
-                    let successData = Borsasuccess?.data?.sectors ?? []
+                    let successData = Borsasuccess?.data?.sectors?.reversed() ?? []
                     self.sectorSubModel.append(contentsOf: successData)
                     let successDataaa = Borsasuccess?.data?.subSections ?? []
                     self.BorsaSubModel.append(contentsOf: successDataaa)
@@ -285,12 +278,12 @@ class BorsaHomeVC: UIViewController  {
         //        featchBorsa()
         
     }
-    @IBAction func searchHide(_ sender: Any) {
-        searchView.isHidden = true
-        view1.isHidden = false
-        
-    }
-    
+//    @IBAction func searchHide(_ sender: Any) {
+//        searchView.isHidden = true
+//        view1.isHidden = false
+//
+//    }
+//
     
     
     
@@ -342,6 +335,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if typeeee == Sector {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+
             }else{
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
@@ -398,7 +392,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         
         //selected from sectore at header
         if collectionView == SelectedSector {
-            let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
+            let typeOfSector = borsaData?.data?.sectors?[indexPath.item].type ?? "farm"
             self.sectorTypeFromHeader = typeOfSector
             
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
@@ -407,6 +401,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+
                 
             }
             
@@ -426,14 +421,11 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         
         //selected from cells
         else if collectionView == BorsaCV{
-            
-            //            let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
-            //            navigationController?.pushViewController(vc, animated: true)
-            //
+          
             
             if indexPath.section == 0{
                 
-                let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
+                if let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails")) as? BorsaDetails{
                 let id = BorsaSubModel[indexPath.item].id ?? 0
                 let type1 = BorsaSubModel[indexPath.item].type ?? ""
                 let BorsaTitle = BorsaSubModel[indexPath.item].name ?? ""
@@ -443,7 +435,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
                 vc.variaTest = type1
                 vc.loc_id = id
                 navigationController?.pushViewController(vc, animated: true)
-                
+                }
             }
             
             else if indexPath.section == 1{
