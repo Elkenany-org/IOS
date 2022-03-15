@@ -56,7 +56,15 @@ class CompanyGuideVC: UIViewController, FilterDone {
     //MARK:- Outlets && Proparites
     var companyGuideModel:GuideCompaniesDataModel?
     private var subModel: [SubSection] = []
-    private var  sectorSubModel:[Sector] = []
+    private var  sectorSubModel:[Sector] = [].reversed()
+//    for arrayIndex in stride(from: Sector.count - 1, through: 0, by: -1) {
+//    sectorSubModel.append(names[Sector])
+//    }
+//    
+//    for arrayIndex in stride(from: names.count - 1, through: 0, by: -1) {
+//        reversedNames.append(names[arrayIndex])
+//    }
+    
     
     @IBOutlet weak var guideCompanyCV: UICollectionView!
     @IBOutlet weak var selectedSectorCV: UICollectionView!
@@ -399,7 +407,10 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 if typeOfSector == sectoreTypeFromHome {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                     self.selectedSectorCV.scrollToItem(at: indexPath, at: [ .centeredVertically], animated: true)
-                    selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//                    selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//                    selectedSectorCV.selectItem(at: IndexPath(item: companyGuideModel?.data?.sectors?[indexPath.item].selected ?? 0, section: 1), animated: true, scrollPosition: .right)
+                    
+                    selectedSectorCV.semanticContentAttribute = .forceRightToLeft
                 } else{
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                     

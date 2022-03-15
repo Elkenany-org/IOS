@@ -18,7 +18,8 @@ class SelectedSectorCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+//        contentView.transform = CGAffineTransform(scaleX: 1, y: -1)
+
         cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
     }
     override var isSelected: Bool {
