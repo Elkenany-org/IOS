@@ -67,7 +67,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-q5-SNd">
                                         <rect key="frame" x="0.0" y="42" width="458" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20502210179" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTZ-yq-UlP">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+201094940872" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTZ-yq-UlP">
                                                 <rect key="frame" x="0.0" y="0.0" width="418" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" name="kenanyGreen"/>
@@ -103,7 +103,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZQK-ym-fpB">
                                         <rect key="frame" x="0.0" y="126" width="458" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20502210279" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWP-xP-lmS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+201094940872" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWP-xP-lmS">
                                                 <rect key="frame" x="0.0" y="0.0" width="418" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" name="kenanyGreen"/>
@@ -155,7 +155,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="accessMap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="pvE-mN-XCo"/>
+                                    <action selector="accessMap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="2g2-NC-hCN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -200,6 +200,15 @@
                 <constraint firstAttribute="trailing" secondItem="uxs-rM-SLe" secondAttribute="trailing" constant="5" id="sGJ-p6-p4F"/>
             </constraints>
             <size key="customSize" width="508" height="484"/>
+            <connections>
+                <outlet property="email" destination="6aO-QP-gTl" id="Drr-XT-yLw"/>
+                <outlet property="fax" destination="HWP-xP-lmS" id="lhJ-tC-hor"/>
+                <outlet property="locationDesc" destination="X63-H7-6h4" id="CUW-wc-nSa"/>
+                <outlet property="locationtitle" destination="9c5-a3-CWz" id="n3H-qK-j8n"/>
+                <outlet property="mapppppp" destination="2ia-YP-NIm" id="A7c-fo-Sg6"/>
+                <outlet property="mobile" destination="B4W-yk-cCc" id="KwF-Ed-WqE"/>
+                <outlet property="phone" destination="BTZ-yq-UlP" id="fcc-ID-RaS"/>
+            </connections>
             <point key="canvasLocation" x="285.50724637681162" y="59.598214285714285"/>
         </collectionViewCell>
     </objects>

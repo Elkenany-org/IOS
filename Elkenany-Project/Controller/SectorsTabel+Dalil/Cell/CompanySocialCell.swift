@@ -76,6 +76,10 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             
         }
         
+        
+         
+
+        
     }
     
     
@@ -164,46 +168,42 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        func callNumber(number: String ) {
+
+                guard let url = URL(string: "tel://\(number)") else {return}
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
         
         
+        
+     
         //        let url : NSURL?
         
         switch indexPath.section {
         case 0:
             print("heelo")
             ///for mobile
-            
-//            func callNumber(number:String) {
-//
-//                    guard let url = URL(string: "tel://\(number)") else {return}
-//                    if #available(iOS 10.0, *) {
-//                        UIApplication.shared.open(url)
-//                    } else {
-//                        UIApplication.shared.openURL(url)
-//                    }
-//                }
-//
+            callNumber(number: socialData?.data?.mobiles?[indexPath.row].mobile ?? "")
         case 1:
-            if let url = NSURL(string: "\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
-                UIApplication.shared.openURL(url as URL)
+            
+            if let url = URL(string: "\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.openURL(url)
+                } else {
+                    print("Cannot open URL")
+                }
             }
-            
-            
-//            let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            if let url = NSURL(string: "\(socialData?.data?.emails?[indexPath.row].email)") {
-                UIApplication.shared.openURL(url as URL)
-              }
             print("soial")
             
             ///fooooor maillll
-//            if let url = URL(string: "mailto://azimov@demo.com") {
-//                if UIApplication.shared.canOpenURL(url) {
-//                    UIApplication.shared.openURL(url)
-//                } else {
-//                    print("Cannot open URL")
-//                }
-//            }
+
             
         case 2:
             

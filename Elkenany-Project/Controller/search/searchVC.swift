@@ -20,17 +20,24 @@ class searchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBaView.barTintColor = .white
-        setupSearchBar()
+//        setupSearchBar()
         setupUI()
         searchTVV.estimatedRowHeight = 150
         searchTVV.rowHeight = UITableView.automaticDimension
-        if let vc = storyboard?.instantiateViewController(identifier: "BlankView") as? BlankView {
-//            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
-        }
+        
+    
+
         
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let messageVC = UIAlertController(title: "تنبية", message: "هذاالقسم غير متاح حاليا" , preferredStyle: .actionSheet)
+        present(messageVC, animated: true) {
+                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (_) in
+                            messageVC.dismiss(animated: true, completion: nil)})}
+    }
     
     func FatchDat(){
         //Handeling Loading view progress
@@ -106,6 +113,13 @@ extension searchVC : UISearchBarDelegate {
         
     }
     
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        let messageVC = UIAlertController(title: "Message Title", message: "Account Created successfully" , preferredStyle: .actionSheet)
+        present(messageVC, animated: true) {
+                        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+                            messageVC.dismiss(animated: true, completion: nil)})}
+    }
     
 }
 

@@ -22,37 +22,16 @@ class aboutUsCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        let initialLoc = CLLocation(latitude:  30.314647812707346, longitude:  31.42632616216894)
-        addAnnotation()
-        print("lllllllll", initialLoc)
-        setStartingLocation(location: initialLoc, distance: 3000)
-    }
-    
-    func addAnnotation(){
-        let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: 30.314647812707346, longitude:  31.42632616216894)
-//        pin.title = companyTitle ?? "موقع الشركة"
-        pin.subtitle = "My Pin Subtitle"
-        mapppppp.addAnnotation(pin)
-        
-        
-    }
 
-    func setStartingLocation(location:CLLocation , distance: CLLocationDistance){
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
-        mapppppp.setRegion(region, animated: true)
-        mapppppp.setCameraBoundary(MKMapView.CameraBoundary(coordinateRegion: region), animated: true)
-        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 1000)
-        mapppppp.setCameraZoomRange(zoomRange, animated: true)
-        
     }
     
     
     
-    @IBAction func accessMap(_ sender: Any) {
+    
+    
+    @IBAction func accessMap(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vcc = storyboard.instantiateViewController(identifier: "MapVC") as! MapVC
+        let vcc = storyboard.instantiateViewController(identifier: "MansouraLocation") as! MansouraLocation
         if let vc = self.next(ofType: UIViewController.self) {
 //            vcc.id_company = com_id
             vc.present(vcc, animated: true, completion: nil)
@@ -63,6 +42,15 @@ class aboutUsCell: UICollectionViewCell {
     
 
 }
+
+
+
+
+
+
+
+
+
 
 
 

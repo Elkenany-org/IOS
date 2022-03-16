@@ -86,6 +86,51 @@ class MapVC: UIViewController {
     }
     
     
+  
+    
+    func FeatchCompanyInformationsCairo(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let idParameter = UserDefaults.standard.string(forKey: "IDDD") ?? ""
+            let param = ["id": "\(idParameter)"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyDetailes = "https://elkenany.com/api/guide/company/?id="
+            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.companyMo = success
+                    DispatchQueue.main.async { [self] in
+//                       ooo = companyMo?.data?.latitude ?? ""
+                        let lan = companyMo?.data?.latitude ?? ""
+                        UserDefaults.standard.set(lan, forKey: "lan")
+                        
+//                       let lonn = companyMo?.data?.longitude ?? ""
+                        let uuuu = companyMo?.data?.longitude ?? ""
+                        UserDefaults.standard.set(uuuu, forKey: "ll")
+
+//                        print(ooo)
+                        let tit  = companyMo?.data?.name ?? ""
+                        UserDefaults.standard.set(tit, forKey: "TIT")
+
+//                        print("3333333", eee)
+                       
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
     //MARK:- Handling Tabs of button clicks
     
     func handelTap() {
