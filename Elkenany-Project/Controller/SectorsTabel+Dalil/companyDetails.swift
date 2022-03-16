@@ -115,7 +115,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
         case 2:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
                 cell3.com_id = CompanyIdFromCompanies
-                //                    cell3.FatchDataContactsOfCompanies()
+                cell3.FatchDataContactsOfCompanies()
                 cell3.selectionStyle = .none
                 
                 return cell3

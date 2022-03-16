@@ -24,6 +24,10 @@ class searchVC: UIViewController {
         setupUI()
         searchTVV.estimatedRowHeight = 150
         searchTVV.rowHeight = UITableView.automaticDimension
+        if let vc = storyboard?.instantiateViewController(identifier: "BlankView") as? BlankView {
+//            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
         
     }
     

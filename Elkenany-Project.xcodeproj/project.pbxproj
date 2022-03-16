@@ -134,6 +134,7 @@
 		327D90C9278B549D0037F1B7 /* standerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D90C7278B549C0037F1B7 /* standerHeader.swift */; };
 		327D90CA278B549D0037F1B7 /* standerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D90C8278B549C0037F1B7 /* standerHeader.xib */; };
 		328066BB277A172D004555E9 /* abouUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328066BA277A172D004555E9 /* abouUsVC.swift */; };
+		3287A2FC27E2133600C38849 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3287A2FB27E2133600C38849 /* BlankView.swift */; };
 		328F4399277C690B00FCBC05 /* EditeMainInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F4398277C690B00FCBC05 /* EditeMainInfoModel.swift */; };
 		329397FE2771F58300607C5B /* Cairo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322519D627700C76001096DD /* Cairo-Light.ttf */; };
 		329398022771F59600607C5B /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322519D527700C76001096DD /* Cairo-SemiBold.ttf */; };
@@ -355,6 +356,7 @@
 		327D90C7278B549C0037F1B7 /* standerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = standerHeader.swift; sourceTree = "<group>"; };
 		327D90C8278B549C0037F1B7 /* standerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = standerHeader.xib; sourceTree = "<group>"; };
 		328066BA277A172D004555E9 /* abouUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = abouUsVC.swift; sourceTree = "<group>"; };
+		3287A2FB27E2133600C38849 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		328F4398277C690B00FCBC05 /* EditeMainInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeMainInfoModel.swift; sourceTree = "<group>"; };
 		3296E4922764A92B00024421 /* ApiServiceForQueryParamater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceForQueryParamater.swift; sourceTree = "<group>"; };
 		3296E4972765EA3C00024421 /* CompainesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompainesModel.swift; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				32CEEE22275ADB77007E6FC6 /* TabBarVC.swift */,
+				3287A2FB27E2133600C38849 /* BlankView.swift */,
 			);
 			path = CustomTabBar;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				3208B8612785BD55000E6C84 /* ChooseStokeVC.swift in Sources */,
 				323B225C274A5D38002CEB89 /* LoginVC.swift in Sources */,
 				32FAB7A127786D9D002400A2 /* profileCell.swift in Sources */,
+				3287A2FC27E2133600C38849 /* BlankView.swift in Sources */,
 				32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */,
 				32366BE3275BC81B00DC2F98 /* SectorsCell.swift in Sources */,
 				32CC184327A1A31A0004F356 /* RatingModel.swift in Sources */,

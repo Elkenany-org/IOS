@@ -25,6 +25,9 @@ class NewsDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUpUI()
+//        if let flowLayout = NewsDetailsCV.collectionViewLayout as? UICollectionViewFlowLayout {
+//              flowLayout.estimatedItemSize = CGSize(width: 1, height:1)
+//          }
     }
     
     
@@ -237,7 +240,7 @@ extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     
     
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0{
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)

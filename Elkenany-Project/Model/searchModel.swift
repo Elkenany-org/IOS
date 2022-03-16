@@ -10,19 +10,19 @@ import Foundation
 
 // MARK: - SearchModel
 struct SearchModel: Codable {
-    let message, error: String?
-    let data: searchdataModell?
+    var message, error: String?
+    var data: searchdataModell?
 }
 
 // MARK: - DataClass
 struct searchdataModell: Codable {
-    let result: [Resultssss]?
+    var result: [Resultssss]?
 }
 
 // MARK: - Result
 struct Resultssss: Codable {
-    let id: Int?
-    let name: String?
-    let type: String?
+    var id: Int?
+    var name: String?
+    var type: String?
 }
 

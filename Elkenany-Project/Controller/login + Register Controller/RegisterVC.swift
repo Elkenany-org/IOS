@@ -32,6 +32,7 @@ class RegisterVC: UIViewController {
     }
     
     
+
     //MARK:- handel validation for textfield
     func ErrorHandeling(errorMessage:String){
         let alert = UIAlertController(title: "خطا", message: errorMessage, preferredStyle: .alert)
@@ -121,3 +122,4 @@ class RegisterVC: UIViewController {
     }
     
 }
+

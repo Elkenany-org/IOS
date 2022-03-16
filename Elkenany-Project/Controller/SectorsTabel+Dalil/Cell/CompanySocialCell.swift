@@ -24,7 +24,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         socialTV.register(UINib(nibName: "socialCell", bundle: nil), forCellReuseIdentifier: "socialCell")
         socialTV.register(UINib(nibName: "TestAnyCell", bundle: nil), forCellReuseIdentifier: "TestAnyCell")
         //automatic height
-        FatchDataContactsOfCompanies()
+//        FatchDataContactsOfCompanies()
     }
     
     
@@ -172,7 +172,18 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         switch indexPath.section {
         case 0:
             print("heelo")
+            ///for mobile
             
+//            func callNumber(number:String) {
+//
+//                    guard let url = URL(string: "tel://\(number)") else {return}
+//                    if #available(iOS 10.0, *) {
+//                        UIApplication.shared.open(url)
+//                    } else {
+//                        UIApplication.shared.openURL(url)
+//                    }
+//                }
+//
         case 1:
             if let url = NSURL(string: "\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
                 UIApplication.shared.openURL(url as URL)
@@ -184,6 +195,15 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
                 UIApplication.shared.openURL(url as URL)
               }
             print("soial")
+            
+            ///fooooor maillll
+//            if let url = URL(string: "mailto://azimov@demo.com") {
+//                if UIApplication.shared.canOpenURL(url) {
+//                    UIApplication.shared.openURL(url)
+//                } else {
+//                    print("Cannot open URL")
+//                }
+//            }
             
         case 2:
             

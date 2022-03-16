@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import JGProgressHUD
 
-class MapVC: UIViewController , CLLocationManagerDelegate , MKMapViewDelegate {
+class MapVC: UIViewController {
 
     var ooo = ""
     var eee = ""
@@ -26,19 +26,21 @@ class MapVC: UIViewController , CLLocationManagerDelegate , MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FeatchCompanyInformations()
-        
-        let initialLoc = CLLocation(latitude: Double(ooo) ?? 30.314647812707346, longitude: Double(eee) ?? 31.42632616216894)
-        addAnnotation()
-        print("lllllllll", initialLoc)
-        setStartingLocation(location: initialLoc, distance: 3000)
 
-        handelTap() 
+        let initialLoc = CLLocation(latitude: Double(UserDefaults.standard.string(forKey: "lan") ?? "") ?? 0.0, longitude: Double(UserDefaults.standard.string(forKey: "ll") ?? "") ?? 0.0)
+        setStartingLocation(location: initialLoc, distance: 2000)
+        addAnnotation()
+        handelTap()
+        FeatchCompanyInformations()
+        print( "A7aaa" , UserDefaults.standard.string(forKey: "lan") ?? "")
+        print( "A7a" , UserDefaults.standard.string(forKey: "ll") ?? "")
+
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
      
     }
     
@@ -63,13 +65,19 @@ class MapVC: UIViewController , CLLocationManagerDelegate , MKMapViewDelegate {
                     guard let success = success else {return}
                     self.companyMo = success
                     DispatchQueue.main.async { [self] in
-                       ooo = companyMo?.data?.latitude ?? ""
-                        let pp = companyMo?.data?.latitude ?? ""
-                        UserDefaults.standard.set(pp, forKey: "pp")
-                       eee = companyMo?.data?.longitude ?? ""
-                        print(ooo)
-                        companyTitle = companyMo?.data?.name ?? ""
-                        print("3333333", eee)
+//                       ooo = companyMo?.data?.latitude ?? ""
+                        let lan = companyMo?.data?.latitude ?? ""
+                        UserDefaults.standard.set(lan, forKey: "lan")
+                        
+//                       let lonn = companyMo?.data?.longitude ?? ""
+                        let uuuu = companyMo?.data?.longitude ?? ""
+                        UserDefaults.standard.set(uuuu, forKey: "ll")
+
+//                        print(ooo)
+                        let tit  = companyMo?.data?.name ?? ""
+                        UserDefaults.standard.set(tit, forKey: "TIT")
+
+//                        print("3333333", eee)
                        
                     }
                 }
@@ -106,11 +114,12 @@ class MapVC: UIViewController , CLLocationManagerDelegate , MKMapViewDelegate {
     
     func addAnnotation(){
         let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: Double(ooo) ?? 30.314647812707346, longitude: Double(eee) ?? 31.42632616216894)
-        pin.title = companyTitle ?? "موقع الشركة"
+        pin.coordinate = CLLocationCoordinate2D(latitude: Double(UserDefaults.standard.string(forKey: "lan") ?? "") ?? 0.0, longitude: Double(UserDefaults.standard.string(forKey: "ll") ?? "") ?? 0.0)
+        pin.title =  UserDefaults.standard.string(forKey: "TIT") ?? " موقع الشركة"
         pin.subtitle = "My Pin Subtitle"
         mapp.addAnnotation(pin)
-        
+        print( "A7a" , UserDefaults.standard.string(forKey: "TIT") ?? "")
+
         
     }
     
