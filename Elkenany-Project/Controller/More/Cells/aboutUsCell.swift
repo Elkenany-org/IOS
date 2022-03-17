@@ -35,10 +35,48 @@ class aboutUsCell: UICollectionViewCell {
         if let vc = self.next(ofType: UIViewController.self) {
 //            vcc.id_company = com_id
             vc.present(vcc, animated: true, completion: nil)
-            
         }
+    }
+    
+    
+    func callNumber(number: String ) {
+        
+        guard let url = URL(string: "tel://\(number)") else {return}
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    
+    @IBAction func toMaiiill(_ sender: Any) {
+        let email = "Business@elkenany.com"
+        if let url = URL(string: "mailto:\(email)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    
+    @IBAction func phonnnee(_ sender: Any) {
+        callNumber(number: "\(+20502210179)")
+    }
+    
+    @IBAction func mobilllleee(_ sender: Any) {
+        callNumber(number: "\(+201094940872)")
         
     }
+    
+    
+    @IBAction func faxxxx(_ sender: Any) {
+        callNumber(number: "\(+20502210279)")
+        
+    }
+    
     
 
 }

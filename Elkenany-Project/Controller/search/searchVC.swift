@@ -12,8 +12,9 @@ class searchVC: UIViewController {
     
     @IBOutlet weak var searchTVV: UITableView!
     @IBOutlet weak var searchBaView: UISearchBar!
-    var companiesModel:SearchModel?
-    private var mainDataModel: [Resultssss] = []
+    ///------
+    var companiesModel:SearchHome?
+    private var mainDataModel: [Resultt] = []
     
     
     
@@ -24,15 +25,13 @@ class searchVC: UIViewController {
         setupUI()
         searchTVV.estimatedRowHeight = 150
         searchTVV.rowHeight = UITableView.automaticDimension
-        
     
-
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ///tooooooost
         let messageVC = UIAlertController(title: "تنبية", message: "هذاالقسم غير متاح حاليا" , preferredStyle: .actionSheet)
         present(messageVC, animated: true) {
                         Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (_) in
@@ -48,10 +47,10 @@ class searchVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let param = ["search": "\(resulttt)" ]
             print("this para", param)
-            let companyGuide = "https://elkenany.com/api/search-all?search="
+            let companyGuide = "https://elkenany.com/api/search-all-ios?search="
             print("URL", companyGuide)
             
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:SearchModel?, filier:SearchModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:SearchHome?, filier:SearchHome?, error) in
                 
                 if let error = error{
                     //internet error

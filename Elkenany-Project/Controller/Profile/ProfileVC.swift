@@ -28,7 +28,7 @@ class ProfileVC: UIViewController {
 
         }else{
             if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .fullScreen
+                vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }
 

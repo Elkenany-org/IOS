@@ -44,6 +44,6 @@ class popupToSignIN: UIViewController {
     
     
     @IBAction func exite(_ sender: Any) {
-        
+        dismiss(animated: true, completion: nil)
     }
 }

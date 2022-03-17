@@ -1288,16 +1288,6 @@
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7z-QV-s3v">
-                                        <rect key="frame" x="10" y="10" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Xhd-RT-Jei"/>
-                                            <constraint firstAttribute="width" constant="30" id="ZqF-Ee-sXN"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="exite:" destination="Psr-aK-kaG" eventType="touchUpInside" id="191-0L-ql4"/>
-                                        </connections>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="rgR-CK-rXT">
                                         <rect key="frame" x="20" y="164" width="208" height="40"/>
                                         <subviews>
@@ -1316,6 +1306,9 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="exite:" destination="Psr-aK-kaG" eventType="touchUpInside" id="Rta-fe-A2N"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2e-0F-7R6">
                                                 <rect key="frame" x="110.5" y="0.0" width="97.5" height="40"/>
@@ -1346,11 +1339,9 @@
                                 <constraints>
                                     <constraint firstItem="RFW-6j-9iZ" firstAttribute="centerX" secondItem="avk-yA-tsA" secondAttribute="centerX" id="4da-57-b3V"/>
                                     <constraint firstAttribute="bottom" secondItem="rgR-CK-rXT" secondAttribute="bottom" constant="20" id="Fbo-Wy-b8Q"/>
-                                    <constraint firstItem="d7z-QV-s3v" firstAttribute="top" secondItem="avk-yA-tsA" secondAttribute="top" constant="10" id="ICa-Ii-p3K"/>
                                     <constraint firstAttribute="trailing" secondItem="rgR-CK-rXT" secondAttribute="trailing" constant="20" id="OO7-Zc-Dc4"/>
                                     <constraint firstItem="fBV-14-gNJ" firstAttribute="leading" secondItem="avk-yA-tsA" secondAttribute="leading" constant="20" id="WhR-Wn-oFD"/>
                                     <constraint firstItem="RFW-6j-9iZ" firstAttribute="top" secondItem="avk-yA-tsA" secondAttribute="top" constant="20" id="ZJk-v6-e2w"/>
-                                    <constraint firstItem="d7z-QV-s3v" firstAttribute="leading" secondItem="avk-yA-tsA" secondAttribute="leading" constant="10" id="cNz-hq-0eC"/>
                                     <constraint firstItem="fBV-14-gNJ" firstAttribute="centerX" secondItem="avk-yA-tsA" secondAttribute="centerX" id="cTZ-fX-bnI"/>
                                     <constraint firstItem="fBV-14-gNJ" firstAttribute="top" secondItem="RFW-6j-9iZ" secondAttribute="bottom" id="dYw-6t-CCe"/>
                                     <constraint firstItem="rgR-CK-rXT" firstAttribute="top" secondItem="fBV-14-gNJ" secondAttribute="bottom" constant="5" id="hcn-kg-SVL"/>
@@ -1367,7 +1358,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aSy-3y-MZU"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.27680864726027388" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.2323148544520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="avk-yA-tsA" firstAttribute="width" secondItem="mrD-3z-uHh" secondAttribute="width" multiplier="0.6" id="nSM-nl-oMO"/>
                             <constraint firstItem="avk-yA-tsA" firstAttribute="height" secondItem="mrD-3z-uHh" secondAttribute="height" multiplier="0.25" id="nfN-jr-Jk8"/>
@@ -1880,8 +1871,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6y-a4-jal">
                                         <rect key="frame" x="5" y="10" width="384" height="110"/>
-                                        <string key="text"> في 2018 قامت مجموعة الكناني بإطلاق أول وأكبر تطبيق وموقع خدمي في المجال البيطري والزراعي لخدمة جميع العاملين في القطاع ( الداجني والحيواني والزراعي والسمكي والخيول العربية الأصيلة ) في مصر والوطن العربي
-</string>
+                                        <string key="text"> في 2018 قامت مجموعة الكناني بإطلاق أول وأكبر تطبيق وموقع خدمي في المجال البيطري والزراعي لخدمة جميع العاملين في القطاع ( الداجني والحيواني والزراعي والسمكي والخيول العربية الأصيلة ) في مصر والوطن العربي</string>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -1975,7 +1965,7 @@
         <scene sceneID="HZk-8F-KC3">
             <objects>
                 <viewController storyboardIdentifier="customerserviceVC" id="Y96-Cz-Q22" customClass="customerserviceVC" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="seC-3D-rw7">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="seC-3D-rw7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2498,7 +2488,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التصنيف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-w0-zwX">
-                                        <rect key="frame" x="180.5" y="35" width="53.5" height="20"/>
+                                        <rect key="frame" x="180.5" y="50" width="53.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -2517,11 +2507,11 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8YI-w0-zwX" secondAttribute="bottom" constant="20" id="7e6-NK-noQ"/>
                                     <constraint firstItem="hc9-Dz-96j" firstAttribute="leading" secondItem="hSq-Ld-m2e" secondAttribute="leading" constant="20" id="ApN-YO-MdT"/>
                                     <constraint firstAttribute="height" constant="90" id="GYt-GS-0Is"/>
                                     <constraint firstItem="hc9-Dz-96j" firstAttribute="centerY" secondItem="hSq-Ld-m2e" secondAttribute="centerY" id="QjE-j1-HO4"/>
                                     <constraint firstItem="8YI-w0-zwX" firstAttribute="centerX" secondItem="hSq-Ld-m2e" secondAttribute="centerX" id="SfI-gj-uSf"/>
-                                    <constraint firstItem="8YI-w0-zwX" firstAttribute="centerY" secondItem="hSq-Ld-m2e" secondAttribute="centerY" id="oCN-0H-1G1"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tfc-kL-hkF">
@@ -3154,12 +3144,12 @@
         <scene sceneID="CgJ-Mv-Odw">
             <objects>
                 <viewController storyboardIdentifier="ServiceViewController" id="d9M-wR-2Vd" customClass="ServiceViewController" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="U12-zd-9Lq">
+                    <view key="view" contentMode="scaleToFill" id="U12-zd-9Lq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-aM-PTE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="3"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-aM-PTE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Z2M-xl-nJP"/>
@@ -6106,6 +6096,9 @@
                                             <constraint firstAttribute="width" constant="30" id="Orm-Ik-Av3"/>
                                         </constraints>
                                         <state key="normal" image="down"/>
+                                        <connections>
+                                            <action selector="disssss:" destination="qMa-zs-02O" eventType="touchUpInside" id="07Y-32-9KL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>

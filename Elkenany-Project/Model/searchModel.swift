@@ -8,21 +8,21 @@
 import Foundation
 
 
-// MARK: - SearchModel
-struct SearchModel: Codable {
+
+// MARK: - LogoutModel
+struct SearchHome: Codable {
     var message, error: String?
-    var data: searchdataModell?
+    var data: DataClassSearch?
 }
 
 // MARK: - DataClass
-struct searchdataModell: Codable {
-    var result: [Resultssss]?
+struct DataClassSearch: Codable {
+    var result: [Resultt]?
 }
 
 // MARK: - Result
-struct Resultssss: Codable {
-    var id: Int?
-    var name: String?
-    var type: String?
+struct Resultt: Codable {
+    let id: Int?
+    let name, type: String?
 }
 

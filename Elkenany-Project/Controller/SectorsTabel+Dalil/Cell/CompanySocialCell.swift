@@ -10,10 +10,10 @@ import Foundation
 
 class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     //MARK:- Outlets
+    @IBOutlet weak var socialTV: UITableView!
     var com_id = 0
     var arr = ["33333" , "6666" , "66666"]
     var socialData:CompanyDetailsDataModel?
-    @IBOutlet weak var socialTV: UITableView!
     
     
     override func awakeFromNib() {
@@ -24,7 +24,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         socialTV.register(UINib(nibName: "socialCell", bundle: nil), forCellReuseIdentifier: "socialCell")
         socialTV.register(UINib(nibName: "TestAnyCell", bundle: nil), forCellReuseIdentifier: "TestAnyCell")
         //automatic height
-//        FatchDataContactsOfCompanies()
+        //        FatchDataContactsOfCompanies()
     }
     
     
@@ -67,19 +67,15 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func toMapView(_ sender: UIButton) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vcc = storyboard.instantiateViewController(identifier: "MapVC") as! MapVC
+        if let vcc = storyboard.instantiateViewController(identifier: "MapVC") as? MapVC {
         if let vc = self.next(ofType: UIViewController.self) {
             vcc.id_company = com_id
             vc.present(vcc, animated: true, completion: nil)
-            
         }
+    }
         
-        
-         
 
-        
     }
     
     
@@ -170,52 +166,81 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     
     
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         func callNumber(number: String ) {
-
-                guard let url = URL(string: "tel://\(number)") else {return}
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url)
-                } else {
-                    UIApplication.shared.openURL(url)
-                }
-            }
-        
-        
-        
-     
-        //        let url : NSURL?
-        
-        switch indexPath.section {
-        case 0:
-            print("heelo")
-            ///for mobile
-            callNumber(number: socialData?.data?.mobiles?[indexPath.row].mobile ?? "")
-        case 1:
             
-            if let url = URL(string: "\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
+            guard let url = URL(string: "tel://\(number)") else {return}
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        
+        
+        
+    switch indexPath.section {
+        case 0:
+            ///for mobile
+//            callNumber(number: socialData?.data?.mobiles?[indexPath.row].mobile ?? "")
+            print("heelo")
+
+        case 1:
+            ///fooooor maillll
+//            let email = "foo@bar.com"
+                if let url = URL(string: "mailto:\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
+                  if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                    
+                  } else {
+                    UIApplication.shared.openURL(url)
+                    
+                    
+                  }
+                }
+                
+           
+                print("soial")
+
+            
+            
+        case 2:
+            print("heelo")
+            
+//            for i in socialData?.data?.phones?[indexPath.row].phone ?? "" {
+//                print("fooooor \(i)")
+//
+////            }
+//
+//            if let ii = socialData?.data?.phones {
+//
+//            }
+            
+//            for row in indexPath.section {
+//                callNumber(number: socialData?.data?.phones?[indexPath.row].phone ?? "")
+//
+//            }
+//
+            
+            
+            
+            
+        case 3:
+            print("heelo")
+            callNumber(number: socialData?.data?.faxs?[indexPath.row].fax ?? "")
+            
+            
+        case 4:
+            if let url = URL(string: "\(socialData?.data?.social?[indexPath.row].socialLink ?? "")") {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.openURL(url)
                 } else {
                     print("Cannot open URL")
                 }
             }
-            print("soial")
-            
-            ///fooooor maillll
-
-            
-        case 2:
-            
-            print("heelo")
-            
-            
-        case 3:
-            print("heelo")
-            
-            
-        case 4:
-            print("soical ")
             
         default:
             print("heelo")
@@ -224,18 +249,14 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
     
-    
-    
-    
-    
 }
+
+
 
 extension UIResponder {
     func next<T:UIResponder>(ofType: T.Type) -> T? {
