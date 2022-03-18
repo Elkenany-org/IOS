@@ -42,7 +42,8 @@ struct Column: Codable {
 struct Member: Codable {
     var name: String?
     var memID: Int?
-    var kind, price, change, changetwo: String?
+    var kind, change, changetwo: String?
+    var  price: Int?
     var statistics: String?
     var newColumns: [String]?
     var type: Int?
@@ -50,7 +51,7 @@ struct Member: Codable {
     enum CodingKeys: String, CodingKey {
         case name
         case memID = "mem_id"
-        case kind, price, change, statistics
+        case kind, change, statistics
         case changetwo = "change_date"
         case newColumns = "new_columns"
         case type

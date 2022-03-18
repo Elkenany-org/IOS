@@ -10,38 +10,46 @@ import JGProgressHUD
 
 class BorsaDetails: UIViewController {
     
-    
-    var variaTest = ""
-    var fodderParam = ""
-    var borsaTit = ""
-    var loc_id = 0
-    var fodder_id = 0
-    var type = ""
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
     @IBOutlet weak var btnTitle: UIButton!
     @IBOutlet weak var btnLabel: UIButton!
-    //Proparites and Outlets
     @IBOutlet weak var LocalBorsaCV: UICollectionView!
+
+    var variaTest = ""
+    var fodderTypeParamter = ""
+    var fodder_id_Parameter = 0
+    var fodderTitle = ""
+    var localTitle = ""
+    var borsaTit = ""
+    var loc_id = 0
+    var type = ""
+    let date = Date()
+    let formatter = DateFormatter()
+    
+
+
+    
+ 
+    //Proparites and Outlets
     var localBorsaData:LocaBorsa?
     var arrone = ["الاسم" , "السعر" , "مقدار" , "نظام الشحن" ,"اتجاه السعر"]
     var arrTwo = ["الاسم" , "السعر" , "مقدار" ,"اتجاه السعر"]
 
-    @IBOutlet weak var view1: UIView!
-    @IBOutlet weak var view2: UIView!
-    
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
-        title = UserDefaults.standard.string(forKey: "BORSA_TITLE") ?? ""
+        title = ""
         print("vTest \(variaTest)")
-   
+       
+
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        FatchLocalBorsa()
         
-        
+//        FatchLocalBorsa()
     }
     
     
@@ -60,6 +68,7 @@ class BorsaDetails: UIViewController {
     
     //MARK:- present picker view for choose Date
     @IBAction func presentDate(_ sender: Any) {
+        
         let vc = (storyboard?.instantiateViewController(identifier: "BorsaDatePiker"))! as BorsaDatePiker
         
         vc.completionHandler = {backs in
@@ -111,6 +120,10 @@ class BorsaDetails: UIViewController {
     
     func FatchLocalBorsa(){
         //Handeling Loading view progress
+//        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let result = formatter.string(from: date)
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
@@ -121,9 +134,9 @@ class BorsaDetails: UIViewController {
             let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             let typeParameter = UserDefaults.standard.string(forKey: "she")
             let idParameter = UserDefaults.standard.string(forKey: "he")
-            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
 
-            let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(DateParameter ?? "")" ]
+            let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(result)" ]
             print("============== request \(param)")
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
@@ -136,16 +149,54 @@ class BorsaDetails: UIViewController {
                     self.localBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
-                   
-                            
-
                     }
-//                    UserDefaults.standard.removeObject(forKey: "she" )
-//                    UserDefaults.standard.removeObject(forKey: "he")
                 }
             }
         }
     }
+    
+    
+    func FatchLocalBorsaFodder(){
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+//            let typeParameter = UserDefaults.standard.string(forKey: "she")
+//            let idParameter = UserDefaults.standard.string(forKey: "he")
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "\(self.fodderTypeParamter)" , "id": "\(self.fodder_id_Parameter)", "date": "\(result)" ]
+            print("============== request \(param)")
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.localBorsaData = success
+                    DispatchQueue.main.async {
+                        self.LocalBorsaCV.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     func FatchLocalBorsaFromHomeSelection(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -219,13 +270,19 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
+//        if fodderTypeParamter ! {
+//
+//
+//        }
+        
+        
+        
+        
         
         if localBorsaData?.data?.members?[indexPath.item].newColumns?.count == nil && localBorsaData?.data?.members?.count != nil{
-
-            
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "StanderCell", for: indexPath) as! StanderCell
             cell1.proudectLabel.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
-            cell1.priceLabel.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
+            cell1.priceLabel.text = String(localBorsaData?.data?.members?[indexPath.item].price ?? 0) ?? ""
             cell1.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell1.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
             let statimage = localBorsaData?.data?.members?[indexPath.item].statistics ?? ""
@@ -238,7 +295,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
         } else if localBorsaData?.data?.members?[indexPath.item].newColumns?.count == 1  && localBorsaData?.data?.members?.count != nil{
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as! localBorsaCell
             cell2.proudectName.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
-            cell2.priceOfProudect.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
+            cell2.priceOfProudect.text = String(localBorsaData?.data?.members?[indexPath.item].price ?? 0)
             cell2.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell2.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
 //            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
@@ -252,6 +309,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
             view1.isHidden = false
             view2.isHidden = true
             return cell2
+            
         }else{
             ///missed
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath) as! testBorsaCell
@@ -259,6 +317,17 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
         }
 //        return UICollectionViewCell()
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     // cell height ----------------------

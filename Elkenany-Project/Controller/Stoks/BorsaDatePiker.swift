@@ -13,7 +13,7 @@ class BorsaDatePiker: UIViewController {
     var selectedDate:Date?
     var dateString:String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-M-d"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         let _dataStr = dateFormatter.string(from: DatePicker.date)
         return _dataStr
     }

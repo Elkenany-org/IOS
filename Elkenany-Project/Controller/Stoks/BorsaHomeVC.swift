@@ -17,7 +17,8 @@ protocol testProtocol {
 
 
 class BorsaHomeVC: UIViewController  {
-    //Outlets
+    
+    //MARK:- Outlets
     @IBOutlet weak var SelectedSector: UICollectionView!
     @IBOutlet weak var bannersCV: UICollectionView!
     @IBOutlet weak var pageControle: UIPageControl!
@@ -28,7 +29,7 @@ class BorsaHomeVC: UIViewController  {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var searchBarView: UISearchBar!
     
-    //prametars
+    //MARK:- prametars
     var timer:Timer?
     var currentIndex = 0
     var itemsArray = [  "zoz" , "zoz" , "zoz"]
@@ -41,12 +42,10 @@ class BorsaHomeVC: UIViewController  {
     private var  logosSubModel:[log] = []
     private var  bannersSubModel:[Banner] = []
     var startIndex: Int! = 1
-
     
     
     
-    
-    //view DidLoad
+    //MARK:- view DidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -77,24 +76,20 @@ class BorsaHomeVC: UIViewController  {
     }
     
     
-    //MARK:- Timer of slider and page controller
+    //MARK:- Timer of slider and page controller ?? 0 -1
     func setTimer(){
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(MoveToNextIndex), userInfo: nil, repeats: true)
     }
     
     @objc func MoveToNextIndex(){
-        if currentIndex < bannersSubModel.count ?? 0 - 1{
+        if currentIndex < bannersSubModel.count {
             currentIndex += 1
-            
         }else{
             currentIndex = 0
-            
         }
         bannersCV.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
         pageControle.currentPage = currentIndex
     }
-    
-    
     
     
     //MARK:- FeatchData for Borsa by saerching  [Sectors]
@@ -135,8 +130,8 @@ class BorsaHomeVC: UIViewController  {
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
-                }else {
                     
+                }else {
                     let successData = Borsasuccess?.data?.sectors?.reversed() ?? []
                     self.sectorSubModel.append(contentsOf: successData)
                     let successDataaa = Borsasuccess?.data?.subSections ?? []
@@ -148,7 +143,6 @@ class BorsaHomeVC: UIViewController  {
                     self.logosSubModel.append(contentsOf: successDataLogos)
                     let successDatafodder = Borsasuccess?.data?.fodSections ?? []
                     self.fodderSubModel.append(contentsOf: successDatafodder)
-                    
                     
                     DispatchQueue.main.async {
                         self.BorsaCV.reloadData()
@@ -256,14 +250,15 @@ class BorsaHomeVC: UIViewController  {
     }
     
     
+    //MARK:- statistics Inside Main
     @IBAction func mainStastices(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "statisticsInsideMain"))! as statisticsInsideMain
         vc.stoType = Sector
         navigationController?.pushViewController(vc, animated: true)
-        //        present(vc, animated: true, completion: nil)
     }
     
     
+    //MARK:- Filter Inside Main
     @IBAction func filterBorsaVC(_ sender: Any) {
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.RunFilterDeleget = self
@@ -272,60 +267,43 @@ class BorsaHomeVC: UIViewController  {
     
     
     
+    //search appearnce handling btn
     @IBAction func showSearchView(_ sender: Any) {
         searchView.isHidden = false
         view1.isHidden = true
-        //        featchBorsa()
-        
     }
-//    @IBAction func searchHide(_ sender: Any) {
-//        searchView.isHidden = true
-//        view1.isHidden = false
-//
-//    }
-//
-    
-    
-    
     
 }
+
+
 
 //MARK:- Configuer Collections
 extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == SelectedSector {
-            return sectorSubModel.count
-        }
-        else if collectionView == bannersCV {
-            return bannersSubModel.count
-            
-        }else if collectionView == logosCV{
-            
-            return logosSubModel.count
-            
-        }
-        
-        else if collectionView == BorsaCV{
-            switch section {
-            case 0:
-                return BorsaSubModel.count
-                
-            case 1:
-                return fodderSubModel.count
-            default:
-                return 20
-            }
-        }else{
-            return 100
-        }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if collectionView == SelectedSector { return 1 }
+        else if collectionView == bannersCV { return 1 }
+        else if collectionView == logosCV{ return 1 }
+        else if collectionView == BorsaCV{ return 2 }
+        else{ return 100}
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == SelectedSector { return sectorSubModel.count }
+        else if collectionView == bannersCV { return bannersSubModel.count}
+        else if collectionView == logosCV{ return logosSubModel.count }
+        else if collectionView == BorsaCV{
+            switch section {
+            case 0: return BorsaSubModel.count
+            case 1: return fodderSubModel.count
+            default: return 20 }}
+        else{ return 10 }
+    }
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         
         if collectionView == SelectedSector {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
@@ -335,12 +313,11 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if typeeee == Sector {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-
-            }else{
-                cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
-            }
+            }else{ cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1) }
             return cell
         }
+        
+    
         else if collectionView == bannersCV {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
             let imageSlider = bannersSubModel[indexPath.item].image ?? ""
@@ -377,36 +354,27 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
                 cell5.configureCell(image: imageBorsaFoder)
                 ss(ss: cell5)
                 return cell5
-                
             }
-        }else{
-            return UICollectionViewCell()
-            
-        }
+        }else{ return UICollectionViewCell()}
         return UICollectionViewCell()
         
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         //selected from sectore at header
         if collectionView == SelectedSector {
-            let typeOfSector = borsaData?.data?.sectors?[indexPath.item].type ?? "farm"
+            let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
             self.sectorTypeFromHeader = typeOfSector
-            
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
-            
             if(cell.isSelected == true)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-
-                
             }
-            
             FatchBorsaBySector()
-            
         }
         else if collectionView == bannersCV {
             
@@ -421,47 +389,50 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         
         //selected from cells
         else if collectionView == BorsaCV{
-          
-            
             if indexPath.section == 0{
-                
+
                 if let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails")) as? BorsaDetails{
-                let id = BorsaSubModel[indexPath.item].id ?? 0
-                let type1 = BorsaSubModel[indexPath.item].type ?? ""
-                let BorsaTitle = BorsaSubModel[indexPath.item].name ?? ""
-                vc.borsaTit = BorsaTitle
-                UserDefaults.standard.set(id, forKey: "he")
-                UserDefaults.standard.set(type1, forKey: "she")
-                vc.variaTest = type1
-                vc.loc_id = id
-                navigationController?.pushViewController(vc, animated: true)
+                    let id = BorsaSubModel[indexPath.item].id ?? 0
+                    let type1 = BorsaSubModel[indexPath.item].type ?? ""
+                    let BorsaTitle = BorsaSubModel[indexPath.item].name ?? ""
+                    vc.localTitle = BorsaTitle
+                    UserDefaults.standard.set(id, forKey: "he")
+                    UserDefaults.standard.set(type1, forKey: "she")
+                    vc.variaTest = type1
+                    vc.title = BorsaTitle
+                    vc.loc_id = id
+                    vc.FatchLocalBorsa()
+                    navigationController?.pushViewController(vc, animated: true)
                 }
             }
             
             else if indexPath.section == 1{
-                
-                
                 let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
-                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
-                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
+//                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
+//                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
+                let FodderType = fodderSubModel[indexPath.item].type ?? ""
+                let FodderID = fodderSubModel[indexPath.item].id ?? 0
+                let fooderTit = fodderSubModel[indexPath.item].name ?? ""
+                vc.fodderTypeParamter = FodderType
+                vc.title = fooderTit
+                vc.fodder_id_Parameter = FodderID
+//                vc.fodderTitle = fooderTit
+                vc.FatchLocalBorsaFodder()
                 navigationController?.pushViewController(vc, animated: true)
-                
             }
-            
         }
-        
     }
     
     
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == SelectedSector {
-            return CGSize(width: 100, height: 60)
-            
-        } else if collectionView == bannersCV {
+        if collectionView == SelectedSector { return CGSize(width: 100, height: 60) }
+        
+        else if collectionView == bannersCV {
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-        }else if collectionView == logosCV{
+        }
+        else if collectionView == logosCV{
             return CGSize(width: 80, height: 70)
             
         }else if collectionView == BorsaCV{
@@ -472,18 +443,13 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             }else if indexPath.section == 1{
                 let size = (collectionView.frame.size.width - 30) / 2
                 return CGSize(width: size, height: 240)
-                
             }
         }else{
-            
             return CGSize(width: 200, height: 200)
-            
         }
-        
-        
         return CGSize(width: 200, height: 200)
-        
     }
+    
     
     
     
@@ -497,11 +463,12 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             }
         }
     }
-    
-    
 }
 
 
+
+
+//MARK:- Handling UISearch bar inside the main Borsa
 extension BorsaHomeVC : UISearchBarDelegate {
     
     func setupSearchBar() {
@@ -526,6 +493,10 @@ extension BorsaHomeVC : UISearchBarDelegate {
         BorsaCV.reloadData()
         
     }
+    
+    
+    
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
             cBtn.setTitle("الغاء", for: .normal)
@@ -553,6 +524,8 @@ extension BorsaHomeVC : UISearchBarDelegate {
 }
 
 
+
+//MARK:- filter service
 extension BorsaHomeVC : FilterDone {
     func RunFilter(filter: ()) {
         let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
@@ -567,8 +540,11 @@ extension BorsaHomeVC : FilterDone {
                     print("============ error \(error)")
                 }else {
                     self.BorsaSubModel.removeAll()
+                    self.fodderSubModel.removeAll()
                     let successData = Borsasuccess?.data?.subSections ?? []
                     self.BorsaSubModel.append(contentsOf: successData)
+                    let successDatafodder = Borsasuccess?.data?.fodSections ?? []
+                    self.fodderSubModel.append(contentsOf: successDatafodder)
                     
                     DispatchQueue.main.async {
                         self.BorsaCV.reloadData()
