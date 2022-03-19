@@ -33,6 +33,7 @@ class BorsaDetails: UIViewController {
  
     //Proparites and Outlets
     var localBorsaData:LocaBorsa?
+    var fodderBorsaData:FodderBorsaModel?
     var arrone = ["الاسم" , "السعر" , "مقدار" , "نظام الشحن" ,"اتجاه السعر"]
     var arrTwo = ["الاسم" , "السعر" , "مقدار" ,"اتجاه السعر"]
 
@@ -131,7 +132,8 @@ class BorsaDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             let typeParameter = UserDefaults.standard.string(forKey: "she")
             let idParameter = UserDefaults.standard.string(forKey: "he")
 //            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
@@ -149,6 +151,7 @@ class BorsaDetails: UIViewController {
                     self.localBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
+                        print(success)
                     }
                 }
             }
@@ -167,7 +170,9 @@ class BorsaDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+
 //            let typeParameter = UserDefaults.standard.string(forKey: "she")
 //            let idParameter = UserDefaults.standard.string(forKey: "he")
 //            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
@@ -175,16 +180,17 @@ class BorsaDetails: UIViewController {
             let param = ["type": "\(self.fodderTypeParamter)" , "id": "\(self.fodder_id_Parameter)", "date": "\(result)" ]
             print("============== request \(param)")
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
                     guard let success = success else {return}
-                    self.localBorsaData = success
+                    self.fodderBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
+                        print(success.data ?? "")
                     }
                 }
             }
@@ -206,7 +212,7 @@ class BorsaDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id="
+            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             let typeParameter = UserDefaults.standard.string(forKey: "REC_type_Stoke")
             let idParameter = UserDefaults.standard.string(forKey: "REC_Id_Stoke")
 
@@ -236,11 +242,9 @@ class BorsaDetails: UIViewController {
     
     
     @IBAction func toStatisticesMainVC(_ sender: Any) {
-        
         let vc = storyboard?.instantiateViewController(withIdentifier: "StatisticesMembers") as? StatisticesMembers
         vc?.typeFromBorsa = variaTest
         navigationController?.pushViewController(vc!, animated: true)
-           
     }
     
     
@@ -270,19 +274,11 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
-//        if fodderTypeParamter ! {
-//
-//
-//        }
-        
-        
-        
-        
-        
+
         if localBorsaData?.data?.members?[indexPath.item].newColumns?.count == nil && localBorsaData?.data?.members?.count != nil{
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "StanderCell", for: indexPath) as! StanderCell
             cell1.proudectLabel.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
-            cell1.priceLabel.text = String(localBorsaData?.data?.members?[indexPath.item].price ?? 0) ?? ""
+            cell1.priceLabel.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
             cell1.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell1.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
             let statimage = localBorsaData?.data?.members?[indexPath.item].statistics ?? ""
@@ -295,10 +291,10 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
         } else if localBorsaData?.data?.members?[indexPath.item].newColumns?.count == 1  && localBorsaData?.data?.members?.count != nil{
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as! localBorsaCell
             cell2.proudectName.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
-            cell2.priceOfProudect.text = String(localBorsaData?.data?.members?[indexPath.item].price ?? 0)
+            cell2.priceOfProudect.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
             cell2.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell2.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
-//            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
+            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
 //            for itemss in localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? ""{
 //                cell2.changeLabel.text = itemss[indexPath.item]
 //            }

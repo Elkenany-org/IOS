@@ -133,6 +133,7 @@
 		3276D2E5275CDDDF00D95236 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276D2E4275CDDDF00D95236 /* LoginModel.swift */; };
 		3278B8462796D8DC00B5CA6F /* FirstFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278B8452796D8DC00B5CA6F /* FirstFilterModel.swift */; };
 		3278B8612796EC3A00B5CA6F /* SortByVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3278B8602796EC3A00B5CA6F /* SortByVC.swift */; };
+		3279FD9D27E5477A0078FF97 /* fodderBorsaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3279FD9C27E5477A0078FF97 /* fodderBorsaModel.swift */; };
 		327D90C9278B549D0037F1B7 /* standerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D90C7278B549C0037F1B7 /* standerHeader.swift */; };
 		327D90CA278B549D0037F1B7 /* standerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D90C8278B549C0037F1B7 /* standerHeader.xib */; };
 		328066BB277A172D004555E9 /* abouUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328066BA277A172D004555E9 /* abouUsVC.swift */; };
@@ -359,6 +360,7 @@
 		3276D2E4275CDDDF00D95236 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		3278B8452796D8DC00B5CA6F /* FirstFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterModel.swift; sourceTree = "<group>"; };
 		3278B8602796EC3A00B5CA6F /* SortByVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortByVC.swift; sourceTree = "<group>"; };
+		3279FD9C27E5477A0078FF97 /* fodderBorsaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fodderBorsaModel.swift; sourceTree = "<group>"; };
 		327D90C7278B549C0037F1B7 /* standerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = standerHeader.swift; sourceTree = "<group>"; };
 		327D90C8278B549C0037F1B7 /* standerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = standerHeader.xib; sourceTree = "<group>"; };
 		328066BA277A172D004555E9 /* abouUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = abouUsVC.swift; sourceTree = "<group>"; };
@@ -962,6 +964,7 @@
 			children = (
 				32B97D5E276F5ABB0069598D /* BorsaHomeDataModel.swift */,
 				326B75852774C57600007F55 /* locaBorsa.swift */,
+				3279FD9C27E5477A0078FF97 /* fodderBorsaModel.swift */,
 				32C4EFC82786FFF30034BD9F /* statisticsStockSectionsModel.swift */,
 				32CEF476278D76C400527F2A /* DetailsDetailsMainModel.swift */,
 				32CEF47B278DA37900527F2A /* statisticesInsideModel.swift */,
@@ -1375,6 +1378,7 @@
 				32C4EFD827871B6C0034BD9F /* filterHeader.swift in Sources */,
 				32343F2D274B89BD00921D99 /* UICollectionView+Extensions.swift in Sources */,
 				3272F45A276E6FC300973031 /* MainStoreVC.swift in Sources */,
+				3279FD9D27E5477A0078FF97 /* fodderBorsaModel.swift in Sources */,
 				326B7593277695E300007F55 /* BorsaDatePiker.swift in Sources */,
 				3237DDDA27B00E44001D9024 /* NotificationDetails.swift in Sources */,
 				32A4F094275FB2D4005B433B /* GuideCompaniesDataModel.swift in Sources */,

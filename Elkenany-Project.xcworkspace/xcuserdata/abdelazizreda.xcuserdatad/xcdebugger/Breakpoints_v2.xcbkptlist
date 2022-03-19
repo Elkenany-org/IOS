@@ -20,5 +20,53 @@
             landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CB9E2BB-CD49-455E-9647-D8B8F6082225"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Elkenany-Project/Model/Borsa/locaBorsa.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "Bannerr"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "2CB9E2BB-CD49-455E-9647-D8B8F6082225 - de04f8ee25fbf41d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Elkenany_Project.Bannerr.init() -&gt; Elkenany_Project.Bannerr"
+                  moduleName = "Elkenany-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abdelazizreda/Documents/Elkenany-Project-Main-main/Elkenany-Project/Model/Borsa/locaBorsa.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "2CB9E2BB-CD49-455E-9647-D8B8F6082225 - 95691d0f0bb3a77d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Elkenany_Project.Bannerr.init(from: Swift.Decoder) throws -&gt; Elkenany_Project.Bannerr"
+                  moduleName = "Elkenany-Project"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abdelazizreda/Documents/Elkenany-Project-Main-main/Elkenany-Project/Model/Borsa/locaBorsa.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "111">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
