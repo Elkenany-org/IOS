@@ -159,46 +159,7 @@ class BorsaDetails: UIViewController {
     }
     
     
-    func FatchLocalBorsaFodder(){
-        formatter.dateFormat = "yyyy-MM-dd"
-        let result = formatter.string(from: date)
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
 
-//            let typeParameter = UserDefaults.standard.string(forKey: "she")
-//            let idParameter = UserDefaults.standard.string(forKey: "he")
-//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
-
-            let param = ["type": "\(self.fodderTypeParamter)" , "id": "\(self.fodder_id_Parameter)", "date": "\(result)" ]
-            print("============== request \(param)")
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    guard let success = success else {return}
-                    self.fodderBorsaData = success
-                    DispatchQueue.main.async {
-                        self.LocalBorsaCV.reloadData()
-                        print(success.data ?? "")
-                    }
-                }
-            }
-        }
-    }
-    
-    
-    
     
     
     
@@ -294,7 +255,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
             cell2.priceOfProudect.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
             cell2.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell2.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
-            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
+//            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
 //            for itemss in localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? ""{
 //                cell2.changeLabel.text = itemss[indexPath.item]
 //            }

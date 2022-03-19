@@ -407,17 +407,18 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             }
             
             else if indexPath.section == 1{
-                let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
+                let vc = (storyboard?.instantiateViewController(identifier: "FodderBorsa"))! as FodderBorsa
 //                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
 //                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
-                let FodderType = fodderSubModel[indexPath.item].type ?? ""
+//                let FodderType = fodderSubModel[indexPath.item].type ?? ""
                 let FodderID = fodderSubModel[indexPath.item].id ?? 0
                 let fooderTit = fodderSubModel[indexPath.item].name ?? ""
-                vc.fodderTypeParamter = FodderType
+//                vc.fodderTypeParamter = FodderType
+                vc.fodderID = FodderID
                 vc.title = fooderTit
-                vc.fodder_id_Parameter = FodderID
+//                vc.fodder_id_Parameter = FodderID
 //                vc.fodderTitle = fooderTit
-                vc.FatchLocalBorsaFodder()
+//                vc.FatchLocalBorsaFodder()
                 navigationController?.pushViewController(vc, animated: true)
             }
         }

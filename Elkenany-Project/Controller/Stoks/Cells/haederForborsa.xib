@@ -180,6 +180,13 @@
                 <constraint firstItem="Qgb-aW-AIM" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="5" id="lSB-IV-RAD"/>
                 <constraint firstItem="Qgb-aW-AIM" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="5" id="vs8-b3-iGR"/>
             </constraints>
+            <connections>
+                <outlet property="fooour" destination="6uH-9F-wzK" id="KXq-Sa-o9R"/>
+                <outlet property="oon" destination="Am4-c0-3FQ" id="Lu5-dm-PWE"/>
+                <outlet property="sixxx" destination="1UA-Hh-bWV" id="DMV-sk-cJP"/>
+                <outlet property="threee" destination="FM3-NO-mDF" id="Fkf-ll-6EO"/>
+                <outlet property="ttw" destination="D20-HD-WxV" id="wvk-1z-nXG"/>
+            </connections>
             <point key="canvasLocation" x="197.10144927536234" y="69.308035714285708"/>
         </collectionReusableView>
     </objects>

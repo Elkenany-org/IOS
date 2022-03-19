@@ -125,16 +125,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkG-0Z-8wh">
                                         <rect key="frame" x="351" y="0.0" width="114" height="95"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-Kn-OVb">
-                                                <rect key="frame" x="45.5" y="41" width="23.5" height="13"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-Kn-OVb">
+                                                <rect key="frame" x="5" y="41.5" width="104" height="12"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="OtA-Kn-OVb" firstAttribute="leading" secondItem="ZkG-0Z-8wh" secondAttribute="leading" constant="5" id="DNS-cQ-AXW"/>
                                             <constraint firstItem="OtA-Kn-OVb" firstAttribute="centerX" secondItem="ZkG-0Z-8wh" secondAttribute="centerX" id="hfw-Ef-pHf"/>
+                                            <constraint firstAttribute="trailing" secondItem="OtA-Kn-OVb" secondAttribute="trailing" constant="5" id="txI-dU-uWL"/>
                                             <constraint firstItem="OtA-Kn-OVb" firstAttribute="centerY" secondItem="ZkG-0Z-8wh" secondAttribute="centerY" id="vjQ-gC-KKL"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
