@@ -12,12 +12,13 @@ class subFilterSectore: UIViewController {
     
     @IBOutlet weak var sectoreTV: UITableView!
     var sectoreModel:SubGuideFilter?
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        GetFilterDataForSectore()
+//        GetFilterDataForSectore()
     }
     
     fileprivate func setupUI() {
@@ -75,6 +76,8 @@ class subFilterSectore: UIViewController {
     }
     
     
+ 
+    
     
     
 }
@@ -105,7 +108,6 @@ extension subFilterSectore:UITableViewDelegate , UITableViewDataSource {
             /// save idddddddddd
             UserDefaults.standard.set(sec_id, forKey: "FILTER_SEC_ID")
             FilterAnimation.shared.filteranmation(vieww: view)
-
             self.present(SectionVC, animated: true, completion: nil)
         
         }

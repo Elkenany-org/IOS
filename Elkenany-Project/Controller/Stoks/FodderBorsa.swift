@@ -8,7 +8,15 @@
 import UIKit
 import JGProgressHUD
 
-class FodderBorsa: UIViewController {
+class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone {
+    func RunFilterr(filter: ()) {
+        FatchLocalBorsaFodderFromFeeds()
+    }
+    
+    func RunFilter(filter: ()) {
+        FatchLocalBorsaFodderFromComapnies()
+    }
+    
 
     @IBOutlet weak var fodderDetailsCV: UICollectionView!
     var fodderBorsaData:FodderBorsaModel?
@@ -79,9 +87,85 @@ class FodderBorsa: UIViewController {
         }
     }
     
+    //MARK:- featch Fodder Borsa from comanies filter
+    func FatchLocalBorsaFodderFromComapnies(){
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&comp_id="
+
+            let COMP_ID_Parameter = UserDefaults.standard.string(forKey: "FILTER_COMP_ID") ?? ""
+//            let idParameter = UserDefaults.standard.string(forKey: "he")
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(result)", "comp_id" : "\(COMP_ID_Parameter)" ]
+            print("============== request \(param)")
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.fodderBorsaData = success
+                    DispatchQueue.main.async {
+                        self.fodderDetailsCV.reloadData()
+                        print(success.data ?? "")
+                    }
+                }
+            }
+        }
+    }
     
     
     
+    //MARK:- featch Fodder Borsa from feeds filter
+    func FatchLocalBorsaFodderFromFeeds(){
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
+
+            let Feed_ID_Parameter = UserDefaults.standard.string(forKey: "FILTER_Feed_ID") ?? ""
+//            let idParameter = UserDefaults.standard.string(forKey: "he")
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(result)", "food_id" : "\(Feed_ID_Parameter)" ]
+            print("============== request \(param)")
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.fodderBorsaData = success
+                    DispatchQueue.main.async {
+                        self.fodderDetailsCV.reloadData()
+                        print(success.data ?? "")
+                    }
+                }
+            }
+        }
+    }
     
 
 
@@ -94,14 +178,26 @@ class FodderBorsa: UIViewController {
     
     
     @IBAction func statistices(_ sender: Any) {
+        if let statisticesVC = storyboard?.instantiateViewController(identifier: "StatisticesMembers") as? StatisticesMembers{
+            self.navigationController?.pushViewController(statisticesVC, animated: true)
+        }
     }
     
     
     
     @IBAction func companySelecte(_ sender: Any) {
+        
+        if let ComapnyVC = storyboard?.instantiateViewController(identifier: "CompaniesFodderFilter") as? CompaniesFodderFilter {
+            ComapnyVC.RunFilterDelegett = self
+            self.present(ComapnyVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func itemSelecte(_ sender: Any) {
+        if let feedVCc = storyboard?.instantiateViewController(identifier: "feedFodderFilter") as? feedFodderFilter {
+            feedVCc.RunFilterDelegettt = self
+            self.present(feedVCc, animated: true, completion: nil)
+        }
     }
     
     

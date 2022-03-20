@@ -160,6 +160,10 @@
 		32A4F094275FB2D4005B433B /* GuideCompaniesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A4F093275FB2D4005B433B /* GuideCompaniesDataModel.swift */; };
 		32A5FE3127C78193009A4F17 /* searchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5FE3027C78193009A4F17 /* searchModel.swift */; };
 		32ADC79F277C9B3F006C4140 /* customerserviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ADC79E277C9B3F006C4140 /* customerserviceVC.swift */; };
+		32B466F627E61172002C32A5 /* FeedModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466F527E61172002C32A5 /* FeedModelData.swift */; };
+		32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FA27E61443002C32A5 /* companiesModel.swift */; };
+		32B4670027E74A42002C32A5 /* CompaniesFodderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */; };
+		32B4670527E74A5C002C32A5 /* feedFodderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4670427E74A5C002C32A5 /* feedFodderFilter.swift */; };
 		32B97D4A276F38380069598D /* AdsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D49276F38380069598D /* AdsDetails.swift */; };
 		32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D4E276F3AB30069598D /* AdsStoreDetailsDataModel.swift */; };
 		32B97D58276F57EC0069598D /* BorsaHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D57276F57EC0069598D /* BorsaHomeVC.swift */; };
@@ -384,6 +388,10 @@
 		32A4F093275FB2D4005B433B /* GuideCompaniesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCompaniesDataModel.swift; sourceTree = "<group>"; };
 		32A5FE3027C78193009A4F17 /* searchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchModel.swift; sourceTree = "<group>"; };
 		32ADC79E277C9B3F006C4140 /* customerserviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customerserviceVC.swift; sourceTree = "<group>"; };
+		32B466F527E61172002C32A5 /* FeedModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelData.swift; sourceTree = "<group>"; };
+		32B466FA27E61443002C32A5 /* companiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companiesModel.swift; sourceTree = "<group>"; };
+		32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesFodderFilter.swift; sourceTree = "<group>"; };
+		32B4670427E74A5C002C32A5 /* feedFodderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedFodderFilter.swift; sourceTree = "<group>"; };
 		32B97D49276F38380069598D /* AdsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsDetails.swift; sourceTree = "<group>"; };
 		32B97D4E276F3AB30069598D /* AdsStoreDetailsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsStoreDetailsDataModel.swift; sourceTree = "<group>"; };
 		32B97D57276F57EC0069598D /* BorsaHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorsaHomeVC.swift; sourceTree = "<group>"; };
@@ -958,6 +966,8 @@
 				3279FDA427E559DC0078FF97 /* FodderBorsa.swift */,
 				326B758A277695B900007F55 /* BorsaDetails.swift */,
 				326B7592277695E300007F55 /* BorsaDatePiker.swift */,
+				32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */,
+				32B4670427E74A5C002C32A5 /* feedFodderFilter.swift */,
 			);
 			path = Stoks;
 			sourceTree = "<group>";
@@ -971,6 +981,8 @@
 				32C4EFC82786FFF30034BD9F /* statisticsStockSectionsModel.swift */,
 				32CEF476278D76C400527F2A /* DetailsDetailsMainModel.swift */,
 				32CEF47B278DA37900527F2A /* statisticesInsideModel.swift */,
+				32B466F527E61172002C32A5 /* FeedModelData.swift */,
+				32B466FA27E61443002C32A5 /* companiesModel.swift */,
 			);
 			path = Borsa;
 			sourceTree = "<group>";
@@ -1359,14 +1371,17 @@
 				326AAC12278C841E002EF222 /* staticticesDetails.swift in Sources */,
 				325527FC2779B80C00BAAE65 /* notificationVC.swift in Sources */,
 				326AAC18278C844A002EF222 /* DetailsCell.swift in Sources */,
+				32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */,
 				32B97D58276F57EC0069598D /* BorsaHomeVC.swift in Sources */,
 				327281AF27A6814400C7B5E3 /* TestAnyCell.swift in Sources */,
 				32F5FD1127689D1500E4DFE1 /* NewsDetailsVC.swift in Sources */,
 				3296E4932764A92B00024421 /* ApiServiceForQueryParamater.swift in Sources */,
 				32FAB7BE27789A5C002400A2 /* PrivicyProfile.swift in Sources */,
 				323B223A274A4764002CEB89 /* onBoardingData.swift in Sources */,
+				32B466F627E61172002C32A5 /* FeedModelData.swift in Sources */,
 				326B758B277695BA00007F55 /* BorsaDetails.swift in Sources */,
 				3298AB7527A0133000249D4E /* subFilterOrganize.swift in Sources */,
+				32B4670027E74A42002C32A5 /* CompaniesFodderFilter.swift in Sources */,
 				32343F2C274B89BD00921D99 /* UIView+Extensions.swift in Sources */,
 				3208B8612785BD55000E6C84 /* ChooseStokeVC.swift in Sources */,
 				323B225C274A5D38002CEB89 /* LoginVC.swift in Sources */,
@@ -1456,6 +1471,7 @@
 				326AAC1F278C8479002EF222 /* DetailsHeader.swift in Sources */,
 				32034F51276612C200D6F863 /* NewsDetialsDataModel.swift in Sources */,
 				3208B8572785BCEE000E6C84 /* FromPicker.swift in Sources */,
+				32B4670527E74A5C002C32A5 /* feedFodderFilter.swift in Sources */,
 				32A4F08B275FAEBE005B433B /* GuideCompanyCell.swift in Sources */,
 				32E9CA6027813E8B00257BC1 /* socialCell.swift in Sources */,
 				32365ED72762F3D400273DB9 /* companiesCell.swift in Sources */,
