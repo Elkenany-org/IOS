@@ -93,6 +93,9 @@ extension SelectionPopuVC:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
         let typeeee = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        let ID_FOR_SEC = homeDataFilter?.data?.sectors?[indexPath.row].id ?? 0
+        UserDefaults.standard.set(ID_FOR_SEC, forKey: "ID_FILTER")
+
         UserDefaults.standard.set(typeeee, forKey: "TYPE_FOR_FILTER")
         print("foooooooooor", UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? "")
         //        TypeDeleget?.sectorBack(typeBack: typee)

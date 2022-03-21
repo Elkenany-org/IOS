@@ -8,7 +8,11 @@
 import UIKit
 import JGProgressHUD
 
-class BorsaDetails: UIViewController {
+class BorsaDetails: UIViewController, BorsaFilterss {
+
+    func RunFilterDone(filter: ()) {
+        FatchLocalBorsaFromFilter()
+    }
     
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
@@ -24,6 +28,7 @@ class BorsaDetails: UIViewController {
     var borsaTit = ""
     var loc_id = 0
     var type = ""
+    var sto_type = "local"
     let date = Date()
     let formatter = DateFormatter()
     
@@ -160,6 +165,47 @@ class BorsaDetails: UIViewController {
     
     
 
+    func FatchLocalBorsaFromFilter(){
+        //Handeling Loading view progress
+//        formatter.dateFormat = "dd.MM.yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let result = formatter.string(from: date)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let paramaaa = UserDefaults.standard.string(forKey: "ID_FILTER") ?? ""
+//              let paramaaaType = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER") ?? ""
+
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "local" , "id": "\(paramaaa )", "date": "\(result)" ]
+            print("============== request \(param)")
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.localBorsaData = success
+                    DispatchQueue.main.async {
+                        self.LocalBorsaCV.reloadData()
+                        print(success)
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
     
     
@@ -209,6 +255,13 @@ class BorsaDetails: UIViewController {
     }
     
     
+    @IBAction func toFilter(_ sender: Any) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "FilterHome") as? FilterHome
+        vc?.stokeTYPE = sto_type
+        vc?.RunFilterDelegetsInStoke = self
+        self.present(vc!, animated: true, completion: nil)
+    }
     
 }
 

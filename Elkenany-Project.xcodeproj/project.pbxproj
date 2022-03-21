@@ -164,6 +164,10 @@
 		32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FA27E61443002C32A5 /* companiesModel.swift */; };
 		32B4670027E74A42002C32A5 /* CompaniesFodderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */; };
 		32B4670527E74A5C002C32A5 /* feedFodderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4670427E74A5C002C32A5 /* feedFodderFilter.swift */; };
+		32B4671127E86A64002C32A5 /* FilterHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4671027E86A64002C32A5 /* FilterHome.swift */; };
+		32B4671E27E86AA1002C32A5 /* SectionsFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4671D27E86AA1002C32A5 /* SectionsFilterVC.swift */; };
+		32B4672327E86AFD002C32A5 /* SectorFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4672227E86AFD002C32A5 /* SectorFilterVC.swift */; };
+		32B4672827E87A10002C32A5 /* StokeFilterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B4672727E87A10002C32A5 /* StokeFilterDataModel.swift */; };
 		32B97D4A276F38380069598D /* AdsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D49276F38380069598D /* AdsDetails.swift */; };
 		32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D4E276F3AB30069598D /* AdsStoreDetailsDataModel.swift */; };
 		32B97D58276F57EC0069598D /* BorsaHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B97D57276F57EC0069598D /* BorsaHomeVC.swift */; };
@@ -392,6 +396,10 @@
 		32B466FA27E61443002C32A5 /* companiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companiesModel.swift; sourceTree = "<group>"; };
 		32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesFodderFilter.swift; sourceTree = "<group>"; };
 		32B4670427E74A5C002C32A5 /* feedFodderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedFodderFilter.swift; sourceTree = "<group>"; };
+		32B4671027E86A64002C32A5 /* FilterHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHome.swift; sourceTree = "<group>"; };
+		32B4671D27E86AA1002C32A5 /* SectionsFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsFilterVC.swift; sourceTree = "<group>"; };
+		32B4672227E86AFD002C32A5 /* SectorFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorFilterVC.swift; sourceTree = "<group>"; };
+		32B4672727E87A10002C32A5 /* StokeFilterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StokeFilterDataModel.swift; sourceTree = "<group>"; };
 		32B97D49276F38380069598D /* AdsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsDetails.swift; sourceTree = "<group>"; };
 		32B97D4E276F3AB30069598D /* AdsStoreDetailsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsStoreDetailsDataModel.swift; sourceTree = "<group>"; };
 		32B97D57276F57EC0069598D /* BorsaHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorsaHomeVC.swift; sourceTree = "<group>"; };
@@ -957,9 +965,20 @@
 			path = subFilter;
 			sourceTree = "<group>";
 		};
+		32B4670F27E86A35002C32A5 /* BorsaFilter */ = {
+			isa = PBXGroup;
+			children = (
+				32B4671027E86A64002C32A5 /* FilterHome.swift */,
+				32B4671D27E86AA1002C32A5 /* SectionsFilterVC.swift */,
+				32B4672227E86AFD002C32A5 /* SectorFilterVC.swift */,
+			);
+			path = BorsaFilter;
+			sourceTree = "<group>";
+		};
 		32B97D53276F57AF0069598D /* Stoks */ = {
 			isa = PBXGroup;
 			children = (
+				32B4670F27E86A35002C32A5 /* BorsaFilter */,
 				3208B84D2785BC15000E6C84 /* Statistices */,
 				322519B2276F7810001096DD /* Cells */,
 				32B97D57276F57EC0069598D /* BorsaHomeVC.swift */,
@@ -983,6 +1002,7 @@
 				32CEF47B278DA37900527F2A /* statisticesInsideModel.swift */,
 				32B466F527E61172002C32A5 /* FeedModelData.swift */,
 				32B466FA27E61443002C32A5 /* companiesModel.swift */,
+				32B4672727E87A10002C32A5 /* StokeFilterDataModel.swift */,
 			);
 			path = Borsa;
 			sourceTree = "<group>";
@@ -1410,6 +1430,8 @@
 				3208B8682785C5BE000E6C84 /* StatisticesCell.swift in Sources */,
 				327D90C9278B549D0037F1B7 /* standerHeader.swift in Sources */,
 				3255280D2779C47500BAAE65 /* notificationModel.swift in Sources */,
+				32B4672327E86AFD002C32A5 /* SectorFilterVC.swift in Sources */,
+				32B4671E27E86AA1002C32A5 /* SectionsFilterVC.swift in Sources */,
 				326B75A02776B6A900007F55 /* haederForborsa.swift in Sources */,
 				323B2243274A47E0002CEB89 /* onBoardingCell.swift in Sources */,
 				3260957E275F55270056A002 /* SectorDetailsTable.swift in Sources */,
@@ -1469,6 +1491,7 @@
 				3208B85C2785BD02000E6C84 /* ToPicker.swift in Sources */,
 				32366C0A275BEE0100DC2F98 /* ServiceViewController.swift in Sources */,
 				326AAC1F278C8479002EF222 /* DetailsHeader.swift in Sources */,
+				32B4672827E87A10002C32A5 /* StokeFilterDataModel.swift in Sources */,
 				32034F51276612C200D6F863 /* NewsDetialsDataModel.swift in Sources */,
 				3208B8572785BCEE000E6C84 /* FromPicker.swift in Sources */,
 				32B4670527E74A5C002C32A5 /* feedFodderFilter.swift in Sources */,
@@ -1498,6 +1521,7 @@
 				3279FDA527E559DC0078FF97 /* FodderBorsa.swift in Sources */,
 				3298AB6627A0114700249D4E /* subFilterSectore.swift in Sources */,
 				32034F5F27661E1800D6F863 /* companyInfoCell.swift in Sources */,
+				32B4671127E86A64002C32A5 /* FilterHome.swift in Sources */,
 				3298AB7027A0130D00249D4E /* subFilterCity.swift in Sources */,
 				32CEEE23275ADB77007E6FC6 /* TabBarVC.swift in Sources */,
 				32F5FD0827688A2300E4DFE1 /* NewsCell.swift in Sources */,
