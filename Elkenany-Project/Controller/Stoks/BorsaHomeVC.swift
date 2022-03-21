@@ -412,6 +412,8 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
 //                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
 //                let FodderType = fodderSubModel[indexPath.item].type ?? ""
                 let FodderID = fodderSubModel[indexPath.item].id ?? 0
+                UserDefaults.standard.set(FodderID, forKey: "he")
+
                 let fooderTit = fodderSubModel[indexPath.item].name ?? ""
 //                vc.fodderTypeParamter = FodderType
                 vc.fodderID = FodderID

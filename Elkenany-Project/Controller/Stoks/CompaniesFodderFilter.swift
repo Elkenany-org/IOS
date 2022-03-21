@@ -46,7 +46,9 @@ class CompaniesFodderFilter: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
                   ///data not real
-            let param = ["stock_id": "13" , "company_id" : "308"]
+            let stoID = UserDefaults.standard.string(forKey: "he") ?? ""
+
+            let param = ["stock_id": "\(stoID)" , "company_id" : "308"]
             let subGuideFilterURL = "https://elkenany.com/api/localstock/companies-items?stock_id=&company_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:CompaniesModelData?, filier:CompaniesModelData?, error) in
                 if let error = error{
