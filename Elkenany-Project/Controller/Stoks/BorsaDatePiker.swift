@@ -7,6 +7,11 @@
 
 import UIKit
 
+
+protocol BackDate {
+    func backDateToMain(date:String)
+}
+
 class BorsaDatePiker: UIViewController {
     @IBOutlet weak var DatePicker: UIDatePicker!
     
@@ -42,7 +47,7 @@ class BorsaDatePiker: UIViewController {
     
     
     var completionHandler: ((String) -> String)?
-
+    var dateDelgete:BackDate?
     
     
     
@@ -59,9 +64,10 @@ class BorsaDatePiker: UIViewController {
     @IBAction func saveDate(_ sender: Any) {
         let dateForApi = dateString
 //        print("==================== dateForApi \(dateForApi) ")
-        let datee = completionHandler?(dateForApi)
-        print( "complation =============================== \(datee ?? "")")
+//        let datee = completionHandler?(dateForApi)
+//        print( "complation =============================== \(datee ?? "")")
 //        UserDefaults.standard.set(dateForApi, forKey: "Date_From_Picker")
+        dateDelgete?.backDateToMain(date: dateForApi )
         dismiss(animated: true, completion: nil)
         
         

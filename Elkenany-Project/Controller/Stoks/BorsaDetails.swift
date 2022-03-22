@@ -76,47 +76,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     @IBAction func presentDate(_ sender: Any) {
         
         let vc = (storyboard?.instantiateViewController(identifier: "BorsaDatePiker"))! as BorsaDatePiker
-        
-        vc.completionHandler = {backs in
-            print("======== backs \(backs)")
-            
-            let hud = JGProgressHUD(style: .dark)
-            hud.textLabel.text = "جاري التحميل"
-            hud.show(in: self.view)
-                
-                DispatchQueue.global(qos: .background).async {
-                    let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-                    print("this is token\(api_token ?? "")")
-                    let typeParameter = UserDefaults.standard.string(forKey: "she")
-                    let idParameter = UserDefaults.standard.string(forKey: "he")
-//                    let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
-
-                    let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(backs ?? "")" ]
-                    print("============== request \(param)")
-                    let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-                    let statisticesByDate = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-
-                    APIServiceForQueryParameter.shared.fetchData(url: statisticesByDate, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
-                        if let error = error{
-                            hud.dismiss()
-
-                            print("============ error \(error)")
-                        }else {
-                            hud.dismiss()
-                            guard let success = success else {return}
-                            self.localBorsaData = success
-                            DispatchQueue.main.async {
-                                self.LocalBorsaCV.reloadData()
-                                self.btnLabel.titleLabel?.text = backs
-                            }
-                       
-                        }
-                    }
-                }
-            
-            return backs
-        }
-        
+        vc.dateDelgete = self
         self.present(vc, animated: true, completion: nil)
        
     }
@@ -347,4 +307,44 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     
 
 
+}
+
+
+extension BorsaDetails:BackDate{
+    func backDateToMain(date: String) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            let typeParameter = UserDefaults.standard.string(forKey: "she")
+            let idParameter = UserDefaults.standard.string(forKey: "he")
+//                    let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(date)" ]
+            print("============== request \(param)")
+//            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            let statisticesByDate = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+
+            APIServiceForQueryParameter.shared.fetchData(url: statisticesByDate, parameters: param, headers: nil, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
+                if let error = error{
+                    hud.dismiss()
+
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.localBorsaData = success
+                    DispatchQueue.main.async {
+                        self.LocalBorsaCV.reloadData()
+                        self.btnLabel.titleLabel?.text = date
+                    }
+               
+                }
+            }
+        }
+    }
+    
+    
 }

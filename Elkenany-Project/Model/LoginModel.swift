@@ -24,5 +24,4 @@ struct DataClass: Codable {
     }
 }
 
-// MARK: - Encode/decode helpers
 

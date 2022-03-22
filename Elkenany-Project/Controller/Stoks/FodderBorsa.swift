@@ -8,7 +8,42 @@
 import UIKit
 import JGProgressHUD
 
-class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone  {
+class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDate  {
+    func backDateToMain(date: String) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+
+//            let typeParameter = UserDefaults.standard.string(forKey: "she")
+//            let idParameter = UserDefaults.standard.string(forKey: "he")
+//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+
+            let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(date)" ]
+            print("============== request \(param)")
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+
+//            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.fodderBorsaData = success
+                    DispatchQueue.main.async {
+                        self.fodderDetailsCV.reloadData()
+                        print(success.data ?? "")
+                    }
+                }
+            }
+        }
+    }
+    
     func RunFilterr(filter: ()) {
         FatchLocalBorsaFodderFromFeeds()
     }
@@ -40,7 +75,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone  {
         fodderDetailsCV.dataSource = self
         fodderDetailsCV.delegate = self
         self.fodderDetailsCV.register(UINib(nibName: "localBorsaCell", bundle: nil), forCellWithReuseIdentifier: "localBorsaCell")
-        fodderDetailsCV.register(haederForborsa.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "haederForborsa")
+//        fodderDetailsCV.register(UINib(nibName: "haederForborsa", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "haederForborsa")
 
 //        self.fodderDetailsCV.register(UINib(nibName: "testBorsaCell", bundle: nil), forCellWithReuseIdentifier: "test")
 //        self.fodderDetailsCV.register(UINib(nibName: "StanderCell", bundle: nil), forCellWithReuseIdentifier: "StanderCell")
@@ -187,7 +222,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone  {
 //            let idParameter = UserDefaults.standard.string(forKey: "he")
 //            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
 
-            let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(result)", "food_id" : "\(Feed_ID_Parameter)" ]
+            let param = ["type": "fodder" , "id": "\(Feed_ID_Parameter)", "date": "\(result)"]
             print("============== request \(param)")
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
@@ -253,47 +288,47 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone  {
         
         let vc = (storyboard?.instantiateViewController(identifier: "BorsaDatePiker"))! as BorsaDatePiker
         
-        vc.completionHandler = {backs in
-            print("======== backs \(backs)")
-            
-            let hud = JGProgressHUD(style: .dark)
-            hud.textLabel.text = "جاري التحميل"
-            hud.show(in: self.view)
-                
-                DispatchQueue.global(qos: .background).async {
-                    let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-                    print("this is token\(api_token ?? "")")
-//                    let typeParameter = UserDefaults.standard.string(forKey: "she")
-//                    let idParameter = UserDefaults.standard.string(forKey: "he")
-//                    let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
-
-                    let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(backs ?? "")" ]
-                    print("============== request \(param)")
-                    let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-                    let statisticesByDate = "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
-
-                    APIServiceForQueryParameter.shared.fetchData(url: statisticesByDate, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
-                        if let error = error{
-                            hud.dismiss()
-
-                            print("============ error \(error)")
-                        }else {
-                            hud.dismiss()
-                            guard let success = success else {return}
-                            self.fodderBorsaData = success
-                            DispatchQueue.main.async {
-                                self.fodderDetailsCV.reloadData()
-//                                self.btnLabel.titleLabel?.text = backs
-                                print(success.data ?? "")
-                            }
-                       
-                        }
-                    }
-                }
-            
-            return backs
-        }
-        
+//        vc.completionHandler = {backs in
+//            print("======== backs \(backs)")
+//
+//            let hud = JGProgressHUD(style: .dark)
+//            hud.textLabel.text = "جاري التحميل"
+//            hud.show(in: self.view)
+//
+//                DispatchQueue.global(qos: .background).async {
+//                    let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+//                    print("this is token\(api_token ?? "")")
+////                    let typeParameter = UserDefaults.standard.string(forKey: "she")
+////                    let idParameter = UserDefaults.standard.string(forKey: "he")
+////                    let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
+//
+//                    let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(backs ?? "")" ]
+//                    print("============== request \(param)")
+//                    let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+//                    let statisticesByDate = "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+//
+//                    APIServiceForQueryParameter.shared.fetchData(url: statisticesByDate, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
+//                        if let error = error{
+//                            hud.dismiss()
+//
+//                            print("============ error \(error)")
+//                        }else {
+//                            hud.dismiss()
+//                            guard let success = success else {return}
+//                            self.fodderBorsaData = success
+//                            DispatchQueue.main.async {
+//                                self.fodderDetailsCV.reloadData()
+////                                self.btnLabel.titleLabel?.text = backs
+//                                print(success.data ?? "")
+//                            }
+//
+//                        }
+//                    }
+//                }
+//
+//            return backs
+//        }
+        vc.dateDelgete = self
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -317,7 +352,7 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
             
             cell1.proudectName.text = fodderBorsaData?.data?.members?[indexPath.item].name ?? ""
             cell1.priceOfProudect.text = fodderBorsaData?.data?.members?[indexPath.item].feed ?? ""
-            cell1.weightStat.text = String (fodderBorsaData?.data?.members?[indexPath.item].price ?? 0)
+            cell1.weightStat.text = String(fodderBorsaData?.data?.members?[indexPath.item].price ?? 0)
             cell1.changeLabel.text = fodderBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell1.changeTwo.text = fodderBorsaData?.data?.members?[indexPath.item].changeDate ?? ""
             let statimage = fodderBorsaData?.data?.members?[indexPath.item].statistics ?? ""
@@ -333,29 +368,52 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "haederForborsa", for: indexPath) as! haederForborsa
-//                reusableview.frame = CGRect(0 , 0, self.view.frame.width, headerHight)
-            
-            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.sectionHeadersPinToVisibleBounds = true
-                return reusableview
-
-        default:  fatalError("Unexpected element kind")
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        switch kind {
+//        case UICollectionView.elementKindSectionHeader:
+//            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "haederForborsa", for: indexPath) as! haederForborsa
+////                reusableview.frame = CGRect(0 , 0, self.view.frame.width, headerHight)
+//
+//            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//            layout.sectionHeadersPinToVisibleBounds = true
+//                return reusableview
+//
+//        default:  fatalError("Unexpected element kind")
+//        }
+//    }
     
+//
+//    private func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind:String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+//
+//       if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+//                                                                       withReuseIdentifier: "haederForborsa", for: indexPath as IndexPath)
+//            as? haederForborsa{
+//
+//        return header
+//       }
+//    }
     
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//               if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+//                                                                               withReuseIdentifier: "haederForborsa", for: indexPath ) as? haederForborsa{
+//                return header
+//
+//               }
+//                return UICollectionReusableView()
+//
+//    }
+//    
+//    
+//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//            return CGSize(width: collectionView.frame.width, height: 60) //add your height here
+//        }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return CGSize(width: collectionView.frame.width, height: 60) //add your height here
-        }
-    
-    
-    
+//    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize(width: self.collectionView.frame.width, height: 55)
+//    }
+//
+//
     
     
     }

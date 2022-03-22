@@ -10,7 +10,8 @@ import Foundation
 
 // MARK: - AdsStoreDetailsDataModel
 struct AdsStoreDetailsDataModel: Codable {
-    var message, error: JSONNull?
+    var message, error: String?
+    
     var data: DetailsData?
 }
 

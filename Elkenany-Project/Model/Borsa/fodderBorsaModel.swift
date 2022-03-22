@@ -61,9 +61,10 @@ struct Memberss: Codable {
     enum CodingKeys: String, CodingKey {
         case name
         case memID = "mem_id"
-        case feed, price, change
+        case feed, change
         case changeDate = "change_date"
         case statistics, type
+        case price = "Food_Price"
     }
 }
 
