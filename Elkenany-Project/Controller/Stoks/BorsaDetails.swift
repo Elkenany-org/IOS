@@ -20,6 +20,8 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var LocalBorsaCV: UICollectionView!
 
+    @IBOutlet weak var errorView: UIView!
+    
     var variaTest = ""
     var fodderTypeParamter = ""
     var fodder_id_Parameter = 0
@@ -45,19 +47,16 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
-        title = ""
+        title = "تفاصيل البورصة"
         print("vTest \(variaTest)")
-       
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        btnLabel.setTitle( result, for: .normal )
+        
 
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        FatchLocalBorsa()
-    }
-    
+
     
     
     //MARK:- setup ui for Borsa Collection
@@ -85,10 +84,8 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     
     
     func FatchLocalBorsa(){
-        //Handeling Loading view progress
-//        formatter.dateFormat = "dd.MM.yyyy"
+ 
         formatter.dateFormat = "yyyy-MM-dd"
-
         let result = formatter.string(from: date)
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
@@ -96,32 +93,79 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-//            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             let typeParameter = UserDefaults.standard.string(forKey: "she")
             let idParameter = UserDefaults.standard.string(forKey: "he")
-//            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
 
-            let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(result)" ]
+            let param = ["type": "local" , "id": "\(self.loc_id)", "date": "\(result)" ]
             print("============== request \(param)")
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
-                }else {
+                }  else if let loginErrorr = filier {
+                    //Data Wrong From Server
+                    hud.dismiss()
+                    
+                    print(loginErrorr.message ?? "6666666666666")
+                }
+                
+                else {
                     hud.dismiss()
                     guard let success = success else {return}
                     self.localBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
                         print(success)
+
                     }
                 }
             }
         }
     }
+    
+    
+//    func FatchLocalBorsa(){
+//
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let result = formatter.string(from: date)
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "جاري التحميل"
+//        hud.show(in: self.view)
+//
+//        DispatchQueue.global(qos: .background).async {
+//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+//            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+//            let typeParameter = UserDefaults.standard.string(forKey: "she")
+//            let idParameter = UserDefaults.standard.string(forKey: "he")
+//
+//            let param = ["type": "local" , "id": "\(self.loc_id)", "date": "\(result)" ]
+//            print("============== request \(param)")
+//            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
+//                if let error = error{
+//                    hud.dismiss()
+//                    print("============ error \(error)")
+//                }else {
+//                    hud.dismiss()
+//                    guard let success = success else {return}
+//                    self.localBorsaData = success
+//                    DispatchQueue.main.async {
+//                        self.LocalBorsaCV.reloadData()
+//                        print(success)
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//
+    
+    
+  
+    
     
     
 
@@ -268,12 +312,11 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
             cell2.priceOfProudect.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
             cell2.changeLabel.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
             cell2.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
-//            cell2.weightStat.text = localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? "dev test"
-//            for itemss in localBorsaData?.data?.members?[indexPath.item].newColumns?[indexPath.item] ?? ""{
-//                cell2.changeLabel.text = itemss[indexPath.item]
-//            }
+            for i in localBorsaData?.data?.members?[indexPath.item].newColumns ?? []{
+                cell2.weightStat?.text = i
+
+            }
             
-//            cell2.weightStat.text = "تيست"
             let imageStat = localBorsaData?.data?.members?[indexPath.item].statistics ?? ""
             cell2.configureCell(image: imageStat)
             view1.isHidden = false
@@ -283,9 +326,24 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
         }else{
             ///missed
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath) as! testBorsaCell
+            cell3.proudectName.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
+            cell3.price.text = localBorsaData?.data?.members?[indexPath.item].price ?? ""
+//            cell3.kindd.text = localBorsaData?.data?.members?[indexPath.item].kind ?? ""
+            cell3.changes.text = localBorsaData?.data?.members?[indexPath.item].change ?? ""
+            cell3.changeTwo.text = localBorsaData?.data?.members?[indexPath.item].changetwo ?? ""
+//            cell3.proudectName.text = localBorsaData?.data?.members?[indexPath.item].name ?? ""
+            for i in localBorsaData?.data?.members?[indexPath.item].newColumns ?? []{
+                cell3.weight.text = i
+
+            }
+            
+            
+            let imageStat = localBorsaData?.data?.members?[indexPath.item].statistics ?? ""
+            cell3.configureCell(image: imageStat)
+            
+            
             return cell3
         }
-//        return UICollectionViewCell()
     }
     
     
@@ -332,13 +390,27 @@ extension BorsaDetails:BackDate{
                     hud.dismiss()
 
                     print("============ error \(error)")
-                }else {
+                }  else if let loginErrorr = filier {
+                    //Data Wrong From Server
+                    hud.dismiss()
+                    
+                    print(loginErrorr.message ?? "6666666666666")
+                    self.LocalBorsaCV.isHidden = true
+                    self.errorView.isHidden = false
+                    
+                }
+                
+                
+                
+                else {
                     hud.dismiss()
                     guard let success = success else {return}
                     self.localBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
-                        self.btnLabel.titleLabel?.text = date
+                        self.btnLabel.setTitle( date, for: .normal )
+                        self.LocalBorsaCV.isHidden = false
+                        self.errorView.isHidden = true
                     }
                
                 }

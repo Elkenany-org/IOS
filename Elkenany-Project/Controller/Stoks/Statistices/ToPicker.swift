@@ -11,6 +11,10 @@ import UIKit
 protocol DataBackProtocolTwo {
     func dataBackTOPicker(dateTo: String)
 }
+protocol DateAfterSelecte {
+    func dataBackTOPickerAfterSelecte(dateTo: String , idAfter: Int)
+
+}
 class ToPicker: UIViewController {
 
     @IBOutlet weak var toDatePicker: UIDatePicker!
@@ -49,8 +53,9 @@ class ToPicker: UIViewController {
     
     
     var DataBackDelegettwo:DataBackProtocolTwo?
+    var DataAfterSelecte: DateAfterSelecte?
 
-    var completionHandlerToDate: ((String) -> String)?
+//    var completionHandlerToDate: ((String) -> String)?
 
     
     
@@ -69,8 +74,6 @@ class ToPicker: UIViewController {
     
     @IBAction func toPickerAction(_ sender: UIDatePicker) {
         self.selectedDate = sender.date
-
-        
     }
     
     
@@ -81,6 +84,7 @@ class ToPicker: UIViewController {
         print( "complation to date=============================== \(dateForApitwo)")
         print( "complation to date two =============================== \(currentdate)")
         DataBackDelegettwo?.dataBackTOPicker(dateTo: dateForApitwo)
+        
         dismiss(animated: true, completion: nil)
     }
     

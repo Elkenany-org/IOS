@@ -29,7 +29,7 @@ struct InsideData: Codable {
 struct ChangesMember: Codable {
     var id: Int?
     var name, change: String?
-    var counts: Int?
+    var counts: Float?
 }
 
 // MARK: - ListMember

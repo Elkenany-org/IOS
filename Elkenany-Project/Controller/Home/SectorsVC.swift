@@ -349,6 +349,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
             navigationController?.pushViewController(SectorTables, animated: true)
             let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? "animal"
+            UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
             SectorTables.sectorFtomHome = sectorTypeFrom
             let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
             SectorTables.titleeeee = sectorTitle

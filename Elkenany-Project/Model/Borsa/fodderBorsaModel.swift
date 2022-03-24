@@ -54,14 +54,15 @@ struct Memberss: Codable {
     var memID: Int?
     var feed: String?
     var price: Int?
-    var change, changeDate: String?
+    var change: String?
+    var changeDate: String?
     var statistics: String?
     var type: Int?
 
     enum CodingKeys: String, CodingKey {
         case name
         case memID = "mem_id"
-        case feed, change
+        case feed
         case changeDate = "change_date"
         case statistics, type
         case price = "Food_Price"

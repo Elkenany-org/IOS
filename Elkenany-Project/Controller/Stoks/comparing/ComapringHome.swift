@@ -1,61 +1,59 @@
 //
-//  FilterHome.swift
+//  ComapringHome.swift
 //  Elkenany-Project
 //
-//  Created by عبدالعزيز رضا  on 3/21/22.
+//  Created by عبدالعزيز رضا  on 3/24/22.
 //
 
 import UIKit
 
-protocol BorsaFilterss {
-    func RunFilterDone(filter:())
+
+protocol ComapringProtocol {
+    func RunComparingDone(filter:())
 
 }
 
 
-class FilterHome: UIViewController {
+class ComapringHome: UIViewController {
 
-    @IBOutlet weak var filterHomeCV: UICollectionView!
-    var stokeTYPE = ""
-
+    @IBOutlet weak var comparingCV: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setupUI()
+        // Do any additional setup after loading the view.
     }
     
     
     fileprivate func setupUI() {
         //configuer UI
-        filterHomeCV.delegate = self
-        filterHomeCV.dataSource = self
-        filterHomeCV.register(UINib(nibName: "filterHeader", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "filterHeader")
-        self.filterHomeCV.register(UINib(nibName: "filterCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
+        comparingCV.delegate = self
+        comparingCV.dataSource = self
+        comparingCV.register(UINib(nibName: "filterHeader", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "filterHeader")
+        self.comparingCV.register(UINib(nibName: "filterCell", bundle: nil), forCellWithReuseIdentifier: "filterCell")
     }
     
-    var RunFilterDelegetsInStoke :BorsaFilterss?
+    
+    var RunComparingDelegetsInStoke :ComapringProtocol?
 
     
-    //BTN used to send data -------------
-    @IBAction func ConfirmFilterBorsa(_ sender: Any) {
-        RunFilterDelegetsInStoke?.RunFilterDone(filter: ())
-        self.dismiss(animated: true, completion: nil)
+    
+    @IBAction func applyComp(_ sender: Any) {
+        if let comVC = storyboard?.instantiateViewController(identifier: "ComparingDone") as? ComparingDone {
+            comVC.modalPresentationStyle = .fullScreen
+            self.present(comVC, animated: true, completion: nil)
+
+        }
         
     }
     
     
     
-    @IBAction func dissmis(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-
-
+    
 }
 
 
 //MARK:- methods of tableview
-extension FilterHome:UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
+extension ComapringHome:UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -73,11 +71,11 @@ extension FilterHome:UICollectionViewDelegate, UICollectionViewDataSource , UICo
         switch indexPath.item{
         case 0:
 //            cell.filterTitle.text = cellItems[indexPath.item]
-            cell.filterTitle.text = "القطاع"
-            cell.filterImage.image = #imageLiteral(resourceName: "categories")
+            cell.filterTitle.text = "الشركات"
+            cell.filterImage.image = #imageLiteral(resourceName: "office")
         case 1:
-            cell.filterTitle.text = "البورصة"
-            cell.filterImage.image = #imageLiteral(resourceName: "stock-market")
+            cell.filterTitle.text = "الاصناف"
+            cell.filterImage.image = #imageLiteral(resourceName: "sort")
         default:
             return UICollectionViewCell()
         }
@@ -97,13 +95,12 @@ extension FilterHome:UICollectionViewDelegate, UICollectionViewDataSource , UICo
         switch indexPath.item {
         case 0:
             
-            let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SelectionPopuVC") as! SelectionPopuVC
+            let selectedVC = storyboard?.instantiateViewController(withIdentifier: "ComparingComp") as! ComparingComp
             present(selectedVC, animated: true, completion: nil)
             
         case 1:
             
-            let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SectorFilterVC") as! SectorFilterVC
-            selectedVC.typeOfBorsa = stokeTYPE
+            let selectedVC = storyboard?.instantiateViewController(withIdentifier: "ComparingItems") as! ComparingItems
             present(selectedVC, animated: true, completion: nil)
             
         default:
@@ -114,5 +111,3 @@ extension FilterHome:UICollectionViewDelegate, UICollectionViewDataSource , UICo
     
     
 }
-
-

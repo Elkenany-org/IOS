@@ -53,19 +53,24 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     }
     
 
+    @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var fodderDetailsCV: UICollectionView!
     var fodderBorsaData:FodderBorsaModel?
     let date = Date()
     let formatter = DateFormatter()
     var fodderID = 0
+    var comType = "fodder"
     
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         SetupUI()
         FatchLocalBorsaFodder()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        btnLabel.setTitle( result, for: .normal)
     }
     
     
@@ -255,6 +260,10 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     
     
     @IBAction func comparing(_ sender: Any) {
+        if let statisticesVC = storyboard?.instantiateViewController(identifier: "ComapringHome") as? ComapringHome{
+            self.present(statisticesVC, animated: true, completion: nil)
+            
+        }
     }
     
     
@@ -368,53 +377,10 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
     }
     
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        switch kind {
-//        case UICollectionView.elementKindSectionHeader:
-//            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "haederForborsa", for: indexPath) as! haederForborsa
-////                reusableview.frame = CGRect(0 , 0, self.view.frame.width, headerHight)
-//
-//            let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//            layout.sectionHeadersPinToVisibleBounds = true
-//                return reusableview
-//
-//        default:  fatalError("Unexpected element kind")
-//        }
-//    }
-    
-//
-//    private func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind:String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-//
-//       if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-//                                                                       withReuseIdentifier: "haederForborsa", for: indexPath as IndexPath)
-//            as? haederForborsa{
-//
-//        return header
-//       }
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//               if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-//                                                                               withReuseIdentifier: "haederForborsa", for: indexPath ) as? haederForborsa{
-//                return header
-//
-//               }
-//                return UICollectionReusableView()
-//
-//    }
-//    
-//    
-//        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//            return CGSize(width: collectionView.frame.width, height: 60) //add your height here
-//        }
-    
-//    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: self.collectionView.frame.width, height: 55)
-//    }
-//
-//
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var id_fod_borsa = fodderBorsaData?.data?.members?[indexPath.row].memID ?? 0
+    }
+
     
     }
     
@@ -433,5 +399,3 @@ extension FodderBorsa:BorsaFilterss{
 }
  
     
-    
-

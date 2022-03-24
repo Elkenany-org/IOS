@@ -63,10 +63,6 @@ class BorsaDatePiker: UIViewController {
     
     @IBAction func saveDate(_ sender: Any) {
         let dateForApi = dateString
-//        print("==================== dateForApi \(dateForApi) ")
-//        let datee = completionHandler?(dateForApi)
-//        print( "complation =============================== \(datee ?? "")")
-//        UserDefaults.standard.set(dateForApi, forKey: "Date_From_Picker")
         dateDelgete?.backDateToMain(date: dateForApi )
         dismiss(animated: true, completion: nil)
         

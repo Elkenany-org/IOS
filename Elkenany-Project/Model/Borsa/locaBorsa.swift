@@ -18,7 +18,7 @@ struct BorsaDataa: Codable {
     var columns: [Column]?
     var banners: [Bannerr]?
     var logos:[logg]?
-    var members: [Member]?
+    var members: [Memberrrs]?
 }
 
 struct logg: Codable {
@@ -39,7 +39,7 @@ struct Column: Codable {
 }
 
 // MARK: - Member
-struct Member: Codable {
+struct Memberrrs: Codable {
     var name: String?
     var memID: Int?
     var kind, price ,change, changetwo: String?

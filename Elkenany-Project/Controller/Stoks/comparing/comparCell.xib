@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="comparCell" id="gTV-IL-0wX" customClass="comparCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="272" height="343"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="272" height="343"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08g-3z-qZi">
+                        <rect key="frame" x="0.0" y="2" width="272" height="339"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-hu-sTR">
+                                <rect key="frame" x="0.0" y="0.0" width="272" height="339"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstItem="FOz-hu-sTR" firstAttribute="top" secondItem="08g-3z-qZi" secondAttribute="top" id="GMt-5m-HJP"/>
+                            <constraint firstAttribute="trailing" secondItem="FOz-hu-sTR" secondAttribute="trailing" id="cRw-gy-uZd"/>
+                            <constraint firstItem="FOz-hu-sTR" firstAttribute="leading" secondItem="08g-3z-qZi" secondAttribute="leading" id="dg5-fT-lLN"/>
+                            <constraint firstAttribute="bottom" secondItem="FOz-hu-sTR" secondAttribute="bottom" id="fur-hk-Qih"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="kenanyGold"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="08g-3z-qZi" secondAttribute="trailing" id="16i-Tg-e4c"/>
+                <constraint firstAttribute="bottom" secondItem="08g-3z-qZi" secondAttribute="bottom" constant="2" id="Dr6-wr-OgB"/>
+                <constraint firstItem="08g-3z-qZi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZT8-qL-Ddr"/>
+                <constraint firstItem="08g-3z-qZi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="giD-e3-kT5"/>
+            </constraints>
+            <size key="customSize" width="272" height="343"/>
+            <connections>
+                <outlet property="comComparingTV" destination="FOz-hu-sTR" id="62J-tm-4GD"/>
+            </connections>
+            <point key="canvasLocation" x="301.44927536231887" y="197.87946428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="kenanyGold">
+            <color red="1" green="0.58823529411764708" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

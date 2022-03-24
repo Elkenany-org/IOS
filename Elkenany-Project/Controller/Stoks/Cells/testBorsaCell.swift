@@ -17,6 +17,7 @@ class testBorsaCell: UICollectionViewCell {
     @IBOutlet weak var statImagee: UIImageView!
     @IBOutlet weak var changeTwo: UILabel!
     
+    @IBOutlet weak var kindd: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

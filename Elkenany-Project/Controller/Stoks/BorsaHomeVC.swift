@@ -254,6 +254,7 @@ class BorsaHomeVC: UIViewController  {
     @IBAction func mainStastices(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "statisticsInsideMain"))! as statisticsInsideMain
         vc.stoType = Sector
+//        vc.stoType = sectorTypeFromHeader
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -285,7 +286,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         else if collectionView == bannersCV { return 1 }
         else if collectionView == logosCV{ return 1 }
         else if collectionView == BorsaCV{ return 2 }
-        else{ return 100}
+        else{ return 1}
     }
     
     
@@ -410,11 +411,15 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
                 let vc = (storyboard?.instantiateViewController(identifier: "FodderBorsa"))! as FodderBorsa
 //                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
 //                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
-//                let FodderType = fodderSubModel[indexPath.item].type ?? ""
+                let FodderType = fodderSubModel[indexPath.item].type ?? ""
+                UserDefaults.standard.set(FodderType, forKey: "she")
+
                 let FodderID = fodderSubModel[indexPath.item].id ?? 0
                 UserDefaults.standard.set(FodderID, forKey: "he")
 
                 let fooderTit = fodderSubModel[indexPath.item].name ?? ""
+                UserDefaults.standard.set(fooderTit, forKey: "BORSA_TITLEEEE")
+
 //                vc.fodderTypeParamter = FodderType
                 vc.fodderID = FodderID
                 vc.title = fooderTit

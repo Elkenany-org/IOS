@@ -10,7 +10,7 @@ import JGProgressHUD
 
 
 //1-protocol for dataBack
-protocol DataBackBorsa {
+protocol DataBackBorsaStok {
     func StokeId(StokeID:Int)
 }
 
@@ -19,16 +19,16 @@ class ChooseStokeVC: UIViewController {
     //outlets
     @IBOutlet weak var CompanyTableView: UITableView!
     var listOfData:StatisticsStockSectionsModel?
-    
+    var typeForStoke = ""
     
     
     //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        handelTap()
         CompanyTableView.delegate = self
         CompanyTableView.dataSource = self
         CompanyTableView.register(UINib(nibName: "CompanyCell", bundle: nil), forCellReuseIdentifier: "companySelected")
+        FatchlistOfStatisticesOut()
 
 
     }
@@ -38,7 +38,6 @@ class ChooseStokeVC: UIViewController {
     //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        FatchlistOfStatisticesOut()
     }
 
     func handelTap() {
@@ -59,7 +58,7 @@ class ChooseStokeVC: UIViewController {
     
     
     //2-refrence from protocol
-     var StokeDeleget:DataBackBorsa?
+     var StokeDeleget:DataBackBorsaStok?
     
     
     //MARK:- featch Data of  Choose Borsa TableView Methodes
@@ -68,9 +67,9 @@ class ChooseStokeVC: UIViewController {
             hud.textLabel.text = "جاري التحميل"
             hud.show(in: self.view)
             DispatchQueue.global(qos: .background).async {
-                let typeFromHome = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
+//                let typeFromHome = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
                     let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-sections?type="
-                    let param = ["type": "\(typeFromHome ?? "")"]
+                let param = ["type": "\(self.typeForStoke)"]
                     APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: nil, method: .get) { (success:StatisticsStockSectionsModel?, filier:StatisticsStockSectionsModel?, error) in
                         if let error = error{
                             hud.dismiss()

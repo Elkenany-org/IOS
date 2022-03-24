@@ -116,16 +116,16 @@
                                 <rect key="frame" x="309" y="0.0" width="100" height="131"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G9W-a0-fhE">
-                                        <rect key="frame" x="31.5" y="55.5" width="37.5" height="20"/>
+                                        <rect key="frame" x="2" y="55.5" width="96" height="20"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWK-gC-lrG">
-                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="10.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWK-gC-lrG">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="10.5"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gr-iO-fCY">
-                                                <rect key="frame" x="0.0" y="10.5" width="37.5" height="9.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gr-iO-fCY">
+                                                <rect key="frame" x="0.0" y="10.5" width="96" height="9.5"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="8"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
@@ -136,6 +136,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="G9W-a0-fhE" firstAttribute="centerX" secondItem="FhO-yl-n0e" secondAttribute="centerX" id="aoY-I7-oOK"/>
+                                    <constraint firstAttribute="trailing" secondItem="G9W-a0-fhE" secondAttribute="trailing" constant="2" id="bhI-1m-7k0"/>
+                                    <constraint firstItem="G9W-a0-fhE" firstAttribute="leading" secondItem="FhO-yl-n0e" secondAttribute="leading" constant="2" id="ciZ-JH-Ays"/>
                                     <constraint firstItem="G9W-a0-fhE" firstAttribute="centerY" secondItem="FhO-yl-n0e" secondAttribute="centerY" id="zl0-NJ-NdA"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -180,8 +182,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXJ-XX-Bi6">
                                 <rect key="frame" x="515" y="0.0" width="100" height="131"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e8-fx-biU">
-                                        <rect key="frame" x="40.5" y="60.5" width="19" height="10.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3e8-fx-biU">
+                                        <rect key="frame" x="2" y="2" width="96" height="127"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -191,6 +193,10 @@
                                 <constraints>
                                     <constraint firstItem="3e8-fx-biU" firstAttribute="centerY" secondItem="VXJ-XX-Bi6" secondAttribute="centerY" id="2hg-3v-9Pe"/>
                                     <constraint firstItem="3e8-fx-biU" firstAttribute="centerX" secondItem="VXJ-XX-Bi6" secondAttribute="centerX" id="ZaX-W1-icI"/>
+                                    <constraint firstItem="3e8-fx-biU" firstAttribute="leading" secondItem="VXJ-XX-Bi6" secondAttribute="leading" constant="2" id="dsl-md-JEd"/>
+                                    <constraint firstAttribute="trailing" secondItem="3e8-fx-biU" secondAttribute="trailing" constant="2" id="gEW-BB-oyF"/>
+                                    <constraint firstItem="3e8-fx-biU" firstAttribute="top" secondItem="VXJ-XX-Bi6" secondAttribute="top" constant="2" id="gxE-ae-VrF"/>
+                                    <constraint firstAttribute="bottom" secondItem="3e8-fx-biU" secondAttribute="bottom" constant="2" id="l8m-xZ-0RT"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -207,8 +213,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nst-3z-ebu">
                                 <rect key="frame" x="618" y="0.0" width="100" height="131"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ur-jI-MAe">
-                                        <rect key="frame" x="42" y="2" width="16" height="127"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ur-jI-MAe">
+                                        <rect key="frame" x="2" y="2" width="96" height="127"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="8"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -217,6 +223,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="8Ur-jI-MAe" secondAttribute="bottom" constant="2" id="4iq-rP-7hb"/>
+                                    <constraint firstItem="8Ur-jI-MAe" firstAttribute="leading" secondItem="nst-3z-ebu" secondAttribute="leading" constant="2" id="67s-Za-Yxl"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Ur-jI-MAe" secondAttribute="trailing" constant="2" id="9Lz-lb-Gly"/>
                                     <constraint firstItem="8Ur-jI-MAe" firstAttribute="centerY" secondItem="nst-3z-ebu" secondAttribute="centerY" id="GBj-iK-6QN"/>
                                     <constraint firstItem="8Ur-jI-MAe" firstAttribute="top" secondItem="nst-3z-ebu" secondAttribute="top" constant="2" id="NXL-8A-r3N"/>
                                     <constraint firstItem="8Ur-jI-MAe" firstAttribute="centerX" secondItem="nst-3z-ebu" secondAttribute="centerX" id="uca-g9-olw"/>
@@ -253,6 +261,7 @@
                 <outlet property="changeTwo" destination="8gr-iO-fCY" id="oph-XD-eJb"/>
                 <outlet property="changes" destination="WWK-gC-lrG" id="uXx-Wj-qxa"/>
                 <outlet property="directOfPrice" destination="VG7-ZL-EFt" id="Ki5-Ef-586"/>
+                <outlet property="kindd" destination="oMQ-vF-gkw" id="7V2-4H-0P9"/>
                 <outlet property="price" destination="3e8-fx-biU" id="1bP-rX-mfk"/>
                 <outlet property="proudectName" destination="8Ur-jI-MAe" id="BYE-cn-jTJ"/>
                 <outlet property="statImagee" destination="lM1-FE-i8X" id="xdC-ht-zVP"/>
