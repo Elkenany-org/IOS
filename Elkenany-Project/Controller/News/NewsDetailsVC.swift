@@ -11,7 +11,7 @@ import Alamofire
 
 class NewsDetailsVC: UIViewController {
     
-    @IBOutlet weak var newTable: UITableView!
+//    @IBOutlet weak var newTable: UITableView!
     //MARK:- Outlets and Proparites
     var newsDetails:NewsDetialsDataModel?
     //main
@@ -31,8 +31,8 @@ class NewsDetailsVC: UIViewController {
 //        if let flowLayout = NewsDetailsCV.collectionViewLayout as? UICollectionViewFlowLayout {
 //              flowLayout.estimatedItemSize = CGSize(width: 1, height:1)
 //          }
-        newTable.estimatedRowHeight = 150
-        newTable.rowHeight = UITableView.automaticDimension
+//        newTable.estimatedRowHeight = 150
+//        newTable.rowHeight = UITableView.automaticDimension
         FatchDataOfNewsDetails()
 
     }
@@ -50,14 +50,14 @@ class NewsDetailsVC: UIViewController {
     fileprivate func SetUpUI() {
         NewsDetailsCV.delegate = self
         NewsDetailsCV.dataSource = self
-        newTable.delegate = self
-        newTable.dataSource = self
+//        newTable.delegate = self
+//        newTable.dataSource = self
 
 //        newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellWithReuseIdentifier: "detailTwo")
         
 //        newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellWithReuseIdentifier: "detailOne")
-        newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellReuseIdentifier: "detailOne")
-        newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellReuseIdentifier: "detailTwo")
+//        newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellReuseIdentifier: "detailOne")
+//        newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellReuseIdentifier: "detailTwo")
 
         
         
@@ -87,7 +87,8 @@ class NewsDetailsVC: UIViewController {
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
-                        self.newTable.reloadData()
+                        self.NewsDetailsCV.reloadData()
+                        print(success.data ?? "")
                     }
                 }
             }
@@ -281,41 +282,41 @@ extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
 
 
 
-extension NewsDetailsVC: UITableViewDelegate , UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if indexPath.row == 0{
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailOne", for: indexPath) as! detailOne
-                
-            NewsDetailsCell.descriptionDetail.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
-            NewsDetailsCell.detailDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
-            NewsDetailsCell.detailTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
-
-//            NewsDetailsCell.newsTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
-//            NewsDetailsCell.newsDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
-//            NewsDetailsCell.newsDescription.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
-//            if let imagee = newsDetails?.data?.image {
-//                NewsDetailsCell.configureCell(image: imagee)
-//            }
-            return NewsDetailsCell
-            
-        } else {
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailTwo", for: indexPath) as! detailTwo
-//            cell1.id_param = newsIdFromHome
-//            cell1.FatchDataOfNews()
-            return NewsDetailsCell
-        }
-        
-    }
-    
-    
-
-
-    }
+//extension NewsDetailsVC: UITableViewDelegate , UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 2
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        if indexPath.row == 0{
+//            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailOne", for: indexPath) as! detailOne
+//
+//            NewsDetailsCell.descriptionDetail.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
+//            NewsDetailsCell.detailDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
+//            NewsDetailsCell.detailTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
+//
+////            NewsDetailsCell.newsTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
+////            NewsDetailsCell.newsDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
+////            NewsDetailsCell.newsDescription.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
+////            if let imagee = newsDetails?.data?.image {
+////                NewsDetailsCell.configureCell(image: imagee)
+////            }
+//            return NewsDetailsCell
+//
+//        } else {
+//            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailTwo", for: indexPath) as! detailTwo
+////            cell1.id_param = newsIdFromHome
+////            cell1.FatchDataOfNews()
+//            return NewsDetailsCell
+//        }
+//
+//    }
+//
+//
+//
+//
+//    }
     
     
 

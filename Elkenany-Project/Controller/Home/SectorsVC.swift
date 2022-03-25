@@ -171,6 +171,10 @@ class SectorsVC: UIViewController {
     
     //MARK:- featch Data from server
     func GetHomeDataFromServer(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
@@ -182,6 +186,7 @@ class SectorsVC: UIViewController {
                  FailureRequest:GuideCompaniesDataModel?,
                  error) in
                 if let error = error{
+                    hud.dismiss()
                     print("============ error \(error)")
                     
                 }
@@ -191,6 +196,7 @@ class SectorsVC: UIViewController {
                 }
                 
                 else {
+                    hud.dismiss()
                     guard let success = SuccessfulRequest else {return}
                     self.homeDataSectorsModel = success
                     DispatchQueue.main.async {

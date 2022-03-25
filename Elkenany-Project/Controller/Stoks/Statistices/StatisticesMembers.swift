@@ -81,7 +81,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
 
             let FromPickerBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
             //            let typeParameter = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
-            let param = ["type": "\(TParam)" , "to": "\(dateFrom)" , "from" : "\(result )" , "id" : "\(idParam)"]
+            let param = ["type": "\(TParam)" , "to": "\(result)" , "from" : "\(dateFrom)" , "id" : "\(idParam)"]
+            print(param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
             APIServiceForQueryParameter.shared.fetchData(url: FromPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in
                 if let error = error{
@@ -91,7 +92,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
                     //Data Wrong From Server
                     hud.dismiss()
                     
-                    print(self.errorFromModel?.message ?? "")
+                    print(filier?.message ?? "")
                 }
                 
                 else {

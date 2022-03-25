@@ -423,9 +423,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
 //                vc.fodderTypeParamter = FodderType
                 vc.fodderID = FodderID
                 vc.title = fooderTit
-//                vc.fodder_id_Parameter = FodderID
-//                vc.fodderTitle = fooderTit
-//                vc.FatchLocalBorsaFodder()
+
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -508,6 +506,7 @@ extension BorsaHomeVC : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
             cBtn.setTitle("الغاء", for: .normal)
+//            featchBorsaSubSections()
             searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
             
         }

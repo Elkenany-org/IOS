@@ -82,6 +82,11 @@ class SectorFilterVC: UIViewController {
         }
     }
     
+    @IBAction func diiiis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 

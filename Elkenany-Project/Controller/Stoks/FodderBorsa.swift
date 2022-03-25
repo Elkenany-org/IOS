@@ -9,6 +9,8 @@ import UIKit
 import JGProgressHUD
 
 class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDate  {
+   
+    
     func backDateToMain(date: String) {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
@@ -221,13 +223,14 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
 //            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
 
             let Feed_ID_Parameter = UserDefaults.standard.string(forKey: "FILTER_Feed_ID") ?? ""
+            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
+
 //            let idParameter = UserDefaults.standard.string(forKey: "he")
 //            let DateParameter = UserDefaults.standard.string(forKey: "Date_From_Picker")
 
-            let param = ["type": "fodder" , "id": "\(Feed_ID_Parameter)", "date": "\(result)"]
+            let param = ["type": "fodder" , "food_id": "\(Feed_ID_Parameter)", "date": "\(result)" , "id" : "\(self.fodderID)"]
             print("============== request \(param)")
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in

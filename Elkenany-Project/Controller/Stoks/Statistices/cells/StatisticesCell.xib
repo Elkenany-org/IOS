@@ -87,7 +87,7 @@
                                         <rect key="frame" x="355.5" y="0.0" width="174.5" height="112"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بلدي فاخر" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igR-RH-U1C">
-                                                <rect key="frame" x="71" y="51" width="32" height="10.5"/>
+                                                <rect key="frame" x="2" y="2" width="170.5" height="108"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
@@ -96,7 +96,11 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="igR-RH-U1C" firstAttribute="centerX" secondItem="EIy-cg-Gbv" secondAttribute="centerX" id="Gsu-T9-HkJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="igR-RH-U1C" secondAttribute="bottom" constant="2" id="OgK-1B-beb"/>
                                             <constraint firstItem="igR-RH-U1C" firstAttribute="centerY" secondItem="EIy-cg-Gbv" secondAttribute="centerY" id="WTe-HS-QHP"/>
+                                            <constraint firstAttribute="trailing" secondItem="igR-RH-U1C" secondAttribute="trailing" constant="2" id="tqN-Rc-TAQ"/>
+                                            <constraint firstItem="igR-RH-U1C" firstAttribute="top" secondItem="EIy-cg-Gbv" secondAttribute="top" constant="2" id="wJK-q0-qd0"/>
+                                            <constraint firstItem="igR-RH-U1C" firstAttribute="leading" secondItem="EIy-cg-Gbv" secondAttribute="leading" constant="2" id="zb9-Ef-bpd"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">

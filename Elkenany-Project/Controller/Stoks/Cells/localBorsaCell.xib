@@ -126,14 +126,16 @@
                                         <rect key="frame" x="351" y="0.0" width="114" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtA-Kn-OVb">
-                                                <rect key="frame" x="5" y="41.5" width="104" height="12"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
+                                                <rect key="frame" x="5" y="2" width="104" height="91"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="OtA-Kn-OVb" firstAttribute="top" secondItem="ZkG-0Z-8wh" secondAttribute="top" constant="2" id="8z2-03-J96"/>
+                                            <constraint firstAttribute="bottom" secondItem="OtA-Kn-OVb" secondAttribute="bottom" constant="2" id="CN9-VF-0zI"/>
                                             <constraint firstItem="OtA-Kn-OVb" firstAttribute="leading" secondItem="ZkG-0Z-8wh" secondAttribute="leading" constant="5" id="DNS-cQ-AXW"/>
                                             <constraint firstItem="OtA-Kn-OVb" firstAttribute="centerX" secondItem="ZkG-0Z-8wh" secondAttribute="centerX" id="hfw-Ef-pHf"/>
                                             <constraint firstAttribute="trailing" secondItem="OtA-Kn-OVb" secondAttribute="trailing" constant="5" id="txI-dU-uWL"/>
@@ -155,7 +157,7 @@
                                         <rect key="frame" x="468" y="0.0" width="114" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H38-R7-tCQ">
-                                                <rect key="frame" x="5" y="42.5" width="104" height="10.5"/>
+                                                <rect key="frame" x="2" y="2" width="110" height="91"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
@@ -165,8 +167,10 @@
                                         <constraints>
                                             <constraint firstItem="H38-R7-tCQ" firstAttribute="centerY" secondItem="KVD-bP-rg3" secondAttribute="centerY" id="19y-PC-0el"/>
                                             <constraint firstItem="H38-R7-tCQ" firstAttribute="centerX" secondItem="KVD-bP-rg3" secondAttribute="centerX" id="6NG-af-cyr"/>
-                                            <constraint firstAttribute="trailing" secondItem="H38-R7-tCQ" secondAttribute="trailing" constant="5" id="AHr-Ff-KeG"/>
-                                            <constraint firstItem="H38-R7-tCQ" firstAttribute="leading" secondItem="KVD-bP-rg3" secondAttribute="leading" constant="5" id="yX0-Yj-bzj"/>
+                                            <constraint firstAttribute="bottom" secondItem="H38-R7-tCQ" secondAttribute="bottom" constant="2" id="A9U-Li-LiM"/>
+                                            <constraint firstItem="H38-R7-tCQ" firstAttribute="top" secondItem="KVD-bP-rg3" secondAttribute="top" constant="2" id="S7O-zU-int"/>
+                                            <constraint firstAttribute="trailing" secondItem="H38-R7-tCQ" secondAttribute="trailing" constant="2" id="go3-Fo-YUy"/>
+                                            <constraint firstItem="H38-R7-tCQ" firstAttribute="leading" secondItem="KVD-bP-rg3" secondAttribute="leading" constant="2" id="kP7-89-qSR"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
