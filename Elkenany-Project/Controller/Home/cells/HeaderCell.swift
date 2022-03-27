@@ -16,11 +16,11 @@ class HeaderCell: UICollectionReusableView {
     }
     
     
-    var title: String?{
-        didSet{
-            titleLabel.text = title
-            
-        }
-    }
+//    var title: String?{
+//        didSet{
+//            titleLabel.text = title
+//            
+//        }
+//    }
 
 }

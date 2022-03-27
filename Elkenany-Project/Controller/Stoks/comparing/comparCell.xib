@@ -21,17 +21,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08g-3z-qZi">
                         <rect key="frame" x="0.0" y="2" width="272" height="339"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-hu-sTR">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mJG-N9-jrP">
                                 <rect key="frame" x="0.0" y="0.0" width="272" height="339"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4OP-FA-jm4">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
-                            <constraint firstItem="FOz-hu-sTR" firstAttribute="top" secondItem="08g-3z-qZi" secondAttribute="top" id="GMt-5m-HJP"/>
-                            <constraint firstAttribute="trailing" secondItem="FOz-hu-sTR" secondAttribute="trailing" id="cRw-gy-uZd"/>
-                            <constraint firstItem="FOz-hu-sTR" firstAttribute="leading" secondItem="08g-3z-qZi" secondAttribute="leading" id="dg5-fT-lLN"/>
-                            <constraint firstAttribute="bottom" secondItem="FOz-hu-sTR" secondAttribute="bottom" id="fur-hk-Qih"/>
+                            <constraint firstItem="mJG-N9-jrP" firstAttribute="top" secondItem="08g-3z-qZi" secondAttribute="top" id="Xc9-im-ydw"/>
+                            <constraint firstAttribute="trailing" secondItem="mJG-N9-jrP" secondAttribute="trailing" id="aWx-ni-JSi"/>
+                            <constraint firstItem="mJG-N9-jrP" firstAttribute="leading" secondItem="08g-3z-qZi" secondAttribute="leading" id="emo-2z-QVQ"/>
+                            <constraint firstAttribute="bottom" secondItem="mJG-N9-jrP" secondAttribute="bottom" id="tUh-yv-d5R"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -52,9 +58,6 @@
                 <constraint firstItem="08g-3z-qZi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="giD-e3-kT5"/>
             </constraints>
             <size key="customSize" width="272" height="343"/>
-            <connections>
-                <outlet property="comComparingTV" destination="FOz-hu-sTR" id="62J-tm-4GD"/>
-            </connections>
             <point key="canvasLocation" x="301.44927536231887" y="197.87946428571428"/>
         </collectionViewCell>
     </objects>

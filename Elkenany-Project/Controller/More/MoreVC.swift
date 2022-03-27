@@ -11,6 +11,7 @@ import JGProgressHUD
 
 class MoreVC: UIViewController {
     
+    @IBOutlet weak var looogOutIn: UIButton!
     @IBOutlet weak var MoreCollectionView: UICollectionView!
     var codata:[MoreDataa] = MoreDataa.moredata
     var logoutmm:LogoutModel?
@@ -19,6 +20,22 @@ class MoreVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         title = "القائمة"
+        
+        
+        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        if isloggineIn {
+            print("helllllo ")
+            looogOutIn.setTitle("تسجيل الخروج", for: .normal)
+
+        }else{
+            if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .fullScreen
+                looogOutIn.setTitle( "تسجيل الدخول", for: .normal)
+
+                self.present(vc, animated: true, completion: nil)
+                
+            }
+           }
     }
     
     

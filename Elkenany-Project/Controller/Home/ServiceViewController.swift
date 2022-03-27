@@ -353,7 +353,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionReusableView()
         }
 //        view.title = indexPath.section == 2 ? "الخدامات" : "القطاعات"
-        view.title = arr[indexPath.section]
+//        view.title = arr[indexPath.section]
         return view
     }
     

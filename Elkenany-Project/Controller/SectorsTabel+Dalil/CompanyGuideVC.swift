@@ -142,7 +142,7 @@ class CompanyGuideVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let param = ["type": "\(self.sectoreTypeFromSelecteHeader)"]
+            let param = ["type": "\(self.sectoreTypeFromHome)"]
             print("ppppp", param)
             let headers = ["Authorization": "\(api_token ?? "")" ]
             let companyGuide = "https://elkenany.com/api/guide/section/?type="
@@ -351,7 +351,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         if collectionView == selectedSectorCV {
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
-            self.sectoreTypeFromSelecteHeader = typeOfSector
+            self.sectoreTypeFromHome = typeOfSector
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)

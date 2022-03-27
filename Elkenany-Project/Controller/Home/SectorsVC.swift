@@ -493,7 +493,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
-        view.title = arr[indexPath.section]
+//        view.title = arr[indexPath.section]
         return view
     }
     

@@ -7,7 +7,8 @@
 
 import UIKit
 import WebKit
-class detailOne: UITableViewCell {
+
+class detailOne: UITableViewCell, WKUIDelegate {
 
     @IBOutlet weak var detailImage: UIImageView!
     @IBOutlet weak var detailTitle: UILabel!
@@ -31,6 +32,7 @@ class detailOne: UITableViewCell {
 //            descriptionDetail?.frame.size.height = tempHeight
 //
 //    }
+        descriptionDetail.uiDelegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,6 +40,14 @@ class detailOne: UITableViewCell {
 
         // Configure the view for the selected state
         
+    }
+    
+    
+
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+         webView.frame.size.height = 1
+         webView.frame.size = webView.sizeThatFits(CGSize.zero)
     }
  
 
