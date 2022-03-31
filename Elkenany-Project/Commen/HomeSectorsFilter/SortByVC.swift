@@ -15,6 +15,8 @@ protocol SortValue{
 
 
 class SortByVC: UIViewController {
+    
+    @IBOutlet weak var dismmmis: UIButton!
     @IBOutlet weak var SortByTV: UITableView!
     var SortByFilter:FirstFilterModel?
 
@@ -71,6 +73,13 @@ class SortByVC: UIViewController {
            }
        }
 
+    
+    
+    @IBAction func dissssmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 

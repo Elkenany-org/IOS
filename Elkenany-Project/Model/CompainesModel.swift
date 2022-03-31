@@ -17,8 +17,9 @@ struct CompaniesDataModel: Codable {
 // MARK: - DataClass
 struct Data: Codable {
     var sectors: [Sectorr]?
-    var banners, compsort: [Any]?
-    var logos:[Any]?
+    var compsort: [Any]?
+    var banners: [BannersForComapny]?
+    var logos:[logsForCompany]?
     var data: [MainData]?
     var currentPage, lastPage: Int?
     var firstPageURL, nextPageURL, lastPageURL: String?
@@ -49,3 +50,15 @@ struct Sectorr: Codable {
     var selected: Int?
 }
 
+struct BannersForComapny: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}
+
+
+struct logsForCompany: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}

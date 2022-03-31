@@ -13,7 +13,7 @@ class SelectionPopuVC: UIViewController {
     
     @IBOutlet weak var SelectedPopup: UITableView!
     var homeDataFilter:FirstFilterModel?
-    
+    var typppppe = "farm"
     
     
     override func viewDidLoad() {
@@ -72,6 +72,13 @@ class SelectionPopuVC: UIViewController {
         }
     }
     
+    
+    
+    @IBAction func dissmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil )
+    }
+    
+    
 }
 
 
@@ -86,6 +93,8 @@ extension SelectionPopuVC:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
         cell.SectreTitle.text = homeDataFilter?.data?.sectors?[indexPath.row].name ?? ""
+        let tyyype = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        
         return cell
     }
     
@@ -93,18 +102,48 @@ extension SelectionPopuVC:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
         let typeeee = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        self.typppppe = typeeee
+
         let ID_FOR_SEC = homeDataFilter?.data?.sectors?[indexPath.row].id ?? 0
         UserDefaults.standard.set(ID_FOR_SEC, forKey: "ID_FILTER")
-
         UserDefaults.standard.set(typeeee, forKey: "TYPE_FOR_FILTER")
+//        if typppppe == typeeee {
+//            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+////            cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//        } else {
+//            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+//
+//        }
+        
+//        if(cell.isSelected == true)
+//        {
+//            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+//        }
         print("foooooooooor", UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? "")
         //        TypeDeleget?.sectorBack(typeBack: typee)
         //        TypeDeleget.self = (typeeee as! SectoreDataBacke)
-        cell.imageSelected.image  = #imageLiteral(resourceName: "check")
+//        cell.imageSelected.image  = #imageLiteral(resourceName: "check")
         FilterAnimation.shared.filteranmation(vieww: view)
         dismiss(animated: true, completion: nil)
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+        let typeeee = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+//        if typppppe == typeeee {
+//            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+////            cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//        } else {
+//            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+//
+//        }
+        if(cell.isSelected == false)
+        {
+            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+            
+        }
+        
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

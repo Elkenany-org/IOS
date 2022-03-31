@@ -19,6 +19,7 @@ class CompanyGuideVC: UIViewController {
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var saerchTF: UITextField!
+    @IBOutlet weak var filterTitle: UIButton!
     ///sectore  Type From Home
     var sectoreTypeFromHome = ""
     var sectoreTypeFromSelecteHeader = ""
@@ -243,6 +244,18 @@ class CompanyGuideVC: UIViewController {
     }
     
     
+    
+    @IBAction func toFilterShortCut(_ sender: Any) {
+        
+        if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
+            filterVC.RunFilterDeleget = self
+            filterVC.presentKey = "keeey"
+            present(filterVC, animated: true, completion: nil)
+        }
+
+    }
+    
+    
     //show the search view  --------------
     @IBAction func searchBTN(_ sender: Any) {
         view1.isHidden = true
@@ -298,6 +311,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             if  let SectorHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as? SelectedSectorCell{
                 SectorHeaderCell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
                 let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
+
                 
                 if typeOfSector == sectoreTypeFromHome {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
@@ -352,6 +366,8 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         if collectionView == selectedSectorCV {
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             self.sectoreTypeFromHome = typeOfSector
+            UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
+
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
@@ -364,7 +380,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             if let CompanyVC  =  storyboard?.instantiateViewController(identifier: "CompaniesVC") as? CompaniesVC {
                 //passed companies
                 let id = subModel[indexPath.item].id ?? 0
-                
+                CompanyVC.hideenKey = "kkk"
                 let title = subModel[indexPath.item].name ?? ""
                 CompanyVC.subID_fromGuideHome = id
                 CompanyVC.companyTitle = title
@@ -460,6 +476,9 @@ extension CompanyGuideVC: FilterDone{
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
+                    
+                            self.filterTitle.setTitle("الاكثر تداولا", for: .normal)
+
                         
                     }
                 }

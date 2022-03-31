@@ -18,6 +18,7 @@ class FilterVC: UIViewController {
     
     @IBOutlet weak var filterCollectionview: UICollectionView!
     var testPrortocol: String = ""
+    var presentKey = "keeey"
     let vcc:CompanyGuideVC? = nil
     //refrance for model
     var homeFilter:FirstFilterModel?
@@ -29,6 +30,20 @@ class FilterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        
+ 
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if presentKey == "keeey" {
+            let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SortByVC") as! SortByVC
+            present(selectedVC, animated: true, completion: nil)
+        }else{
+            print("www")
+        }
     }
     
     

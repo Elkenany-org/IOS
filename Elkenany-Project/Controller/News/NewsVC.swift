@@ -18,6 +18,8 @@ class NewsVC: UIViewController {
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTF: UITextField!
+    @IBOutlet weak var btnTitleee: UIButton!
+    
     var news:AllNewsDataModel?
     var typeOfSectors = ""
     var typeFromhome = ""
@@ -42,6 +44,8 @@ class NewsVC: UIViewController {
         featchDataSelectors()
         FatchDataforNewsHome()
         title = "الآخبار"
+        SelectedBySector.semanticContentAttribute = .forceRightToLeft
+
         
     }
     
@@ -64,7 +68,7 @@ class NewsVC: UIViewController {
     
     func featchDataSelectors(){
         let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        let sectorsUrl = "https://elkenany.com/api/news/news?type=farm&sort=0&search="
+        let sectorsUrl = "https://elkenany.com/api/news/news?type=farm&sort=&search="
         let headers:HTTPHeaders = ["app-id": api_token ]
         APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:AllNewsDataModel?, NewsError:AllNewsDataModel?, error) in
             guard let self = self else {return}
@@ -73,7 +77,7 @@ class NewsVC: UIViewController {
                 print(error.localizedDescription)
             }else{
                 self.news = NewsSuccess
-                let succeeeesss = NewsSuccess?.data?.sections?.reversed() ?? []
+                let succeeeesss = NewsSuccess?.data?.sections ?? []
                 self.seeectoresMo.append(contentsOf: succeeeesss)
                 print(NewsSuccess?.data?.sections ?? "")
                 DispatchQueue.main.async {
@@ -88,10 +92,10 @@ class NewsVC: UIViewController {
  
         
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)"]
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=1&search="
+            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -125,6 +129,52 @@ class NewsVC: UIViewController {
             }
         }
     }
+    
+    //MARK:- Data of Companies ---------------------------
+    func FatchDataforNewsHomeee(){
+ 
+        
+        DispatchQueue.global(qos: .background).async {
+            let param = ["type": "\(self.typeFromhome)" , "sort" : "\(1)"]
+
+            print("this para", param)
+            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
+                
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                
+                
+                else {
+                    
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                                        self.subNewsModel.removeAll()
+
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.subNewsModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        self.AllNews.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
+    
     
     func FatchDataforNewsHomeFromMore(){
  
@@ -170,33 +220,33 @@ class NewsVC: UIViewController {
     
     
     
-    func FatchDataOfNewsSelectedBySectorHeader(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-           
-            let param = ["type": "\(self.typeOfSectors)"]
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
-            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    self.subNewsModel.removeAll()
-                    let successData = success?.data?.data ?? []
-                    self.subNewsModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        self.AllNews.reloadData()
-                    }
-                }
-            }
-        }
-    }
+//    func FatchDataOfNewsSelectedBySectorHeader(){
+//        //Handeling Loading view progress
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "جاري التحميل"
+//        hud.show(in: self.view)
+//        DispatchQueue.global(qos: .background).async {
+//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+//
+//            let param = ["type": "\(self.typeOfSectors)"]
+//            let headers = ["app-id": "\(api_token ?? "")" ]
+//            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+//            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
+//                if let error = error{
+//                    hud.dismiss()
+//                    print("============ error \(error)")
+//                }else {
+//                    hud.dismiss()
+//                    self.subNewsModel.removeAll()
+//                    let successData = success?.data?.data ?? []
+//                    self.subNewsModel.append(contentsOf: successData)
+//                    DispatchQueue.main.async {
+//                        self.AllNews.reloadData()
+//                    }
+//                }
+//            }
+//        }
+//    }
     
 
     
@@ -264,7 +314,17 @@ class NewsVC: UIViewController {
         view2.isHidden = true
     }
     
-
+    
+    /// noooooow
+    @IBAction func filterHome(_ sender: Any) {
+        
+        let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
+        filtervc.RunFilterDeleget = self
+        filtervc.presentKey = "keeey"
+        present(filtervc, animated: true, completion: nil)
+        
+    }
+    
     
     
     
@@ -288,12 +348,14 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if collectionView == SelectedBySector {
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
+            
             cell1.titleLabel.text = seeectoresMo[indexPath.row].name ?? "test"
             let typeee = seeectoresMo[indexPath.row].type ?? ""
             
             if typeee == typeFromhome {
                 cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SelectedBySector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+                
             }else{
                 cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
@@ -326,9 +388,11 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == SelectedBySector {
-            let typeOfSectorr = news?.data?.sections?[indexPath.row].type ?? ""
-            self.typeOfSectors = typeOfSectorr
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+            let typeOfSectorr = news?.data?.sections?[indexPath.row].type ?? ""
+            UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+
+            self.typeFromhome = typeOfSectorr
             
             if(cell.isSelected == true)
             {
@@ -337,7 +401,7 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 
                 
             }
-            FatchDataOfNewsSelectedBySectorHeader()
+            FatchDataforNewsHomeee()
 
             
 

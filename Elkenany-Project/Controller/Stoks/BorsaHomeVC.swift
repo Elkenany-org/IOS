@@ -268,6 +268,19 @@ class BorsaHomeVC: UIViewController  {
     
     
     
+    
+    @IBAction func toFilter(_ sender: Any) {
+        
+        let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
+        filtervc.presentKey = "keeey"
+        filtervc.RunFilterDeleget = self
+        
+        present(filtervc, animated: true, completion: nil)
+        
+    }
+    
+    
+    
     //search appearnce handling btn
     @IBAction func showSearchView(_ sender: Any) {
         searchView.isHidden = false
@@ -368,6 +381,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         //selected from sectore at header
         if collectionView == SelectedSector {
             let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
+            UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
             self.sectorTypeFromHeader = typeOfSector
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
             if(cell.isSelected == true)

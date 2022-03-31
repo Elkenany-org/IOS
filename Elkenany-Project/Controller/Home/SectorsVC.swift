@@ -354,8 +354,12 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
             navigationController?.pushViewController(SectorTables, animated: true)
-            let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? "animal"
+            let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
             UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+            
+            UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+
+            
             SectorTables.sectorFtomHome = sectorTypeFrom
             let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
             SectorTables.titleeeee = sectorTitle
@@ -494,6 +498,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             return UICollectionReusableView()
         }
 //        view.title = arr[indexPath.section]
+        view.btnOulet.setTitle(arr[indexPath.section], for: .normal)
+        
         return view
     }
     
