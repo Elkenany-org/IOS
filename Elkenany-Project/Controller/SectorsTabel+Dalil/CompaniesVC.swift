@@ -12,7 +12,11 @@ class CompaniesVC: UIViewController {
     
     
     
-    //Outlets and Propreties  ------------------------------
+    //Outlets and Propreties------------------------------
+    var timer:Timer?
+    var startIndex: Int! = 1
+    var currentIndex = 0
+
     var companiesModel:CompaniesDataModel?
     private var currentpaga = 1
     var isFeatchingImage = false
@@ -21,9 +25,9 @@ class CompaniesVC: UIViewController {
     var hideenKey = ""
     private var mainDataModel: [MainData] = []
     var modelTestSearch:MainData?
-    private var mainDataModelLogos: [logsForCompany] = []
-    var mainDataLogos: logsForCompany?
-    var MainCompBanners:BannersForComapny?
+    private var mainDatalLogos: [logsForCompany] = []
+//    var mainDataModelLogos: [logsForCompany]?
+//    var MainCompBanners:BannersForComapny?
     private var mainDataModelBanners: [BannersForComapny] = []
     //---
     private var isFeatchingData = false
@@ -51,11 +55,13 @@ class CompaniesVC: UIViewController {
         setupUI()
         title = companyTitle
         FatchDatafromHome()
+        setTimer()
+
         //Dynamice Hight cell
         comapniesTView.estimatedRowHeight = 150
         comapniesTView.rowHeight = UITableView.automaticDimension
         setupSearchBar()
-//        LogosandBanners()
+        LogosandBanners()
         logosCV.delegate = self
         logosCV.dataSource = self
 //        logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
@@ -68,6 +74,8 @@ class CompaniesVC: UIViewController {
         if hideenKey == "kkk"{
 //            stackTwo.isHidden = true
 //            stackOne.isHidden = true
+//            containerStack.isHidden = true
+            
         }else{
             containerStack.isHidden = false
 //            stackOne.isHidden = false
@@ -80,6 +88,20 @@ class CompaniesVC: UIViewController {
         
     }
     
+    //MARK:- Timer of slider and page controller ?? 0 -1
+    func setTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(MoveToNextIndex), userInfo: nil, repeats: true)
+    }
+    
+    @objc func MoveToNextIndex(){
+        if currentIndex < mainDataModelBanners.count {
+            currentIndex += 1
+        }else{
+            currentIndex = 0
+        }
+        bannarsCV.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
+//        pageControle.currentPage = currentIndex
+    }
     
     //ViewWillApper ----------------------------
     override func viewWillAppear(_ animated: Bool) {
@@ -125,15 +147,16 @@ class CompaniesVC: UIViewController {
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
-                    let successDataLogos = success?.data?.logos ?? []
-                    self.mainDataModelLogos.append(contentsOf: successDataLogos)
+//                    let successDataLogos = success?.data?.logos ?? []
+//                    self.mainDatalLogos.append(contentsOf: successDataLogos)
                     
                     
                     
                     DispatchQueue.main.async {
                         
                         self.comapniesTView.reloadData()
-                        self.logosCV.reloadData()
+//                        self.logosCV.reloadData()
+                        print(self.mainDatalLogos)
 
                     }
                     self.currentpaga += 1
@@ -327,32 +350,43 @@ class CompaniesVC: UIViewController {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         //        let searchValue = SearchTF.text ?? ""
-        let param = ["sub_id": self.subID_fromGuideHome ]
+        let param = ["sub_id":"\(self.subID_fromGuideHome)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
             print("this is token\(api_token ?? "")")
             let SearchGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            
+
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-                    let successDataLogos = success?.data?.logos ?? []
-                    self.mainDataModelLogos.append(contentsOf: successDataLogos)
+//                    guard let success = success else {return}
+//                    self.companiesModel = success
+//                    self.mainDatalLogos.removeAll()
+
+                    let successDatalo = success?.data?.logos ?? []
+                    //                    print("current", self.currentpaga)
+                    self.mainDatalLogos.append(contentsOf: successDatalo)
+
+                    let successDataban = success?.data?.banners ?? []
+                    //                    print("current", self.currentpaga)
+                    self.mainDataModelBanners.append(contentsOf: successDataban)
                     DispatchQueue.main.async {
                         self.logosCV.reloadData()
-                        print(successDataLogos.count ?? 0)
+                        self.bannarsCV.reloadData()
+
+                        print(self.mainDatalLogos.count ?? 0)
                     }
                 }
             }
         }
     }
-    
-    
-    
+
+
+
     
     
     
@@ -530,10 +564,10 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == logosCV{
-            return 1
-
+            return mainDatalLogos.count
         }else if collectionView == bannarsCV{
-            return 1
+        return mainDataModelBanners.count
+
 
         }else{
             return 1
@@ -547,14 +581,20 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         
         if collectionView == logosCV{
             let cellllll = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
-    //        let imageeee = mainDataModelLogos[indexPath.item].image ?? ""
-    //        cellllll.configureImage(image: imageeee )
+            let imageeee = mainDatalLogos[indexPath.item].image ?? ""
+            cellllll.configureImage(image: imageeee)
+            cellllll.logooImage.contentMode = .scaleAspectFill
+//            cellllll.configureImage(image: imageeee )
+//            cellllll.configureImage(image: )
             return cellllll
 
         }else if collectionView == bannarsCV{
             let cellllll = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
-    //        let imageeee = mainDataModelLogos[indexPath.item].image ?? ""
-    //        cellllll.configureImage(image: imageeee )
+            let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
+            cellllll.bannerImage.contentMode = .scaleAspectFit
+            
+
+            cellllll.configureCell(image: imageeee)
             return cellllll
 
         }else{
@@ -568,7 +608,7 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == logosCV{
-            return CGSize(width: 50, height: 50)
+            return CGSize(width:60, height: 60)
 
         }else if collectionView == bannarsCV{
             return CGSize(width: collectionView.frame.width, height: 120)

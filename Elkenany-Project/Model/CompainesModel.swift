@@ -25,7 +25,7 @@ struct Data: Codable {
     var firstPageURL, nextPageURL, lastPageURL: String?
 
     enum CodingKeys: String, CodingKey {
-        case sectors, data
+        case sectors, data , logos , banners
         case currentPage = "current_page"
         case lastPage = "last_page"
         case firstPageURL = "first_page_url"

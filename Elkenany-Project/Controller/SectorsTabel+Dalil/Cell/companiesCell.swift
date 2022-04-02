@@ -38,6 +38,13 @@ class companiesCell: UITableViewCell {
     
     }
     
+    func configureCellLogos(data: loggs) {
+        let url = URL(string:data.image ?? "")
+        companyImage.kf.indicatorType = .activity
+        companyImage.kf.setImage(with: url)
+    
+    }
+    
 //    @IBAction func toDetails(_ sender: Any) {
 //        let vcc = UIStoryboard(name: "Main", bundle: nil)
 ////        vcc.instantiateViewController(identifier: "companyDetails") as companyDetails
