@@ -8,36 +8,15 @@
 import UIKit
 import  Alamofire
 import JGProgressHUD
+
 class CompaniesVC: UIViewController {
     
-    
-    
-    //Outlets and Propreties------------------------------
-    var timer:Timer?
-    var startIndex: Int! = 1
-    var currentIndex = 0
-
-    var companiesModel:CompaniesDataModel?
-    private var currentpaga = 1
-    var isFeatchingImage = false
-    var subID_fromGuideHome = 0
-    var companyTitle = ""
-    var hideenKey = ""
-    private var mainDataModel: [MainData] = []
-    var modelTestSearch:MainData?
-    private var mainDatalLogos: [logsForCompany] = []
-//    var mainDataModelLogos: [logsForCompany]?
-//    var MainCompBanners:BannersForComapny?
-    private var mainDataModelBanners: [BannersForComapny] = []
-    //---
-    private var isFeatchingData = false
-    
+    //MARK:- Outlets and Propreties
+    //outlets
     @IBOutlet weak var containerStack: UIStackView!
     @IBOutlet weak var stackOne: UIStackView!
-    
     @IBOutlet weak var logoImageTwo: UIImageView!
     @IBOutlet weak var logoImageOne: UIImageView!
-    
     @IBOutlet weak var bannarsCV: UICollectionView!
     @IBOutlet weak var stackTwo: UIStackView!
     @IBOutlet weak var comapniesTView: UITableView!
@@ -47,7 +26,27 @@ class CompaniesVC: UIViewController {
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var SearchTF: UITextField!
     @IBOutlet weak var searchBarView: UISearchBar!
-//    @IBOutlet weak var bannarsCV: UICollectionView!
+    //timer
+    var timer:Timer?
+    var startIndex: Int! = 1
+    var currentIndex = 0
+    //pagination
+    private var currentpaga = 1
+    var isFeatchingImage = false
+    private var isFeatchingData = false
+    
+    //models
+    var companiesModel:CompaniesDataModel?
+    private var mainDataModel: [MainData] = []
+    var modelTestSearch:MainData?
+    private var mainDatalLogos: [logsForCompany] = []
+    private var mainDataModelBanners: [BannersForComapny] = []
+    //variables
+    var subID_fromGuideHome = 0
+    var companyTitle = ""
+    var hideenKey = ""
+    
+    
     
     //ViewDidLoad ----------------------
     override func viewDidLoad() {
@@ -56,37 +55,40 @@ class CompaniesVC: UIViewController {
         title = companyTitle
         FatchDatafromHome()
         setTimer()
-
-        //Dynamice Hight cell
-        comapniesTView.estimatedRowHeight = 150
-        comapniesTView.rowHeight = UITableView.automaticDimension
         setupSearchBar()
         LogosandBanners()
+        banersLogosConfig()
+    }
+    
+    
+    //MARK:- SetupUI + collectionView Delegete + tableView Delegete
+    func setupUI() {
+        comapniesTView.dataSource = self
+        comapniesTView.delegate = self
         logosCV.delegate = self
         logosCV.dataSource = self
-//        logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
         bannarsCV.delegate = self
         bannarsCV.dataSource = self
         logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
         self.bannarsCV.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
-
-        
+        comapniesTView.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
+        comapniesTView.prefetchDataSource = self
+        //Dynamice Hight cell
+        comapniesTView.estimatedRowHeight = 150
+        comapniesTView.rowHeight = UITableView.automaticDimension
+    }
+    
+    
+    
+    //show and hide banners logos
+    func banersLogosConfig(){
         if hideenKey == "kkk"{
-//            stackTwo.isHidden = true
-//            stackOne.isHidden = true
-//            containerStack.isHidden = true
-            
         }else{
             containerStack.isHidden = false
-//            stackOne.isHidden = false
             stackOne.isHidden = true
-
-
-
         }
-        
-        
     }
+    
     
     //MARK:- Timer of slider and page controller ?? 0 -1
     func setTimer(){
@@ -100,109 +102,35 @@ class CompaniesVC: UIViewController {
             currentIndex = 0
         }
         bannarsCV.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
-//        pageControle.currentPage = currentIndex
-    }
-    
-    //ViewWillApper ----------------------------
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("teeeeeeeest", subID_fromGuideHome)
-        
-        
+        //        pageControle.currentPage = currentIndex
     }
     
     
-    //MARK:- Data of Companies ---------------------------
+    
+    //MARK:- Main Data of Companies [main]
     func FatchDatafromHome(){
-        //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
-        
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.subID_fromGuideHome , "page": self.currentpaga]
-            print("this para", param)
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            print("URL", companyGuide)
-            
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
+                (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
+                //internet error
                 if let error = error{
-                    //internet error
                     print("============ error \(error)")
-                    
                 }
+                //Data Wrong From Server
+                
                 else if let loginError = filier {
-                    //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
-                
-                
+                //success
                 else {
-                    
                     if success?.data?.nextPageURL == nil {
-                        
                     }
-                    
-                    let successData = success?.data?.data ?? []
-                    print("current", self.currentpaga)
-                    self.mainDataModel.append(contentsOf: successData)
-//                    let successDataLogos = success?.data?.logos ?? []
-//                    self.mainDatalLogos.append(contentsOf: successDataLogos)
-                    
-                    
-                    
-                    DispatchQueue.main.async {
-                        
-                        self.comapniesTView.reloadData()
-//                        self.logosCV.reloadData()
-                        print(self.mainDatalLogos)
-
-                    }
-                    self.currentpaga += 1
-                    self.isFeatchingData = false
-                }
-            }
-        }
-    }
-    
-    
-    func FatchDatafromHomeeeeeeeeee(){
-        //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
-        
-        DispatchQueue.global(qos: .background).async {
-            let param = ["sub_id": self.subID_fromGuideHome , "page": self.currentpaga]
-            print("this para", param)
-            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            print("URL", companyGuide)
-            
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                
-                if let error = error{
-                    //internet error
-                    print("============ error \(error)")
-                    
-                }
-                else if let loginError = filier {
-                    //Data Wrong From Server
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-                }
-                
-                
-                else {
-                    
-                    if success?.data?.nextPageURL == nil {
-                        
-                    }
-                    
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        
                         self.comapniesTView.reloadData()
                     }
                     self.currentpaga += 1
@@ -213,44 +141,32 @@ class CompaniesVC: UIViewController {
     }
     
     
-    
+    //MARK:- Main Data of Companies [from recominditon cell in home ]
     func FatchDatafromHomeUsingRecomindition(){
-        //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            
             let param = ["sub_id": id_rec , "page": self.currentpaga]
-            print("this para", param)
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            print("URL", companyGuide)
-            
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                
+                //internet error
                 if let error = error{
-                    //internet error
                     print("============ error \(error)")
                     
                 }
+                //Data Wrong From Server
+                
                 else if let loginError = filier {
-                    //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
-                
-                
+                //success
                 else {
-                    
                     if success?.data?.nextPageURL == nil {
-                        
                     }
                     
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        
                         self.comapniesTView.reloadData()
                     }
                     self.currentpaga += 1
@@ -261,42 +177,29 @@ class CompaniesVC: UIViewController {
     }
     
     
+    //MARK:- Main Data of Companies [from the dalil collection cell in home ]
     func FatchDatafromHomeUsingDalil(){
-        //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let id_rec_dali = UserDefaults.standard.value(forKey: "REC_Id_Dalil") ?? ""
-            
             let param = ["sub_id": id_rec_dali , "page": self.currentpaga]
-            print("this para", param)
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            print("URL", companyGuide)
-            
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                
+                //internet error
                 if let error = error{
-                    //internet error
                     print("============ error \(error)")
-                    
                 }
+                //Data Wrong From Server
                 else if let loginError = filier {
-                    //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
-                
+                //success
                 else {
-                    
                     if success?.data?.nextPageURL == nil {
-                        
                     }
-                    
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        
                         self.comapniesTView.reloadData()
                     }
                     self.currentpaga += 1
@@ -308,32 +211,26 @@ class CompaniesVC: UIViewController {
     
     
     
-    //MARK:- search Service of Companies ---------------------------
-    
+    //MARK:- search Service of Companies
     func SearchService(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-        //        let searchValue = SearchTF.text ?? ""
         let param = ["sub_id": "\(self.subID_fromGuideHome)" , "search" : self.searchBarView.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
             print("this is token\(api_token ?? "")")
             let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id&city_id&sort&search="
-            
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-                    //                    guard let success = success else {return}
                     let successData = success?.data?.data ?? []
-                    //                    print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
-                    //                    self.mainDataModel = success
                     DispatchQueue.main.async {
                         self.comapniesTView.reloadData()
                     }
@@ -356,48 +253,40 @@ class CompaniesVC: UIViewController {
             let headers = ["Authorization": "\(api_token ?? "")" ]
             print("this is token\(api_token ?? "")")
             let SearchGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-
+            
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-//                    guard let success = success else {return}
-//                    self.companiesModel = success
-//                    self.mainDatalLogos.removeAll()
-
+                    //                    guard let success = success else {return}
+                    //                    self.companiesModel = success
+                    //                    self.mainDatalLogos.removeAll()
+                    
                     let successDatalo = success?.data?.logos ?? []
                     //                    print("current", self.currentpaga)
                     self.mainDatalLogos.append(contentsOf: successDatalo)
-
+                    
                     let successDataban = success?.data?.banners ?? []
                     //                    print("current", self.currentpaga)
                     self.mainDataModelBanners.append(contentsOf: successDataban)
                     DispatchQueue.main.async {
                         self.logosCV.reloadData()
                         self.bannarsCV.reloadData()
-
+                        
                         print(self.mainDatalLogos.count ?? 0)
                     }
                 }
             }
         }
     }
-
-
-
     
     
     
-    //SetupUI + collection view delegete ----------------------
-    func setupUI() {
-        comapniesTView.dataSource = self
-        comapniesTView.delegate = self
-        comapniesTView.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
-        
-        comapniesTView.prefetchDataSource = self
-    }
+    
+    
+    
     
     
     @IBAction func SearchBTN(_ sender: Any) {
@@ -511,7 +400,7 @@ extension CompaniesVC : UISearchBarDelegate {
         view1.isHidden = false
         view2.isHidden = false
         mainDataModel.removeAll()
-        FatchDatafromHomeeeeeeeeee()
+        FatchDatafromHome()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
@@ -566,12 +455,12 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         if collectionView == logosCV{
             return mainDatalLogos.count
         }else if collectionView == bannarsCV{
-        return mainDataModelBanners.count
-
-
+            return mainDataModelBanners.count
+            
+            
         }else{
             return 1
-
+            
         }
         
         
@@ -584,24 +473,24 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
             let imageeee = mainDatalLogos[indexPath.item].image ?? ""
             cellllll.configureImage(image: imageeee)
             cellllll.logooImage.contentMode = .scaleAspectFill
-//            cellllll.configureImage(image: imageeee )
-//            cellllll.configureImage(image: )
+            //            cellllll.configureImage(image: imageeee )
+            //            cellllll.configureImage(image: )
             return cellllll
-
+            
         }else if collectionView == bannarsCV{
             let cellllll = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
             let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
             cellllll.bannerImage.contentMode = .scaleAspectFit
             
-
+            
             cellllll.configureCell(image: imageeee)
             return cellllll
-
+            
         }else{
             return UICollectionViewCell()
-
+            
         }
-
+        
         
     }
     
@@ -609,14 +498,14 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         
         if collectionView == logosCV{
             return CGSize(width:60, height: 60)
-
+            
         }else if collectionView == bannarsCV{
             return CGSize(width: collectionView.frame.width, height: 120)
-
+            
         }else{
             return CGSize(width: 50, height: 100)
-
-
+            
+            
         }
         
         
