@@ -17,7 +17,7 @@ struct AdsStoreDataModel: Codable {
 struct StorDetails: Codable {
     var sectors: [Sector]?
     var banners, logos: [String]?
-    var sort, data: [Datum]?
+    var sort, data: [storeData]?
     var currentPage, lastPage: Int?
     var firstPageURL: String?
     var nextPageURL: String?
@@ -34,7 +34,7 @@ struct StorDetails: Codable {
 }
 
 // MARK: - Datum
-struct Datum: Codable {
+struct storeData: Codable {
     var id: Int?
     var title: String?
     var salary: Int?

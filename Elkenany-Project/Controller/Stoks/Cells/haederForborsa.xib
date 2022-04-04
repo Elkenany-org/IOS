@@ -56,9 +56,9 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9M-2W-meq">
                                     <rect key="frame" x="128" y="0.0" width="124.5" height="99"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حالة السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uH-9F-wzK">
-                                            <rect key="frame" x="39" y="42.5" width="46.5" height="14"/>
-                                            <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حالة السعر" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uH-9F-wzK">
+                                            <rect key="frame" x="2" y="2" width="120.5" height="95"/>
+                                            <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="11"/>
                                             <color key="textColor" name="kenanyGreen"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -66,7 +66,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="6uH-9F-wzK" firstAttribute="centerX" secondItem="K9M-2W-meq" secondAttribute="centerX" id="2kQ-q6-p6i"/>
+                                        <constraint firstAttribute="bottom" secondItem="6uH-9F-wzK" secondAttribute="bottom" constant="2" id="6ci-xU-xRC"/>
+                                        <constraint firstAttribute="trailing" secondItem="6uH-9F-wzK" secondAttribute="trailing" constant="2" id="6yj-BV-2Qo"/>
                                         <constraint firstItem="6uH-9F-wzK" firstAttribute="centerY" secondItem="K9M-2W-meq" secondAttribute="centerY" id="EYC-A2-wRc"/>
+                                        <constraint firstItem="6uH-9F-wzK" firstAttribute="top" secondItem="K9M-2W-meq" secondAttribute="top" constant="2" id="Ipa-nj-yoQ"/>
+                                        <constraint firstItem="6uH-9F-wzK" firstAttribute="leading" secondItem="K9M-2W-meq" secondAttribute="leading" constant="2" id="uym-yH-ilg"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

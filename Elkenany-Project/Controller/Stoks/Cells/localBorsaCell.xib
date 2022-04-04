@@ -60,15 +60,19 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-ki-0pF">
                                         <rect key="frame" x="117" y="0.0" width="114" height="95"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حالة السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbs-fe-ENM">
-                                                <rect key="frame" x="36" y="41" width="42.5" height="13"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حالة السعر" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbs-fe-ENM">
+                                                <rect key="frame" x="2" y="2" width="110" height="91"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
                                                 <color key="textColor" name="kenanyblueblack"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="Nbs-fe-ENM" firstAttribute="leading" secondItem="tnz-ki-0pF" secondAttribute="leading" constant="2" id="5kF-IO-2ce"/>
+                                            <constraint firstItem="Nbs-fe-ENM" firstAttribute="top" secondItem="tnz-ki-0pF" secondAttribute="top" constant="2" id="7wW-1X-3tX"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nbs-fe-ENM" secondAttribute="bottom" constant="2" id="Gaz-Di-Wux"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nbs-fe-ENM" secondAttribute="trailing" constant="2" id="RVw-xf-gnJ"/>
                                             <constraint firstItem="Nbs-fe-ENM" firstAttribute="centerY" secondItem="tnz-ki-0pF" secondAttribute="centerY" id="cda-zc-66l"/>
                                             <constraint firstItem="Nbs-fe-ENM" firstAttribute="centerX" secondItem="tnz-ki-0pF" secondAttribute="centerX" id="ypd-u2-BeZ"/>
                                         </constraints>

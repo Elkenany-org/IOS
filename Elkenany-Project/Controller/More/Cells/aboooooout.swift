@@ -16,13 +16,33 @@ class aboooooout: UICollectionViewCell {
     
     
     @IBAction func toMappppp(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vcc = storyboard.instantiateViewController(identifier: "CairoLocation") as! CairoLocation
-        if let vc = self.next(ofType: UIViewController.self) {
-            //            vcc.id_company = com_id
-            vc.present(vcc, animated: true, completion: nil)
-        }
+
+        openGoogleMap()
     }
+    
+    
+    func openGoogleMap() {
+//         guard let lat = booking?.booking?.pickup_lat, let latDouble =  Double(lat) else {Toast.show(message: StringMessages.CurrentLocNotRight);return }
+//
+//         guard let long = booking?.booking?.pickup_long, let longDouble =  Double(long) else {Toast.show(message: StringMessages.CurrentLocNotRight);return }
+        
+
+        
+          if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+
+            if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(30.054403047637578),\(31.344001497493803)&directionsmode=driving") {
+                        UIApplication.shared.open(url, options: [:])
+               }}
+          else {
+                 //Open in browser
+            if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(30.054403047637578),\(31.344001497493803)&directionsmode=driving") {
+                                   UIApplication.shared.open(urlDestination)
+                               }
+                    }
+
+            }
+
+    
     
     func callNumber(number: String ) {
         

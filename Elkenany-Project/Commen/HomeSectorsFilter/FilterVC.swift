@@ -15,10 +15,12 @@ protocol FilterDone {
 
 
 class FilterVC: UIViewController {
+  
     
     @IBOutlet weak var filterCollectionview: UICollectionView!
     var testPrortocol: String = ""
-    var presentKey = "keeey"
+    var presentKey = ""
+    var selectedType = ""
     let vcc:CompanyGuideVC? = nil
     //refrance for model
     var homeFilter:FirstFilterModel?
@@ -32,18 +34,24 @@ class FilterVC: UIViewController {
         setupUI()
         
         
- 
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if presentKey == "keeey" {
+        let testhiden = "keeey"
+        if presentKey == testhiden {
             let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SortByVC") as! SortByVC
+//            selectedVC.SortTitleDeleget = self
             present(selectedVC, animated: true, completion: nil)
         }else{
-            print("www")
+//            let selectedVCc = storyboard?.instantiateViewController(withIdentifier: "FilterVC") as! FilterVC
+////            selectedVC.SortTitleDeleget = self
+//            present(selectedVCc, animated: true, completion: nil)
+            print("hello world")
         }
+ 
+        
     }
     
     

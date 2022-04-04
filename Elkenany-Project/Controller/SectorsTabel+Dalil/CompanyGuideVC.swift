@@ -9,7 +9,11 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class CompanyGuideVC: UIViewController {
+class CompanyGuideVC: UIViewController, SortTitle {
+    func SortTitleBack(value: String) {
+        filterTitle.setTitle(value, for: .normal)
+    }
+    
     
     //MARK:- Outlets && Proparites
     @IBOutlet weak var guideCompanyCV: UICollectionView!
@@ -39,6 +43,7 @@ class CompanyGuideVC: UIViewController {
         setupUI()
         setupSearchBar()
         title = "الدليل"
+//        filterTitle.setTitle("\(UserDefaults.standard.string(forKey: "TYPE_TIT_FILTER") ?? "الابجدي")", for: .normal)
     }
     
     //MARK:- Setup UI [ delegets + register nibs ]
@@ -239,6 +244,7 @@ class CompanyGuideVC: UIViewController {
         
         if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
             filterVC.RunFilterDeleget = self
+            filterVC.selectedType = sectoreTypeFromSelecteHeader
             present(filterVC, animated: true, completion: nil)
         }
     }
@@ -249,6 +255,7 @@ class CompanyGuideVC: UIViewController {
         
         if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
             filterVC.RunFilterDeleget = self
+            filterVC.selectedType = sectoreTypeFromSelecteHeader
             filterVC.presentKey = "keeey"
             present(filterVC, animated: true, completion: nil)
         }
@@ -343,8 +350,6 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     //Configuer Cells heights in Views ----------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
         
         if collectionView == selectedSectorCV {
             

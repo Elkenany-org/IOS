@@ -9,11 +9,9 @@ import UIKit
 import MapKit
 
 class aboutUsCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var locationtitle: UILabel!
-    
     @IBOutlet weak var locationDesc: UILabel!
-    
     @IBOutlet weak var mapppppp: MKMapView!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phone: UILabel!
@@ -22,25 +20,33 @@ class aboutUsCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
+        
     }
     
     
-    
-    
-    
+    //openLocation
     @IBAction func accessMap(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vcc = storyboard.instantiateViewController(identifier: "MansouraLocation") as! MansouraLocation
-        if let vc = self.next(ofType: UIViewController.self) {
-//            vcc.id_company = com_id
-            vc.present(vcc, animated: true, completion: nil)
+        openGoogleMap()
+    }
+    
+    
+    //google map service  
+    func openGoogleMap() {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+            if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(31.02168380137456),\(31.394367283909567)&directionsmode=driving") {
+                UIApplication.shared.open(url, options: [:])
+            }}
+        else {
+            //Open in browser
+            if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(31.02168380137456),\(31.394367283909567)&directionsmode=driving") {
+                UIApplication.shared.open(urlDestination)
+            }
         }
+        
     }
     
     
     func callNumber(number: String ) {
-        
         guard let url = URL(string: "tel://\(number)") else {return}
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url)
@@ -78,20 +84,12 @@ class aboutUsCell: UICollectionViewCell {
     }
     
     
-
+    
 }
 
 
 
-
-
-
-
-
-
-
-
-
+//slecte in cell
 extension UIResponder {
     func next3<T:UIResponder>(ofType: T.Type) -> T? {
         let r = self.next

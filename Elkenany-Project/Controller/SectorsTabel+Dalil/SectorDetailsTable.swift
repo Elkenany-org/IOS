@@ -16,8 +16,8 @@ class SectorDetailsTable: UIViewController {
     var sectorFtomHome = ""
     //for navigation title 
     var titleeeee = ""
-        var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
-//    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
+//        var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
+    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
     @IBOutlet weak var SectorDetailsTabel: UITableView!
     
     
@@ -45,7 +45,7 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tabelData.count 
+        return tabelData.count
     }
     
     
@@ -80,14 +80,14 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
 ////            GuideVC.sectoreTypeFromHome = sectorFtomHome
 //            navigationController?.pushViewController(GuideVC, animated: true)
         print(" for confirmation ......")
+            let newsVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
+//            newsVC.typeFromhome = sectorFtomHome
+            navigationController?.pushViewController(newsVC, animated: true)
+            
+        case 3:
             let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
             newsVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(newsVC, animated: true)
-            
-//        case 3:
-//            let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
-//            newsVC.typeFromhome = sectorFtomHome
-//            navigationController?.pushViewController(newsVC, animated: true)
             
         default:
             print("hello world")

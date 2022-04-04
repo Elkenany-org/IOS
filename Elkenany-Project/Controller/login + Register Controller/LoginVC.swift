@@ -69,6 +69,8 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     
     
     
+    
+    
     //MARK:- Handel Forget button in login screen
     @IBAction func ForgetPassword(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "ForgetPasswordVC"))! as ForgetPasswordVC

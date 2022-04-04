@@ -11,14 +11,21 @@ import JGProgressHUD
 
 protocol SortValue{
     func SortValueBack (value:Int)
+    
 }
-
+protocol SortTitle{
+    func SortTitleBack (value:String)
+    
+}
 
 class SortByVC: UIViewController {
     
     @IBOutlet weak var dismmmis: UIButton!
     @IBOutlet weak var SortByTV: UITableView!
+    var selected = 0
+
     var SortByFilter:FirstFilterModel?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +40,8 @@ class SortByVC: UIViewController {
     
     //delegets
     var SortValueDeleget:SortValue?
+    var SortTitleDeleget:SortTitle?
+
     
     //handel tap out to hide view
     func handelTap() {
@@ -92,6 +101,16 @@ extension SortByVC:UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+        let soooort = SortByFilter?.data?.sort?[indexPath.item].value ?? 0
+        
+        if soooort == selected {
+            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+        }else{
+            cell.imageSelected.image  = #imageLiteral(resourceName: "square")
+
+        }
+        
+        
         cell.SectreTitle.text = SortByFilter?.data?.sort?[indexPath.row].name ?? ""
             return cell
     }
@@ -106,13 +125,36 @@ extension SortByVC:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
         let value = SortByFilter?.data?.sort?[indexPath.row].sortValue ?? 0
-        UserDefaults.standard.set(value, forKey: "SORT_FOR_FILTER")
-        if cell.isSelected{
-            cell.imageSelected.image  = #imageLiteral(resourceName: "check")
+        let tittttle = SortByFilter?.data?.sort?[indexPath.row].name ?? ""
+        UserDefaults.standard.set(tittttle, forKey: "SORT_TIT_FILTER")
 
+        UserDefaults.standard.set(value, forKey: "SORT_FOR_FILTER")
+//        if cell.isSelected{
+//            cell.imageSelected.image  = #imageLiteral(resourceName: "check")
+//        }else{
+//            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+//
+//        }
+        
+        if (cell.isSelected == true) {
+            cell.imageSelected.image = #imageLiteral(resourceName: "check")
         }
+        
+        
         FilterAnimation.shared.filteranmation(vieww: view)
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+       
+        if(cell.isSelected == false)
+        {
+            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+
+        }
+        
+
     }
 }

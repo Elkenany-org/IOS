@@ -20,8 +20,8 @@ class StoreVC: UIViewController {
     var isFeatchingImage = false
     var subID_fromGuideHome = 0
     var companyTitle = ""
-    private var mainDataModel: [Datum] = []
-    var modelTestSearch:Datum?
+    private var mainDataModel: [storeData] = []
+    var modelTestSearch:storeData?
     //---
     private var isFeatchingData = false
     
@@ -33,20 +33,14 @@ class StoreVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         FatchDataOfStore()
+        featchDataSelectors()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
         self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        featchDataSelectors()
-        FatchDataSelectedBySector()
-    }
-    
-    
-    
+
     func FatchDataOfStore(){
         //Handeling Loading view progress
         //        let hud = JGProgressHUD(style: .dark)
@@ -54,9 +48,9 @@ class StoreVC: UIViewController {
         //        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-//            let param = ["type": "poultry" , "page": self.currentpaga]
+            let param = ["type": "poultry" , "page": "\(self.currentpaga)"]
 //            print("this para", param)
-            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: nil, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -102,9 +96,11 @@ class StoreVC: UIViewController {
     
     func featchDataSelectors(){
         let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN")!)
+        let param = ["type": "poultry"]
+
         let sectorsUrl = "https://elkenany.com/api/store/ads-store?type=&sort=&search"
         let headers:HTTPHeaders = ["app-id": api_token ]
-        APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (StorSuccess:AdsStoreDataModel?, StorError:AdsStoreDataModel?, error) in
+        APIService.shared.fetchData(url: sectorsUrl , parameters: param, headers: headers, method: .get) {[weak self] (StorSuccess:AdsStoreDataModel?, StorError:AdsStoreDataModel?, error) in
         guard let self = self else {return}
         if let error = error{
             print("error ===========================")

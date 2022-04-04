@@ -21,11 +21,11 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompanySocialCell" rowHeight="638" id="KGk-i7-Jjw" customClass="CompanySocialCell" customModule="Elkenany_Project" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="367" height="638"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="367" height="638"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5a-7r-rEb">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5a-7r-rEb">
                         <rect key="frame" x="10" y="10" width="347" height="618"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qok-6d-GW7">
@@ -58,7 +58,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2He-qQ-mxA">
-                                <rect key="frame" x="53.5" y="527" width="240" height="1"/>
+                                <rect key="frame" x="53.5" y="401.5" width="240" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4Up-s4-KRn"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifq-lr-77k">
-                                <rect key="frame" x="73.5" y="538" width="200" height="50"/>
+                                <rect key="frame" x="73.5" y="412.5" width="200" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="maJ-02-ENd">
                                         <rect key="frame" x="5" y="0.5" width="25" height="49"/>
@@ -110,10 +110,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mci-yd-pkR">
-                                <rect key="frame" x="20" y="91.5" width="307" height="425.5"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mci-yd-pkR">
+                                <rect key="frame" x="20" y="91.5" width="307" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="425.5" id="SUL-Ah-XdZ"/>
+                                    <constraint firstAttribute="height" constant="300" id="EN1-gt-Pq0"/>
                                 </constraints>
                             </tableView>
                         </subviews>

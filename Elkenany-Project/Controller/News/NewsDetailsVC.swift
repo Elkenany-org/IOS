@@ -14,39 +14,25 @@ class NewsDetailsVC: UIViewController {
     @IBOutlet weak var newTable: UITableView!
     //MARK:- Outlets and Proparites
     var newsDetails:NewsDetialsDataModel?
+    @IBOutlet weak var NewsDetailsCV: UICollectionView!
     //main
     var newsIdFromHome = 0
     //recommend
     var news_id_from_home = 0
     var news_id = 0
-    var contentHeights : [CGFloat] = [0.0, 0.0]
-
-    @IBOutlet weak var NewsDetailsCV: UICollectionView!
+    
+    
     
     
     //viewdidload -------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUpUI()
-//        if let flowLayout = NewsDetailsCV.collectionViewLayout as? UICollectionViewFlowLayout {
-//              flowLayout.estimatedItemSize = CGSize(width: 1, height:1)
-//          }
-//        newTable.estimatedRowHeight = 150
-//        newTable.rowHeight = UITableView.automaticDimension
         newTable.estimatedRowHeight = 150
         newTable.rowHeight = UITableView.automaticDimension
         FatchDataOfNewsDetails()
-
-
     }
     
-    
-    
-    
-    //viewWillAppear -----------------
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     
     //Setup UI
@@ -55,12 +41,8 @@ class NewsDetailsVC: UIViewController {
         NewsDetailsCV.dataSource = self
         newTable.delegate = self
         newTable.dataSource = self
-
         newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellReuseIdentifier: "detailOne")
         newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellReuseIdentifier: "detailTwo")
-
-        
-        
         self.NewsDetailsCV.register(UINib(nibName: "collectioncell", bundle: nil), forCellWithReuseIdentifier: "collectioncell")
         self.NewsDetailsCV.register(UINib(nibName: "newsDetailsCell", bundle: nil), forCellWithReuseIdentifier: "newsDetailsCell")
         title = "تفاصيل الخبر"
@@ -87,7 +69,7 @@ class NewsDetailsVC: UIViewController {
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
-                        self.newTable.reloadData()
+                        self.NewsDetailsCV.reloadData()
                         print(success.data ?? "")
                     }
                 }
@@ -157,7 +139,6 @@ class NewsDetailsVC: UIViewController {
     
     
     //MARK:- Featch Data Of News Details Insid from home
-    
     func FatchDataOfNewsDetailsInsid(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -166,7 +147,6 @@ class NewsDetailsVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            //            let idParameter = UserDefaults.standard.string(forKey: "NEWS_ID")
             let param = ["id": "\(self.newsIdFromHome)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             let newsURL = "https://elkenany.com/api/news/news-detials?id="
@@ -187,48 +167,10 @@ class NewsDetailsVC: UIViewController {
         }
     }
     
-    
-    
-    
-    //MARK:- Featch Data Of News Details Insid from home
-    //
-    //    func FatchDataOfNewsDetailsInsidloader(){
-    //        //Handeling Loading view progress
-    //        let hud = JGProgressHUD(style: .dark)
-    //        hud.textLabel.text = "جاري التحميل"
-    //        hud.show(in: self.view)
-    //        DispatchQueue.global(qos: .background).async {
-    //            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-    //            print("this is token\(api_token ?? "")")
-    ////            let idParameter = UserDefaults.standard.string(forKey: "NEWS_ID")
-    //            let param = ["id": "\(2)"]
-    //            let headers = ["app-id": "\(api_token ?? "")" ]
-    //            let newsURL = "https://elkenany.com/api/news/news-detials?id="
-    //
-    //            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
-    //                if let error = error{
-    //                    hud.dismiss()
-    //                    print("============ error \(error)")
-    //                }else {
-    //                    hud.dismiss()
-    //                    guard let success = NewsDetailssuccess else {return}
-    //                    self.newsDetails = success
-    //                    DispatchQueue.main.async {
-    //                        self.NewsDetailsCV.reloadData()
-    //
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    
- 
-    
 }
 
 
 //MARK:- collection view methods  of Details
-
 extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -259,65 +201,42 @@ extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     
     
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.item == 0{
-//            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-//        }else{
-//            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-//        }
-//    }
     
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0{
-            print("helllo world")
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
         }else{
-            print("helllo world")
+            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        }
+    }
+    
+    
+
+}
+
+
+//MARK:- Taableeeeeeeeeeee View
+extension NewsDetailsVC: UITableViewDelegate , UITableViewDataSource, UIWebViewDelegate  {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            
+            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailOne", for: indexPath) as! detailOne
+            NewsDetailsCell.descriptionDetail.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
+            NewsDetailsCell.detailDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
+            NewsDetailsCell.detailTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
+            return NewsDetailsCell
+
+        } else {
+            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailTwo", for: indexPath) as! detailTwo
+            return NewsDetailsCell
         }
     }
 }
 
 
-
-extension NewsDetailsVC: UITableViewDelegate , UITableViewDataSource, UIWebViewDelegate  {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if indexPath.row == 0{
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailOne", for: indexPath) as! detailOne
-
-            NewsDetailsCell.descriptionDetail.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
-            NewsDetailsCell.detailDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
-            NewsDetailsCell.detailTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
-
-
-//            NewsDetailsCell.newsTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
-//            NewsDetailsCell.newsDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
-//            NewsDetailsCell.newsDescription.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
-//            if let imagee = newsDetails?.data?.image {
-//                NewsDetailsCell.configureCell(image: imagee)
-//            }
-            return NewsDetailsCell
-
-        } else {
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailTwo", for: indexPath) as! detailTwo
-//            cell1.id_param = newsIdFromHome
-//            cell1.FatchDataOfNews()
-            return NewsDetailsCell
-        }
-
-    }
-
-
-
-
-    }
-    
-    
 

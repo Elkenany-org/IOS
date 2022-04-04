@@ -13,7 +13,8 @@ class SelectionPopuVC: UIViewController {
     
     @IBOutlet weak var SelectedPopup: UITableView!
     var homeDataFilter:FirstFilterModel?
-    var typppppe = "farm"
+    var typppppe = ""
+    var typeiddddd = 0
     
     
     override func viewDidLoad() {
@@ -54,7 +55,8 @@ class SelectionPopuVC: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let SectoreFilterURL = "https://elkenany.com/api/localstock/all-local-stock-sections?type="
-            let param = ["type": "poultry"]
+            let tttyyyyppppeeee = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? ""
+            let param = ["type": "\(tttyyyyppppeeee)"]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:FirstFilterModel?, filier:FirstFilterModel?, error) in
                 if let error = error{
                     hud.dismiss()
@@ -94,14 +96,32 @@ extension SelectionPopuVC:UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
         cell.SectreTitle.text = homeDataFilter?.data?.sectors?[indexPath.row].name ?? ""
         let tyyype = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        let selecteddd = homeDataFilter?.data?.sectors?[indexPath.row].selected ?? 0
+
         
+        if  selecteddd == 1{
+            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+        }else{
+            
+            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+
+        }
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as! SelectedCell
+        let selecteddd = homeDataFilter?.data?.sectors?[indexPath.row].selected ?? 0
+
         let typeeee = homeDataFilter?.data?.sectors?[indexPath.row].type ?? ""
+        if  selecteddd == 1{
+            cell.imageSelected.image = #imageLiteral(resourceName: "check")
+        }else{
+            
+            cell.imageSelected.image = #imageLiteral(resourceName: "square")
+
+        }
         self.typppppe = typeeee
 
         let ID_FOR_SEC = homeDataFilter?.data?.sectors?[indexPath.row].id ?? 0

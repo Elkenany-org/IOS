@@ -19,12 +19,14 @@ struct BorsaDataa: Codable {
     var banners: [Bannerr]?
     var logos:[logg]?
     var members: [Memberrrs]?
+    
 }
 
 struct logg: Codable {
     var id: Int?
     var link: String?
     var image: String?
+    
 }
 
 struct Bannerr: Codable {
@@ -46,7 +48,7 @@ struct Memberrrs: Codable {
     var statistics: String?
     var newColumns: [String]?
     var type: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case name
         case memID = "mem_id"
@@ -55,5 +57,7 @@ struct Memberrrs: Codable {
         case newColumns = "new_columns"
         case type
     }
+
 }
+
 

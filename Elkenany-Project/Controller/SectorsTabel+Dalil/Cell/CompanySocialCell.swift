@@ -13,6 +13,9 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var socialTV: UITableView!
     var com_id = 0
     var arr = ["33333" , "6666" , "66666"]
+    var lannn = ""
+    var loonn = ""
+
     var socialData:CompanyDetailsDataModel?
     
     
@@ -25,6 +28,8 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         socialTV.register(UINib(nibName: "TestAnyCell", bundle: nil), forCellReuseIdentifier: "TestAnyCell")
         //automatic height
         //        FatchDataContactsOfCompanies()
+        socialTV.estimatedRowHeight = 150
+        socialTV.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -57,6 +62,8 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
                     self.socialData = success
                     DispatchQueue.main.async {
                         self.socialTV.reloadData()
+                        self.lannn = success.data?.latitude ?? ""
+                        self.loonn = success.data?.longitude ?? ""
                     }
                 }
             }
@@ -67,18 +74,32 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func toMapView(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vcc = storyboard.instantiateViewController(identifier: "MapVC") as? MapVC {
-        if let vc = self.next(ofType: UIViewController.self) {
-            vcc.id_company = com_id
-            vc.present(vcc, animated: true, completion: nil)
-        }
-    }
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let vcc = storyboard.instantiateViewController(identifier: "MapVC") as? MapVC {
+//        if let vc = self.next(ofType: UIViewController.self) {
+//            vcc.id_company = com_id
+//            vc.present(vcc, animated: true, completion: nil)
+//        }
+//    }
         
-
+        openGoogleMap()
     }
     
     
+    func openGoogleMap() {
+
+          if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+
+            if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(lannn),\(loonn)&directionsmode=driving") {
+                        UIApplication.shared.open(url, options: [:])
+               }}
+          else {
+                 //Open in browser
+            if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(lannn),\(loonn)&directionsmode=driving") {
+                                   UIApplication.shared.open(urlDestination)
+                               }
+                    }
+            }
     
     
     
@@ -249,10 +270,12 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        return tableView.rowHeight
+//        
+//    }
+//    
     
 }
 
