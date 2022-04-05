@@ -95,12 +95,12 @@ class SectorsVC: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.37))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.33))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -108,7 +108,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -122,12 +122,12 @@ class SectorsVC: UIViewController {
     func creatSecondSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.50))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.45))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -147,12 +147,12 @@ class SectorsVC: UIViewController {
     func creatthirdSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: .fractionalHeight(0.25))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -275,7 +275,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         case 1 :
             if let recomanditionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 recomanditionCell.SecrorsName.text = homeDataSectorsModel?.data?.recomandtion?[indexPath.row].name ?? "dev test"
-                recomanditionCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+                recomanditionCell.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
                 let successMembersImage = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].image ?? ""
                 recomanditionCell.configureCell(image: successMembersImage)
                 recomanditionCell.sectorImgCell.contentMode = .scaleAspectFill
@@ -295,7 +295,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             if let stockCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell {
                 stockCell.SecrorsName.text = homeDataSectorsModel?.data?.stock?[indexPath.row].name ?? "dev test"
-                stockCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+                stockCell.SecrorsName.font = UIFont(name: "Cairo", size: 12.0)
                 let successMembersImage = homeDataSectorsModel?.data?.stock?[indexPath.item].image ?? ""
                 stockCell.configureCell(image: successMembersImage)
                 ss(ss: stockCell)
@@ -305,7 +305,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             if let guideCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 guideCell.SecrorsName.text = homeDataSectorsModel?.data?.guide?[indexPath.row].name ?? "dev test"
-                guideCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+                guideCell.SecrorsName.font = UIFont(name: "Cairo", size: 12.0)
                 let successMembersImage = homeDataSectorsModel?.data?.guide?[indexPath.item].image ?? ""
                 guideCell.sectorImgCell.contentMode = .scaleAspectFill
                 guideCell.configureCell(image: successMembersImage)
@@ -323,7 +323,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
 //                return storeCell }
             if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
-                newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 11.0)
+                newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
                 let successMembersImage = homeDataSectorsModel?.data?.news?[indexPath.item].image ?? ""
                 newsCell.sectorImgCell.contentMode = .scaleToFill
 
