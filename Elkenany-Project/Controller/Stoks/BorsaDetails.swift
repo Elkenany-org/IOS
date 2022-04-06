@@ -381,6 +381,13 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
                 cell1.configureCell(image: statimage)
                 view1.isHidden = true
                 view2.isHidden = false
+                
+                if localBorsaData?.data?.members?[indexPath.item].type == 1 {
+                    cell1.contentView.backgroundColor = .green
+                }
+                
+                
+                
                  return cell1
                 
                 

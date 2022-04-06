@@ -11,7 +11,7 @@ import JGProgressHUD
 
 class NewsVC: UIViewController {
     
-    //MARK:- Outlets -----------
+    //MARK:- Outlets
     @IBOutlet weak var AllNews: UICollectionView!
     @IBOutlet weak var SelectedBySector: UICollectionView!
     @IBOutlet weak var view1: UIView!
@@ -19,24 +19,19 @@ class NewsVC: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var btnTitleee: UIButton!
-    
+    @IBOutlet weak var searchBarView: UISearchBar!
+    //proparites
     var news:AllNewsDataModel?
     var typeOfSectors = ""
     var typeFromhome = ""
+    var subID_fromGuideHome = 0
     var subNewsModel:[Dataa] = []
-//    var seeectoresMo:[sections] = []
     var seeectoresMo:[Section] = []
-
     private var currentpaga = 1
     var isFeatchingImage = false
-    var subID_fromGuideHome = 0
     private var isFeatchingData = false
-    @IBOutlet weak var searchBarView: UISearchBar!
     
-
-
-    
-    //viewDidLoad ---------------
+    //viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
@@ -45,27 +40,22 @@ class NewsVC: UIViewController {
         FatchDataforNewsHome()
         title = "الآخبار"
         SelectedBySector.semanticContentAttribute = .forceRightToLeft
-
-        
     }
     
-  
     
-    
-    // UI Configuration --------
+    //UI Configuration
     fileprivate func SetupUI() {
         SelectedBySector.delegate = self
         SelectedBySector.dataSource = self
         AllNews.delegate = self
         AllNews.dataSource = self
         AllNews.prefetchDataSource = self
-
         self.SelectedBySector.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         self.AllNews.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: "NewsCell")
         
     }
     
-    
+    //MARK:- Data of sectores at home
     func featchDataSelectors(){
         let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
         let sectorsUrl = "https://elkenany.com/api/news/news?type=farm&sort=&search="
@@ -87,9 +77,8 @@ class NewsVC: UIViewController {
         }
     }
     
-    //MARK:- Data of Companies ---------------------------
+    //MARK:- Data of all news at home screen
     func FatchDataforNewsHome(){
- 
         
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
@@ -174,7 +163,8 @@ class NewsVC: UIViewController {
         }
     }
     
-    
+    //MARK:- Data of all news from more vc
+
     
     func FatchDataforNewsHomeFromMore(){
  
@@ -218,40 +208,10 @@ class NewsVC: UIViewController {
         }
     }
     
-    
-    
-//    func FatchDataOfNewsSelectedBySectorHeader(){
-//        //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//
-//            let param = ["type": "\(self.typeOfSectors)"]
-//            let headers = ["app-id": "\(api_token ?? "")" ]
-//            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
-//            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
-//                if let error = error{
-//                    hud.dismiss()
-//                    print("============ error \(error)")
-//                }else {
-//                    hud.dismiss()
-//                    self.subNewsModel.removeAll()
-//                    let successData = success?.data?.data ?? []
-//                    self.subNewsModel.append(contentsOf: successData)
-//                    DispatchQueue.main.async {
-//                        self.AllNews.reloadData()
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
 
     
-    
-    
+    //MARK:- Data of all news searh bar
+
     func FatchSearchOfNews(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -284,10 +244,7 @@ class NewsVC: UIViewController {
     
     
     
-    
-    
-    
-    
+
     func ss(ss:UICollectionViewCell){
         ss.layer.cornerRadius = 15.0
         ss.layer.borderWidth = 0.0
@@ -299,15 +256,15 @@ class NewsVC: UIViewController {
         
     }
     
-    
+    //filter conf
     @IBAction func filterNewsVC(_ sender: Any) {
-        
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.RunFilterDeleget = self
         present(filtervc, animated: true, completion: nil)
         
     }
     
+    //show and hiddin
     @IBAction func showSearchView(_ sender: Any) {
         searchView.isHidden = false
         view1.isHidden = true
@@ -315,9 +272,8 @@ class NewsVC: UIViewController {
     }
     
     
-    /// noooooow
+    // filter conf fom shortcut
     @IBAction func filterHome(_ sender: Any) {
-        
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.RunFilterDeleget = self
         filtervc.presentKey = "keeey"
@@ -325,24 +281,21 @@ class NewsVC: UIViewController {
         
     }
     
-    
-    
-    
 }
 
+//MARK:- news vc collection view
 
 extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if collectionView == SelectedBySector {
-            
             return seeectoresMo.count
             
         }else{
-            
             return subNewsModel.count
-            
         }
     }
+    
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == SelectedBySector {
@@ -380,11 +333,6 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     
     
-    
-    
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == SelectedBySector {
@@ -402,9 +350,6 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 
             }
             FatchDataforNewsHomeee()
-
-            
-
             
         }else{
             /// to details view controller
@@ -412,7 +357,6 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             navigationController?.pushViewController(vc, animated: true)
              let newsID = news?.data?.data?[indexPath.item].id ?? 0
                 vc.newsIdFromHome = newsID
-
         }
     }
     
@@ -442,16 +386,12 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
         }
     }
-    
 }
 
 
 
 
 extension NewsVC:UICollectionViewDataSourcePrefetching {
-    
-   
-    
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         // Begin asynchronously fetching data for the requested index paths.
         for index in indexPaths {
@@ -461,11 +401,8 @@ extension NewsVC:UICollectionViewDataSourcePrefetching {
                 break
                 
             }
-            
         }
-
     }
-    
 }
 
 

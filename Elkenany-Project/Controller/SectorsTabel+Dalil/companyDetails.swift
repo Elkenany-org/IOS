@@ -101,6 +101,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 cell.companyName.text = companyDetailsModel?.data?.name ?? ""
                 cell.companyDesc.text = companyDetailsModel?.data?.shortDesc ?? ""
                 cell.RatingCompany.text = String(companyDetailsModel?.data?.rate ?? 0)
+                cell.com_rating.rating = companyDetailsModel?.data?.rate ?? 0 
                 let companyImage = companyDetailsModel?.data?.image
                 cell.selectionStyle = .none
                 
@@ -141,19 +142,20 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
             var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
             
             if isloggineIn {
+             
+                if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
+                    let comParameterID = companyDetailsModel?.data?.id ?? 0
+                    vc.CompanyID = comParameterID
+                    self.present(vc, animated: true, completion: nil)  }
+            }else{
+                print("helllllo ")
                 //show rating view to do rating
                 if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
 //                    vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true, completion: nil)
                 }
                 
-            }else{
-                print("helllllo ")
-              
-                if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
-                    let comParameterID = companyDetailsModel?.data?.id ?? 0
-                    vc.CompanyID = comParameterID
-                    self.present(vc, animated: true, completion: nil)  }
+               
             }
             
             

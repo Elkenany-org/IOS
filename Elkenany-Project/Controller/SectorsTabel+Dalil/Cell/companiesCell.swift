@@ -34,6 +34,7 @@ class companiesCell: UITableViewCell {
         companyLocation.text = data.address ?? ""
         let url = URL(string:data.image ?? "")
         companyImage.kf.indicatorType = .activity
+        rating.rating = data.rate ?? 0
         companyImage.kf.setImage(with: url)
     
     }

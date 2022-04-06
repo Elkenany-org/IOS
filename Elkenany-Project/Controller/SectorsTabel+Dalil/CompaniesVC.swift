@@ -57,7 +57,7 @@ class CompaniesVC: UIViewController {
         setTimer()
         setupSearchBar()
         LogosandBanners()
-        banersLogosConfig()
+//        banersLogosConfig()
     }
     
     
@@ -81,27 +81,27 @@ class CompaniesVC: UIViewController {
     
     
     //show and hide banners logos
-    func banersLogosConfig(){
-        if hideenKey == "kkk"{
-            containerStack.removeArrangedSubview(stackOne)
-            stackOne.clearsContextBeforeDrawing = true
-//            containerStack.clearsContextBeforeDrawing = true
-            
-//            entryView.isHidden = false
-//            stackOne.priority = .defaultLow
-//                     visibleConstraint.priority = .defaultHigh
-//            stackOne.contentHuggingPriority(for: .vertical)
-//            stackOne.clearsContextBeforeDrawing = true
-//            containerStack.removeArrangedSubview(stackOne)
-//            stackOne.contec
-            
-//            containerStack.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: 0)
-
-        }else{
-            containerStack.isHidden = false
-            stackOne.isHidden = true
-        }
-    }
+//    func banersLogosConfig(){
+//        if hideenKey == "kkk"{
+////            containerStack.removeArrangedSubview(stackOne)
+////            stackOne.clearsContextBeforeDrawing = true
+////            containerStack.clearsContextBeforeDrawing = true
+//
+////            entryView.isHidden = false
+////            stackOne.priority = .defaultLow
+////                     visibleConstraint.priority = .defaultHigh
+////            stackOne.contentHuggingPriority(for: .vertical)
+////            stackOne.clearsContextBeforeDrawing = true
+////            containerStack.removeArrangedSubview(stackOne)
+////            stackOne.contec
+//
+////            containerStack.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: 0)
+//
+//        }else{
+//            containerStack.isHidden = false
+//            stackOne.isHidden = true
+//        }
+//    }
     
     
     //MARK:- Timer of slider and page controller ?? 0 -1

@@ -10,10 +10,8 @@ import Kingfisher
 import Foundation
 import Cosmos
 
-class companyInfoCell: UITableViewCell, ReatingValue {
-    func reatingVal(value: Int) {
-        com_rating.rating = Double(value)
-    }
+class companyInfoCell: UITableViewCell {
+ 
     
     
     
@@ -29,8 +27,8 @@ class companyInfoCell: UITableViewCell, ReatingValue {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        vcc?.ReatingDelegete = self
-        FatchDatafromHome()
+//        vcc?.ReatingDelegete = self
+//        FatchDatafromHome()
     }
 
     

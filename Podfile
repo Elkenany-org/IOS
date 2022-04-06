@@ -22,6 +22,9 @@ pod 'SDWebImage'
 pod 'IQKeyboardManager' 
 pod 'Cosmos', '~> 23.0'
 pod 'Charts'
-pod 'ProgressHUD' 
+pod 'ProgressHUD'
+pod 'SkeletonView'
+
+ 
 
 end

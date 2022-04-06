@@ -24,7 +24,7 @@ class RatingCompanyVC: UIViewController {
     var rat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        handelTap()
+//        handelTap()
         // Do any additional setup after loading the view.
         handeltheRatingValue()
         RatingView.settings.fillMode = .precise
@@ -73,12 +73,13 @@ class RatingCompanyVC: UIViewController {
         
         
         if isloggineIn {
+         
+            print("helllllo ")
+            FatchDatafromHome()
+        }else{
             if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
                 self.present(vc, animated: true, completion: nil)
             }
-        }else{
-            print("helllllo ")
-            FatchDatafromHome()
 
            }
         
@@ -94,9 +95,10 @@ class RatingCompanyVC: UIViewController {
       hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/guide/rating-company"
             let param = ["company_id": "\(self.CompanyID)", "reat": "\(self.rat)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyGuide = "https://elkenany.com/api/guide/rating-company"
+
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .post) { (success:RatingModel?, filier:RatingModel?, error) in
                 if let error = error{
                   hud.dismiss()
@@ -104,6 +106,7 @@ class RatingCompanyVC: UIViewController {
                 }else {
                   hud.dismiss()
                         print("Rating Done")
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }

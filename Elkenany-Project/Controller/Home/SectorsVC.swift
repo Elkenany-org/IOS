@@ -11,6 +11,8 @@ import JGProgressHUD
 
 class SectorsVC: UIViewController {
     
+    //outlets
+    @IBOutlet weak var sectorsCV: UICollectionView!
     var homeDataSectorsModel:HomeSectorsDataModel?
     var homeGuide:GuideCompaniesDataModel?
     var sss:HomeData?
@@ -19,19 +21,14 @@ class SectorsVC: UIViewController {
     let images:[UIImage] = [ #imageLiteral(resourceName: "1-5") , #imageLiteral(resourceName: "1-4")  , #imageLiteral(resourceName: "1-1") , #imageLiteral(resourceName: "1-3") , #imageLiteral(resourceName: "1-2") ]
     var typeForRecomendition = ""
     
-    @IBOutlet weak var sectorsCV: UICollectionView!
+    
+    //viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        //        featchData()
-        print("zooooz")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         GetHomeDataFromServer()
     }
+    
     
     
     //MARK:- featch Data from server
@@ -39,12 +36,10 @@ class SectorsVC: UIViewController {
     func setupUI() {
         sectorsCV.dataSource = self
         sectorsCV.delegate = self
-        
+        sectorsCV.collectionViewLayout = creatCompositionalLayout()
         self.sectorsCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
         self.sectorsCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
-        
         sectorsCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
-        sectorsCV.collectionViewLayout = creatCompositionalLayout()
     }
     
     
@@ -58,6 +53,18 @@ class SectorsVC: UIViewController {
         ss.layer.masksToBounds = false
         
     }
+    
+    func Sectore(ss:UICollectionViewCell){
+        ss.layer.cornerRadius = 30
+        ss.layer.borderWidth = 0.0
+        ss.layer.shadowColor = UIColor.black.cgColor
+        ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        ss.layer.shadowRadius = 5.0
+        ss.layer.shadowOpacity = 0.4
+        ss.layer.masksToBounds = false
+        
+    }
+    
     
     
     //composition layout data
@@ -95,12 +102,12 @@ class SectorsVC: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.8))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.7))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.33))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.32))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -108,7 +115,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -127,7 +134,7 @@ class SectorsVC: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.45))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.46))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -135,7 +142,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -160,7 +167,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -220,13 +227,16 @@ class SectorsVC: UIViewController {
 //MARK:- featch Data from server
 
 extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    
     //section number
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 6
     }
     
+    
     //number of cells on collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
         //collection count
         switch section {
         case 0:
@@ -247,7 +257,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
         case 5:
             return homeDataSectorsModel?.data?.news?.count ?? 0
-
+            
             
         default:
             return homeDataSectorsModel?.data?.sectors?.count ?? 0
@@ -269,7 +279,9 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
                 sectoreCell.sectorImgCell.image = images[indexPath.item]
                 sectoreCell.sectorImgCell.contentMode = .scaleAspectFit
-                ss(ss: sectoreCell)
+                Sectore(ss: sectoreCell)
+                //                sectoreCell.layer.cornerRadius = 20.0
+                
                 return sectoreCell }
             
         case 1 :
@@ -313,24 +325,24 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 return guideCell }
             
         case 5 :
-//            if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
-//                storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
-//                storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
-//                let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
-//                storeCell.sectorImgCell.contentMode = .scaleAspectFill
-//                storeCell.configureCell(image: successMembersImage)
-//                ss(ss: storeCell)
-//                return storeCell }
+            //            if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
+            //                storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
+            //                storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+            //                let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
+            //                storeCell.sectorImgCell.contentMode = .scaleAspectFill
+            //                storeCell.configureCell(image: successMembersImage)
+            //                ss(ss: storeCell)
+            //                return storeCell }
             if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
                 newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
                 let successMembersImage = homeDataSectorsModel?.data?.news?[indexPath.item].image ?? ""
                 newsCell.sectorImgCell.contentMode = .scaleToFill
-
+                
                 newsCell.configureCell(image: successMembersImage)
                 ss(ss: newsCell)
                 return newsCell }
-        print("esvvvs")
+            print("esvvvs")
             
             
         default:
@@ -344,9 +356,9 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //MARK:- didSelecte to Show the screen related
     
-     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        var url : NSURL?
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        var url : NSURL?
+        
         
         switch indexPath.section {
         
@@ -358,7 +370,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
             
             UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
-
+            
             
             SectorTables.sectorFtomHome = sectorTypeFrom
             let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
@@ -439,11 +451,11 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         case 2 :
             if let url = NSURL(string: "\(homeDataSectorsModel?.data?.logos?[indexPath.item].link ?? "")") {
                 UIApplication.shared.openURL(url as URL)
-              }
-//            return print("hello")
-
-            
-            
+            }
+        //            return print("hello")
+        
+        
+        
         case 3 :
             let stokevc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
             let id_stoke = homeDataSectorsModel?.data?.stock?[indexPath.item].id ?? 0
@@ -467,18 +479,22 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             
         case 5 :
-            return print("hello")
-            
-            
-            
-            
-        case 6 :
+            //            return print("hello")
             
             let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
             newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
             newsvc.FatchDataOfNewsDetailsFromHome()
             navigationController?.pushViewController(newsvc, animated: true)
             
+            
+        case 6 :
+            return print("hello")
+            
+        //            let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
+        //            newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
+        //            newsvc.FatchDataOfNewsDetailsFromHome()
+        //            navigationController?.pushViewController(newsvc, animated: true)
+        
         default:
             print("Hello world")
         }
@@ -497,53 +513,14 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
-//        view.title = arr[indexPath.section]
+        //        view.title = arr[indexPath.section]
         view.btnOulet.setTitle(arr[indexPath.section], for: .normal)
         
         return view
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-    //        UIView.animate(withDuration: 0.1) {
-    //             if let cell = self.sectorsCV.cellForItem(at: indexPath) as? SectorsCell {
-    //                cell.transform = .init(scaleX: 1.1, y: 1.1)
-    //             }
-    //         }
-    //
-    //
-    //    }
     
     
-    //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        let url : NSURL?
-    //
-    //        switch indexPath.section{
-    //        case 0:
-    //            switch indexPath.row{
-    //            case 0:
-    //                url = NSURL(string: "http://section0.row0.com")
-    //            case 1:
-    //                url = NSURL(string: "http://section0.row1.com")
-    //            default:
-    //                return;
-    //            }
-    //
-    //        case 1:
-    //            switch indexPath.row{
-    //            case 0:
-    //                url = NSURL(string: "http://section1.row0.com")
-    //            case 1:
-    //                url = NSURL(string: "http://section1.row1.com")
-    //            default:
-    //                return;
-    //            }
-    //        default:
-    //            return;
-    //        }
-    //
-    //        if url != nil{
-    //            UIApplication.shared.openURL(url! as URL)
-    //        }
-    //    }
+    
     
 }
