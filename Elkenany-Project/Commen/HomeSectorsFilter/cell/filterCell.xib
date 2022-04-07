@@ -27,21 +27,21 @@
                         <rect key="frame" x="0.0" y="5" width="435" height="123"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1-4" translatesAutoresizingMaskIntoConstraints="NO" id="jUq-cl-gRH">
-                                <rect key="frame" x="360" y="31.5" width="60" height="60"/>
+                                <rect key="frame" x="375" y="39" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="M1r-xc-R3p"/>
-                                    <constraint firstAttribute="width" constant="60" id="qJW-5i-sa6"/>
+                                    <constraint firstAttribute="height" constant="45" id="M1r-xc-R3p"/>
+                                    <constraint firstAttribute="width" constant="45" id="qJW-5i-sa6"/>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختر القطاع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9i-El-zFf">
-                                <rect key="frame" x="264.5" y="50" width="85.5" height="23.5"/>
+                                <rect key="frame" x="260.5" y="43" width="104.5" height="37.5"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="20"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzp-3V-zOH">
-                                <rect key="frame" x="20" y="92.5" width="395" height="2"/>
+                                <rect key="frame" x="20" y="85" width="395" height="2"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="rxE-8m-i22"/>
