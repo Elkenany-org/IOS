@@ -59,6 +59,7 @@ class NewsDetailsVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
             let param = ["id": "\(self.newsIdFromHome)"]
+            print(param)
             let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{

@@ -12,31 +12,36 @@ import JGProgressHUD
 class MoreVC: UIViewController {
     
     @IBOutlet weak var looogOutIn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var MoreCollectionView: UICollectionView!
     var codata:[MoreDataa] = MoreDataa.moredata
     var logoutmm:LogoutModel?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         title = "القائمة"
         
+        /// reverse the functions bc this a check only ----
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
-        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-        if isloggineIn {
-            print("helllllo ")
-            looogOutIn.setTitle("تسجيل الخروج", for: .normal)
-
-        }else{
-            if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
-                vc.modalPresentationStyle = .fullScreen
-                looogOutIn.setTitle( "تسجيل الدخول", for: .normal)
-
-                self.present(vc, animated: true, completion: nil)
+        if isloggineIn == true{
+         print("rtyuio")
                 
-            }
-           }
+            
+        }else{
+            looogOutIn.isHidden = true
+            loginBtn.isHidden = false
+        }
+    
+        
     }
+        
+        
+    
+    
     
     
     func setupUI() {
@@ -44,8 +49,6 @@ class MoreVC: UIViewController {
         MoreCollectionView.delegate = self
         self.MoreCollectionView.register(UINib(nibName: "MoreCV", bundle: nil), forCellWithReuseIdentifier: "MoreCV")
         MoreCollectionView.register(UINib(nibName: "headerLine", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "headerLine")
-        
-        
     }
     
     
@@ -57,7 +60,7 @@ class MoreVC: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let headers:HTTPHeaders = ["Authorization": "Bearer \(api_token ?? "")" ]
+            //            let headers:HTTPHeaders = ["Authorization": "Bearer \(api_token ?? "")" ]
             let headerrrs = ["Authorization": "Bearer \(api_token ?? "")"]
             let logoutURL = "https://elkenany.com/api/logout"
             APIServiceForQueryParameter.shared.fetchData(url: logoutURL, parameters: nil, headers: headerrrs, method: .post) { (logSuccess:LogoutModel?, logFilier:LogoutModel?, error) in
@@ -85,9 +88,21 @@ class MoreVC: UIViewController {
     
     @IBAction func logOutBTN(_ sender: Any) {
         logoutService()
-      
+    }
+    
+    
+    
+    @IBAction func toLogin(_ sender: Any) {
+        
+        if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+        }
+
         
     }
+    
     
     
 }
@@ -186,58 +201,58 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
         case 5:
             if let url = NSURL(string: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820") {
                 UIApplication.shared.openURL(url as URL)
-              }
+            }
             
         case 6:
             // Setting description
-                let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
-
-                // Setting url
-                let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820")!
-                
-                // If you want to use an image
-                let image : UIImage = UIImage(named: "AppIcon")!
-                let activityViewController : UIActivityViewController = UIActivityViewController(
-                    activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
-                
-                // This lines is for the popover you need to show in iPad
-//                activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
-                
-                // This line remove the arrow of the popover to show in iPad
-                activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
-                activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
-                
-                // Pre-configuring activity items
-                activityViewController.activityItemsConfiguration = [
+            let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
+            
+            // Setting url
+            let secondActivityItem : NSURL = NSURL(string: "https://apps.apple.com/eg/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820")!
+            
+            // If you want to use an image
+            let image : UIImage = UIImage(named: "AppIcon")!
+            let activityViewController : UIActivityViewController = UIActivityViewController(
+                activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
+            
+            // This lines is for the popover you need to show in iPad
+            //                activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+            
+            // This line remove the arrow of the popover to show in iPad
+            activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+            activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+            
+            // Pre-configuring activity items
+            activityViewController.activityItemsConfiguration = [
                 UIActivity.ActivityType.message
-                ] as? UIActivityItemsConfigurationReading
+            ] as? UIActivityItemsConfigurationReading
+            
+            // Anything you want to exclude
+            activityViewController.excludedActivityTypes = [
+                UIActivity.ActivityType.postToWeibo,
+                UIActivity.ActivityType.print,
+                UIActivity.ActivityType.assignToContact,
+                UIActivity.ActivityType.saveToCameraRoll,
+                UIActivity.ActivityType.addToReadingList,
+                UIActivity.ActivityType.postToFlickr,
+                UIActivity.ActivityType.postToVimeo,
+                UIActivity.ActivityType.postToTencentWeibo,
+                UIActivity.ActivityType.postToFacebook
                 
-                // Anything you want to exclude
-                activityViewController.excludedActivityTypes = [
-                    UIActivity.ActivityType.postToWeibo,
-                    UIActivity.ActivityType.print,
-                    UIActivity.ActivityType.assignToContact,
-                    UIActivity.ActivityType.saveToCameraRoll,
-                    UIActivity.ActivityType.addToReadingList,
-                    UIActivity.ActivityType.postToFlickr,
-                    UIActivity.ActivityType.postToVimeo,
-                    UIActivity.ActivityType.postToTencentWeibo,
-                    UIActivity.ActivityType.postToFacebook
-                    
-                ]
-                
-                activityViewController.isModalInPresentation = true
-                self.present(activityViewController, animated: true, completion: nil)
+            ]
+            
+            activityViewController.isModalInPresentation = true
+            self.present(activityViewController, animated: true, completion: nil)
             
         case 7:
-//            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
-//            navigationController?.pushViewController(vc, animated: true)
+            //            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
+            //            navigationController?.pushViewController(vc, animated: true)
             print("about elkenany")
             
         case 8:
-//            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
-//            navigationController?.pushViewController(vc, animated: true)
-        print("jjjjjjjjjjjjj")
+            //            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
+            //            navigationController?.pushViewController(vc, animated: true)
+            print("jjjjjjjjjjjjj")
             
         default:
             print("hamada")

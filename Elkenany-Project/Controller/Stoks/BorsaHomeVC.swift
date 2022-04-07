@@ -380,7 +380,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //selected from sectore at header
         if collectionView == SelectedSector {
-            let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
+            let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
             self.sectorTypeFromHeader = typeOfSector
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
@@ -392,6 +392,9 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             FatchBorsaBySector()
         }
         else if collectionView == bannersCV {
+            if let url = NSURL(string: "\(bannersSubModel[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
             
         }
         

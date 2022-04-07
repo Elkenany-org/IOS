@@ -39,7 +39,7 @@ class NewsVC: UIViewController {
         featchDataSelectors()
         FatchDataforNewsHome()
         title = "الآخبار"
-        SelectedBySector.semanticContentAttribute = .forceRightToLeft
+//        SelectedBySector.semanticContentAttribute = .forceRightToLeft
     }
     
     
@@ -67,7 +67,7 @@ class NewsVC: UIViewController {
                 print(error.localizedDescription)
             }else{
                 self.news = NewsSuccess
-                let succeeeesss = NewsSuccess?.data?.sections ?? []
+                let succeeeesss = NewsSuccess?.data?.sections?.reversed() ?? []
                 self.seeectoresMo.append(contentsOf: succeeeesss)
                 print(NewsSuccess?.data?.sections ?? "")
                 DispatchQueue.main.async {
@@ -337,7 +337,7 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SelectedBySector {
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
-            let typeOfSectorr = news?.data?.sections?[indexPath.row].type ?? ""
+            let typeOfSectorr = seeectoresMo[indexPath.row].type ?? ""
             UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
 
             self.typeFromhome = typeOfSectorr
