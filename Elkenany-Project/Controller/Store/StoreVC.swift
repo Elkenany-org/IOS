@@ -95,7 +95,7 @@ class StoreVC: UIViewController {
     
     
     func featchDataSelectors(){
-        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN")!)
+        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
         let param = ["type": "poultry"]
 
         let sectorsUrl = "https://elkenany.com/api/store/ads-store?type=&sort=&search"

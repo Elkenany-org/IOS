@@ -26,7 +26,8 @@ class logosCell: UICollectionViewCell {
         
         let url = URL(string: image)
         logooImage.kf.indicatorType = .activity
-        logooImage.kf.setImage(with: url)
+    
+        logooImage.kf.setImage(with: url , placeholder: UIImage(named: "photo_2021-11-21 15.48.15"))
     }
     
 

@@ -354,8 +354,8 @@ extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
 extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == logosCV{ return mainDatalLogos.count}
-        else if collectionView == bannarsCV{ return mainDataModelBanners.count}
+        if collectionView == logosCV{ return mainDatalLogos.count ?? 1}
+        else if collectionView == bannarsCV{ return mainDataModelBanners.count ?? 1}
         else{ return 1 }
     }
     
