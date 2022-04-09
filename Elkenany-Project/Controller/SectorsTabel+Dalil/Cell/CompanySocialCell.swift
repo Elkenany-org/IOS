@@ -207,7 +207,13 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         case 0:
             ///for mobile
 //            callNumber(number: socialData?.data?.mobiles?[indexPath.row].mobile ?? "")
-            print("heelo")
+            print("heeloooooooooo")
+            
+//            for i in socialData?.data?.mobiles?[indexPath.row].mobile ?? "" {
+//                print("0001110000100000100+++++\(i)")
+////                            callNumber(number: i)
+//
+//            }
 
         case 1:
             ///fooooor maillll
@@ -245,6 +251,15 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
 //
 //            }
 //
+//            for i in socialData?.data?.phones ?? [] {
+//                
+//                for xx in i.phone ?? ""{
+////                 callNumber(number: xx ?? "")
+//
+//                }
+//                
+//                
+//            }
             
             
             

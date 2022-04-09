@@ -16,8 +16,8 @@ class SectorDetailsTable: UIViewController {
     var sectorFtomHome = ""
     //for navigation title 
     var titleeeee = ""
-//        var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
-    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
+        var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
+//    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
     @IBOutlet weak var SectorDetailsTabel: UITableView!
     
     
@@ -79,16 +79,20 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
 //            let GuideVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
 ////            GuideVC.sectoreTypeFromHome = sectorFtomHome
 //            navigationController?.pushViewController(GuideVC, animated: true)
-        print(" for confirmation ......")
-            let newsVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
-//            newsVC.typeFromhome = sectorFtomHome
-            navigationController?.pushViewController(newsVC, animated: true)
-            
-        case 3:
+//        print(" for confirmation ......")
+//            let newsVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
+////            newsVC.typeFromhome = sectorFtomHome
+//            navigationController?.pushViewController(newsVC, animated: true)
             let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
             newsVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(newsVC, animated: true)
             
+        case 3:
+//            let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
+//            newsVC.typeFromhome = sectorFtomHome
+//            navigationController?.pushViewController(newsVC, animated: true)
+            print("hello world")
+
         default:
             print("hello world")
         }

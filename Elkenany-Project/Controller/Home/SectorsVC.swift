@@ -483,9 +483,15 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
             newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
+            newsvc.keyFromHome = "keyhome"
+
             newsvc.FatchDataOfNewsDetailsFromHome()
             navigationController?.pushViewController(newsvc, animated: true)
             
+//            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath) as! collectioncell
+////            cell1.FatchDataOfNewsDetailsFromHomeCell()
+//            cell1.FatchDataOfNews()
+
             
         case 6 :
             return print("hello")

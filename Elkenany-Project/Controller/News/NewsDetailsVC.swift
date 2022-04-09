@@ -20,7 +20,7 @@ class NewsDetailsVC: UIViewController {
     //recommend
     var news_id_from_home = 0
     var news_id = 0
-    
+    var keyFromHome = ""
     
     
     
@@ -39,8 +39,8 @@ class NewsDetailsVC: UIViewController {
     fileprivate func SetUpUI() {
         NewsDetailsCV.delegate = self
         NewsDetailsCV.dataSource = self
-        newTable.delegate = self
-        newTable.dataSource = self
+//        newTable.delegate = self
+//        newTable.dataSource = self
         newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellReuseIdentifier: "detailOne")
         newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellReuseIdentifier: "detailTwo")
         self.NewsDetailsCV.register(UINib(nibName: "collectioncell", bundle: nil), forCellWithReuseIdentifier: "collectioncell")
@@ -101,6 +101,8 @@ class NewsDetailsVC: UIViewController {
                     self.newsDetails = success
                     DispatchQueue.main.async {
                         self.NewsDetailsCV.reloadData()
+                        
+                        
                     }
                 }
             }
@@ -183,18 +185,29 @@ extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0{
             let NewsDetailsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsDetailsCell", for: indexPath) as! newsDetailsCell
+            
             NewsDetailsCell.newsTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
             NewsDetailsCell.newsDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
             NewsDetailsCell.newsDescription.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
             if let imagee = newsDetails?.data?.image {
                 NewsDetailsCell.configureCell(image: imagee)
             }
+
             return NewsDetailsCell
             
         } else {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath) as! collectioncell
-            cell1.id_param = newsIdFromHome
-            cell1.FatchDataOfNews()
+        
+            if keyFromHome == "keyhome"{
+                cell1.id_param = news_id_from_home
+                cell1.FatchDataOfNews()
+                
+            }else{
+                cell1.id_param = newsIdFromHome
+                cell1.FatchDataOfNews()
+                
+            }
+
             return cell1
         }
         
@@ -205,39 +218,15 @@ extension NewsDetailsVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0{
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+            return CGSize(width: collectionView.frame.width, height: collectionView.contentSize.height)
         }else{
             return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+
         }
     }
     
     
 
 }
-
-
-//MARK:- Taableeeeeeeeeeee View
-extension NewsDetailsVC: UITableViewDelegate , UITableViewDataSource, UIWebViewDelegate  {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailOne", for: indexPath) as! detailOne
-            NewsDetailsCell.descriptionDetail.loadHTMLString(newsDetails?.data?.desc ?? "test", baseURL: nil)
-            NewsDetailsCell.detailDate.text = newsDetails?.data?.createdAt ?? "جاري التحميل"
-            NewsDetailsCell.detailTitle.text = newsDetails?.data?.title ?? "جاري التحميل"
-            return NewsDetailsCell
-
-        } else {
-            let NewsDetailsCell = tableView.dequeueReusableCell(withIdentifier: "detailTwo", for: indexPath) as! detailTwo
-            return NewsDetailsCell
-        }
-    }
-}
-
 
 

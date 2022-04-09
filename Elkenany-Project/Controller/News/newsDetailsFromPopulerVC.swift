@@ -22,13 +22,12 @@ class newsDetailsFromPopulerVC: UIViewController {
         self.DetailsCollectionFromPopuler.register(UINib(nibName: "collectioncell", bundle: nil), forCellWithReuseIdentifier: "collectioncell")
         self.DetailsCollectionFromPopuler.register(UINib(nibName: "newsDetailsCell", bundle: nil), forCellWithReuseIdentifier: "newsDetailsCell")
         title = "تفاصيل الخبر"
+        FatchDataOfNewsDetailsFromPopuler()
 
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        FatchDataOfNewsDetailsFromPopuler()
-    }
+   
+    
     
 
     func FatchDataOfNewsDetailsFromPopuler(){
@@ -94,7 +93,8 @@ extension newsDetailsFromPopulerVC:UICollectionViewDelegate, UICollectionViewDat
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath) as! collectioncell
 //            cell1.id_param = newsIdFromHome
-            cell1.FatchDataOfNews()
+            cell1.fromMore = id_MoreNwes
+            cell1.FatchDataOfNewsMore()
             return cell1
         }
     }

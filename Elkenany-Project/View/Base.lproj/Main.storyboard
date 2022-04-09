@@ -3149,11 +3149,11 @@
         <scene sceneID="CgJ-Mv-Odw">
             <objects>
                 <viewController storyboardIdentifier="ServiceViewController" id="d9M-wR-2Vd" customClass="ServiceViewController" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="U12-zd-9Lq">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="U12-zd-9Lq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="565"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-aM-PTE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-aM-PTE">
                                 <rect key="frame" x="0.0" y="44" width="414" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -6104,7 +6104,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyb-TQ-NIB">
-                                        <rect key="frame" x="316" y="20" width="68" height="32"/>
+                                        <rect key="frame" x="334" y="20" width="50" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -6164,7 +6164,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاصناف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Ii-BQZ">
-                                        <rect key="frame" x="320.5" y="20" width="63.5" height="32"/>
+                                        <rect key="frame" x="331" y="20" width="53" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7048,11 +7048,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lq-yf-OYm">
-                                <rect key="frame" x="15" y="262" width="384" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5lq-yf-OYm">
+                                <rect key="frame" x="15" y="252" width="384" height="60"/>
                                 <subviews>
-                                    <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4RX-Uw-Q69">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="0.0"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4RX-Uw-Q69">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GZG-Uk-AiL">
                                             <size key="itemSize" width="128" height="128"/>
@@ -7062,8 +7062,10 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yd3-Pm-xYx">
+                                                <rect key="frame" x="0.0" y="-34" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="tgB-XD-Doh">
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tgB-XD-Doh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
@@ -7071,7 +7073,7 @@
                                     </collectionView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="WxA-hE-QAb"/>
+                                    <constraint firstAttribute="height" constant="60" id="WxA-hE-QAb"/>
                                 </constraints>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9j-C2-o0a">
@@ -7099,7 +7101,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5WY-ti-Hhu">
                                 <rect key="frame" x="15" y="114" width="384" height="120"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-yH-iAJ">
+                                    <collectionView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Leq-yH-iAJ">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="120"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -7199,7 +7201,7 @@
                         <outlet property="SearchView" destination="x9j-C2-o0a" id="xNO-KG-uEC"/>
                         <outlet property="bannarsCV" destination="Leq-yH-iAJ" id="mcz-sK-rfO"/>
                         <outlet property="comapniesTView" destination="DXI-L5-2Dk" id="e2v-oz-FWB"/>
-                        <outlet property="logosCV" destination="4RX-Uw-Q69" id="3cd-4U-p3f"/>
+                        <outlet property="logosCV" destination="4RX-Uw-Q69" id="fSI-ES-cAv"/>
                         <outlet property="searchBarView" destination="Zj6-lX-ZaW" id="UeR-3M-abK"/>
                         <outlet property="view1" destination="OA4-zd-bJp" id="WgJ-Qq-4U7"/>
                         <outlet property="view2" destination="e8q-Jv-Hb4" id="Jrd-rA-1ra"/>

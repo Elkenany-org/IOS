@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,23 +17,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="182" height="141"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1-5" translatesAutoresizingMaskIntoConstraints="NO" id="n0E-Wf-NcR">
-                        <rect key="frame" x="0.0" y="0.0" width="182" height="141"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeX-jI-JbD">
+                        <rect key="frame" x="10" y="10" width="162" height="121"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no logos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YkF-4W-FW7">
+                                <rect key="frame" x="62" y="55" width="38" height="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="YkF-4W-FW7" firstAttribute="centerX" secondItem="zeX-jI-JbD" secondAttribute="centerX" id="f0y-e9-imf"/>
+                            <constraint firstItem="YkF-4W-FW7" firstAttribute="centerY" secondItem="zeX-jI-JbD" secondAttribute="centerY" id="fcg-pV-hsO"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="n0E-Wf-NcR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1WW-Iq-cu6"/>
-                <constraint firstItem="n0E-Wf-NcR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SGd-v8-Yvm"/>
-                <constraint firstAttribute="trailing" secondItem="n0E-Wf-NcR" secondAttribute="trailing" id="n1o-J3-API"/>
-                <constraint firstAttribute="bottom" secondItem="n0E-Wf-NcR" secondAttribute="bottom" id="nXI-N3-6mj"/>
+                <constraint firstItem="zeX-jI-JbD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="53S-aF-Iax"/>
+                <constraint firstAttribute="trailing" secondItem="zeX-jI-JbD" secondAttribute="trailing" constant="10" id="UeT-ya-ZUN"/>
+                <constraint firstAttribute="bottom" secondItem="zeX-jI-JbD" secondAttribute="bottom" constant="10" id="VmT-Gb-ro0"/>
+                <constraint firstItem="zeX-jI-JbD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="yHH-4f-NPP"/>
             </constraints>
             <size key="customSize" width="182" height="141"/>
             <point key="canvasLocation" x="130.43478260869566" y="116.85267857142857"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="1-5" width="300" height="300"/>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

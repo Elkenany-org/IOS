@@ -39,7 +39,6 @@ class NewsVC: UIViewController {
         featchDataSelectors()
         FatchDataforNewsHome()
         title = "الآخبار"
-//        SelectedBySector.semanticContentAttribute = .forceRightToLeft
     }
     
     
@@ -355,8 +354,9 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             /// to details view controller
             let vc = storyboard?.instantiateViewController(identifier: "NewsDetailsVC") as! NewsDetailsVC
             navigationController?.pushViewController(vc, animated: true)
-             let newsID = news?.data?.data?[indexPath.item].id ?? 0
+             let newsID = subNewsModel[indexPath.item].id ?? 0
                 vc.newsIdFromHome = newsID
+            
         }
     }
     

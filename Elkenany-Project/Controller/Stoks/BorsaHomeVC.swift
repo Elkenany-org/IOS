@@ -254,7 +254,7 @@ class BorsaHomeVC: UIViewController  {
     @IBAction func mainStastices(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "statisticsInsideMain"))! as statisticsInsideMain
         vc.stoType = Sector
-//        vc.stoType = sectorTypeFromHeader
+        //        vc.stoType = sectorTypeFromHeader
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -311,8 +311,8 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             switch section {
             case 0: return BorsaSubModel.count
             case 1: return fodderSubModel.count
-            default: return 20 }}
-        else{ return 10 }
+            default: return 1 }}
+        else{ return 1 }
     }
     
     
@@ -331,7 +331,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             return cell
         }
         
-    
+        
         else if collectionView == bannersCV {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
             let imageSlider = bannersSubModel[indexPath.item].image ?? ""
@@ -408,7 +408,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         //selected from cells
         else if collectionView == BorsaCV{
             if indexPath.section == 0{
-
+                
                 if let vc = (storyboard?.instantiateViewController(identifier: "BorsaDetails")) as? BorsaDetails{
                     let id = BorsaSubModel[indexPath.item].id ?? 0
                     let type1 = BorsaSubModel[indexPath.item].type ?? ""
@@ -426,21 +426,21 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             
             else if indexPath.section == 1{
                 let vc = (storyboard?.instantiateViewController(identifier: "FodderBorsa"))! as FodderBorsa
-//                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
-//                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
+                //                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
+                //                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
                 let FodderType = fodderSubModel[indexPath.item].type ?? ""
                 UserDefaults.standard.set(FodderType, forKey: "she")
-
+                
                 let FodderID = fodderSubModel[indexPath.item].id ?? 0
                 UserDefaults.standard.set(FodderID, forKey: "he")
-
+                
                 let fooderTit = fodderSubModel[indexPath.item].name ?? ""
                 UserDefaults.standard.set(fooderTit, forKey: "BORSA_TITLEEEE")
-
-//                vc.fodderTypeParamter = FodderType
+                
+                //                vc.fodderTypeParamter = FodderType
                 vc.fodderID = FodderID
                 vc.title = fooderTit
-
+                
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -523,7 +523,7 @@ extension BorsaHomeVC : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
             cBtn.setTitle("الغاء", for: .normal)
-//            featchBorsaSubSections()
+            //            featchBorsaSubSections()
             searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
             
         }

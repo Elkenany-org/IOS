@@ -70,6 +70,8 @@ class CompaniesVC: UIViewController {
         bannarsCV.delegate = self
         bannarsCV.dataSource = self
         logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
+//        logosCV.register(UINib(nibName: "logosTest", bundle: nil), forCellWithReuseIdentifier: "logosTest")
+
         self.bannarsCV.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
         comapniesTView.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
         comapniesTView.prefetchDataSource = self
@@ -354,8 +356,8 @@ extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
 extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == logosCV{ return mainDatalLogos.count ?? 1}
-        else if collectionView == bannarsCV{ return mainDataModelBanners.count ?? 1}
+        if collectionView == logosCV{ return mainDatalLogos.count}
+        else if collectionView == bannarsCV{ return mainDataModelBanners.count }
         else{ return 1 }
     }
     
@@ -364,13 +366,16 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == logosCV{
-            
             if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
             let imageeee = mainDatalLogos[indexPath.item].image ?? ""
             Logoscell.configureImage(image: imageeee)
             Logoscell.logooImage.contentMode = .scaleAspectFill
             return Logoscell
-            }}
+            }
+            
+            
+            
+         }
         
         
         else if collectionView == bannarsCV{
@@ -444,6 +449,7 @@ extension CompaniesVC : UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         SearchView.isHidden = true
+        searchBar.text = ""
         view1.isHidden = false
         view2.isHidden = false
         mainDataModel.removeAll()
