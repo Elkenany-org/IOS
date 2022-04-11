@@ -15,7 +15,7 @@ struct AdsStoreDataModel: Codable {
 
 // MARK: - DataClass
 struct StorDetails: Codable {
-    var sectors: [Sector]?
+    var sectors: [SectorsSelected]?
     var banners, logos: [String]?
     var sort, data: [storeData]?
     var currentPage, lastPage: Int?

@@ -3,46 +3,51 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoreCell" id="gTV-IL-0wX" customClass="StoreCell" customModule="Elkenany_Project" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="340" height="366"/>
+            <rect key="frame" x="0.0" y="0.0" width="328" height="304"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="340" height="366"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="304"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3C-SS-6le">
-                        <rect key="frame" x="10" y="10" width="320" height="346"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3C-SS-6le">
+                        <rect key="frame" x="10" y="10" width="308" height="284"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="ReM-9f-xJw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="173"/>
+                                <rect key="frame" x="0.0" y="0.0" width="308" height="142"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بط مسكوفي عالي الجوة  فرز اول " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRW-XO-pcK">
-                                <rect key="frame" x="36.5" y="188" width="247" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="44" y="157" width="220.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.1960784314" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCY-tS-6Bj">
-                                <rect key="frame" x="148" y="219.5" width="24" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="143.5" y="186.5" width="21.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-5-2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-nL-Ipk">
-                                <rect key="frame" x="214" y="249" width="86" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="228.5" y="211" width="59.5" height="16"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="13"/>
+                                <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyc-cU-lQu">
-                                <rect key="frame" x="20" y="279.5" width="100" height="40"/>
+                                <rect key="frame" x="20" y="229.5" width="100" height="40"/>
                                 <color key="backgroundColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Htf-FK-Qkj"/>
@@ -50,41 +55,50 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="اعرف المزيد"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-Bk-GDC">
-                                <rect key="frame" x="140" y="279.5" width="160" height="40"/>
+                                <rect key="frame" x="135" y="237" width="158" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="شارع الجمهورية المنصورة مصر الجديدة برج الافاق" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpy-9y-OCs">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5q6-sN-mVo">
-                                        <rect key="frame" x="120" y="0.5" width="40" height="39"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="5q6-sN-mVo">
+                                        <rect key="frame" x="133" y="0.0" width="25" height="25"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="WUX-m4-gw4"/>
-                                            <constraint firstAttribute="width" constant="40" id="hJQ-AI-Avl"/>
+                                            <constraint firstAttribute="height" constant="25" id="WUX-m4-gw4"/>
+                                            <constraint firstAttribute="width" constant="25" id="hJQ-AI-Avl"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="kpy-9y-OCs" firstAttribute="leading" secondItem="Jdv-Bk-GDC" secondAttribute="leading" id="Npk-4T-fZz"/>
+                                    <constraint firstItem="5q6-sN-mVo" firstAttribute="leading" secondItem="kpy-9y-OCs" secondAttribute="trailing" constant="2" id="RDO-b4-9aT"/>
+                                </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fyc-cU-lQu" firstAttribute="leading" secondItem="z3C-SS-6le" secondAttribute="leading" constant="20" id="2rJ-2j-N1i"/>
                             <constraint firstAttribute="trailing" secondItem="ReM-9f-xJw" secondAttribute="trailing" id="4dM-Yg-wHo"/>
-                            <constraint firstItem="Jdv-Bk-GDC" firstAttribute="leading" secondItem="fyc-cU-lQu" secondAttribute="trailing" constant="20" id="6Y1-bZ-b4o"/>
+                            <constraint firstItem="Jdv-Bk-GDC" firstAttribute="leading" secondItem="fyc-cU-lQu" secondAttribute="trailing" constant="15" id="6Y1-bZ-b4o"/>
                             <constraint firstItem="LCY-tS-6Bj" firstAttribute="centerX" secondItem="z3C-SS-6le" secondAttribute="centerX" id="BiD-Yu-Vv2"/>
                             <constraint firstItem="ReM-9f-xJw" firstAttribute="top" secondItem="z3C-SS-6le" secondAttribute="top" id="G50-mP-kaz"/>
                             <constraint firstItem="fyc-cU-lQu" firstAttribute="centerY" secondItem="kpy-9y-OCs" secondAttribute="centerY" id="OUd-TL-Ii8"/>
                             <constraint firstItem="ReM-9f-xJw" firstAttribute="leading" secondItem="z3C-SS-6le" secondAttribute="leading" id="SB8-Ry-2y0"/>
-                            <constraint firstAttribute="trailing" secondItem="Jdv-Bk-GDC" secondAttribute="trailing" constant="20" id="U8T-Hi-JXU"/>
+                            <constraint firstAttribute="trailing" secondItem="Jdv-Bk-GDC" secondAttribute="trailing" constant="15" id="U8T-Hi-JXU"/>
                             <constraint firstItem="Jdv-Bk-GDC" firstAttribute="top" secondItem="lqk-nL-Ipk" secondAttribute="bottom" constant="10" id="bE0-nc-rXD"/>
                             <constraint firstItem="bRW-XO-pcK" firstAttribute="top" secondItem="ReM-9f-xJw" secondAttribute="bottom" constant="15" id="ilO-LQ-moF"/>
                             <constraint firstItem="ReM-9f-xJw" firstAttribute="height" secondItem="z3C-SS-6le" secondAttribute="height" multiplier="0.5" id="kz1-NJ-mvr"/>
-                            <constraint firstItem="lqk-nL-Ipk" firstAttribute="top" secondItem="LCY-tS-6Bj" secondAttribute="bottom" constant="8" id="n8v-4E-b51"/>
+                            <constraint firstItem="lqk-nL-Ipk" firstAttribute="top" secondItem="LCY-tS-6Bj" secondAttribute="bottom" constant="5" id="n8v-4E-b51"/>
                             <constraint firstItem="LCY-tS-6Bj" firstAttribute="top" secondItem="bRW-XO-pcK" secondAttribute="bottom" constant="10" id="tjx-WJ-iWW"/>
                             <constraint firstAttribute="trailing" secondItem="lqk-nL-Ipk" secondAttribute="trailing" constant="20" id="wgJ-RU-aWC"/>
                             <constraint firstItem="bRW-XO-pcK" firstAttribute="centerX" secondItem="z3C-SS-6le" secondAttribute="centerX" id="yEJ-Vb-HnA"/>
@@ -109,7 +123,7 @@
                                 <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" name="kenanyGold"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -122,7 +136,7 @@
                 <constraint firstItem="z3C-SS-6le" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="j00-eg-9EO"/>
                 <constraint firstAttribute="bottom" secondItem="z3C-SS-6le" secondAttribute="bottom" constant="10" id="kuh-hf-74n"/>
             </constraints>
-            <size key="customSize" width="340" height="366"/>
+            <size key="customSize" width="328" height="304"/>
             <connections>
                 <outlet property="dateee" destination="lqk-nL-Ipk" id="UbL-We-xyk"/>
                 <outlet property="imagee" destination="ReM-9f-xJw" id="wfg-Wx-TCm"/>
@@ -130,14 +144,17 @@
                 <outlet property="number" destination="LCY-tS-6Bj" id="fAh-3Q-kkl"/>
                 <outlet property="titlee" destination="bRW-XO-pcK" id="Sdi-dc-biC"/>
             </connections>
-            <point key="canvasLocation" x="233.33333333333334" y="86.383928571428569"/>
+            <point key="canvasLocation" x="224.63768115942031" y="64.955357142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="location.circle" catalog="system" width="128" height="121"/>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="pin" width="512" height="512"/>
+        <namedColor name="kenanyGold">
+            <color red="1" green="0.58823529411764708" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="kenanyGreen">
+            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

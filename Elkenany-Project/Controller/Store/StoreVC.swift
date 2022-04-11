@@ -17,13 +17,15 @@ class StoreVC: UIViewController {
     @IBOutlet weak var thiredMassege: UIView!
     var storData:AdsStoreDataModel?
     private var currentpaga = 1
+    private var isFeatchingData = false
     var isFeatchingImage = false
     var subID_fromGuideHome = 0
     var companyTitle = ""
     private var mainDataModel: [storeData] = []
+    private var sectoreDataModel: [SectorsSelected] = []
+
     var modelTestSearch:storeData?
     //---
-    private var isFeatchingData = false
     
     
     
@@ -33,7 +35,7 @@ class StoreVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         FatchDataOfStore()
-        featchDataSelectors()
+        FeatchDataOfectores()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
         self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
@@ -41,18 +43,49 @@ class StoreVC: UIViewController {
     
     
 
-    func FatchDataOfStore(){
+    
+    
+    
+    
+    
+    
+    
+    //MARK:- Featch sectors
+    func FeatchDataOfectores(){
         //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let param = ["type": "poultry"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:AdsStoreDataModel?, FailureRequest:AdsStoreDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    let successDataSectore = SuccessfulRequest?.data?.sectors?.reversed() ?? []
+                    self.sectoreDataModel.append(contentsOf: successDataSectore)
+                    DispatchQueue.main.async {
+                        self.SectorSelected.reloadData()
+                    }
+                }
+            }
+        }
+    }
+
+    
+    
+    
+    func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
             let param = ["type": "poultry" , "page": "\(self.currentpaga)"]
-//            print("this para", param)
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
-            
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: nil, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 
                 if let error = error{
@@ -90,31 +123,6 @@ class StoreVC: UIViewController {
     
     
     
-    
-    
-    
-    
-    func featchDataSelectors(){
-        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        let param = ["type": "poultry"]
-
-        let sectorsUrl = "https://elkenany.com/api/store/ads-store?type=&sort=&search"
-        let headers:HTTPHeaders = ["app-id": api_token ]
-        APIService.shared.fetchData(url: sectorsUrl , parameters: param, headers: headers, method: .get) {[weak self] (StorSuccess:AdsStoreDataModel?, StorError:AdsStoreDataModel?, error) in
-        guard let self = self else {return}
-        if let error = error{
-            print("error ===========================")
-            print(error.localizedDescription)
-        }else{
-            self.storData = StorSuccess
-            DispatchQueue.main.async {
-                self.SectorSelected.reloadData()
-            }
-        }
-    }
-}
-    
-    
     func FatchDataSelectedBySector(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -133,8 +141,8 @@ class StoreVC: UIViewController {
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-                    guard let success = success else {return}
-                    self.storData = success
+                    let successDataSectoreSelecte = success?.data?.sectors?.reversed() ?? []
+                    self.sectoreDataModel.append(contentsOf: successDataSectoreSelecte)
                     DispatchQueue.main.async {
                         self.SectorSelected.reloadData()
                         print("ggggggg")
@@ -173,12 +181,13 @@ class StoreVC: UIViewController {
 
 extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return storData?.data?.sectors?.count ?? 0
+        return sectoreDataModel.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
+//        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
+        cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
         return cell1
     }
     
