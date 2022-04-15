@@ -9,11 +9,12 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
-class MainStoreVC: UIViewController {
-
+class MainStoreVC: UIViewController  {
+   
     
     @IBOutlet weak var StoresCV: UICollectionView!
     var adsModel:AdsStoreDataModel?
+    var dddd:StoreVC?
     private var currentpaga = 1
     private var isFeatchingData = false
     var isFeatchingImage = false
@@ -23,18 +24,22 @@ class MainStoreVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FatchDataOfStore()
+//        FatchDataOfStore()
         StoresCV.delegate = self
         StoresCV.dataSource = self
+
         self.StoresCV.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
         
+        
     }
+    
+    
     
     
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "poultry" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let param = ["type": "animal" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
 
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
@@ -73,6 +78,53 @@ class MainStoreVC: UIViewController {
     }
     
 
+    
+    
+    func FatchDataOfStoreFromStorevc(){
+        DispatchQueue.global(qos: .background).async {
+            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
+            let type_rec = UserDefaults.standard.value(forKey: "typeSec") ?? ""
+
+            let param = ["type": "\(type_rec)" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let headers = ["app-id": "\(id_rec)" ]
+
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
+            print("URL", companyGuide)
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                
+                
+                else {
+                    
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                    
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.storeSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        self.StoresCV.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
+    
+    
     
 //    func GetStores(){
 //        DispatchQueue.global(qos: .background).async {

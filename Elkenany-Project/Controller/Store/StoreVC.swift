@@ -9,6 +9,10 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 
+
+
+
+
 class StoreVC: UIViewController {
     
     @IBOutlet weak var SectorSelected: UICollectionView!
@@ -23,6 +27,12 @@ class StoreVC: UIViewController {
     var companyTitle = ""
     private var mainDataModel: [storeData] = []
     private var sectoreDataModel: [SectorsSelected] = []
+    @IBOutlet weak var firsttest: UIView!
+    var storeSubModel:[storeData] = []
+    var typeFromhome = "poultry"
+    let dataArray = [ "الرسايل" , "اعلاناتي" , "السوق"]
+    @IBOutlet weak var Sectorcvvv: UICollectionView!
+    @IBOutlet weak var feturesCV: UICollectionView!
 
     var modelTestSearch:storeData?
     //---
@@ -36,14 +46,21 @@ class StoreVC: UIViewController {
         // Do any additional setup after loading the view
         FatchDataOfStore()
         FeatchDataOfectores()
+
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
         self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
+        Sectorcvvv.delegate = self
+        Sectorcvvv.dataSource = self
+        self.Sectorcvvv.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
+        feturesCV.delegate = self
+        feturesCV.dataSource = self
+        self.feturesCV.register(UINib(nibName: "storeFeaturesCell", bundle: nil), forCellWithReuseIdentifier: "storeFeaturesCell") 
     }
     
     
-
     
+
     
     
     
@@ -79,14 +96,15 @@ class StoreVC: UIViewController {
 
     
     
-    
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "poultry" , "page": "\(self.currentpaga)"]
+            let param = ["type": "poultry" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let headers = ["app-id": "\(id_rec)" ]
+
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: nil, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 
                 if let error = error{
                     //internet error
@@ -107,10 +125,10 @@ class StoreVC: UIViewController {
                     
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
-                    self.mainDataModel.append(contentsOf: successData)
+                    self.storeSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         
-                        self.SectorSelected.reloadData()
+                        self.Sectorcvvv.reloadData()
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -119,6 +137,9 @@ class StoreVC: UIViewController {
         }
     }
     
+    
+    
+  
     
     
     
@@ -153,24 +174,7 @@ class StoreVC: UIViewController {
     }
     
     
-    @IBAction func segmentSelection(_ sender: UISegmentedControl) {
-        
-        if sender.selectedSegmentIndex == 0{
-            firstStore.alpha = 1
-            secondAds.alpha = 0
-            thiredMassege.alpha = 0
-            
-        }else if sender.selectedSegmentIndex == 1 {
-            firstStore.alpha = 0
-            secondAds.alpha = 1
-            thiredMassege.alpha = 0
-            
-        }else{
-            firstStore.alpha = 0
-            secondAds.alpha = 0
-            thiredMassege.alpha = 1
-        }
-    }
+
     
     
     
@@ -181,23 +185,134 @@ class StoreVC: UIViewController {
 
 extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sectoreDataModel.count 
+        
+        if collectionView == SectorSelected {
+            return sectoreDataModel.count
+
+        }else if collectionView == Sectorcvvv{
+            return storeSubModel.count
+        }else if collectionView == feturesCV {
+            return 3
+            
+        }
+        
+        
+        return 1
     }
     
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-//        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
-        cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
-        return cell1
+
+        if collectionView == SectorSelected {
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
+    //        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
+            cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
+            let typeee = sectoreDataModel[indexPath.item].type ?? ""
+            if typeee == typeFromhome {
+                cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+                
+            }else{
+                cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
+            }
+            
+            return cell1
+
+        }else if collectionView == Sectorcvvv{
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "StoreCell", for: indexPath) as! StoreCell
+            cell1.dateee.text = storeSubModel[indexPath.item].createdAt ?? "888"
+            cell1.titlee.text = storeSubModel[indexPath.item].title ?? ""
+            cell1.location.text = storeSubModel[indexPath.item].address ?? ""
+            cell1.number.text = String( storeSubModel[indexPath.row].salary ?? 0)
+            let imagee = storeSubModel[indexPath.item].image ?? ""
+            cell1.configureCell(image: imagee)
+            return cell1
+        }else if collectionView == feturesCV {
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
+            cell1.titleee.text = dataArray[indexPath.item]
+//            cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
+            return cell1
+            
+        }
+
+        return UICollectionViewCell()
+        
+        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == SectorSelected {
             return CGSize(width: 100, height: 60)
+            
+
+        }else if collectionView == Sectorcvvv{
+            return CGSize(width:collectionView.frame.width, height: 304)
+
+        }else if collectionView == feturesCV {
+            return CGSize(width:collectionView.frame.width / 3.2, height: 60)
+
+        }
+        else{
+            
+            return CGSize( width:collectionView.frame.width, height: 304)
+
+        }
+
        
      }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = storeSubModel[indexPath.row].id ?? 0
+        UserDefaults.standard.set(id, forKey: "ADS_ID")
+        let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+////        let typeee = sectoreDataModel[indexPath.item].type ?? ""
+////        testdeleget?.test(type: typeee)
+////        UserDefaults.standard.setValue(typeee, forKey: "typeSec")
+////        let vc = storyboard?.instantiateViewController(withIdentifier: "MainStoreVC") as? MainStoreVC
+////        vc?.StoresCV.reloadData()
+////        vc?.FatchDataOfStoreFromStorevc()
+//
+//
+//        for subview in firsttest.subviews {
+//                  subview.removeFromSuperview()
+//            }
+//
+//            let alertStoryBoard =  UIStoryboard(name: "Main", bundle: nil)
+//            var controller: UIViewController!
+//
+//
+//
+//            if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MainStoreVC") as? MainStoreVC  {
+//
+//                controller = allCollectionViewController
+//
+//
+//
+//    }
+//
+//        addChild(controller )
+//
+//        // Add the child's View as a subview
+//        firsttest.addSubview(controller.view)
+//        controller.view.frame = firsttest.bounds
+//        controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//
+//         // tell the childviewcontroller it's contained in it's parent
+//        controller.didMove(toParent: self)
+//
+//}
+    
+    
 }
-
 
 extension StoreVC:UICollectionViewDataSourcePrefetching {
     

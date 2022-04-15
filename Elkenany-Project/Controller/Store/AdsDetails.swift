@@ -11,26 +11,26 @@ import JGProgressHUD
 import Kingfisher
 
 class AdsDetails: UIViewController {
-    var storeDetails:AdsStoreDetailsDataModel?
     
+    //outlets and proparites 
     @IBOutlet weak var adsDetailsImage: UIImageView!
-
     @IBOutlet weak var descriptionOfAds: UILabel!
     @IBOutlet weak var salary: UILabel!
     @IBOutlet weak var locatiion: UILabel!
     @IBOutlet weak var titlee: UILabel!
+    var storeDetails:AdsStoreDetailsDataModel?
+    
+    
+
+    //viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         fetchAdsDetails()
     }
-
+    
+    
+ 
+    //MARK:- store ads details
     func fetchAdsDetails(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -48,19 +48,46 @@ class AdsDetails: UIViewController {
                     self.descriptionOfAds.text = self.storeDetails?.data?.desc ?? ""
                     self.locatiion.text = storeDetails?.data?.address ?? ""
                     self.titlee.text = storeDetails?.data?.title ?? ""
-//                    let image = self.storeDetails?.data?.images ?? ""
-//                    configureCell(image: image)
-                    
+                    for ii in storeDetails?.data?.images ?? [] {
+                        let url = URL(string:ii.image ?? "")
+                        adsDetailsImage.kf.indicatorType = .activity
+                        adsDetailsImage.kf.setImage(with: url)
+                    }
                    
                 }
             }
         }
      }
     
-    func configureCell(image:String) {
-        let url = URL(string:image)
-        adsDetailsImage.kf.indicatorType = .activity
-        adsDetailsImage.kf.setImage(with: url)
+    
+    func callNumber(number: String ) {
+        guard let url = URL(string: "tel://\(number)") else {return}
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    @IBAction func startChat(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    
+    @IBAction func startAgain(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
+        
+    }
+    
+
+    @IBAction func phoneCall(_ sender: Any) {
+        callNumber(number: storeDetails?.data?.phone ?? "")
     }
     
 }
