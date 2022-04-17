@@ -19,6 +19,16 @@ class StoreVC: UIViewController {
     @IBOutlet weak var secondAds: UIView!
     @IBOutlet weak var firstStore: UIView!
     @IBOutlet weak var thiredMassege: UIView!
+    @IBOutlet weak var searcBarView: UISearchBar!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var view1: UIView!
+    
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var errorHandeling: UIView!
+    
+    
+    
+    
     var storData:AdsStoreDataModel?
     private var currentpaga = 1
     private var isFeatchingData = false
@@ -46,7 +56,7 @@ class StoreVC: UIViewController {
         // Do any additional setup after loading the view
         FatchDataOfStore()
         FeatchDataOfectores()
-
+        setupSearchBar()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
         self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
@@ -75,7 +85,7 @@ class StoreVC: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let param = ["type": "poultry"]
+            let param = ["type": "\(self.typeFromhome)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:AdsStoreDataModel?, FailureRequest:AdsStoreDataModel?, error) in
@@ -99,7 +109,7 @@ class StoreVC: UIViewController {
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "poultry" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let param = ["type": "\(self.typeFromhome)" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
 
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
@@ -174,7 +184,24 @@ class StoreVC: UIViewController {
     }
     
     
+    ///filter click
+    @IBAction func storeFilter(_ sender: Any) {
+        if let filtervc = storyboard?.instantiateViewController(withIdentifier: "FilterVC") as? FilterVC{
+            filtervc.RunFilterDeleget = self
+            present(filtervc, animated: true, completion: nil)
+        }
+    }
+    
 
+    @IBAction func toSearchView(_ sender: Any) {
+        view1.isHidden = true
+        view2.isHidden = true
+        searchView.isHidden = false
+    }
+    
+    
+    @IBAction func filterShortCut(_ sender: Any) {
+    }
     
     
     
@@ -266,10 +293,38 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
      }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let id = storeSubModel[indexPath.row].id ?? 0
-        UserDefaults.standard.set(id, forKey: "ADS_ID")
-        let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
-        navigationController?.pushViewController(vc, animated: true)
+
+        
+        if collectionView == SectorSelected{
+            print("")
+            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+            let typeOfSectorr = sectoreDataModel[indexPath.item].type ?? ""
+            self.typeFromhome = typeOfSectorr
+            UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+
+            
+//            if(cell.isSelected == true)
+//            {
+//                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+//                SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//
+//
+//            }
+            FatchDataOfStore()
+        }else if collectionView == feturesCV{
+            print("")
+
+        }else{
+            
+                    let id = storeSubModel[indexPath.row].id ?? 0
+                    UserDefaults.standard.set(id, forKey: "ADS_ID")
+                    let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+                    navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        
+        
+        
     }
     
     
@@ -331,3 +386,107 @@ extension StoreVC:UICollectionViewDataSourcePrefetching {
    
 }
 
+
+extension StoreVC:FilterDone {
+    func RunFilter(filter: ()) {
+        let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
+        let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+           
+            let param = ["type": "\(typeFilter ?? "")" ,  "sort": "1" ]
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    hud.dismiss()
+//
+                    print(loginError)
+                }
+                
+                
+                else {
+                    hud.dismiss()
+                    self.storeSubModel.removeAll()
+                    let successDataaa = success?.data?.data ?? []
+//                    print("current", self.currentpaga)
+                    self.storeSubModel.append(contentsOf: successDataaa)
+                    DispatchQueue.main.async {
+                        if success?.data?.data == nil {
+                            self.errorHandeling.isHidden = false
+                            self.firsttest.isHidden = true
+
+                        }else {
+                            self.errorHandeling.isHidden = true
+                            self.firsttest.isHidden = false
+
+                            self.Sectorcvvv.reloadData()
+
+                        }
+                        print(successDataaa)
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+extension StoreVC: UISearchBarDelegate {
+    
+    func setupSearchBar() {
+        searcBarView.delegate = self
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty == false {
+            //your model
+            let data = storData?.data?.data ?? []
+            //your array
+            storeSubModel = data.filter({ ($0.title?.contains(searchText) ?? (0 != 0)) })
+            storeSubModel.removeAll()
+            
+            //Api func
+            FatchDataOfStore()
+        }
+        
+        //reload
+        Sectorcvvv.reloadData()
+        
+    }
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cBtn.setTitle("الغاء", for: .normal)
+            searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchView.isHidden = true
+        view1.isHidden = false
+        view2.isHidden = false
+        storeSubModel.removeAll()
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        FatchDataOfStore()
+        searcBarView.text = ""
+        hud.dismiss()
+        print("cancellllld")
+    }
+}
