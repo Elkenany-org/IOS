@@ -1961,7 +1961,7 @@
         <scene sceneID="HZk-8F-KC3">
             <objects>
                 <viewController storyboardIdentifier="customerserviceVC" id="Y96-Cz-Q22" customClass="customerserviceVC" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="seC-3D-rw7">
+                    <view key="view" contentMode="scaleToFill" id="seC-3D-rw7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

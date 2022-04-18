@@ -205,6 +205,11 @@
 		32D05FD928091D5D006C21F9 /* storeFeaturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D05FD728091D5D006C21F9 /* storeFeaturesCell.swift */; };
 		32D05FDA28091D5D006C21F9 /* storeFeaturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D05FD828091D5D006C21F9 /* storeFeaturesCell.xib */; };
 		32D05FDF28093BF2006C21F9 /* chatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D05FDE28093BF2006C21F9 /* chatVC.swift */; };
+		32E46C87280D4EF100419ED7 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46C85280D4EF100419ED7 /* ChatCell.swift */; };
+		32E46C88280D4EF100419ED7 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E46C86280D4EF100419ED7 /* ChatCell.xib */; };
+		32E46C8D280D595A00419ED7 /* chatMessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46C8C280D595A00419ED7 /* chatMessagesModel.swift */; };
+		32E46C92280D683D00419ED7 /* sendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46C91280D683D00419ED7 /* sendMessage.swift */; };
+		32E46C97280D7E8E00419ED7 /* startChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46C96280D7E8E00419ED7 /* startChat.swift */; };
 		32E9CA6027813E8B00257BC1 /* socialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E9CA5E27813E8B00257BC1 /* socialCell.swift */; };
 		32E9CA6127813E8B00257BC1 /* socialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E9CA5F27813E8B00257BC1 /* socialCell.xib */; };
 		32EE5A442796AE870014D1C1 /* SelectionPopuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EE5A432796AE870014D1C1 /* SelectionPopuVC.swift */; };
@@ -461,6 +466,11 @@
 		32D05FD728091D5D006C21F9 /* storeFeaturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeFeaturesCell.swift; sourceTree = "<group>"; };
 		32D05FD828091D5D006C21F9 /* storeFeaturesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = storeFeaturesCell.xib; sourceTree = "<group>"; };
 		32D05FDE28093BF2006C21F9 /* chatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatVC.swift; sourceTree = "<group>"; };
+		32E46C85280D4EF100419ED7 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		32E46C86280D4EF100419ED7 /* ChatCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		32E46C8C280D595A00419ED7 /* chatMessagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatMessagesModel.swift; sourceTree = "<group>"; };
+		32E46C91280D683D00419ED7 /* sendMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendMessage.swift; sourceTree = "<group>"; };
+		32E46C96280D7E8E00419ED7 /* startChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startChat.swift; sourceTree = "<group>"; };
 		32E9CA5E27813E8B00257BC1 /* socialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = socialCell.swift; sourceTree = "<group>"; };
 		32E9CA5F27813E8B00257BC1 /* socialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = socialCell.xib; sourceTree = "<group>"; };
 		32EE5A432796AE870014D1C1 /* SelectionPopuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPopuVC.swift; sourceTree = "<group>"; };
@@ -999,6 +1009,9 @@
 			isa = PBXGroup;
 			children = (
 				3272F454276E66CC00973031 /* AdsStoreDataModel.swift */,
+				32E46C8C280D595A00419ED7 /* chatMessagesModel.swift */,
+				32E46C91280D683D00419ED7 /* sendMessage.swift */,
+				32E46C96280D7E8E00419ED7 /* startChat.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1010,6 +1023,8 @@
 				3272F46A276E99B200973031 /* StoreCell.xib */,
 				32D05FD728091D5D006C21F9 /* storeFeaturesCell.swift */,
 				32D05FD828091D5D006C21F9 /* storeFeaturesCell.xib */,
+				32E46C85280D4EF100419ED7 /* ChatCell.swift */,
+				32E46C86280D4EF100419ED7 /* ChatCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1322,6 +1337,7 @@
 				32F5FD0927688A2300E4DFE1 /* NewsCell.xib in Resources */,
 				329397FE2771F58300607C5B /* Cairo-Light.ttf in Resources */,
 				3208B8702785C600000E6C84 /* CompanyCell.xib in Resources */,
+				32E46C88280D4EF100419ED7 /* ChatCell.xib in Resources */,
 				325528042779B85300BAAE65 /* NotificationCell.xib in Resources */,
 				322C100C277A0B16004A5DD9 /* aboutUsCell.xib in Resources */,
 				323ED99F275E522600D4620C /* RecomenditionCell.xib in Resources */,
@@ -1491,11 +1507,13 @@
 				32609585275F55750056A002 /* SectorDetailsCell.swift in Sources */,
 				325528132779E32500BAAE65 /* MoreVC.swift in Sources */,
 				324E0A7E2756C0F600DEB843 /* HomeVC.swift in Sources */,
+				32E46C97280D7E8E00419ED7 /* startChat.swift in Sources */,
 				32034F4C2766121900D6F863 /* AllNewsDataModel.swift in Sources */,
 				326B75862774C57600007F55 /* locaBorsa.swift in Sources */,
 				326AAC12278C841E002EF222 /* staticticesDetails.swift in Sources */,
 				325527FC2779B80C00BAAE65 /* notificationVC.swift in Sources */,
 				326AAC18278C844A002EF222 /* DetailsCell.swift in Sources */,
+				32E46C8D280D595A00419ED7 /* chatMessagesModel.swift in Sources */,
 				32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */,
 				32B97D58276F57EC0069598D /* BorsaHomeVC.swift in Sources */,
 				3268AC0427EB72DB0096CA9E /* TestBorsaMember.swift in Sources */,
@@ -1540,6 +1558,7 @@
 				3255280D2779C47500BAAE65 /* notificationModel.swift in Sources */,
 				32B4672327E86AFD002C32A5 /* SectorFilterVC.swift in Sources */,
 				32B4671E27E86AA1002C32A5 /* SectionsFilterVC.swift in Sources */,
+				32E46C92280D683D00419ED7 /* sendMessage.swift in Sources */,
 				326B75A02776B6A900007F55 /* haederForborsa.swift in Sources */,
 				323B2243274A47E0002CEB89 /* onBoardingCell.swift in Sources */,
 				3260957E275F55270056A002 /* SectorDetailsTable.swift in Sources */,
@@ -1551,6 +1570,7 @@
 				32366C04275BE98B00DC2F98 /* HeaderCell.swift in Sources */,
 				32FAB7B927789A27002400A2 /* MainInfoProfil.swift in Sources */,
 				3260958B275F68730056A002 /* CompanyGuideVC.swift in Sources */,
+				32E46C87280D4EF100419ED7 /* ChatCell.swift in Sources */,
 				32CEF47C278DA37900527F2A /* statisticesInsideModel.swift in Sources */,
 				32C4EFE9278A19000034BD9F /* filterCell.swift in Sources */,
 				32F543AD27925E74004EBD33 /* StatisticesMembers.swift in Sources */,

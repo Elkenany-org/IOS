@@ -148,6 +148,36 @@ class StoreVC: UIViewController {
     }
     
     
+    func FatchSearchOfStore(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        let saerchParamter = searcBarView.text ?? ""
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort="
+            let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    self.storeSubModel.removeAll()
+                    let successData = success?.data?.data ?? []
+                    self.storeSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        self.Sectorcvvv.reloadData()
+                        print("ggggggg")
+                    }
+                }
+            }
+        }
+    }
+    
     
   
     
@@ -460,7 +490,7 @@ extension StoreVC: UISearchBarDelegate {
             storeSubModel.removeAll()
             
             //Api func
-            FatchDataOfStore()
+            FatchSearchOfStore()
         }
         
         //reload

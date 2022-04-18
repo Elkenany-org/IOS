@@ -19,6 +19,7 @@ class AdsDetails: UIViewController {
     @IBOutlet weak var locatiion: UILabel!
     @IBOutlet weak var titlee: UILabel!
     var storeDetails:AdsStoreDetailsDataModel?
+    var startRoomChat: StartChat?
     
     
 
@@ -60,6 +61,27 @@ class AdsDetails: UIViewController {
      }
     
     
+    func creatChatRoom(){
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let companyGuide = "https://elkenany.com/api/store/store/start-chat?id="
+            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
+            let param = ["id": "\(typeParameter ?? "")"]
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:StartChat?, filier:StartChat?, error) in
+                if let error = error{
+                    print("============ error \(error)")
+                }else {
+                    guard let success = success else {return}
+                    self.startRoomChat = success
+                    }
+                   
+                }
+            }
+        }
+     
+
+    
     func callNumber(number: String ) {
         guard let url = URL(string: "tel://\(number)") else {return}
         if #available(iOS 10.0, *) {
@@ -71,6 +93,7 @@ class AdsDetails: UIViewController {
     
     @IBAction func startChat(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+            creatChatRoom()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
