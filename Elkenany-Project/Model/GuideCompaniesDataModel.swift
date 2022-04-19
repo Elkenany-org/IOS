@@ -17,12 +17,12 @@ struct GuideCompaniesDataModel: Codable {
 // MARK: - DataClass
 struct GuideData: Codable {
     var sectors: [Sector]?
-    var banners:[String]?
-    var logos: [String]?
+//    var banners:[String]?
+//    var logos: [String]?
     var subSections: [SubSection]?
 
     enum CodingKeys: String, CodingKey {
-        case sectors, banners, logos
+        case sectors
         case subSections = "sub_sections"
     }
 }

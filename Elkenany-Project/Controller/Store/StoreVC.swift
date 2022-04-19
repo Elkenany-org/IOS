@@ -342,7 +342,52 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //            }
             FatchDataOfStore()
         }else if collectionView == feturesCV{
-            print("")
+            
+            for subview in firsttest.subviews {
+                      subview.removeFromSuperview()
+                }
+            let alertStoryBoard =  UIStoryboard(name: "Main", bundle: nil)
+            var controller: UIViewController!
+            
+            //switch about index
+            switch indexPath.item {
+            case 0:
+                print("one // message")
+                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
+                    controller = allCollectionViewController
+        }
+            case 1:
+                print("one/ 2 ads")
+    
+                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
+                    controller = allCollectionViewController
+        }
+
+
+            case 2:
+                print("one / 3")
+                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
+//                    allCollectionViewController.feturesCV.isHidden = true
+
+                    controller = allCollectionViewController
+        }
+
+            default:
+                print("hello error")
+
+            }
+            
+            addChild(controller )
+            // Add the child's View as a subview
+            firsttest.addSubview(controller.view)
+            controller.view.frame = firsttest.bounds
+            controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+             // tell the childviewcontroller it's contained in it's parent
+            controller.didMove(toParent: self)
+            
+            
+            
 
         }else{
             
@@ -356,6 +401,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         
     }
+}
     
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -365,7 +411,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 ////        let vc = storyboard?.instantiateViewController(withIdentifier: "MainStoreVC") as? MainStoreVC
 ////        vc?.StoresCV.reloadData()
 ////        vc?.FatchDataOfStoreFromStorevc()
-//
+
 //
 //        for subview in firsttest.subviews {
 //                  subview.removeFromSuperview()
@@ -395,9 +441,9 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //        controller.didMove(toParent: self)
 //
 //}
+//
     
     
-}
 
 extension StoreVC:UICollectionViewDataSourcePrefetching {
     

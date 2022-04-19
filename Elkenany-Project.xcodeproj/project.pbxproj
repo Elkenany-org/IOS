@@ -226,6 +226,7 @@
 		32F5FD212768C58400E4DFE1 /* newsDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F5FD1F2768C58400E4DFE1 /* newsDetailsCell.swift */; };
 		32F5FD222768C58400E4DFE1 /* newsDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F5FD202768C58400E4DFE1 /* newsDetailsCell.xib */; };
 		32F681E027ECCEF2003F55E7 /* errorModelForBorsa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F681DF27ECCEF2003F55E7 /* errorModelForBorsa.swift */; };
+		32FA3270280EBFFE00A7BDEC /* AdsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA326F280EBFFE00A7BDEC /* AdsViewController.swift */; };
 		32FAB7A127786D9D002400A2 /* profileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB79F27786D9D002400A2 /* profileCell.swift */; };
 		32FAB7A227786D9D002400A2 /* profileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FAB7A027786D9D002400A2 /* profileCell.xib */; };
 		32FAB7A827786DE3002400A2 /* EditeProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7A627786DE3002400A2 /* EditeProfileCell.swift */; };
@@ -487,6 +488,7 @@
 		32F5FD1F2768C58400E4DFE1 /* newsDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsDetailsCell.swift; sourceTree = "<group>"; };
 		32F5FD202768C58400E4DFE1 /* newsDetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = newsDetailsCell.xib; sourceTree = "<group>"; };
 		32F681DF27ECCEF2003F55E7 /* errorModelForBorsa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errorModelForBorsa.swift; sourceTree = "<group>"; };
+		32FA326F280EBFFE00A7BDEC /* AdsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewController.swift; sourceTree = "<group>"; };
 		32FAB79F27786D9D002400A2 /* profileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileCell.swift; sourceTree = "<group>"; };
 		32FAB7A027786D9D002400A2 /* profileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileCell.xib; sourceTree = "<group>"; };
 		32FAB7A627786DE3002400A2 /* EditeProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeProfileCell.swift; sourceTree = "<group>"; };
@@ -1001,6 +1003,7 @@
 				3272F463276E701A00973031 /* MassegeVC.swift */,
 				32B97D49276F38380069598D /* AdsDetails.swift */,
 				32D05FDE28093BF2006C21F9 /* chatVC.swift */,
+				32FA326F280EBFFE00A7BDEC /* AdsViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1529,6 +1532,7 @@
 				32343F2C274B89BD00921D99 /* UIView+Extensions.swift in Sources */,
 				3208B8612785BD55000E6C84 /* ChooseStokeVC.swift in Sources */,
 				323B225C274A5D38002CEB89 /* LoginVC.swift in Sources */,
+				32FA3270280EBFFE00A7BDEC /* AdsViewController.swift in Sources */,
 				32FAB7A127786D9D002400A2 /* profileCell.swift in Sources */,
 				3287A2FC27E2133600C38849 /* BlankView.swift in Sources */,
 				322D196427E274B40017A2B8 /* MansouraLocation.swift in Sources */,
