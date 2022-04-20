@@ -10,6 +10,9 @@ import UIKit
 class storeFeaturesCell: UICollectionViewCell {
 
     @IBOutlet weak var titleee: UILabel!
+    
+    @IBOutlet weak var selectedView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

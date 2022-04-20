@@ -56,7 +56,7 @@ class RegisterVC: UIViewController {
             "device_token":confirmPassword.text
         ]
         //headers
-        let headers:HTTPHeaders = ["Accept":"application/json"]        
+        let headers:HTTPHeaders = ["Accept":"application/json"]
         APIService.shared.fetchData(url: RegisterURL, parameters: parma as Parameters, headers: headers, method: .post) { [self] (RegisterSuccess:RegisterDataModel?, RegisterFailed:RegisterDataModel?, error) in
             if let error = error {
                 // internet offline

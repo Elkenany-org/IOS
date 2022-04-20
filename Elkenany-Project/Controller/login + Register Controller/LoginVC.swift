@@ -129,13 +129,13 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         //Handel Parametars
-        let parm = [
-            "email": emailTF.text,
-            "password":passwordTF.text]
+        let parmm = [
+            "email": emailTF.text ?? "",
+            "password":passwordTF.text ?? ""]
         //Handel Parametars
-        let headers:HTTPHeaders = ["lang":"ar", "Content-Type": "application/json"]
+        let headers = [ "Accept": "application/json"]
         //Networking
-        APIService.shared.fetchData(url: LoginURL, parameters: parm as Parameters, headers: headers, method: .post) { (loginSuccess:LoginModel?, loginFailed:LoginModel?, error) in
+        APIServiceForQueryParameter.shared.fetchData(url: LoginURL, parameters: parmm , headers: headers, method: .post) { (loginSuccess:LoginModel?, loginFailed:LoginModel?, error) in
             if let error = error {
                 // Internet Offline
                 print(error)
@@ -155,6 +155,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
                 vc.modalPresentationStyle = .fullScreen
                 let apiToken = loginSuccess?.data?.apiToken ?? ""
                 UserDefaults.standard.set(apiToken, forKey: "API_TOKEN")
+                print("- toke - ", apiToken)
                 UserDefaults.standard.set(true, forKey: "LOGIN_STAUTS")
                 print("LOGGGG", UserDefaults.standard.bool(forKey: "LOGIN_STAUTS" ) )
                 

@@ -11,11 +11,11 @@ import Foundation
 struct LoginModel: Codable {
     var message: String?
     var error: String?
-    var data: DataClass?
+    var data: loginDataClass?
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct loginDataClass: Codable {
     var name, email, phone, apiToken: String?
 
     enum CodingKeys: String, CodingKey {

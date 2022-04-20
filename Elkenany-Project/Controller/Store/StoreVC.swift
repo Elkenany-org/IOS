@@ -286,10 +286,20 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let imagee = storeSubModel[indexPath.item].image ?? ""
             cell1.configureCell(image: imagee)
             return cell1
+            
+            
+            
         }else if collectionView == feturesCV {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
+            if indexPath.item == 2{
+                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            }else
+            {
+                cell1.selectedView.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+
+            }
+            
             cell1.titleee.text = dataArray[indexPath.item]
-//            cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
             return cell1
             
         }
@@ -341,7 +351,17 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //
 //            }
             FatchDataOfStore()
+            
+            
         }else if collectionView == feturesCV{
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
+            
+            if(cell1.isSelected == true)
+            {
+                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+
+                
+            }
             
             for subview in firsttest.subviews {
                       subview.removeFromSuperview()
@@ -352,21 +372,35 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             //switch about index
             switch indexPath.item {
             case 0:
+                if(cell1.isSelected == true)
+                {
+                    cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+
+                    
+                }
+                
+
                 print("one // message")
-                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
+                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as? MassegeVC  {
                     controller = allCollectionViewController
         }
             case 1:
                 print("one/ 2 ads")
-    
+//                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+
                 if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
+                   
+                  
                     controller = allCollectionViewController
         }
 
 
             case 2:
                 print("one / 3")
+//                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+
                 if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
+
 //                    allCollectionViewController.feturesCV.isHidden = true
 
                     controller = allCollectionViewController
@@ -521,13 +555,13 @@ extension StoreVC:FilterDone {
 
 extension StoreVC: UISearchBarDelegate {
     
+    
     func setupSearchBar() {
         searcBarView.delegate = self
     }
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         if searchText.isEmpty == false {
             //your model
             let data = storData?.data?.data ?? []
