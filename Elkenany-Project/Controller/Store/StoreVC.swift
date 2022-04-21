@@ -22,11 +22,11 @@ class StoreVC: UIViewController {
     @IBOutlet weak var searcBarView: UISearchBar!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var view1: UIView!
-    
     @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var firsttest: UIView!
     @IBOutlet weak var errorHandeling: UIView!
-    
-    
+    @IBOutlet weak var Sectorcvvv: UICollectionView!
+    @IBOutlet weak var feturesCV: UICollectionView!
     
     
     var storData:AdsStoreDataModel?
@@ -37,13 +37,10 @@ class StoreVC: UIViewController {
     var companyTitle = ""
     private var mainDataModel: [storeData] = []
     private var sectoreDataModel: [SectorsSelected] = []
-    @IBOutlet weak var firsttest: UIView!
     var storeSubModel:[storeData] = []
     var typeFromhome = "poultry"
     let dataArray = [ "الرسايل" , "اعلاناتي" , "السوق"]
-    @IBOutlet weak var Sectorcvvv: UICollectionView!
-    @IBOutlet weak var feturesCV: UICollectionView!
-
+    
     var modelTestSearch:storeData?
     //---
     
@@ -70,7 +67,7 @@ class StoreVC: UIViewController {
     
     
     
-
+    
     
     
     
@@ -103,7 +100,7 @@ class StoreVC: UIViewController {
             }
         }
     }
-
+    
     
     
     func FatchDataOfStore(){
@@ -111,7 +108,7 @@ class StoreVC: UIViewController {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
             let param = ["type": "\(self.typeFromhome)" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
-
+            
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -179,7 +176,7 @@ class StoreVC: UIViewController {
     }
     
     
-  
+    
     
     
     
@@ -222,7 +219,7 @@ class StoreVC: UIViewController {
         }
     }
     
-
+    
     @IBAction func toSearchView(_ sender: Any) {
         view1.isHidden = true
         view2.isHidden = true
@@ -245,7 +242,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SectorSelected {
             return sectoreDataModel.count
-
+            
         }else if collectionView == Sectorcvvv{
             return storeSubModel.count
         }else if collectionView == feturesCV {
@@ -261,10 +258,10 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         if collectionView == SectorSelected {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-    //        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
+            //        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
             cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
             let typeee = sectoreDataModel[indexPath.item].type ?? ""
             if typeee == typeFromhome {
@@ -276,7 +273,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             }
             
             return cell1
-
+            
         }else if collectionView == Sectorcvvv{
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "StoreCell", for: indexPath) as! StoreCell
             cell1.dateee.text = storeSubModel[indexPath.item].createdAt ?? "888"
@@ -296,14 +293,14 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             }else
             {
                 cell1.selectedView.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
-
+                
             }
             
             cell1.titleee.text = dataArray[indexPath.item]
             return cell1
             
         }
-
+        
         return UICollectionViewCell()
         
         
@@ -315,25 +312,25 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if collectionView == SectorSelected {
             return CGSize(width: 100, height: 60)
             
-
+            
         }else if collectionView == Sectorcvvv{
             return CGSize(width:collectionView.frame.width, height: 304)
-
+            
         }else if collectionView == feturesCV {
             return CGSize(width:collectionView.frame.width / 3.2, height: 60)
-
+            
         }
         else{
             
             return CGSize( width:collectionView.frame.width, height: 304)
-
+            
         }
-
-       
-     }
+        
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         
         if collectionView == SectorSelected{
             print("")
@@ -341,15 +338,15 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let typeOfSectorr = sectoreDataModel[indexPath.item].type ?? ""
             self.typeFromhome = typeOfSectorr
             UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
-
             
-//            if(cell.isSelected == true)
-//            {
-//                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-//                SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-//
-//
-//            }
+            
+            //            if(cell.isSelected == true)
+            //            {
+            //                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            //                SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            //
+            //
+            //            }
             FatchDataOfStore()
             
             
@@ -359,13 +356,13 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             if(cell1.isSelected == true)
             {
                 cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-
+                
                 
             }
             
             for subview in firsttest.subviews {
-                      subview.removeFromSuperview()
-                }
+                subview.removeFromSuperview()
+            }
             let alertStoryBoard =  UIStoryboard(name: "Main", bundle: nil)
             var controller: UIViewController!
             
@@ -375,40 +372,40 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 if(cell1.isSelected == true)
                 {
                     cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-
+                    
                     
                 }
                 
-
+                
                 print("one // message")
                 if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as? MassegeVC  {
                     controller = allCollectionViewController
-        }
+                }
             case 1:
                 print("one/ 2 ads")
-//                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-
+                //                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                
                 if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
-                   
-                  
+                    
+                    
                     controller = allCollectionViewController
-        }
-
-
+                }
+                
+                
             case 2:
                 print("one / 3")
-//                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-
+                //                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                
                 if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
-
-//                    allCollectionViewController.feturesCV.isHidden = true
-
+                    
+                    //                    allCollectionViewController.feturesCV.isHidden = true
+                    
                     controller = allCollectionViewController
-        }
-
+                }
+                
             default:
                 print("hello error")
-
+                
             }
             
             addChild(controller )
@@ -416,19 +413,19 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             firsttest.addSubview(controller.view)
             controller.view.frame = firsttest.bounds
             controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-             // tell the childviewcontroller it's contained in it's parent
+            
+            // tell the childviewcontroller it's contained in it's parent
             controller.didMove(toParent: self)
             
             
             
-
+            
         }else{
             
-                    let id = storeSubModel[indexPath.row].id ?? 0
-                    UserDefaults.standard.set(id, forKey: "ADS_ID")
-                    let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
-                    navigationController?.pushViewController(vc, animated: true)
+            let id = storeSubModel[indexPath.row].id ?? 0
+            UserDefaults.standard.set(id, forKey: "ADS_ID")
+            let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+            navigationController?.pushViewController(vc, animated: true)
             
         }
         
@@ -436,8 +433,8 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
     }
 }
-    
-    
+
+
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 ////        let typeee = sectoreDataModel[indexPath.item].type ?? ""
 ////        testdeleget?.test(type: typeee)
@@ -476,8 +473,8 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //
 //}
 //
-    
-    
+
+
 
 extension StoreVC:UICollectionViewDataSourcePrefetching {
     
@@ -493,7 +490,7 @@ extension StoreVC:UICollectionViewDataSourcePrefetching {
         }
     }
     
-   
+    
 }
 
 
@@ -506,7 +503,7 @@ extension StoreVC:FilterDone {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-           
+            
             let param = ["type": "\(typeFilter ?? "")" ,  "sort": "1" ]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort="
@@ -518,7 +515,7 @@ extension StoreVC:FilterDone {
                 else if let loginError = filier {
                     //Data Wrong From Server
                     hud.dismiss()
-//
+                    //
                     print(loginError)
                 }
                 
@@ -527,19 +524,19 @@ extension StoreVC:FilterDone {
                     hud.dismiss()
                     self.storeSubModel.removeAll()
                     let successDataaa = success?.data?.data ?? []
-//                    print("current", self.currentpaga)
+                    //                    print("current", self.currentpaga)
                     self.storeSubModel.append(contentsOf: successDataaa)
                     DispatchQueue.main.async {
                         if success?.data?.data == nil {
                             self.errorHandeling.isHidden = false
                             self.firsttest.isHidden = true
-
+                            
                         }else {
                             self.errorHandeling.isHidden = true
                             self.firsttest.isHidden = false
-
+                            
                             self.Sectorcvvv.reloadData()
-
+                            
                         }
                         print(successDataaa)
                         
