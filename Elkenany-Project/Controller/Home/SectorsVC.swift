@@ -17,7 +17,7 @@ class SectorsVC: UIViewController {
     var homeGuide:GuideCompaniesDataModel?
     var sss:HomeData?
     var sector:[Sectors]?
-    var arr = ["القطاع", "مقترح لك", "شركاء النجاح", "البورصة اليومية", "دليل الكناني", "الاخبار"]
+    var arr = [   "القطاع", "مقترح لك", "شركاء النجاح", "البورصة اليومية", "دليل الكناني", "السوق", "الاخبار" ]
     let images:[UIImage] = [ #imageLiteral(resourceName: "1-5") , #imageLiteral(resourceName: "1-4")  , #imageLiteral(resourceName: "1-1") , #imageLiteral(resourceName: "1-3") , #imageLiteral(resourceName: "1-2") ]
     var typeForRecomendition = ""
     
@@ -230,7 +230,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //section number
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 6
+        return 7
     }
     
     
@@ -256,6 +256,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             return homeDataSectorsModel?.data?.guide?.count ?? 0
             
         case 5:
+            return homeDataSectorsModel?.data?.store?.count ?? 0
+        case 6:
             return homeDataSectorsModel?.data?.news?.count ?? 0
             
             
@@ -325,14 +327,28 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 return guideCell }
             
         case 5 :
-            //            if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
-            //                storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
-            //                storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
-            //                let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
-            //                storeCell.sectorImgCell.contentMode = .scaleAspectFill
-            //                storeCell.configureCell(image: successMembersImage)
-            //                ss(ss: storeCell)
-            //                return storeCell }
+                        if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
+                            storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
+                            storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+                            let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
+                            storeCell.sectorImgCell.contentMode = .scaleAspectFill
+                            storeCell.configureCell(image: successMembersImage)
+                            ss(ss: storeCell)
+                            return storeCell }
+//            if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
+//                newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
+//                newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
+//                let successMembersImage = homeDataSectorsModel?.data?.news?[indexPath.item].image ?? ""
+//                newsCell.sectorImgCell.contentMode = .scaleToFill
+//
+//                newsCell.configureCell(image: successMembersImage)
+//                ss(ss: newsCell)
+//                return newsCell }
+//            print("esvvvs")
+            
+            
+        case 6 :
+          
             if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
                 newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
@@ -481,6 +497,22 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         case 5 :
             //            return print("hello")
             
+        
+            
+            let StoreDtails = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+              let id_home = homeDataSectorsModel?.data?.store?[indexPath.item].id ?? 0
+
+            StoreDtails.keyFromHome = "keyhome"
+            
+            StoreDtails.id_froooom_home = id_home
+            navigationController?.pushViewController(StoreDtails, animated: true)
+
+//            Storevc.keyFromHome = "keyhome"
+//            cell1.FatchDataOfNewsDetailsFromHomeCell()
+//            cell1.FatchDataOfNews()
+
+            
+        case 6 :
             let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
             newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
             newsvc.keyFromHome = "keyhome"
@@ -488,18 +520,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             newsvc.FatchDataOfNewsDetailsFromHome()
             navigationController?.pushViewController(newsvc, animated: true)
             
-//            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath) as! collectioncell
-////            cell1.FatchDataOfNewsDetailsFromHomeCell()
-//            cell1.FatchDataOfNews()
-
             
-        case 6 :
-            return print("hello")
-            
-        //            let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
-        //            newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
-        //            newsvc.FatchDataOfNewsDetailsFromHome()
-        //            navigationController?.pushViewController(newsvc, animated: true)
         
         default:
             print("Hello world")

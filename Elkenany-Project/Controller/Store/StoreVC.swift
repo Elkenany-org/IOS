@@ -33,6 +33,7 @@ class StoreVC: UIViewController {
     private var currentpaga = 1
     private var isFeatchingData = false
     var isFeatchingImage = false
+    
     var subID_fromGuideHome = 0
     var companyTitle = ""
     private var mainDataModel: [storeData] = []
@@ -40,6 +41,7 @@ class StoreVC: UIViewController {
     var storeSubModel:[storeData] = []
     var typeFromhome = "poultry"
     let dataArray = [ "الرسايل" , "اعلاناتي" , "السوق"]
+
     
     var modelTestSearch:storeData?
     //---
@@ -52,7 +54,9 @@ class StoreVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         FatchDataOfStore()
-        FeatchDataOfectores()
+    
+        
+        
         setupSearchBar()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
@@ -143,6 +147,8 @@ class StoreVC: UIViewController {
             }
         }
     }
+    
+    
     
     
     func FatchSearchOfStore(){

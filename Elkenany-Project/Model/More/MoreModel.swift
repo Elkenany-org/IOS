@@ -28,6 +28,7 @@ struct MoreDataa {
     
     static var moredata:[MoreDataa] = [(.init(title: "البورصة اليومية", coverImage: #imageLiteral(resourceName: "stock-market"))),
                                        (.init(title: "دليل الكناني", coverImage: #imageLiteral(resourceName: "guide"))),
+                                       (.init(title:  "السوق", coverImage: #imageLiteral(resourceName: "news"))),
                                        (.init(title: "الاخبار", coverImage: #imageLiteral(resourceName: "news"))),
                                        (.init(title: "عن الكناني", coverImage: #imageLiteral(resourceName: "info-button"))),
                                        (.init(title: "اتصل بنا", coverImage: #imageLiteral(resourceName: "phone-call"))),

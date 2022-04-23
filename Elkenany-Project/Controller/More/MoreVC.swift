@@ -119,7 +119,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 7
+            return 8
         case 1:
             return 0
         default:
@@ -188,22 +188,27 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             vc.FatchGuidMainDataaaaaaaaa()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
+            let vc = storyboard?.instantiateViewController(identifier: "StoreVC") as! StoreVC
+            vc.FatchDataOfStore()
+            vc.FeatchDataOfectores()
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
             let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC
             vc.FatchDataforNewsHomeFromMore()
             navigationController?.pushViewController(vc, animated: true)
             
-        case 3:
+        case 4:
             let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
             navigationController?.pushViewController(vc, animated: true)
-        case 4:
+        case 5:
             let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
             navigationController?.pushViewController(vc, animated: true)
-        case 5:
+        case 6:
             if let url = NSURL(string: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820") {
                 UIApplication.shared.openURL(url as URL)
             }
             
-        case 6:
+        case 7:
             // Setting description
             let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
             

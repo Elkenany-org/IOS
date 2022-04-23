@@ -20,13 +20,23 @@ class AdsDetails: UIViewController {
     @IBOutlet weak var titlee: UILabel!
     var storeDetails:AdsStoreDetailsDataModel?
     var startRoomChat: StartChat?
-    
+    var id_froooom_home = 0
+    var keyFromHome = ""
+
     
 
     //viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchAdsDetails()
+        
+        if keyFromHome == "keyhome"{
+            fetchAdsDetailsHome()
+
+        }else{
+            fetchAdsDetails()
+        }
+        
     }
     
     
@@ -46,6 +56,34 @@ class AdsDetails: UIViewController {
                     guard let success = success else {return}
                     self.storeDetails = success
                     self.salary.text = String((storeDetails?.data?.salary)! ) 
+                    self.descriptionOfAds.text = self.storeDetails?.data?.desc ?? ""
+                    self.locatiion.text = storeDetails?.data?.address ?? ""
+                    self.titlee.text = storeDetails?.data?.title ?? ""
+                    for ii in storeDetails?.data?.images ?? [] {
+                        let url = URL(string:ii.image ?? "")
+                        adsDetailsImage.kf.indicatorType = .activity
+                        adsDetailsImage.kf.setImage(with: url)
+                    }
+                   
+                }
+            }
+        }
+     }
+    
+    func fetchAdsDetailsHome(){
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
+//            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
+            let param = ["id": "\(self.id_froooom_home)"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
+                if let error = error{
+                    print("============ error \(error)")
+                }else {
+                    guard let success = success else {return}
+                    self.storeDetails = success
+                    self.salary.text = String((storeDetails?.data?.salary)! )
                     self.descriptionOfAds.text = self.storeDetails?.data?.desc ?? ""
                     self.locatiion.text = storeDetails?.data?.address ?? ""
                     self.titlee.text = storeDetails?.data?.title ?? ""
