@@ -19,13 +19,33 @@ class AdsVC: UIViewController {
         
     }
     
+    
 
-    @IBAction func toAddAds(_ sender: Any) {
+    
+    func testLogin(){
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AdsViewController") as! AdsViewController
-        self.present(vc, animated: true, completion: nil)
+        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        if isloggineIn {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdsViewController") as! AdsViewController
+            self.present(vc, animated: true, completion: nil)
+            
+
+        }else{
+                    if let vc = storyboard?.instantiateViewController(identifier: "ValidaitionViewController") as? ValidaitionViewController {
+                        self.present(vc, animated: true, completion: nil)
+                    }
+            
+        }
+
         
         
     }
     
+
+    @IBAction func toAddAds(_ sender: Any) {
+
+        testLogin()
+    
+    
+}
 }

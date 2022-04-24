@@ -338,10 +338,14 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SectorSelected{
             print("")
-            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+//            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             let typeOfSectorr = sectoreDataModel[indexPath.item].type ?? ""
             self.typeFromhome = typeOfSectorr
             UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+            
+           
+            
             
             
             //            if(cell.isSelected == true)
@@ -351,68 +355,88 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             //
             //
             //            }
-            FatchDataOfStore()
+//            FatchDataOfStore()
             
             
         }else if collectionView == feturesCV{
-            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
             
-            if(cell1.isSelected == true)
-            {
-                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-                
-                
-            }
+//            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
+            
             
             for subview in firsttest.subviews {
                 subview.removeFromSuperview()
             }
+            
+            
             let alertStoryBoard =  UIStoryboard(name: "Main", bundle: nil)
             var controller: UIViewController!
             
             //switch about index
             switch indexPath.item {
             case 0:
-                if(cell1.isSelected == true)
-                {
-                    cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-                    
-                    
-                }
-                
-                
                 print("one // message")
-                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as? MassegeVC  {
-                    controller = allCollectionViewController
+
+                let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+                
+                if isloggineIn {
+                      let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as! MassegeVC
+                        controller = alllCollectionViewController
+                    
+                }else{
+                    
+                    if let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"ValidaitionViewController") as? ValidaitionViewController  {
+                        controller = alllCollectionViewController
+                    }
                 }
+
+            
+                
+                
             case 1:
                 print("one/ 2 ads")
-                //                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 
-                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
-                    
-                    
-                    controller = allCollectionViewController
-                }
+                let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+                if isloggineIn {
+                    if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
+                        controller = alllCollectionViewController
+                    }
+                 
+                }else{
+
+
+                    if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"ValidaitionViewController") as? ValidaitionViewController  {
+                        controller = alllCollectionViewController
+                    }
+                   }
                 
-                
+            
             case 2:
                 print("one / 3")
-                //                cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-                
-                if  let allCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
-                    
-                    //                    allCollectionViewController.feturesCV.isHidden = true
-                    
-                    controller = allCollectionViewController
+     
+//                var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+//                if isloggineIn {
+//
+//
+//
+//                }else{
+//                            if let vc = storyboard?.instantiateViewController(identifier: "ValidaitionViewController") as? ValidaitionViewController {
+//                                self.present(vc, animated: true, completion: nil)
+//                            }
+//
+//                }
+//                let vc = storyboard?.instantiateViewController(withIdentifier: "StoreVC") as! StoreVC
+//                self.present(vc, animated: true, completion: nil)
+//
+                if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
+                    controller = alllCollectionViewController
                 }
-                
+            
             default:
                 print("hello error")
                 
             }
             
-            addChild(controller )
+            addChild(controller)
             // Add the child's View as a subview
             firsttest.addSubview(controller.view)
             controller.view.frame = firsttest.bounds

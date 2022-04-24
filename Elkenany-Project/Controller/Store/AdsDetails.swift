@@ -28,6 +28,7 @@ class AdsDetails: UIViewController {
     //viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "وصف الاعلان"
         fetchAdsDetails()
         
         if keyFromHome == "keyhome"{

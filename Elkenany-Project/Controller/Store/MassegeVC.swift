@@ -19,6 +19,9 @@ class MassegeVC: UIViewController {
         chatTableView.delegate = self
         chatTableView.dataSource = self
         chatTableView.register(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        
+        
+
 //        FatchDataOfChats()
         
     }
