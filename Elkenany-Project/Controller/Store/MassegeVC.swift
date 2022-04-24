@@ -15,7 +15,7 @@ class MassegeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        FatchDataOfChats()
         chatTableView.delegate = self
         chatTableView.dataSource = self
         chatTableView.register(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
@@ -36,9 +36,9 @@ class MassegeVC: UIViewController {
 //            let param = ["id": "Bearer \(typeParameter)" ]
             let headers = ["Authorization": "Bearer \(api_token)" ]
 
-            let url = "https://elkenany.com/api/store/add-massages"
+            let url = "https://elkenany.com/api/store/chats"
 
-            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:SendMessage?, filier:SendMessage?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .get) { (success:Massage?, filier:Massage?, error) in
                 
                 if let error = error{
                     //internet error
@@ -47,14 +47,14 @@ class MassegeVC: UIViewController {
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+//                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 
                 
                 else {
                     
                   
-                    let successDataa = success?.data?.chat?.massages ?? []
+//                    let successDataa = success?.data?.chat?.massages ?? []
 //                    self.chateModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
                         

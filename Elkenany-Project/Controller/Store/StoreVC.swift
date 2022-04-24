@@ -54,9 +54,7 @@ class StoreVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
         FatchDataOfStore()
-    
-        
-        
+        FeatchDataOfectores()
         setupSearchBar()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
