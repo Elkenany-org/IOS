@@ -24,10 +24,9 @@ class MainStoreVC: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        FatchDataOfStore()
+        FatchDataOfStore()
         StoresCV.delegate = self
         StoresCV.dataSource = self
-
         self.StoresCV.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
         
         
@@ -41,7 +40,7 @@ class MainStoreVC: UIViewController  {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
             let param = ["type": "animal" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
-
+            
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -76,7 +75,7 @@ class MainStoreVC: UIViewController  {
             }
         }
     }
-    
+
 
     
     

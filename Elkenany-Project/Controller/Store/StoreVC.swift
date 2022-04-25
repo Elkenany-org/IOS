@@ -36,7 +36,7 @@ class StoreVC: UIViewController {
     
     var subID_fromGuideHome = 0
     var companyTitle = ""
-    private var mainDataModel: [storeData] = []
+//    private var mainDataModel: [storeData] = []
     private var sectoreDataModel: [SectorsSelected] = []
     var storeSubModel:[storeData] = []
     var typeFromhome = "poultry"
@@ -427,7 +427,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //                let vc = storyboard?.instantiateViewController(withIdentifier: "StoreVC") as! StoreVC
 //                self.present(vc, animated: true, completion: nil)
 //
-                if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"StoreVC") as? StoreVC  {
+                if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MainStoreVC") as? MainStoreVC  {
                     controller = alllCollectionViewController
                 }
             
@@ -508,7 +508,7 @@ extension StoreVC:UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= mainDataModel.count - 1 && !isFeatchingData {
+            if index.row >= storeSubModel.count - 1 && !isFeatchingData {
                 
                 FatchDataOfStore()
                 break
@@ -615,7 +615,7 @@ extension StoreVC: UISearchBarDelegate {
         searchView.isHidden = true
         view1.isHidden = false
         view2.isHidden = false
-        storeSubModel.removeAll()
+//        storeSubModel.removeAll()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)

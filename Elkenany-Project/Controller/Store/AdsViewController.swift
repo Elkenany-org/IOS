@@ -27,12 +27,12 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bt1.setImage(UIImage(named:"Checkmark"), for: .selected)
-        bt1.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        bt2.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        bt2.setImage(UIImage(named:"Checkmark"), for: .selected)
-        bt4.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
-        bt4.setImage(UIImage(named:"Checkmark"), for: .selected)
+//        bt1.setImage(UIImage(named:"Checkmark"), for: .selected)
+//        bt1.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
+//        bt2.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
+//        bt2.setImage(UIImage(named:"Checkmark"), for: .selected)
+//        bt4.setImage(UIImage(named:"Checkmarkempty"), for: .normal)
+//        bt4.setImage(UIImage(named:"Checkmark"), for: .selected)
         // Do any additional setup after loading the view.
         
         print(images)
@@ -45,7 +45,7 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
         hud.textLabel.text = "تم اضافة اعلان للسوق"
         hud.show(in: self.view)
         //Handel Parametars
-        let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID") ?? ""
+        let typeParameter = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
 
         let parm = [
             "title": adsTitle.text ?? "" , "salary": adsPrice.text ?? "" , "address": adsAdreess.text ?? "" , "phone": adsPhone.text ?? "" ,"desc": adsDescription.text ?? "" , "section_id" : "\(typeParameter)" , "con_type" : "mobile",
@@ -75,6 +75,7 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
 //                self.chatTV.reloadData()
                 
                 print("goooooooooood")
+                self.dismiss(animated: true, completion: nil)
                 
             }
         }
@@ -98,41 +99,48 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
     }
     
     @IBAction func radPhone(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            
-        }) { (success) in
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.isSelected = !sender.isSelected
-                sender.transform = .identity
-            }, completion: nil)
-        }
+//        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//
+//        }) { (success) in
+//            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//                sender.isSelected = !sender.isSelected
+//                sender.transform = .identity
+//            }, completion: nil)
+//        }
+        
+        bt1.setBackgroundImage(UIImage(named: "check"), for: .normal)
+
     }
     
     
     @IBAction func radMessage(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            
-        }) { (success) in
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.isSelected = !sender.isSelected
-                sender.transform = .identity
-            }, completion: nil)
-        }
+//        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//
+//        }) { (success) in
+//            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//                sender.isSelected = !sender.isSelected
+//                sender.transform = .identity
+//            }, completion: nil)
+//        }
+        bt2.setBackgroundImage(UIImage(named: "check"), for: .normal)
+
     }
     
     
     @IBAction func radAll(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            
-        }) { (success) in
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.isSelected = !sender.isSelected
-                sender.transform = .identity
-            }, completion: nil)
-        }
+//        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//
+//        }) { (success) in
+//            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+//                sender.isSelected = !sender.isSelected
+//                sender.transform = .identity
+//            }, completion: nil)
+//        }
+        bt4.setBackgroundImage(UIImage(named: "check"), for: .normal)
+
     }
     
     ///imageeeeee from device
@@ -153,13 +161,8 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
          let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage
-//            print(image)
+
         
-//        let photo = info[.phAsset] as? PHAsset
-//        if let filename = photo?.value(forKey: "filename") as? String {
-//            print("===========" ,filename)
-//
-//        }
         guard let url = info[.imageURL] as? NSURL else { return }
         let filename = url.lastPathComponent!
         images.append(filename)
