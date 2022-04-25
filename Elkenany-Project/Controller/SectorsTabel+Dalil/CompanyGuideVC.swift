@@ -245,6 +245,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
         if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
             filterVC.RunFilterDeleget = self
             filterVC.selectedType = sectoreTypeFromSelecteHeader
+            filterVC.presentHomeFilter = "home"
             present(filterVC, animated: true, completion: nil)
         }
     }
@@ -257,6 +258,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
             filterVC.RunFilterDeleget = self
             filterVC.selectedType = sectoreTypeFromSelecteHeader
             filterVC.presentKey = "keeey"
+            
             present(filterVC, animated: true, completion: nil)
         }
 

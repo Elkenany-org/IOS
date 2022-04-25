@@ -78,14 +78,9 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
         case 2:
             let GuideVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
 //            GuideVC.sectoreTypeFromHome = sectorFtomHome
+            GuideVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(GuideVC, animated: true)
-//        print(" for confirmation ......")
-//            let newsVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
-////            newsVC.typeFromhome = sectorFtomHome
-//            navigationController?.pushViewController(newsVC, animated: true)
-//            let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
-//            newsVC.typeFromhome = sectorFtomHome
-//            navigationController?.pushViewController(newsVC, animated: true)
+
             
         case 3:
             let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC

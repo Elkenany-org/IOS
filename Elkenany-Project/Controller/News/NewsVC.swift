@@ -276,6 +276,7 @@ class NewsVC: UIViewController {
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.RunFilterDeleget = self
         filtervc.presentKey = "keeey"
+        filtervc.presentHomeFilter = "home"
         present(filtervc, animated: true, completion: nil)
         
     }

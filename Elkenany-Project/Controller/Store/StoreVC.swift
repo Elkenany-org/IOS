@@ -15,6 +15,7 @@ import JGProgressHUD
 
 class StoreVC: UIViewController {
     
+    //MARk: Outlets
     @IBOutlet weak var SectorSelected: UICollectionView!
     @IBOutlet weak var secondAds: UIView!
     @IBOutlet weak var firstStore: UIView!
@@ -28,42 +29,36 @@ class StoreVC: UIViewController {
     @IBOutlet weak var Sectorcvvv: UICollectionView!
     @IBOutlet weak var feturesCV: UICollectionView!
     
-    
-    var storData:AdsStoreDataModel?
+    //MARk: vars
     private var currentpaga = 1
     private var isFeatchingData = false
     var isFeatchingImage = false
-    
     var subID_fromGuideHome = 0
-    var companyTitle = ""
-//    private var mainDataModel: [storeData] = []
     private var sectoreDataModel: [SectorsSelected] = []
     var storeSubModel:[storeData] = []
-    var typeFromhome = "poultry"
-    let dataArray = [ "الرسايل" , "اعلاناتي" , "السوق"]
-
-    
     var modelTestSearch:storeData?
-    //---
+    var storData:AdsStoreDataModel?
+    var typeFromhome = ""
+    let dataArray = [ "الرسايل" , "اعلاناتي" , "السوق"]
+    var companyTitle = ""
     
     
     
-    
-    
+    //MARk: life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view
+        
         FatchDataOfStore()
         FeatchDataOfectores()
         setupSearchBar()
         SectorSelected.delegate = self
         SectorSelected.dataSource = self
-        self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         Sectorcvvv.delegate = self
         Sectorcvvv.dataSource = self
-        self.Sectorcvvv.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
         feturesCV.delegate = self
         feturesCV.dataSource = self
+        self.SectorSelected.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
+        self.Sectorcvvv.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
         self.feturesCV.register(UINib(nibName: "storeFeaturesCell", bundle: nil), forCellWithReuseIdentifier: "storeFeaturesCell") 
     }
     
@@ -105,13 +100,13 @@ class StoreVC: UIViewController {
     
     
     
+    //MARK:- Featch main store
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
             let param = ["type": "\(self.typeFromhome)" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
-            
-            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort=&page="
             print("URL", companyGuide)
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 
@@ -148,7 +143,7 @@ class StoreVC: UIViewController {
     
     
     
-    
+    //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -158,7 +153,7 @@ class StoreVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort="
+            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
             let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -180,11 +175,8 @@ class StoreVC: UIViewController {
     }
     
     
-    
-    
-    
-    
-    
+    //MARK:- Featch main store by using search
+
     func FatchDataSelectedBySector(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -194,8 +186,8 @@ class StoreVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort=&search"
-            let typeParameter = UserDefaults.standard.string(forKey: "Selected_Sec_news")
-            let param = ["type": "\(typeParameter ?? "")"]
+//            let typeParameter = UserDefaults.standard.string(forKey: "Selected_Sec_news")
+            let param = ["type": "\(self.typeFromhome )"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
@@ -203,10 +195,11 @@ class StoreVC: UIViewController {
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
-                    let successDataSectoreSelecte = success?.data?.sectors?.reversed() ?? []
-                    self.sectoreDataModel.append(contentsOf: successDataSectoreSelecte)
+                    self.storeSubModel.removeAll()
+                    let successDataSectoreSelecte = success?.data?.data ?? []
+                    self.storeSubModel.append(contentsOf: successDataSectoreSelecte)
                     DispatchQueue.main.async {
-                        self.SectorSelected.reloadData()
+                        self.Sectorcvvv.reloadData()
                         print("ggggggg")
                     }
                 }
@@ -215,7 +208,8 @@ class StoreVC: UIViewController {
     }
     
     
-    ///filter click
+    
+    //MARK: Main Filter
     @IBAction func storeFilter(_ sender: Any) {
         if let filtervc = storyboard?.instantiateViewController(withIdentifier: "FilterVC") as? FilterVC{
             filtervc.RunFilterDeleget = self
@@ -224,6 +218,7 @@ class StoreVC: UIViewController {
     }
     
     
+    //handel the hide and show of view 
     @IBAction func toSearchView(_ sender: Any) {
         view1.isHidden = true
         view2.isHidden = true
@@ -232,6 +227,13 @@ class StoreVC: UIViewController {
     
     
     @IBAction func filterShortCut(_ sender: Any) {
+        if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
+//            filterVC.RunFilterDeleget = self
+//            filterVC.selectedType = typeFromhome
+//            
+            filterVC.testhidenHome = "home"
+            present(filterVC, animated: true, completion: nil)
+        }
     }
     
     
@@ -265,9 +267,9 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SectorSelected {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-            //        cell1.titleLabel.text = storData?.data?.sectors?[indexPath.row].name
             cell1.titleLabel.text = sectoreDataModel[indexPath.item].name ?? ""
             let typeee = sectoreDataModel[indexPath.item].type ?? ""
+            
             if typeee == typeFromhome {
                 cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
@@ -338,29 +340,31 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SectorSelected{
             print("")
-//            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
+            //            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+            //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             let typeOfSectorr = sectoreDataModel[indexPath.item].type ?? ""
             self.typeFromhome = typeOfSectorr
+//            self.typeFromhome = typeee
+            FatchDataSelectedBySector()
             UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+            SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+
             
-           
             
             
             
             //            if(cell.isSelected == true)
             //            {
             //                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-            //                SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             //
             //
             //            }
-//            FatchDataOfStore()
+            //            FatchDataOfStore()
             
             
         }else if collectionView == feturesCV{
             
-//            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
+            //            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "storeFeaturesCell", for: indexPath) as! storeFeaturesCell
             
             
             for subview in firsttest.subviews {
@@ -375,12 +379,12 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             switch indexPath.item {
             case 0:
                 print("one // message")
-
+                
                 let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
                 
                 if isloggineIn {
-                      let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as! MassegeVC
-                        controller = alllCollectionViewController
+                    let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MassegeVC") as! MassegeVC
+                    controller = alllCollectionViewController
                     
                 }else{
                     
@@ -388,8 +392,8 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                         controller = alllCollectionViewController
                     }
                 }
-
-            
+                
+                
                 
                 
             case 1:
@@ -400,37 +404,37 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                     if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"AdsVC") as? AdsVC  {
                         controller = alllCollectionViewController
                     }
-                 
+                    
                 }else{
-
-
+                    
+                    
                     if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"ValidaitionViewController") as? ValidaitionViewController  {
                         controller = alllCollectionViewController
                     }
-                   }
+                }
                 
-            
+                
             case 2:
                 print("one / 3")
-     
-//                var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//                if isloggineIn {
-//
-//
-//
-//                }else{
-//                            if let vc = storyboard?.instantiateViewController(identifier: "ValidaitionViewController") as? ValidaitionViewController {
-//                                self.present(vc, animated: true, completion: nil)
-//                            }
-//
-//                }
-//                let vc = storyboard?.instantiateViewController(withIdentifier: "StoreVC") as! StoreVC
-//                self.present(vc, animated: true, completion: nil)
-//
+                
+                //                var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+                //                if isloggineIn {
+                //
+                //
+                //
+                //                }else{
+                //                            if let vc = storyboard?.instantiateViewController(identifier: "ValidaitionViewController") as? ValidaitionViewController {
+                //                                self.present(vc, animated: true, completion: nil)
+                //                            }
+                //
+                //                }
+                //                let vc = storyboard?.instantiateViewController(withIdentifier: "StoreVC") as! StoreVC
+                //                self.present(vc, animated: true, completion: nil)
+                //
                 if  let alllCollectionViewController = alertStoryBoard.instantiateViewController(withIdentifier:"MainStoreVC") as? MainStoreVC  {
                     controller = alllCollectionViewController
                 }
-            
+                
             default:
                 print("hello error")
                 
@@ -615,7 +619,7 @@ extension StoreVC: UISearchBarDelegate {
         searchView.isHidden = true
         view1.isHidden = false
         view2.isHidden = false
-//        storeSubModel.removeAll()
+        //        storeSubModel.removeAll()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)

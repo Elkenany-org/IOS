@@ -274,7 +274,8 @@ class BorsaHomeVC: UIViewController  {
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.presentKey = "keeey"
         filtervc.RunFilterDeleget = self
-        
+//        filtervc.presentHomeFilter = "home"
+
         present(filtervc, animated: true, completion: nil)
         
     }

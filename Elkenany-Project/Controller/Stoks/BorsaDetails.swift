@@ -320,6 +320,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         let vc = storyboard?.instantiateViewController(withIdentifier: "FilterHome") as? FilterHome
         vc?.stokeTYPE = sto_type
         vc?.RunFilterDelegetsInStoke = self
+//        vc?.presentHomeFilter = "home"
         self.present(vc!, animated: true, completion: nil)
     }
     
