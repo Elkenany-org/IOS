@@ -25,6 +25,11 @@ class shortCutFilter: UIViewController {
         shortCutTV.register(UINib(nibName: "SelectedCell", bundle: nil), forCellReuseIdentifier: "SelectedCell")
     }
     
+    
+    @IBAction func dissmiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 

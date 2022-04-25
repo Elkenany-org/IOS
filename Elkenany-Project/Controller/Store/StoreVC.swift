@@ -118,6 +118,8 @@ class StoreVC: UIViewController {
                 else if let loginError = filier {
                     //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                    
+                    print("ffffffffffffff")
                 }
                 
                 
@@ -132,7 +134,25 @@ class StoreVC: UIViewController {
                     self.storeSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         
+//                        if success?.data?.data == nil {
+//                            self.Sectorcvvv.isHidden = true
+//                            self.errorHandeling.isHidden = false
+//                        }else{
+//                            self.Sectorcvvv.isHidden = false
+//                            self.errorHandeling.isHidden = true
+//                        }
                         self.Sectorcvvv.reloadData()
+//
+//                        if self.storeSubModel.count == 0 {
+//                        self.Sectorcvvv.isHidden = true
+//                        self.errorHandeling.isHidden = false
+//                        }else{
+//
+//                            self.Sectorcvvv.isHidden = false
+//                            self.errorHandeling.isHidden = true
+//                        }
+////
+                        print("rrrr" ,self.storeSubModel.count )
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -141,7 +161,7 @@ class StoreVC: UIViewController {
         }
     }
     
-    
+ 
     
     //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
@@ -199,7 +219,17 @@ class StoreVC: UIViewController {
                     let successDataSectoreSelecte = success?.data?.data ?? []
                     self.storeSubModel.append(contentsOf: successDataSectoreSelecte)
                     DispatchQueue.main.async {
+                        if self.storeSubModel.count == 0 {
+                        self.Sectorcvvv.isHidden = true
+                        self.errorHandeling.isHidden = false
+                        }else{
                         self.Sectorcvvv.reloadData()
+                            self.Sectorcvvv.isHidden = false
+                            self.errorHandeling.isHidden = true
+                        }
+                        
+
+//                        self.Sectorcvvv.reloadData()
                         print("ggggggg")
                     }
                 }
@@ -559,16 +589,13 @@ extension StoreVC:FilterDone {
                     //                    print("current", self.currentpaga)
                     self.storeSubModel.append(contentsOf: successDataaa)
                     DispatchQueue.main.async {
-                        if success?.data?.data == nil {
-                            self.errorHandeling.isHidden = false
-                            self.firsttest.isHidden = true
-                            
-                        }else {
-                            self.errorHandeling.isHidden = true
-                            self.firsttest.isHidden = false
-                            
+                        if self.storeSubModel.count == 0 {
+                        self.Sectorcvvv.isHidden = true
+                        self.errorHandeling.isHidden = false
+                        }else{
                             self.Sectorcvvv.reloadData()
-                            
+                            self.Sectorcvvv.isHidden = false
+                            self.errorHandeling.isHidden = true
                         }
                         print(successDataaa)
                         
@@ -619,10 +646,11 @@ extension StoreVC: UISearchBarDelegate {
         searchView.isHidden = true
         view1.isHidden = false
         view2.isHidden = false
-        //        storeSubModel.removeAll()
+
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
+        
         FatchDataOfStore()
         searcBarView.text = ""
         hud.dismiss()
