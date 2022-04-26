@@ -8,7 +8,6 @@
 import Foundation
 
 
-
 // MARK: - StartChat
 struct StartChat: Codable {
     let message, error: String?
@@ -39,6 +38,5 @@ struct Massagees: Codable {
         case massage
     }
 }
-
 
 

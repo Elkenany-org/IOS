@@ -28,7 +28,9 @@ struct Chatt: Codable {
 struct Massage: Codable {
     let id: Int?
     let image: String?
-    let name, createdAt, massage: String?
+    let name: String?
+    let createdAt: String?
+    let massage: String?
 
     enum CodingKeys: String, CodingKey {
         case id, image, name
@@ -36,3 +38,6 @@ struct Massage: Codable {
         case massage
     }
 }
+
+
+

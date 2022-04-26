@@ -28,6 +28,7 @@ class StoreVC: UIViewController {
     @IBOutlet weak var errorHandeling: UIView!
     @IBOutlet weak var Sectorcvvv: UICollectionView!
     @IBOutlet weak var feturesCV: UICollectionView!
+    var viewController = MainStoreVC()
     
     //MARk: vars
     private var currentpaga = 1
@@ -134,24 +135,24 @@ class StoreVC: UIViewController {
                     self.storeSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         
-//                        if success?.data?.data == nil {
-//                            self.Sectorcvvv.isHidden = true
-//                            self.errorHandeling.isHidden = false
-//                        }else{
-//                            self.Sectorcvvv.isHidden = false
-//                            self.errorHandeling.isHidden = true
-//                        }
+                        //                        if success?.data?.data == nil {
+                        //                            self.Sectorcvvv.isHidden = true
+                        //                            self.errorHandeling.isHidden = false
+                        //                        }else{
+                        //                            self.Sectorcvvv.isHidden = false
+                        //                            self.errorHandeling.isHidden = true
+                        //                        }
                         self.Sectorcvvv.reloadData()
-//
-//                        if self.storeSubModel.count == 0 {
-//                        self.Sectorcvvv.isHidden = true
-//                        self.errorHandeling.isHidden = false
-//                        }else{
-//
-//                            self.Sectorcvvv.isHidden = false
-//                            self.errorHandeling.isHidden = true
-//                        }
-////
+                        //
+                        //                        if self.storeSubModel.count == 0 {
+                        //                        self.Sectorcvvv.isHidden = true
+                        //                        self.errorHandeling.isHidden = false
+                        //                        }else{
+                        //
+                        //                            self.Sectorcvvv.isHidden = false
+                        //                            self.errorHandeling.isHidden = true
+                        //                        }
+                        ////
                         print("rrrr" ,self.storeSubModel.count )
                     }
                     self.currentpaga += 1
@@ -161,7 +162,7 @@ class StoreVC: UIViewController {
         }
     }
     
- 
+    
     
     //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
@@ -196,7 +197,7 @@ class StoreVC: UIViewController {
     
     
     //MARK:- Featch main store by using search
-
+    
     func FatchDataSelectedBySector(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -206,7 +207,7 @@ class StoreVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort=&search"
-//            let typeParameter = UserDefaults.standard.string(forKey: "Selected_Sec_news")
+            //            let typeParameter = UserDefaults.standard.string(forKey: "Selected_Sec_news")
             let param = ["type": "\(self.typeFromhome )"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -220,16 +221,17 @@ class StoreVC: UIViewController {
                     self.storeSubModel.append(contentsOf: successDataSectoreSelecte)
                     DispatchQueue.main.async {
                         if self.storeSubModel.count == 0 {
-                        self.Sectorcvvv.isHidden = true
-                        self.errorHandeling.isHidden = false
+                            self.Sectorcvvv.isHidden = true
+                            self.errorHandeling.isHidden = false
                         }else{
-                        self.Sectorcvvv.reloadData()
+                            self.Sectorcvvv.reloadData()
                             self.Sectorcvvv.isHidden = false
                             self.errorHandeling.isHidden = true
                         }
+                        //                        self.viewController.StoresCV.reloadData()
                         
-
-//                        self.Sectorcvvv.reloadData()
+                        
+                        //                        self.Sectorcvvv.reloadData()
                         print("ggggggg")
                     }
                 }
@@ -258,15 +260,13 @@ class StoreVC: UIViewController {
     
     @IBAction func filterShortCut(_ sender: Any) {
         if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
-//            filterVC.RunFilterDeleget = self
-//            filterVC.selectedType = typeFromhome
-//            
+            //            filterVC.RunFilterDeleget = self
+            //            filterVC.selectedType = typeFromhome
+            //
             filterVC.testhidenHome = "home"
             present(filterVC, animated: true, completion: nil)
         }
     }
-    
-    
     
 }
 
@@ -374,11 +374,11 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             let typeOfSectorr = sectoreDataModel[indexPath.item].type ?? ""
             self.typeFromhome = typeOfSectorr
-//            self.typeFromhome = typeee
+            //            self.typeFromhome = typeee
             FatchDataSelectedBySector()
             UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
             SectorSelected.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-
+            
             
             
             
@@ -590,8 +590,8 @@ extension StoreVC:FilterDone {
                     self.storeSubModel.append(contentsOf: successDataaa)
                     DispatchQueue.main.async {
                         if self.storeSubModel.count == 0 {
-                        self.Sectorcvvv.isHidden = true
-                        self.errorHandeling.isHidden = false
+                            self.Sectorcvvv.isHidden = true
+                            self.errorHandeling.isHidden = false
                         }else{
                             self.Sectorcvvv.reloadData()
                             self.Sectorcvvv.isHidden = false
@@ -646,7 +646,7 @@ extension StoreVC: UISearchBarDelegate {
         searchView.isHidden = true
         view1.isHidden = false
         view2.isHidden = false
-
+        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)

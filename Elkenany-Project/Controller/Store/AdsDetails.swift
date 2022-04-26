@@ -103,7 +103,7 @@ class AdsDetails: UIViewController {
     func creatChatRoom(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/store/store/start-chat?id="
+            let companyGuide = "https://elkenany.com/api/store/start-chat?id="
             let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
             let param = ["id": "\(typeParameter ?? "")"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
@@ -113,6 +113,7 @@ class AdsDetails: UIViewController {
                 }else {
                     guard let success = success else {return}
                     self.startRoomChat = success
+//                    UserDefaults.standard.set(id, forKey: "CHAT_ID")
                     }
                    
                 }
@@ -133,6 +134,8 @@ class AdsDetails: UIViewController {
     @IBAction func startChat(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
             creatChatRoom()
+            let id = startRoomChat?.data?.chat?.id ?? 0
+            vc.roomId = id
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
