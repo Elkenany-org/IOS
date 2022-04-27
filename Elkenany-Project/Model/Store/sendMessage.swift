@@ -21,11 +21,11 @@ struct sendmessage: Codable {
 
 // MARK: - Chat
 struct Chatt: Codable {
-    let massages: [Massage]?
+    let massages: [Massageing]?
 }
 
 // MARK: - Massage
-struct Massage: Codable {
+struct Massageing: Codable {
     let id: Int?
     let image: String?
     let name: String?

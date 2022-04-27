@@ -19,8 +19,12 @@ class AdsDetails: UIViewController {
     @IBOutlet weak var locatiion: UILabel!
     @IBOutlet weak var titlee: UILabel!
     var storeDetails:AdsStoreDetailsDataModel?
-    var startRoomChat: StartChat?
+    var startRoomChat:StartChatModelss?
+//    var startChatSubModel:[StarttChats] = []
+
+    
     var id_froooom_home = 0
+    var ads_id = 0
     var keyFromHome = ""
 
     
@@ -29,7 +33,7 @@ class AdsDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "وصف الاعلان"
-        fetchAdsDetails()
+//        fetchAdsDetails()
         
         if keyFromHome == "keyhome"{
             fetchAdsDetailsHome()
@@ -104,16 +108,16 @@ class AdsDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/start-chat?id="
-            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
-            let param = ["id": "\(typeParameter ?? "")"]
+//            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
+            let param = ["id": "\(self.ads_id)"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:StartChat?, filier:StartChat?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:StartChatModelss?, filier:StartChatModelss?, error) in
                 if let error = error{
                     print("============ error \(error)")
                 }else {
                     guard let success = success else {return}
                     self.startRoomChat = success
-//                    UserDefaults.standard.set(id, forKey: "CHAT_ID")
+//                    print(success.data?.chat?.id ?? "")
                     }
                    
                 }
@@ -135,6 +139,7 @@ class AdsDetails: UIViewController {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
             creatChatRoom()
             let id = startRoomChat?.data?.chat?.id ?? 0
+            UserDefaults.standard.set(id, forKey: "room_chat") 
             vc.roomId = id
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)

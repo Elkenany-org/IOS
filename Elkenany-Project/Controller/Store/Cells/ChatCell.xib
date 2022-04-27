@@ -36,6 +36,9 @@
                                     <constraint firstAttribute="height" constant="70" id="43Q-WQ-rvE"/>
                                     <constraint firstAttribute="width" constant="70" id="W1f-4S-glj"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7mB-cL-sqc">
                                 <rect key="frame" x="20" y="10" width="352" height="58"/>

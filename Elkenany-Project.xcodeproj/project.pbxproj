@@ -171,6 +171,7 @@
 		3298AB7027A0130D00249D4E /* subFilterCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298AB6F27A0130D00249D4E /* subFilterCity.swift */; };
 		3298AB7527A0133000249D4E /* subFilterOrganize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298AB7427A0133000249D4E /* subFilterOrganize.swift */; };
 		329A6B96281936F400D67034 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B95281936F400D67034 /* Chats.swift */; };
+		329A6B9E2819435B00D67034 /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B9D2819435B00D67034 /* StartChat.swift */; };
 		329E876A281544D300838BDD /* ValidaitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E8769281544D300838BDD /* ValidaitionViewController.swift */; };
 		32A4F08B275FAEBE005B433B /* GuideCompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A4F089275FAEBE005B433B /* GuideCompanyCell.swift */; };
 		32A4F08C275FAEBE005B433B /* GuideCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A4F08A275FAEBE005B433B /* GuideCompanyCell.xib */; };
@@ -437,6 +438,7 @@
 		3298AB6F27A0130D00249D4E /* subFilterCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subFilterCity.swift; sourceTree = "<group>"; };
 		3298AB7427A0133000249D4E /* subFilterOrganize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subFilterOrganize.swift; sourceTree = "<group>"; };
 		329A6B95281936F400D67034 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
+		329A6B9D2819435B00D67034 /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		329E8769281544D300838BDD /* ValidaitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidaitionViewController.swift; sourceTree = "<group>"; };
 		32A4F089275FAEBE005B433B /* GuideCompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideCompanyCell.swift; sourceTree = "<group>"; };
 		32A4F08A275FAEBE005B433B /* GuideCompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideCompanyCell.xib; sourceTree = "<group>"; };
@@ -1078,6 +1080,7 @@
 			isa = PBXGroup;
 			children = (
 				329A6B95281936F400D67034 /* Chats.swift */,
+				329A6B9D2819435B00D67034 /* StartChat.swift */,
 			);
 			path = chats;
 			sourceTree = "<group>";
@@ -1694,6 +1697,7 @@
 				32CEEE23275ADB77007E6FC6 /* TabBarVC.swift in Sources */,
 				32F5FD0827688A2300E4DFE1 /* NewsCell.swift in Sources */,
 				324E0A752756BD8500DEB843 /* RegisterVC.swift in Sources */,
+				329A6B9E2819435B00D67034 /* StartChat.swift in Sources */,
 				324666B127C688DC0061EC86 /* aboutUsMO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class chatVC: UIViewController {
     @IBOutlet weak var messageTextFiled: UITextField!
     var chatmessagee:ChatMessages?
     var sendmessagee:SendMessage?
-    var chateModel:[Massage] = []
+    var chateModel:[Massageing] = []
     var MessageModel:[MassageElement] = []
     var roomId = 0
 
@@ -31,8 +31,8 @@ class chatVC: UIViewController {
     
     //MARK:- Handel Data of chats
     func MessageServices(){
-        let chatID = UserDefaults.standard.string(forKey: "CHAT_ID") ?? ""
-        let parm = ["id": roomId]
+        let chatID = UserDefaults.standard.string(forKey: "ADS_ID") ?? ""
+        let parm = ["id": chatID]
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
@@ -67,9 +67,9 @@ class chatVC: UIViewController {
     
     
     func sendMessageServices(){
-        let chatID = UserDefaults.standard.string(forKey: "CHAT_ID") ?? ""
+        let chatID = UserDefaults.standard.string(forKey: "ADS_ID") ?? ""
         let parm = [
-            "massage": messageTextFiled.text    , "id": roomId ] as [String : Any]
+            "massage": messageTextFiled.text ?? "السعر"    , "id": "\(chatID)" ]
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
@@ -91,8 +91,9 @@ class chatVC: UIViewController {
                     self.chateModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
                         print("hhhhhhhhhhhhhhh")
+                        self.messageTextFiled.text = " "
                         self.chatTV.reloadData()
-
+//                        self.MessageServices()
                     }
                 }
             }
@@ -111,7 +112,8 @@ class chatVC: UIViewController {
     
     @IBAction func sendMessage(_ sender: Any) {
         sendMessageServices()
-        self.messageTextFiled.text = " "
+        self.chatTV.reloadData()
+        self.messageTextFiled.placeholder = "اكتب رسالتك . . . "
 
     }
     

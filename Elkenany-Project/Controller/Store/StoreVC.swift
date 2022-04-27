@@ -487,6 +487,8 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let id = storeSubModel[indexPath.row].id ?? 0
             UserDefaults.standard.set(id, forKey: "ADS_ID")
             let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+            vc.ads_id = id
+            print("iiiiiiiiiiii", id)
             navigationController?.pushViewController(vc, animated: true)
             
         }

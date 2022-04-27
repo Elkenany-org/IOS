@@ -14,6 +14,7 @@ class MassegeVC: UIViewController {
     @IBOutlet weak var emptyMessageView: UIView!
     var chatModel:ChatsModel?
     var chatSubModel:[Chating] = []
+    var id_room = 0
     
     
     //MARK: life cycle
@@ -33,7 +34,10 @@ class MassegeVC: UIViewController {
     
     //MARK: Services for chats
     func FatchDataOfChats(){
-        let parm = [ "id": "30"]
+        ///id of start chat
+        let room_id = UserDefaults.standard.string(forKey: "room_chat") ?? ""
+
+        let parm = [ "id": "\(room_id)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
