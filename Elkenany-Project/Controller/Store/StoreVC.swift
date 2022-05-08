@@ -48,7 +48,7 @@ class StoreVC: UIViewController {
     //MARk: life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "سوق الكناني" 
         FatchDataOfStore()
         FeatchDataOfectores()
         setupSearchBar()
@@ -81,6 +81,33 @@ class StoreVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.typeFromhome)"]
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:AdsStoreDataModel?, FailureRequest:AdsStoreDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    let successDataSectore = SuccessfulRequest?.data?.sectors?.reversed() ?? []
+                    self.sectoreDataModel.append(contentsOf: successDataSectore)
+                    DispatchQueue.main.async {
+                        self.SectorSelected.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    //MARK:- Featch sectors
+    func FeatchDataOfectoresHome(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let param = ["type": "poultry"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:AdsStoreDataModel?, FailureRequest:AdsStoreDataModel?, error) in
@@ -161,6 +188,69 @@ class StoreVC: UIViewController {
             }
         }
     }
+    
+    
+    //MARK:- Featch main store
+    func FatchDataOfStoreFromMore(){
+        DispatchQueue.global(qos: .background).async {
+            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
+            let param = ["type": "poultry" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let headers = ["app-id": "\(id_rec)" ]
+            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort=&page="
+            print("URL", companyGuide)
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                    
+                    print("ffffffffffffff")
+                }
+                
+                
+                else {
+                    
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                    
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.storeSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        //                        if success?.data?.data == nil {
+                        //                            self.Sectorcvvv.isHidden = true
+                        //                            self.errorHandeling.isHidden = false
+                        //                        }else{
+                        //                            self.Sectorcvvv.isHidden = false
+                        //                            self.errorHandeling.isHidden = true
+                        //                        }
+                        self.Sectorcvvv.reloadData()
+                        //
+                        //                        if self.storeSubModel.count == 0 {
+                        //                        self.Sectorcvvv.isHidden = true
+                        //                        self.errorHandeling.isHidden = false
+                        //                        }else{
+                        //
+                        //                            self.Sectorcvvv.isHidden = false
+                        //                            self.errorHandeling.isHidden = true
+                        //                        }
+                        ////
+                        print("rrrr" ,self.storeSubModel.count )
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
     
     
     
@@ -328,7 +418,7 @@ extension StoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 cell1.selectedView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             }else
             {
-                cell1.selectedView.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+                cell1.selectedView.backgroundColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
                 
             }
             

@@ -18,18 +18,26 @@ protocol ReatingValue {
 class RatingCompanyVC: UIViewController {
     @IBOutlet weak var companyImage: UIImageView!
     @IBOutlet weak var RatingView: CosmosView!
+    
+    
 
     var ratingModel:RatingModel?
     var CompanyID = 0
     var rat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-//        handelTap()
-        // Do any additional setup after loading the view.
+
         handeltheRatingValue()
         RatingView.settings.fillMode = .precise
       
     }
+    
+    
+    @IBAction func dissssmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     //handel Delegete of Rating
     var ReatingDelegete:ReatingValue?
@@ -75,7 +83,7 @@ class RatingCompanyVC: UIViewController {
         if isloggineIn {
          
             print("helllllo ")
-            FatchDatafromHome()
+            SendDataOfRatingView()
         }else{
             if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
                 self.present(vc, animated: true, completion: nil)
@@ -88,7 +96,7 @@ class RatingCompanyVC: UIViewController {
     
     
     //MARK:- Handling Tabs of button clicks
-    func FatchDatafromHome(){
+    func SendDataOfRatingView(){
       //Handeling Loading view progress
       let hud = JGProgressHUD(style: .dark)
       hud.textLabel.text = "جاري التحميل"
