@@ -126,6 +126,21 @@ extension searchVC : UISearchBarDelegate {
 //                            messageVC.dismiss(animated: true, completion: nil)})}
 //    }
     
+//
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cBtn.setTitle("الغاء", for: .normal)
+            searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        }
+    }
+//
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchSubModel.removeAll()
+//
+//        searchBaView.text = ""
+//        print("cancellllld")
+//    }
+    
 }
 
 //MARK:- CollectionView [Methods + Delegets]
@@ -147,7 +162,7 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let type = searchSubModel[indexPath.row].type ?? ""
+          let type = searchSubModel[indexPath.row].type ?? ""
         switch type {
         case "companies":
             let newsvc = (storyboard?.instantiateViewController(identifier: "companyDetails"))! as companyDetails
