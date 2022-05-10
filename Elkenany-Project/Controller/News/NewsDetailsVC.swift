@@ -21,6 +21,7 @@ class NewsDetailsVC: UIViewController {
     var news_id_from_home = 0
     var news_id = 0
     var keyFromHome = ""
+    var id_home_search = 0
     
     
     
@@ -78,6 +79,36 @@ class NewsDetailsVC: UIViewController {
         }
     }
     
+    
+    
+    //MARK:- FatchDataOfNewsDetails from home [main data from sector at home]
+    func FatchDataOfNewsDetailsFromHomeSearch(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            let param = ["id": "\(self.id_home_search)"]
+            print(param)
+            let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
+            APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = NewsDetailssuccess else {return}
+                    self.newsDetails = success
+                    DispatchQueue.main.async {
+                        self.NewsDetailsCV.reloadData()
+                        print(success.data ?? "")
+                    }
+                }
+            }
+        }
+    }
     
     
     //MARK:- choose news from home collection to present the news collection

@@ -161,6 +161,20 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
             newsvc.sub_id_home_search = searchSubModel[indexPath.row].id ?? 0
             newsvc.FatchDatafromHomeSearch()
             navigationController?.pushViewController(newsvc, animated: true)
+            
+        case "news":
+            let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
+            newsvc.id_home_search = searchSubModel[indexPath.row].id ?? 0
+            newsvc.FatchDataOfNewsDetailsFromHomeSearch()
+            navigationController?.pushViewController(newsvc, animated: true)
+            
+            
+        case "stores":
+            let newsvc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+            newsvc.ads_from_search = searchSubModel[indexPath.row].id ?? 0
+            newsvc.fetchAdsDetailsFromHomeSearch()
+            navigationController?.pushViewController(newsvc, animated: true)
+            
         default:
             print("hellllo world . .. . ")
         }
