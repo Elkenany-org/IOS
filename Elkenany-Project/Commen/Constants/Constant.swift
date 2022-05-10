@@ -13,6 +13,8 @@ let RegisterURL = "https://elkenany.com/api/register"
 let LoginURL = "https://elkenany.com/api/login"
 let HomeSectorsURL = "https://elkenany.com/api/home-sectors"
 let HomeServiceURL = "https://elkenany.com/api/home-services"
+let companyRating = "https://elkenany.com/api/guide/rating-company"
+
 
 
 class puplicUsed{

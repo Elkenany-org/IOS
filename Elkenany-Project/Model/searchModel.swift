@@ -7,10 +7,7 @@
 
 import Foundation
 
-
-
-// MARK: - LogoutModel
-struct SearchHome: Codable {
+struct searchModel: Codable {
     var message, error: String?
     var data: DataClassSearch?
 }
@@ -23,6 +20,8 @@ struct DataClassSearch: Codable {
 // MARK: - Result
 struct Resultt: Codable {
     let id: Int?
-    let name, type: String?
+    let name: String?
+    let type:String?
 }
+
 

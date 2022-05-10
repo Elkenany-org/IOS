@@ -139,7 +139,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
         case 0:
             
             /// reverse the functions bc this a check only ----
-            var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+            let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
             
             if isloggineIn {
              

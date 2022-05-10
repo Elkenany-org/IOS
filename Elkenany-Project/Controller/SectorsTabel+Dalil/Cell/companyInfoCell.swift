@@ -11,12 +11,8 @@ import Foundation
 import Cosmos
 
 class companyInfoCell: UITableViewCell {
- 
     
-    
-    
-    
-    //MARK:- OUtlets
+    //MARK: OUtlets and Vars
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var companyImage: UIImageView!
     @IBOutlet weak var companyDesc: UILabel!
@@ -24,31 +20,26 @@ class companyInfoCell: UITableViewCell {
     @IBOutlet weak var com_rating: CosmosView!
     var vcc:RatingCompanyVC?
     var DataModel:CompanyDetailsDataModel?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        vcc?.ReatingDelegete = self
-//        FatchDatafromHome()
     }
-
     
-    func FatchDatafromHome(){
-      //Handeling Loading view progress
-//      let hud = JGProgressHUD(style: .dark)
-//      hud.textLabel.text = "جاري التحميل"
-//      hud.show(in: self.view)
+    
+    
+    //MARK: Featch data of Info Company
+    func FeatchDataOfCompanyInformation(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/guide/company/?id="
             let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(idParameter ?? "")"]
-            let headers = ["app-id": "\(api_token ?? "")" ]
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
-//                  hud.dismiss()
                     print("============ error \(error)")
                 }else {
-//                  hud.dismiss()
                     guard let success = success else {return}
                     self.DataModel = success
                     DispatchQueue.main.async {
@@ -75,12 +66,5 @@ class companyInfoCell: UITableViewCell {
         companyImage.kf.setImage(with: url)
     }
     
-    
-    
-    
-    // Button go to Rating View
-    @IBAction func ToRatingVC(_ sender: UIButton) {
-
-    }
     
 }

@@ -13,15 +13,22 @@ class searchVC: UIViewController {
     @IBOutlet weak var searchTVV: UITableView!
     @IBOutlet weak var searchBaView: UISearchBar!
     ///------
-    var companiesModel:SearchHome?
-    private var mainDataModel: [Resultt] = []
+//    var companiesModel: SearchDataModell?
+//    private var mainDataModel: [ResultSearch] = []
+//
+//
+    
+    var SearchModel : SearchDataModell?
+    var searchSubModel: [ResultSearch] = []
+    
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBaView.barTintColor = .white
-//        setupSearchBar()
+        setupSearchBar()
         setupUI()
         searchTVV.estimatedRowHeight = 150
         searchTVV.rowHeight = UITableView.automaticDimension
@@ -29,28 +36,26 @@ class searchVC: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        ///tooooooost
-        let messageVC = UIAlertController(title: "تنبية", message: "هذاالقسم غير متاح حاليا" , preferredStyle: .actionSheet)
-        present(messageVC, animated: true) {
-                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (_) in
-                            messageVC.dismiss(animated: true, completion: nil)})}
-    }
-    
-    func FatchDat(){
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        ///tooooooost
+//        let messageVC = UIAlertController(title: "تنبية", message: "هذاالقسم غير متاح حاليا" , preferredStyle: .actionSheet)
+//        present(messageVC, animated: true) {
+//                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (_) in
+//                            messageVC.dismiss(animated: true, completion: nil)})}
+//    }
+//
+    func featchDataOfSearch(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-        let resulttt = searchBaView?.text ?? ""
+        let param = ["search": self.searchBaView?.text ?? "" ]
+
+//        let resulttt = searchBaView?.text ?? ""
         DispatchQueue.global(qos: .background).async {
-            let param = ["search": "\(resulttt)" ]
-            print("this para", param)
-            let companyGuide = "https://elkenany.com/api/search-all-ios?search="
-            print("URL", companyGuide)
-            
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:SearchHome?, filier:SearchHome?, error) in
+            let searchURL = "https://elkenany.com/api/search-all?search="
+            APIServiceForQueryParameter.shared.fetchData(url: searchURL, parameters: param, headers: nil, method: .get) { (success:SearchDataModell?, filier:SearchDataModell?, error) in
                 
                 if let error = error{
                     //internet error
@@ -66,11 +71,11 @@ class searchVC: UIViewController {
                 else {
                     hud.dismiss()
                     let successData = success?.data?.result ?? []
-                    self.mainDataModel.append(contentsOf: successData)
+                    self.searchSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         
                         self.searchTVV.reloadData()
-                        print(self.companiesModel?.data?.result ??  "")
+                        print(self.SearchModel?.data?.result ??  "")
                         
                     }
                 }
@@ -98,13 +103,14 @@ extension searchVC : UISearchBarDelegate {
         
         if searchText.isEmpty == false {
             //your model
-            let data = companiesModel?.data?.result ?? []
+            let data = SearchModel?.data?.result ?? []
             //your array
-            mainDataModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
-            mainDataModel.removeAll()
+            searchSubModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
+            self.searchSubModel.removeAll()
+            
             
             //Api func
-            FatchDat()
+            featchDataOfSearch()
         }
         
         //reload
@@ -112,13 +118,13 @@ extension searchVC : UISearchBarDelegate {
         
     }
     
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        let messageVC = UIAlertController(title: "Message Title", message: "Account Created successfully" , preferredStyle: .actionSheet)
-        present(messageVC, animated: true) {
-                        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-                            messageVC.dismiss(animated: true, completion: nil)})}
-    }
+//
+//    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+//        let messageVC = UIAlertController(title: "Message Title", message: "Account Created successfully" , preferredStyle: .actionSheet)
+//        present(messageVC, animated: true) {
+//                        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+//                            messageVC.dismiss(animated: true, completion: nil)})}
+//    }
     
 }
 
@@ -127,13 +133,13 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainDataModel.count
+        return searchSubModel.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Companiescell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
-        Companiescell.searchResult.text = mainDataModel[indexPath.row].name ?? "search test"
+        Companiescell.searchResult.text = searchSubModel[indexPath.row].name ?? "search test"
         return Companiescell
     }
     
