@@ -64,7 +64,7 @@ class searchVC: UIViewController {
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "")")
                 }
                 
                 
@@ -143,6 +143,30 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
         return Companiescell
     }
     
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let type = searchSubModel[indexPath.row].type ?? ""
+        switch type {
+        case "companies":
+            let newsvc = (storyboard?.instantiateViewController(identifier: "companyDetails"))! as companyDetails
+            newsvc.CompanyIdFromCompanies = searchSubModel[indexPath.row].id ?? 0
+            newsvc.FeatchCompanyHomeSearch()
+            navigationController?.pushViewController(newsvc, animated: true)
+            
+            
+        case "guide_sub_sections":
+            let newsvc = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
+            newsvc.sub_id_home_search = searchSubModel[indexPath.row].id ?? 0
+            newsvc.FatchDatafromHomeSearch()
+            navigationController?.pushViewController(newsvc, animated: true)
+        default:
+            print("hellllo world . .. . ")
+        }
+        
+        
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

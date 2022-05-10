@@ -45,6 +45,7 @@ class CompaniesVC: UIViewController {
     var subID_fromGuideHome = 0
     var companyTitle = ""
     var hideenKey = ""
+    var sub_id_home_search = 0
     
     
     
@@ -129,6 +130,40 @@ class CompaniesVC: UIViewController {
             let param = ["sub_id": self.subID_fromGuideHome , "page": self.currentpaga]
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
+                (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
+                //internet error
+                if let error = error{
+                    print("============ error \(error)")
+                }
+                //Data Wrong From Server
+                
+                else if let loginError = filier {
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                //success
+                else {
+                    if success?.data?.nextPageURL == nil {
+                    }
+                    let successData = success?.data?.data ?? []
+                    print("current", self.currentpaga)
+                    self.mainDataModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        self.comapniesTView.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
+    
+    //MARK:- Main Data of Companies [main]
+    func FatchDatafromHomeSearch(){
+        DispatchQueue.global(qos: .background).async {
+            let param = ["sub_id": self.sub_id_home_search , "page": self.currentpaga]
+            let HomeSearchURL = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            APIServiceForQueryParameter.shared.fetchData(url: HomeSearchURL, parameters: param, headers: nil, method: .get) {
                 (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
                 if let error = error{

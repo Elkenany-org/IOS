@@ -15,7 +15,9 @@ class companyDetails: UIViewController {
     //outlets
     var CompanyIdFromCompanies = 0
     var companyDetailsModel:CompanyDetailsDataModel?
+    var companyIDHomeSearch = 0
     @IBOutlet weak var companyDetailsTV: UITableView!
+    
     
     
     override func viewDidLoad() {
@@ -47,7 +49,7 @@ class companyDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
-            let param = ["id": "\(self.CompanyIdFromCompanies)"]
+            let param = ["id": "\(self.companyIDHomeSearch)"]
             print("parrrra", param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/guide/company/?id="
@@ -68,6 +70,35 @@ class companyDetails: UIViewController {
         }
     }
     
+    
+    func FeatchCompanyHomeSearch(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
+            let param = ["id": "\(self.CompanyIdFromCompanies)"]
+            print("parrrra", param)
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            let companyDetailes = "https://elkenany.com/api/guide/company/?id="
+            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.companyDetailsModel = success
+                    DispatchQueue.main.async {
+                        self.companyDetailsTV.reloadData()
+                        
+                    }
+                }
+            }
+        }
+    }
     
     
     
