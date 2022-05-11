@@ -27,6 +27,7 @@ class SectorsVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         GetHomeDataFromServer()
+        print("did apear 123567")
     }
     
     
@@ -190,7 +191,7 @@ class SectorsVC: UIViewController {
                                                          headers: headers,
                                                          method: .get) {
                 (SuccessfulRequest:HomeSectorsDataModel?,
-                 FailureRequest:GuideCompaniesDataModel?,
+                 FailureRequest:HomeSectorsDataModel?,
                  error) in
                 if let error = error{
                     hud.dismiss()

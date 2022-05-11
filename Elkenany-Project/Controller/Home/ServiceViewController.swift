@@ -13,13 +13,15 @@ class ServiceViewController: UIViewController {
 
     var homeServiceDataModel:HomeServiceDataModel?
 
-    var arr = ["الخدمات","مقترح لك","شركاء النجاح", "المعارض", "الدلائل والمجلات"]
+    var arr = [ "المعارض", "الدلائل والمجلات"]
     
     @IBOutlet weak var ServicesCV: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         print("did apeaar")
+        GetHomeDataFromServerServices()
+
         //featchServesData()
         // Do any additional setup after loading the view.
     }
@@ -27,6 +29,7 @@ class ServiceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        featchService()
+
         print("will apeaar")
     }
 
@@ -34,10 +37,10 @@ class ServiceViewController: UIViewController {
     func setupUI() {
         ServicesCV.dataSource = self
         ServicesCV.delegate = self
+        ServicesCV.collectionViewLayout = creatCompositionalLayout()
         self.ServicesCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
         self.ServicesCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
         ServicesCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
-        ServicesCV.collectionViewLayout = creatCompositionalLayout()
     }
     
     //composition layout data
@@ -146,97 +149,56 @@ class ServiceViewController: UIViewController {
     }
 
 
-    //MARK:- featch Data from server
-//    func featchServesData(){
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let companyGuide = "https://elkenany.com/api/home-services"
-////            let typeParameter = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
-////            let param = ["type": "\(typeParameter ?? "")"]
-//            let headers = ["app-id": "\(api_token ?? "")" ]
-//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: nil, headers: headers, method: .get) { (success:HomeServiceDataModel?, filier:HomeServiceDataModel?, error) in
-//                if let error = error{
-//                    print("============ error \(error)")
-//                }else {
-//                    guard let success = success else {return}
-//                    self.homeServiceDataModel = success
-//                    DispatchQueue.main.async {
-//                        self.ServicesCV.reloadData()
-//                    }
-//
-//
-//                }
-//            }
-//
-//
-//        }
-//
-//}
-    
-//    func featchDataaaa(){
-////                let hud = JGProgressHUD(style: .extraLight)
-////                hud.textLabel.text = "Loading..."
-////                hud.show(in: self.view)
-////
-//        let api_toke = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-//
-//        let headers:HTTPHeaders = ["api_token": "Bearer \(api_toke)"]
-//        APIService.shared.fetchData(url: "https://elkenany.com/api/home-services" , parameters: nil, headers: headers, method: .get) {[weak self] (ServiceData:HomeServiceDataModel?, ServiceError:HomeServiceDataModel?, error) in
-//        guard let self = self else {return}
-//        if let error = error{
-//
-//            print("error ===========================")
-//            print(error.localizedDescription)
-////                    hud.dismiss()
-//
-//        }else{
-//            self.homeServiceDataModel = ServiceData
-////                    print(self.homeDataSectorsModel?.data?.sectors)
-//            //print(self.homeDataSectorsModel?.data?.sectors)
-////                    hud.dismiss()
-//            DispatchQueue.main.async { [self] in
-//                self.ServicesCV.reloadData()
-////                print("======================= \(self.homeServiceDataModel?.ServiceData?.magazine)")
-//            }
-//        }
-//    }
-//}
-    
-    func featchService(){
-//                let hud = JGProgressHUD(style: .extraLight)
-//                hud.textLabel.text = "Loading..."
-//                hud.show(in: self.view)
-//
-        let api_toke = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-       let  Serviceurl = "https://elkenany.com/api/home-services"
-        let headers:HTTPHeaders = ["Authorization": "Bearer \(api_toke)"]
-        APIService.shared.fetchData(url: Serviceurl , parameters: nil, headers: headers, method: .get) {[weak self] (SectorData:HomeServiceDataModel?, postsError:HomeServiceDataModel?, error) in
-        guard let self = self else {return}
-        if let error = error{
-            
-            print("error ===========================")
-            print(error.localizedDescription)
-//                    hud.dismiss()
 
-        }else{
-            self.homeServiceDataModel = SectorData
-//                    print(self.homeDataSectorsModel?.data?.sectors)
-            //print(self.homeDataSectorsModel?.data?.sectors)
-//                    hud.dismiss()
-            DispatchQueue.main.async {
-                self.ServicesCV.reloadData()
+    
+    
+    //MARK:- featch Data from server
+    func GetHomeDataFromServerServices(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: HomeSectorsURL,
+                                                         parameters: nil,
+                                                         headers: nil,
+                                                         method: .get) {
+                (SuccessfulRequest:HomeServiceDataModel?,
+                 FailureRequest:HomeServiceDataModel?,
+                 error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = FailureRequest {
+                    //Data Wrong From Server
+                    print(loginError)
+                }
+                
+                else {
+                    hud.dismiss()
+                    guard let success = SuccessfulRequest else {return}
+                    self.homeServiceDataModel = success
+                    DispatchQueue.main.async {
+                        self.ServicesCV.reloadData()
+                    }
+                }
             }
         }
+        
     }
-}
-
+    
+    
     
 }
 
 extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
