@@ -21,6 +21,9 @@ class SectorsVC: UIViewController {
     let images:[UIImage] = [ #imageLiteral(resourceName: "1-5") , #imageLiteral(resourceName: "1-4")  , #imageLiteral(resourceName: "1-1") , #imageLiteral(resourceName: "1-3") , #imageLiteral(resourceName: "1-2") ]
     var typeForRecomendition = ""
     
+//    let viewsw = ServiceViewController()
+
+
     
     //viewDidload
     override func viewDidLoad() {
@@ -28,6 +31,7 @@ class SectorsVC: UIViewController {
         setupUI()
         GetHomeDataFromServer()
         print("did apear 123567")
+//        viewsw.GetHomeDataFromServerServices()
     }
     
     

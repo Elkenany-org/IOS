@@ -12,16 +12,13 @@ import JGProgressHUD
 class ServiceViewController: UIViewController {
 
     var homeServiceDataModel:HomeServiceDataModel?
-
     var arr = [ "المعارض", "الدلائل والمجلات"]
-    
     @IBOutlet weak var ServicesCV: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         print("did apeaar")
-        GetHomeDataFromServerServices()
-
+     
         //featchServesData()
         // Do any additional setup after loading the view.
     }
@@ -29,10 +26,21 @@ class ServiceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        featchService()
-
+//        GetHomeDataFromServerServices()
         print("will apeaar")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        GetHomeDataFromServerServices()
+    }
+    
+    
+    
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     func setupUI() {
         ServicesCV.dataSource = self
@@ -160,8 +168,8 @@ class ServiceViewController: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: HomeSectorsURL,
+//            let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: "https://elkenany.com/api/home-services",
                                                          parameters: nil,
                                                          headers: nil,
                                                          method: .get) {
@@ -184,43 +192,40 @@ class ServiceViewController: UIViewController {
                     self.homeServiceDataModel = success
                     DispatchQueue.main.async {
                         self.ServicesCV.reloadData()
+                        print(SuccessfulRequest?.ServiceData?.magazine ?? "")
                     }
                 }
             }
         }
-        
     }
-    
-    
     
 }
 
 extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if section == 0 {
-            return homeServiceDataModel?.ServiceData?.recomandtion?.count ?? 0
+            return 4
         }
         else if section == 1 {
-            return homeServiceDataModel?.ServiceData?.recomandtion?.count ?? 0
+            return homeServiceDataModel?.ServiceData?.recomandtion?.count ?? 3
         }else if section == 2{
-            return homeServiceDataModel?.ServiceData?.logos?.count ?? 0
+            return homeServiceDataModel?.ServiceData?.logos?.count ?? 5
 
         }else if section == 3{
-            return homeServiceDataModel?.ServiceData?.show?.count ?? 0
+            return homeServiceDataModel?.ServiceData?.show?.count ?? 6
 
         }else if section == 4{
-            return homeServiceDataModel?.ServiceData?.magazine?.count ?? 0
+            return homeServiceDataModel?.ServiceData?.magazine?.count ?? 7
 
         }
         else{
-            
-            return homeServiceDataModel?.ServiceData?.magazine?.count ?? 0
+            return homeServiceDataModel?.ServiceData?.magazine?.count ?? 5
 
         }
     }

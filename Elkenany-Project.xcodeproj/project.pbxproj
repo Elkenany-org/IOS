@@ -83,6 +83,7 @@
 		32438A07282BADEE000F3AD6 /* Showers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A06282BADEE000F3AD6 /* Showers.swift */; };
 		32438A0C282BB0FC000F3AD6 /* Speakers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A0B282BB0FC000F3AD6 /* Speakers.swift */; };
 		32438A11282BB20E000F3AD6 /* addPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A10282BB20E000F3AD6 /* addPlaces.swift */; };
+		32438A24282C00F3000F3AD6 /* showesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A23282C00F3000F3AD6 /* showesVC.swift */; };
 		324666B127C688DC0061EC86 /* aboutUsMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324666B027C688DC0061EC86 /* aboutUsMO.swift */; };
 		324E0A752756BD8500DEB843 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324E0A742756BD8500DEB843 /* RegisterVC.swift */; };
 		324E0A7E2756C0F600DEB843 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324E0A7D2756C0F600DEB843 /* HomeVC.swift */; };
@@ -360,6 +361,7 @@
 		32438A06282BADEE000F3AD6 /* Showers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showers.swift; sourceTree = "<group>"; };
 		32438A0B282BB0FC000F3AD6 /* Speakers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speakers.swift; sourceTree = "<group>"; };
 		32438A10282BB20E000F3AD6 /* addPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPlaces.swift; sourceTree = "<group>"; };
+		32438A23282C00F3000F3AD6 /* showesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showesVC.swift; sourceTree = "<group>"; };
 		324666B027C688DC0061EC86 /* aboutUsMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutUsMO.swift; sourceTree = "<group>"; };
 		324E0A742756BD8500DEB843 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		324E0A7D2756C0F600DEB843 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 		323B222E274A4649002CEB89 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				32438A22282C00A0000F3AD6 /* showers */,
 				32505BB527B9555F0048C5DF /* search */,
 				325528112779E2F700BAAE65 /* More */,
 				325527F72779B7C900BAAE65 /* Notifications */,
@@ -863,6 +866,14 @@
 				32438A10282BB20E000F3AD6 /* addPlaces.swift */,
 			);
 			path = Showes;
+			sourceTree = "<group>";
+		};
+		32438A22282C00A0000F3AD6 /* showers */ = {
+			isa = PBXGroup;
+			children = (
+				32438A23282C00F3000F3AD6 /* showesVC.swift */,
+			);
+			path = showers;
 			sourceTree = "<group>";
 		};
 		324E0A7C2756C0DB00DEB843 /* Home */ = {
@@ -1597,6 +1608,7 @@
 				32CC184327A1A31A0004F356 /* RatingModel.swift in Sources */,
 				32A84DB427E9626400C1D3EF /* detailOne.swift in Sources */,
 				323DDA2427DF482900B2C127 /* popupToSignIN.swift in Sources */,
+				32438A24282C00F3000F3AD6 /* showesVC.swift in Sources */,
 				32579A042779E5EB009E6C30 /* headerLine.swift in Sources */,
 				32C4EFD827871B6C0034BD9F /* filterHeader.swift in Sources */,
 				32343F2D274B89BD00921D99 /* UICollectionView+Extensions.swift in Sources */,
