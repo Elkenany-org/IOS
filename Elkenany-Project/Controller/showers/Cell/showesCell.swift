@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class showesCell: UITableViewCell {
 
@@ -22,6 +23,7 @@ class showesCell: UITableViewCell {
     
     @IBOutlet weak var starRating: UIView!
     
+    @IBOutlet weak var RatingVi: CosmosView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,10 +35,22 @@ class showesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    
     func configureCell(image:String) {
         let url = URL(string:image)
         showsImage.kf.indicatorType = .activity
         showsImage.kf.setImage(with: url)
     }
+    
+    
+    
+    
+    func configureRating(ddd: showesHomeData ) {
+        RatingVi.rating = ddd.rate ?? 0
+    
+    }
+    
+    
     
 }

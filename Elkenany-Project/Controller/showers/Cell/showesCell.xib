@@ -27,23 +27,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUN-M5-44y">
-                        <rect key="frame" x="5" y="5" width="500" height="277"/>
+                        <rect key="frame" x="10" y="10" width="490" height="267"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indastrial develpoment factories serives expo " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVA-fy-9hg">
-                                <rect key="frame" x="170" y="10" width="320" height="40"/>
+                                <rect key="frame" x="180" y="10" width="300" height="91.5"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cFK-rC-I5x">
-                                <rect key="frame" x="10" y="10" width="80" height="80"/>
+                                <rect key="frame" x="10" y="10" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="YUL-ZL-lr6"/>
-                                    <constraint firstAttribute="width" constant="80" id="eht-eC-AGz"/>
+                                    <constraint firstAttribute="height" constant="90" id="YUL-ZL-lr6"/>
+                                    <constraint firstAttribute="width" constant="90" id="eht-eC-AGz"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="by2-hg-4dP">
-                                <rect key="frame" x="386.5" y="67" width="103.5" height="57"/>
+                                <rect key="frame" x="376.5" y="113.5" width="103.5" height="57"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hHN-Wa-0ed">
                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="25"/>
@@ -84,30 +84,30 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="So I'm following a git repo for handling network requests. I have successfully implemented it into my application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-KT-IHB">
-                                <rect key="frame" x="20" y="134" width="460" height="33"/>
-                                <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="So I'm following a git repo for handling network requests. I have successfully implemented it into my application" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-KT-IHB">
+                                <rect key="frame" x="20" y="180.5" width="450" height="30.5"/>
+                                <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="13"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFI-LV-roI">
-                                <rect key="frame" x="20" y="177" width="460" height="1"/>
+                                <rect key="frame" x="20" y="221" width="450" height="1"/>
                                 <color key="backgroundColor" name="kenanyblueblack"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="grh-TK-lEw"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tVA-Lf-aAl">
-                                <rect key="frame" x="406" y="183" width="74" height="16.5"/>
+                                <rect key="frame" x="396" y="227" width="74" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مشاهدة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHJ-Vu-IYQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="16.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-gP-D2c">
-                                        <rect key="frame" x="42.5" y="0.0" width="31.5" height="16.5"/>
+                                        <rect key="frame" x="42.5" y="0.0" width="31.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yq8-dp-4uI" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="20" y="188" width="366" height="20"/>
+                                <rect key="frame" x="20" y="232" width="356" height="20"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="IMe-pH-p0u"/>
@@ -132,15 +132,17 @@
                             <constraint firstItem="2uO-KT-IHB" firstAttribute="top" secondItem="by2-hg-4dP" secondAttribute="bottom" constant="10" id="7jT-BP-0qJ"/>
                             <constraint firstItem="cFK-rC-I5x" firstAttribute="leading" secondItem="oUN-M5-44y" secondAttribute="leading" constant="10" id="9Om-I9-pDf"/>
                             <constraint firstItem="2uO-KT-IHB" firstAttribute="leading" secondItem="oUN-M5-44y" secondAttribute="leading" constant="20" id="9wI-6N-1cT"/>
+                            <constraint firstItem="sFI-LV-roI" firstAttribute="top" secondItem="2uO-KT-IHB" secondAttribute="bottom" constant="10" id="Osy-PA-nFR"/>
+                            <constraint firstItem="by2-hg-4dP" firstAttribute="top" secondItem="oVA-fy-9hg" secondAttribute="bottom" constant="12" id="PQj-mG-nEb"/>
                             <constraint firstItem="Yq8-dp-4uI" firstAttribute="leading" secondItem="oUN-M5-44y" secondAttribute="leading" constant="20" id="QQI-nO-SN8"/>
                             <constraint firstItem="tVA-Lf-aAl" firstAttribute="top" secondItem="sFI-LV-roI" secondAttribute="bottom" constant="5" id="S1h-Sv-nfU"/>
-                            <constraint firstItem="sFI-LV-roI" firstAttribute="top" secondItem="2uO-KT-IHB" secondAttribute="bottom" constant="10" id="ZbV-6H-TW1"/>
                             <constraint firstItem="2uO-KT-IHB" firstAttribute="centerX" secondItem="oUN-M5-44y" secondAttribute="centerX" id="dZ6-bL-dhf"/>
                             <constraint firstItem="oVA-fy-9hg" firstAttribute="leading" secondItem="cFK-rC-I5x" secondAttribute="trailing" constant="80" id="h2y-yR-9by"/>
+                            <constraint firstAttribute="bottom" secondItem="tVA-Lf-aAl" secondAttribute="bottom" constant="15" id="j4u-UG-W2A"/>
                             <constraint firstItem="tVA-Lf-aAl" firstAttribute="leading" secondItem="Yq8-dp-4uI" secondAttribute="trailing" constant="20" id="kOK-ss-hxg"/>
                             <constraint firstItem="Yq8-dp-4uI" firstAttribute="top" secondItem="sFI-LV-roI" secondAttribute="bottom" constant="10" id="kpj-pm-7XR"/>
-                            <constraint firstItem="by2-hg-4dP" firstAttribute="top" secondItem="oVA-fy-9hg" secondAttribute="bottom" constant="17" id="lIl-rZ-ljI"/>
                             <constraint firstAttribute="trailing" secondItem="oVA-fy-9hg" secondAttribute="trailing" constant="10" id="leD-4c-hbi"/>
+                            <constraint firstAttribute="bottom" secondItem="Yq8-dp-4uI" secondAttribute="bottom" constant="15" id="mbp-Yq-6Cn"/>
                             <constraint firstItem="oVA-fy-9hg" firstAttribute="top" secondItem="oUN-M5-44y" secondAttribute="top" constant="10" id="nZs-x1-XKF"/>
                             <constraint firstAttribute="trailing" secondItem="by2-hg-4dP" secondAttribute="trailing" constant="10" id="tAt-ju-AaZ"/>
                             <constraint firstAttribute="trailing" secondItem="tVA-Lf-aAl" secondAttribute="trailing" constant="20" id="tjA-qS-698"/>
@@ -161,14 +163,15 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oUN-M5-44y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="NMg-At-I3N"/>
-                    <constraint firstItem="oUN-M5-44y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="T5J-fw-nJs"/>
-                    <constraint firstAttribute="bottom" secondItem="oUN-M5-44y" secondAttribute="bottom" constant="5" id="XU3-Yy-9gV"/>
-                    <constraint firstAttribute="trailing" secondItem="oUN-M5-44y" secondAttribute="trailing" constant="5" id="ep5-KI-Gtx"/>
+                    <constraint firstItem="oUN-M5-44y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NMg-At-I3N"/>
+                    <constraint firstItem="oUN-M5-44y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="T5J-fw-nJs"/>
+                    <constraint firstAttribute="bottom" secondItem="oUN-M5-44y" secondAttribute="bottom" constant="10" id="XU3-Yy-9gV"/>
+                    <constraint firstAttribute="trailing" secondItem="oUN-M5-44y" secondAttribute="trailing" constant="10" id="ep5-KI-Gtx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="RatingVi" destination="Yq8-dp-4uI" id="pU1-tA-P14"/>
                 <outlet property="countryName" destination="VYM-hn-szL" id="jfc-Q3-cFb"/>
                 <outlet property="showesDate" destination="fzx-XM-qJN" id="fcR-tC-V0S"/>
                 <outlet property="showesDescription" destination="2uO-KT-IHB" id="W32-2A-dYc"/>

@@ -27,12 +27,13 @@ class ServiceViewController: UIViewController {
         super.viewWillAppear(animated)
 //        featchService()
 //        GetHomeDataFromServerServices()
+        GetHomeDataFromServerServices()
+
         print("will apeaar")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GetHomeDataFromServerServices()
     }
     
     
@@ -314,6 +315,11 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         return UICollectionViewCell()
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "showesVC") as! showesVC
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{

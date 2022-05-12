@@ -306,12 +306,9 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
         
-        
-        
-      
     }
     
-    
+    }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
@@ -325,14 +322,14 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     
+  
+
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
   
         return CGSize(width: 100, height: 60)
 
     }
-}
-
-
 
 }
 
@@ -353,26 +350,28 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
             showescell.showesView.text = String( subShowesModel[indexPath.row].viewCount ?? 0)
             let showImage = subShowesModel[indexPath.row].image ?? ""
             showescell.configureCell(image: showImage)
-            
+            showescell.configureRating(ddd: subShowesModel[indexPath.row])
             showescell.selectionStyle = .none
             return showescell
         }
         return UITableViewCell()
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return tableView.rowHeight
-//        
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
+        
+    }
     
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
-//            let idd = mainDataModel[indexPath.row].id
-//            UserDefaults.standard.set(idd, forKey: "IDDD")
-//            vc.CompanyIdFromCompanies = idd ?? 0
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
+            let idd = subShowesModel[indexPath.row].id
+            UserDefaults.standard.set(idd, forKey: "IDDD")
+            vc.CompanyIdFromCompanies = idd ?? 0
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
 }
