@@ -34,6 +34,9 @@ class showesVC: UIViewController {
         setupSearchBar()
         SetupUI()
         title = "المعارض"
+        //Dynamice Hight cell
+        showesTableView.estimatedRowHeight = 150
+        showesTableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -42,11 +45,14 @@ class showesVC: UIViewController {
     fileprivate func SetupUI() {
         csectorsCV.delegate = self
         csectorsCV.dataSource = self
-//        showesTableView.delegate = self
-//        showesTableView.dataSource = self
+        showesTableView.delegate = self
+        showesTableView.dataSource = self
         showesTableView.prefetchDataSource = self
         self.csectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
 //        self.showesTableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: "NewsCell")
+        self.showesTableView.register(UINib(nibName: "showesCell", bundle: nil), forCellReuseIdentifier: "showesCell")
+        
+    
         
     }
     
@@ -79,10 +85,10 @@ class showesVC: UIViewController {
     func FatchDataforNewsHome(){
         
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
+            let param = ["type": "poultry" , "sort": "\(1)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=poultry&sort="
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 
@@ -109,6 +115,7 @@ class showesVC: UIViewController {
                     DispatchQueue.main.async {
                         
                         self.showesTableView.reloadData()
+                        print(success?.data?.data ?? "")
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -327,4 +334,45 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 
 
 
+}
+
+
+//MARK:- TableView for companies  [Methods + Delegets]
+extension showesVC :UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subShowesModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let showescell = tableView.dequeueReusableCell(withIdentifier: "showesCell") as? showesCell{
+            showescell.showesName.text = subShowesModel[indexPath.row].name ?? ""
+            showescell.countryName.text = subShowesModel[indexPath.row].address ?? ""
+            showescell.showesDate.text = subShowesModel[indexPath.row].date ?? ""
+            showescell.showesDescription.text = subShowesModel[indexPath.row].desc ?? ""
+            showescell.showesView.text = String( subShowesModel[indexPath.row].viewCount ?? 0)
+            let showImage = subShowesModel[indexPath.row].image ?? ""
+            showescell.configureCell(image: showImage)
+            
+            showescell.selectionStyle = .none
+            return showescell
+        }
+        return UITableViewCell()
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return tableView.rowHeight
+//        
+//    }
+    
+    
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
+//            let idd = mainDataModel[indexPath.row].id
+//            UserDefaults.standard.set(idd, forKey: "IDDD")
+//            vc.CompanyIdFromCompanies = idd ?? 0
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
 }
