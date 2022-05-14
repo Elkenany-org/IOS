@@ -41,6 +41,9 @@ class showVC: UIViewController {
     
 
     @IBAction func ratingShow(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
+        present(vc, animated: true, completion: nil)
+        
     }
     
     @IBAction func sharingShow(_ sender: Any) {
