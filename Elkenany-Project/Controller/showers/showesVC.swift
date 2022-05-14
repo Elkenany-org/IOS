@@ -299,6 +299,11 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let typeOfSectorr = subSectoresModel[indexPath.row].type ?? ""
         UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
 
+        let vc = storyboard?.instantiateViewController(withIdentifier: "showVC" ) as! showVC
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
         self.typeFromhome = typeOfSectorr
         
         if(cell.isSelected == true)

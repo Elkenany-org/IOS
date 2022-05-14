@@ -193,40 +193,40 @@ class CompaniesVC: UIViewController {
     
     
     //MARK:- Main Data of Companies [from recominditon cell in home ]
-    func FatchDatafromHomeUsingRecomindition(){
-        DispatchQueue.global(qos: .background).async {
-            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["sub_id": id_rec , "page": self.currentpaga]
-            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                //internet error
-                if let error = error{
-                    print("============ error \(error)")
-                    
-                }
-                //Data Wrong From Server
-                
-                else if let loginError = filier {
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-                }
-                //success
-                else {
-                    if success?.data?.nextPageURL == nil {
-                    }
-                    
-                    let successData = success?.data?.data ?? []
-                    print("current", self.currentpaga)
-                    self.mainDataModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        self.comapniesTView.reloadData()
-                    }
-                    self.currentpaga += 1
-                    self.isFeatchingData = false
-                }
-            }
-        }
-    }
-    
+//    func FatchDatafromHomeUsingRecomindition(){
+//        DispatchQueue.global(qos: .background).async {
+//            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
+//            let param = ["sub_id": id_rec , "page": self.currentpaga]
+//            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
+//                //internet error
+//                if let error = error{
+//                    print("============ error \(error)")
+//                    
+//                }
+//                //Data Wrong From Server
+//                
+//                else if let loginError = filier {
+//                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+//                }
+//                //success
+//                else {
+//                    if success?.data?.nextPageURL == nil {
+//                    }
+//                    
+//                    let successData = success?.data?.data ?? []
+//                    print("current", self.currentpaga)
+//                    self.mainDataModel.append(contentsOf: successData)
+//                    DispatchQueue.main.async {
+//                        self.comapniesTView.reloadData()
+//                    }
+//                    self.currentpaga += 1
+//                    self.isFeatchingData = false
+//                }
+//            }
+//        }
+//    }
+//    
     
     //MARK:- Main Data of Companies [from the dalil collection cell in home ]
     func FatchDatafromHomeUsingDalil(){

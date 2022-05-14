@@ -425,7 +425,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 //                guideVC.sectorTypeFromRecomindition = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].type ?? ""
                 let id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
                 UserDefaults.standard.set(id, forKey: "REC_Id_Com")
-                guideVC.FatchDatafromHomeUsingRecomindition()
+//                guideVC.FatchDatafromHomeUsingRecomindition()
                 
                 navigationController?.pushViewController(guideVC, animated: true)
             //                UserDefaults.standard.set( homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id, forKey: "Home_Rec_Id")
