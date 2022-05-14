@@ -10,6 +10,7 @@ import Cosmos
 
 class addRatingVC: UIViewController {
 
+    
     @IBOutlet weak var nameTFF: UITextField!
     @IBOutlet weak var emailTFF: UITextField!
     @IBOutlet weak var detailsTFF: UITextField!
@@ -19,8 +20,6 @@ class addRatingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
@@ -36,7 +35,6 @@ class addRatingVC: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
-            let headers = ["Authorization": "Bearer \(api_token)" ]
             let url = "https://elkenany.com/api/showes/one-show-reat"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
@@ -64,7 +62,6 @@ class addRatingVC: UIViewController {
     
     
     @IBAction func confirmRequest(_ sender: Any) {
-        
         sendMessageServicesss()
         dismiss(animated: true, completion: nil)
         
@@ -75,9 +72,4 @@ class addRatingVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
-    
-    
-    
-
 }
