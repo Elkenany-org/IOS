@@ -192,7 +192,7 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="pin" width="512" height="512"/>
         <namedColor name="kenanyGold">
-            <color red="1" green="0.58823529411764708" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58799999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="kenanyGreen">
             <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

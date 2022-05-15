@@ -15,8 +15,9 @@ class showVC: UIViewController {
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
     
-    var reviewModel:ShowReview?
-    var subreviewModel:[Review] = []
+    var showesModel:ShowesHome?
+    var subShowesModel:[showesHomeData] = []
+    var linkeeeee = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class showVC: UIViewController {
         super.viewWillAppear(animated)
         segmentVieww.selectedSegmentIndex = 0
         SetupSegment()
-
+        ReviwesServices()
     }
     
 
@@ -49,12 +50,15 @@ class showVC: UIViewController {
         
     }
     
+    
+    
+    
     @IBAction func sharingShow(_ sender: Any) {
         // Setting description
         let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
         
         // Setting url
-        let secondActivityItem : NSURL = NSURL(string: "\()")!
+        let secondActivityItem : NSURL = NSURL(string: "\(linkeeeee)")!
         
         // If you want to use an image
         let image : UIImage = UIImage(named: "AppIcon")!
@@ -114,11 +118,11 @@ class showVC: UIViewController {
     }
     
     func ReviwesServices(){
-        let parm = ["id": "5"]
+        let parm = ["type" : "poultry"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://elkenany.com/api/showes/all-showes?type=&sort="
             
-            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowReview?, filier:ShowReview?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
                     //internet error
                     print("============ error \(error)")
@@ -129,11 +133,15 @@ class showVC: UIViewController {
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
-                    let successDataa = success?.data?.review ?? []
-                    self.subreviewModel.append(contentsOf: successDataa)
+                    let successDataa = success?.data?.data ?? []
+                    self.subShowesModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
 //                        self.reviewsTableView.reloadData()
-
+            
+                        for i in self.subShowesModel  {
+                            print(i.deebLink ?? "")
+                            self.linkeeeee = i.deebLink ?? ""
+                        }
                         print("hhhhhhhhhhhhhhh")
                         print(success?.data ?? "" )
                     }
@@ -141,6 +149,9 @@ class showVC: UIViewController {
             }
         }
     }
+    
+    
+    
     
     
     

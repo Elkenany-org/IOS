@@ -14,10 +14,14 @@ class HomeVC: UIViewController {
     @IBOutlet weak var secondContainerView: UIView! // sector
     @IBOutlet weak var firstContainerView: UIView!
 
+    @IBOutlet weak var welcomeLabel: UIView!
+    @IBOutlet weak var hedaerview: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupSegment()
     }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,12 +29,32 @@ class HomeVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animateEachLabel()
+
+    }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    @objc func animateEachLabel() {
+        
+        UIView.animate(withDuration: 1.5, animations: {
+              self.welcomeLabel.frame.origin.x = 10
+          }) {_ in
+              UIView.animate(withDuration: 1.5) {
+                  self.welcomeLabel.frame.origin.x = 0
+              }
+          }
+        
+    }
+
+
+
     
     
     //MARK:- segment Handling color / bcColor / fonts
