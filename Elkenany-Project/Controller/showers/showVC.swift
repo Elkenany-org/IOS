@@ -15,6 +15,9 @@ class showVC: UIViewController {
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
     
+    var reviewModel:ShowReview?
+    var subreviewModel:[Review] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +50,45 @@ class showVC: UIViewController {
     }
     
     @IBAction func sharingShow(_ sender: Any) {
+        // Setting description
+        let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
+        
+        // Setting url
+        let secondActivityItem : NSURL = NSURL(string: "\()")!
+        
+        // If you want to use an image
+        let image : UIImage = UIImage(named: "AppIcon")!
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
+        
+        // This lines is for the popover you need to show in iPad
+        //                activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+        
+        // This line remove the arrow of the popover to show in iPad
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        
+        // Pre-configuring activity items
+        activityViewController.activityItemsConfiguration = [
+            UIActivity.ActivityType.message
+        ] as? UIActivityItemsConfigurationReading
+        
+        // Anything you want to exclude
+        activityViewController.excludedActivityTypes = [
+            UIActivity.ActivityType.postToWeibo,
+            UIActivity.ActivityType.print,
+            UIActivity.ActivityType.assignToContact,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.addToReadingList,
+            UIActivity.ActivityType.postToFlickr,
+            UIActivity.ActivityType.postToVimeo,
+            UIActivity.ActivityType.postToTencentWeibo,
+            UIActivity.ActivityType.postToFacebook
+            
+        ]
+        
+        activityViewController.isModalInPresentation = true
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     
@@ -70,6 +112,36 @@ class showVC: UIViewController {
             // Fallback on earlier versions
         }
     }
+    
+    func ReviwesServices(){
+        let parm = ["id": "5"]
+        DispatchQueue.global(qos: .background).async {
+            let url = "https://elkenany.com/api/showes/one-show/?id="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowReview?, filier:ShowReview?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    let successDataa = success?.data?.review ?? []
+                    self.subreviewModel.append(contentsOf: successDataa)
+                    DispatchQueue.main.async {
+//                        self.reviewsTableView.reloadData()
+
+                        print("hhhhhhhhhhhhhhh")
+                        print(success?.data ?? "" )
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     
