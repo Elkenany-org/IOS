@@ -8,22 +8,36 @@
 import Foundation
 
 
-
-// MARK: - NotificationModel
+// MARK: - AddPlaces
 struct NotificationModel: Codable {
-    var message, error: String?
-    var data: notData?
+    let message, error: String?
+    let data: DataNotification?
 }
 
 // MARK: - DataClass
-struct notData: Codable {
-    var nots: [Not]?
+struct DataNotification: Codable {
+    let result: [ResultNot]?
 }
 
-// MARK: - Not
-struct Not: Codable {
-    var id: Int?
-    var title, desc: String?
-    var image: String?
+// MARK: - Result
+struct ResultNot: Codable {
+    let id: Int?
+    let title, desc: String?
+    let image: String?
+    let createdAt: String?
+    let keyName: KeyName?
+    let keyID: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id, title, desc, image
+        case createdAt = "created_at"
+        case keyName = "key_name"
+        case keyID = "key_id"
+    }
+}
+
+enum KeyName: String, Codable {
+    case companies = "companies"
+    case news = "news"
 }
 
