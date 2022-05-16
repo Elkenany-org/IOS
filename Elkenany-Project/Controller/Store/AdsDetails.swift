@@ -176,7 +176,7 @@ class AdsDetails: UIViewController {
 //        }
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            navigationController?.pushViewController(vc, animated: true)
+            present(vc, animated: true)
         }
     }
     
