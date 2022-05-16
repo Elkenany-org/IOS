@@ -19,7 +19,6 @@ class notificationVC: UIViewController {
 
         // Do any additional setup after loading the view.
         setupUI()
-        FatchDataOfNotif()
 
 //        badgeValue = String(notificationdata?.data?.nots?.count ?? 0)
         
@@ -27,8 +26,14 @@ class notificationVC: UIViewController {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn {
-                        
+            FatchDataOfNotif()
+            notificationCV.isHidden = false
+            validationView.isHidden = true
+            
         }else{
+            
+            notificationCV.isHidden = true
+            validationView.isHidden = false
             
         }
 
@@ -70,6 +75,16 @@ class notificationVC: UIViewController {
                 }
             }
         }
+    }
+    
+    
+    @IBAction func toLogin(_ sender: Any) {
+        if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+        }
+
     }
     
     

@@ -1081,6 +1081,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="toLogin:" destination="g6U-Oq-F3j" eventType="touchUpInside" id="iTu-V5-0eY"/>
                                                     <action selector="toSignIn:" destination="gp4-4B-khk" eventType="touchUpInside" id="AQH-db-RP0"/>
                                                 </connections>
                                             </button>
