@@ -166,21 +166,24 @@ class AdsDetails: UIViewController {
     }
     
     @IBAction func startChat(_ sender: Any) {
+//        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+//            creatChatRoom()
+//            let id = startRoomChat?.data?.chat?.id ?? 0
+//            UserDefaults.standard.set(id, forKey: "room_chat")
+//            vc.roomId = id
+//            vc.modalPresentationStyle = .fullScreen
+//            present(vc, animated: true, completion: nil)
+//        }
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            creatChatRoom()
-            let id = startRoomChat?.data?.chat?.id ?? 0
-            UserDefaults.standard.set(id, forKey: "room_chat") 
-            vc.roomId = id
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     
     @IBAction func startAgain(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
         }
         
     }

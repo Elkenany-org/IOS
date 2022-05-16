@@ -11,6 +11,7 @@ class ProfileVC: UIViewController {
     
     var profileDataa:ProfileData?
     @IBOutlet weak var profileCollectionView: UICollectionView!
+    @IBOutlet weak var validationView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,25 +21,36 @@ class ProfileVC: UIViewController {
         profileCollectionView.dataSource = self
         self.profileCollectionView.register(UINib(nibName: "profileCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
         self.profileCollectionView.register(UINib(nibName: "EditeProfileCell", bundle: nil), forCellWithReuseIdentifier: "EditeProfileCell")
-        FatchDataProfile()
         
-        var isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         if isloggineIn {
-            print("helllllo ")
-
-        }else{
-            if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true, completion: nil)
-            }
+            FatchDataProfile()
+            profileCollectionView.isHidden = false
+            validationView.isHidden = true
 
             
+            
+        }else{
+         
+
+            profileCollectionView.isHidden = true
+            validationView.isHidden = false
+            
            }
+    }
+    
+  
+    @IBAction func toLogin(_ sender: Any) {
+        
+        if let vc = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
         
         
     }
     
-  
+    
     
     func ss(ss:UICollectionViewCell){
         ss.layer.cornerRadius = 15.0
