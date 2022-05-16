@@ -26,6 +26,9 @@ class chatVC: UIViewController {
         chatTV.delegate = self
         chatTV.dataSource = self
         chatTV.register(UINib(nibName: "ChatCell", bundle: nil), forCellReuseIdentifier: "ChatCell")
+        title = "محادثة جارية "
+        self.tabBarController?.tabBar.isHidden = true
+
     }
     
     

@@ -63,6 +63,8 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     var fodderID = 0
     var comType = "fodder"
     
+    @IBOutlet weak var selectionLabel: UILabel!
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -200,6 +202,9 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
                     self.fodderBorsaData = success
                     DispatchQueue.main.async {
                         self.fodderDetailsCV.reloadData()
+                        
+                        
+                        
                         print(success.data ?? "")
                     }
                 }
@@ -359,6 +364,7 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
 
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        selectionLabel.text = fodderBorsaData?.data?.members?[indexPath.item].name ?? ""
        
         if let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as? localBorsaCell{
             

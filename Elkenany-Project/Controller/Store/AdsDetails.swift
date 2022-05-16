@@ -166,26 +166,58 @@ class AdsDetails: UIViewController {
     }
     
     @IBAction func startChat(_ sender: Any) {
-//        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-//            creatChatRoom()
-//            let id = startRoomChat?.data?.chat?.id ?? 0
-//            UserDefaults.standard.set(id, forKey: "room_chat")
-//            vc.roomId = id
-//            vc.modalPresentationStyle = .fullScreen
-//            present(vc, animated: true, completion: nil)
-//        }
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            present(vc, animated: true)
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+                creatChatRoom()
+                let id = startRoomChat?.data?.chat?.id ?? 0
+                UserDefaults.standard.set(id, forKey: "room_chat")
+                vc.roomId = id
+            navigationController?.pushViewController(vc, animated: true)
+            
+            }
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+              present(vc, animated: true, completion: nil)
+            
+            }
+            
         }
+        
+        
+        
+        
+    
     }
     
     
     @IBAction func startAgain(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
+      
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
             navigationController?.pushViewController(vc, animated: true)
+            
+            }
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+              present(vc, animated: true, completion: nil)
+            
+            }
+            
         }
         
+        
+
     }
     
 

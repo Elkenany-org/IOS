@@ -43,6 +43,14 @@ class feedFodderFilter: UIViewController {
     var RunFilterDelegettt :FilterFeedDone?
 
     
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
     //MARK:- get data of filter Popup
     func GetFilterDataForFeed(){
         //Handeling Loading view progress
