@@ -65,7 +65,8 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     
     @IBOutlet weak var selectionLabel: UILabel!
     
-   
+    @IBOutlet weak var itemSelection: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -364,10 +365,11 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
 
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        selectionLabel.text = fodderBorsaData?.data?.members?[indexPath.item].name ?? ""
+      
        
         if let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as? localBorsaCell{
-            
+            selectionLabel.text = fodderBorsaData?.data?.members?[indexPath.item].name ?? ""
+            itemSelection.text = fodderBorsaData?.data?.members?[indexPath.item].feed ?? ""
             cell1.proudectName.text = fodderBorsaData?.data?.members?[indexPath.item].name ?? ""
             cell1.priceOfProudect.text = fodderBorsaData?.data?.members?[indexPath.item].feed ?? ""
             cell1.weightStat.text = String(fodderBorsaData?.data?.members?[indexPath.item].price ?? 0)
@@ -380,6 +382,8 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
         return UICollectionViewCell()
         }
     
+    
+    
     // cell height ----------------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 60)
@@ -387,7 +391,8 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var id_fod_borsa = fodderBorsaData?.data?.members?[indexPath.row].memID ?? 0
+//        var id_fod_borsa = fodderBorsaData?.data?.members?[indexPath.row].memID ?? 0
+      
     }
 
     
