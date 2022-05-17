@@ -525,6 +525,13 @@ extension CompaniesVC:FilterSubData{
                     let successData = success?.data?.data ?? []
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
+                        
+                        if success?.data?.data?.isEmpty == true {
+                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                        }
+                        
+                        
+                        
                         self.comapniesTView.reloadData()
                     }
                 }

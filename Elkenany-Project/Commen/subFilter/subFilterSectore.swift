@@ -18,7 +18,7 @@ class subFilterSectore: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        GetFilterDataForSectore()
+        GetFilterDataForSectore()
     }
     
     fileprivate func setupUI() {

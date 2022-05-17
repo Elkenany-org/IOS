@@ -24,6 +24,8 @@ class companyInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        FeatchDataOfCompanyInformation()
+        
     }
     
     
@@ -36,7 +38,7 @@ class companyInfoCell: UITableViewCell {
             let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(idParameter ?? "")"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
                 }else {
@@ -45,6 +47,7 @@ class companyInfoCell: UITableViewCell {
                     DispatchQueue.main.async {
                         self.RatingCompany.text = String(self.DataModel?.data?.countRate ?? 0)
                         self.com_rating.rating = Double((self.DataModel?.data?.rate ?? 0))
+                        print(success.data?.shortDesc ?? "")
                     }
                     
                 }

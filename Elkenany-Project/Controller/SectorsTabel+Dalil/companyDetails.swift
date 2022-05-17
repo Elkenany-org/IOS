@@ -29,6 +29,8 @@ class companyDetails: UIViewController {
         companyDetailsTV.register(UINib(nibName: "CompanySocialCell", bundle: nil), forCellReuseIdentifier: "CompanySocialCell")
         companyDetailsTV.estimatedRowHeight = 150
         companyDetailsTV.rowHeight = UITableView.automaticDimension
+        FeatchCompanyInformations()
+
         
         
     }
@@ -37,7 +39,6 @@ class companyDetails: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        FeatchCompanyInformations()
     }
     
     

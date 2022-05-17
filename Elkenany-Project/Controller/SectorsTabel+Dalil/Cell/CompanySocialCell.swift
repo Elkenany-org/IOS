@@ -52,7 +52,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             let param = ["id": "\(self.com_id)"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyContacts = "https://elkenany.com/api/guide/company/?id="
-            APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     
                     print("============ error \(error)")
