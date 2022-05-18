@@ -122,8 +122,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
-            let typeParameter = UserDefaults.standard.string(forKey: "she")
-            let idParameter = UserDefaults.standard.string(forKey: "he")
+        
 
             let param = ["type": "local" , "id": "\(self.loc_id)", "date": "\(result)" ]
             print("============== request \(param)")

@@ -17,6 +17,7 @@ class ServiceViewController: UIViewController {
     var homeGuide:GuideCompaniesDataModel?
     var arr = [ "المعارض", "الدلائل والمجلات"]
     var arrayOfData = ["معارض" , "دلائل ومجالات", "حركة السفن"]
+    var sectionsData = ["الخدمات", "مقترح لك", "شركاء النجاح", "المعارض", "الدلائل والمجلات"]
     var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "store") , #imageLiteral(resourceName: "fax-1") , #imageLiteral(resourceName: "news") ]
     @IBOutlet weak var ServicesCV: UICollectionView!
    
@@ -331,13 +332,91 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         return UICollectionViewCell()
     }
     
+    
+    //-----------
+    
+    //MARK:- didSelecte to Show the screen related
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        var url : NSURL?
+        
+        
+        switch indexPath.section {
+        
+        case 0 :
+            switch indexPath.item {
+            case 0:
+                
+                let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showesVC") as! showesVC
+                Showesvc.typeFromhome = "poultry"
+                navigationController?.pushViewController(Showesvc, animated: true)
+            case 1:
+                
+                print("Hello world")
+
+                
+            case 2:
+                print("Hello world")
+
+                
+            default:
+                print("Hello world")
+
+            }
+            
+            
+            
+        case 1 :
+            print("Hello world")
+    
+            
+        case 2 :
+            if let url = NSURL(string: "\(homeServiceDataModel?.data?.logos?[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+        
+        case 3 :
+            print("Hello world")
+
+            
+            
+        case 4 :
+
+            print("Hello world")
+
+      
+        
+        default:
+            print("Hello world")
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    //-------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
 //        view.title = indexPath.section == 2 ? "الخدامات" : "القطاعات"
-//        view.title = arr[indexPath.section]
+        view.title = sectionsData[indexPath.section]
         return view
     }
     

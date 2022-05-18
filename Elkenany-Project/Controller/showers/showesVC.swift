@@ -9,7 +9,7 @@ import UIKit
 
 
 class showesVC: UIViewController {
-
+    
     //MARK:Outlets
     @IBOutlet weak var csectorsCV: UICollectionView!
     @IBOutlet weak var view1: UIView!
@@ -49,28 +49,28 @@ class showesVC: UIViewController {
         showesTableView.dataSource = self
         showesTableView.prefetchDataSource = self
         self.csectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
-//        self.showesTableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: "NewsCell")
+        //        self.showesTableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: "NewsCell")
         self.showesTableView.register(UINib(nibName: "showesCell", bundle: nil), forCellReuseIdentifier: "showesCell")
         
-    
+        
         
     }
     
     //MARK: sectores
     func featchDataSelectors(){
-//        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
+        //        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
         ///urll
         let sectorsUrl = "https://elkenany.com/api/showes/all-showes?type=&sort="
-//        let headers = ["app-id": api_token ]
-        let param = ["type": "poultry" ]
-
+        //        let headers = ["app-id": api_token ]
+        let param = ["type": "\(self.typeFromhome)" ]
+        
         APIServiceForQueryParameter.shared.fetchData(url: sectorsUrl , parameters: param, headers: nil, method: .get) {[weak self] (NewsSuccess:ShowesHome?, NewsError:ShowesHome?, error) in
             guard let self = self else {return}
             if let error = error{
                 print("error ===========================")
                 print(error.localizedDescription)
             }else{
-//                self.showesModel = NewsSuccess
+                //                self.showesModel = NewsSuccess
                 let succeeeesss = NewsSuccess?.data?.sectors ?? []
                 self.subSectoresModel.append(contentsOf: succeeeesss)
                 DispatchQueue.main.async {
@@ -85,8 +85,8 @@ class showesVC: UIViewController {
     func FatchDataforNewsHome(){
         
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "poultry" , "sort": "\(1)"]
-
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
+            
             print("this para", param)
             let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
             
@@ -126,12 +126,12 @@ class showesVC: UIViewController {
     
     
     //MARK:- Data of all news searh bar
-
+    
     func FatchSearchOfNews(){
         //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
+        //        let hud = JGProgressHUD(style: .dark)
+        //        hud.textLabel.text = "جاري التحميل"
+        //        hud.show(in: self.view)
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -141,10 +141,10 @@ class showesVC: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
-//                    hud.dismiss()
+                    //                    hud.dismiss()
                     print("============ error \(error)")
                 }else {
-//                    hud.dismiss()
+                    //                    hud.dismiss()
                     self.subShowesModel.removeAll()
                     let successDatae = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successDatae)
@@ -156,18 +156,6 @@ class showesVC: UIViewController {
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -192,7 +180,7 @@ class showesVC: UIViewController {
     @IBAction func countryFilters(_ sender: Any) {
     }
     
-  
+    
 }
 
 
@@ -250,12 +238,12 @@ extension showesVC: UISearchBarDelegate {
         view1.isHidden = false
         view2.isHidden = false
         subShowesModel.removeAll()
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
+        //        let hud = JGProgressHUD(style: .dark)
+        //        hud.textLabel.text = "جاري التحميل"
+        //        hud.show(in: self.view)
         FatchDataforNewsHome()
-//        searchBarView.text = ""
-//        hud.dismiss()
+        //        searchBarView.text = ""
+        //        hud.dismiss()
         print("cancellllld")
     }
 }
@@ -267,7 +255,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return subSectoresModel.count
-    
+        
     }
     
     
@@ -275,12 +263,12 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         
-        cell1.titleLabel.text = subSectoresModel[indexPath.row].name ?? "test"
-        let typeee = subSectoresModel[indexPath.item].type ?? ""
+        cell1.titleLabel.text = subSectoresModel[indexPath.item].name ?? "test"
+        let typeee = "poultry"
         
         if typeee == typeFromhome {
             cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-            csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             
         }else{
             cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
@@ -294,26 +282,24 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
-        let typeOfSectorr = subSectoresModel[indexPath.row].type ?? ""
-        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
-
-        let vc = storyboard?.instantiateViewController(withIdentifier: "showVC" ) as! showVC
-        navigationController?.pushViewController(vc, animated: true)
-        
-        
-        
+        let typeOfSectorr = subSectoresModel[indexPath.item].type ?? ""
         self.typeFromhome = typeOfSectorr
+        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
         
         if(cell.isSelected == true)
         {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-            csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            
+        }
         
     }
     
-    }
+    
+    
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
@@ -327,15 +313,15 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     
-  
-
-
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-  
+        
         return CGSize(width: 100, height: 60)
-
+        
     }
-
+    
 }
 
 
@@ -370,10 +356,12 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
-            let idd = subShowesModel[indexPath.row].id
+        if let vc = (storyboard?.instantiateViewController(identifier: "showVC")) as? showVC{
+            let idd = subShowesModel[indexPath.row].id ?? 0
             UserDefaults.standard.set(idd, forKey: "IDDD")
-            vc.CompanyIdFromCompanies = idd ?? 0
+            //            vc.CompanyIdFromCompanies = idd ?? 0
+            vc.acceptedId = idd
+            vc.acceptedTitle = subShowesModel[indexPath.item].name ?? "" 
             navigationController?.pushViewController(vc, animated: true)
         }
     }

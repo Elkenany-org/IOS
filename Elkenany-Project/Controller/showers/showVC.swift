@@ -18,11 +18,14 @@ class showVC: UIViewController {
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var linkeeeee = ""
+    var acceptedTitle  = ""
+    var acceptedId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        title = acceptedTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {
