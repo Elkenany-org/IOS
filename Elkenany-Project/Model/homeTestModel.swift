@@ -1,32 +1,28 @@
 //
-//  HomeServiceDataModel.swift
+//  homeTestModel.swift
 //  Elkenany-Project
 //
-//  Created by عبدالعزيز رضا  on 12/6/21.
+//  Created by عبدالعزيز رضا  on 5/18/22.
 //
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let homeTestModel = try? newJSONDecoder().decode(HomeTestModel.self, from: jsonData)
 
 import Foundation
 
+
 // MARK: - HomeTestModel
-struct HomeTestModelss: Codable {
+struct HomeTestModel: Codable {
     let message, error: String?
-    let data: DataClassSS?
+    let data: DataClasssss?
 }
 
 // MARK: - DataClass
-struct DataClassSS: Codable {
-    let logos: [LogoSS]?
+struct DataClasssss: Codable {
+    let logos: [Logoss]?
     let type: String?
-    let recomandtion, show, magazine: [Magazine]?
+    let recomandtion, show, magazine: [Magaziness]?
 }
 
 // MARK: - Logo
-struct LogoSS: Codable {
+struct Logoss: Codable {
     let id: Int?
     let link: String?
     let image, imageURL: String?
@@ -38,11 +34,11 @@ struct LogoSS: Codable {
 }
 
 // MARK: - Magazine
-struct Magazine: Codable {
+struct Magaziness: Codable {
     let id: Int?
     let name: String?
     let image: String?
-    let type: String?
+    let type: TypeEnum?
     let imageURL, imageThumURL: String?
 
     enum CodingKeys: String, CodingKey {
@@ -52,5 +48,8 @@ struct Magazine: Codable {
     }
 }
 
-
+enum TypeEnum: String, Codable {
+    case magazines = "magazines"
+    case show = "show"
+}
 
