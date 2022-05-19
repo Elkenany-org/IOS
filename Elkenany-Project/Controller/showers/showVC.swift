@@ -15,6 +15,9 @@ class showVC: UIViewController {
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
     
+    @IBOutlet weak var switchGoing: UIButton!
+    var gingornotModel:AddPlaces?
+
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var linkeeeee = ""
@@ -28,9 +31,14 @@ class showVC: UIViewController {
         title = acceptedTitle
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        segmentVieww.selectedSegmentIndex = 0
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        segmentVieww.selectedSegmentIndex = 0
         SetupSegment()
         ReviwesServices()
     }
@@ -38,18 +46,71 @@ class showVC: UIViewController {
 
     
     @IBAction func toShow(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            GoingService()
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+              present(vc, animated: true, completion: nil)
+            
+            }
+            
+        }
+        
+        
+        
     }
     
     
     @IBAction func orderPlace(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
-        present(vc, animated: true, completion: nil)
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
+            present(vc, animated: true, completion: nil)
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+              present(vc, animated: true, completion: nil)
+            
+            }
+            
+        }
+        
+        
+        
+        
+
     }
     
 
     @IBAction func ratingShow(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
-        present(vc, animated: true, completion: nil)
+        
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
+            present(vc, animated: true, completion: nil)
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+              present(vc, animated: true, completion: nil)
+            
+            }
+            
+        }
+        
+        
+   
         
     }
     
@@ -125,6 +186,8 @@ class showVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/all-showes?type=&sort="
             
+   
+            
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
                     //internet error
@@ -156,6 +219,33 @@ class showVC: UIViewController {
     
     
     
+    func GoingService(){
+        let parm = ["show_id" : "2"]
+        DispatchQueue.global(qos: .background).async {
+            let url = "https://elkenany.com/api/showes/one-show-going"
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
+            let headers = ["Authorization": "Bearer \(api_token)" ]
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    
+                    guard let success = success else {return}
+                    self.gingornotModel = success
+                    DispatchQueue.main.async {
+                        print("hhhhhhhhhhhhhhh")
+                    }
+                }
+            }
+        }
+    }
     
     
     

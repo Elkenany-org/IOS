@@ -2097,7 +2097,7 @@
         <scene sceneID="HZk-8F-KC3">
             <objects>
                 <viewController storyboardIdentifier="customerserviceVC" id="Y96-Cz-Q22" customClass="customerserviceVC" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="seC-3D-rw7">
+                    <view key="view" contentMode="scaleToFill" id="seC-3D-rw7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -9047,6 +9047,7 @@
                         <outlet property="fourthView" destination="VaM-Po-iys" id="2VG-5I-Ed7"/>
                         <outlet property="secIndex" destination="Buv-Jo-pJ4" id="sOp-9l-5Rg"/>
                         <outlet property="segmentVieww" destination="Tr6-eZ-HeG" id="CvU-lM-1Ny"/>
+                        <outlet property="switchGoing" destination="aFw-g0-FF6" id="FiR-6e-fx6"/>
                         <outlet property="thiredIndex" destination="bXG-gd-f9G" id="kj4-CH-PTk"/>
                     </connections>
                 </viewController>
@@ -9701,14 +9702,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fei-7o-H8f">
-                                <rect key="frame" x="20" y="178.33333333333334" width="350" height="147.00000000000003"/>
+                                <rect key="frame" x="20" y="178.33333333333331" width="350" height="136.33333333333331"/>
                                 <string key="text">بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أجهزالعقارات  بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أبين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أجهزجهزومركبي أجهز</string>
-                                <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uCi-fa-Cjy">
-                                <rect key="frame" x="20" y="335.33333333333331" width="350" height="95"/>
+                                <rect key="frame" x="20" y="324.66666666666669" width="350" height="95"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GAm-g0-1X8">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="40"/>
@@ -9799,6 +9800,9 @@
                             <constraint firstItem="WiT-6N-GQp" firstAttribute="top" secondItem="wBP-hi-Zw2" secondAttribute="top" id="ySE-YS-EMi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="viewCount" destination="2ct-id-RE5" id="rNg-eP-RP9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3g-7m-wxD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
