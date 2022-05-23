@@ -352,7 +352,9 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
                 navigationController?.pushViewController(Showesvc, animated: true)
             case 1:
                 
-                print("Hello world")
+                let Showesvc = storyboard?.instantiateViewController(withIdentifier: "MagazineHomeVC") as! MagazineHomeVC
+//                Showesvc.typeFromhome = "poultry"
+                navigationController?.pushViewController(Showesvc, animated: true)
 
                 
             case 2:

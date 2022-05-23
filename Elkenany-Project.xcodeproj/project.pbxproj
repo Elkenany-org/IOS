@@ -79,6 +79,9 @@
 		323E861C28366AE700C65873 /* clockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E861B28366AE700C65873 /* clockVC.swift */; };
 		323E862128366D1100C65873 /* organizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E862028366D1100C65873 /* organizationVC.swift */; };
 		323E862628366D2600C65873 /* teicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E862528366D2600C65873 /* teicketVC.swift */; };
+		323E8659283B7A9B00C65873 /* MagazineHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E8658283B7A9B00C65873 /* MagazineHomeVC.swift */; };
+		323E8661283B7ADA00C65873 /* MagazinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E8660283B7ADA00C65873 /* MagazinVC.swift */; };
+		323E8667283B872F00C65873 /* magazinesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323E8666283B872F00C65873 /* magazinesModel.swift */; };
 		323ED96E275D4DB900D4620C /* homeSectorsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323ED96D275D4DB900D4620C /* homeSectorsDataModel.swift */; };
 		323ED99E275E522600D4620C /* RecomenditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323ED99C275E522600D4620C /* RecomenditionCell.swift */; };
 		323ED99F275E522600D4620C /* RecomenditionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323ED99D275E522600D4620C /* RecomenditionCell.xib */; };
@@ -379,6 +382,9 @@
 		323E861B28366AE700C65873 /* clockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clockVC.swift; sourceTree = "<group>"; };
 		323E862028366D1100C65873 /* organizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = organizationVC.swift; sourceTree = "<group>"; };
 		323E862528366D2600C65873 /* teicketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = teicketVC.swift; sourceTree = "<group>"; };
+		323E8658283B7A9B00C65873 /* MagazineHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineHomeVC.swift; sourceTree = "<group>"; };
+		323E8660283B7ADA00C65873 /* MagazinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazinVC.swift; sourceTree = "<group>"; };
+		323E8666283B872F00C65873 /* magazinesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magazinesModel.swift; sourceTree = "<group>"; };
 		323ED96D275D4DB900D4620C /* homeSectorsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeSectorsDataModel.swift; sourceTree = "<group>"; };
 		323ED99C275E522600D4620C /* RecomenditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomenditionCell.swift; sourceTree = "<group>"; };
 		323ED99D275E522600D4620C /* RecomenditionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecomenditionCell.xib; sourceTree = "<group>"; };
@@ -772,6 +778,7 @@
 		323B2229274A4638002CEB89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				323E8665283B871200C65873 /* Magazines */,
 				324389F6282BA652000F3AD6 /* Showes */,
 				32CC184127A1A2FF0004F356 /* Rating */,
 				32579A092779EEC8009E6C30 /* More */,
@@ -809,6 +816,7 @@
 		323B222E274A4649002CEB89 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				323E8657283B7A4B00C65873 /* Magazines */,
 				32438A22282C00A0000F3AD6 /* showers */,
 				32505BB527B9555F0048C5DF /* search */,
 				325528112779E2F700BAAE65 /* More */,
@@ -898,6 +906,23 @@
 				3270A46527577348008660F5 /* ForgetPasswordVC.swift */,
 			);
 			path = "login + Register Controller";
+			sourceTree = "<group>";
+		};
+		323E8657283B7A4B00C65873 /* Magazines */ = {
+			isa = PBXGroup;
+			children = (
+				323E8658283B7A9B00C65873 /* MagazineHomeVC.swift */,
+				323E8660283B7ADA00C65873 /* MagazinVC.swift */,
+			);
+			path = Magazines;
+			sourceTree = "<group>";
+		};
+		323E8665283B871200C65873 /* Magazines */ = {
+			isa = PBXGroup;
+			children = (
+				323E8666283B872F00C65873 /* magazinesModel.swift */,
+			);
+			path = Magazines;
 			sourceTree = "<group>";
 		};
 		324389F6282BA652000F3AD6 /* Showes */ = {
@@ -1705,6 +1730,7 @@
 				326B7593277695E300007F55 /* BorsaDatePiker.swift in Sources */,
 				3237DDDA27B00E44001D9024 /* NotificationDetails.swift in Sources */,
 				32A4F094275FB2D4005B433B /* GuideCompaniesDataModel.swift in Sources */,
+				323E8667283B872F00C65873 /* magazinesModel.swift in Sources */,
 				32A5FE3127C78193009A4F17 /* searchModel.swift in Sources */,
 				3298AB6B27A0116C00249D4E /* subFilterCountry.swift in Sources */,
 				323E862128366D1100C65873 /* organizationVC.swift in Sources */,
@@ -1739,6 +1765,7 @@
 				32CEF47C278DA37900527F2A /* statisticesInsideModel.swift in Sources */,
 				32C4EFE9278A19000034BD9F /* filterCell.swift in Sources */,
 				32628C26282F975E00AB0068 /* showDetailsVC.swift in Sources */,
+				323E8659283B7A9B00C65873 /* MagazineHomeVC.swift in Sources */,
 				32F543AD27925E74004EBD33 /* StatisticesMembers.swift in Sources */,
 				329E876A281544D300838BDD /* ValidaitionViewController.swift in Sources */,
 				323ED99E275E522600D4620C /* RecomenditionCell.swift in Sources */,
@@ -1794,6 +1821,7 @@
 				3268574427A972B200C4EF41 /* MapVC.swift in Sources */,
 				3276D2C1275CC4FE00D95236 /* ApiService.swift in Sources */,
 				32628C30282F994F00AB0068 /* showersVC.swift in Sources */,
+				323E8661283B7ADA00C65873 /* MagazinVC.swift in Sources */,
 				3268BC9E27EC62CB0083E678 /* ComparingItems.swift in Sources */,
 				323E86082836319F00C65873 /* showMoreDetailsVC.swift in Sources */,
 				329A6B96281936F400D67034 /* Chats.swift in Sources */,
@@ -2029,15 +2057,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Elkenany-Project/Elkenany-Project.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.elkenanyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2054,15 +2082,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Elkenany-Project/Elkenany-Project.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-Project/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.2;
+				MARKETING_VERSION = 2.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.company.elkenanyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
