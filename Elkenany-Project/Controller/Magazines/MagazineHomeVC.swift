@@ -21,6 +21,7 @@ class MagazineHomeVC: UIViewController {
     
     var MagazineModel:MagazineS?
     var sectorSubModel:[Sectorrs] = []
+    var magazinSubModel:[magazinesData] = []
     
     
     private var currentpaga = 1
@@ -30,7 +31,9 @@ class MagazineHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FatchDatafromHome()
+        FeatchDataOfectores()
         setupUI()
+        title = "دلائل والمجلات"
     }
     
     
@@ -43,18 +46,35 @@ class MagazineHomeVC: UIViewController {
 
         self.sectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         magazinTV.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
-//        magazinTV.prefetchDataSource = self
+        magazinTV.prefetchDataSource = self
         //Dynamice Hight cell
         magazinTV.estimatedRowHeight = 150
         magazinTV.rowHeight = UITableView.automaticDimension
     }
 
 
-    
+    func FeatchDataOfectores(){
+      
+        DispatchQueue.global(qos: .background).async {
+            let param = ["type": "farm"  , "page": "\(self.currentpaga)"]
+            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
+                if let error = error{
+                    print("============ error \(error)")
+                }else {
+                    let successDataSectore = SuccessfulRequest?.data?.sectors ?? []
+                    self.sectorSubModel.append(contentsOf: successDataSectore)
+                    DispatchQueue.main.async {
+                        self.sectorsCV.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     func FatchDatafromHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "farm"  , "page": "\(self.currentpaga)"]
+            let param = ["type": "farm"  , "page": "\(self.currentpaga)" ,"sort" : "2"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
                 (success:MagazineS?, filier:MagazineS?, error) in
@@ -71,11 +91,12 @@ class MagazineHomeVC: UIViewController {
                 else {
                     if success?.data?.nextPageURL == nil {
                     }
-                    let successData = success?.data?.sectors ?? []
+                
+                    let successDataa = success?.data?.data ?? []
                     print("current", self.currentpaga)
-                    self.sectorSubModel.append(contentsOf: successData)
+                    self.magazinSubModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
-                        self.sectorsCV.reloadData()
+                        self.magazinTV.reloadData()
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -189,7 +210,7 @@ extension MagazineHomeVC:UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.row >= sectorSubModel.count - 1 && !isFeatchingData {
-//                FatchDatafromHome()
+                FatchDatafromHome()
                 break
             }
         }
@@ -202,11 +223,21 @@ extension MagazineHomeVC:UITableViewDataSourcePrefetching {
 extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return magazinSubModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "companiesCell") as? companiesCell{
+            Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
+            Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
+            Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
+            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
+            let imageee = magazinSubModel[indexPath.row].image ?? ""
+            Companiescell.companyImage.contentMode = .scaleAspectFit
+            Companiescell.configureCellamagazan(image: imageee)
+            
+        
+            
             
         Companiescell.selectionStyle = .none
             return Companiescell
@@ -276,19 +307,27 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
 extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 5
+        return sectorSubModel.count
     }
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
+        cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
+        
+        let typeee = "poultry"
+        
+        if typeee == "poultry" {
+            cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            
+        }else{
+            cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
+        }
         return cell
 
          }
-
-
-    
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

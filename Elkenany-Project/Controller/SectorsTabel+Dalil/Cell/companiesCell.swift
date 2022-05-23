@@ -56,8 +56,19 @@ class companiesCell: UITableViewCell {
 //        }
 //
 //    }
-//    
+//
+   
     
+    func configureCellamagazan(image:String) {
+        let url = URL(string:image)
+        companyImage.kf.indicatorType = .activity
+        companyImage.kf.setImage(with: url)
+    }
+    
+    
+
+
+
 }
 
 
