@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class MagazineHomeVC: UIViewController {
 
@@ -33,6 +34,7 @@ class MagazineHomeVC: UIViewController {
         FatchDatafromHome()
         FeatchDataOfectores()
         setupUI()
+        setupSearchBar()
         title = "دلائل والمجلات"
     }
     
@@ -107,100 +109,97 @@ class MagazineHomeVC: UIViewController {
     
     
 
-//
-//    func SearchService(){
-//        //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//        let param = ["sub_id": "\(self.subID_fromGuideHome)" , "search" : self.searchBarView.text ?? ""]
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let headers = ["Authorization": "\(api_token ?? "")" ]
-//            print("this is token\(api_token ?? "")")
-//            let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id&city_id&sort&search="
-//            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-//                if let error = error{
-//                    hud.dismiss()
-//                    print("============ error \(error)")
-//                }else {
-//                    hud.dismiss()
-//                    let successData = success?.data?.data ?? []
-//                    self.mainDataModel.append(contentsOf: successData)
-//                    DispatchQueue.main.async {
-//                        self.comapniesTView.reloadData()
-//                    }
-//                }
-//            }
-//        }
-//    }
+
+    func SearchService(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        let param = ["type": "farm" , "search" : self.searchBar.text ?? ""]
+        DispatchQueue.global(qos: .background).async {
+            let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&search="
+            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    let successData = success?.data?.data ?? []
+                    self.magazinSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        self.magazinTV.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     
-//    @IBAction func SortBTN(_ sender: Any) {
-//        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
-//            SectionVC.filterDelegete = self
-//            self.present(SectionVC, animated: true, completion: nil)
-//        }}
+    @IBAction func SortBTN(_ sender: Any) {
+        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
+            SectionVC.filterDelegete = self
+            self.present(SectionVC, animated: true, completion: nil)
+        }}
     
     
     
     
-//    //Show Search ----------------------
-//    @IBAction func showSearchView(_ sender: Any) {
-//        SearchView.isHidden = false
-//        view1.isHidden = true
-//        view2.isHidden = true }
-//
-//
-//}
+    //Show Search ----------------------
+    @IBAction func showSearchView(_ sender: Any) {
+        searchView.isHidden = false
+        view1.isHidden = true
+        view2.isHidden = true }
+
+
+}
 
     
     //MARK:- searchBAr delegets
-//    extension CompaniesVC : UISearchBarDelegate {
-//        func setupSearchBar() {
-//            searchBarView.delegate = self
-//        }
-//        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//            if searchText.isEmpty == false {
-//                //your model
-//                let data = companiesModel?.data?.data ?? []
-//                //your array
-//                mainDataModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
-//                mainDataModel.removeAll()
-//                //Api func
-//                SearchService()
-//            }
-//            //reload
-//            comapniesTView.reloadData()
-//        }
-//
-//
-//        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//            if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
-//                cBtn.setTitle("الغاء", for: .normal)
-//                searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-//                searchBar.text = ""
-//            }}
-//
-//
-//        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//            SearchView.isHidden = true
-//            searchBar.text = ""
-//            view1.isHidden = false
-//            view2.isHidden = false
-//            mainDataModel.removeAll()
-//            FatchDatafromHome()
-//            let hud = JGProgressHUD(style: .dark)
-//            hud.textLabel.text = "جاري التحميل"
-//            hud.show(in: self.view)
-//            hud.dismiss()
-//        }}
-//
-//
+    extension MagazineHomeVC : UISearchBarDelegate {
+        func setupSearchBar() {
+            searchBar.delegate = self
+        }
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.isEmpty == false {
+                //your model
+                let data = MagazineModel?.data?.data ?? []
+                //your array
+                magazinSubModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
+                magazinSubModel.removeAll()
+                //Api func
+                SearchService()
+            }
+            //reload
+            magazinTV.reloadData()
+        }
+
+
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
+                cBtn.setTitle("الغاء", for: .normal)
+                searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+                searchBar.text = ""
+            }}
+
+
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchView.isHidden = true
+            searchBar.text = ""
+            view1.isHidden = false
+            view2.isHidden = false
+//            magazinSubModel.removeAll()
+            FatchDatafromHome()
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "جاري التحميل"
+            hud.show(in: self.view)
+            hud.dismiss()
+        }}
+
+
     
     
 
-}
+
 
 
 
@@ -255,51 +254,51 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
 
 
 
-//
-//extension CompaniesVC:FilterSubData{
-//    func runFilter() {
-//        //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
-//        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
-//        let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
-//        let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
-//        let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
-//
-//
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let headers = ["Authorization": "\(api_token ?? "")" ]
-//            let param = ["section_id": "\(sec_id ?? "3")" , "sub_id" :  "\(sub_id ?? "63")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
-//
-//            let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id=&city_id=&sort="
-//            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-//                if let error = error{
-//                    hud.dismiss()
-//                    print("============ error \(error)")
-//                }else {
-//                    hud.dismiss()
-//                    self.mainDataModel.removeAll()
-//                    let successData = success?.data?.data ?? []
-//                    self.mainDataModel.append(contentsOf: successData)
-//                    DispatchQueue.main.async {
-//
-//                        if success?.data?.data?.isEmpty == true {
-//                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
-//                        }
-//
-//
-//
-//                        self.comapniesTView.reloadData()
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//}
+
+extension MagazineHomeVC:FilterSubData{
+    func runFilter() {
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
+        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
+        let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
+        let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
+        let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
+
+
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let headers = ["Authorization": "\(api_token ?? "")" ]
+            let param = ["type": "farm",  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
+
+            let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&city_id="
+            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    self.magazinSubModel.removeAll()
+                    let successData = success?.data?.data ?? []
+                    self.magazinSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+
+                        if success?.data?.data?.isEmpty == true {
+                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                        }
+
+
+
+                        self.magazinTV.reloadData()
+                    }
+                }
+            }
+        }
+    }
+
+}
 
 
 //MARK:- TableView for companies  [Methods + Delegets]
