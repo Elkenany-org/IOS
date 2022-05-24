@@ -50,11 +50,11 @@ class companyDetails: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
-            let param = ["id": "\(self.companyIDHomeSearch)"]
+            let param = ["id": "\(self.CompanyIdFromCompanies)"]
             print("parrrra", param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/guide/company/?id="
-            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
@@ -136,12 +136,12 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 cell.com_rating.rating = companyDetailsModel?.data?.rate ?? 0 
                 let companyImage = companyDetailsModel?.data?.image
                 cell.selectionStyle = .none
-                
                 cell.configureImage(image: companyImage ?? "")
                 return cell }
         case 1:
             if let cell2 = tableView.dequeueReusableCell(withIdentifier: "aboutCompanyCell") as? aboutCompanyCell{
                 cell2.aboutCompany.text = companyDetailsModel?.data?.about ?? ""
+                
                 cell2.selectionStyle = .none
                 
                 return cell2 }
