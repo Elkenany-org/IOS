@@ -25,10 +25,11 @@ struct magazineData: Codable {
     let id: Int?
     let name, shortDesc, about, address: String?
     let latitude, longitude: String?
-    let rate, countRate: Int?
+    let  countRate: Int?
+    let rate:Double?
     let image: String?
     let createdAt: String?
-    let phones: [String]?
+    let phones: [phoneData]?
     let emails: [EmailData]?
     let mobiles: [MobileData]?
     let faxs: [String]?
@@ -55,6 +56,12 @@ struct AddressData: Codable {
 // MARK: - Email
 struct EmailData: Codable {
     let email: String?
+}
+
+
+// MARK: - phones
+struct phoneData: Codable {
+    let phone: String?
 }
 
 // MARK: - Mobile

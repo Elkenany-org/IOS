@@ -99,8 +99,8 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 return cell2 }
         case 2:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
-                let magazine_id = magazineDetailsModel?.data?.id ?? 0
-                cell3.magazineID = magazine_id
+//                let magazine_id = magazineDetailsModel?.data?.id ?? 0
+                cell3.magazineID = IdFromMagazine
                 cell3.magazinKey = "true"
                 cell3.headeTitle.text = "بيانات الدليل"
                 cell3.FatchDataContactsOfMagazin()

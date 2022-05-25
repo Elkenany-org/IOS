@@ -9,30 +9,27 @@ import UIKit
 import Foundation
 
 class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
+    
     //MARK:- Outlets
     @IBOutlet weak var headeTitle: UILabel!
     @IBOutlet weak var socialTV: UITableView!
-    var com_id = 0
-    var arr = ["33333" , "6666" , "66666"]
+    var magazineDetailsModel:MagazineModel?
+    var socialData:CompanyDetailsDataModel?
     var lannn = ""
     var loonn = ""
-    var magazineDetailsModel:MagazineModel?
     var magazinKey = ""
+    var com_id = 0
+    var arr = ["33333" , "6666" , "66666"]
     var magazineID = 0
-
-
-    var socialData:CompanyDetailsDataModel?
+    
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //setup delegete
         socialTV.delegate = self
         socialTV.dataSource = self
         socialTV.register(UINib(nibName: "socialCell", bundle: nil), forCellReuseIdentifier: "socialCell")
         socialTV.register(UINib(nibName: "TestAnyCell", bundle: nil), forCellReuseIdentifier: "TestAnyCell")
-        //automatic height
-        //        FatchDataContactsOfCompanies()
         socialTV.estimatedRowHeight = 150
         socialTV.rowHeight = UITableView.automaticDimension
     }
@@ -51,11 +48,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     func FatchDataContactsOfCompanies(){
         //Handeling Loading view progress
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(self.com_id)"]
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyContacts = "https://elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
@@ -80,11 +73,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     func FatchDataContactsOfMagazin(){
         //Handeling Loading view progress
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
-            let param = ["id": "5"]
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            let param = ["id": "\(self.magazineID)"]
             let companyContacts = "https://elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
@@ -108,32 +97,32 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func toMapView(_ sender: UIButton) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let vcc = storyboard.instantiateViewController(identifier: "MapVC") as? MapVC {
-//        if let vc = self.next(ofType: UIViewController.self) {
-//            vcc.id_company = com_id
-//            vc.present(vcc, animated: true, completion: nil)
-//        }
-//    }
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        if let vcc = storyboard.instantiateViewController(identifier: "MapVC") as? MapVC {
+        //        if let vc = self.next(ofType: UIViewController.self) {
+        //            vcc.id_company = com_id
+        //            vc.present(vcc, animated: true, completion: nil)
+        //        }
+        //    }
         
         openGoogleMap()
     }
     
     
     func openGoogleMap() {
-
-          if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
-
+        
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {  //if phone has an app
+            
             if let url = URL(string: "comgooglemaps-x-callback://?saddr=&daddr=\(lannn),\(loonn)&directionsmode=driving") {
-                        UIApplication.shared.open(url, options: [:])
-               }}
-          else {
-                 //Open in browser
+                UIApplication.shared.open(url, options: [:])
+            }}
+        else {
+            //Open in browser
             if let urlDestination = URL.init(string: "https://www.google.co.in/maps/dir/?saddr=&daddr=\(lannn),\(loonn)&directionsmode=driving") {
-                                   UIApplication.shared.open(urlDestination)
-                               }
-                    }
+                UIApplication.shared.open(urlDestination)
             }
+        }
+    }
     
     
     
@@ -147,7 +136,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if magazinKey == "true"{
             switch section {
             case 0:
@@ -191,8 +180,8 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             }
             
         }
-
-    
+        
+        
     }
     
     
@@ -205,7 +194,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             switch indexPath.section {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-                cell.contact.text = magazineDetailsModel?.data?.phones?[indexPath.row] ?? "0000"
+                cell.contact.text = magazineDetailsModel?.data?.phones?[indexPath.row].phone ?? "22222"
                 cell.iconee.image = #imageLiteral(resourceName: "phone-call")
                 return cell
                 
@@ -226,7 +215,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
                 
             case 3:
                 let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-//                cell1.contact.text = String( magazineDetailsModel?.data?.faxs?[indexPath.row].fax ?? "3333")
+                //                cell1.contact.text = String( magazineDetailsModel?.data?.faxs?[indexPath.row].fax ?? "3333")
                 cell1.iconee.image = #imageLiteral(resourceName: "fax-1")
                 return cell1
                 
@@ -285,7 +274,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             
         }
         
-
+        
         
     }
     
@@ -309,66 +298,31 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         
         
         
-    switch indexPath.section {
+        switch indexPath.section {
         case 0:
             ///for mobile
-//            callNumber(number: socialData?.data?.mobiles?[indexPath.row].mobile ?? "")
             print("heeloooooooooo")
             
-//            for i in socialData?.data?.mobiles?[indexPath.row].mobile ?? "" {
-//                print("0001110000100000100+++++\(i)")
-////                            callNumber(number: i)
-//
-//            }
-
         case 1:
             ///fooooor maillll
-//            let email = "foo@bar.com"
-                if let url = URL(string: "mailto:\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
-                  if #available(iOS 10.0, *) {
+            //            let email = "foo@bar.com"
+            if let url = URL(string: "mailto:\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
+                if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url)
                     
-                  } else {
+                } else {
                     UIApplication.shared.openURL(url)
                     
                     
-                  }
                 }
-                
-           
-                print("soial")
-
+            }
+            
+            
+            print("soial")
             
             
         case 2:
             print("heelo")
-            
-//            for i in socialData?.data?.phones?[indexPath.row].phone ?? "" {
-//                print("fooooor \(i)")
-//
-////            }
-//
-//            if let ii = socialData?.data?.phones {
-//
-//            }
-            
-//            for row in indexPath.section {
-//                callNumber(number: socialData?.data?.phones?[indexPath.row].phone ?? "")
-//
-//            }
-//
-//            for i in socialData?.data?.phones ?? [] {
-//                
-//                for xx in i.phone ?? ""{
-////                 callNumber(number: xx ?? "")
-//
-//                }
-//                
-//                
-//            }
-            
-            
-            
             
         case 3:
             print("heelo")
@@ -389,14 +343,6 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         }
         
     }
-    
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        
-//        return tableView.rowHeight
-//        
-//    }
-//    
     
 }
 
