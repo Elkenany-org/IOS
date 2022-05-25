@@ -10,11 +10,15 @@ import Foundation
 
 class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSource {
     //MARK:- Outlets
+    @IBOutlet weak var headeTitle: UILabel!
     @IBOutlet weak var socialTV: UITableView!
     var com_id = 0
     var arr = ["33333" , "6666" , "66666"]
     var lannn = ""
     var loonn = ""
+    var magazineDetailsModel:MagazineModel?
+    var magazinKey = ""
+
 
     var socialData:CompanyDetailsDataModel?
     
@@ -71,6 +75,35 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     
+    //MARK:- featch and handling data
+    func FatchDataContactsOfMagazin(){
+        //Handeling Loading view progress
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
+            let param = ["id": "5"]
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            let companyContacts = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
+                if let error = error{
+                    
+                    print("============ error \(error)")
+                }else {
+                    
+                    guard let success = success else {return}
+                    self.magazineDetailsModel = success
+                    DispatchQueue.main.async {
+                        self.socialTV.reloadData()
+                        self.lannn = success.data?.latitude ?? ""
+                        self.loonn = success.data?.longitude ?? ""
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
     
     @IBAction func toMapView(_ sender: UIButton) {
@@ -113,74 +146,145 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return arr.count ?? 0
-        
-        switch section {
-        case 0:
-            return socialData?.data?.phones?.count ?? 0
+
+        if magazinKey == "true"{
+            switch section {
+            case 0:
+                return magazineDetailsModel?.data?.phones?.count ?? 0
+                
+            case 1:
+                return magazineDetailsModel?.data?.emails?.count ?? 0
+                
+            case 2:
+                return magazineDetailsModel?.data?.mobiles?.count ?? 0
+                
+            case 3:
+                return magazineDetailsModel?.data?.faxs?.count ?? 0
+                
+            case 4:
+                return magazineDetailsModel?.data?.social?.count ?? 0
+                
+            default:
+                return 1
+            }
             
-        case 1:
-            return socialData?.data?.emails?.count ?? 0
+        }else{
+            switch section {
+            case 0:
+                return socialData?.data?.phones?.count ?? 0
+                
+            case 1:
+                return socialData?.data?.emails?.count ?? 0
+                
+            case 2:
+                return socialData?.data?.mobiles?.count ?? 0
+                
+            case 3:
+                return socialData?.data?.faxs?.count ?? 0
+                
+            case 4:
+                return socialData?.data?.social?.count ?? 0
+                
+            default:
+                return 1
+            }
             
-        case 2:
-            return socialData?.data?.mobiles?.count ?? 0
-            
-        case 3:
-            return socialData?.data?.faxs?.count ?? 0
-            
-        case 4:
-            return socialData?.data?.social?.count ?? 0
-            
-        default:
-            return 1
         }
+
+    
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
-        
-        switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            cell.contact.text = socialData?.data?.phones?[indexPath.row].phone ?? "0000"
-            cell.iconee.image = #imageLiteral(resourceName: "phone-call")
-            return cell
-            
-        case 1:
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            cell1.contact.text = socialData?.data?.emails?[indexPath.row].email ?? "1111"
-            cell1.iconee.image = #imageLiteral(resourceName: "email (3)")
-            
-            //           cell.contact.text = arr[indexPath.row]
-            return cell1
-            
-        case 2:
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            cell1.contact.text = socialData?.data?.mobiles?[indexPath.row].mobile ?? "22222"
-            cell1.iconee.image = #imageLiteral(resourceName: "smartphone")
-            return cell1
+        if magazinKey == "true"{
             
             
-        case 3:
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            cell1.contact.text = socialData?.data?.faxs?[indexPath.row].fax ?? "3333"
-            cell1.iconee.image = #imageLiteral(resourceName: "fax-1")
-            return cell1
+            switch indexPath.section {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell.contact.text = magazineDetailsModel?.data?.phones?[indexPath.row] ?? "0000"
+                cell.iconee.image = #imageLiteral(resourceName: "phone-call")
+                return cell
+                
+            case 1:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = magazineDetailsModel?.data?.emails?[indexPath.row].email ?? "1111"
+                cell1.iconee.image = #imageLiteral(resourceName: "email (3)")
+                
+                //           cell.contact.text = arr[indexPath.row]
+                return cell1
+                
+            case 2:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = magazineDetailsModel?.data?.mobiles?[indexPath.row].mobile ?? "22222"
+                cell1.iconee.image = #imageLiteral(resourceName: "smartphone")
+                return cell1
+                
+                
+            case 3:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+//                cell1.contact.text = String( magazineDetailsModel?.data?.faxs?[indexPath.row].fax ?? "3333")
+                cell1.iconee.image = #imageLiteral(resourceName: "fax-1")
+                return cell1
+                
+            case 4:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = magazineDetailsModel?.data?.social?[indexPath.row].socialName ?? "44444"
+                let imageSo = magazineDetailsModel?.data?.social?[indexPath.row].socialIcon ?? ""
+                cell1.configureImage(image: imageSo)
+                return cell1
+                
+            default:
+                return UITableViewCell()
+            }
             
-        case 4:
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
-            cell1.contact.text = socialData?.data?.social?[indexPath.row].socialName ?? "44444"
-            let imageSo = socialData?.data?.social?[indexPath.row].socialIcon ?? ""
-            cell1.configureImage(image: imageSo)
-            return cell1
+        }else{
             
-        default:
-            return UITableViewCell()
+            
+            switch indexPath.section {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell.contact.text = socialData?.data?.phones?[indexPath.row].phone ?? "0000"
+                cell.iconee.image = #imageLiteral(resourceName: "phone-call")
+                return cell
+                
+            case 1:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = socialData?.data?.emails?[indexPath.row].email ?? "1111"
+                cell1.iconee.image = #imageLiteral(resourceName: "email (3)")
+                
+                //           cell.contact.text = arr[indexPath.row]
+                return cell1
+                
+            case 2:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = socialData?.data?.mobiles?[indexPath.row].mobile ?? "22222"
+                cell1.iconee.image = #imageLiteral(resourceName: "smartphone")
+                return cell1
+                
+                
+            case 3:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = socialData?.data?.faxs?[indexPath.row].fax ?? "3333"
+                cell1.iconee.image = #imageLiteral(resourceName: "fax-1")
+                return cell1
+                
+            case 4:
+                let cell1 = tableView.dequeueReusableCell(withIdentifier: "socialCell") as! socialCell
+                cell1.contact.text = socialData?.data?.social?[indexPath.row].socialName ?? "44444"
+                let imageSo = socialData?.data?.social?[indexPath.row].socialIcon ?? ""
+                cell1.configureImage(image: imageSo)
+                return cell1
+                
+            default:
+                return UITableViewCell()
+            }
+            
         }
+        
+
         
     }
     
@@ -191,6 +295,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         func callNumber(number: String ) {
             
             guard let url = URL(string: "tel://\(number)") else {return}

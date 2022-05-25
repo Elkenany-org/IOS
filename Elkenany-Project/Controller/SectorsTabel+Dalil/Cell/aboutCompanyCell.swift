@@ -9,6 +9,7 @@ import UIKit
 
 class aboutCompanyCell: UITableViewCell {
 
+    @IBOutlet weak var headTitle: UILabel!
     @IBOutlet weak var aboutCompany: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

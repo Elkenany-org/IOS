@@ -152,6 +152,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="headeTitle" destination="0qt-Ze-aSv" id="7tM-Ep-yc1"/>
                 <outlet property="socialTV" destination="Mci-yd-pkR" id="Kq2-Ix-zXW"/>
             </connections>
             <point key="canvasLocation" x="-6.5217391304347831" y="427.23214285714283"/>

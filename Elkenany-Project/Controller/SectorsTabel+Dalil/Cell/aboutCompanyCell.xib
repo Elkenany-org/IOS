@@ -107,6 +107,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="aboutCompany" destination="M8s-g6-CdJ" id="Wur-bA-Nuf"/>
+                <outlet property="headTitle" destination="1OO-8V-Let" id="Sdd-Ak-QdF"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="194.86607142857142"/>
         </tableViewCell>

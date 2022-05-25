@@ -23,7 +23,7 @@ class MagazinVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        title = "بيانات الدليل"
         magazineDetailsTV.delegate = self
         magazineDetailsTV.dataSource = self
         magazineDetailsTV.register(UINib(nibName: "companyInfoCell", bundle: nil), forCellReuseIdentifier: "companyInfoCell")
@@ -93,14 +93,17 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
         case 1:
             if let cell2 = tableView.dequeueReusableCell(withIdentifier: "aboutCompanyCell") as? aboutCompanyCell{
                 cell2.aboutCompany.text = magazineDetailsModel?.data?.about ?? ""
-                
+                cell2.headTitle.text = "بيانات الدليل"
                 cell2.selectionStyle = .none
                 
                 return cell2 }
         case 2:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
                 cell3.com_id = CompanyIdFromCompanies
-                cell3.FatchDataContactsOfCompanies()
+                cell3.magazinKey = "true"
+                cell3.headeTitle.text = "بيانات الدليل"
+
+                cell3.FatchDataContactsOfMagazin()
                 cell3.selectionStyle = .none
                 
                 return cell3
