@@ -251,8 +251,9 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as? MagazinVC {
+            let id_magazin = magazinSubModel[indexPath.row].id ?? 0
+            vc.IdFromMagazine = id_magazin
             navigationController?.pushViewController(vc, animated: true)
-
         }
     }
 

@@ -12,7 +12,7 @@ class MagazinVC: UIViewController {
     
     
     //outlets
-    var CompanyIdFromCompanies = 0
+    var IdFromMagazine = 0
     var magazineDetailsModel:MagazineModel?
     var companyIDHomeSearch = 0
     @IBOutlet weak var magazineDetailsTV: UITableView!
@@ -45,7 +45,7 @@ class MagazinVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
-            let param = ["id": "5"]
+            let param = ["id": "\(self.IdFromMagazine)"]
             print("parrrra", param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
@@ -99,10 +99,10 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 return cell2 }
         case 2:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
-                cell3.com_id = CompanyIdFromCompanies
+                let magazine_id = magazineDetailsModel?.data?.id ?? 0
+                cell3.magazineID = magazine_id
                 cell3.magazinKey = "true"
                 cell3.headeTitle.text = "بيانات الدليل"
-
                 cell3.FatchDataContactsOfMagazin()
                 cell3.selectionStyle = .none
                 

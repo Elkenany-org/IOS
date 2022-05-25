@@ -18,6 +18,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     var loonn = ""
     var magazineDetailsModel:MagazineModel?
     var magazinKey = ""
+    var magazineID = 0
 
 
     var socialData:CompanyDetailsDataModel?
