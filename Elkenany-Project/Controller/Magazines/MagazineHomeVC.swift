@@ -247,6 +247,14 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 316
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as? MagazinVC {
+            navigationController?.pushViewController(vc, animated: true)
+
+        }
+    }
 
 
   

@@ -273,6 +273,7 @@
 		32FAB7B4277888DA002400A2 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7B3277888DA002400A2 /* ProfileData.swift */; };
 		32FAB7B927789A27002400A2 /* MainInfoProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7B827789A27002400A2 /* MainInfoProfil.swift */; };
 		32FAB7BE27789A5C002400A2 /* PrivicyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */; };
+		32FFB0C7283E2804006BA87C /* magazineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB0C6283E2804006BA87C /* magazineModel.swift */; };
 		D0E16A948071A57CC628E641 /* Pods_Elkenany_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6966F1A87CC759DF3D17AF7 /* Pods_Elkenany_ProjectTests.framework */; };
 		E3472D6B3C26BF3D04F0DC4E /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F293128AA3C4CC876CE76F /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework */; };
 /* End PBXBuildFile section */
@@ -573,6 +574,7 @@
 		32FAB7B3277888DA002400A2 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		32FAB7B827789A27002400A2 /* MainInfoProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoProfil.swift; sourceTree = "<group>"; };
 		32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivicyProfile.swift; sourceTree = "<group>"; };
+		32FFB0C6283E2804006BA87C /* magazineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magazineModel.swift; sourceTree = "<group>"; };
 		5696519D039CFDC8B713BBAC /* Pods-Elkenany-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-ProjectTests/Pods-Elkenany-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A6B093D29BC88767023F4AF1 /* Pods-Elkenany-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-Project.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-Project/Pods-Elkenany-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		BE69717F8CD817831F8882E7 /* Pods_Elkenany_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Elkenany_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -921,6 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				323E8666283B872F00C65873 /* magazinesModel.swift */,
+				32FFB0C6283E2804006BA87C /* magazineModel.swift */,
 			);
 			path = Magazines;
 			sourceTree = "<group>";
@@ -1875,6 +1878,7 @@
 				3298AB7027A0130D00249D4E /* subFilterCity.swift in Sources */,
 				32CEEE23275ADB77007E6FC6 /* TabBarVC.swift in Sources */,
 				32F5FD0827688A2300E4DFE1 /* NewsCell.swift in Sources */,
+				32FFB0C7283E2804006BA87C /* magazineModel.swift in Sources */,
 				323E861628363C4200C65873 /* showDetailsDataCell.swift in Sources */,
 				324E0A752756BD8500DEB843 /* RegisterVC.swift in Sources */,
 				329A6B9E2819435B00D67034 /* StartChat.swift in Sources */,
