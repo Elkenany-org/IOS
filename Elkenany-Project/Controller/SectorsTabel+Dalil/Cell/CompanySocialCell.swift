@@ -85,8 +85,8 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
                     self.magazineDetailsModel = success
                     DispatchQueue.main.async {
                         self.socialTV.reloadData()
-                        self.lannn = success.data?.latitude ?? ""
-                        self.loonn = success.data?.longitude ?? ""
+//                        self.lannn = success.data?.latitude ?? ""
+//                        self.loonn = success.data?.longitude ?? ""
                     }
                 }
             }

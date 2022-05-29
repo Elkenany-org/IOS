@@ -302,8 +302,8 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             
-            cell1.titleLabel.text = seeectoresMo[indexPath.row].name ?? "test"
-            let typeee = seeectoresMo[indexPath.row].type ?? ""
+            cell1.titleLabel.text = seeectoresMo[indexPath.item].name ?? "test"
+            let typeee = seeectoresMo[indexPath.item].type ?? ""
             
             if typeee == typeFromhome {
                 cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)

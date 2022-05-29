@@ -84,9 +84,9 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "companyInfoCell") as? companyInfoCell{
                 cell.companyName.text = magazineDetailsModel?.data?.name ?? ""
                 cell.companyDesc.text = magazineDetailsModel?.data?.shortDesc ?? ""
-                cell.RatingCompany.text = String(magazineDetailsModel?.data?.rate ?? 0)
+                cell.RatingCompany.text = String(magazineDetailsModel?.data?.rate ?? 0.0)
 //                cell.com_rating.rating = magazineDetailsModel?.data?.rate
-                let companyImage = magazineDetailsModel?.data?.image
+                let companyImage = magazineDetailsModel?.data?.image 
                 cell.selectionStyle = .none
                 cell.configureImage(image: companyImage ?? "")
                 return cell }

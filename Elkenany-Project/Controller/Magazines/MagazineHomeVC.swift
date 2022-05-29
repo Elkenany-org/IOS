@@ -28,6 +28,8 @@ class MagazineHomeVC: UIViewController {
     private var currentpaga = 1
     var isFeatchingImage = false
     private var isFeatchingData = false
+    var typeOfSectore = "poultry"
+    var typeHeader = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +57,10 @@ class MagazineHomeVC: UIViewController {
     }
     
     
+    
     func FeatchDataOfectores(){
-        
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "farm"  , "page": "\(self.currentpaga)"]
+            let param = ["type": "\(self.typeOfSectore)"  , "page": "\(self.currentpaga)"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
                 if let error = error{
@@ -74,9 +76,11 @@ class MagazineHomeVC: UIViewController {
         }
     }
     
+    
+    
     func FatchDatafromHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "farm"  , "page": "\(self.currentpaga)" ,"sort" : "2"]
+            let param = ["type": "\(self.typeOfSectore)"  , "page": "\(self.currentpaga)" ,"sort" : "2"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
                 (success:MagazineS?, filier:MagazineS?, error) in
@@ -109,13 +113,49 @@ class MagazineHomeVC: UIViewController {
     
     
     
+    func FatchDatafromHomeHeader(){
+        DispatchQueue.global(qos: .background).async {
+            let param = ["type": "\(self.typeHeader)"   ,"sort" : "0"]
+            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
+                (success:MagazineS?, filier:MagazineS?, error) in
+                //internet error
+                if let error = error{
+                    print("============ error \(error)")
+                }
+                //Data Wrong From Server
+                
+                else if let loginError = filier {
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                //success
+                else {
+                    if success?.data?.nextPageURL == nil {
+                        
+                    }
+                    self.magazinSubModel.removeAll()
+                    let successDataa = success?.data?.data ?? []
+                    self.magazinSubModel.append(contentsOf: successDataa)
+                    
+                    DispatchQueue.main.async {
+                        self.magazinTV.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
+    
+    
+    
     
     func SearchService(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-        let param = ["type": "farm" , "search" : self.searchBar.text ?? ""]
+        let param = ["type": "\(self.typeOfSectore)" , "search" : self.searchBar.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
@@ -304,29 +344,41 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
-        
         let typeee = "poultry"
-        
-        if typeee == "poultry" {
+        if typeOfSectore == "poultry" {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            
         }else{
             cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
         }
         return cell
-        
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 90, height: 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("clickkkkkkkkkk")
+        let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
+        UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
+        self.typeHeader = typeOfSector
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+        if(cell.isSelected == true)
+        {
+            cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        }
+        FatchDatafromHomeHeader()
         
     }
+   
     
 }
 

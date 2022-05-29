@@ -7,12 +7,7 @@
 
 import Foundation
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let magazineModel = try? newJSONDecoder().decode(MagazineModel.self, from: jsonData)
 
-import Foundation
 
 // MARK: - MagazineModel
 struct MagazineModel: Codable {
@@ -25,17 +20,19 @@ struct magazineData: Codable {
     let id: Int?
     let name, shortDesc, about, address: String?
     let latitude, longitude: String?
-    let  countRate: Int?
-    let rate:Double?
+    let countRate: Int?
+    let rate:Float?
     let image: String?
     let createdAt: String?
     let phones: [phoneData]?
     let emails: [EmailData]?
     let mobiles: [MobileData]?
-    let faxs: [String]?
+    let faxs: [FaxsData]?
     let social: [SocialData]?
     let addresses: [AddressData]?
-    let gallary, guides: [String]?
+    let gallary: [gallarysData]?
+    let guides: [guidessData]?
+
 
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -68,6 +65,25 @@ struct phoneData: Codable {
 struct MobileData: Codable {
     let mobile: String?
 }
+
+struct gallarysData: Codable {
+    let image: String?
+    let name: String?
+    let id:Int?
+}
+
+
+struct guidessData: Codable {
+    let image: String?
+    let name: String?
+    let link: String?
+}
+
+
+struct FaxsData: Codable {
+    let fax: String?
+}
+
 
 // MARK: - Social
 struct SocialData: Codable {
