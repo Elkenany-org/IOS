@@ -17,7 +17,8 @@ struct MagazineS: Codable {
 // MARK: - DataClass
 struct MagazineData: Codable {
     let sectors: [Sectorrs]?
-    let banners, logos: [String]?
+    let banners: [Bannerrs]?
+    let logos: [loggss]?
     let data: [magazinesData]?
     let currentPage, lastPage: Int?
     let firstPageURL, nextPageURL, lastPageURL: String?
@@ -48,3 +49,15 @@ struct Sectorrs: Codable {
     let selected: Int?
 }
 
+struct Bannerrs: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}
+
+
+struct loggss: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}

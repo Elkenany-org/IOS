@@ -20,8 +20,8 @@ class MagazineHomeVC: UIViewController {
     @IBOutlet weak var toSearch: UIButton!
     @IBOutlet weak var magazinTV: UITableView!
     
-    var MagazineModel:MagazineS?
-    var sectorSubModel:[Sectorrs] = []
+    var magazineHomeModel:MagazineS?
+    var sectorSubModelMagazine:[Sectorrs] = []
     var magazinSubModel:[magazinesData] = []
     
     
@@ -60,14 +60,14 @@ class MagazineHomeVC: UIViewController {
     
     func FeatchDataOfectores(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeOfSectore)"  , "page": "\(self.currentpaga)"]
+            let param = ["type": "\(self.typeOfSectore)"  ]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
                 if let error = error{
                     print("============ error \(error)")
                 }else {
                     let successDataSectore = SuccessfulRequest?.data?.sectors ?? []
-                    self.sectorSubModel.append(contentsOf: successDataSectore)
+                    self.sectorSubModelMagazine.append(contentsOf: successDataSectore)
                     DispatchQueue.main.async {
                         self.sectorsCV.reloadData()
                     }
@@ -80,7 +80,7 @@ class MagazineHomeVC: UIViewController {
     
     func FatchDatafromHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeOfSectore)"  , "page": "\(self.currentpaga)" ,"sort" : "2"]
+            let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
                 (success:MagazineS?, filier:MagazineS?, error) in
@@ -190,7 +190,7 @@ class MagazineHomeVC: UIViewController {
         view1.isHidden = true
         view2.isHidden = true }
     
-    }
+}
 
 
 //MARK:- searchBAr delegets
@@ -201,7 +201,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty == false {
             //your model
-            let data = MagazineModel?.data?.data ?? []
+            let data = magazineHomeModel?.data?.data ?? []
             //your array
             magazinSubModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
             magazinSubModel.removeAll()
@@ -241,7 +241,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
 extension MagazineHomeVC:UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= sectorSubModel.count - 1 && !isFeatchingData {
+            if index.row >= magazinSubModel.count - 1 && !isFeatchingData {
                 FatchDatafromHome()
                 break
             }
@@ -264,7 +264,7 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
             Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
             Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
             Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
-            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
+//            Companiescell.rating.rating = Double(magazinSubModel[indexPath.row].rate ?? 0.0)
             let imageee = magazinSubModel[indexPath.row].image ?? ""
             Companiescell.companyImage.contentMode = .scaleAspectFit
             Companiescell.configureCellamagazan(image: imageee)
@@ -300,7 +300,7 @@ extension MagazineHomeVC:FilterSubData{
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
-//        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
+        //        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
         let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
@@ -323,9 +323,9 @@ extension MagazineHomeVC:FilterSubData{
                     self.magazinSubModel.append(contentsOf: successData)
                     
                     DispatchQueue.main.async {
-//                        if success?.data?.data?.isEmpty == true {
-//                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
-//                        }
+                        //                        if success?.data?.data?.isEmpty == true {
+                        //                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                        //                        }
                         self.magazinTV.reloadData()
                     }
                 }
@@ -340,14 +340,14 @@ extension MagazineHomeVC:FilterSubData{
 extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sectorSubModel.count
+        return sectorSubModelMagazine.count
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-        cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
+        cell.titleLabel.text = sectorSubModelMagazine[indexPath.item].name ?? ""
         let typeee = "poultry"
         if typeOfSectore == "poultry" {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
@@ -359,13 +359,16 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 90, height: 60)
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("clickkkkkkkkkk")
-        let typeOfSector = sectorSubModel[indexPath.item].type ?? "farm"
+        let typeOfSector = sectorSubModelMagazine[indexPath.item].type ?? "farm"
+        print("type ::: " , typeOfSector)
         UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
         self.typeHeader = typeOfSector
         
@@ -376,9 +379,8 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
             sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
         }
         FatchDatafromHomeHeader()
-        
     }
-   
+    
     
 }
 

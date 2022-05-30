@@ -21,7 +21,7 @@ struct magazineData: Codable {
     let name, shortDesc, about, address: String?
     let latitude, longitude: String?
     let countRate: Int?
-    let rate:Float?
+    let rate:Double?
     let image: String?
     let createdAt: String?
     let phones: [phoneData]?
