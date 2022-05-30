@@ -14,6 +14,8 @@ class ServiceViewController: UIViewController {
 //    var hoooooo: HomeTestModel?
     
     var homeDataSectorsModel:HomeSectorsDataModel?
+    var magazineHomeModel:MagazineS?
+
     var homeGuide:GuideCompaniesDataModel?
     var arr = [ "المعارض", "الدلائل والمجلات"]
     var arrayOfData = ["معارض" , "دلائل ومجالات", "حركة السفن"]
@@ -256,15 +258,15 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             return homeServiceDataModel?.data?.recomandtion?.count ?? 3
 
         case 2:
-            return homeServiceDataModel?.data?.recomandtion?.count  ?? 3
+            return homeServiceDataModel?.data?.logos?.count  ?? 3
 
             
         case 3:
-            return homeServiceDataModel?.data?.recomandtion?.count  ?? 3
+            return homeServiceDataModel?.data?.show?.count  ?? 3
 
    
         default:
-            return homeServiceDataModel?.data?.recomandtion?.count  ?? 3
+            return homeServiceDataModel?.data?.magazine?.count  ?? 3
 
         }
     }
@@ -384,8 +386,11 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             
         case 4 :
 
-            print("Hello world")
-
+            let Showesvc = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as! MagazinVC
+            let magazineID = homeServiceDataModel?.data?.magazine?[indexPath.item].id ?? 0
+            Showesvc.magazineIdFromHome = magazineID
+            Showesvc.FeatchCMagazineFromHome()
+            navigationController?.pushViewController(Showesvc, animated: true)
       
         
         default:

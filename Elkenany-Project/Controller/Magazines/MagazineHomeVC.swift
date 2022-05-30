@@ -264,7 +264,7 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
             Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
             Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
             Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
-//            Companiescell.rating.rating = Double(magazinSubModel[indexPath.row].rate ?? 0.0)
+            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
             let imageee = magazinSubModel[indexPath.row].image ?? ""
             Companiescell.companyImage.contentMode = .scaleAspectFit
             Companiescell.configureCellamagazan(image: imageee)

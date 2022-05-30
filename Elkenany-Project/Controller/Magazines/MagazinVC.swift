@@ -12,18 +12,22 @@ class MagazinVC: UIViewController {
     
     
     //outlets
+    @IBOutlet weak var magazineDetailsTV: UITableView!
     var IdFromMagazine = 0
     var magazineDetailsModel:MagazineModel?
     var companyIDHomeSearch = 0
-    @IBOutlet weak var magazineDetailsTV: UITableView!
+    var magazineIdFromHome = 0
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        cofiguerUI()
+        FeatchCMagazineDetails()
         title = "بيانات الدليل"
+    }
+    
+    
+    fileprivate func cofiguerUI() {
         magazineDetailsTV.delegate = self
         magazineDetailsTV.dataSource = self
         magazineDetailsTV.register(UINib(nibName: "companyInfoCell", bundle: nil), forCellReuseIdentifier: "companyInfoCell")
@@ -31,8 +35,6 @@ class MagazinVC: UIViewController {
         magazineDetailsTV.register(UINib(nibName: "CompanySocialCell", bundle: nil), forCellReuseIdentifier: "CompanySocialCell")
         magazineDetailsTV.estimatedRowHeight = 150
         magazineDetailsTV.rowHeight = UITableView.automaticDimension
-        FeatchCMagazineDetails()
-        
     }
     
 
@@ -43,9 +45,35 @@ class MagazinVC: UIViewController {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
+            let param = ["id": "\(self.IdFromMagazine)"]
+            let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.magazineDetailsModel = success
+                    DispatchQueue.main.async {
+                        
+                        self.magazineDetailsTV.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func FeatchCMagazineFromHome(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
-            let param = ["id": "\(self.IdFromMagazine)"]
+            let param = ["id": "\(self.magazineIdFromHome)"]
             print("parrrra", param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
@@ -65,7 +93,6 @@ class MagazinVC: UIViewController {
             }
         }
     }
-    
     
 
 }
