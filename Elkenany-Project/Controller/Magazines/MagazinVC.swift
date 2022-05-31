@@ -143,7 +143,8 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
             if isloggineIn {
                 if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
                     let comParameterID = magazineDetailsModel?.data?.id ?? 0
-                    vc.CompanyID = comParameterID
+                    vc.magazineID = comParameterID
+                    vc.ratingKey = "MAGAZINE"
                     self.present(vc, animated: true, completion: nil) }
                 
             }else{

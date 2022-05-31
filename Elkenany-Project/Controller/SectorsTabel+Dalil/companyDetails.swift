@@ -178,6 +178,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
                     let comParameterID = companyDetailsModel?.data?.id ?? 0
                     vc.CompanyID = comParameterID
+                    vc.ratingKey = "COMAPNIES"
                     self.present(vc, animated: true, completion: nil)  }
             }else{
                 print("helllllo ")
