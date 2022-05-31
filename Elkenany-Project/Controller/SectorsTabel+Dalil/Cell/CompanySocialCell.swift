@@ -252,9 +252,10 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        //MARK:
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //MARK: phone
         func callNumber(number: String ) {
             guard let url = URL(string: "tel://\(number)") else {return}
             if #available(iOS 10.0, *) {
@@ -270,43 +271,35 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         if magazinKey == "true"{
             switch indexPath.section {
             case 0:
-                ///for mobile
+                //mobile
                 print("heeloooooooooo")
                 
             case 1:
-                ///fooooor maillll
-                //            let email = "foo@bar.com"
+                //mail
                 if let url = URL(string: "mailto:\(magazineDetailsModel?.data?.emails?[indexPath.row].email ?? "")") {
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url)
-                        
                     } else {
                         UIApplication.shared.openURL(url)
-                        
-                        
                     }
                 }
                 
-                
-                print("soial")
-                
-                
             case 2:
+                
                 print("heelo")
                 
             case 3:
-                print("heelo")
-                callNumber(number: magazineDetailsModel?.data?.faxs?[indexPath.row].fax ?? "")
                 
+                print("heelo")
                 
             case 4:
+                
                 if let url = URL(string: "\(magazineDetailsModel?.data?.social?[indexPath.row].socialLink ?? "")") {
                     if UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.openURL(url)
                     } else {
                         print("Cannot open URL")
-                    }
-                }
+                    }}
                 
             default:
                 print("heelo")
@@ -317,34 +310,25 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             
             switch indexPath.section {
             case 0:
-                ///for mobile
+                //mobile
                 print("heeloooooooooo")
                 
             case 1:
-                ///fooooor maillll
-                //            let email = "foo@bar.com"
+                // maillll
                 if let url = URL(string: "mailto:\(socialData?.data?.emails?[indexPath.row].email ?? "")") {
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url)
-                        
                     } else {
                         UIApplication.shared.openURL(url)
-                        
-                        
-                    }
-                }
-                
-                
-                print("soial")
-                
+                    }}
                 
             case 2:
+                
                 print("heelo")
                 
             case 3:
-                print("heelo")
-                callNumber(number: socialData?.data?.faxs?[indexPath.row].fax ?? "")
                 
+                callNumber(number: socialData?.data?.faxs?[indexPath.row].fax ?? "")
                 
             case 4:
                 if let url = URL(string: "\(socialData?.data?.social?[indexPath.row].socialLink ?? "")") {
@@ -352,21 +336,18 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
                         UIApplication.shared.openURL(url)
                     } else {
                         print("Cannot open URL")
-                    }
-                }
+                    }}
                 
             default:
                 print("heelo")
             }
-            
         }
-        
     }
     
 }
 
 
-
+//MARK: Click
 extension UIResponder {
     func next<T:UIResponder>(ofType: T.Type) -> T? {
         let r = self.next

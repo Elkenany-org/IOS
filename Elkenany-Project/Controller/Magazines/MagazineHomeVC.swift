@@ -299,7 +299,7 @@ extension MagazineHomeVC:FilterSubData{
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
+//        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
         //        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
@@ -307,12 +307,9 @@ extension MagazineHomeVC:FilterSubData{
         
         
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers = ["Authorization": "\(api_token ?? "")" ]
-            let param = ["type": "farm",  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
-            
-            let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&city_id=&country_id="
-            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
+            let param = ["type": "farm",  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "2")"]
+            let FilterGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&city_id=&country_id="
+            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
@@ -323,9 +320,6 @@ extension MagazineHomeVC:FilterSubData{
                     self.magazinSubModel.append(contentsOf: successData)
                     
                     DispatchQueue.main.async {
-                        //                        if success?.data?.data?.isEmpty == true {
-                        //                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
-                        //                        }
                         self.magazinTV.reloadData()
                     }
                 }
@@ -348,7 +342,6 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         cell.titleLabel.text = sectorSubModelMagazine[indexPath.item].name ?? ""
-        let typeee = "poultry"
         if typeOfSectore == "poultry" {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)

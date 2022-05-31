@@ -16,7 +16,6 @@ protocol FilterSubData {
 
 
 class subFilterMain: UIViewController {
-    
     //Model
     @IBOutlet weak var subMainCV: UICollectionView!
     var subFilterMainModel:SubGuideFilter?
@@ -28,6 +27,7 @@ class subFilterMain: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
     
     fileprivate func setupUI() {
         subMainCV.delegate = self
