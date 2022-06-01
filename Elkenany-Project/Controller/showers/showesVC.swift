@@ -17,11 +17,13 @@ class showesVC: UIViewController {
     @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var searchVieww: UIView!
     @IBOutlet weak var showesTableView: UITableView!
+    
     //MARK:Variables
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var subSectoresModel:[SectorsSelection] = []
     var typeFromhome = ""
+    var typeForHeader = ""
     private var currentpaga = 1
     var isFeatchingImage = false
     private var isFeatchingData = false
@@ -30,7 +32,7 @@ class showesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         featchDataSelectors()
-        FatchDataforNewsHome()
+        FeatchDataShowesHome()
         setupSearchBar()
         SetupUI()
         title = "المعارض"
@@ -49,28 +51,20 @@ class showesVC: UIViewController {
         showesTableView.dataSource = self
         showesTableView.prefetchDataSource = self
         self.csectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
-        //        self.showesTableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellWithReuseIdentifier: "NewsCell")
         self.showesTableView.register(UINib(nibName: "showesCell", bundle: nil), forCellReuseIdentifier: "showesCell")
-        
-        
-        
     }
+    
     
     //MARK: sectores
     func featchDataSelectors(){
-        //        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        ///urll
         let sectorsUrl = "https://elkenany.com/api/showes/all-showes?type=&sort="
-        //        let headers = ["app-id": api_token ]
         let param = ["type": "\(self.typeFromhome)" ]
-        
         APIServiceForQueryParameter.shared.fetchData(url: sectorsUrl , parameters: param, headers: nil, method: .get) {[weak self] (NewsSuccess:ShowesHome?, NewsError:ShowesHome?, error) in
             guard let self = self else {return}
             if let error = error{
                 print("error ===========================")
                 print(error.localizedDescription)
             }else{
-                //                self.showesModel = NewsSuccess
                 let succeeeesss = NewsSuccess?.data?.sectors ?? []
                 self.subSectoresModel.append(contentsOf: succeeeesss)
                 DispatchQueue.main.async {
@@ -81,17 +75,12 @@ class showesVC: UIViewController {
     }
     
     
-    //MARK:- Data of all news at home screen
-    func FatchDataforNewsHome(){
-        
+    //MARK:- Data of all showes at home screen
+    func FeatchDataShowesHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
-            
-            print("this para", param)
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)"]
             let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
-            
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
-                
                 if let error = error{
                     //internet error
                     print("============ error \(error)")
@@ -101,21 +90,12 @@ class showesVC: UIViewController {
                     //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
-                
-                
                 else {
-                    
-                    if success?.data?.nextPageURL == nil {
-                        
-                    }
-                    
+                    if success?.data?.nextPageURL == nil {}
                     let successData = success?.data?.data ?? []
-                    print("current", self.currentpaga)
                     self.subShowesModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        
                         self.showesTableView.reloadData()
-                        print(success?.data?.data ?? "")
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -125,26 +105,45 @@ class showesVC: UIViewController {
     }
     
     
-    //MARK:- Data of all news searh bar
+    //MARK:- Data of all showes at home screen
+    func FeatchDataShowesHomeHeaders(){
+        DispatchQueue.global(qos: .background).async {
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    if success?.data?.nextPageURL == nil {}
+                    let successData = success?.data?.data ?? []
+                    self.subShowesModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        self.showesTableView.reloadData()
+                    }
+                    self.currentpaga += 1
+                    self.isFeatchingData = false
+                }
+            }
+        }
+    }
     
+    //MARK:- Featch Search Of showes
     func FatchSearchOfNews(){
-        //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=poultry&sort="
-            let param = ["type": "poultry", "search" : "\(saerchParamter)"]
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
+            let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
-                    //                    hud.dismiss()
                     print("============ error \(error)")
                 }else {
-                    //                    hud.dismiss()
                     self.subShowesModel.removeAll()
                     let successDatae = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successDatae)
@@ -164,6 +163,7 @@ class showesVC: UIViewController {
     
     
     @IBAction func toFilter(_ sender: Any) {
+        
     }
     
     @IBAction func toSearch(_ sender: Any) {
@@ -175,9 +175,11 @@ class showesVC: UIViewController {
     
     
     @IBAction func filterShortCut(_ sender: Any) {
+        
     }
     
     @IBAction func countryFilters(_ sender: Any) {
+        
     }
     
     
@@ -189,10 +191,8 @@ extension showesVC:UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.item >= subShowesModel.count - 1 && !isFeatchingData {
-                
-                FatchDataforNewsHome()
+                FeatchDataShowesHome()
                 break
-                
             }
         }
     }
@@ -200,6 +200,9 @@ extension showesVC:UITableViewDataSourcePrefetching {
 
 
 
+
+
+//MARK: Search Cnfiguration
 extension showesVC: UISearchBarDelegate {
     
     func setupSearchBar() {
@@ -217,7 +220,7 @@ extension showesVC: UISearchBarDelegate {
             subShowesModel.removeAll()
             
             //Api func
-            FatchDataforNewsHome()
+            FeatchDataShowesHome()
         }
         
         //reload
@@ -238,12 +241,7 @@ extension showesVC: UISearchBarDelegate {
         view1.isHidden = false
         view2.isHidden = false
         subShowesModel.removeAll()
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
-        FatchDataforNewsHome()
-        //        searchBarView.text = ""
-        //        hud.dismiss()
+        FeatchDataShowesHome()
         print("cancellllld")
     }
 }
@@ -255,17 +253,14 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return subSectoresModel.count
-        
     }
     
     
+    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
-        
         cell1.titleLabel.text = subSectoresModel[indexPath.item].name ?? "test"
         let typeee = "poultry"
-        
         if typeee == typeFromhome {
             cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
@@ -274,26 +269,22 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             cell1.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
         }
         return cell1
-        
     }
     
     
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
         let typeOfSectorr = subSectoresModel[indexPath.item].type ?? ""
         self.typeFromhome = typeOfSectorr
         UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
-        
         if(cell.isSelected == true)
         {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            
         }
-        
+        FeatchDataShowesHomeHeaders()
     }
     
     
@@ -303,23 +294,16 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
-            
             if(cell.isSelected == false)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                
-            }
-        }
+            }}
+        
     }
     
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: 100, height: 60)
-        
     }
     
 }
