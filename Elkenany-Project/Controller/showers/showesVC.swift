@@ -22,7 +22,7 @@ class showesVC: UIViewController {
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var subSectoresModel:[SectorsSelection] = []
-    var typeFromhome = ""
+    var typeFromhome = "poultry"
     var typeForHeader = ""
     private var currentpaga = 1
     var isFeatchingImage = false
@@ -108,7 +108,7 @@ class showesVC: UIViewController {
     //MARK:- Data of all showes at home screen
     func FeatchDataShowesHomeHeaders(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
+            let param = ["type": "\(self.typeForHeader)" , "sort": "\(0)"]
             let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
@@ -122,6 +122,7 @@ class showesVC: UIViewController {
                 }
                 else {
                     if success?.data?.nextPageURL == nil {}
+                    self.subShowesModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
@@ -277,8 +278,8 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
         let typeOfSectorr = subSectoresModel[indexPath.item].type ?? ""
-        self.typeFromhome = typeOfSectorr
-        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+        self.typeForHeader = typeOfSectorr
+//        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
         if(cell.isSelected == true)
         {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
@@ -342,6 +343,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = (storyboard?.instantiateViewController(identifier: "showVC")) as? showVC{
             let idd = subShowesModel[indexPath.row].id ?? 0
+//            self.idFromSh = idd
             UserDefaults.standard.set(idd, forKey: "IDDD")
             //            vc.CompanyIdFromCompanies = idd ?? 0
             vc.acceptedId = idd

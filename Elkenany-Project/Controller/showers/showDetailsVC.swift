@@ -14,6 +14,7 @@ class showDetailsVC: UIViewController {
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var viewCount: UILabel!
     @IBOutlet weak var showDesc: UILabel!
+    var idOfShow = 0 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,8 @@ class showDetailsVC: UIViewController {
     }
     
     func showeDataService(){
-        let parm = ["id" : "5"]
+        let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
+        let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show/?id="
             
@@ -95,38 +97,34 @@ class showDetailsVC: UIViewController {
 }
 
 
-
+//MARK:- show details image
 extension showDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return showModel?.data?.images?.count ?? 0
-        
     }
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
         let image = showModel?.data?.images?[indexPath.item].image ?? ""
+        cell1.logooImage.contentMode = .scaleAspectFit
         cell1.configureImage(image: image)
         return cell1
-        
     }
     
     
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-   
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ImageSliderVC") as! ImageSliderVC
+        present(vc, animated: true, completion: nil)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 100, height: 60)
+        return CGSize(width: collectionView.frame.width / 3 , height: 90)
         
     }
     

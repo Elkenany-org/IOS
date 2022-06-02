@@ -14,6 +14,7 @@ class showVC: UIViewController {
     @IBOutlet weak var secIndex: UIView!
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
+    var idFromSh = 0
     
     @IBOutlet weak var switchGoing: UIButton!
     var gingornotModel:AddPlaces?
