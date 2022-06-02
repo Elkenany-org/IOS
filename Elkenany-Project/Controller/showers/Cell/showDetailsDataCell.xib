@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/10/20222" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gk-gP-A2Y">
-                        <rect key="frame" x="220" y="8" width="85" height="26.5"/>
+                        <rect key="frame" x="225.5" y="13" width="79.5" height="16.5"/>
                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                         <color key="textColor" name="kenanyGreen"/>
                         <nil key="highlightedColor"/>
