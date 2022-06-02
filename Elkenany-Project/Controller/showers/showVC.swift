@@ -170,13 +170,14 @@ class showVC: UIViewController {
             segmentVieww.layer.borderWidth = 1
             segmentVieww.layer.shadowRadius = 20
             let _font = UIFont.systemFont(ofSize: 14)
-            UISegmentedControl.appearance()
-                .setTitleTextAttributes([NSAttributedString.Key.font: _font], for: .normal)
+//            UISegmentedControl.appearance()
+//                .setTitleTextAttributes([NSAttributedString.Key.font: _font], for: .normal)
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentVieww.setTitleTextAttributes(titleTextAttributes, for:.selected)
-            
-            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
-//            segmentVieww.setTitleTextAttributes(titleTextAttributes1, segmentVieww.normal)
+            let attr = [NSAttributedString.Key.font: UIFont(name: "Cairo", size: 16.0)!]
+            UISegmentedControl.appearance().setTitleTextAttributes(attr, for: UIControl.State.normal)
+            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//            segmentVieww.setTitleTextAttributes(titleTextAttributes1, segmentVieww.)
         } else {
             // Fallback on earlier versions
         }
