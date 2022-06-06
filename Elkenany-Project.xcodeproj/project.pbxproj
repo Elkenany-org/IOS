@@ -139,6 +139,7 @@
 		326AAC19278C844A002EF222 /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326AAC17278C844A002EF222 /* DetailsCell.xib */; };
 		326AAC1F278C8479002EF222 /* DetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326AAC1D278C8479002EF222 /* DetailsHeader.swift */; };
 		326AAC20278C8479002EF222 /* DetailsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 326AAC1E278C8479002EF222 /* DetailsHeader.xib */; };
+		326AC1D6284E13940005D0EA /* shipsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326AC1D5284E13940005D0EA /* shipsVC.swift */; };
 		326B75862774C57600007F55 /* locaBorsa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B75852774C57600007F55 /* locaBorsa.swift */; };
 		326B758B277695BA00007F55 /* BorsaDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B758A277695B900007F55 /* BorsaDetails.swift */; };
 		326B7593277695E300007F55 /* BorsaDatePiker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B7592277695E300007F55 /* BorsaDatePiker.swift */; };
@@ -446,6 +447,7 @@
 		326AAC17278C844A002EF222 /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		326AAC1D278C8479002EF222 /* DetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeader.swift; sourceTree = "<group>"; };
 		326AAC1E278C8479002EF222 /* DetailsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsHeader.xib; sourceTree = "<group>"; };
+		326AC1D5284E13940005D0EA /* shipsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shipsVC.swift; sourceTree = "<group>"; };
 		326B75852774C57600007F55 /* locaBorsa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locaBorsa.swift; sourceTree = "<group>"; };
 		326B758A277695B900007F55 /* BorsaDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorsaDetails.swift; sourceTree = "<group>"; };
 		326B7592277695E300007F55 /* BorsaDatePiker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorsaDatePiker.swift; sourceTree = "<group>"; };
@@ -835,6 +837,7 @@
 				32CEEE21275ADB55007E6FC6 /* CustomTabBar */,
 				324E0A7C2756C0DB00DEB843 /* Home */,
 				323B225A274A5D13002CEB89 /* login + Register Controller */,
+				326AC1D5284E13940005D0EA /* shipsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1723,6 +1726,7 @@
 				32FA3270280EBFFE00A7BDEC /* AdsViewController.swift in Sources */,
 				32FAB7A127786D9D002400A2 /* profileCell.swift in Sources */,
 				3287A2FC27E2133600C38849 /* BlankView.swift in Sources */,
+				326AC1D6284E13940005D0EA /* shipsVC.swift in Sources */,
 				322D196427E274B40017A2B8 /* MansouraLocation.swift in Sources */,
 				32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */,
 				32366BE3275BC81B00DC2F98 /* SectorsCell.swift in Sources */,
