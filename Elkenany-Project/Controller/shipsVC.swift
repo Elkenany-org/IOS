@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class shipsVC: UIViewController, BackDate {
     func backDateToMain(date: String) {
         print("hello world ----")
@@ -17,10 +18,15 @@ class shipsVC: UIViewController, BackDate {
     @IBOutlet weak var dataPicker: UIButton!
     @IBOutlet weak var shipCV: UICollectionView!
     
+    var shipSubModel:ShipsModel?
+    
+    var shipsSubModelData:[Ship] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        GetshipsData()
         shipCV.dataSource = self
         shipCV.delegate = self
         self.shipCV.register(UINib(nibName: "localBorsaCell", bundle: nil), forCellWithReuseIdentifier: "localBorsaCell")
@@ -37,6 +43,34 @@ class shipsVC: UIViewController, BackDate {
     
     @IBAction func statisticesClicke(_ sender: Any) {
     }
+    
+    
+    
+    func GetshipsData(){
+        let param = ["date": "2022-06-3"]
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let companyGuide = "https://elkenany.com/api/ships/all-ships?date="
+            let headers = ["app-id": "\(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
+                if let error = error{
+                    print("============ error \(error)")
+                }else {
+                    let successData = Datasuccess?.data?.ships ?? []
+                    self.shipsSubModelData.append(contentsOf: successData)
+                    
+                    DispatchQueue.main.async {
+                        self.shipCV.reloadData()
+                        print(successData)
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
     
 }
 
@@ -55,7 +89,7 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     
     //number of row in section ------------------
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return shipsSubModelData.count
         
     }
     
@@ -65,7 +99,8 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as! localBorsaCell
-        cell1.changeLabel.text = "werty"
+        cell1.changeLabel.text = shipsSubModelData[indexPath.item].name ?? ""
+//        cell1.changeLabel.text = "werty"
         return cell1
     }
     

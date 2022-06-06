@@ -323,7 +323,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         if collectionView == SelectedSector {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
-            let typeeee = sectorSubModel[indexPath.item].type ?? ""
+            let typeeee = sectorSubModel[indexPath.item].type ?? "test"
             
             if typeeee == Sector {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
