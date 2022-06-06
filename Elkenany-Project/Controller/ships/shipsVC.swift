@@ -29,7 +29,7 @@ class shipsVC: UIViewController, BackDate {
         GetshipsData()
         shipCV.dataSource = self
         shipCV.delegate = self
-        self.shipCV.register(UINib(nibName: "localBorsaCell", bundle: nil), forCellWithReuseIdentifier: "localBorsaCell")
+        self.shipCV.register(UINib(nibName: "shipsCell", bundle: nil), forCellWithReuseIdentifier: "shipsCell")
         
     }
     
@@ -98,9 +98,18 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "localBorsaCell", for: indexPath) as! localBorsaCell
-        cell1.changeLabel.text = shipsSubModelData[indexPath.item].name ?? ""
+        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "shipsCell", for: indexPath) as! shipsCell
+//        cell1.changeLabel.text = shipsSubModelData[indexPath.item].name ?? ""
 //        cell1.changeLabel.text = "werty"
+        cell1.name.text = shipsSubModelData[indexPath.item].name ?? ""
+        cell1.date.text = shipsSubModelData[indexPath.item].date ?? ""
+        cell1.container.text = String( shipsSubModelData[indexPath.item].load ?? 0)
+        cell1.type.text = shipsSubModelData[indexPath.item].product ?? ""
+        cell1.fromM.text = shipsSubModelData[indexPath.item].country ?? ""
+        cell1.arrivalDate.text = shipsSubModelData[indexPath.item].dirDate ?? ""
+        cell1.distanition.text = shipsSubModelData[indexPath.item].company ?? ""
+        cell1.wakel.text = shipsSubModelData[indexPath.item].agent ?? ""
+        cell1.minaa.text = shipsSubModelData[indexPath.item].port ?? ""
         return cell1
     }
     
@@ -108,7 +117,7 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     
     // cell height ----------------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 65)
+        return CGSize(width: collectionView.frame.width, height: 60)
         
     }
     
