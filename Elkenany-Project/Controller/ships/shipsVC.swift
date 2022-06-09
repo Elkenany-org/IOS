@@ -47,7 +47,7 @@ class shipsVC: UIViewController {
     
     @IBAction func statisticesClicke(_ sender: Any) {
         
-        let vc = (storyboard?.instantiateViewController(identifier: "clockVC"))! as clockVC
+        let vc = (storyboard?.instantiateViewController(identifier: "StatShipVC"))! as StatShipVC
         self.present(vc, animated: true, completion: nil)
     }
     

@@ -94,6 +94,7 @@
 		32438A11282BB20E000F3AD6 /* addPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A10282BB20E000F3AD6 /* addPlaces.swift */; };
 		32438A24282C00F3000F3AD6 /* showesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32438A23282C00F3000F3AD6 /* showesVC.swift */; };
 		324666B127C688DC0061EC86 /* aboutUsMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324666B027C688DC0061EC86 /* aboutUsMO.swift */; };
+		3246C0A7285219B700EA29B5 /* StatShipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3246C0A6285219B700EA29B5 /* StatShipVC.swift */; };
 		32475F1D284E444700ACC97B /* shipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32475F1C284E444700ACC97B /* shipsModel.swift */; };
 		324E0A752756BD8500DEB843 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324E0A742756BD8500DEB843 /* RegisterVC.swift */; };
 		324E0A7E2756C0F600DEB843 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324E0A7D2756C0F600DEB843 /* HomeVC.swift */; };
@@ -405,6 +406,7 @@
 		32438A10282BB20E000F3AD6 /* addPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPlaces.swift; sourceTree = "<group>"; };
 		32438A23282C00F3000F3AD6 /* showesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showesVC.swift; sourceTree = "<group>"; };
 		324666B027C688DC0061EC86 /* aboutUsMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutUsMO.swift; sourceTree = "<group>"; };
+		3246C0A6285219B700EA29B5 /* StatShipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatShipVC.swift; sourceTree = "<group>"; };
 		32475F1C284E444700ACC97B /* shipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shipsModel.swift; sourceTree = "<group>"; };
 		324E0A742756BD8500DEB843 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		324E0A7D2756C0F600DEB843 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -1148,6 +1150,7 @@
 				326AC1D5284E13940005D0EA /* shipsVC.swift */,
 				323E862028366D1100C65873 /* organizationVC.swift */,
 				323E861B28366AE700C65873 /* clockVC.swift */,
+				3246C0A6285219B700EA29B5 /* StatShipVC.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -1922,6 +1925,7 @@
 				32F9599D282FF2C50027F02B /* reviewsCell.swift in Sources */,
 				3279FDA527E559DC0078FF97 /* FodderBorsa.swift in Sources */,
 				3298AB6627A0114700249D4E /* subFilterSectore.swift in Sources */,
+				3246C0A7285219B700EA29B5 /* StatShipVC.swift in Sources */,
 				32034F5F27661E1800D6F863 /* companyInfoCell.swift in Sources */,
 				32628C2B282F993300AB0068 /* ReviewsVC.swift in Sources */,
 				32B4671127E86A64002C32A5 /* FilterHome.swift in Sources */,
