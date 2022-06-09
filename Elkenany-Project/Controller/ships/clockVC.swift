@@ -9,8 +9,8 @@ import UIKit
 
 class clockVC: UIViewController {
 
-    var showModel:ShoweModel?
-    
+    var MainModelStat:ShipsStatModel?
+
     @IBOutlet weak var clockTableView: UITableView!
 
     
@@ -19,16 +19,15 @@ class clockVC: UIViewController {
         showeDataServiceeee()
         clockTableView.delegate = self
         clockTableView.dataSource = self
-        self.clockTableView.register(UINib(nibName: "showDetailsDataCell", bundle: nil), forCellReuseIdentifier: "showDetailsDataCell")    }
+        self.clockTableView.register(UINib(nibName: "SelectedCell", bundle: nil), forCellReuseIdentifier: "SelectedCell")    }
     
     
      func showeDataServiceeee(){
-         let parm = ["id" : "5"]
          DispatchQueue.global(qos: .background).async {
-             let url = "https://elkenany.com/api/showes/one-show/?id="
+             let url = "https://elkenany.com/api/ships/statistics-ships"
              
 
-             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
+             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                  if let error = error{
                      //internet error
                      print("============ error \(error)")
@@ -40,13 +39,12 @@ class clockVC: UIViewController {
                  }
                  else {
                      guard let success = success else {return}
-                     self.showModel = success
+                     self.MainModelStat = success
                  
                      DispatchQueue.main.async {
                    
                          self.clockTableView.reloadData()
-                         print("hellllllllo")
-                         print("helllllllllllllo", success.data?.shortDesc ?? "")
+           
                          
                      }
                  }
@@ -63,15 +61,15 @@ class clockVC: UIViewController {
 extension clockVC: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return showModel?.data?.watches?.count ?? 0
+        return MainModelStat?.data?.products?.count ?? 0
 
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "showDetailsDataCell") as? showDetailsDataCell {
-            cell.detaliLabel?.text =  showModel?.data?.watches?[indexPath.row].watch ?? ""
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
+            cell.SectreTitle.text =  MainModelStat?.data?.products?[indexPath.row].name ?? ""
             return cell
         }
         return UITableViewCell()

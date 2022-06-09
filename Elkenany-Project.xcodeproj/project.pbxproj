@@ -220,6 +220,7 @@
 		32AB26BC27F07BD600D014E6 /* CompareingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB26BA27F07BD600D014E6 /* CompareingCell.swift */; };
 		32AB26BD27F07BD600D014E6 /* CompareingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32AB26BB27F07BD600D014E6 /* CompareingCell.xib */; };
 		32ADC79F277C9B3F006C4140 /* customerserviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ADC79E277C9B3F006C4140 /* customerserviceVC.swift */; };
+		32B30BD72851E74B0002BC7C /* shipsStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B30BD62851E74B0002BC7C /* shipsStat.swift */; };
 		32B466F627E61172002C32A5 /* FeedModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466F527E61172002C32A5 /* FeedModelData.swift */; };
 		32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FA27E61443002C32A5 /* companiesModel.swift */; };
 		32B4670027E74A42002C32A5 /* CompaniesFodderFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */; };
@@ -527,6 +528,7 @@
 		32AB26BA27F07BD600D014E6 /* CompareingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareingCell.swift; sourceTree = "<group>"; };
 		32AB26BB27F07BD600D014E6 /* CompareingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompareingCell.xib; sourceTree = "<group>"; };
 		32ADC79E277C9B3F006C4140 /* customerserviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customerserviceVC.swift; sourceTree = "<group>"; };
+		32B30BD62851E74B0002BC7C /* shipsStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shipsStat.swift; sourceTree = "<group>"; };
 		32B466F527E61172002C32A5 /* FeedModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelData.swift; sourceTree = "<group>"; };
 		32B466FA27E61443002C32A5 /* companiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companiesModel.swift; sourceTree = "<group>"; };
 		32B466FF27E74A42002C32A5 /* CompaniesFodderFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesFodderFilter.swift; sourceTree = "<group>"; };
@@ -968,8 +970,6 @@
 				32628C2F282F994F00AB0068 /* showersVC.swift */,
 				32628C34282F996A00AB0068 /* speakersVC.swift */,
 				323E86072836319F00C65873 /* showMoreDetailsVC.swift */,
-				323E861B28366AE700C65873 /* clockVC.swift */,
-				323E862028366D1100C65873 /* organizationVC.swift */,
 				323E862528366D2600C65873 /* teicketVC.swift */,
 				3297F7D92848B282002A5918 /* ImageSliderVC.swift */,
 			);
@@ -980,6 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				32475F1C284E444700ACC97B /* shipsModel.swift */,
+				32B30BD62851E74B0002BC7C /* shipsStat.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -1145,6 +1146,8 @@
 			children = (
 				326AA339284E90870019D81C /* cell */,
 				326AC1D5284E13940005D0EA /* shipsVC.swift */,
+				323E862028366D1100C65873 /* organizationVC.swift */,
+				323E861B28366AE700C65873 /* clockVC.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -1857,6 +1860,7 @@
 				323E861C28366AE700C65873 /* clockVC.swift in Sources */,
 				3276D2E0275CD8A800D95236 /* Constant.swift in Sources */,
 				3276D2BA275CB2C100D95236 /* successCell.swift in Sources */,
+				32B30BD72851E74B0002BC7C /* shipsStat.swift in Sources */,
 				32ADC79F277C9B3F006C4140 /* customerserviceVC.swift in Sources */,
 				32F12B412763A3CE003DE947 /* companyDetails.swift in Sources */,
 				32FAB7B4277888DA002400A2 /* ProfileData.swift in Sources */,

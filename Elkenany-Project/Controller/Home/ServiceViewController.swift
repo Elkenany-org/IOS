@@ -20,7 +20,7 @@ class ServiceViewController: UIViewController {
     var arr = [ "المعارض", "الدلائل والمجلات"]
     var arrayOfData = ["معارض" , "دلائل ومجالات", "حركة السفن"]
     var sectionsData = ["الخدمات", "مقترح لك", "شركاء النجاح", "المعارض", "الدلائل والمجلات"]
-    var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "store") , #imageLiteral(resourceName: "fax-1") , #imageLiteral(resourceName: "news") ]
+    var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "store") , #imageLiteral(resourceName: "fax-1") , #imageLiteral(resourceName: "cruise (1)") ]
     @IBOutlet weak var ServicesCV: UICollectionView!
    
     

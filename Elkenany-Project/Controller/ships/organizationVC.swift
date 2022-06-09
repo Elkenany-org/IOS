@@ -11,23 +11,23 @@ class organizationVC: UIViewController {
 
     @IBOutlet weak var organizationTableView: UITableView!
 
-    var showModel:ShoweModel?
+    var MainModelStat:ShipsStatModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showeDataServiceeee()
         organizationTableView.delegate = self
         organizationTableView.dataSource = self
-        self.organizationTableView.register(UINib(nibName: "showDetailsDataCell", bundle: nil), forCellReuseIdentifier: "showDetailsDataCell")    }
+        self.organizationTableView.register(UINib(nibName: "SelectedCell", bundle: nil), forCellReuseIdentifier: "SelectedCell")    }
     
     
      func showeDataServiceeee(){
          let parm = ["id" : "5"]
          DispatchQueue.global(qos: .background).async {
-             let url = "https://elkenany.com/api/showes/one-show/?id="
+             let url = "https://elkenany.com/api/ships/statistics-ships"
              
 
-             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
+             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                  if let error = error{
                      //internet error
                      print("============ error \(error)")
@@ -39,13 +39,13 @@ class organizationVC: UIViewController {
                  }
                  else {
                      guard let success = success else {return}
-                     self.showModel = success
+                     self.MainModelStat = success
                  
                      DispatchQueue.main.async {
                    
                          self.organizationTableView.reloadData()
                          print("hellllllllo")
-                         print("helllllllllllllo", success.data?.shortDesc ?? "")
+                  
                          
                      }
                  }
@@ -61,15 +61,15 @@ class organizationVC: UIViewController {
 extension organizationVC: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return showModel?.data?.organisers?.count ?? 0
+        return MainModelStat?.data?.countries?.count ?? 0
 
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "showDetailsDataCell") as? showDetailsDataCell {
-            cell.detaliLabel?.text =  showModel?.data?.organisers?[indexPath.row].name ?? ""
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
+            cell.SectreTitle.text =  MainModelStat?.data?.countries?[indexPath.row].country ?? ""
             return cell
         }
         return UITableViewCell()
