@@ -79,11 +79,17 @@ extension organizationVC: UITableViewDelegate , UITableViewDataSource{
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
             cell.SectreTitle.text = MainModelStat?.data?.countries?[indexPath.row].country ?? ""
-            let country = MainModelStat?.data?.countries?[indexPath.row].country ?? ""
-            contryDelegete?.returnCountry(country: country)
+         
             return cell
         }
         return UITableViewCell()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let country = MainModelStat?.data?.countries?[indexPath.row].country ?? ""
+        contryDelegete?.returnCountry(country: country)
+        dismiss(animated: true, completion: nil)
     }
     
     
