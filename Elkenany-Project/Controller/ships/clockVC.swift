@@ -7,12 +7,17 @@
 
 import UIKit
 
+
+
+
 class clockVC: UIViewController {
 
-    var MainModelStat:ShipsStatModel?
 
     @IBOutlet weak var clockTableView: UITableView!
+    var MainModelStat:ShipsStatModel?
 
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +30,6 @@ class clockVC: UIViewController {
      func showeDataServiceeee(){
          DispatchQueue.global(qos: .background).async {
              let url = "https://elkenany.com/api/ships/statistics-ships"
-             
-
              APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                  if let error = error{
                      //internet error
@@ -51,9 +54,14 @@ class clockVC: UIViewController {
              }
          }
      }
+    
+    
+    
      
-     
-     
+    @IBAction func dissssmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 
@@ -70,6 +78,7 @@ extension clockVC: UITableViewDelegate , UITableViewDataSource{
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
             cell.SectreTitle.text =  MainModelStat?.data?.products?[indexPath.row].name ?? ""
+            
             return cell
         }
         return UITableViewCell()
@@ -77,7 +86,7 @@ extension clockVC: UITableViewDelegate , UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 55
     }
     
 }

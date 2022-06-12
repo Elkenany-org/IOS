@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol countryReturn {
+    func returnCountry(country :String)
+}
+
 class organizationVC: UIViewController {
 
     @IBOutlet weak var organizationTableView: UITableView!
@@ -53,7 +57,12 @@ class organizationVC: UIViewController {
          }
      }
      
-     
+    @IBAction func dissssmis(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    var contryDelegete:countryReturn?
+
      
 }
 
@@ -69,7 +78,9 @@ extension organizationVC: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
-            cell.SectreTitle.text =  MainModelStat?.data?.countries?[indexPath.row].country ?? ""
+            cell.SectreTitle.text = MainModelStat?.data?.countries?[indexPath.row].country ?? ""
+            let country = MainModelStat?.data?.countries?[indexPath.row].country ?? ""
+            contryDelegete?.returnCountry(country: country)
             return cell
         }
         return UITableViewCell()
@@ -77,7 +88,7 @@ extension organizationVC: UITableViewDelegate , UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 55
     }
     
 }

@@ -15,6 +15,7 @@ class StatShipVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "احصائيات السفن"
         showeDataServiceeee()
         statShipCV.delegate = self
         statShipCV.dataSource = self
@@ -56,8 +57,23 @@ class StatShipVC: UIViewController {
         }
     }
     
-
-
+    
+    //manshaaa
+    
+    
+    @IBAction func toView(_ sender: Any) {
+        let vc = (storyboard?.instantiateViewController(identifier: "organizationVC"))! as organizationVC
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //typeeeee
+    
+    @IBAction func toType(_ sender: Any) {
+        
+        let vc = (storyboard?.instantiateViewController(identifier: "clockVC"))! as clockVC
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 
