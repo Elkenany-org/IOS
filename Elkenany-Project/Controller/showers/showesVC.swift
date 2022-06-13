@@ -166,7 +166,7 @@ class showesVC: UIViewController {
     @IBAction func toFilter(_ sender: Any) {
         
         if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
-//            SectionVC.filterDelegete = self
+            SectionVC.filterDelegete = self
             self.present(SectionVC, animated: true, completion: nil)
         }
         
@@ -358,5 +358,48 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    
+}
+
+extension showesVC: FilterSubData{
+   
+    func runFilter() {
+        //Handeling Loading view progress
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "جاري التحميل"
+//        hud.show(in: self.view)
+        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
+        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
+        let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
+        let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
+        let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
+        
+        
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let headers = ["Authorization": "\(api_token ?? "")" ]
+            let param = ["type": "\(sec_id ?? "farm")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
+            
+            let SearchGuide = "https://elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
+            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
+                if let error = error{
+//                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+//                    hud.dismiss()
+                    self.subShowesModel.removeAll()
+                    let successData = success?.data?.data ?? []
+                    self.subShowesModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        
+                        if success?.data?.data?.isEmpty == true {
+                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                        }
+                        self.showesTableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
 }

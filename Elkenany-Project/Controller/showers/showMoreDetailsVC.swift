@@ -86,7 +86,7 @@ extension showMoreDetailsVC: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "showDetailsDataCell") as? showDetailsDataCell {
-            cell.detaliLabel?.text =  showModel?.data?.times?[indexPath.row].phone ?? ""
+            cell.detaliLabel?.text =  showModel?.data?.times?[indexPath.row].time ?? ""
             return cell
         }
         return UITableViewCell()

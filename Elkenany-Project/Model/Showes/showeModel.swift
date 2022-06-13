@@ -21,12 +21,13 @@ struct showesDataaa: Codable {
     let name, shortDesc: String?
     let viewCount: Int?
     let address: String?
-    let rate, countShowers: Int?
+    let rate:Float?
+    let countShowers: Int?
     let image: String?
     let createdAt: String?
     let times: [Time]?
-    let watches: [Watch]?
-    let teckits: [Teckit]?
+    let dates: [daates]?
+    let tickets: [Teckit]?
     let images: [ShowesImage]?
     let organisers: [Organiser]?
 
@@ -38,7 +39,7 @@ struct showesDataaa: Codable {
         case countShowers = "count_Showers"
         case image
         case createdAt = "created_at"
-        case times, watches, teckits, images, organisers
+        case times, dates, tickets, images, organisers
     }
 }
 
@@ -56,17 +57,17 @@ struct Organiser: Codable {
 
 // MARK: - Teckit
 struct Teckit: Codable {
-    let name: String?
+    let status: String?
     let price: Int?
 }
 
 // MARK: - Time
 struct Time: Codable {
-    let phone: String?
+    let time: String?
 }
 
 // MARK: - Watch
-struct Watch: Codable {
-    let watch: String?
+struct daates: Codable {
+    let date: String?
 }
 

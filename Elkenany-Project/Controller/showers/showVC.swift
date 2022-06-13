@@ -9,44 +9,48 @@ import UIKit
 
 class showVC: UIViewController {
     
-        @IBOutlet weak var segmentVieww: UISegmentedControl!
+    //outlet
+    @IBOutlet weak var segmentVieww: UISegmentedControl!
+    @IBOutlet weak var switchGoing: UIButton!
     @IBOutlet weak var firstIndex: UIView!
     @IBOutlet weak var secIndex: UIView!
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
-    var idFromSh = 0
-    
-    @IBOutlet weak var switchGoing: UIButton!
+    //models
     var gingornotModel:AddPlaces?
-
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
+    var idFromSh = 0
+    //vars
     var linkeeeee = ""
     var acceptedTitle  = ""
     var acceptedId = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         title = acceptedTitle
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        segmentVieww.selectedSegmentIndex = 0
-
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SetupSegment()
         ReviwesServices()
+        segmentVieww.selectedSegmentIndex = 0
+        firstIndex.alpha = 1
+        secIndex.alpha = 0
+        thiredIndex.alpha = 0
+        fourthView.alpha = 0
+        
     }
     
-
     
+    
+    //going or not
     @IBAction func toShow(_ sender: Any) {
+        
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn {
@@ -55,20 +59,15 @@ class showVC: UIViewController {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-              present(vc, animated: true, completion: nil)
-            
-            }
-            
+                present(vc, animated: true, completion: nil)}
         }
-        
-        
-        
     }
     
     
+    
+    //order place btn
     @IBAction func orderPlace(_ sender: Any) {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-        
         if isloggineIn {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
@@ -78,23 +77,15 @@ class showVC: UIViewController {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-              present(vc, animated: true, completion: nil)
-            
-            }
-            
+                present(vc, animated: true, completion: nil)}
         }
-        
-        
-        
-        
-
     }
     
-
+    
+    
+    //rating
     @IBAction func ratingShow(_ sender: Any) {
-        
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-        
         if isloggineIn {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
@@ -104,45 +95,24 @@ class showVC: UIViewController {
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-              present(vc, animated: true, completion: nil)
-            
-            }
-            
+                present(vc, animated: true, completion: nil)}
         }
-        
-        
-   
-        
     }
     
     
     
-    
+    //share
     @IBAction func sharingShow(_ sender: Any) {
-        // Setting description
         let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
-        
-        // Setting url
         let secondActivityItem : NSURL = NSURL(string: "\(linkeeeee)")!
-        
-        // If you want to use an image
         let image : UIImage = UIImage(named: "AppIcon")!
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
-        
-        // This lines is for the popover you need to show in iPad
-        //                activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
-        
-        // This line remove the arrow of the popover to show in iPad
         activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
         activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
-        
-        // Pre-configuring activity items
         activityViewController.activityItemsConfiguration = [
             UIActivity.ActivityType.message
         ] as? UIActivityItemsConfigurationReading
-        
-        // Anything you want to exclude
         activityViewController.excludedActivityTypes = [
             UIActivity.ActivityType.postToWeibo,
             UIActivity.ActivityType.print,
@@ -153,39 +123,37 @@ class showVC: UIViewController {
             UIActivity.ActivityType.postToVimeo,
             UIActivity.ActivityType.postToTencentWeibo,
             UIActivity.ActivityType.postToFacebook
-            
         ]
-        
         activityViewController.isModalInPresentation = true
         self.present(activityViewController, animated: true, completion: nil)
     }
     
     
     
+    //segement setup
     fileprivate func SetupSegment() {
         if #available(iOS 13.0, *) {
-            //segmetMane.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            
             segmentVieww.layer.borderColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
             segmentVieww.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.5594755078, blue: 0.1821106031, alpha: 1)
             segmentVieww.layer.borderWidth = 1
             segmentVieww.layer.shadowRadius = 20
-//            let _font = UIFont.systemFont(ofSize: 14)
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentVieww.setTitleTextAttributes(titleTextAttributes, for:.selected)
             let attr = [NSAttributedString.Key.font: UIFont(name: "Cairo", size: 13.0)!]
             UISegmentedControl.appearance().setTitleTextAttributes(attr, for: UIControl.State.normal)
-            let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            
         } else {
             // Fallback on earlier versions
         }
     }
     
+    
+    
     func ReviwesServices(){
         let parm = ["type" : "poultry"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/all-showes?type=&sort="
-            
-   
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
@@ -201,14 +169,10 @@ class showVC: UIViewController {
                     let successDataa = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
-//                        self.reviewsTableView.reloadData()
-            
                         for i in self.subShowesModel  {
                             print(i.deebLink ?? "")
                             self.linkeeeee = i.deebLink ?? ""
                         }
-                        print("hhhhhhhhhhhhhhh")
-                        print(success?.data ?? "" )
                     }
                 }
             }
@@ -235,11 +199,9 @@ class showVC: UIViewController {
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
-                    
                     guard let success = success else {return}
                     self.gingornotModel = success
                     DispatchQueue.main.async {
-                        print("hhhhhhhhhhhhhhh")
                     }
                 }
             }
@@ -248,7 +210,7 @@ class showVC: UIViewController {
     
     
     
-    
+    //present views 
     @IBAction func SegmentSwitcher(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0{

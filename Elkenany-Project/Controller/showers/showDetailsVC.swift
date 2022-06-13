@@ -67,7 +67,9 @@ class showDetailsVC: UIViewController {
 
     @IBAction func showDate(_ sender: Any) {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "showMoreDetailsVC") as! showMoreDetailsVC
+        let vc = storyboard?.instantiateViewController(withIdentifier: "teicketVC") as! teicketVC
+        vc.setupKey = "moreData"
+        vc.showIdd = idOfShow
         present(vc, animated: true, completion: nil)
         
     }
@@ -76,12 +78,18 @@ class showDetailsVC: UIViewController {
     @IBAction func showCost(_ sender: Any) {
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "teicketVC") as! teicketVC
+        vc.setupKey = "cost"
+        vc.showIdd = idOfShow
+
         present(vc, animated: true, completion: nil)
     }
     
     
     @IBAction func showTime(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "clockVC") as! clockVC
+        let vc = storyboard?.instantiateViewController(withIdentifier: "teicketVC") as! teicketVC
+        vc.setupKey = "time"
+        vc.showIdd = idOfShow
+
         present(vc, animated: true, completion: nil)
         
     }
@@ -89,7 +97,10 @@ class showDetailsVC: UIViewController {
     
     @IBAction func showOrganize(_ sender: Any) {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "organizationVC") as! organizationVC
+        let vc = storyboard?.instantiateViewController(withIdentifier: "teicketVC") as! teicketVC
+        vc.setupKey = "organizne"
+        vc.showIdd = idOfShow
+
         present(vc, animated: true, completion: nil)
         
     }
