@@ -65,7 +65,7 @@ class showesVC: UIViewController {
                 print("error ===========================")
                 print(error.localizedDescription)
             }else{
-                let succeeeesss = NewsSuccess?.data?.sectors ?? []
+                let succeeeesss = NewsSuccess?.data?.sectors?.reversed() ?? []
                 self.subSectoresModel.append(contentsOf: succeeeesss)
                 DispatchQueue.main.async {
                     self.csectorsCV.reloadData()
@@ -165,6 +165,12 @@ class showesVC: UIViewController {
     
     @IBAction func toFilter(_ sender: Any) {
         
+        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
+//            SectionVC.filterDelegete = self
+            self.present(SectionVC, animated: true, completion: nil)
+        }
+        
+        
     }
     
     @IBAction func toSearch(_ sender: Any) {
@@ -262,7 +268,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         cell1.titleLabel.text = subSectoresModel[indexPath.item].name ?? "test"
         let typeee = "poultry"
-        if typeee == typeFromhome {
+        if typeee == "poultry" {
             cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             
@@ -299,9 +305,9 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }}
-        
+
     }
-    
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 60)
