@@ -109,6 +109,7 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 cell.companyName.text = magazineDetailsModel?.data?.name ?? ""
                 cell.companyDesc.text = magazineDetailsModel?.data?.shortDesc ?? ""
                 cell.RatingCompany.text = String(magazineDetailsModel?.data?.countRate ?? 0)
+                cell.com_rating.rating = Double(magazineDetailsModel?.data?.countRate ?? 0)
                 let companyImage = magazineDetailsModel?.data?.image
                 cell.selectionStyle = .none
                 cell.configureImage(image: companyImage ?? "")
@@ -117,7 +118,7 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
         case 1:
             if let cell2 = tableView.dequeueReusableCell(withIdentifier: "aboutCompanyCell") as? aboutCompanyCell{
                 cell2.aboutCompany.text = magazineDetailsModel?.data?.about ?? ""
-                cell2.headTitle.text = "بيانات الدليل"
+                cell2.headTitle.text = "عن الدليل"
                 cell2.selectionStyle = .none
                 return cell2 }
             

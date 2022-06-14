@@ -119,7 +119,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 8
+            return 11
         case 1:
             return 0
         default:
@@ -138,7 +138,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:collectionView.frame.width , height: 50)
+        return CGSize(width:collectionView.frame.width , height: 45)
         
     }
     

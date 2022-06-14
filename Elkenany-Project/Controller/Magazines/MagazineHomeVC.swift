@@ -19,11 +19,10 @@ class MagazineHomeVC: UIViewController {
     @IBOutlet weak var toFilter: UIButton!
     @IBOutlet weak var toSearch: UIButton!
     @IBOutlet weak var magazinTV: UITableView!
-    
+    //vars
     var magazineHomeModel:MagazineS?
     var sectorSubModelMagazine:[Sectorrs] = []
     var magazinSubModel:[magazinesData] = []
-    
     
     private var currentpaga = 1
     var isFeatchingImage = false
@@ -31,6 +30,7 @@ class MagazineHomeVC: UIViewController {
     var typeOfSectore = "poultry"
     var typeHeader = ""
     
+    //viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         FatchDatafromHome()
@@ -66,7 +66,7 @@ class MagazineHomeVC: UIViewController {
                 if let error = error{
                     print("============ error \(error)")
                 }else {
-                    let successDataSectore = SuccessfulRequest?.data?.sectors ?? []
+                    let successDataSectore = SuccessfulRequest?.data?.sectors?.reversed() ?? []
                     self.sectorSubModelMagazine.append(contentsOf: successDataSectore)
                     DispatchQueue.main.async {
                         self.sectorsCV.reloadData()
