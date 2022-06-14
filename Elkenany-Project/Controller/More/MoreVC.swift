@@ -196,19 +196,28 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC
             vc.FatchDataforNewsHomeFromMore()
             navigationController?.pushViewController(vc, animated: true)
-            
         case 4:
-            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
+            let vc = storyboard?.instantiateViewController(identifier: "showesVC") as! showesVC
             navigationController?.pushViewController(vc, animated: true)
         case 5:
-            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
+            let vc = storyboard?.instantiateViewController(identifier: "MagazineHomeVC") as! MagazineHomeVC
             navigationController?.pushViewController(vc, animated: true)
         case 6:
+            let vc = storyboard?.instantiateViewController(identifier: "shipsVC") as! shipsVC
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 7:
+            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
+            navigationController?.pushViewController(vc, animated: true)
+        case 8:
+            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
+            navigationController?.pushViewController(vc, animated: true)
+        case 9:
             if let url = NSURL(string: "https://apps.apple.com/us/app/%D8%A7%D9%84%D9%83%D9%86%D8%A7%D9%86%D9%8A/id1608815820") {
                 UIApplication.shared.openURL(url as URL)
             }
             
-        case 7:
+        case 10:
             // Setting description
             let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
             
@@ -249,12 +258,12 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             activityViewController.isModalInPresentation = true
             self.present(activityViewController, animated: true, completion: nil)
             
-        case 7:
+        case 11:
             //            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
             //            navigationController?.pushViewController(vc, animated: true)
             print("about elkenany")
             
-        case 8:
+        case 12:
             //            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
             //            navigationController?.pushViewController(vc, animated: true)
             print("jjjjjjjjjjjjj")

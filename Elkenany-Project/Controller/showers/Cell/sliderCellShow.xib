@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sliderCellShow" id="gTV-IL-0wX" customClass="sliderCellShow" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="Gp6-Zd-yIg">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="59J-Mw-tnD"/>
+                <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="dTk-qN-tgA"/>
+                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oJb-vC-Sk8"/>
+                <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="z4L-SH-SQA"/>
+            </constraints>
+            <size key="customSize" width="295" height="268"/>
+            <connections>
+                <outlet property="sliderImage" destination="Gp6-Zd-yIg" id="wLv-Ke-2Fb"/>
+            </connections>
+            <point key="canvasLocation" x="212.31884057971016" y="157.36607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+    </resources>
+</document>

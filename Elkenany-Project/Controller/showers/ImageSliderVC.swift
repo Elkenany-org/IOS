@@ -22,12 +22,11 @@ class ImageSliderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageControle.numberOfPages = showModel?.data?.images?.count ?? 0
         sliderImage.dataSource = self
         sliderImage.delegate = self
-        self.sliderImage.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
+        self.sliderImage.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow") 
         SliderService()
-        setTimer()
+       
         
     }
     
@@ -79,6 +78,13 @@ class ImageSliderVC: UIViewController {
     }
 
     
+    //MARK:Dismiss
+    @IBAction func dismisss(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 
@@ -93,7 +99,7 @@ extension ImageSliderVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
+        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as! sliderCellShow
         let image = showModel?.data?.images?[indexPath.item].image ?? ""
         cell1.configureImage(image: image)
         return cell1

@@ -29,6 +29,7 @@ class showesVC: UIViewController {
     private var isFeatchingData = false
     
     
+    //MARK:viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
         featchDataSelectors()
@@ -84,7 +85,6 @@ class showesVC: UIViewController {
                 if let error = error{
                     //internet error
                     print("============ error \(error)")
-                    
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
@@ -285,7 +285,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
         let typeOfSectorr = subSectoresModel[indexPath.item].type ?? ""
         self.typeForHeader = typeOfSectorr
-//        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+        //        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
         if(cell.isSelected == true)
         {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
@@ -305,9 +305,9 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             }}
-
+        
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 60)
@@ -349,7 +349,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = (storyboard?.instantiateViewController(identifier: "showVC")) as? showVC{
             let idd = subShowesModel[indexPath.row].id ?? 0
-//            self.idFromSh = idd
+            //            self.idFromSh = idd
             UserDefaults.standard.set(idd, forKey: "IDDD")
             //            vc.CompanyIdFromCompanies = idd ?? 0
             vc.acceptedId = idd
@@ -361,15 +361,15 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     
 }
 
+
+//MARK:MainFlter 
 extension showesVC: FilterSubData{
-   
     func runFilter() {
         //Handeling Loading view progress
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
+        //        let hud = JGProgressHUD(style: .dark)
+        //        hud.textLabel.text = "جاري التحميل"
+        //        hud.show(in: self.view)
         let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
-        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
         let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
@@ -383,10 +383,10 @@ extension showesVC: FilterSubData{
             let SearchGuide = "https://elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
-//                    hud.dismiss()
+                    // hud.dismiss()
                     print("============ error \(error)")
                 }else {
-//                    hud.dismiss()
+                    // hud.dismiss()
                     self.subShowesModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successData)
