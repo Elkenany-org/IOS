@@ -147,7 +147,7 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
         case "showes":
             let newsvc = (storyboard?.instantiateViewController(identifier: "showVC"))! as showVC
             let homeShowId = searchSubModelMain[indexPath.row].id ?? 0
-            UserDefaults.standard.set(homeShowId, forKey: "IDDD")
+            newsvc.idFromSh = homeShowId
             navigationController?.pushViewController(newsvc, animated: true)
             
         case "magazines":
@@ -156,6 +156,18 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
             newsvc.FeatchCMagazineDetails()
             navigationController?.pushViewController(newsvc, animated: true)
             
+        case "local_stock_sub":
+            let newsvc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
+            newsvc.loc_id = searchSubModelMain[indexPath.row].id ?? 0
+            newsvc.FatchLocalBorsa()
+            navigationController?.pushViewController(newsvc, animated: true)
+            
+        case "fodder_stock_sub":
+            
+            let newsvc = (storyboard?.instantiateViewController(identifier: "FodderBorsa"))! as FodderBorsa
+            newsvc.fodderID = searchSubModelMain[indexPath.row].id ?? 0
+            newsvc.FatchLocalBorsaFodder()
+            navigationController?.pushViewController(newsvc, animated: true)
             
         default:
             print("hellllo world . .. . ")
