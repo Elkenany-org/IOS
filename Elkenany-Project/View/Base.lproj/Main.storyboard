@@ -983,7 +983,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" placeholder="ما الذي  تبحث عنه ؟" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V3k-uQ-MgF">
+                            <searchBar contentMode="redraw" semanticContentAttribute="forceRightToLeft" placeholder="ما الذي  تبحث عنه ؟" translatesAutoresizingMaskIntoConstraints="NO" id="V3k-uQ-MgF">
                                 <rect key="frame" x="0.0" y="44" width="414" height="70"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -7753,7 +7753,7 @@
                                             <action selector="ConfirmRating:" destination="yXa-29-vcW" eventType="touchUpInside" id="aDp-uc-H6z"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
+                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
                                         <rect key="frame" x="89.666666666666686" y="122" width="235" height="43"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -11232,14 +11232,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="0jf-r3-3ex">
-            <size key="intrinsicContentSize" width="235" height="43"/>
-        </designable>
         <designable name="buJ-Ty-hiC">
             <size key="intrinsicContentSize" width="-1" height="49"/>
-        </designable>
-        <designable name="ncb-ZE-mZ7">
-            <size key="intrinsicContentSize" width="211" height="35"/>
         </designable>
     </designables>
     <resources>

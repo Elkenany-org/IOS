@@ -7,21 +7,28 @@
 
 import Foundation
 
-struct searchModel: Codable {
-    var message, error: String?
-    var data: DataClassSearch?
+// MARK: - SearchMainModel
+struct SearchMainModel: Codable {
+    let message, error: String?
+    let data: MainSearchData?
 }
 
 // MARK: - DataClass
-struct DataClassSearch: Codable {
-    var result: [Resultt]?
+struct MainSearchData: Codable {
+    let result: [SearchResultian]?
 }
 
 // MARK: - Result
-struct Resultt: Codable {
+struct SearchResultian: Codable {
     let id: Int?
     let name: String?
-    let type:String?
+//    let price: Float?
+//    let address: String?
+//    let image: String?
+//    let short_desc: String?
+//    let created_at: String?
+//    let date: [String]?
+//    let count: Int?
+    let type: String?
+    
 }
-
-

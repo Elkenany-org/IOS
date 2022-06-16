@@ -27,13 +27,12 @@ class showDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showeDataService()
 
     }
     
     func showeDataService(){
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
-        let parm = ["id" : "\(idShow)"]
+        let parm = ["id" : "\(idOfShow)"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show/?id="
             
