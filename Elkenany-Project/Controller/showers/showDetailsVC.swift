@@ -9,11 +9,15 @@ import UIKit
 
 class showDetailsVC: UIViewController {
 
-    var showModel:ShoweModel?
+
     
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var viewCount: UILabel!
     @IBOutlet weak var showDesc: UILabel!
+    @IBOutlet weak var gooooootitle: UIButton!
+
+    
+    var showModel:ShoweModel?
     var idOfShow = 0 
     
     override func viewDidLoad() {
@@ -27,12 +31,12 @@ class showDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        showeDataService()
     }
     
     func showeDataService(){
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
-        let parm = ["id" : "\(idOfShow)"]
+        let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show/?id="
             

@@ -8,26 +8,40 @@
 import UIKit
 
 class ImageSliderVC: UIViewController {
-
+    
+    
+    //MARK: Outlets and Vars
     @IBOutlet weak var sliderImage: UICollectionView!
     @IBOutlet weak var pageControle: UIPageControl!
-
     var showModel:ShoweModel?
-    var startIndex: Int! = 1
     var timer:Timer?
+    var startIndex: Int! = 1
     var currentIndex = 0
-
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        SliderService()
+        handelTap()
+    }
+    
+    
+    fileprivate func setupUI() {
         sliderImage.dataSource = self
         sliderImage.delegate = self
-        self.sliderImage.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow") 
-        SliderService()
-       
-        
+        self.sliderImage.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
+    }
+    
+    
+    //Tap Guister
+    func handelTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closePop))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func closePop(){
+        dismiss(animated: true)
     }
     
     
@@ -47,10 +61,7 @@ class ImageSliderVC: UIViewController {
     }
     
     
-    
-
-    
-    
+    //MARK:- featch data from servier
     func SliderService(){
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
@@ -76,28 +87,27 @@ class ImageSliderVC: UIViewController {
             }
         }
     }
-
+    
     
     //MARK:Dismiss
     @IBAction func dismisss(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
     }
-    
     
 }
 
 
+//MARK:- handeling collection view service
 
 extension ImageSliderVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    
+    //count
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return showModel?.data?.images?.count ?? 0
     }
     
     
-    
+    //confguier
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as! sliderCellShow
         let image = showModel?.data?.images?[indexPath.item].image ?? ""
@@ -106,6 +116,7 @@ extension ImageSliderVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     
+    //width and height
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width , height: collectionView.frame.height)
     }

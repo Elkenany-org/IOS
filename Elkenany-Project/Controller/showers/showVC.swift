@@ -11,11 +11,16 @@ class showVC: UIViewController {
     
     //outlet
     @IBOutlet weak var segmentVieww: UISegmentedControl!
-    @IBOutlet weak var switchGoing: UIButton!
+    @IBOutlet weak var goingTitle: UIButton!
+    @IBOutlet weak var notGoingTitle: UIButton!
+
     @IBOutlet weak var firstIndex: UIView!
     @IBOutlet weak var secIndex: UIView!
     @IBOutlet weak var thiredIndex: UIView!
     @IBOutlet weak var fourthView: UIView!
+    
+    
+    
     //models
     var gingornotModel:AddPlaces?
     var showesModel:ShowesHome?
@@ -48,13 +53,14 @@ class showVC: UIViewController {
     
     
     
-    //going or not
-    @IBAction func toShow(_ sender: Any) {
-        
+    //MARK: Goooooooooing
+
+    @IBAction func notgoing(_ sender: Any) {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn {
-            GoingService()
+            NotGoingService()
+            
         }else{
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
@@ -64,6 +70,44 @@ class showVC: UIViewController {
     }
     
     
+    
+    //MARK: Goooooooooing
+    @IBAction func going(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            GoingService()
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)}
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    //going or not
+//    @IBAction func toShow(_ sender: Any) {
+//
+//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+//
+//        if isloggineIn {
+//            GoingService()
+//        }else{
+//
+//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+//                vc.modalPresentationStyle = .overFullScreen
+//                present(vc, animated: true, completion: nil)}
+//        }
+//    }
+//
+//
     
     //order place btn
     @IBAction func orderPlace(_ sender: Any) {
@@ -202,11 +246,56 @@ class showVC: UIViewController {
                     guard let success = success else {return}
                     self.gingornotModel = success
                     DispatchQueue.main.async {
+                        print("yeeeeeeeees")
+                        self.notGoingTitle.isHidden = false
+                        self.goingTitle.isHidden = true
+                        
+                        let alert = UIAlertController(title: "مرحبا", message: "تم تحديد الذهاب بنجاح", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "تم", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+
                     }
                 }
             }
         }
     }
+    
+    
+    func NotGoingService(){
+        let parm = ["show_id" : "2"]
+        DispatchQueue.global(qos: .background).async {
+            let url = "https://elkenany.com/api/showes/one-show-notgoing"
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
+            let headers = ["Authorization": "Bearer \(api_token)" ]
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    guard let success = success else {return}
+                    self.gingornotModel = success
+                    DispatchQueue.main.async {
+                        print("nooooooo")
+                        self.notGoingTitle.isHidden = true
+                        self.goingTitle.isHidden = false
+                        let alert = UIAlertController(title: "مرحبا", message: " تم الغاءالذهاب بنجاح ", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "تم", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
     
     
     
