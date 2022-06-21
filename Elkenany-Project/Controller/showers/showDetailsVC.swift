@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class showDetailsVC: UIViewController {
 
 
@@ -24,7 +25,7 @@ class showDetailsVC: UIViewController {
         super.viewDidLoad()
         imageCollection.dataSource = self
         imageCollection.delegate = self
-        self.imageCollection.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
+        self.imageCollection.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
 
     }
     
@@ -121,9 +122,9 @@ extension showDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
+        let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as! sliderCellShow
         let image = showModel?.data?.images?[indexPath.item].image ?? ""
-        cell1.logooImage.contentMode = .scaleAspectFit
+//        cell1.logooImage.contentMode = .scaleAspectFit
         cell1.configureImage(image: image)
         return cell1
     }
@@ -138,7 +139,7 @@ extension showDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3 , height: 90)
+        return CGSize(width: collectionView.frame.width / 3.2 , height: 90)
         
     }
     

@@ -9,9 +9,11 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
+  - ProgressHUD (13.6)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
+  - SkeletonView (1.29.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.2)
@@ -20,7 +22,9 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JGProgressHUD
   - Kingfisher (~> 5.0)
+  - ProgressHUD
   - SDWebImage
+  - SkeletonView
 
 SPEC REPOS:
   trunk:
@@ -30,7 +34,9 @@ SPEC REPOS:
     - IQKeyboardManager
     - JGProgressHUD
     - Kingfisher
+    - ProgressHUD
     - SDWebImage
+    - SkeletonView
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -39,8 +45,10 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
 
-PODFILE CHECKSUM: 58695788560c74bd13c0fddeda72d02e21753729
+PODFILE CHECKSUM: 693c0d36b50248b800505d2f8172a8857467ab3f
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

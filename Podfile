@@ -15,16 +15,15 @@ target 'Elkenany-Project' do
   target 'Elkenany-ProjectUITests' do
     # Pods for testing
   end
+
 pod 'Alamofire', '~> 4.8.2'
-   pod 'JGProgressHUD'
+pod 'JGProgressHUD'
 pod 'SDWebImage'
-   pod 'Kingfisher', '~> 5.0'
+pod 'Kingfisher', '~> 5.0'
 pod 'IQKeyboardManager' 
 pod 'Cosmos', '~> 23.0'
 pod 'Charts'
 pod 'ProgressHUD'
 pod 'SkeletonView'
-
- 
 
 end
