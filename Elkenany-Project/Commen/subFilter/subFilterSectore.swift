@@ -12,6 +12,7 @@ class subFilterSectore: UIViewController {
     
     @IBOutlet weak var sectoreTV: UITableView!
     var sectoreModel:SubGuideFilter?
+    var presntKEY = ""
 
     
     
@@ -104,11 +105,19 @@ extension subFilterSectore:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterSection") as? subFilterSection {
             let sec_id = sectoreModel?.data?.sectors?[indexPath.row].id ?? 0
+            let sec_type = sectoreModel?.data?.sectors?[indexPath.row].type ?? ""
             SectionVC.secId = sec_id
             /// save idddddddddd
             UserDefaults.standard.set(sec_id, forKey: "FILTER_SEC_ID")
+            UserDefaults.standard.set(sec_type, forKey: "FILTER_SEC_TYPE")
             FilterAnimation.shared.filteranmation(vieww: view)
-            self.present(SectionVC, animated: true, completion: nil)
+            
+            if (presntKEY == "show") || (presntKEY == "magazine") {
+                
+            }else{
+                self.present(SectionVC, animated: true, completion: nil)
+
+            }
         
         }
     }

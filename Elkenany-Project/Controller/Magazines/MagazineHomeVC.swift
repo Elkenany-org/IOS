@@ -19,6 +19,9 @@ class MagazineHomeVC: UIViewController {
     @IBOutlet weak var toFilter: UIButton!
     @IBOutlet weak var toSearch: UIButton!
     @IBOutlet weak var magazinTV: UITableView!
+    @IBOutlet weak var sortTtle: UIButton!
+    @IBOutlet weak var cityTitle: UIButton!
+    @IBOutlet weak var countryTitle: UIButton!
     //vars
     var magazineHomeModel:MagazineS?
     var sectorSubModelMagazine:[Sectorrs] = []
@@ -176,8 +179,8 @@ class MagazineHomeVC: UIViewController {
     
     
     @IBAction func SortBTN(_ sender: Any) {
-        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
-            SectionVC.filterDelegete = self
+        if let SectionVC = storyboard?.instantiateViewController(identifier: "FilterMainVC") as? FilterMainVC {
+            SectionVC.filterShowMagzzineDeleget = self
             self.present(SectionVC, animated: true, completion: nil)
         }}
     
@@ -293,40 +296,7 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
 
 
 
-extension MagazineHomeVC:FilterSubData{
-    func runFilter() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-//        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
-        //        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
-        let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
-        let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
-        let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
-        
-        
-        DispatchQueue.global(qos: .background).async {
-            let param = ["type": "farm",  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "2")"]
-            let FilterGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&city_id=&country_id="
-            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else{
-                    hud.dismiss()
-                    self.magazinSubModel.removeAll()
-                    let successData = success?.data?.data ?? []
-                    self.magazinSubModel.append(contentsOf: successData)
-                    
-                    DispatchQueue.main.async {
-                        self.magazinTV.reloadData()
-                    }
-                }
-            }
-        }
-    }
-}
+
 
 
 //MARK:- TableView for companies  [Methods + Delegets]
@@ -378,3 +348,48 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
 }
 
 
+extension MagazineHomeVC: FilterShowMagazine {
+    
+        func runFilterShow() {
+            //Handeling Loading view progress
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "جاري التحميل"
+            hud.show(in: self.view)
+            
+            let sec_type = UserDefaults.standard.string(forKey: "FILTER_SEC_TYPE")
+            let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
+            let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
+            let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
+            
+            let param = ["type": "\(sec_type ?? "horses")" ,  "country_id" : "\(coun_id ?? "1")" , "sort" : "\(sort_val ?? "1")"]
+          
+            
+            DispatchQueue.global(qos: .background).async {
+                let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&country_id="
+                APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
+                    if let error = error{
+                        hud.dismiss()
+                        print("============ error \(error)")
+                    }else {
+                        hud.dismiss()
+                        self.magazinSubModel.removeAll()
+                        let successData = success?.data?.data ?? []
+                        self.magazinSubModel.append(contentsOf: successData)
+                        DispatchQueue.main.async {
+                            if success?.data?.data?.isEmpty == true {
+                                print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                            }
+                            
+                            self.magazinTV.reloadData()
+                            print(success?.data ?? "")
+                            self.sortTtle.setTitle( sec_type , for: .normal)
+                        }
+                    }
+                }
+            }
+            
+
+        }
+    
+
+}
