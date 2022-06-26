@@ -18,7 +18,7 @@ class FilterMainVC: UIViewController {
     @IBOutlet weak var FilterMainCV: UICollectionView!
     var subFilterMainModel:SubGuideFilter?
     var listOfData = ["القطاع", "الدول","المدينة", "الترتيب"]
-
+    var presentFilterKey = ""
     
     
     override func viewDidLoad() {

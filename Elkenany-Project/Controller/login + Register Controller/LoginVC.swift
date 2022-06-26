@@ -9,9 +9,9 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 import AuthenticationServices
+
+
 class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
-    
-    
     
     //Outlets in screen
     @IBOutlet weak var emailTF: UITextField!
@@ -64,13 +64,11 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         else {
             loginTap()
         }
-        
     }
     
     
     
-    
-    
+
     //MARK:- Handel Forget button in login screen
     @IBAction func ForgetPassword(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "ForgetPasswordVC"))! as ForgetPasswordVC

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 
 class showesVC: UIViewController {
@@ -162,17 +163,16 @@ class showesVC: UIViewController {
     
     
     
-    
+    //MARK: to Main Filter
     @IBAction func toFilter(_ sender: Any) {
-        
-        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
-            SectionVC.filterDelegete = self
-            self.present(SectionVC, animated: true, completion: nil)
+        if let showMainFilterVC = storyboard?.instantiateViewController(identifier: "FilterMainVC") as? FilterMainVC {
+            showMainFilterVC.filterShowMagzzineDeleget = self
+            self.present(showMainFilterVC, animated: true, completion: nil)
         }
-        
-        
     }
     
+    
+    //search view display
     @IBAction func toSearch(_ sender: Any) {
         searchVieww.isHidden = false
         view1.isHidden = true
@@ -363,43 +363,49 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
 
 
 //MARK:MainFlter 
-extension showesVC: FilterSubData{
-    func runFilter() {
+
+extension showesVC: FilterShowMagazine {
+    
+    func runFilterShow() {
         //Handeling Loading view progress
-        //        let hud = JGProgressHUD(style: .dark)
-        //        hud.textLabel.text = "جاري التحميل"
-        //        hud.show(in: self.view)
-        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        
+        let sec_type = UserDefaults.standard.string(forKey: "FILTER_SEC_TYPE")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
         let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
         
+        let param = ["type": "\(sec_type ?? "horses")" ,  "country_id" : "\(coun_id ?? "1")" , "sort" : "\(sort_val ?? "1")"]
+        
         
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers = ["Authorization": "\(api_token ?? "")" ]
-            let param = ["type": "\(sec_id ?? "farm")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
-            
             let SearchGuide = "https://elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
-            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
-                    // hud.dismiss()
+                    hud.dismiss()
                     print("============ error \(error)")
                 }else {
-                    // hud.dismiss()
+                    hud.dismiss()
                     self.subShowesModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        
                         if success?.data?.data?.isEmpty == true {
                             print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
                         }
+                        
                         self.showesTableView.reloadData()
+                        print(success?.data ?? "")
+                        //                            self.sortTtle.setTitle( sec_type , for: .normal)
                     }
                 }
             }
         }
+        
+        
     }
+    
     
 }
