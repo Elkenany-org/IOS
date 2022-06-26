@@ -21,105 +21,118 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companiesCell" rowHeight="323" id="KGk-i7-Jjw" customClass="companiesCell" customModule="Elkenany_Project" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="452" height="323"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companiesCell" rowHeight="222" id="KGk-i7-Jjw" customClass="companiesCell" customModule="Elkenany_Project" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="222"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="452" height="323"/>
+                <rect key="frame" x="0.0" y="0.0" width="452" height="222"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VHu-0j-dwf">
-                        <rect key="frame" x="15" y="5" width="422" height="313"/>
+                        <rect key="frame" x="5" y="5" width="442" height="212"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-lb-jPR">
-                                <rect key="frame" x="162" y="19" width="240" height="37.5"/>
-                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
-                                <color key="textColor" name="kenanyGreen"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qs1-Vk-cwe" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="242" y="76.5" width="160" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="YrQ-bs-Jbc"/>
-                                    <constraint firstAttribute="width" constant="160" id="gZ3-Fo-uvW"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-47-evZ">
-                                <rect key="frame" x="10" y="10" width="150" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="bks-zo-xbG"/>
-                                    <constraint firstAttribute="height" constant="150" id="yXQ-fM-KqC"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال الكناني جروب من افضل الشركات في المجال " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAG-yd-ddd">
-                                <rect key="frame" x="20" y="180" width="382" height="52"/>
-                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
-                                <color key="textColor" name="kenanyGreen"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAC-UD-o3v">
-                                <rect key="frame" x="50" y="242" width="322" height="1"/>
-                                <color key="backgroundColor" name="kenanyblueblack"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="vI2-9Y-c51"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8FZ-ND-gDT">
-                                <rect key="frame" x="120" y="253" width="287" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PDX-Ge-KhA">
+                                <rect key="frame" x="15" y="10" width="412" height="124"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركاتضل الشركات في المجال " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vl-6h-Eqq">
-                                        <rect key="frame" x="0.0" y="0.0" width="252" height="40"/>
-                                        <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="12"/>
-                                        <color key="textColor" name="kenanyblueblack"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-47-evZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="85" id="AGh-MD-vW0"/>
+                                            <constraint firstAttribute="height" constant="85" id="Qa0-h4-C8O"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TZ7-W7-N0o">
+                                        <rect key="frame" x="85" y="0.0" width="327" height="69"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-lb-jPR">
+                                                <rect key="frame" x="79" y="0.0" width="248" height="19"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
+                                                <color key="textColor" name="kenanyGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qs1-Vk-cwe" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="169" y="39" width="158" height="30"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                        <real key="value" value="30"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-VE-TY0">
+                                <rect key="frame" x="30" y="137" width="382" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال الكناني جروب من افضل الشركات في المجال " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAG-yd-ddd">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="14"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
+                                        <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAC-UD-o3v">
+                                        <rect key="frame" x="0.0" y="19" width="382" height="1"/>
+                                        <color key="backgroundColor" name="kenanyblueblack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="RxE-he-GoD"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8FZ-ND-gDT">
+                                <rect key="frame" x="150" y="167" width="272" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال الكناني جروب من افضل الشركات في المجال " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pem-gE-vzA">
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="25"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="9"/>
+                                        <color key="textColor" name="kenanyGreen"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="y6A-aU-2Te">
-                                        <rect key="frame" x="257" y="0.0" width="30" height="40"/>
+                                        <rect key="frame" x="247" y="0.0" width="25" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="0.189121604" green="0.42794036870000002" blue="0.19012436269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="vta-mF-xup"/>
+                                            <constraint firstAttribute="height" constant="25" id="CZo-hD-6S2"/>
+                                            <constraint firstAttribute="width" constant="25" id="zFA-1Q-6sl"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob6-Yv-PDD">
-                                <rect key="frame" x="10" y="253" width="100" height="40"/>
+                                <rect key="frame" x="10" y="167" width="100" height="35"/>
                                 <color key="backgroundColor" red="0.189121604" green="0.42794036870000002" blue="0.19012436269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="shm-1x-cTR"/>
-                                    <constraint firstAttribute="height" constant="40" id="udd-cY-Jcl"/>
+                                    <constraint firstAttribute="width" constant="100" id="IvC-XM-i78"/>
+                                    <constraint firstAttribute="height" constant="35" id="uWp-pt-C95"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,28 +146,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8FZ-ND-gDT" firstAttribute="centerY" secondItem="Ob6-Yv-PDD" secondAttribute="centerY" id="1e3-sY-AC5"/>
-                            <constraint firstItem="8FZ-ND-gDT" firstAttribute="leading" secondItem="Ob6-Yv-PDD" secondAttribute="trailing" constant="10" id="4b3-bD-04f"/>
-                            <constraint firstAttribute="trailing" secondItem="8FZ-ND-gDT" secondAttribute="trailing" constant="15" id="4nH-wB-ELN"/>
-                            <constraint firstItem="fTI-lb-jPR" firstAttribute="leading" secondItem="LU2-47-evZ" secondAttribute="trailing" constant="2" id="55w-g0-vbh"/>
-                            <constraint firstItem="Ob6-Yv-PDD" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="10" id="5ud-Ft-jOi"/>
-                            <constraint firstAttribute="trailing" secondItem="UAC-UD-o3v" secondAttribute="trailing" constant="50" id="ASx-0j-4jL"/>
-                            <constraint firstItem="pAG-yd-ddd" firstAttribute="top" secondItem="LU2-47-evZ" secondAttribute="bottom" constant="20" id="Bwt-Sf-gAZ"/>
-                            <constraint firstItem="pAG-yd-ddd" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="20" id="ChG-Jj-M14"/>
-                            <constraint firstItem="pAG-yd-ddd" firstAttribute="centerX" secondItem="VHu-0j-dwf" secondAttribute="centerX" id="D63-Um-wP9"/>
-                            <constraint firstItem="8FZ-ND-gDT" firstAttribute="top" secondItem="UAC-UD-o3v" secondAttribute="bottom" constant="10" id="DYh-qs-3bp"/>
-                            <constraint firstItem="Qs1-Vk-cwe" firstAttribute="trailing" secondItem="fTI-lb-jPR" secondAttribute="trailing" id="N8v-U3-TPN"/>
-                            <constraint firstItem="fTI-lb-jPR" firstAttribute="top" secondItem="VHu-0j-dwf" secondAttribute="top" constant="19" id="NVu-hX-Vsh"/>
-                            <constraint firstAttribute="trailing" secondItem="pAG-yd-ddd" secondAttribute="trailing" constant="20" id="OVJ-c1-Sam"/>
-                            <constraint firstAttribute="bottom" secondItem="Ob6-Yv-PDD" secondAttribute="bottom" constant="20" id="OvT-cp-ZhV"/>
-                            <constraint firstAttribute="trailing" secondItem="fTI-lb-jPR" secondAttribute="trailing" constant="20" id="YPQ-yJ-d85"/>
-                            <constraint firstItem="LU2-47-evZ" firstAttribute="top" secondItem="VHu-0j-dwf" secondAttribute="top" constant="10" id="eEs-eL-tJf"/>
-                            <constraint firstAttribute="bottom" secondItem="8FZ-ND-gDT" secondAttribute="bottom" constant="20" id="gGl-X6-Dsn"/>
-                            <constraint firstItem="Qs1-Vk-cwe" firstAttribute="top" secondItem="fTI-lb-jPR" secondAttribute="bottom" constant="20" id="lt1-v3-aFl"/>
-                            <constraint firstItem="UAC-UD-o3v" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="50" id="phr-S1-LyX"/>
-                            <constraint firstItem="UAC-UD-o3v" firstAttribute="top" secondItem="pAG-yd-ddd" secondAttribute="bottom" constant="10" id="pvW-3d-4Oz"/>
-                            <constraint firstItem="Ob6-Yv-PDD" firstAttribute="top" secondItem="UAC-UD-o3v" secondAttribute="bottom" constant="10" id="wf9-fa-22n"/>
-                            <constraint firstItem="LU2-47-evZ" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="10" id="yZl-rL-pN0"/>
+                            <constraint firstItem="Ob6-Yv-PDD" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="10" id="3cR-Er-HM5"/>
+                            <constraint firstAttribute="trailing" secondItem="PDX-Ge-KhA" secondAttribute="trailing" constant="15" id="B9B-Gs-zI1"/>
+                            <constraint firstItem="ezQ-VE-TY0" firstAttribute="top" secondItem="PDX-Ge-KhA" secondAttribute="bottom" constant="3" id="EQF-Ca-ifO"/>
+                            <constraint firstItem="Ob6-Yv-PDD" firstAttribute="top" secondItem="ezQ-VE-TY0" secondAttribute="bottom" constant="10" id="JBz-4X-xBB"/>
+                            <constraint firstItem="ezQ-VE-TY0" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="30" id="awX-GR-Sn2"/>
+                            <constraint firstItem="PDX-Ge-KhA" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="15" id="fFJ-4w-tJb"/>
+                            <constraint firstAttribute="trailing" secondItem="8FZ-ND-gDT" secondAttribute="trailing" constant="20" id="fZ5-sI-ude"/>
+                            <constraint firstAttribute="bottom" secondItem="Ob6-Yv-PDD" secondAttribute="bottom" constant="10" id="fZ6-MO-MgH"/>
+                            <constraint firstItem="8FZ-ND-gDT" firstAttribute="leading" secondItem="VHu-0j-dwf" secondAttribute="leading" constant="150" id="fvJ-t2-GwE"/>
+                            <constraint firstAttribute="trailing" secondItem="ezQ-VE-TY0" secondAttribute="trailing" constant="30" id="gJq-IB-IcH"/>
+                            <constraint firstItem="PDX-Ge-KhA" firstAttribute="top" secondItem="VHu-0j-dwf" secondAttribute="top" constant="10" id="iaX-eW-uTb"/>
+                            <constraint firstItem="8FZ-ND-gDT" firstAttribute="top" secondItem="ezQ-VE-TY0" secondAttribute="bottom" constant="10" id="n4t-6o-3wD"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -182,10 +185,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="VHu-0j-dwf" secondAttribute="bottom" constant="5" id="6K2-W4-3tf"/>
-                    <constraint firstItem="VHu-0j-dwf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="PuV-pX-LYd"/>
-                    <constraint firstAttribute="trailing" secondItem="VHu-0j-dwf" secondAttribute="trailing" constant="15" id="ttm-oQ-rtc"/>
-                    <constraint firstItem="VHu-0j-dwf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="y5w-R6-Xg9"/>
+                    <constraint firstAttribute="bottom" secondItem="VHu-0j-dwf" secondAttribute="bottom" constant="5" id="E5t-Q6-fcw"/>
+                    <constraint firstAttribute="trailing" secondItem="VHu-0j-dwf" secondAttribute="trailing" constant="5" id="GyB-gN-vsW"/>
+                    <constraint firstItem="VHu-0j-dwf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="j7A-AJ-lbr"/>
+                    <constraint firstItem="VHu-0j-dwf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="qHY-vO-AEP"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
@@ -206,11 +209,11 @@
             <connections>
                 <outlet property="companyDesc" destination="pAG-yd-ddd" id="4Mh-Qf-OLH"/>
                 <outlet property="companyImage" destination="LU2-47-evZ" id="sWA-oa-0NF"/>
-                <outlet property="companyLocation" destination="5vl-6h-Eqq" id="QOs-cE-8VU"/>
+                <outlet property="companyLocation" destination="pem-gE-vzA" id="xck-y0-a3h"/>
                 <outlet property="companyName" destination="fTI-lb-jPR" id="rEc-1m-ttb"/>
                 <outlet property="rating" destination="Qs1-Vk-cwe" id="UME-CV-IUc"/>
             </connections>
-            <point key="canvasLocation" x="-100.00000000000001" y="49.888392857142854"/>
+            <point key="canvasLocation" x="-97.101449275362327" y="21.428571428571427"/>
         </tableViewCell>
     </objects>
     <designables>
