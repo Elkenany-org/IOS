@@ -102,7 +102,11 @@ extension subFilterOrganize:UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = OrganizeModel?.data?.sort?[indexPath.row].value ?? 0
+        let sortName = OrganizeModel?.data?.sort?[indexPath.row].name ?? ""
         UserDefaults.standard.set(value, forKey: "FILTER_SORT_VAL")
+        UserDefaults.standard.set(sortName, forKey: "SORT_TITLE")
+
+        
         FilterAnimation.shared.filteranmation(vieww: view)
         dismiss(animated: true, completion: nil)
     }

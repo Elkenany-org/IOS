@@ -99,9 +99,12 @@ extension subFilterCountry:UITableViewDelegate , UITableViewDataSource {
         
         if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterCity") as? subFilterCity {
             let contryID = countryModel?.data?.countries?[indexPath.row].id ?? 0
+            let contryName = countryModel?.data?.countries?[indexPath.row].name ?? ""
             SectionVC.Con_ID_Param = contryID
             ///save data idooooooo
             UserDefaults.standard.set(contryID, forKey: "FILTER_COUN_ID")
+            UserDefaults.standard.set(contryName, forKey: "COUN_TITLE")
+
             FilterAnimation.shared.filteranmation(vieww: view)
 
             self.present(SectionVC, animated: true, completion: nil)

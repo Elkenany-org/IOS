@@ -18,6 +18,9 @@ class showesVC: UIViewController {
     @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var searchVieww: UIView!
     @IBOutlet weak var showesTableView: UITableView!
+    @IBOutlet weak var ShowsortTitle: UIButton!
+    @IBOutlet weak var ShowcityTitle: UIButton!
+    @IBOutlet weak var ShowcountryTitle: UIButton!
     
     //MARK:Variables
     var showesModel:ShowesHome?
@@ -375,6 +378,8 @@ extension showesVC: FilterShowMagazine {
         let sec_type = UserDefaults.standard.string(forKey: "FILTER_SEC_TYPE")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
+        let coun_title = UserDefaults.standard.string(forKey: "COUN_TITLE")
+        let sort_title = UserDefaults.standard.string(forKey: "SORT_TITLE")
         let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
         
         let param = ["type": "\(sec_type ?? "horses")" ,  "country_id" : "\(coun_id ?? "1")" , "sort" : "\(sort_val ?? "1")"]
@@ -398,7 +403,10 @@ extension showesVC: FilterShowMagazine {
                         
                         self.showesTableView.reloadData()
                         print(success?.data ?? "")
-                        //                            self.sortTtle.setTitle( sec_type , for: .normal)
+                        self.ShowcountryTitle.setTitle( coun_title, for: .normal)
+                        self.ShowsortTitle.setTitle(sort_title, for: .normal)
+                        
+                        
                     }
                 }
             }
