@@ -27,25 +27,25 @@
                         <rect key="frame" x="15" y="5" width="480" height="154"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="iYs-Tc-Z2P">
-                                <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                <rect key="frame" x="10" y="10" width="70" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Dle-xH-phg"/>
-                                    <constraint firstAttribute="height" constant="100" id="wlC-95-rjY"/>
+                                    <constraint firstAttribute="width" constant="70" id="Dle-xH-phg"/>
+                                    <constraint firstAttribute="height" constant="70" id="wlC-95-rjY"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-oB-cfC">
-                                <rect key="frame" x="120" y="35.5" width="350" height="38.5"/>
+                                <rect key="frame" x="90" y="34" width="380" height="23.5"/>
                                 <string key="text">اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  </string>
-                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
+                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
                                 <color key="textColor" name="kenanyblueblack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة   " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-6r-zau">
-                                <rect key="frame" x="115" y="10" width="355" height="15.5"/>
-                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
+                                <rect key="frame" x="85" y="10" width="385" height="14"/>
+                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>

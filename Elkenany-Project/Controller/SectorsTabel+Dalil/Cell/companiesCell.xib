@@ -32,7 +32,7 @@
                         <rect key="frame" x="5" y="5" width="442" height="212"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PDX-Ge-KhA">
-                                <rect key="frame" x="15" y="10" width="412" height="124"/>
+                                <rect key="frame" x="15" y="10" width="412" height="93"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="LU2-47-evZ">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -46,17 +46,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TZ7-W7-N0o">
-                                        <rect key="frame" x="85" y="0.0" width="327" height="69"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TZ7-W7-N0o">
+                                        <rect key="frame" x="85" y="0.0" width="327" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-lb-jPR">
-                                                <rect key="frame" x="79" y="0.0" width="248" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qs1-Vk-cwe" customClass="CosmosView" customModule="Cosmos">
-                                                <rect key="frame" x="169" y="39" width="158" height="30"/>
+                                                <rect key="frame" x="184" y="40" width="143" height="27"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
@@ -69,7 +69,7 @@
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                        <real key="value" value="30"/>
+                                                        <real key="value" value="27"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
                                                         <integer key="value" value="0"/>
@@ -88,17 +88,17 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ezQ-VE-TY0">
-                                <rect key="frame" x="30" y="137" width="382" height="20"/>
+                                <rect key="frame" x="30" y="106" width="382" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني جروب من افضل الشركات في المجال الكناني جروب من افضل الشركات في المجال " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAG-yd-ddd">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="14"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="45"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAC-UD-o3v">
-                                        <rect key="frame" x="0.0" y="19" width="382" height="1"/>
+                                        <rect key="frame" x="0.0" y="50" width="382" height="1"/>
                                         <color key="backgroundColor" name="kenanyblueblack"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="RxE-he-GoD"/>
@@ -218,7 +218,7 @@
     </objects>
     <designables>
         <designable name="Qs1-Vk-cwe">
-            <size key="intrinsicContentSize" width="158" height="30"/>
+            <size key="intrinsicContentSize" width="143" height="27"/>
         </designable>
     </designables>
     <resources>
