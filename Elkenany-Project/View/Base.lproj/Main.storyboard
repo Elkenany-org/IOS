@@ -6322,7 +6322,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyb-TQ-NIB">
-                                        <rect key="frame" x="316" y="20" width="68" height="32"/>
+                                        <rect key="frame" x="334.33333333333331" y="20" width="49.666666666666686" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -6382,7 +6382,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاصناف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Ii-BQZ">
-                                        <rect key="frame" x="320.66666666666669" y="20" width="63.333333333333314" height="32"/>
+                                        <rect key="frame" x="331" y="20" width="53" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7295,7 +7295,7 @@
                                 <rect key="frame" x="10" y="777" width="394" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-hc-LIh">
-                                        <rect key="frame" x="309" y="0.0" width="50" height="55"/>
+                                        <rect key="frame" x="334" y="0.0" width="50" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="dWD-eL-8NO"/>
                                         </constraints>
@@ -7307,7 +7307,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="اكتب رسالتك . . . . ." textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0d7-L6-efa">
-                                        <rect key="frame" x="157.33333333333337" y="14.666666666666631" width="146.66666666666663" height="25.666666666666671"/>
+                                        <rect key="frame" x="10" y="0.0" width="314" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -7315,10 +7315,12 @@
                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="TM2-hc-LIh" secondAttribute="bottom" id="DAN-K2-jBC"/>
+                                    <constraint firstAttribute="bottom" secondItem="0d7-L6-efa" secondAttribute="bottom" id="FG5-q3-VJK"/>
+                                    <constraint firstItem="0d7-L6-efa" firstAttribute="leading" secondItem="mm0-Ms-6tQ" secondAttribute="leading" constant="10" id="JOM-Q1-suj"/>
                                     <constraint firstItem="TM2-hc-LIh" firstAttribute="top" secondItem="mm0-Ms-6tQ" secondAttribute="top" id="Un3-Xv-pjN"/>
-                                    <constraint firstItem="TM2-hc-LIh" firstAttribute="leading" secondItem="0d7-L6-efa" secondAttribute="trailing" constant="5" id="bfL-cn-7mZ"/>
-                                    <constraint firstItem="TM2-hc-LIh" firstAttribute="centerY" secondItem="0d7-L6-efa" secondAttribute="centerY" id="e9O-Oh-Zxg"/>
-                                    <constraint firstAttribute="trailing" secondItem="TM2-hc-LIh" secondAttribute="trailing" constant="35" id="wfI-CB-szX"/>
+                                    <constraint firstItem="TM2-hc-LIh" firstAttribute="leading" secondItem="0d7-L6-efa" secondAttribute="trailing" constant="10" id="buV-ej-iwQ"/>
+                                    <constraint firstItem="0d7-L6-efa" firstAttribute="top" secondItem="mm0-Ms-6tQ" secondAttribute="top" id="eeU-2f-0k0"/>
+                                    <constraint firstAttribute="trailing" secondItem="TM2-hc-LIh" secondAttribute="trailing" constant="10" id="wfI-CB-szX"/>
                                     <constraint firstAttribute="height" constant="55" id="xek-zR-fq1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -7358,11 +7360,12 @@
                     </view>
                     <connections>
                         <outlet property="chatTV" destination="V48-uv-3q4" id="Hus-pD-R8c"/>
+                        <outlet property="messageTextFiled" destination="0d7-L6-efa" id="IzG-W2-icM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpc-tU-AkW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="6986.7298578199052"/>
+            <point key="canvasLocation" x="3379.7101449275365" y="6986.3839285714284"/>
         </scene>
         <!--News DetailsVC-->
         <scene sceneID="DNV-RI-qeC">
@@ -7751,7 +7754,7 @@
                                             <action selector="ConfirmRating:" destination="yXa-29-vcW" eventType="touchUpInside" id="aDp-uc-H6z"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
+                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
                                         <rect key="frame" x="89.666666666666686" y="122" width="235" height="43"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -7769,41 +7772,48 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم الشركة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSx-wR-jlM">
-                                        <rect key="frame" x="317" y="25" width="77" height="20"/>
-                                        <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
-                                        <color key="textColor" name="kenanyGreen"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-M4-r17">
-                                        <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9e-yL-3gK">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم الشركة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSx-wR-jlM">
+                                                <rect key="frame" x="317" y="20" width="77" height="20"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
+                                                <color key="textColor" name="kenanyGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-M4-r17">
+                                                <rect key="frame" x="20" y="15" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="QwS-dz-gAh"/>
+                                                    <constraint firstAttribute="height" constant="30" id="w9N-4k-ZDJ"/>
+                                                </constraints>
+                                                <state key="normal" image="down"/>
+                                                <connections>
+                                                    <action selector="dissssmis:" destination="yXa-29-vcW" eventType="touchUpInside" id="pDK-eE-4sM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="QwS-dz-gAh"/>
-                                            <constraint firstAttribute="height" constant="30" id="w9N-4k-ZDJ"/>
+                                            <constraint firstItem="OC2-M4-r17" firstAttribute="leading" secondItem="k9e-yL-3gK" secondAttribute="leading" constant="20" id="3m1-EN-fb5"/>
+                                            <constraint firstAttribute="trailing" secondItem="qSx-wR-jlM" secondAttribute="trailing" constant="20" id="8AA-sw-bei"/>
+                                            <constraint firstAttribute="height" constant="60" id="aFF-lc-BQ1"/>
+                                            <constraint firstItem="OC2-M4-r17" firstAttribute="centerY" secondItem="qSx-wR-jlM" secondAttribute="centerY" id="rq8-mK-hZ6"/>
+                                            <constraint firstItem="qSx-wR-jlM" firstAttribute="centerY" secondItem="k9e-yL-3gK" secondAttribute="centerY" id="uqp-IM-HfG"/>
                                         </constraints>
-                                        <state key="normal" image="down"/>
-                                        <connections>
-                                            <action selector="dissssmis:" destination="yXa-29-vcW" eventType="touchUpInside" id="pDK-eE-4sM"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="OC2-M4-r17" firstAttribute="leading" secondItem="yat-ze-cFq" secondAttribute="leading" constant="20" id="2eO-rx-ZZy"/>
-                                    <constraint firstItem="OC2-M4-r17" firstAttribute="centerY" secondItem="qSx-wR-jlM" secondAttribute="centerY" id="5cY-Xm-gxK"/>
-                                    <constraint firstItem="qSx-wR-jlM" firstAttribute="top" secondItem="yat-ze-cFq" secondAttribute="top" constant="25" id="FCd-i8-c7l"/>
+                                    <constraint firstAttribute="trailing" secondItem="k9e-yL-3gK" secondAttribute="trailing" id="BRT-5G-eOa"/>
+                                    <constraint firstItem="k9e-yL-3gK" firstAttribute="top" secondItem="yat-ze-cFq" secondAttribute="top" id="IzO-vZ-fbo"/>
                                     <constraint firstItem="Pjh-PJ-xLf" firstAttribute="top" secondItem="0jf-r3-3ex" secondAttribute="bottom" constant="30" id="U6E-zQ-wT9"/>
                                     <constraint firstItem="0jf-r3-3ex" firstAttribute="centerX" secondItem="yat-ze-cFq" secondAttribute="centerX" id="aWP-uf-J3o"/>
                                     <constraint firstAttribute="bottom" secondItem="Pjh-PJ-xLf" secondAttribute="bottom" constant="45" id="bwt-R1-hXC"/>
                                     <constraint firstAttribute="height" constant="300" id="d7L-Rz-bbT"/>
+                                    <constraint firstItem="k9e-yL-3gK" firstAttribute="leading" secondItem="yat-ze-cFq" secondAttribute="leading" id="fZf-mE-cFr"/>
                                     <constraint firstItem="Pjh-PJ-xLf" firstAttribute="centerX" secondItem="yat-ze-cFq" secondAttribute="centerX" id="omh-gq-uOw"/>
-                                    <constraint firstAttribute="trailing" secondItem="qSx-wR-jlM" secondAttribute="trailing" constant="20" id="say-tb-avw"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2iZ-WI-0Qb"/>
@@ -8241,13 +8251,13 @@
                                         <rect key="frame" x="0.0" y="248.33333333333331" width="414" height="110"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بط مسكوفي درجة اولي فرز اول " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef7-UT-pGZ">
-                                                <rect key="frame" x="103.66666666666667" y="20" width="206.66666666666663" height="26.333333333333329"/>
+                                                <rect key="frame" x="129.66666666666666" y="20" width="154.99999999999997" height="16.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="-36" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-4O-oOP">
-                                                <rect key="frame" x="10" y="55.333333333333371" width="86.333333333333329" height="32"/>
+                                                <rect key="frame" x="10" y="45.333333333333371" width="86.333333333333329" height="32"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPp-QO-Zvk">
                                                         <rect key="frame" x="0.0" y="0.0" width="61" height="32"/>
@@ -8264,7 +8274,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PZs-QW-hx6">
-                                                <rect key="frame" x="106.33333333333334" y="51.333333333333371" width="287.66666666666663" height="40"/>
+                                                <rect key="frame" x="106.33333333333334" y="41.333333333333371" width="287.66666666666663" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنصورة شارع الجمهورية / الدور الاول / مصر الجديدة " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwz-1G-hf5">
                                                         <rect key="frame" x="0.0" y="0.0" width="252.66666666666666" height="40"/>
@@ -8310,7 +8320,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="وصف الاعلان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTR-u0-42F">
-                                <rect key="frame" x="285" y="422.33333333333331" width="109" height="35.666666666666686"/>
+                                <rect key="frame" x="304.33333333333331" y="422.33333333333331" width="89.666666666666686" height="22.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="19"/>
                                 <color key="textColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -8324,7 +8334,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني من اسرع الشركات الموجودة علي المستوي العالمي العاليوونحن هنا نسعد بخدمتكم من اجل الخدمات البييطرية الرئيسية " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-Yc-Iop">
-                                <rect key="frame" x="20" y="468" width="374" height="84.333333333333371"/>
+                                <rect key="frame" x="20" y="454.66666666666669" width="374" height="35"/>
                                 <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -10819,7 +10829,7 @@
                                     <constraint firstAttribute="bottom" secondItem="HBM-Ta-jdu" secondAttribute="bottom" id="tRp-V0-xU8"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-Ii-2aK">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JuR-Ii-2aK">
                                 <rect key="frame" x="0.0" y="279" width="414" height="583"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PU7-tE-G0f">
@@ -10855,6 +10865,31 @@
                                     <constraint firstItem="vWb-wC-KND" firstAttribute="centerY" secondItem="saB-Oi-jZN" secondAttribute="centerY" id="F8T-0X-9zz"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yae-ca-PJJ">
+                                <rect key="frame" x="0.0" y="279" width="414" height="583"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="3vH-IF-9oQ">
+                                        <rect key="frame" x="157" y="241.66666666666663" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="F0r-4s-0As"/>
+                                            <constraint firstAttribute="width" constant="100" id="zHF-4M-hzN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد حركة سفن لهذا اليوم " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-tT-Lbd">
+                                        <rect key="frame" x="101.66666666666667" y="351.66666666666663" width="210.66666666666663" height="24.666666666666686"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="21"/>
+                                        <color key="textColor" name="kenanyGreen"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3vH-IF-9oQ" firstAttribute="centerY" secondItem="yae-ca-PJJ" secondAttribute="centerY" id="QZ9-GB-1Bp"/>
+                                    <constraint firstItem="3vH-IF-9oQ" firstAttribute="centerX" secondItem="yae-ca-PJJ" secondAttribute="centerX" id="lp3-Fd-AiA"/>
+                                    <constraint firstItem="2GJ-tT-Lbd" firstAttribute="centerX" secondItem="yae-ca-PJJ" secondAttribute="centerX" id="to6-G1-WUK"/>
+                                    <constraint firstItem="2GJ-tT-Lbd" firstAttribute="top" secondItem="3vH-IF-9oQ" secondAttribute="bottom" constant="10" id="zmX-Up-a5B"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KJE-vQ-13d"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -10867,26 +10902,31 @@
                             <constraint firstItem="saB-Oi-jZN" firstAttribute="top" secondItem="px4-u7-8DC" secondAttribute="bottom" constant="5" id="HdF-zc-wcX"/>
                             <constraint firstItem="KJE-vQ-13d" firstAttribute="bottom" secondItem="saB-Oi-jZN" secondAttribute="bottom" id="NbP-KF-MOZ"/>
                             <constraint firstItem="KJE-vQ-13d" firstAttribute="trailing" secondItem="JuR-Ii-2aK" secondAttribute="trailing" id="O99-YY-iL8"/>
+                            <constraint firstItem="yae-ca-PJJ" firstAttribute="bottom" secondItem="saB-Oi-jZN" secondAttribute="bottom" id="STH-KM-zmO"/>
                             <constraint firstItem="g35-L3-0Vt" firstAttribute="top" secondItem="OFN-cw-iiw" secondAttribute="bottom" constant="15" id="XLH-hv-Uqq"/>
                             <constraint firstItem="saB-Oi-jZN" firstAttribute="leading" secondItem="KJE-vQ-13d" secondAttribute="leading" id="Xme-r7-sKY"/>
                             <constraint firstItem="OFN-cw-iiw" firstAttribute="top" secondItem="KJE-vQ-13d" secondAttribute="top" constant="10" id="ZfI-8c-U3o"/>
+                            <constraint firstItem="yae-ca-PJJ" firstAttribute="trailing" secondItem="saB-Oi-jZN" secondAttribute="trailing" id="bDT-rv-GIN"/>
                             <constraint firstItem="JuR-Ii-2aK" firstAttribute="top" secondItem="px4-u7-8DC" secondAttribute="bottom" constant="5" id="ck2-7l-EcW"/>
                             <constraint firstItem="KJE-vQ-13d" firstAttribute="trailing" secondItem="px4-u7-8DC" secondAttribute="trailing" id="dGx-lr-639"/>
                             <constraint firstItem="g35-L3-0Vt" firstAttribute="centerX" secondItem="mey-vU-90B" secondAttribute="centerX" id="hWQ-lb-YGo"/>
                             <constraint firstItem="px4-u7-8DC" firstAttribute="leading" secondItem="KJE-vQ-13d" secondAttribute="leading" id="kwt-ub-vtK"/>
+                            <constraint firstItem="yae-ca-PJJ" firstAttribute="leading" secondItem="saB-Oi-jZN" secondAttribute="leading" id="pFV-0r-GxO"/>
+                            <constraint firstItem="yae-ca-PJJ" firstAttribute="top" secondItem="saB-Oi-jZN" secondAttribute="top" id="rWq-lS-oUL"/>
                             <constraint firstItem="saB-Oi-jZN" firstAttribute="trailing" secondItem="KJE-vQ-13d" secondAttribute="trailing" id="yJR-0r-by3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dataPicker" destination="mhA-s5-aaS" id="Qjt-qp-hrG"/>
                         <outlet property="membershipV" destination="saB-Oi-jZN" id="mZd-NX-jOX"/>
+                        <outlet property="notFoundView" destination="yae-ca-PJJ" id="IMd-wZ-rU6"/>
                         <outlet property="shipCV" destination="JuR-Ii-2aK" id="1dU-hd-oDU"/>
                         <outlet property="statistecsBTN" destination="wKh-kD-6st" id="qTt-im-nAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgY-e7-7mI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5173.913043478261" y="10072.826086956522"/>
+            <point key="canvasLocation" x="5173.913043478261" y="10072.767857142857"/>
         </scene>
         <!--Stat ShipVC-->
         <scene sceneID="Umc-TY-FWJ">
@@ -11352,14 +11392,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="0jf-r3-3ex">
-            <size key="intrinsicContentSize" width="235" height="43"/>
-        </designable>
         <designable name="buJ-Ty-hiC">
             <size key="intrinsicContentSize" width="-1" height="83"/>
-        </designable>
-        <designable name="ncb-ZE-mZ7">
-            <size key="intrinsicContentSize" width="211" height="35"/>
         </designable>
     </designables>
     <resources>

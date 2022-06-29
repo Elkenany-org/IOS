@@ -15,6 +15,8 @@ class shipsVC: UIViewController {
     @IBOutlet weak var dataPicker: UIButton!
     @IBOutlet weak var shipCV: UICollectionView!
     @IBOutlet weak var membershipV: UIView!
+    @IBOutlet weak var notFoundView: UIView!
+    
     let date = Date()
     let formatter = DateFormatter()
     var shipSubModel:ShipsModel?
@@ -56,7 +58,7 @@ class shipsVC: UIViewController {
     func GetshipsData(){
         formatter.dateFormat = "yyyy-MM-dd"
         let dateOfDay = formatter.string(from: date)
-        let param = ["date" : "\(dateOfDay )"]
+        let param = ["date" : "\(dateOfDay)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/ships/all-ships?date="
@@ -70,8 +72,25 @@ class shipsVC: UIViewController {
                     self.shipsSubModelData.append(contentsOf: successData)
                     
                     DispatchQueue.main.async {
-                        self.shipCV.reloadData()
-                        print(successData)
+                        
+                        if  self.shipsSubModelData.isEmpty == false{
+                            
+                            self.notFoundView.isHidden = true
+                            self.shipCV.isHidden = false
+                            print("empty")
+                        }else if  self.shipsSubModelData.isEmpty == true{
+                            self.notFoundView.isHidden = false
+                            self.shipCV.isHidden = true
+                            self.shipCV.reloadData()
+                            print(successData)
+                            
+                            
+                        }else{
+                            
+                            print("hellllo erooorr")
+                        }
+                        
+                        
                         
                     }
                 }
@@ -143,30 +162,48 @@ extension shipsVC:BackDate{
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
-            
+                    
                 }    else if let loginErrorr = Datafailure {
                     //Data Wrong From Server
                     
                     print(loginErrorr.message ?? "6666666666666")
                     self.shipCV.isHidden = true
                     self.membershipV.isHidden = false
+                    self.notFoundView.isHidden = true
+                    
                     
                 }
                 
                 
                 else {
+                    
                     self.shipsSubModelData.removeAll()
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
                     
-                    DispatchQueue.main.async {
+                    if  self.shipsSubModelData.isEmpty == false{
+                        
                         self.shipCV.isHidden = false
                         self.membershipV.isHidden = true
+                        self.notFoundView.isHidden = true
+                        
                         self.shipCV.reloadData()
-                        print(successData)
+                        self.dataPicker.setTitle(date, for: .normal)
+                        
+                        
+                    }else if  self.shipsSubModelData.isEmpty == true{
+                        self.shipCV.isHidden = true
+                        self.membershipV.isHidden = false
+                        self.notFoundView.isHidden = false
+                        
                         
                     }
-                    self.dataPicker.setTitle(date, for: .normal)
+                    
+                    
+                    
+                    
+                    
+                    
                 }
             }
         }
