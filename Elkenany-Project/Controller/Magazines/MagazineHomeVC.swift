@@ -118,7 +118,7 @@ class MagazineHomeVC: UIViewController {
     
     func FatchDatafromHomeHeader(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeHeader)"   ,"sort" : "0"]
+            let param = ["type": "\(self.typeOfSectore)"   ,"sort" : "0"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
                 (success:MagazineS?, filier:MagazineS?, error) in
@@ -167,6 +167,7 @@ class MagazineHomeVC: UIViewController {
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
+                    self.magazinSubModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.magazinSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
@@ -334,7 +335,7 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
         let typeOfSector = sectorSubModelMagazine[indexPath.item].type ?? "farm"
         print("type ::: " , typeOfSector)
         UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
-        self.typeHeader = typeOfSector
+        self.typeOfSectore = typeOfSector
         
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
         if(cell.isSelected == true)

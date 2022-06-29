@@ -19,7 +19,9 @@ class showDetailsVC: UIViewController {
 
     
     var showModel:ShoweModel?
-    var idOfShow = 0 
+    var idOfShow = 0
+    var presentKeyHome = ""
+//    var idShowHome = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +34,54 @@ class showDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showeDataService()
+        
+        if presentKeyHome == "hoome"{
+            showeDataServiceHome()
+            
+        }else{
+            showeDataService()
+
+        }
+        
     }
     
     func showeDataService(){
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
+        DispatchQueue.global(qos: .background).async {
+            let url = "https://elkenany.com/api/showes/one-show/?id="
+            
+
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    guard let success = success else {return}
+                    self.showModel = success
+                
+                    DispatchQueue.main.async {
+                        self.viewCount.text = String(success.data?.viewCount ?? 0)
+                        self.showDesc.text = success.data?.shortDesc ?? ""
+                        self.imageCollection.reloadData()
+                        print("hellllllllo")
+                        print("helllllllllllllo", success.data?.shortDesc ?? "")
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    func showeDataServiceHome(){
+        let idShowHome = UserDefaults.standard.string(forKey: "IDDHOME") ?? ""
+        let parm = ["id" : "\(idShowHome)"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show/?id="
             

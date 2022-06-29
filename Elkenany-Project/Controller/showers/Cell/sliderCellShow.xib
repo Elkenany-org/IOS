@@ -17,14 +17,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="Gp6-Zd-yIg">
-                        <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
+                        <rect key="frame" x="5" y="0.0" width="285" height="268"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="59J-Mw-tnD"/>
-                <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="dTk-qN-tgA"/>
+                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="59J-Mw-tnD"/>
+                <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" constant="5" id="dTk-qN-tgA"/>
                 <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oJb-vC-Sk8"/>
                 <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="z4L-SH-SQA"/>
             </constraints>

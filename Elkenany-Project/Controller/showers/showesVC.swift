@@ -143,7 +143,7 @@ class showesVC: UIViewController {
     func FatchSearchOfNews(){
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&search="
             let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
@@ -228,7 +228,7 @@ extension showesVC: UISearchBarDelegate {
             subShowesModel.removeAll()
             
             //Api func
-            FeatchDataShowesHome()
+            FatchSearchOfNews()
         }
         
         //reload
@@ -285,8 +285,8 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
         let typeOfSectorr = subSectoresModel[indexPath.item].type ?? ""
-        self.typeForHeader = typeOfSectorr
-        //        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FOR_FILTER")
+        self.typeFromhome = typeOfSectorr
+        UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FILTER")
         if(cell.isSelected == true)
         {
             cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)

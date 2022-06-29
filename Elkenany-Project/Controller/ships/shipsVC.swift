@@ -10,7 +10,7 @@ import UIKit
 
 class shipsVC: UIViewController {
     
-    
+    //MARK: Vars and Outlet
     @IBOutlet weak var statistecsBTN: UIButton!
     @IBOutlet weak var dataPicker: UIButton!
     @IBOutlet weak var shipCV: UICollectionView!
@@ -23,23 +23,24 @@ class shipsVC: UIViewController {
     var shipsSubModelData:[Ship] = []
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         GetshipsData()
-        shipCV.dataSource = self
-        shipCV.delegate = self
-        self.shipCV.register(UINib(nibName: "shipsCell", bundle: nil), forCellWithReuseIdentifier: "shipsCell")
+        setupUI()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateDay = formatter.string(from: date)
         dataPicker.setTitle(dateDay, for: .normal)
         title = "حركة السفن"
-        
-        
     }
     
     
+    fileprivate func setupUI() {
+        shipCV.dataSource = self
+        shipCV.delegate = self
+        self.shipCV.register(UINib(nibName: "shipsCell", bundle: nil), forCellWithReuseIdentifier: "shipsCell")
+    }
+    
+    //picker for date
     @IBAction func datePickerClick(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "BorsaDatePiker"))! as BorsaDatePiker
         vc.dateDelgete = self
@@ -47,23 +48,22 @@ class shipsVC: UIViewController {
     }
     
     
+    //staticstices ship
     @IBAction func statisticesClicke(_ sender: Any) {
-        
         let vc = (storyboard?.instantiateViewController(identifier: "StatShipVC"))! as StatShipVC
         navigationController?.pushViewController(vc, animated: true)
     }
     
     
-    
+    //Get Ships data
     func GetshipsData(){
         formatter.dateFormat = "yyyy-MM-dd"
         let dateOfDay = formatter.string(from: date)
         let param = ["date" : "\(dateOfDay)"]
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/ships/all-ships?date="
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
+            let shipsURL = "https://elkenany.com/api/ships/all-ships?date="
+            APIServiceForQueryParameter.shared.fetchData(url: shipsURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
+                
                 if let error = error{
                     print("============ error \(error)")
                 }else {
@@ -71,35 +71,27 @@ class shipsVC: UIViewController {
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
                     
+                    
                     DispatchQueue.main.async {
-                        
                         if  self.shipsSubModelData.isEmpty == false{
-                            
                             self.notFoundView.isHidden = true
                             self.shipCV.isHidden = false
-                            print("empty")
+                            
                         }else if  self.shipsSubModelData.isEmpty == true{
+                            
                             self.notFoundView.isHidden = false
                             self.shipCV.isHidden = true
                             self.shipCV.reloadData()
                             print(successData)
                             
-                            
                         }else{
-                            
                             print("hellllo erooorr")
                         }
-                        
-                        
-                        
                     }
                 }
             }
         }
     }
-    
-    
-    
     
 }
 
@@ -128,8 +120,7 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "shipsCell", for: indexPath) as! shipsCell
-        //        cell1.changeLabel.text = shipsSubModelData[indexPath.item].name ?? ""
-        //        cell1.changeLabel.text = "werty"
+        
         cell1.name.text = shipsSubModelData[indexPath.item].name ?? ""
         cell1.date.text = shipsSubModelData[indexPath.item].date ?? ""
         cell1.container.text = String( shipsSubModelData[indexPath.item].load ?? 0)
@@ -152,58 +143,45 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
     
 }
 
+
+//MARK: filter by date 
 extension shipsVC:BackDate{
+    
     func backDateToMain(date: String) {
         let param = ["date" : "\(date )"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/ships/all-ships?date="
+            let shipsArivalURL = "https://elkenany.com/api/ships/all-ships?date="
             let headers = ["app-id": "\(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: shipsArivalURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
                     
                 }    else if let loginErrorr = Datafailure {
                     //Data Wrong From Server
-                    
                     print(loginErrorr.message ?? "6666666666666")
                     self.shipCV.isHidden = true
                     self.membershipV.isHidden = false
                     self.notFoundView.isHidden = true
                     
-                    
-                }
-                
-                
-                else {
+                } else {
                     
                     self.shipsSubModelData.removeAll()
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
                     
                     if  self.shipsSubModelData.isEmpty == false{
-                        
                         self.shipCV.isHidden = false
                         self.membershipV.isHidden = true
                         self.notFoundView.isHidden = true
-                        
                         self.shipCV.reloadData()
                         self.dataPicker.setTitle(date, for: .normal)
-                        
                         
                     }else if  self.shipsSubModelData.isEmpty == true{
                         self.shipCV.isHidden = true
                         self.membershipV.isHidden = false
                         self.notFoundView.isHidden = false
-                        
-                        
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                 }
             }
         }

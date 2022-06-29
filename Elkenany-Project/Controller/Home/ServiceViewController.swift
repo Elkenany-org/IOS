@@ -373,7 +373,23 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             
         case 1 :
-            print("Hello world")
+            switch homeServiceDataModel?.data?.recomandtion?[indexPath.item].type ?? ""  {
+            case "show":
+                
+                let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showVC") as! showVC
+                 let idShowHome = homeServiceDataModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                Showesvc.testId = UserDefaults.standard.string(forKey: "IDDHOME") ?? ""
+                navigationController?.pushViewController(Showesvc, animated: true)
+                
+            case "magazines":
+                let MagazineVC = storyboard?.instantiateViewController(withIdentifier: "MagazineHomeVC") as! MagazineHomeVC
+//                Showesvc.typeFromhome = "poultry"
+                navigationController?.pushViewController(MagazineVC, animated: true)
+
+            default:
+                print("rr tt tt")
+            }
+        
     
             
         case 2 :

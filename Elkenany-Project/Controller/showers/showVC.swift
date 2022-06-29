@@ -26,6 +26,7 @@ class showVC: UIViewController {
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var idFromSh = 0
+    var testId = ""
     //vars
     var linkeeeee = ""
     var acceptedTitle  = ""

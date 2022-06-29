@@ -2096,7 +2096,7 @@
         <scene sceneID="HZk-8F-KC3">
             <objects>
                 <viewController storyboardIdentifier="customerserviceVC" id="Y96-Cz-Q22" customClass="customerserviceVC" customModule="Elkenany_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="seC-3D-rw7">
+                    <view key="view" contentMode="scaleToFill" id="seC-3D-rw7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -8334,7 +8334,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني من اسرع الشركات الموجودة علي المستوي العالمي العاليوونحن هنا نسعد بخدمتكم من اجل الخدمات البييطرية الرئيسية " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-Yc-Iop">
-                                <rect key="frame" x="20" y="454.66666666666669" width="374" height="35"/>
+                                <rect key="frame" x="20" y="454.66666666666669" width="374" height="84.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -10868,26 +10868,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yae-ca-PJJ">
                                 <rect key="frame" x="0.0" y="279" width="414" height="583"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="3vH-IF-9oQ">
-                                        <rect key="frame" x="157" y="241.66666666666663" width="100" height="100"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bR-7E-na7">
+                                        <rect key="frame" x="49.666666666666657" y="180" width="314.66666666666674" height="223"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="3vH-IF-9oQ">
+                                                <rect key="frame" x="107.33333333333334" y="78.333333333333371" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="F0r-4s-0As"/>
+                                                    <constraint firstAttribute="width" constant="100" id="zHF-4M-hzN"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد حركة سفن لهذا اليوم " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-tT-Lbd">
+                                                <rect key="frame" x="52.000000000000014" y="188.33333333333337" width="210.66666666666669" height="24.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="21"/>
+                                                <color key="textColor" name="kenanyGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="F0r-4s-0As"/>
-                                            <constraint firstAttribute="width" constant="100" id="zHF-4M-hzN"/>
+                                            <constraint firstItem="2GJ-tT-Lbd" firstAttribute="top" secondItem="3vH-IF-9oQ" secondAttribute="bottom" constant="10" id="Gd5-14-cMK"/>
+                                            <constraint firstAttribute="bottom" secondItem="2GJ-tT-Lbd" secondAttribute="bottom" constant="10" id="HYt-xn-lsB"/>
+                                            <constraint firstItem="2GJ-tT-Lbd" firstAttribute="centerX" secondItem="2bR-7E-na7" secondAttribute="centerX" id="aFj-42-8VR"/>
+                                            <constraint firstItem="3vH-IF-9oQ" firstAttribute="centerX" secondItem="2bR-7E-na7" secondAttribute="centerX" id="xOn-cb-rIC"/>
                                         </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد حركة سفن لهذا اليوم " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-tT-Lbd">
-                                        <rect key="frame" x="101.66666666666667" y="351.66666666666663" width="210.66666666666663" height="24.666666666666686"/>
-                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="21"/>
-                                        <color key="textColor" name="kenanyGreen"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="3vH-IF-9oQ" firstAttribute="centerY" secondItem="yae-ca-PJJ" secondAttribute="centerY" id="QZ9-GB-1Bp"/>
-                                    <constraint firstItem="3vH-IF-9oQ" firstAttribute="centerX" secondItem="yae-ca-PJJ" secondAttribute="centerX" id="lp3-Fd-AiA"/>
-                                    <constraint firstItem="2GJ-tT-Lbd" firstAttribute="centerX" secondItem="yae-ca-PJJ" secondAttribute="centerX" id="to6-G1-WUK"/>
-                                    <constraint firstItem="2GJ-tT-Lbd" firstAttribute="top" secondItem="3vH-IF-9oQ" secondAttribute="bottom" constant="10" id="zmX-Up-a5B"/>
+                                    <constraint firstItem="2bR-7E-na7" firstAttribute="leading" secondItem="yae-ca-PJJ" secondAttribute="leading" constant="49.666666666666657" id="1MP-Gd-3Ta"/>
+                                    <constraint firstItem="2bR-7E-na7" firstAttribute="top" secondItem="yae-ca-PJJ" secondAttribute="top" constant="180.00000000000003" id="jcD-yF-qRQ"/>
+                                    <constraint firstItem="2bR-7E-na7" firstAttribute="centerY" secondItem="yae-ca-PJJ" secondAttribute="centerY" id="sNg-1h-h6c"/>
+                                    <constraint firstItem="2bR-7E-na7" firstAttribute="centerX" secondItem="yae-ca-PJJ" secondAttribute="centerX" id="zTD-t0-yxq"/>
                                 </constraints>
                             </view>
                         </subviews>

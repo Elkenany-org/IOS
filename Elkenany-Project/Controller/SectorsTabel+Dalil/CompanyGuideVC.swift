@@ -241,7 +241,6 @@ class CompanyGuideVC: UIViewController, SortTitle {
     
     //Filter Screen --------------
     @IBAction func filterShow(_ sender: Any) {
-        
         if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
             filterVC.RunFilterDeleget = self
             filterVC.selectedType = sectoreTypeFromSelecteHeader
@@ -258,7 +257,6 @@ class CompanyGuideVC: UIViewController, SortTitle {
             filterVC.RunFilterDeleget = self
             filterVC.selectedType = sectoreTypeFromSelecteHeader
             filterVC.presentKey = "keeey"
-            
             present(filterVC, animated: true, completion: nil)
         }
 
