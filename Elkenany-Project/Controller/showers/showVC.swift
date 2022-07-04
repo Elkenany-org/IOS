@@ -13,7 +13,6 @@ class showVC: UIViewController {
     @IBOutlet weak var segmentVieww: UISegmentedControl!
     @IBOutlet weak var goingTitle: UIButton!
     @IBOutlet weak var notGoingTitle: UIButton!
-
     @IBOutlet weak var firstIndex: UIView!
     @IBOutlet weak var secIndex: UIView!
     @IBOutlet weak var thiredIndex: UIView!
@@ -54,21 +53,16 @@ class showVC: UIViewController {
     
     
     
-    //MARK: Goooooooooing
-
+    //MARK: not going services
     @IBAction func notgoing(_ sender: Any) {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn {
             NotGoingService()
-            
         }else{
-            
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-                present(vc, animated: true, completion: nil)}
-        }
-    }
+                present(vc, animated: true, completion: nil)}}}
     
     
     
@@ -78,71 +72,38 @@ class showVC: UIViewController {
         
         if isloggineIn {
             GoingService()
-            
         }else{
-            
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-                present(vc, animated: true, completion: nil)}
-        }
-        
-        
-    }
+                present(vc, animated: true, completion: nil)}}}
     
     
     
-    
-    
-    //going or not
-//    @IBAction func toShow(_ sender: Any) {
-//
-//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//
-//        if isloggineIn {
-//            GoingService()
-//        }else{
-//
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .overFullScreen
-//                present(vc, animated: true, completion: nil)}
-//        }
-//    }
-//
-//
-    
-    //order place btn
+    //MARK: Order place btn
     @IBAction func orderPlace(_ sender: Any) {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
         if isloggineIn {
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
             present(vc, animated: true, completion: nil)
-            
         }else{
-            
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-                present(vc, animated: true, completion: nil)}
-        }
-    }
+                present(vc, animated: true, completion: nil)}}}
     
     
     
     //rating
     @IBAction func ratingShow(_ sender: Any) {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
         if isloggineIn {
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
             present(vc, animated: true, completion: nil)
-            
         }else{
-            
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-                present(vc, animated: true, completion: nil)}
-        }
-    }
+                present(vc, animated: true, completion: nil)}}}
     
     
     
@@ -194,7 +155,7 @@ class showVC: UIViewController {
     }
     
     
-    
+    //reviwes
     func ReviwesServices(){
         let parm = ["type" : "poultry"]
         DispatchQueue.global(qos: .background).async {
@@ -226,11 +187,10 @@ class showVC: UIViewController {
     
     
     
-    
+    //going
     func GoingService(){
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["show_id" : "\(idShow)"]
-//        let parm = ["show_id" : "2"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show-going"
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
@@ -256,7 +216,7 @@ class showVC: UIViewController {
                         let alert = UIAlertController(title: "مرحبا", message: "تم تحديد الذهاب بنجاح", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "تم", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-
+                        
                     }
                 }
             }
@@ -264,8 +224,10 @@ class showVC: UIViewController {
     }
     
     
+    //notGoing
     func NotGoingService(){
-        let parm = ["show_id" : "2"]
+        let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
+        let parm = ["show_id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show-notgoing"
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
@@ -298,11 +260,7 @@ class showVC: UIViewController {
     }
     
     
-    
-    
-    
-    
-    //present views 
+    //MARK: present views
     @IBAction func SegmentSwitcher(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0{
@@ -327,7 +285,6 @@ class showVC: UIViewController {
             secIndex.alpha = 0
             thiredIndex.alpha = 0
             fourthView.alpha = 1
-            
         }
         else{
             print("hello world")

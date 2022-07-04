@@ -112,7 +112,7 @@ class showesVC: UIViewController {
     //MARK:- Data of all showes at home screen
     func FeatchDataShowesHomeHeaders(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeForHeader)" , "sort": "\(0)"]
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)"]
             let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
