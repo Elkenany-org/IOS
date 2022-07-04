@@ -19,9 +19,13 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
     var lannn = ""
     var loonn = ""
     var magazinKey = ""
+    var kk = ""
+
     var com_id = 0
     var arr = ["33333" , "6666" , "66666"]
     var magazineID = 0
+    var magazinefromHome = 0
+    
     
     
     override func awakeFromNib() {
@@ -29,6 +33,12 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         setupUI()
         socialTV.estimatedRowHeight = 150
         socialTV.rowHeight = UITableView.automaticDimension
+        
+        if magazinKey == "hommme" {
+            FatchDataContactsOfMagazinHomeMain()
+        }else{
+            print("logic error")
+        }
     }
     
     
@@ -92,6 +102,30 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
             }
         }
     }
+    
+    func FatchDataContactsOfMagazinHomeMain(){
+        //Handeling Loading view progress
+        DispatchQueue.global(qos: .background).async {
+            let idds = UserDefaults.standard.string(forKey: "testt")
+            let param = ["id": "\(idds ?? "")"]
+            let companyContacts = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
+                if let error = error{
+                    
+                    print("============ error \(error)")
+                }else {
+                    guard let success = success else {return}
+                    self.magazineDetailsModel = success
+                    DispatchQueue.main.async {
+                        self.socialTV.reloadData()
+                        self.lannn = success.data?.latitude ?? ""
+                        self.loonn = success.data?.longitude ?? ""
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     

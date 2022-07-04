@@ -16,7 +16,7 @@ class MagazinVC: UIViewController {
     var IdFromMagazine = 0
     var companyIDHomeSearch = 0
     var magazineIdFromHome = 0
-    
+    var presentKK = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,8 @@ class MagazinVC: UIViewController {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
-            let param = ["id": "\(self.magazineIdFromHome)"]
+            let idOfHome = UserDefaults.standard.string(forKey: "testt")
+            let param = ["id": "\(idOfHome ?? "")"]
             let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
@@ -127,7 +128,12 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 cell3.magazineID = IdFromMagazine
                 cell3.magazinKey = "true"
                 cell3.headeTitle.text = "بيانات الدليل"
-                cell3.FatchDataContactsOfMagazin()
+                if presentKK == "hommme" {
+                    cell3.FatchDataContactsOfMagazinHomeMain()
+                }else{
+                    cell3.FatchDataContactsOfMagazin()
+
+                }
                 cell3.selectionStyle = .none
                 return cell3 }
             

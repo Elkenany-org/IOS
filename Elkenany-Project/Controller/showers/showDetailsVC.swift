@@ -34,13 +34,12 @@ class showDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if presentKeyHome == "hoome"{
             showeDataServiceHome()
             
         }else{
             showeDataService()
-
         }
         
     }

@@ -9,50 +9,50 @@ import UIKit
 import JGProgressHUD
 
 class ServiceViewController: UIViewController {
-
+    
     var homeServiceDataModel:HomeTestModelss?
-//    var hoooooo: HomeTestModel?
+    //    var hoooooo: HomeTestModel?
     
     var homeDataSectorsModel:HomeSectorsDataModel?
     var magazineHomeModel:MagazineS?
-
+    
     var homeGuide:GuideCompaniesDataModel?
     var arr = [ "المعارض", "الدلائل والمجلات"]
     var arrayOfData = ["معارض" , "دلائل ومجالات", "حركة السفن"]
     var sectionsData = ["الخدمات", "مقترح لك", "شركاء النجاح", "المعارض", "الدلائل والمجلات"]
     var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "showes") , #imageLiteral(resourceName: "ma") , #imageLiteral(resourceName: "ships") ]
     @IBOutlet weak var ServicesCV: UICollectionView!
-   
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         print("did apeaar")
-
+        
         //featchServesData()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        featchService()
+        //        featchService()
         //        GetHomeDataFromServerServices()
         GetHomeDataFromServer()
-
+        
         print("will apeaar")
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        GetHomeDataFromServer()
-
+        //        GetHomeDataFromServer()
+        
     }
     
     
     
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -181,7 +181,7 @@ class ServiceViewController: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
             let Servicesurl = "https://elkenany.com/api/home-services"
-
+            
             APIServiceForQueryParameter.shared.fetchData(url: Servicesurl,
                                                          parameters: nil,
                                                          headers: headers,
@@ -212,7 +212,7 @@ class ServiceViewController: UIViewController {
         
     }
     
-
+    
     func Sectore(ss:UICollectionViewCell){
         ss.layer.cornerRadius = 30
         ss.layer.borderWidth = 0.0
@@ -253,28 +253,28 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch section {
         case 0:
             return  arrayOfData.count
-
+            
         case 1:
             return homeServiceDataModel?.data?.recomandtion?.count ?? 3
-
+            
         case 2:
             return homeServiceDataModel?.data?.logos?.count  ?? 3
-
+            
             
         case 3:
             return homeServiceDataModel?.data?.show?.count  ?? 3
-
-   
+            
+            
         default:
             return homeServiceDataModel?.data?.magazine?.count  ?? 3
-
+            
         }
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         switch indexPath.section {
         
         case 0 :
@@ -289,7 +289,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             
         case 1 :
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as! SectorsCell
-            cell2.SecrorsName.text = homeServiceDataModel?.data?.recomandtion?[indexPath.item].name
+            cell2.SecrorsName.text = homeServiceDataModel?.data?.recomandtion?[indexPath.item].name ?? ""
             let imageo = homeServiceDataModel?.data?.recomandtion?[indexPath.item].image ?? ""
             cell2.configureCell(image: imageo)
             cell2.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
@@ -326,7 +326,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             Sectore(ss: cell5)
             return cell5
             
-
+            
             
         default:
             print("Hello world")
@@ -334,9 +334,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         return UICollectionViewCell()
     }
     
-    
-    //-----------
-    
+        
     //MARK:- didSelecte to Show the screen related
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -344,7 +342,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         
         switch indexPath.section {
-        
+        // collection 1
         case 0 :
             switch indexPath.item {
             case 0:
@@ -352,65 +350,69 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
                 let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showesVC") as! showesVC
                 Showesvc.typeFromhome = "poultry"
                 navigationController?.pushViewController(Showesvc, animated: true)
-            case 1:
                 
+            case 1:
                 let MagazineVC = storyboard?.instantiateViewController(withIdentifier: "MagazineHomeVC") as! MagazineHomeVC
-//                Showesvc.typeFromhome = "poultry"
                 navigationController?.pushViewController(MagazineVC, animated: true)
-
                 
             case 2:
                 let ShipsVC = storyboard?.instantiateViewController(withIdentifier: "shipsVC") as! shipsVC
-//                Showesvc.typeFromhome = "poultry"
                 navigationController?.pushViewController(ShipsVC, animated: true)
-
                 
             default:
                 print("Hello world")
-
+                
             }
             
             
-            
+        //collection recommmendition
         case 1 :
             switch homeServiceDataModel?.data?.recomandtion?[indexPath.item].type ?? ""  {
             case "show":
                 
-                let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showVC") as! showVC
-                 let idShowHome = homeServiceDataModel?.data?.recomandtion?[indexPath.item].id ?? 0
-                Showesvc.testId = UserDefaults.standard.string(forKey: "IDDHOME") ?? ""
+                let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showDetailsVC") as! showDetailsVC
+                let idShowHome = homeServiceDataModel?.data?.recomandtion?[indexPath.item].id ?? 0
                 navigationController?.pushViewController(Showesvc, animated: true)
                 
             case "magazines":
-                let MagazineVC = storyboard?.instantiateViewController(withIdentifier: "MagazineHomeVC") as! MagazineHomeVC
-//                Showesvc.typeFromhome = "poultry"
+                let MagazineVC = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as! MagazinVC
+                let idFromHomeMagazine = homeServiceDataModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                UserDefaults.standard.set(idFromHomeMagazine, forKey: "testt")
+                MagazineVC.presentKK = "hommme"
+                MagazineVC.FeatchCMagazineFromHome()
                 navigationController?.pushViewController(MagazineVC, animated: true)
-
+                
             default:
                 print("rr tt tt")
             }
-        
-    
+            
+            
             
         case 2 :
             if let url = NSURL(string: "\(homeServiceDataModel?.data?.logos?[indexPath.item].link ?? "")") {
                 UIApplication.shared.openURL(url as URL)
             }
-        
+            
         case 3 :
-            print("Hello world")
-
+            let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showDetailsVC") as! showDetailsVC
+            let idShowHome = homeServiceDataModel?.data?.magazine?[indexPath.item].id ?? 0
+            Showesvc.presentKeyHome = "hoome"
+            UserDefaults.standard.set(idShowHome, forKey: "IDDHOME")
+            Showesvc.showeDataService()
+            navigationController?.pushViewController(Showesvc, animated: true)
             
             
         case 4 :
-
+            
             let Showesvc = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as! MagazinVC
             let magazineID = homeServiceDataModel?.data?.magazine?[indexPath.item].id ?? 0
+            UserDefaults.standard.set(magazineID, forKey: "testt")
             Showesvc.magazineIdFromHome = magazineID
+            Showesvc.presentKK = "hommme"
             Showesvc.FeatchCMagazineFromHome()
             navigationController?.pushViewController(Showesvc, animated: true)
-      
-        
+            
+            
         default:
             print("Hello world")
         }
@@ -419,28 +421,11 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     
     
-    
-    
-    
-    
-    //-------------
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
-//        view.title = indexPath.section == 2 ? "الخدامات" : "القطاعات"
+        //        view.title = indexPath.section == 2 ? "الخدامات" : "القطاعات"
         view.title = sectionsData[indexPath.section]
         return view
     }

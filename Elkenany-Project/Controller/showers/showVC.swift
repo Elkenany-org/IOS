@@ -228,7 +228,9 @@ class showVC: UIViewController {
     
     
     func GoingService(){
-        let parm = ["show_id" : "2"]
+        let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
+        let parm = ["show_id" : "\(idShow)"]
+//        let parm = ["show_id" : "2"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/showes/one-show-going"
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
