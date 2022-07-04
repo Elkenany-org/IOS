@@ -372,6 +372,8 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
                 
                 let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showDetailsVC") as! showDetailsVC
                 let idShowHome = homeServiceDataModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                Showesvc.presentKeyHome = "hommmmeREC"
+                UserDefaults.standard.set(idShowHome, forKey: "IDDHOMEREC")
                 navigationController?.pushViewController(Showesvc, animated: true)
                 
             case "magazines":
@@ -393,12 +395,13 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
                 UIApplication.shared.openURL(url as URL)
             }
             
+            
         case 3 :
             let Showesvc = storyboard?.instantiateViewController(withIdentifier: "showDetailsVC") as! showDetailsVC
-            let idShowHome = homeServiceDataModel?.data?.magazine?[indexPath.item].id ?? 0
+            let idShowHome = homeServiceDataModel?.data?.show?[indexPath.item].id ?? 0
             Showesvc.presentKeyHome = "hoome"
             UserDefaults.standard.set(idShowHome, forKey: "IDDHOME")
-            Showesvc.showeDataService()
+//            Showesvc.showeDataServiceHome()
             navigationController?.pushViewController(Showesvc, animated: true)
             
             
