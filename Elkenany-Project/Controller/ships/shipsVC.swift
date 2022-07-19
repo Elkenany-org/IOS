@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class shipsVC: UIViewController {
     
     //MARK: Vars and Outlet
@@ -47,7 +46,6 @@ class shipsVC: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    
     //staticstices ship
     @IBAction func statisticesClicke(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "StatShipVC"))! as StatShipVC
@@ -70,7 +68,6 @@ class shipsVC: UIViewController {
                     
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
-                    
                     
                     DispatchQueue.main.async {
                         if  self.shipsSubModelData.isEmpty == false{
@@ -188,3 +185,5 @@ extension shipsVC:BackDate{
         
     }
 }
+
+

@@ -83,7 +83,6 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
-        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.performRequests()
@@ -92,21 +91,15 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        
         if let appleCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
-            
             let userIdentifier = appleCredential.user
             let fullName = appleCredential.fullName
             let email = appleCredential.email
-            
             print("userrrrr \(userIdentifier) ----------- \(String(describing: fullName)) ---------- \(String (describing: email) )")
-            
             let vc = (storyboard?.instantiateViewController(identifier: "LoginVC"))! as LoginVC
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion:nil)
         }
-        
-        
     }
     
     
@@ -115,12 +108,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     }
     
     
-    
-    
-    
-    
     //MARK:- Handel Login Data To Server
-    
     func loginTap() {
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
