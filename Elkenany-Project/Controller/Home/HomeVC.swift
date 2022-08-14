@@ -13,6 +13,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var segmetMane: UISegmentedControl!
     @IBOutlet weak var secondContainerView: UIView! // sector
     @IBOutlet weak var firstContainerView: UIView!
+    var userID = ""
 
     @IBOutlet weak var welcomeLabel: UIView!
     @IBOutlet weak var hedaerview: UIView!

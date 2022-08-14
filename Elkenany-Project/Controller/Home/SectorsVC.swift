@@ -107,12 +107,12 @@ class SectorsVC: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.7))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.32))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.37))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -306,6 +306,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             if  let logosCell = collectionView.dequeueReusableCell(withReuseIdentifier: "successCell", for: indexPath) as? successCell{
                 let successMembersImage = homeDataSectorsModel?.data?.logos?[indexPath.item].image ?? "dev test"
                 logosCell.configureCell(image: successMembersImage)
+                logosCell.sucessMembers.contentMode = .scaleAspectFill
+
                 logosCell.layer.cornerRadius = 10
                 ss(ss: logosCell)
                 return logosCell }

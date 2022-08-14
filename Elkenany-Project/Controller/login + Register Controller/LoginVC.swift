@@ -90,22 +90,43 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     
     
     
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
-            let userIdentifier = appleCredential.user
-            let fullName = appleCredential.fullName
-            let email = appleCredential.email
-            print("userrrrr \(userIdentifier) ----------- \(String(describing: fullName)) ---------- \(String (describing: email) )")
-            let vc = (storyboard?.instantiateViewController(identifier: "LoginVC"))! as LoginVC
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion:nil)
+//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+//        if let appleCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
+//            let userIdentifier = appleCredential.user
+//            let fullName = appleCredential.fullName
+//            let email = appleCredential.email
+//            print("userrrrr \(userIdentifier) ----------- \(String(describing: fullName)) ---------- \(String (describing: email) )")
+//        }
+//        let vc = (storyboard?.instantiateViewController(identifier: "LoginVC"))! as LoginVC
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion:nil)
+//    }
+//
+//
+//    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+//        // Handle error.
+//    }
+//
+    
+   
+        func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+            switch authorization.credential {
+            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                let userIdentifier = appleIDCredential.user
+            
+                let defaults = UserDefaults.standard
+                defaults.set(userIdentifier, forKey: "userIdentifier1")
+                
+                //Save the UserIdentifier somewhere in your server/database
+                let vc = HomeVC()
+                vc.userID = userIdentifier
+                self.present(vc, animated: true, completion: nil)
+                break
+            default:
+                break
+            }
         }
-    }
-    
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
-    }
+        
     
     
     //MARK:- Handel Login Data To Server

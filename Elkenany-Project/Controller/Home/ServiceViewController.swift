@@ -98,12 +98,12 @@ class ServiceViewController: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.7))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.67), heightDimension: .fractionalHeight(0.32))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.70), heightDimension: .fractionalHeight(0.37))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -281,7 +281,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 sectoreCell.SecrorsName.text = arrayOfData[indexPath.item]
                 sectoreCell.sectorImgCell.image = arrayOfImage[indexPath.item]
-                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
+                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 15.0)
                 sectoreCell.sectorImgCell.contentMode = .scaleAspectFit
                 Sectore(ss: sectoreCell)
                 return sectoreCell }
