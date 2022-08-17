@@ -12,7 +12,8 @@ import AuthenticationServices
 
 
 class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
-    
+    var countries: [String] = []
+
     //Outlets in screen
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -20,7 +21,20 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for code in NSLocale.isoCountryCodes  {
+            let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
+            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
+            countries.append(name)
+        }
+
+        
     }
+    
+    
+    
+   
+    
     
     //MARK:- handel validation for textfield
     func ErrorHandeling(errorMessage:String){
@@ -34,6 +48,8 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
     @IBAction func toHomeVC(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "TabBarVC"))! as TabBarVC
         vc.modalPresentationStyle = .fullScreen
+        print(countries)
+
         self.present(vc, animated: true, completion:nil)
     }
     

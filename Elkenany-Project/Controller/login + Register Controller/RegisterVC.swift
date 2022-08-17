@@ -20,6 +20,8 @@ class RegisterVC: UIViewController {
     //app toke and this fake confirmation 
     @IBOutlet weak var confirmPassword: UITextField!
     
+    ///url
+//    https://countriesnow.space/api/v0.1/countries/codes
     
     override func viewDidLoad() {
         super.viewDidLoad()
