@@ -25,6 +25,8 @@ class searchVC: UIViewController {
         setupUI()
         searchTVV.estimatedRowHeight = 150
         searchTVV.rowHeight = UITableView.automaticDimension
+        searchBaView.searchTextField.backgroundColor = .white
+
     
     }
     

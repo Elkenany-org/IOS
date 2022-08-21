@@ -10,26 +10,21 @@ import UIKit
 class SectorDetailsTable: UIViewController {
     
     //outlets and variables
-    //title from selected cell sectore
-    var titleFromCell = ""
-    //title from home selected [first collection]
-    var sectorFtomHome = ""
-    //for navigation title 
-    var titleeeee = ""
-//        var tabelData = ["البورصة اليومية", "دليل الشركات","الاخبار"]
-    var tabelData = ["البورصة اليومية", "دليل الشركات", "سوق الكناني" , "آلاخبار"]
     @IBOutlet weak var SectorDetailsTabel: UITableView!
+    var titleFromCell = ""
+    var sectorFtomHome = ""
+    var titleeeee = ""
+    var tabelData:[UIImage] = [#imageLiteral(resourceName: "new-banner5") , #imageLiteral(resourceName: "new-banner7") , #imageLiteral(resourceName: "new-banner1") , #imageLiteral(resourceName: "new-banner3")]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configuer cell
         setupUI()
         title =  titleeeee
     }
     
     
-    
+    //configuer cell
     func setupUI() {
         SectorDetailsTabel.dataSource = self
         SectorDetailsTabel.delegate = self
@@ -39,7 +34,7 @@ class SectorDetailsTable: UIViewController {
 }
 
 
-//MARK:- tableView methods of sectors
+//MARK:- tableView methods of sectors sections
 
 extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
     
@@ -49,11 +44,9 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
     }
     
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SectorDetailsCell") as! SectorDetailsCell
-        cell.sectorDetailsTitle.text = tabelData[indexPath.row]
+        cell.tableImage.image = tabelData[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }
@@ -61,8 +54,6 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)  {
-        
-
         
         switch indexPath.row {
         case 0:
@@ -77,36 +68,23 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
             
         case 2:
             let GuideVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
-//            GuideVC.sectoreTypeFromHome = sectorFtomHome
             GuideVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(GuideVC, animated: true)
-
             
         case 3:
             let newsVC = (storyboard?.instantiateViewController(identifier: "NewsVC"))! as NewsVC
             newsVC.typeFromhome = sectorFtomHome
             navigationController?.pushViewController(newsVC, animated: true)
             print("hello world")
-
+            
         default:
             print("hello world")
         }
-        
-        
-        
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return 180
     }
     
 }

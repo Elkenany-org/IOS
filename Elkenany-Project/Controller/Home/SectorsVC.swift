@@ -43,6 +43,8 @@ class SectorsVC: UIViewController {
         sectorsCV.delegate = self
         sectorsCV.collectionViewLayout = creatCompositionalLayout()
         self.sectorsCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
+        self.sectorsCV.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
+
         self.sectorsCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
         sectorsCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
     }
@@ -281,7 +283,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         
         switch indexPath.section {
         case 0 :
-            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
+            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell {
                 sectoreCell.SecrorsName.text = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
                 sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
                 sectoreCell.sectorImgCell.image = images[indexPath.item]

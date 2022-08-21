@@ -25,7 +25,7 @@ struct ResultNot: Codable {
     let title, desc: String?
     let image: String?
     let createdAt: String?
-    let keyName: KeyName?
+    let keyName: String?
     let keyID: Int?
 
     enum CodingKeys: String, CodingKey {
