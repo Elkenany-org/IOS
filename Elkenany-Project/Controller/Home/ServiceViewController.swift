@@ -20,7 +20,7 @@ class ServiceViewController: UIViewController {
     var arr = [ "المعارض", "الدلائل والمجلات"]
     var arrayOfData = ["معارض" , "دلائل ومجالات", "حركة السفن"]
     var sectionsData = ["الخدمات", "مقترح لك", "شركاء النجاح", "المعارض", "الدلائل والمجلات"]
-    var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "showes") , #imageLiteral(resourceName: "ma") , #imageLiteral(resourceName: "ships") ]
+    var arrayOfImage:[UIImage] = [#imageLiteral(resourceName: "Group 2803") , #imageLiteral(resourceName: "Group 2805") , #imageLiteral(resourceName: "Group 2804") ]
     @IBOutlet weak var ServicesCV: UICollectionView!
     
     
@@ -63,6 +63,8 @@ class ServiceViewController: UIViewController {
         ServicesCV.collectionViewLayout = creatCompositionalLayout()
         self.ServicesCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
         self.ServicesCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
+        self.ServicesCV.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
+
         ServicesCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
     }
     
@@ -278,11 +280,11 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch indexPath.section {
         
         case 0 :
-            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
-                sectoreCell.SecrorsName.text = arrayOfData[indexPath.item]
-                sectoreCell.sectorImgCell.image = arrayOfImage[indexPath.item]
-                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 15.0)
-                sectoreCell.sectorImgCell.contentMode = .scaleAspectFit
+            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as? sliderCellShow{
+//                sectoreCell.SecrorsName.text = arrayOfData[indexPath.item]
+                sectoreCell.sliderImage.image = arrayOfImage[indexPath.item]
+//                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 15.0)
+                sectoreCell.sliderImage.contentMode = .scaleAspectFit
                 Sectore(ss: sectoreCell)
                 return sectoreCell }
             

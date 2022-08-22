@@ -8,6 +8,8 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import AVFoundation
+import AVKit
 
 class SectorsVC: UIViewController {
     
@@ -15,25 +17,72 @@ class SectorsVC: UIViewController {
     @IBOutlet weak var sectorsCV: UICollectionView!
     var homeDataSectorsModel:HomeSectorsDataModel?
     var homeGuide:GuideCompaniesDataModel?
+    var player: AVQueuePlayer?
+    var videoLooper: AVPlayerLooper?
+    @IBOutlet weak var videoViewContainer:UIView!
     var sss:HomeData?
     var sector:[Sectors]?
     var arr = [   "القطاع", "مقترح لك", "شركاء النجاح", "البورصة اليومية", "دليل الكناني", "السوق", "الاخبار" ]
-    let images:[UIImage] = [ #imageLiteral(resourceName: "1-5") , #imageLiteral(resourceName: "1-4")  , #imageLiteral(resourceName: "1-1") , #imageLiteral(resourceName: "1-3") , #imageLiteral(resourceName: "1-2") ]
+    let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") ]
     var typeForRecomendition = ""
     
 //    let viewsw = ServiceViewController()
 
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    
     
     //viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
+   
+        print("yeeeeees")
         setupUI()
         GetHomeDataFromServer()
         print("did apear 123567")
-//        viewsw.GetHomeDataFromServerServices()
+//        self.initializeVideoPlayerWithVideo()
+  
+
     }
     
+    
+    
+    func initializeVideoPlayerWithVideo() {
+
+        // get the path string for the video from assets
+        let videoString:String? = Bundle.main.path(forResource: "BackgroundAppVideo", ofType: "mov")
+        guard let unwrappedVideoPath = videoString else {return}
+
+        // convert the path string to a url
+        let videoUrl = URL(fileURLWithPath: unwrappedVideoPath)
+
+        let asset = AVAsset(url: videoUrl)
+        let item = AVPlayerItem(asset: asset)
+
+        // initialize the video player with the url
+        self.player = AVQueuePlayer()
+
+        // create a video layer for the player
+        let layer: AVPlayerLayer = AVPlayerLayer(player: player)
+
+        // make the layer the same size as the container view
+        layer.frame = videoViewContainer.bounds
+
+        // make the video fill the layer as much as possible while keeping its aspect size
+        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+
+        // add the layer to the container view
+        videoViewContainer.layer.addSublayer(layer)
+
+        videoLooper = AVPlayerLooper(player: self.player!, templateItem: item)
+        self.player?.play()
+
+    }
+
     
     
     //MARK:- featch Data from server
@@ -283,11 +332,11 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         
         switch indexPath.section {
         case 0 :
-            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell {
-                sectoreCell.SecrorsName.text = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
-                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
-                sectoreCell.sectorImgCell.image = images[indexPath.item]
-                sectoreCell.sectorImgCell.contentMode = .scaleAspectFit
+            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as? sliderCellShow {
+//                sectoreCell.SecrorsName.text = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+//                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
+                sectoreCell.sliderImage.image = images[indexPath.item]
+                sectoreCell.sliderImage.contentMode = .scaleAspectFit
                 Sectore(ss: sectoreCell)
                 //                sectoreCell.layer.cornerRadius = 20.0
                 

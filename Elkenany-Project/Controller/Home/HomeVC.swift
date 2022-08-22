@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class HomeVC: UIViewController {
     
@@ -20,6 +22,8 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupSegment()
+        
+
     }
     
     
