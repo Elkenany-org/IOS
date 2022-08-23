@@ -18,13 +18,7 @@ class profileCell: UICollectionViewCell {
     }
 
     
-    func configureCell(image:String) {
-        
-        let url = URL(string:image)
-        ProfileImage.kf.indicatorType = .activity
-        ProfileImage.kf.setImage(with: url)
-    }
-    
+   
     
     
 }
