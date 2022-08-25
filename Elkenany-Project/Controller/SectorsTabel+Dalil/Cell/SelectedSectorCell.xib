@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,36 +22,46 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="86"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-WF-Rta">
-                        <rect key="frame" x="5" y="10" width="327" height="66"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuQ-8d-eHr">
+                        <rect key="frame" x="5" y="5" width="327" height="76"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الداجني" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bt-53-IpC">
-                                <rect key="frame" x="136.5" y="17" width="54" height="32"/>
+                                <rect key="frame" x="136.5" y="22" width="54" height="32"/>
                                 <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="17"/>
                                 <color key="textColor" red="0.189121604" green="0.42794036870000002" blue="0.19012436269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-WF-Rta">
+                                <rect key="frame" x="0.0" y="70" width="327" height="6"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="6" id="UCE-Kk-kR2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8bt-53-IpC" firstAttribute="centerY" secondItem="Vqy-WF-Rta" secondAttribute="centerY" id="Ckc-Ta-45G"/>
-                            <constraint firstItem="8bt-53-IpC" firstAttribute="centerX" secondItem="Vqy-WF-Rta" secondAttribute="centerX" id="Kwh-O1-MDy"/>
+                            <constraint firstAttribute="trailing" secondItem="Vqy-WF-Rta" secondAttribute="trailing" id="0DB-Gk-JaL"/>
+                            <constraint firstItem="8bt-53-IpC" firstAttribute="centerX" secondItem="FuQ-8d-eHr" secondAttribute="centerX" id="1eN-8b-T2x"/>
+                            <constraint firstItem="Vqy-WF-Rta" firstAttribute="leading" secondItem="FuQ-8d-eHr" secondAttribute="leading" id="Mhn-eR-8Ql"/>
+                            <constraint firstItem="8bt-53-IpC" firstAttribute="centerY" secondItem="FuQ-8d-eHr" secondAttribute="centerY" id="stJ-zi-VK5"/>
+                            <constraint firstAttribute="bottom" secondItem="Vqy-WF-Rta" secondAttribute="bottom" id="uzp-7Z-xMc"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Vqy-WF-Rta" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="EUg-kX-nMh"/>
-                <constraint firstItem="Vqy-WF-Rta" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="MBZ-z5-uSu"/>
-                <constraint firstItem="Vqy-WF-Rta" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="q3r-xa-WaA"/>
-                <constraint firstItem="Vqy-WF-Rta" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="vsh-rB-TUe"/>
+                <constraint firstAttribute="bottom" secondItem="FuQ-8d-eHr" secondAttribute="bottom" constant="5" id="1NR-aL-sKj"/>
+                <constraint firstAttribute="trailing" secondItem="FuQ-8d-eHr" secondAttribute="trailing" constant="5" id="6qL-bN-IS4"/>
+                <constraint firstItem="FuQ-8d-eHr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="C0P-ik-u4n"/>
+                <constraint firstItem="FuQ-8d-eHr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Eh9-4G-ux5"/>
             </constraints>
             <size key="customSize" width="337" height="86"/>
             <connections>
@@ -60,4 +71,12 @@
             <point key="canvasLocation" x="-354.34782608695656" y="124.55357142857142"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

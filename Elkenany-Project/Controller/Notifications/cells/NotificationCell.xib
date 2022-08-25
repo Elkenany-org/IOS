@@ -5,12 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Cairo-Bold.ttf">
             <string>Cairo-Bold</string>
+        </array>
+        <array key="Cairo-SemiBold.ttf">
+            <string>Cairo-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -24,52 +26,58 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JJ-n3-T07">
-                        <rect key="frame" x="15" y="5" width="480" height="154"/>
+                        <rect key="frame" x="15" y="10" width="480" height="144"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="iYs-Tc-Z2P">
-                                <rect key="frame" x="10" y="10" width="70" height="70"/>
+                                <rect key="frame" x="410" y="10" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="Dle-xH-phg"/>
-                                    <constraint firstAttribute="height" constant="70" id="wlC-95-rjY"/>
+                                    <constraint firstAttribute="width" constant="60" id="SHZ-Ie-WxB"/>
+                                    <constraint firstAttribute="height" constant="60" id="sXV-Zw-GE8"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-oB-cfC">
-                                <rect key="frame" x="90" y="34" width="380" height="23.5"/>
-                                <string key="text">اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  </string>
-                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
-                                <color key="textColor" name="kenanyblueblack"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة   " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-6r-zau">
+                                <rect key="frame" x="10" y="10" width="393" height="13"/>
+                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
+                                <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة   " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0e-6r-zau">
-                                <rect key="frame" x="85" y="10" width="385" height="14"/>
-                                <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-oB-cfC">
+                                <rect key="frame" x="10" y="33" width="395" height="19"/>
+                                <string key="text">اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  </string>
+                                <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="8"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1t7-oB-cfC" firstAttribute="leading" secondItem="iYs-Tc-Z2P" secondAttribute="trailing" constant="10" id="0ft-au-349"/>
-                            <constraint firstAttribute="trailing" secondItem="g0e-6r-zau" secondAttribute="trailing" constant="10" id="5oz-i9-pgH"/>
-                            <constraint firstItem="iYs-Tc-Z2P" firstAttribute="top" secondItem="8JJ-n3-T07" secondAttribute="top" constant="10" id="88F-LY-coy"/>
-                            <constraint firstItem="g0e-6r-zau" firstAttribute="leading" secondItem="iYs-Tc-Z2P" secondAttribute="trailing" constant="5" id="ANQ-rH-xlX"/>
-                            <constraint firstItem="g0e-6r-zau" firstAttribute="top" secondItem="8JJ-n3-T07" secondAttribute="top" constant="10" id="DgE-IS-agA"/>
-                            <constraint firstItem="iYs-Tc-Z2P" firstAttribute="leading" secondItem="8JJ-n3-T07" secondAttribute="leading" constant="10" id="KGi-FR-xZi"/>
-                            <constraint firstAttribute="trailing" secondItem="1t7-oB-cfC" secondAttribute="trailing" constant="10" id="YUJ-YA-5BX"/>
-                            <constraint firstItem="1t7-oB-cfC" firstAttribute="top" secondItem="g0e-6r-zau" secondAttribute="bottom" constant="10" id="jXh-KN-X1T"/>
+                            <constraint firstItem="iYs-Tc-Z2P" firstAttribute="leading" secondItem="g0e-6r-zau" secondAttribute="trailing" constant="7" id="2Br-Zv-SOm"/>
+                            <constraint firstItem="1t7-oB-cfC" firstAttribute="top" secondItem="g0e-6r-zau" secondAttribute="bottom" constant="10" id="4xO-rN-qgt"/>
+                            <constraint firstItem="g0e-6r-zau" firstAttribute="top" secondItem="iYs-Tc-Z2P" secondAttribute="top" id="5nm-at-ym6"/>
+                            <constraint firstAttribute="trailing" secondItem="iYs-Tc-Z2P" secondAttribute="trailing" constant="10" id="LKE-Hd-0jT"/>
+                            <constraint firstItem="1t7-oB-cfC" firstAttribute="leading" secondItem="8JJ-n3-T07" secondAttribute="leading" constant="10" id="MXE-q8-pPI"/>
+                            <constraint firstItem="iYs-Tc-Z2P" firstAttribute="top" secondItem="8JJ-n3-T07" secondAttribute="top" constant="10" id="Mrv-l3-L22"/>
+                            <constraint firstItem="g0e-6r-zau" firstAttribute="leading" secondItem="8JJ-n3-T07" secondAttribute="leading" constant="10" id="NaT-Dk-Bj7"/>
+                            <constraint firstItem="iYs-Tc-Z2P" firstAttribute="leading" secondItem="1t7-oB-cfC" secondAttribute="trailing" constant="5" id="iKc-Sd-4PC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" name="kenanyGreen"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                <point key="value" x="0.0" y="0.5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -77,9 +85,9 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="8JJ-n3-T07" secondAttribute="bottom" constant="5" id="XbW-nd-ZuJ"/>
+                <constraint firstAttribute="bottom" secondItem="8JJ-n3-T07" secondAttribute="bottom" constant="10" id="XbW-nd-ZuJ"/>
                 <constraint firstAttribute="trailing" secondItem="8JJ-n3-T07" secondAttribute="trailing" constant="15" id="chd-21-bU8"/>
-                <constraint firstItem="8JJ-n3-T07" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="nnm-Hy-QIJ"/>
+                <constraint firstItem="8JJ-n3-T07" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="nnm-Hy-QIJ"/>
                 <constraint firstItem="8JJ-n3-T07" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="oN6-JH-Knf"/>
             </constraints>
             <size key="customSize" width="510" height="164"/>
@@ -96,11 +104,5 @@
         <namedColor name="kenanyGreen">
             <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="kenanyblueblack">
-            <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

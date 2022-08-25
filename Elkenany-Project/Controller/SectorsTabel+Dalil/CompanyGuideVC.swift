@@ -19,6 +19,11 @@ class CompanyGuideVC: UIViewController, SortTitle {
     @IBOutlet weak var guideCompanyCV: UICollectionView!
     @IBOutlet weak var selectedSectorCV: UICollectionView!
     @IBOutlet weak var searchBarGuidView: UISearchBar!
+    
+    @IBOutlet weak var logosView: UIView!
+    @IBOutlet weak var logosCollection: UICollectionView!
+    @IBOutlet weak var bannersView: UIView!
+    @IBOutlet weak var bannersCollection: UICollectionView!
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var searchView: UIView!
@@ -31,6 +36,8 @@ class CompanyGuideVC: UIViewController, SortTitle {
     var companyGuideModel:GuideCompaniesDataModel?
     private var subModel: [SubSection] = []
     private var  sectorSubModel:[Sector] = []
+    private var  bannersSubModel:[bannersMain] = []
+
     
     
     
@@ -52,8 +59,16 @@ class CompanyGuideVC: UIViewController, SortTitle {
         selectedSectorCV.delegate = self
         guideCompanyCV.dataSource = self
         guideCompanyCV.delegate = self
+        bannersCollection.dataSource = self
+        bannersCollection.delegate = self
+        logosCollection.dataSource = self
+        logosCollection.delegate = self
         self.selectedSectorCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         self.guideCompanyCV.register(UINib(nibName: "GuideCompanyCell", bundle: nil), forCellWithReuseIdentifier: "GuideCompanyCell")
+        self.bannersCollection.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
+        self.logosCollection.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
+
+
     }
     
     
@@ -100,8 +115,13 @@ class CompanyGuideVC: UIViewController, SortTitle {
                     hud.dismiss()
                     let successData = SuccessfulRequest?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
+                    
+                    let successDataBannerss = SuccessfulRequest?.data?.banners ?? []
+                    self.bannersSubModel.append(contentsOf: successDataBannerss)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
+                        self.bannersCollection.reloadData()
+//                        self.logosCollection.reloadData()
                     }
                 }
             }
@@ -304,7 +324,12 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         //Configuer Cells count in Views----------------
         if collectionView == selectedSectorCV {
             return sectorSubModel.count
-        } else {
+        } else if collectionView == guideCompanyCV {
+            return subModel.count
+        } else if collectionView == bannersCollection {
+            return bannersSubModel.count
+
+        }else{
             return subModel.count
         }
     }
@@ -330,13 +355,29 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 return SectorHeaderCell
             }
             
-        } else{
+        } else if collectionView == guideCompanyCV  {
             
             //Guide Collection
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"GuideCompanyCell", for:indexPath ) as? GuideCompanyCell{
                 SetupCell(cell: cell)
                 cell.companyTitle.text = subModel[indexPath.item].name ?? ""
-                cell.companiesCount.text =  String (subModel[indexPath.item].companiesCount ?? 0)
+                if let imageC = subModel[indexPath.item].image{
+                    cell.configureCell(image: imageC )
+                }
+                return cell
+            }
+        } else if collectionView == bannersCollection {
+            //banners
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SliderCell", for:indexPath ) as? SliderCell{
+                if let imageC = bannersSubModel[indexPath.item].image{
+                    cell.configureCell(image: imageC )
+                }
+                return cell
+                }
+            
+        } else{
+    //logos
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SliderCell", for:indexPath ) as? SliderCell{
                 if let imageC = subModel[indexPath.item].image{
                     cell.configureCell(image: imageC )
                 }
@@ -346,19 +387,25 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return UICollectionViewCell()
     }
     
-    
+
     
     //Configuer Cells heights in Views ----------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == selectedSectorCV {
             
-            return CGSize(width: 90, height: 60)
+            return CGSize(width: 75, height: 60)
             
+        }else if collectionView == guideCompanyCV{
+            
+            let size = (collectionView.frame.size.width )
+            return CGSize(width: size, height: 100)
+            
+        } else if collectionView == bannersCollection {
+            return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height )
+
         }else{
-            
-            let size = (collectionView.frame.size.width - 30) / 2
-            return CGSize(width: size, height: 240)
+            return CGSize(width: 75, height: 50)
             
         }
     }
