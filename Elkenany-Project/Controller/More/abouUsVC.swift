@@ -8,14 +8,15 @@
 import UIKit
 
 class abouUsVC: UIViewController {
-    
+    //outlets
     @IBOutlet weak var aboutUsCollection: UICollectionView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "اتصل بنا"
         aboutUsCollection.delegate = self
         aboutUsCollection.dataSource = self
-        // Do any additional setup after loading the view.
         self.aboutUsCollection.register(UINib(nibName: "aboutUsCell", bundle: nil), forCellWithReuseIdentifier: "aboutUsCell")
         self.aboutUsCollection.register(UINib(nibName: "aboooooout", bundle: nil), forCellWithReuseIdentifier: "aboooooout")
         aboutUsCollection.register(UINib(nibName: "headerLine", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "headerLine")
@@ -125,22 +126,7 @@ extension abouUsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
     
 
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        switch indexPath.item {
-//        case 0:
-//            let headerrrr = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "headerLine", for: indexPath) as! headerLine
-//            return headerrrr
-//        case 1:
-//            let headerrrr = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "headerLine", for: indexPath) as! headerLine
-//            return headerrrr
-//        default:
-//            print("")
-//        }
-//        return UICollectionReusableView()
-//    }
-//
-    
+
     
     
     

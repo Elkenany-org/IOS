@@ -14,14 +14,23 @@ class MoreVC: UIViewController {
     @IBOutlet weak var looogOutIn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var MoreCollectionView: UICollectionView!
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    
+    
     var codata:[MoreDataa] = MoreDataa.moredata
     var logoutmm:LogoutModel?
+    var profileDataa:ProfileData?
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        FatchDataProfile()
         title = "القائمة"
         
         /// reverse the functions bc this a check only ----
@@ -84,6 +93,49 @@ class MoreVC: UIViewController {
         }
     }
     
+    //featch data of profile
+    
+    func FatchDataProfile(){
+        // Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            let profileURL = "https://elkenany.com/api/profile"
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:ProfileData?, filier:ProfileData?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.profileDataa = success
+                    DispatchQueue.main.async {
+                        print("hellllo sucess")
+                        self.userName.text = success.data?.name ?? " لا يوجد اسم مستخدم"
+                        self.userEmail.text = success.data?.email ?? "لا يوجد اسم مستخدم"
+
+                        let url = URL(string:success.data?.image ?? "")
+                        self.userImage.kf.indicatorType = .activity
+                        self.userImage.kf.setImage(with: url)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     @IBAction func logOutBTN(_ sender: Any) {
@@ -138,7 +190,7 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:collectionView.frame.width , height: 40)
+        return CGSize(width:collectionView.frame.width , height: 37)
         
     }
     

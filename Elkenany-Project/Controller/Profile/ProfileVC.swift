@@ -13,10 +13,8 @@ class ProfileVC: UIViewController {
     
     @IBOutlet weak var validationView: UIView!
     @IBOutlet weak var profileView: UIView!
-
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    
     @IBOutlet weak var emailUser: UILabel!
     var profileDataa:ProfileData?
     
@@ -63,7 +61,7 @@ class ProfileVC: UIViewController {
     
     //edite profile
     @IBAction func pressToEditeProfile(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+        if let vc = storyboard?.instantiateViewController(identifier: "PrivicyProfile") as? PrivicyProfile {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
@@ -73,7 +71,6 @@ class ProfileVC: UIViewController {
     
     
     //featch data of profile
-    
     func FatchDataProfile(){
         // Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -94,6 +91,12 @@ class ProfileVC: UIViewController {
                     self.profileDataa = success
                     DispatchQueue.main.async {
                         print("hellllo sucess")
+                        self.userNameLabel.text = success.data?.name ?? " لا يوجد اسم مستخدم"
+                        self.emailUser.text = success.data?.email ?? "لا يوجد اسم مستخدم"
+
+                        let url = URL(string:success.data?.image ?? "")
+                        self.userImage.kf.indicatorType = .activity
+                        self.userImage.kf.setImage(with: url)
                     }
                 }
             }
@@ -102,12 +105,7 @@ class ProfileVC: UIViewController {
     
     
     
-//        func configureCell(image:String) {
-//
-//            let url = URL(string:image)
-//            ProfileImage.kf.indicatorType = .activity
-//            ProfileImage.kf.setImage(with: url)
-//        }
+
     
     
     
