@@ -16,29 +16,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="216" height="181"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
-                        <rect key="frame" x="5" y="5" width="206" height="171"/>
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
+                        <rect key="frame" x="5" y="0.0" width="206" height="181"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="pcm-ox-ElF">
-                                <rect key="frame" x="5" y="5" width="196" height="161"/>
+                                <rect key="frame" x="5" y="1" width="196" height="178"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pcm-ox-ElF" firstAttribute="leading" secondItem="8D6-Zq-rCM" secondAttribute="leading" constant="5" id="7ZK-J2-a2O"/>
-                            <constraint firstAttribute="bottom" secondItem="pcm-ox-ElF" secondAttribute="bottom" constant="5" id="GPX-H2-wHF"/>
-                            <constraint firstItem="pcm-ox-ElF" firstAttribute="top" secondItem="8D6-Zq-rCM" secondAttribute="top" constant="5" id="IHY-pb-EQ1"/>
+                            <constraint firstAttribute="bottom" secondItem="pcm-ox-ElF" secondAttribute="bottom" constant="2" id="GPX-H2-wHF"/>
+                            <constraint firstItem="pcm-ox-ElF" firstAttribute="top" secondItem="8D6-Zq-rCM" secondAttribute="top" constant="1" id="IHY-pb-EQ1"/>
                             <constraint firstAttribute="trailing" secondItem="pcm-ox-ElF" secondAttribute="trailing" constant="5" id="dNg-DY-2pC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                 <color key="value" red="1" green="0.55947550779999999" blue="0.18211060309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="10"/>
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                <point key="value" x="0.0" y="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -47,8 +61,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8D6-Zq-rCM" secondAttribute="trailing" constant="5" id="X5e-Xi-POk"/>
-                <constraint firstItem="8D6-Zq-rCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Zdz-dN-Q5z"/>
-                <constraint firstAttribute="bottom" secondItem="8D6-Zq-rCM" secondAttribute="bottom" constant="5" id="xnZ-lV-aZx"/>
+                <constraint firstItem="8D6-Zq-rCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zdz-dN-Q5z"/>
+                <constraint firstAttribute="bottom" secondItem="8D6-Zq-rCM" secondAttribute="bottom" id="xnZ-lV-aZx"/>
                 <constraint firstItem="8D6-Zq-rCM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="yUI-OK-oT4"/>
             </constraints>
             <size key="customSize" width="216" height="181"/>

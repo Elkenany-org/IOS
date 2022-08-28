@@ -26,6 +26,8 @@
 		3208B8692785C5BE000E6C84 /* StatisticesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3208B8672785C5BE000E6C84 /* StatisticesCell.xib */; };
 		3208B86F2785C600000E6C84 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208B86D2785C600000E6C84 /* CompanyCell.swift */; };
 		3208B8702785C600000E6C84 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3208B86E2785C600000E6C84 /* CompanyCell.xib */; };
+		32136C9A28BB77B800A22154 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */; };
+		32136C9B28BB77B800A22154 /* CompaniesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */; };
 		322519B5276F7842001096DD /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322519B3276F7842001096DD /* SliderCell.swift */; };
 		322519B6276F7842001096DD /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322519B4276F7842001096DD /* SliderCell.xib */; };
 		322858D127C78D6D0032D80E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322858CF27C78D6D0032D80E /* SearchResultCell.swift */; };
@@ -325,6 +327,8 @@
 		3208B8672785C5BE000E6C84 /* StatisticesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticesCell.xib; sourceTree = "<group>"; };
 		3208B86D2785C600000E6C84 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		3208B86E2785C600000E6C84 /* CompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
+		32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
+		32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompaniesCollectionViewCell.xib; sourceTree = "<group>"; };
 		322519B3276F7842001096DD /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		322519B4276F7842001096DD /* SliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		322519D027700C75001096DD /* main */ = {isa = PBXFileReference; lastKnownFileType = file; path = main; sourceTree = "<group>"; };
@@ -1114,6 +1118,8 @@
 				327281AE27A6814400C7B5E3 /* TestAnyCell.xib */,
 				3235B06527F7CFAF00657A7B /* logosTest.swift */,
 				3235B06627F7CFAF00657A7B /* logosTest.xib */,
+				32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */,
+				32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1605,6 +1611,7 @@
 				326E1E7D27677435008725DD /* logosCell.xib in Resources */,
 				3235B06827F7CFAF00657A7B /* logosTest.xib in Resources */,
 				3268BCBB27EC83C50083E678 /* comparCell.xib in Resources */,
+				32136C9B28BB77B800A22154 /* CompaniesCollectionViewCell.xib in Resources */,
 				32D05FDA28091D5D006C21F9 /* storeFeaturesCell.xib in Resources */,
 				32366C05275BE98B00DC2F98 /* HeaderCell.xib in Resources */,
 				329398062771F59C00607C5B /* Cairo-Black.ttf in Resources */,
@@ -1870,6 +1877,7 @@
 				32034F6627661E3200D6F863 /* aboutCompanyCell.swift in Sources */,
 				3235B06727F7CFAF00657A7B /* logosTest.swift in Sources */,
 				325528032779B85300BAAE65 /* NotificationCell.swift in Sources */,
+				32136C9A28BB77B800A22154 /* CompaniesCollectionViewCell.swift in Sources */,
 				3296E4982765EA3C00024421 /* CompainesModel.swift in Sources */,
 				323E861C28366AE700C65873 /* clockVC.swift in Sources */,
 				3276D2E0275CD8A800D95236 /* Constant.swift in Sources */,

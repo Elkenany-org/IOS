@@ -33,15 +33,15 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="دليل الشركات" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39l-hx-7Rb">
-                                <rect key="frame" x="10" y="61.5" width="287" height="21"/>
-                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
+                                <rect key="frame" x="10" y="57" width="284" height="30"/>
+                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="N3R-Ag-SCE" firstAttribute="leading" secondItem="39l-hx-7Rb" secondAttribute="trailing" constant="10" id="4eP-Kl-9gw"/>
+                            <constraint firstItem="N3R-Ag-SCE" firstAttribute="leading" secondItem="39l-hx-7Rb" secondAttribute="trailing" constant="13" id="4eP-Kl-9gw"/>
                             <constraint firstItem="39l-hx-7Rb" firstAttribute="leading" secondItem="ofa-qN-bnY" secondAttribute="leading" constant="10" id="IK3-WE-yPl"/>
                             <constraint firstItem="39l-hx-7Rb" firstAttribute="centerY" secondItem="ofa-qN-bnY" secondAttribute="centerY" id="JDu-fm-MBq"/>
                             <constraint firstAttribute="trailing" secondItem="N3R-Ag-SCE" secondAttribute="trailing" id="u8Q-bV-3s2"/>

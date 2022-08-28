@@ -9,7 +9,8 @@ import UIKit
 import  Alamofire
 import JGProgressHUD
 
-class CompaniesVC: UIViewController {
+class CompaniesVC: UIViewController{
+  
     
     //MARK:- Outlets and Propreties
     //outlets
@@ -19,8 +20,11 @@ class CompaniesVC: UIViewController {
     @IBOutlet weak var logoImageOne: UIImageView!
     @IBOutlet weak var bannarsCV: UICollectionView!
     @IBOutlet weak var stackTwo: UIStackView!
-    @IBOutlet weak var comapniesTView: UITableView!
     @IBOutlet weak var logosCV: UICollectionView!
+    @IBOutlet weak var CompaniesCV: UICollectionView!
+    @IBOutlet weak var logosView: UIView!
+    
+    @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var SearchView: UIView!
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
@@ -64,47 +68,18 @@ class CompaniesVC: UIViewController {
     
     //MARK:- SetupUI + collectionView Delegete + tableView Delegete
     func setupUI() {
-        comapniesTView.dataSource = self
-        comapniesTView.delegate = self
+      
         logosCV.delegate = self
         logosCV.dataSource = self
         bannarsCV.delegate = self
         bannarsCV.dataSource = self
+        CompaniesCV.delegate = self
+        CompaniesCV.dataSource = self
+        CompaniesCV.register(UINib(nibName: "CompaniesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CompaniesCollectionViewCell")
         logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
-//        logosCV.register(UINib(nibName: "logosTest", bundle: nil), forCellWithReuseIdentifier: "logosTest")
-
         self.bannarsCV.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
-        comapniesTView.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
-        comapniesTView.prefetchDataSource = self
-        //Dynamice Hight cell
-        comapniesTView.estimatedRowHeight = 150
-        comapniesTView.rowHeight = UITableView.automaticDimension
     }
     
-    
-    
-    //show and hide banners logos
-//    func banersLogosConfig(){
-//        if hideenKey == "kkk"{
-////            containerStack.removeArrangedSubview(stackOne)
-////            stackOne.clearsContextBeforeDrawing = true
-////            containerStack.clearsContextBeforeDrawing = true
-//
-////            entryView.isHidden = false
-////            stackOne.priority = .defaultLow
-////                     visibleConstraint.priority = .defaultHigh
-////            stackOne.contentHuggingPriority(for: .vertical)
-////            stackOne.clearsContextBeforeDrawing = true
-////            containerStack.removeArrangedSubview(stackOne)
-////            stackOne.contec
-//
-////            containerStack.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: 0)
-//
-//        }else{
-//            containerStack.isHidden = false
-//            stackOne.isHidden = true
-//        }
-//    }
     
     
     //MARK:- Timer of slider and page controller ?? 0 -1
@@ -148,7 +123,7 @@ class CompaniesVC: UIViewController {
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        self.comapniesTView.reloadData()
+                        self.CompaniesCV.reloadData()
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -182,7 +157,7 @@ class CompaniesVC: UIViewController {
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        self.comapniesTView.reloadData()
+                        self.CompaniesCV.reloadData()
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -191,42 +166,7 @@ class CompaniesVC: UIViewController {
         }
     }
     
-    
-    //MARK:- Main Data of Companies [from recominditon cell in home ]
-//    func FatchDatafromHomeUsingRecomindition(){
-//        DispatchQueue.global(qos: .background).async {
-//            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-//            let param = ["sub_id": id_rec , "page": self.currentpaga]
-//            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-//                //internet error
-//                if let error = error{
-//                    print("============ error \(error)")
-//                    
-//                }
-//                //Data Wrong From Server
-//                
-//                else if let loginError = filier {
-//                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-//                }
-//                //success
-//                else {
-//                    if success?.data?.nextPageURL == nil {
-//                    }
-//                    
-//                    let successData = success?.data?.data ?? []
-//                    print("current", self.currentpaga)
-//                    self.mainDataModel.append(contentsOf: successData)
-//                    DispatchQueue.main.async {
-//                        self.comapniesTView.reloadData()
-//                    }
-//                    self.currentpaga += 1
-//                    self.isFeatchingData = false
-//                }
-//            }
-//        }
-//    }
-//    
+
     
     //MARK:- Main Data of Companies [from the dalil collection cell in home ]
     func FatchDatafromHomeUsingDalil(){
@@ -251,7 +191,7 @@ class CompaniesVC: UIViewController {
                     print("current", self.currentpaga)
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        self.comapniesTView.reloadData()
+                        self.CompaniesCV.reloadData()
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -283,7 +223,7 @@ class CompaniesVC: UIViewController {
                     let successData = success?.data?.data ?? []
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
-                        self.comapniesTView.reloadData()
+                        self.CompaniesCV.reloadData()
                     }
                 }
             }
@@ -324,11 +264,7 @@ class CompaniesVC: UIViewController {
     }
     
     
-//    @IBAction func SearchBTN(_ sender: Any) {
-//        SearchService()
-//        self.comapniesTView.reloadData()
-//    }
-//
+
     
     @IBAction func SortBTN(_ sender: Any) {
         if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
@@ -350,36 +286,36 @@ class CompaniesVC: UIViewController {
 
 
 //MARK:- TableView for companies  [Methods + Delegets]
-extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainDataModel.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "companiesCell") as? companiesCell{
-        Companiescell.selectionStyle = .none
-        Companiescell.configureCell(data: mainDataModel[indexPath.row])
-            return Companiescell
-        }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 222
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
-            let idd = mainDataModel[indexPath.row].id
-            UserDefaults.standard.set(idd, forKey: "IDDD")
-            vc.CompanyIdFromCompanies = idd ?? 0
-            navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-}
-
+//extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return mainDataModel.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "companiesCell") as? companiesCell{
+//        Companiescell.selectionStyle = .none
+//        Companiescell.configureCell(data: mainDataModel[indexPath.row])
+//            return Companiescell
+//        }
+//        return UITableViewCell()
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 222
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
+//            let idd = mainDataModel[indexPath.row].id
+//            UserDefaults.standard.set(idd, forKey: "IDDD")
+//            vc.CompanyIdFromCompanies = idd ?? 0
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
+//}
+//
 
 
 
@@ -393,7 +329,7 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == logosCV{ return mainDatalLogos.count}
         else if collectionView == bannarsCV{ return mainDataModelBanners.count }
-        else{ return 1 }
+        else{ return mainDataModel.count }
     }
     
     
@@ -416,21 +352,32 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         else if collectionView == bannarsCV{
             if let BannersCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell {
                 let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
-                BannersCell.bannerImage.contentMode = .scaleAspectFit
+                BannersCell.bannerImage.contentMode = .scaleAspectFill
                 BannersCell.configureCell(image: imageeee)
                 return BannersCell
             }
-    }
+        } else{
+            if let CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCollectionViewCell", for: indexPath) as? CompaniesCollectionViewCell {
+                CompanyCell.configureCell(data: mainDataModel[indexPath.row])
+                
+//                let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
+//                CompanyCell.bannerImage.contentMode = .scaleAspectFit
+//                CompanyCell.configureCell(image: imageeee)
+                return CompanyCell
+            
+        }
+        }
         return UICollectionViewCell()
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-  
-    if collectionView == logosCV{ return CGSize(width:60, height: 60)}
+        let size = (collectionView.frame.size.width - 20 ) / 2
+    if collectionView == logosCV{ return CGSize(width:70, height: 60)}
     else if collectionView == bannarsCV { return CGSize(width: collectionView.frame.width, height: 120)}
-    else{ return CGSize(width: 50, height: 100) }}
+    else{ return CGSize(width: size, height: 210) }}
         
         
         
@@ -440,8 +387,8 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
 
 
 //pagination extension
-extension CompaniesVC:UITableViewDataSourcePrefetching {
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+extension CompaniesVC:UICollectionViewDataSourcePrefetching{
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.row >= mainDataModel.count - 1 && !isFeatchingData {
                 FatchDatafromHome()
@@ -470,7 +417,7 @@ extension CompaniesVC : UISearchBarDelegate {
             SearchService()
         }
         //reload
-        comapniesTView.reloadData()
+      CompaniesCV.reloadData()
     }
     
     
@@ -532,7 +479,7 @@ extension CompaniesVC:FilterSubData{
                         
                         
                         
-                        self.comapniesTView.reloadData()
+                        self.CompaniesCV.reloadData()
                     }
                 }
             }
@@ -540,3 +487,6 @@ extension CompaniesVC:FilterSubData{
     }
     
 }
+
+ 
+ 
