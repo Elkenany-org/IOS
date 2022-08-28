@@ -10,7 +10,7 @@ import  Alamofire
 import JGProgressHUD
 
 class CompaniesVC: UIViewController{
-  
+    
     
     //MARK:- Outlets and Propreties
     //outlets
@@ -62,13 +62,13 @@ class CompaniesVC: UIViewController{
         setTimer()
         setupSearchBar()
         LogosandBanners()
-//        banersLogosConfig()
+        //        banersLogosConfig()
     }
     
     
     //MARK:- SetupUI + collectionView Delegete + tableView Delegete
     func setupUI() {
-      
+        
         logosCV.delegate = self
         logosCV.dataSource = self
         bannarsCV.delegate = self
@@ -166,7 +166,7 @@ class CompaniesVC: UIViewController{
         }
     }
     
-
+    
     
     //MARK:- Main Data of Companies [from the dalil collection cell in home ]
     func FatchDatafromHomeUsingDalil(){
@@ -232,7 +232,7 @@ class CompaniesVC: UIViewController{
     
     
     //MARK:- logos and banners service
-
+    
     func LogosandBanners(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -264,7 +264,7 @@ class CompaniesVC: UIViewController{
     }
     
     
-
+    
     
     @IBAction func SortBTN(_ sender: Any) {
         if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterMain") as? subFilterMain {
@@ -325,7 +325,7 @@ class CompaniesVC: UIViewController{
 //MARK:- TableView for companies  [Methods + Delegets]
 
 extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == logosCV{ return mainDatalLogos.count}
         else if collectionView == bannarsCV{ return mainDataModelBanners.count }
@@ -338,15 +338,15 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         
         if collectionView == logosCV{
             if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
-            let imageeee = mainDatalLogos[indexPath.item].image ?? ""
-            Logoscell.configureImage(image: imageeee)
-            Logoscell.logooImage.contentMode = .scaleAspectFill
-            return Logoscell
+                let imageeee = mainDatalLogos[indexPath.item].image ?? ""
+                Logoscell.configureImage(image: imageeee)
+                Logoscell.logooImage.contentMode = .scaleAspectFill
+                return Logoscell
             }
             
             
             
-         }
+        }
         
         
         else if collectionView == bannarsCV{
@@ -360,12 +360,12 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
             if let CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCollectionViewCell", for: indexPath) as? CompaniesCollectionViewCell {
                 CompanyCell.configureCell(data: mainDataModel[indexPath.row])
                 
-//                let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
-//                CompanyCell.bannerImage.contentMode = .scaleAspectFit
-//                CompanyCell.configureCell(image: imageeee)
+                //                let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
+                //                CompanyCell.bannerImage.contentMode = .scaleAspectFit
+                //                CompanyCell.configureCell(image: imageeee)
                 return CompanyCell
-            
-        }
+                
+            }
         }
         return UICollectionViewCell()
     }
@@ -373,120 +373,141 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (collectionView.frame.size.width - 20 ) / 2
-    if collectionView == logosCV{ return CGSize(width:70, height: 60)}
-    else if collectionView == bannarsCV { return CGSize(width: collectionView.frame.width, height: 120)}
-    else{ return CGSize(width: size, height: 210) }}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == logosCV{
+            print("loooogos")
+        }
         
-        
-        
-    
-    
-}
-
-
-//pagination extension
-extension CompaniesVC:UICollectionViewDataSourcePrefetching{
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for index in indexPaths {
-            if index.row >= mainDataModel.count - 1 && !isFeatchingData {
-                FatchDatafromHome()
-                break
+        else if collectionView == bannarsCV{
+            print("bannnner")
+        }
+        else{
+            
+            if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
+                let idd = mainDataModel[indexPath.row].id
+                UserDefaults.standard.set(idd, forKey: "IDDD")
+                vc.CompanyIdFromCompanies = idd ?? 0
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
-}
-
-
-
-
-//MARK:- searchBAr delegets
-extension CompaniesVC : UISearchBarDelegate {
-    func setupSearchBar() {
-        searchBarView.delegate = self
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty == false {
-            //your model
-            let data = companiesModel?.data?.data ?? []
-            //your array
-            mainDataModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
-            mainDataModel.removeAll()
-            //Api func
-            SearchService()
-        }
-        //reload
-      CompaniesCV.reloadData()
+        
+        
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let size = (collectionView.frame.size.width - 20 ) / 2
+            if collectionView == logosCV{ return CGSize(width:70, height: 60)}
+            else if collectionView == bannarsCV { return CGSize(width: collectionView.frame.width, height: 120)}
+            else{ return CGSize(width: size, height: 210) }}
+        
+        
+        
+        
+        
     }
     
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
-            cBtn.setTitle("الغاء", for: .normal)
-            searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-            searchBar.text = ""
-        }}
-    
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        SearchView.isHidden = true
-        searchBar.text = ""
-        view1.isHidden = false
-        view2.isHidden = false
-        mainDataModel.removeAll()
-        FatchDatafromHome()
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        hud.dismiss()
-    }}
-
-
-extension CompaniesVC:FilterSubData{
-    func runFilter() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
-        let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
-        let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
-        let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
-        let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
-        
-        
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers = ["Authorization": "\(api_token ?? "")" ]
-            let param = ["section_id": "\(sec_id ?? "3")" , "sub_id" :  "\(sub_id ?? "63")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
-            
-            let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id=&city_id=&sort="
-            APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    self.mainDataModel.removeAll()
-                    let successData = success?.data?.data ?? []
-                    self.mainDataModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        
-                        if success?.data?.data?.isEmpty == true {
-                            print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
-                        }
-                        
-                        
-                        
-                        self.CompaniesCV.reloadData()
-                    }
+    //pagination extension
+    extension CompaniesVC:UICollectionViewDataSourcePrefetching{
+        func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+            for index in indexPaths {
+                if index.row >= mainDataModel.count - 1 && !isFeatchingData {
+                    FatchDatafromHome()
+                    break
                 }
             }
         }
     }
     
-}
+    
+    
+    
+    //MARK:- searchBAr delegets
+    extension CompaniesVC : UISearchBarDelegate {
+        func setupSearchBar() {
+            searchBarView.delegate = self
+        }
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.isEmpty == false {
+                //your model
+                let data = companiesModel?.data?.data ?? []
+                //your array
+                mainDataModel = data.filter({ ($0.name?.contains(searchText) ?? (0 != 0)) })
+                mainDataModel.removeAll()
+                //Api func
+                SearchService()
+            }
+            //reload
+            CompaniesCV.reloadData()
+        }
+        
+        
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
+                cBtn.setTitle("الغاء", for: .normal)
+                searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+                searchBar.text = ""
+            }}
+        
+        
+        func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            SearchView.isHidden = true
+            searchBar.text = ""
+            view1.isHidden = false
+            view2.isHidden = false
+            mainDataModel.removeAll()
+            FatchDatafromHome()
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "جاري التحميل"
+            hud.show(in: self.view)
+            hud.dismiss()
+        }}
+    
+    
+    extension CompaniesVC:FilterSubData{
+        func runFilter() {
+            //Handeling Loading view progress
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "جاري التحميل"
+            hud.show(in: self.view)
+            let sec_id = UserDefaults.standard.string(forKey: "FILTER_SEC_ID")
+            let sub_id = UserDefaults.standard.string(forKey: "FILTER_SUB_ID")
+            let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
+            let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
+            let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
+            
+            
+            DispatchQueue.global(qos: .background).async {
+                let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+                let headers = ["Authorization": "\(api_token ?? "")" ]
+                let param = ["section_id": "\(sec_id ?? "3")" , "sub_id" :  "\(sub_id ?? "63")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
+                
+                let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id=&city_id=&sort="
+                APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
+                    if let error = error{
+                        hud.dismiss()
+                        print("============ error \(error)")
+                    }else {
+                        hud.dismiss()
+                        self.mainDataModel.removeAll()
+                        let successData = success?.data?.data ?? []
+                        self.mainDataModel.append(contentsOf: successData)
+                        DispatchQueue.main.async {
+                            
+                            if success?.data?.data?.isEmpty == true {
+                                print("hhhhhhhhhhhhhhhhhhhhhhhhhh")
+                            }
+                            
+                            
+                            
+                            self.CompaniesCV.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
 
- 
- 
+
+
