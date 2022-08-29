@@ -240,9 +240,9 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             vc.FatchGuidMainDataaaaaaaaa()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            let vc = storyboard?.instantiateViewController(identifier: "StoreVC") as! StoreVC
-            vc.FatchDataOfStoreFromMore()
-            vc.FeatchDataOfectores()
+            let vc = storyboard?.instantiateViewController(identifier: "MainStoreVC") as! MainStoreVC
+//            vc.FatchDataOfStoreFromMore()
+//            vc.FeatchDataOfectores()
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC

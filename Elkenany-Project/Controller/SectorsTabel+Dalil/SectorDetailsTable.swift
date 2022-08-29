@@ -67,8 +67,8 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(GuideVC, animated: true)
             
         case 2:
-            let GuideVC = (storyboard?.instantiateViewController(identifier: "StoreVC"))! as StoreVC
-            GuideVC.typeFromhome = sectorFtomHome
+            let GuideVC = (storyboard?.instantiateViewController(identifier: "MainStoreVC"))! as MainStoreVC
+            GuideVC.typeFromHomeForStore = sectorFtomHome
             navigationController?.pushViewController(GuideVC, animated: true)
             
         case 3:

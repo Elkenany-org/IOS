@@ -164,7 +164,6 @@
 		3270A46627577348008660F5 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3270A46527577348008660F5 /* ForgetPasswordVC.swift */; };
 		327281AF27A6814400C7B5E3 /* TestAnyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327281AD27A6814400C7B5E3 /* TestAnyCell.swift */; };
 		327281B027A6814400C7B5E3 /* TestAnyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327281AE27A6814400C7B5E3 /* TestAnyCell.xib */; };
-		3272F44C276E5F5600973031 /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F44B276E5F5600973031 /* StoreVC.swift */; };
 		3272F455276E66CC00973031 /* AdsStoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F454276E66CC00973031 /* AdsStoreDataModel.swift */; };
 		3272F45A276E6FC300973031 /* MainStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F459276E6FC300973031 /* MainStoreVC.swift */; };
 		3272F45F276E6FF800973031 /* AdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F45E276E6FF800973031 /* AdsVC.swift */; };
@@ -480,7 +479,6 @@
 		3270A46527577348008660F5 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
 		327281AD27A6814400C7B5E3 /* TestAnyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAnyCell.swift; sourceTree = "<group>"; };
 		327281AE27A6814400C7B5E3 /* TestAnyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAnyCell.xib; sourceTree = "<group>"; };
-		3272F44B276E5F5600973031 /* StoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		3272F454276E66CC00973031 /* AdsStoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsStoreDataModel.swift; sourceTree = "<group>"; };
 		3272F459276E6FC300973031 /* MainStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoreVC.swift; sourceTree = "<group>"; };
 		3272F45E276E6FF800973031 /* AdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsVC.swift; sourceTree = "<group>"; };
@@ -1186,7 +1184,6 @@
 			isa = PBXGroup;
 			children = (
 				3272F468276E998B00973031 /* Cells */,
-				3272F44B276E5F5600973031 /* StoreVC.swift */,
 				3272F459276E6FC300973031 /* MainStoreVC.swift */,
 				3272F45E276E6FF800973031 /* AdsVC.swift */,
 				3272F463276E701A00973031 /* MassegeVC.swift */,
@@ -1844,7 +1841,6 @@
 				323ED99E275E522600D4620C /* RecomenditionCell.swift in Sources */,
 				32A84DBB27E9627A00C1D3EF /* detailTwo.swift in Sources */,
 				323B21F8274A462B002CEB89 /* ViewController.swift in Sources */,
-				3272F44C276E5F5600973031 /* StoreVC.swift in Sources */,
 				323B2249274A482D002CEB89 /* onBoardingVC.swift in Sources */,
 				323B21F4274A462B002CEB89 /* AppDelegate.swift in Sources */,
 				32F681E027ECCEF2003F55E7 /* errorModelForBorsa.swift in Sources */,

@@ -12,32 +12,33 @@ import JGProgressHUD
 class MainStoreVC: UIViewController  {
    
    
-    
-    @IBOutlet weak var StoresCV: UICollectionView!
-    var adsModel:AdsStoreDataModel?
-    var dddd:StoreVC?
-    private var currentpaga = 1
-    private var isFeatchingData = false
-    var isFeatchingImage = false
-    var storeSubModel:[storeData] = []
-   
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var viewShowSearch: UIView!
     @IBOutlet weak var searchView: UISearchBar!
-    
-    
-
-    
-    
-    
+    @IBOutlet weak var StoresCV: UICollectionView!
+    @IBOutlet weak var sectorsVC: UICollectionView!
+    var adsModel:AdsStoreDataModel?
+    var storeSubModel:[storeData] = []
+    var sectorSubModel:[SectorsSelected] = []
+    var typeFromHomeForStore = ""
+    private var currentpaga = 1
+    private var isFeatchingData = false
+    var isFeatchingImage = false
+   
+   
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         FatchDataOfStore()
         setupSearchBar()
+        FatchSectorsOfStore()
         StoresCV.delegate = self
         StoresCV.dataSource = self
+        sectorsVC.delegate = self
+        sectorsVC.dataSource = self
         self.StoresCV.register(UINib(nibName: "StoreCell", bundle: nil), forCellWithReuseIdentifier: "StoreCell")
+        self.sectorsVC.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         
     }
     
@@ -48,7 +49,7 @@ class MainStoreVC: UIViewController  {
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "animal" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let param = ["type": "\(self.typeFromHomeForStore)" , "page": "\(self.currentpaga)", "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
             
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
@@ -89,49 +90,7 @@ class MainStoreVC: UIViewController  {
 
     
     
-    func FatchDataOfStoreFromStorevc(){
-        DispatchQueue.global(qos: .background).async {
-            let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let type_rec = UserDefaults.standard.value(forKey: "typeSec") ?? ""
-
-            let param = ["type": "\(type_rec)" , "page": "\(self.currentpaga)", "sort" : "1"]
-            let headers = ["app-id": "\(id_rec)" ]
-
-            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
-            print("URL", companyGuide)
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
-                
-                if let error = error{
-                    //internet error
-                    print("============ error \(error)")
-                    
-                }
-                else if let loginError = filier {
-                    //Data Wrong From Server
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-                }
-                
-                
-                else {
-                    
-                    if success?.data?.nextPageURL == nil {
-                        
-                    }
-                    
-                    let successData = success?.data?.data ?? []
-                    print("current", self.currentpaga)
-                    self.storeSubModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        
-                        self.StoresCV.reloadData()
-                    }
-                    self.currentpaga += 1
-                    self.isFeatchingData = false
-                }
-            }
-        }
-    }
-    
+ 
  
     //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
@@ -159,6 +118,33 @@ class MainStoreVC: UIViewController  {
                     self.storeSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.StoresCV.reloadData()
+                        print("ggggggg")
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    //MARK:- Featch main store by using search
+    func FatchSectorsOfStore(){
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
+            let param = ["type": "\(self.typeFromHomeForStore)"]
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    let successData = success?.data?.sectors?.reversed() ?? []
+                    self.sectorSubModel.append(contentsOf: successData)
+                    DispatchQueue.main.async {
+                        self.sectorsVC.reloadData()
                         print("ggggggg")
                     }
                 }
@@ -196,23 +182,59 @@ class MainStoreVC: UIViewController  {
 
 extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return dattta?.data?.data?.count ?? 0
-        return storeSubModel.count 
+        
+        if collectionView == sectorsVC {
+            return sectorSubModel.count
+
+        } else {
+            return storeSubModel.count
+
+        }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoreCell", for: indexPath) as! StoreCell
-        cell.dateee.text = storeSubModel[indexPath.item].createdAt ?? "888"
-        cell.titlee.text = storeSubModel[indexPath.item].title ?? ""
-        cell.location.text = storeSubModel[indexPath.item].address ?? ""
-        cell.number.text = String( storeSubModel[indexPath.row].salary ?? 0)
-        let imagee = storeSubModel[indexPath.item].image ?? ""
-        cell.configureCell(image: imagee)
-        return cell
+        
+        if collectionView == sectorsVC {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
+            cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
+            let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
+            if typeOfSector == typeFromHomeForStore {
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+//                cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            } else {
+                cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                
+            }
+            
+            return cell
+            
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoreCell", for: indexPath) as! StoreCell
+            cell.dateee.text = storeSubModel[indexPath.item].createdAt ?? "888"
+            cell.titlee.text = storeSubModel[indexPath.item].title ?? ""
+            cell.location.text = storeSubModel[indexPath.item].address ?? ""
+            cell.number.text = String( storeSubModel[indexPath.row].salary ?? 0)
+            let imagee = storeSubModel[indexPath.item].image ?? ""
+            cell.configureCell(image: imagee)
+            return cell
+        }
+        
+        
+        
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:collectionView.frame.width, height: 304)
+        
+        if collectionView == sectorsVC {
+            return CGSize(width:(collectionView.frame.size.width - 40) / 5 , height: 60)
+
+        } else {
+            return CGSize(width:collectionView.frame.width, height: 150)
+
+        }
 
            }
     
