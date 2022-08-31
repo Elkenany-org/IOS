@@ -166,7 +166,6 @@
 		327281B027A6814400C7B5E3 /* TestAnyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327281AE27A6814400C7B5E3 /* TestAnyCell.xib */; };
 		3272F455276E66CC00973031 /* AdsStoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F454276E66CC00973031 /* AdsStoreDataModel.swift */; };
 		3272F45A276E6FC300973031 /* MainStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F459276E6FC300973031 /* MainStoreVC.swift */; };
-		3272F45F276E6FF800973031 /* AdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F45E276E6FF800973031 /* AdsVC.swift */; };
 		3272F464276E701A00973031 /* MassegeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F463276E701A00973031 /* MassegeVC.swift */; };
 		3272F46B276E99B200973031 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F469276E99B200973031 /* StoreCell.swift */; };
 		3272F46C276E99B200973031 /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3272F46A276E99B200973031 /* StoreCell.xib */; };
@@ -481,7 +480,6 @@
 		327281AE27A6814400C7B5E3 /* TestAnyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAnyCell.xib; sourceTree = "<group>"; };
 		3272F454276E66CC00973031 /* AdsStoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsStoreDataModel.swift; sourceTree = "<group>"; };
 		3272F459276E6FC300973031 /* MainStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoreVC.swift; sourceTree = "<group>"; };
-		3272F45E276E6FF800973031 /* AdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsVC.swift; sourceTree = "<group>"; };
 		3272F463276E701A00973031 /* MassegeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassegeVC.swift; sourceTree = "<group>"; };
 		3272F469276E99B200973031 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		3272F46A276E99B200973031 /* StoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
@@ -1185,7 +1183,6 @@
 			children = (
 				3272F468276E998B00973031 /* Cells */,
 				3272F459276E6FC300973031 /* MainStoreVC.swift */,
-				3272F45E276E6FF800973031 /* AdsVC.swift */,
 				3272F463276E701A00973031 /* MassegeVC.swift */,
 				32B97D49276F38380069598D /* AdsDetails.swift */,
 				32D05FDE28093BF2006C21F9 /* chatVC.swift */,
@@ -1882,7 +1879,6 @@
 				32ADC79F277C9B3F006C4140 /* customerserviceVC.swift in Sources */,
 				32F12B412763A3CE003DE947 /* companyDetails.swift in Sources */,
 				32FAB7B4277888DA002400A2 /* ProfileData.swift in Sources */,
-				3272F45F276E6FF800973031 /* AdsVC.swift in Sources */,
 				32365ED12762F2FF00273DB9 /* CompaniesVC.swift in Sources */,
 				32FAB7A827786DE3002400A2 /* EditeProfileCell.swift in Sources */,
 				3287A30E27E22EC400C38849 /* aboooooout.swift in Sources */,

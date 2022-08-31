@@ -41,7 +41,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykM-Uf-I8r">
-                                <rect key="frame" x="10" y="56.5" width="390" height="20"/>
+                                <rect key="frame" x="10" y="46.5" width="390" height="20"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jdv-Bk-GDC">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="20"/>
@@ -64,16 +64,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="82" translatesAutoresizingMaskIntoConstraints="NO" id="Lki-oI-vjU">
-                                <rect key="frame" x="20" y="20" width="370" height="26.5"/>
+                                <rect key="frame" x="20" y="20" width="370" height="16.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCY-tS-6Bj">
-                                        <rect key="frame" x="0.0" y="0.0" width="16" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="16" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بط مسكوفي عالي الجوة  فرز اول " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRW-XO-pcK">
-                                        <rect key="frame" x="168.5" y="0.0" width="201.5" height="26.5"/>
+                                        <rect key="frame" x="218.5" y="0.0" width="151.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyc-cU-lQu">
-                                <rect key="frame" x="20" y="96.5" width="80" height="30"/>
+                                <rect key="frame" x="20" y="86.5" width="80" height="30"/>
                                 <color key="backgroundColor" name="kenanyGold"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="K2d-an-R4P"/>
@@ -109,16 +109,16 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Vs5-JE-HIe">
-                                <rect key="frame" x="326" y="96.5" width="74" height="30"/>
+                                <rect key="frame" x="327" y="86.5" width="73" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-5-2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqk-nL-Ipk">
-                                        <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="10"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hfA-IU-icj">
-                                        <rect key="frame" x="53" y="1" width="21" height="27.5"/>
+                                        <rect key="frame" x="52" y="1" width="21" height="27.5"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
