@@ -206,7 +206,6 @@
 		329A6B96281936F400D67034 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B95281936F400D67034 /* Chats.swift */; };
 		329A6B9E2819435B00D67034 /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B9D2819435B00D67034 /* StartChat.swift */; };
 		329E530F2834EEB40097B43B /* homeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E530E2834EEB40097B43B /* homeTestModel.swift */; };
-		329E876A281544D300838BDD /* ValidaitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E8769281544D300838BDD /* ValidaitionViewController.swift */; };
 		32A054382831158600FE1206 /* ShowwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A054362831158600FE1206 /* ShowwCell.swift */; };
 		32A054392831158600FE1206 /* ShowwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A054372831158600FE1206 /* ShowwCell.xib */; };
 		32A459E328632DDD004C0905 /* FilterMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A459E228632DDD004C0905 /* FilterMainVC.swift */; };
@@ -516,7 +515,6 @@
 		329A6B95281936F400D67034 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		329A6B9D2819435B00D67034 /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		329E530E2834EEB40097B43B /* homeTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeTestModel.swift; sourceTree = "<group>"; };
-		329E8769281544D300838BDD /* ValidaitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidaitionViewController.swift; sourceTree = "<group>"; };
 		32A054362831158600FE1206 /* ShowwCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowwCell.swift; sourceTree = "<group>"; };
 		32A054372831158600FE1206 /* ShowwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowwCell.xib; sourceTree = "<group>"; };
 		32A459E228632DDD004C0905 /* FilterMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMainVC.swift; sourceTree = "<group>"; };
@@ -1187,7 +1185,6 @@
 				32B97D49276F38380069598D /* AdsDetails.swift */,
 				32D05FDE28093BF2006C21F9 /* chatVC.swift */,
 				32FA326F280EBFFE00A7BDEC /* AdsViewController.swift */,
-				329E8769281544D300838BDD /* ValidaitionViewController.swift */,
 				3290D9952816997800CF419C /* shortCutFilter.swift */,
 			);
 			path = Store;
@@ -1834,7 +1831,6 @@
 				32628C26282F975E00AB0068 /* showDetailsVC.swift in Sources */,
 				323E8659283B7A9B00C65873 /* MagazineHomeVC.swift in Sources */,
 				32F543AD27925E74004EBD33 /* StatisticesMembers.swift in Sources */,
-				329E876A281544D300838BDD /* ValidaitionViewController.swift in Sources */,
 				323ED99E275E522600D4620C /* RecomenditionCell.swift in Sources */,
 				32A84DBB27E9627A00C1D3EF /* detailTwo.swift in Sources */,
 				323B21F8274A462B002CEB89 /* ViewController.swift in Sources */,

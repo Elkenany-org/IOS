@@ -24,6 +24,15 @@ class MassegeVC: UIViewController {
         setupUI()
     }
     
+    
+//    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        self.tabBarController?.tabBar.isHidden = false
+//
+//    }
+    
     //UIConfg
     fileprivate func setupUI() {
         chatTableView.delegate = self

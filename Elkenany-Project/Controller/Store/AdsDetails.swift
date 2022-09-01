@@ -175,7 +175,7 @@ class AdsDetails: UIViewController {
                 let id = startRoomChat?.data?.chat?.id ?? 0
                 UserDefaults.standard.set(id, forKey: "room_chat")
                 vc.roomId = id
-            navigationController?.pushViewController(vc, animated: true)
+                navigationController?.pushViewController(vc, animated: true)
             
             }
             
@@ -202,7 +202,7 @@ class AdsDetails: UIViewController {
         
         if isloggineIn {
             if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            navigationController?.pushViewController(vc, animated: true)
+            present(vc, animated: true)
             
             }
             

@@ -10,8 +10,8 @@ import Alamofire
 import JGProgressHUD
 
 class MainStoreVC: UIViewController  {
-   
-   
+    
+    
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var view2: UIView!
     @IBOutlet weak var viewShowSearch: UIView!
@@ -22,17 +22,20 @@ class MainStoreVC: UIViewController  {
     var storeSubModel:[storeData] = []
     var sectorSubModel:[SectorsSelected] = []
     var typeFromHomeForStore = ""
+    var typeFromHomeForStoreSelected = ""
+    
     private var currentpaga = 1
     private var isFeatchingData = false
     var isFeatchingImage = false
-   
-   
-  
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FatchDataOfStore()
         setupSearchBar()
         FatchSectorsOfStore()
+        title = "سوق الكناني" 
         StoresCV.delegate = self
         StoresCV.dataSource = self
         sectorsVC.delegate = self
@@ -49,7 +52,7 @@ class MainStoreVC: UIViewController  {
     func FatchDataOfStore(){
         DispatchQueue.global(qos: .background).async {
             let id_rec = UserDefaults.standard.value(forKey: "REC_Id_Com") ?? ""
-            let param = ["type": "\(self.typeFromHomeForStore)" , "page": "\(self.currentpaga)", "sort" : "1"]
+            let param = ["type": "\(self.typeFromHomeForStore)" , "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
             
             let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
@@ -68,11 +71,11 @@ class MainStoreVC: UIViewController  {
                 
                 
                 else {
+                    self.storeSubModel.removeAll()
                     
                     if success?.data?.nextPageURL == nil {
                         
                     }
-                    
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
                     self.storeSubModel.append(contentsOf: successData)
@@ -86,12 +89,16 @@ class MainStoreVC: UIViewController  {
             }
         }
     }
-
-
     
     
- 
- 
+    
+    
+    
+    
+    
+    
+    
+    
     //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
         //Handeling Loading view progress
@@ -101,11 +108,11 @@ class MainStoreVC: UIViewController  {
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let type = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
-
+//            let type = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
+            
             print("this is token\(api_token ?? "")")
             let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
-            let param = ["type": "\(type)", "search" : "\(saerchParamter)"]
+            let param = ["type": "\(self.typeFromHomeForStore)", "search" : "\(saerchParamter)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
@@ -185,10 +192,10 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         if collectionView == sectorsVC {
             return sectorSubModel.count
-
+            
         } else {
             return storeSubModel.count
-
+            
         }
     }
     
@@ -201,7 +208,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             if typeOfSector == typeFromHomeForStore {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-//                cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+                //                cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             } else {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 
@@ -223,29 +230,57 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         
         
-    
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == sectorsVC {
             return CGSize(width:(collectionView.frame.size.width - 40) / 5 , height: 60)
-
+            
         } else {
             return CGSize(width:collectionView.frame.width, height: 150)
-
+            
         }
-
-           }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let id = storeSubModel[indexPath.row].id ?? 0
-        UserDefaults.standard.set(id, forKey: "ADS_ID")
-        let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
-        vc.ads_id = id
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if collectionView == sectorsVC {
+            let typeOfSectore = sectorSubModel[indexPath.item].type ?? ""
+            self.typeFromHomeForStore = typeOfSectore
+            print(" selceted ")
+            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
+            if(cell.isSelected == true)
+            {
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            }
+            FatchDataOfStore()
+            
+        } else {
+            let id = storeSubModel[indexPath.row].id ?? 0
+            UserDefaults.standard.set(id, forKey: "ADS_ID")
+            let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+            vc.ads_id = id
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
+            
+            if(cell.isSelected == false)
+            {
+                cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                
+            }
+        }
+    }
     
     
     
@@ -268,7 +303,7 @@ extension MainStoreVC:UICollectionViewDataSourcePrefetching {
         }
     }
     
-   
+    
 }
 
 extension MainStoreVC:FilterDone {
@@ -305,12 +340,12 @@ extension MainStoreVC:FilterDone {
                     self.storeSubModel.append(contentsOf: successDataaa)
                     DispatchQueue.main.async {
                         if self.storeSubModel.count == 0 {
-                        self.StoresCV.isHidden = true
-//                        self.errorHandeling.isHidden = false
+                            self.StoresCV.isHidden = true
+                            //                        self.errorHandeling.isHidden = false
                         }else{
                             self.StoresCV.reloadData()
                             self.StoresCV.isHidden = false
-//                            self.errorHandeling.isHidden = true
+                            //                            self.errorHandeling.isHidden = true
                         }
                         print(successDataaa)
                         
@@ -360,7 +395,7 @@ extension MainStoreVC: UISearchBarDelegate {
         viewShowSearch.isHidden = true
         view1.isHidden = false
         view2.isHidden = false
-
+        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)

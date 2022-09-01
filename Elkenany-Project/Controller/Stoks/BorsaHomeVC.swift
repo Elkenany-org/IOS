@@ -320,7 +320,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == SelectedSector {
+        if collectionView == SelectedSector { 
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
             let typeeee = sectorSubModel[indexPath.item].type ?? "test"
@@ -353,7 +353,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if indexPath.section == 0{
                 let cell4 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell4.companyTitle.text = BorsaSubModel[indexPath.item].name ?? ""
-                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
+//                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
                 
                 let imageBorsaSubSection = BorsaSubModel[indexPath.row].image ?? ""
                 cell4.configureCell(image: imageBorsaSubSection)
@@ -364,7 +364,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             else if indexPath.section == 1{
                 let cell5 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell5.companyTitle.text = fodderSubModel[indexPath.item].name ?? ""
-                cell5.companiesCount.text = String( fodderSubModel[indexPath.item].members ?? 0)
+//                cell5.companiesCount.text = String( fodderSubModel[indexPath.item].members ?? 0)
                 let imageBorsaFoder = fodderSubModel[indexPath.row].image ?? ""
                 cell5.configureCell(image: imageBorsaFoder)
                 ss(ss: cell5)
