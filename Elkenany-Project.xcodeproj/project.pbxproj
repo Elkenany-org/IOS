@@ -187,7 +187,6 @@
 		3287A30E27E22EC400C38849 /* aboooooout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3287A30C27E22EC400C38849 /* aboooooout.swift */; };
 		3287A30F27E22EC400C38849 /* aboooooout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3287A30D27E22EC400C38849 /* aboooooout.xib */; };
 		328F4399277C690B00FCBC05 /* EditeMainInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F4398277C690B00FCBC05 /* EditeMainInfoModel.swift */; };
-		3290D9962816997800CF419C /* shortCutFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290D9952816997800CF419C /* shortCutFilter.swift */; };
 		32926315282FB2BC00C898A6 /* orderPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32926314282FB2BC00C898A6 /* orderPlace.swift */; };
 		329397FE2771F58300607C5B /* Cairo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322519D627700C76001096DD /* Cairo-Light.ttf */; };
 		329398022771F59600607C5B /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322519D527700C76001096DD /* Cairo-SemiBold.ttf */; };
@@ -500,7 +499,6 @@
 		3287A30C27E22EC400C38849 /* aboooooout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboooooout.swift; sourceTree = "<group>"; };
 		3287A30D27E22EC400C38849 /* aboooooout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = aboooooout.xib; sourceTree = "<group>"; };
 		328F4398277C690B00FCBC05 /* EditeMainInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditeMainInfoModel.swift; sourceTree = "<group>"; };
-		3290D9952816997800CF419C /* shortCutFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shortCutFilter.swift; sourceTree = "<group>"; };
 		32926314282FB2BC00C898A6 /* orderPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderPlace.swift; sourceTree = "<group>"; };
 		3296E4922764A92B00024421 /* ApiServiceForQueryParamater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceForQueryParamater.swift; sourceTree = "<group>"; };
 		3296E4972765EA3C00024421 /* CompainesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompainesModel.swift; sourceTree = "<group>"; };
@@ -1185,7 +1183,6 @@
 				32B97D49276F38380069598D /* AdsDetails.swift */,
 				32D05FDE28093BF2006C21F9 /* chatVC.swift */,
 				32FA326F280EBFFE00A7BDEC /* AdsViewController.swift */,
-				3290D9952816997800CF419C /* shortCutFilter.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1752,7 +1749,6 @@
 				326B75862774C57600007F55 /* locaBorsa.swift in Sources */,
 				326AAC12278C841E002EF222 /* staticticesDetails.swift in Sources */,
 				325527FC2779B80C00BAAE65 /* notificationVC.swift in Sources */,
-				3290D9962816997800CF419C /* shortCutFilter.swift in Sources */,
 				326AAC18278C844A002EF222 /* DetailsCell.swift in Sources */,
 				32E46C8D280D595A00419ED7 /* chatMessagesModel.swift in Sources */,
 				32B466FB27E61443002C32A5 /* companiesModel.swift in Sources */,

@@ -50,9 +50,9 @@ class FilterVC: UIViewController {
 //            selectedVC.SortTitleDeleget = self
             present(selectedVC, animated: true, completion: nil)
         }else if testhidenHome == testhidenHomeeee {
-            let selectedVCc = storyboard?.instantiateViewController(withIdentifier: "shortCutFilter") as!shortCutFilter
+//            let selectedVCc = storyboard?.instantiateViewController(withIdentifier: "shortCutFilter") as!shortCutFilter
 //            selectedVC.SortTitleDeleget = self
-            present(selectedVCc, animated: true, completion: nil)
+//            present(selectedVCc, animated: true, completion: nil)
             print("hello world")
         }else{
             print("hello world")
@@ -127,7 +127,7 @@ extension FilterVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 70)
+        return CGSize(width: collectionView.frame.width, height: 100)
     }
     
     

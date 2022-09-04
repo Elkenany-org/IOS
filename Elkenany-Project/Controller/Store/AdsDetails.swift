@@ -221,6 +221,32 @@ class AdsDetails: UIViewController {
     }
     
     
+    @IBAction func toMessagess(_ sender: Any) {
+        
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+        
+        if isloggineIn {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "MassegeVC") as? MassegeVC {
+                navigationController?.pushViewController(vc, animated: true)
+                
+            }
+            
+        }else{
+            
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)
+                
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
     @IBAction func phoneCall(_ sender: Any) {
         callNumber(number: storeDetails?.data?.phone ?? "")
     }

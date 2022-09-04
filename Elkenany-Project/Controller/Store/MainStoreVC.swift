@@ -18,6 +18,8 @@ class MainStoreVC: UIViewController  {
     @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var StoresCV: UICollectionView!
     @IBOutlet weak var sectorsVC: UICollectionView!
+    @IBOutlet weak var validationView: UIView!
+    
     var adsModel:AdsStoreDataModel?
     var storeSubModel:[storeData] = []
     var sectorSubModel:[SectorsSelected] = []
@@ -81,7 +83,21 @@ class MainStoreVC: UIViewController  {
                     self.storeSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         
-                        self.StoresCV.reloadData()
+                        if success?.data?.data?.isEmpty == true {
+                            self.storeSubModel.removeAll()
+                            self.StoresCV.isHidden = true
+                            self.validationView.isHidden = false
+                            print("empty .... ")
+                            
+                        }else{
+                            self.StoresCV.reloadData()
+                            self.StoresCV.isHidden = false
+                            self.validationView.isHidden = true
+
+
+                        }
+
+                        
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
@@ -222,7 +238,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             if typeOfSector == typeFromHomeForStore {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
-                //                cell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+                    sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             } else {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 
@@ -266,8 +282,8 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let typeOfSectore = sectorSubModel[indexPath.item].type ?? ""
             self.typeFromHomeForStore = typeOfSectore
             print(" selceted ")
-            let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
-            if(cell.isSelected == true)
+            if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell
+//            if(cell.isSelected == true)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
