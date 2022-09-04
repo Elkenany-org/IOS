@@ -183,6 +183,20 @@ class MainStoreVC: UIViewController  {
         }
     }
     
+    @IBAction func toAddAds(_ sender: Any) {
+        
+        if let filterVC = storyboard?.instantiateViewController(identifier: "AdsViewController") as? AdsViewController {
+            present(filterVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func toMessageVC(_ sender: Any) {
+        
+        if let filterVC = storyboard?.instantiateViewController(identifier: "MassegeVC") as? MassegeVC {
+            present(filterVC, animated: true, completion: nil)
+        }
+        
+    }
     
     
 }

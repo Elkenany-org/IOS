@@ -20,25 +20,25 @@ class AdsDetails: UIViewController {
     @IBOutlet weak var titlee: UILabel!
     var storeDetails:AdsStoreDetailsDataModel?
     var startRoomChat:StartChatModelss?
-//    var startChatSubModel:[StarttChats] = []
-
+    //    var startChatSubModel:[StarttChats] = []
+    
     
     var id_froooom_home = 0
     var ads_id = 0
     var ads_from_search = 0
     var keyFromHome = ""
-
     
-
+    
+    
     //viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "وصف الاعلان"
-//        fetchAdsDetails()
+        //        fetchAdsDetails()
         
         if keyFromHome == "keyhome"{
             fetchAdsDetailsHome()
-
+            
         }else{
             fetchAdsDetails()
         }
@@ -46,7 +46,7 @@ class AdsDetails: UIViewController {
     }
     
     
- 
+    
     //MARK:- store ads details
     func fetchAdsDetails(){
         DispatchQueue.global(qos: .background).async {
@@ -70,11 +70,11 @@ class AdsDetails: UIViewController {
                         adsDetailsImage.kf.indicatorType = .activity
                         adsDetailsImage.kf.setImage(with: url)
                     }
-                   
+                    
                 }
             }
         }
-     }
+    }
     
     //MARK:- store ads details from search
     func fetchAdsDetailsFromHomeSearch(){
@@ -98,18 +98,18 @@ class AdsDetails: UIViewController {
                         adsDetailsImage.kf.indicatorType = .activity
                         adsDetailsImage.kf.setImage(with: url)
                     }
-                   
+                    
                 }
             }
         }
-     }
+    }
     
     
     func fetchAdsDetailsHome(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
-//            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
+            //            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
             let param = ["id": "\(self.id_froooom_home)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
@@ -127,18 +127,18 @@ class AdsDetails: UIViewController {
                         adsDetailsImage.kf.indicatorType = .activity
                         adsDetailsImage.kf.setImage(with: url)
                     }
-                   
+                    
                 }
             }
         }
-     }
+    }
     
     
     func creatChatRoom(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/start-chat?id="
-//            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
+            //            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
             let param = ["id": "\(self.ads_id)"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:StartChatModelss?, filier:StartChatModelss?, error) in
@@ -147,14 +147,14 @@ class AdsDetails: UIViewController {
                 }else {
                     guard let success = success else {return}
                     self.startRoomChat = success
-//                    print(success.data?.chat?.id ?? "")
-                    }
-                   
+                    //                    print(success.data?.chat?.id ?? "")
                 }
+                
             }
         }
-     
-
+    }
+    
+    
     
     func callNumber(number: String ) {
         guard let url = URL(string: "tel://\(number)") else {return}
@@ -176,15 +176,15 @@ class AdsDetails: UIViewController {
                 UserDefaults.standard.set(id, forKey: "room_chat")
                 vc.roomId = id
                 navigationController?.pushViewController(vc, animated: true)
-            
+                
             }
             
         }else{
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-              present(vc, animated: true, completion: nil)
-            
+                present(vc, animated: true, completion: nil)
+                
             }
             
         }
@@ -192,35 +192,35 @@ class AdsDetails: UIViewController {
         
         
         
-    
+        
     }
     
     
     @IBAction func startAgain(_ sender: Any) {
-      
+        
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn {
             if let vc = storyboard?.instantiateViewController(withIdentifier: "chatVC") as? chatVC {
-            present(vc, animated: true)
-            
+                navigationController?.pushViewController(vc, animated: true)
+                
             }
             
         }else{
             
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
-              present(vc, animated: true, completion: nil)
-            
+                present(vc, animated: true, completion: nil)
+                
             }
             
         }
         
         
-
+        
     }
     
-
+    
     @IBAction func phoneCall(_ sender: Any) {
         callNumber(number: storeDetails?.data?.phone ?? "")
     }
