@@ -394,7 +394,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         
         if collectionView == selectedSectorCV {
             
-            return CGSize(width: 75, height: 60)
+            return CGSize(width: 70 , height: 60)
             
         }else if collectionView == guideCompanyCV{
             
