@@ -22,16 +22,11 @@ class MassegeVC: UIViewController {
         super.viewDidLoad()
         FatchDataOfChats()
         setupUI()
+        title = "الرسائل"
     }
     
     
-//    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//
-//        self.tabBarController?.tabBar.isHidden = false
-//
-//    }
+
     
     //UIConfg
     fileprivate func setupUI() {

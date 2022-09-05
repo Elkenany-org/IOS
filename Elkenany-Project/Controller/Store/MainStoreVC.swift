@@ -18,7 +18,7 @@ class MainStoreVC: UIViewController  {
     @IBOutlet weak var searchView: UISearchBar!
     @IBOutlet weak var StoresCV: UICollectionView!
     @IBOutlet weak var sectorsVC: UICollectionView!
-    @IBOutlet weak var validationView: UIView!
+    @IBOutlet weak var validationLabel: UILabel!
     
     var adsModel:AdsStoreDataModel?
     var storeSubModel:[storeData] = []
@@ -86,13 +86,13 @@ class MainStoreVC: UIViewController  {
                         if success?.data?.data?.isEmpty == true {
                             self.storeSubModel.removeAll()
                             self.StoresCV.isHidden = true
-                            self.validationView.isHidden = false
+                            self.validationLabel.isHidden = false
                             print("empty .... ")
                             
                         }else{
                             self.StoresCV.reloadData()
                             self.StoresCV.isHidden = false
-                            self.validationView.isHidden = true
+                            self.validationLabel.isHidden = true
 
 
                         }

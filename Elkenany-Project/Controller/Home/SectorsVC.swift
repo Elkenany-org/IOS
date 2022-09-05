@@ -468,7 +468,13 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 UserDefaults.standard.set( homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id, forKey: "Home_Rec_Id")
                 
             case "store":
-                print("")
+                
+                let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
+                let id_home = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                vc.id_froooom_home = id_home
+                vc.fetchAdsDetailsHome()
+                navigationController?.pushViewController(vc, animated: true)
+
             case "magazines":
                 print("hello")
                 
