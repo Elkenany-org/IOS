@@ -28,6 +28,7 @@ class companyInfoCell: UITableViewCell {
         
     }
     
+
     
     
     //MARK: Featch data of Info Company

@@ -113,15 +113,34 @@ class CompanyGuideVC: UIViewController, SortTitle {
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
+                    self.subModel.removeAll()
+                    self.bannersSubModel.removeAll()
+
                     let successData = SuccessfulRequest?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
                     
                     let successDataBannerss = SuccessfulRequest?.data?.banners ?? []
                     self.bannersSubModel.append(contentsOf: successDataBannerss)
                     DispatchQueue.main.async {
-                        self.guideCompanyCV.reloadData()
-                        self.bannersCollection.reloadData()
-//                        self.logosCollection.reloadData()
+                        
+                        if SuccessfulRequest?.data?.banners?.isEmpty == true {
+                            self.bannersView.isHidden = true
+                            self.guideCompanyCV.reloadData()
+                            
+                        }
+
+                        else{
+                            
+                            self.bannersView.isHidden = false
+                            self.bannersCollection.reloadData()
+                            self.guideCompanyCV.reloadData()
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
                     }
                 }
             }
@@ -424,7 +443,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
-            FatchDataOfMainGuideBySelecteddddd()
+            FatchGuidMainData()
             
             
         }else if collectionView == guideCompanyCV{

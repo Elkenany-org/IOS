@@ -255,8 +255,30 @@ class CompaniesVC: UIViewController{
                     let successDataban = success?.data?.banners ?? []
                     self.mainDataModelBanners.append(contentsOf: successDataban)
                     DispatchQueue.main.async {
-                        self.logosCV.reloadData()
-                        self.bannarsCV.reloadData()
+                        
+                        if self.mainDatalLogos.isEmpty == true && self.mainDataModelBanners.isEmpty == false {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = false
+                            self.bannarsCV.reloadData()
+
+                            
+                        } else if self.mainDatalLogos.isEmpty == false && self.mainDataModelBanners.isEmpty == true {
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = true
+                            self.logosCV.reloadData()
+
+                        }else if self.mainDatalLogos.isEmpty == true && self.mainDataModelBanners.isEmpty == true {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = true
+
+                        }else{
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = false
+                            self.bannarsCV.reloadData()
+                            self.logosCV.reloadData()
+                        }
+                        
+                        
                     }
                 }
             }

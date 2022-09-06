@@ -35,6 +35,18 @@ class companyDetails: UIViewController {
         
     }
     
+    func ss(ss:UITableViewCell){
+        ss.layer.cornerRadius = 20
+        ss.layer.borderWidth = 0.0
+        ss.layer.shadowColor = UIColor.black.cgColor
+        ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        ss.layer.shadowRadius = 10
+        ss.layer.shadowOpacity = 0.4
+        ss.layer.masksToBounds = false
+        
+    }
+    
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,18 +148,21 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 cell.com_rating.rating = companyDetailsModel?.data?.rate ?? 0 
                 let companyImage = companyDetailsModel?.data?.image
                 cell.selectionStyle = .none
+                
                 cell.configureImage(image: companyImage ?? "")
+                ss(ss: cell)
                 return cell }
         case 1:
             if let cell2 = tableView.dequeueReusableCell(withIdentifier: "aboutCompanyCell") as? aboutCompanyCell{
                 cell2.aboutCompany.text = companyDetailsModel?.data?.about ?? ""
                 
                 cell2.selectionStyle = .none
-                
+                ss(ss: cell2)
                 return cell2 }
         case 2:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
                 cell3.com_id = CompanyIdFromCompanies
+                ss(ss: cell3)
                 cell3.FatchDataContactsOfCompanies()
                 cell3.selectionStyle = .none
                 
