@@ -24,6 +24,7 @@ class companyDetails: UIViewController {
         super.viewDidLoad()
         companyDetailsTV.delegate = self
         companyDetailsTV.dataSource = self
+        title = "بيانات الشركة" 
         companyDetailsTV.register(UINib(nibName: "companyInfoCell", bundle: nil), forCellReuseIdentifier: "companyInfoCell")
         companyDetailsTV.register(UINib(nibName: "aboutCompanyCell", bundle: nil), forCellReuseIdentifier: "aboutCompanyCell")
         companyDetailsTV.register(UINib(nibName: "CompanySocialCell", bundle: nil), forCellReuseIdentifier: "CompanySocialCell")
