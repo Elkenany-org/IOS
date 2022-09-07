@@ -49,7 +49,6 @@ class BorsaHomeVC: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        pageControle.numberOfPages = itemsArray.count
         setTimer()
         title = "البورصة اليومية"
         featchBorsaSubSections()
@@ -88,7 +87,6 @@ class BorsaHomeVC: UIViewController  {
             currentIndex = 0
         }
         bannersCV.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
-        pageControle.currentPage = currentIndex
     }
     
     
@@ -239,9 +237,9 @@ class BorsaHomeVC: UIViewController  {
     
     
     func ss(ss:UICollectionViewCell){
-        ss.layer.cornerRadius = 15.0
+        ss.layer.cornerRadius = 5.0
         ss.layer.borderWidth = 0.0
-        ss.layer.shadowColor = UIColor.black.cgColor
+        ss.layer.shadowColor = UIColor.darkGray.cgColor
         ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
         ss.layer.shadowRadius = 5.0
         ss.layer.shadowOpacity = 0.4
@@ -336,6 +334,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         else if collectionView == bannersCV {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
             let imageSlider = bannersSubModel[indexPath.item].image ?? ""
+            ss(ss: cell2)
             cell2.configureCell(image: imageSlider)
             return cell2
         }
@@ -344,6 +343,8 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
             let imageeee = logosSubModel[indexPath.item].image ?? ""
             cell3.logooImage.contentMode = .scaleAspectFit
+            ss(ss: cell3)
+
             cell3.configureImage(image: imageeee)
             return cell3
         }
@@ -451,22 +452,22 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == SelectedSector { return CGSize(width: 100, height: 60) }
+        if collectionView == SelectedSector { return CGSize(width:65, height: 55) }
         
         else if collectionView == bannersCV {
-            return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+            return CGSize(width: collectionView.frame.width - 5, height: collectionView.frame.height )
         }
         else if collectionView == logosCV{
-            return CGSize(width: 80, height: 70)
+            return CGSize(width: 80, height: 60)
             
         }else if collectionView == BorsaCV{
             
             if indexPath.section == 0{
-                let size = (collectionView.frame.size.width - 30) / 2
-                return CGSize(width: size, height: 240)
+                let size = (collectionView.frame.size.width )
+                return CGSize(width: size, height: 110)
             }else if indexPath.section == 1{
-                let size = (collectionView.frame.size.width - 30) / 2
-                return CGSize(width: size, height: 240)
+                let size = (collectionView.frame.size.width )
+                return CGSize(width: size, height: 110)
             }
         }else{
             return CGSize(width: 200, height: 200)

@@ -417,7 +417,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             
         }else if collectionView == guideCompanyCV{
             
-            let size = (collectionView.frame.size.width )
+            let size = (collectionView.frame.size.width  )
             return CGSize(width: size, height: 100)
             
         } else if collectionView == bannersCollection {
