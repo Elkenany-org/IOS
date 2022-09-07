@@ -357,6 +357,8 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
 //                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
                 
                 let imageBorsaSubSection = BorsaSubModel[indexPath.row].image ?? ""
+                cell4.companyImage.contentMode = .scaleToFill
+
                 cell4.configureCell(image: imageBorsaSubSection)
                 ss(ss: cell4)
                 return cell4
@@ -452,7 +454,10 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == SelectedSector { return CGSize(width:65, height: 55) }
+        
+        
+        let sizeOne = (collectionView.frame.size.width - 35 ) / 5
+        if collectionView == SelectedSector { return CGSize(width:sizeOne, height: 55) }
         
         else if collectionView == bannersCV {
             return CGSize(width: collectionView.frame.width - 5, height: collectionView.frame.height )
@@ -464,7 +469,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             
             if indexPath.section == 0{
                 let size = (collectionView.frame.size.width )
-                return CGSize(width: size, height: 110)
+                return CGSize(width: size, height: 120)
             }else if indexPath.section == 1{
                 let size = (collectionView.frame.size.width )
                 return CGSize(width: size, height: 110)
