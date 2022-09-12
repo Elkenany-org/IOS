@@ -35,7 +35,7 @@ class SectorFilterVC: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let SectoreFilterURL = "https://elkenany.com/api/localstock/filter-stock-show-sub-section?id=&type=&type_stock="
-            let param = ["type": "poultry" , "id": "1", "type_stock": "fodder" ]
+            let param = ["type": "poultry" , "id": "1", "type_stock": "local" ]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:StokeFilterDataModel?, filier:StokeFilterDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
@@ -64,7 +64,7 @@ class SectorFilterVC: UIViewController {
 
             
             let SectoreFilterURL = "https://elkenany.com/api/localstock/filter-stock-show-sub-section?id=&type=&type_stock="
-            let param = ["type":"\(paramaaaType)" , "id": "\(paramaaa)", "type_stock": "fodder" ]
+            let param = ["type":"\(paramaaaType)" , "id": "\(paramaaa)", "type_stock": "local" ]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:StokeFilterDataModel?, filier:StokeFilterDataModel?, error) in
                 if let error = error{
                     hud.dismiss()

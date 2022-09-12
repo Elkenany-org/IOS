@@ -88,7 +88,7 @@ extension FilterHome:UICollectionViewDelegate, UICollectionViewDataSource , UICo
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 70)
+        return CGSize(width: collectionView.frame.width, height: 100)
     }
     
     

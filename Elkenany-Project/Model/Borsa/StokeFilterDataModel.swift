@@ -15,7 +15,8 @@ struct StokeFilterDataModel: Codable {
 
 // MARK: - DataClass
 struct BorsaDataFilter: Codable {
-    var sections, subSections, fodderSubSections: [Sections]?
+    var sections, fodderSubSections: [Sections]?
+    var subSections : [SubSectionsData]?
 
     enum CodingKeys: String, CodingKey {
         case sections
@@ -30,3 +31,8 @@ struct Sectionsss: Codable {
     var name, type, selected: String?
 }
 
+
+struct SubSectionsData: Codable {
+    var id, type: Int?
+    var name, selected, type_cate: String?
+}

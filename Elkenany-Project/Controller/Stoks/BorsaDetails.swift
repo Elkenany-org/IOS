@@ -152,44 +152,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         }
     }
     
-    
-//    func FatchLocalBorsa(){
-//
-//        formatter.dateFormat = "yyyy-MM-dd"
-//        let result = formatter.string(from: date)
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//
-//        DispatchQueue.global(qos: .background).async {
-//            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
-//            let typeParameter = UserDefaults.standard.string(forKey: "she")
-//            let idParameter = UserDefaults.standard.string(forKey: "he")
-//
-//            let param = ["type": "local" , "id": "\(self.loc_id)", "date": "\(result)" ]
-//            print("============== request \(param)")
-//            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
-//                if let error = error{
-//                    hud.dismiss()
-//                    print("============ error \(error)")
-//                }else {
-//                    hud.dismiss()
-//                    guard let success = success else {return}
-//                    self.localBorsaData = success
-//                    DispatchQueue.main.async {
-//                        self.LocalBorsaCV.reloadData()
-//                        print(success)
-//
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//
-    
+
     func LogosandBanners(){
         //Handeling Loading view progress
         let hud = JGProgressHUD(style: .dark)
@@ -383,7 +346,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
                 view2.isHidden = false
                 
                 if localBorsaData?.data?.members?[indexPath.item].type == 1 {
-                    cell1.contentView.backgroundColor = .green
+                    cell1.rankView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
                 }
                 
                 
@@ -440,10 +403,10 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: collectionView.frame.width, height: 65)
         
-        if collectionView == logosCV{ return CGSize(width: 55, height: 55)}
-        else if collectionView == bannersCV{ return CGSize(width: collectionView.frame.width, height: 95)}
-        else if collectionView == LocalBorsaCV{ return CGSize(width: collectionView.frame.width, height: 65)}
-        else{  return CGSize(width: collectionView.frame.width, height: 65) }
+        if collectionView == logosCV{ return CGSize(width: 65, height: 55)}
+        else if collectionView == bannersCV{ return CGSize(width: collectionView.frame.width, height: 100)}
+        else if collectionView == LocalBorsaCV{ return CGSize(width: collectionView.frame.width, height: 60)}
+        else{  return CGSize(width: collectionView.frame.width, height: 60) }
     }
     
     

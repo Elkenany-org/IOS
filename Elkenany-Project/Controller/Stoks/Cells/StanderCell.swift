@@ -18,6 +18,7 @@ class StanderCell: UICollectionViewCell {
     
     @IBOutlet weak var changeTwo: UILabel!
     
+    @IBOutlet weak var rankView: UIView!
     
     
     override func awakeFromNib() {
