@@ -57,6 +57,12 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
 
     @IBOutlet weak var btnLabel: UIButton!
     @IBOutlet weak var fodderDetailsCV: UICollectionView!
+    
+    @IBOutlet weak var logosview: UIView!
+    @IBOutlet weak var bannerView: UIView!
+    
+    @IBOutlet weak var logosCollection: UICollectionView!
+    @IBOutlet weak var bannerCollectionView: UICollectionView!
     var fodderBorsaData:FodderBorsaModel?
     let date = Date()
     let formatter = DateFormatter()
