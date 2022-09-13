@@ -94,7 +94,7 @@ extension staticticesDetails:UICollectionViewDelegate, UICollectionViewDataSourc
     
     // header height --------------------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width:100 , height: 55)
+        return CGSize(width:100 , height: 60)
     }
     
     
