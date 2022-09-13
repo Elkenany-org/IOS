@@ -22,13 +22,6 @@ struct MainSearchData: Codable {
 struct SearchResultian: Codable {
     let id: Int?
     let name: String?
-//    let price: Float?
-//    let address: String?
-//    let image: String?
-//    let short_desc: String?
-//    let created_at: String?
-//    let date: [String]?
-//    let count: Int?
     let type: String?
     
 }

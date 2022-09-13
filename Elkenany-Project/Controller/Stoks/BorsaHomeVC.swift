@@ -36,7 +36,7 @@ class BorsaHomeVC: UIViewController  {
     var currentIndex = 0
     var itemsArray = [  "zoz" , "zoz" , "zoz"]
     var borsaData:BorsaHomeDataModel?
-    var Sector = ""
+    var Sector = "poultry"
     var sectorTypeFromHeader = ""
     private var  BorsaSubModel:[Sections] = []
     private var  fodderSubModel:[FodSections] = []

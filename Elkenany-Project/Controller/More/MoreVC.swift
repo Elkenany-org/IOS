@@ -233,11 +233,11 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
         switch indexPath.row {
         case 0:
             let vc = storyboard?.instantiateViewController(identifier: "BorsaHomeVC") as! BorsaHomeVC
-            vc.featchBorsaSubSectionsFromMore()
+            vc.featchBorsaSubSections()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = storyboard?.instantiateViewController(identifier: "CompanyGuideVC") as! CompanyGuideVC
-            vc.FatchGuidMainDataaaaaaaaa()
+            vc.FatchGuidMainData()
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = storyboard?.instantiateViewController(identifier: "MainStoreVC") as! MainStoreVC

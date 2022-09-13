@@ -1380,8 +1380,8 @@
 				32F5FD0627688A2300E4DFE1 /* NewsCell.swift */,
 				32F5FD0727688A2300E4DFE1 /* NewsCell.xib */,
 				32F5FD182768BA6700E4DFE1 /* collectioncell.swift */,
-				32F5FD192768BA6700E4DFE1 /* collectioncell.xib */,
 				32F5FD1F2768C58400E4DFE1 /* newsDetailsCell.swift */,
+				32F5FD192768BA6700E4DFE1 /* collectioncell.xib */,
 				32F5FD202768C58400E4DFE1 /* newsDetailsCell.xib */,
 			);
 			path = Cells;

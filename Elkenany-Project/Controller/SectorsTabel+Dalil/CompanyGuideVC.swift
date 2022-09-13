@@ -30,7 +30,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
     @IBOutlet weak var saerchTF: UITextField!
     @IBOutlet weak var filterTitle: UIButton!
     ///sectore  Type From Home
-    var sectoreTypeFromHome = ""
+    var sectoreTypeFromHome = "poultry"
     var sectoreTypeFromSelecteHeader = ""
     var sectorTypeFromRecomindition = "poultry"
     var companyGuideModel:GuideCompaniesDataModel?

@@ -41,7 +41,7 @@ class searchVC: UIViewController {
     //MARK: featch data of search
     func featchDataOfSearch(){
         let param = ["search": self.searchBaView?.text ?? "" ]
-        let searchURL = "https://test.elkenany.com/api/search-all?search="
+        let searchURL = "https://elkenany.com/api/search-all?search="
         DispatchQueue.global(qos: .background).async {
             APIServiceForQueryParameter.shared.fetchData(url: searchURL, parameters: param, headers: nil, method: .get) { (success:SearchMainModel?, filier:SearchMainModel?, error) in
                 
@@ -96,6 +96,10 @@ extension searchVC : UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchSubModelMain.removeAll()
     }
+    
+    
+    
+    
 
 }
 

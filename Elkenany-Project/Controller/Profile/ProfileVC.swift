@@ -69,6 +69,17 @@ class ProfileVC: UIViewController {
     }
     
     
+    @IBAction func toAdsDetails(_ sender: Any) {
+        
+        if let vc = storyboard?.instantiateViewController(identifier: "BlankView") as? BlankView {
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
+    
     
     //featch data of profile
     func FatchDataProfile(){

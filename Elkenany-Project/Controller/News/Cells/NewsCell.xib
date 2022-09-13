@@ -20,42 +20,58 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCell" id="gTV-IL-0wX" customClass="NewsCell" customModule="Elkenany_Project" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="188"/>
+            <rect key="frame" x="0.0" y="0.0" width="361" height="152"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="188"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="152"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjm-8X-A93">
-                        <rect key="frame" x="5" y="5" width="351" height="178"/>
+                        <rect key="frame" x="5" y="5" width="351" height="142"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="09F-DX-lOp">
-                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="178"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="09F-DX-lOp">
+                                <rect key="frame" x="231" y="10" width="110" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="SUo-0f-ck6"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="زراعة  الاسكندرية تنظم دورة تدريبية في ااناج الدواجن والمشروعات الصغيرة علي مدار يوم واحد " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDD-Yc-XOz">
-                                <rect key="frame" x="185.5" y="20" width="155.5" height="38.5"/>
+                                <rect key="frame" x="15" y="10" width="201" height="26"/>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منذ شهر واحد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-07-nbl">
-                                <rect key="frame" x="277" y="73.5" width="64" height="15.5"/>
-                                <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="13"/>
-                                <color key="textColor" name="kenanyblueblack"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="m44-Lw-QUs">
+                                <rect key="frame" x="10" y="46" width="99" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8o-kK-vIq">
+                                        <rect key="frame" x="0.0" y="33" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="uMB-QD-vgq"/>
+                                            <constraint firstAttribute="width" constant="20" id="w8W-7x-gpm"/>
+                                        </constraints>
+                                        <state key="normal" image="share"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منذ شهر واحد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-07-nbl">
+                                        <rect key="frame" x="40" y="36" width="59" height="14"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oDD-Yc-XOz" firstAttribute="leading" secondItem="09F-DX-lOp" secondAttribute="trailing" constant="10" id="1h7-ZI-z0w"/>
-                            <constraint firstItem="oDD-Yc-XOz" firstAttribute="top" secondItem="fjm-8X-A93" secondAttribute="top" constant="20" id="Bis-4K-zex"/>
-                            <constraint firstItem="Bv0-07-nbl" firstAttribute="top" secondItem="oDD-Yc-XOz" secondAttribute="bottom" constant="15" id="CeJ-ua-Epi"/>
-                            <constraint firstItem="09F-DX-lOp" firstAttribute="leading" secondItem="fjm-8X-A93" secondAttribute="leading" id="Di1-Sh-fEh"/>
-                            <constraint firstItem="Bv0-07-nbl" firstAttribute="trailing" secondItem="oDD-Yc-XOz" secondAttribute="trailing" id="NMB-d2-ka0"/>
-                            <constraint firstAttribute="bottom" secondItem="09F-DX-lOp" secondAttribute="bottom" id="ZUZ-oe-Gng"/>
-                            <constraint firstAttribute="trailing" secondItem="oDD-Yc-XOz" secondAttribute="trailing" constant="10" id="i9F-vO-zQE"/>
-                            <constraint firstItem="09F-DX-lOp" firstAttribute="width" secondItem="fjm-8X-A93" secondAttribute="width" multiplier="0.5" id="sRO-Ke-VkY"/>
-                            <constraint firstItem="09F-DX-lOp" firstAttribute="top" secondItem="fjm-8X-A93" secondAttribute="top" id="z6a-D2-TuQ"/>
+                            <constraint firstAttribute="bottom" secondItem="m44-Lw-QUs" secondAttribute="bottom" constant="10" id="1mz-sM-TFB"/>
+                            <constraint firstItem="09F-DX-lOp" firstAttribute="leading" secondItem="oDD-Yc-XOz" secondAttribute="trailing" constant="15" id="6jG-zR-UGC"/>
+                            <constraint firstAttribute="trailing" secondItem="09F-DX-lOp" secondAttribute="trailing" constant="10" id="ESv-Hi-SPa"/>
+                            <constraint firstItem="m44-Lw-QUs" firstAttribute="top" secondItem="oDD-Yc-XOz" secondAttribute="bottom" constant="10" id="Oeg-1Q-yby"/>
+                            <constraint firstItem="oDD-Yc-XOz" firstAttribute="top" secondItem="fjm-8X-A93" secondAttribute="top" constant="10" id="dyc-1Q-GOj"/>
+                            <constraint firstAttribute="bottom" secondItem="09F-DX-lOp" secondAttribute="bottom" constant="10" id="fgt-9h-FIi"/>
+                            <constraint firstItem="m44-Lw-QUs" firstAttribute="leading" secondItem="fjm-8X-A93" secondAttribute="leading" constant="10" id="jGh-qc-Dlf"/>
+                            <constraint firstItem="09F-DX-lOp" firstAttribute="top" secondItem="fjm-8X-A93" secondAttribute="top" constant="10" id="npr-4F-kzi"/>
+                            <constraint firstItem="oDD-Yc-XOz" firstAttribute="leading" secondItem="fjm-8X-A93" secondAttribute="leading" constant="15" id="qIY-2X-AQq"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -72,22 +88,20 @@
                 <constraint firstAttribute="bottom" secondItem="fjm-8X-A93" secondAttribute="bottom" constant="5" id="krf-eF-AJG"/>
                 <constraint firstAttribute="trailing" secondItem="fjm-8X-A93" secondAttribute="trailing" constant="5" id="tWK-Br-KhW"/>
             </constraints>
-            <size key="customSize" width="361" height="188"/>
+            <size key="customSize" width="361" height="152"/>
             <connections>
                 <outlet property="newsDate" destination="Bv0-07-nbl" id="Anh-yp-Ci8"/>
                 <outlet property="newsImage" destination="09F-DX-lOp" id="G1m-RG-kGl"/>
                 <outlet property="newsTitle" destination="oDD-Yc-XOz" id="izb-ga-LWf"/>
             </connections>
-            <point key="canvasLocation" x="252.89855072463769" y="65.625"/>
+            <point key="canvasLocation" x="252.89855072463769" y="34.821428571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+        <image name="share" width="512" height="512"/>
         <namedColor name="kenanyGreen">
             <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="kenanyblueblack">
-            <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

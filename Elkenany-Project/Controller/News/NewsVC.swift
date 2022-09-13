@@ -22,7 +22,7 @@ class NewsVC: UIViewController {
     @IBOutlet weak var searchBarView: UISearchBar!
     //proparites
     var news:AllNewsDataModel?
-    var typeOfSectors = ""
+    var typeOfSectors = "poultry"
     var typeFromhome = ""
     var subID_fromGuideHome = 0
     var subNewsModel:[Dataa] = []
@@ -379,11 +379,11 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if collectionView == SelectedBySector {
             
-            return CGSize(width: 100, height: 60)
+            return CGSize(width: 70, height: 60)
             
         }else{
             
-            return CGSize(width: 400, height: 160)
+            return CGSize(width: 400, height: 120)
             
         }
     }
