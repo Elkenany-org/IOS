@@ -9,10 +9,15 @@ import UIKit
 
 class staticticesDetails: UIViewController {
     @IBOutlet weak var DetailsCollection: UICollectionView!
+    
+    @IBOutlet weak var toPicker: UIButton!
+    
+    @IBOutlet weak var FromPicker: UIButton!
     var DetailsModel:DetailsDetailsMainModel?
     var idFromSelect = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        featchBorsaDetails()
 
         // Do any additional setup after loading the view.
         DetailsCollection.dataSource = self
@@ -24,19 +29,14 @@ class staticticesDetails: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        featchBorsaDetails()
-    }
-    
-    
+
     
     //MARK:- FeatchData for Borsa [Company Logos]
     func featchBorsaDetails(){
         DispatchQueue.global(qos: .background).async {
             let companyDetailsurl = "https://elkenany.com/api/localstock/statistics-detials-local-stock?id="
             let idParameter = UserDefaults.standard.string(forKey: "ID_Details")
-            let param = ["id": "\(idParameter ?? "")"]
+            let param = ["id": "5"]
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailsurl, parameters: param, headers: nil, method: .get) { (Detailssuccess:DetailsDetailsMainModel?, Detailsfilier:DetailsDetailsMainModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
@@ -45,6 +45,7 @@ class staticticesDetails: UIViewController {
                     self.DetailsModel = success
                     DispatchQueue.main.async {
                         self.DetailsCollection.reloadData()
+                        print(success.data ?? "rtyuiop")
                     }
                 }
             }

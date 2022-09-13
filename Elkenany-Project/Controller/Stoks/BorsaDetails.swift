@@ -22,6 +22,10 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var logosCV: UICollectionView!
     @IBOutlet weak var bannersCV: UICollectionView!
+    @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var logosView: UIView!
+
+    
     
     var variaTest = ""
     var fodderTypeParamter = ""
@@ -175,8 +179,38 @@ class BorsaDetails: UIViewController, BorsaFilterss {
                     let successDatabanners = success?.data?.banners ?? []
                     self.bannerssModel.append(contentsOf: successDatabanners)
                     DispatchQueue.main.async {
-                        self.logosCV.reloadData()
-                        self.bannersCV.reloadData()
+                        
+                        if self.logossModel.isEmpty == true && self.bannerssModel.isEmpty == false {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = false
+                            self.bannersCV.reloadData()
+                            
+                            
+                        } else if self.logossModel.isEmpty == false && self.bannerssModel.isEmpty == true {
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = true
+                            self.logosCV.reloadData()
+                            self.bannersCV.reloadData()
+
+                            
+                            
+                        }else if self.logossModel.isEmpty  == true && self.bannerssModel.isEmpty == true {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = true
+                            
+                            
+                        }else{
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = false
+                            
+                            self.bannersCV.reloadData()
+                            self.logosCV.reloadData()
+                        }
+                        
+                        
+//
+//                        self.logosCV.reloadData()
+//                        self.bannersCV.reloadData()
                     }
                 }
             }

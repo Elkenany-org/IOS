@@ -29,6 +29,8 @@ class BorsaHomeVC: UIViewController  {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var searchBarView: UISearchBar!
     
+    @IBOutlet weak var logosView: UIView!
+    @IBOutlet weak var bannerView: UIView!
     //MARK:- prametars
     var timer:Timer?
     var currentIndex = 0
@@ -143,10 +145,41 @@ class BorsaHomeVC: UIViewController  {
                     self.fodderSubModel.append(contentsOf: successDatafodder)
                     
                     DispatchQueue.main.async {
+                      
+//                        self.bannersCV.reloadData()
+//                        self.logosCV.reloadData()
+//                        self.BorsaCV.reloadData()
+                        
+                        
+                        
+                        if self.logosSubModel.isEmpty == true && self.bannersSubModel.isEmpty == false {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = false
+                            self.bannersCV.reloadData()
+                            
+                            
+                        } else if self.logosSubModel.isEmpty == false && self.bannersSubModel.isEmpty == true {
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = true
+                            self.logosCV.reloadData()
+                            
+                            
+                        }else if self.logosSubModel.isEmpty  == true && self.bannersSubModel.isEmpty == true {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = true
+                            
+                            
+                        }else{
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = false
+                            
+                            self.bannersCV.reloadData()
+                            self.logosCV.reloadData()
+                        }
+                        
                         self.BorsaCV.reloadData()
                         self.SelectedSector.reloadData()
-                        self.bannersCV.reloadData()
-                        self.logosCV.reloadData()
+                        
                         
                     }
                 }
@@ -226,9 +259,49 @@ class BorsaHomeVC: UIViewController  {
                     self.fodderSubModel.append(contentsOf: successDatafodder)
                     
                     DispatchQueue.main.async {
+                        
+                        
+//                        self.SelectedSector.reloadData()
+                        //                        self.bannersCV.reloadData()
+                        //                        self.logosCV.reloadData()
+                        //                        self.BorsaCV.reloadData()
+                        
+                        
+                        
+                        if self.logosSubModel.isEmpty == true && self.bannersSubModel.isEmpty == false {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = false
+                            self.bannersCV.reloadData()
+                            
+                            
+                        } else if self.logosSubModel.isEmpty == false && self.bannersSubModel.isEmpty == true {
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = true
+                            self.logosCV.reloadData()
+                            self.bannersCV.reloadData()
+
+                            
+                            
+                        }else if self.logosSubModel.isEmpty  == true && self.bannersSubModel.isEmpty == true {
+                            self.logosView.isHidden = true
+                            self.bannerView.isHidden = true
+                            
+                            
+                        }else{
+                            self.logosView.isHidden = false
+                            self.bannerView.isHidden = false
+                            
+                            self.bannersCV.reloadData()
+                            self.logosCV.reloadData()
+                        }
+                        
                         self.BorsaCV.reloadData()
-                        self.logosCV.reloadData()
-                        self.bannersCV.reloadData()
+
+                        
+                        
+                        
+                        
+                        
                     }
                 }
             }
@@ -272,8 +345,8 @@ class BorsaHomeVC: UIViewController  {
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.presentKey = "keeey"
         filtervc.RunFilterDeleget = self
-//        filtervc.presentHomeFilter = "home"
-
+        //        filtervc.presentHomeFilter = "home"
+        
         present(filtervc, animated: true, completion: nil)
         
     }
@@ -332,11 +405,12 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         
         
         else if collectionView == bannersCV {
-            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
+            if  let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell {
             let imageSlider = bannersSubModel[indexPath.item].image ?? ""
             ss(ss: cell2)
             cell2.configureCell(image: imageSlider)
             return cell2
+            }
         }
         
         else if collectionView == logosCV{
@@ -344,7 +418,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             let imageeee = logosSubModel[indexPath.item].image ?? ""
             cell3.logooImage.contentMode = .scaleAspectFit
             ss(ss: cell3)
-
+            
             cell3.configureImage(image: imageeee)
             return cell3
         }
@@ -354,11 +428,11 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if indexPath.section == 0{
                 let cell4 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell4.companyTitle.text = BorsaSubModel[indexPath.item].name ?? ""
-//                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
+                //                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
                 
                 let imageBorsaSubSection = BorsaSubModel[indexPath.row].image ?? ""
                 cell4.companyImage.contentMode = .scaleToFill
-
+                
                 cell4.configureCell(image: imageBorsaSubSection)
                 ss(ss: cell4)
                 return cell4
@@ -367,7 +441,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             else if indexPath.section == 1{
                 let cell5 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell5.companyTitle.text = fodderSubModel[indexPath.item].name ?? ""
-//                cell5.companiesCount.text = String( fodderSubModel[indexPath.item].members ?? 0)
+                //                cell5.companiesCount.text = String( fodderSubModel[indexPath.item].members ?? 0)
                 let imageBorsaFoder = fodderSubModel[indexPath.row].image ?? ""
                 cell5.configureCell(image: imageBorsaFoder)
                 ss(ss: cell5)
@@ -530,11 +604,11 @@ extension BorsaHomeVC : UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
             cBtn.setTitle("الغاء", for: .normal)
-            //            featchBorsaSubSections()
             searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-            
         }
     }
+    
+    
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchView.isHidden = true
@@ -551,8 +625,8 @@ extension BorsaHomeVC : UISearchBarDelegate {
         
         print("cancellllld")
     }
-    
 }
+
 
 
 
