@@ -24,18 +24,18 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n1G-1N-YaN">
-                        <rect key="frame" x="20" y="0.0" width="530" height="112"/>
+                        <rect key="frame" x="15" y="2" width="540" height="108"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="i9a-JP-iNs">
-                                <rect key="frame" x="0.0" y="0.0" width="530" height="112"/>
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="108"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5X-Qk-4bB">
-                                        <rect key="frame" x="0.0" y="0.0" width="174.5" height="112"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGv-Fl-A9K">
-                                                <rect key="frame" x="77" y="50" width="21" height="12"/>
+                                                <rect key="frame" x="78.5" y="48" width="21" height="12"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="10"/>
-                                                <color key="textColor" name="kenanyblueblack"/>
+                                                <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -54,12 +54,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-73-XpO">
-                                        <rect key="frame" x="177.5" y="0.0" width="175" height="112"/>
+                                        <rect key="frame" x="181" y="0.0" width="178" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueY-lj-9Wd">
-                                                <rect key="frame" x="78" y="51" width="19" height="10.5"/>
+                                                <rect key="frame" x="79.5" y="49" width="19" height="10.5"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
-                                                <color key="textColor" name="kenanyblueblack"/>
+                                                <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -78,12 +78,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIy-cg-Gbv">
-                                        <rect key="frame" x="355.5" y="0.0" width="174.5" height="112"/>
+                                        <rect key="frame" x="362" y="0.0" width="178" height="108"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بلدي فاخر" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igR-RH-U1C">
-                                                <rect key="frame" x="2" y="2" width="170.5" height="108"/>
+                                                <rect key="frame" x="2" y="2" width="174" height="104"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="9"/>
-                                                <color key="textColor" name="kenanyblueblack"/>
+                                                <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -117,7 +117,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                 <real key="value" value="0.5"/>
@@ -137,10 +137,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="n1G-1N-YaN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="AA8-js-jeg"/>
-                <constraint firstAttribute="trailing" secondItem="n1G-1N-YaN" secondAttribute="trailing" constant="20" id="Rqd-NM-3uN"/>
-                <constraint firstAttribute="bottom" secondItem="n1G-1N-YaN" secondAttribute="bottom" id="khn-Y1-cZJ"/>
-                <constraint firstItem="n1G-1N-YaN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pyy-uV-Skk"/>
+                <constraint firstItem="n1G-1N-YaN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="AA8-js-jeg"/>
+                <constraint firstAttribute="trailing" secondItem="n1G-1N-YaN" secondAttribute="trailing" constant="15" id="Rqd-NM-3uN"/>
+                <constraint firstAttribute="bottom" secondItem="n1G-1N-YaN" secondAttribute="bottom" constant="2" id="khn-Y1-cZJ"/>
+                <constraint firstItem="n1G-1N-YaN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="pyy-uV-Skk"/>
             </constraints>
             <size key="customSize" width="570" height="112"/>
             <connections>
@@ -152,8 +152,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="kenanyblueblack">
-            <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="kenanyGreen">
+            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

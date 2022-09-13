@@ -6313,106 +6313,130 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp1-S9-yRi">
-                                <rect key="frame" x="20" y="20" width="374" height="80"/>
+                                <rect key="frame" x="20" y="75" width="374" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGR-uV-EWR">
                                         <rect key="frame" x="0.0" y="0.0" width="183" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ الي " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5m-rr-gz3">
-                                                <rect key="frame" x="20" y="10" width="143" height="15.333333333333336"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الي" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5m-rr-gz3">
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqb-NN-Vme">
-                                                <rect key="frame" x="37.666666666666657" y="30.333333333333336" width="108" height="32"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
-                                                <state key="normal" title="20 - 12 - 2021">
-                                                    <color key="titleColor" name="kenanyblueblack"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="FromDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="HO5-rf-w1N"/>
-                                                </connections>
-                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxc-0l-hR3">
+                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqb-NN-Vme">
+                                                        <rect key="frame" x="31.333333333333343" y="4.6666666666666714" width="77" height="26"/>
+                                                        <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
+                                                        <state key="normal" title="20 - 12 - 2021">
+                                                            <color key="titleColor" name="kenanyblueblack"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="FromDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="HO5-rf-w1N"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="kenanyGold"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="O3W-Ei-Fti"/>
+                                                    <constraint firstItem="bqb-NN-Vme" firstAttribute="centerX" secondItem="Pxc-0l-hR3" secondAttribute="centerX" id="P8T-lF-ymE"/>
+                                                    <constraint firstItem="bqb-NN-Vme" firstAttribute="centerY" secondItem="Pxc-0l-hR3" secondAttribute="centerY" id="pLK-pO-btr"/>
+                                                    <constraint firstAttribute="width" constant="140" id="unC-vw-WTH"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="bqb-NN-Vme" firstAttribute="top" secondItem="c5m-rr-gz3" secondAttribute="bottom" constant="5" id="8E2-K1-dic"/>
-                                            <constraint firstItem="bqb-NN-Vme" firstAttribute="centerX" secondItem="JGR-uV-EWR" secondAttribute="centerX" id="9w4-cy-W1M"/>
+                                            <constraint firstItem="Pxc-0l-hR3" firstAttribute="centerX" secondItem="JGR-uV-EWR" secondAttribute="centerX" id="3d8-1S-MW3"/>
+                                            <constraint firstItem="Pxc-0l-hR3" firstAttribute="top" secondItem="c5m-rr-gz3" secondAttribute="bottom" constant="5" id="I59-1N-hIG"/>
                                             <constraint firstItem="c5m-rr-gz3" firstAttribute="centerX" secondItem="JGR-uV-EWR" secondAttribute="centerX" id="SUh-f9-pYd"/>
                                             <constraint firstItem="c5m-rr-gz3" firstAttribute="top" secondItem="JGR-uV-EWR" secondAttribute="top" constant="10" id="Waa-q3-Sfz"/>
                                             <constraint firstItem="c5m-rr-gz3" firstAttribute="leading" secondItem="JGR-uV-EWR" secondAttribute="leading" constant="20" id="XJ1-Q0-kwN"/>
                                             <constraint firstAttribute="height" constant="80" id="kL8-KO-2lA"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="kenanyGold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-F9-bZG">
                                         <rect key="frame" x="191" y="0.0" width="183" height="80"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ من " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hND-B6-TOb">
-                                                <rect key="frame" x="20" y="10" width="143" height="15.333333333333336"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="من" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hND-B6-TOb">
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-Uv-xmp">
-                                                <rect key="frame" x="37.666666666666657" y="30.333333333333336" width="108" height="32"/>
-                                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
-                                                <state key="normal" title="20 - 12 - 2021">
-                                                    <color key="titleColor" name="kenanyblueblack"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="ToDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="oY2-qb-gUM"/>
-                                                </connections>
-                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-iF-o9B">
+                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-Uv-xmp">
+                                                        <rect key="frame" x="31.333333333333343" y="4.6666666666666714" width="77" height="26"/>
+                                                        <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
+                                                        <state key="normal" title="20 - 12 - 2021">
+                                                            <color key="titleColor" name="kenanyblueblack"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="ToDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="oY2-qb-gUM"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="kenanyGold"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="7if-QT-qnd"/>
+                                                    <constraint firstItem="ci2-Uv-xmp" firstAttribute="centerX" secondItem="cjg-iF-o9B" secondAttribute="centerX" id="9zx-si-E3F"/>
+                                                    <constraint firstAttribute="height" constant="35" id="Hfa-oc-fSr"/>
+                                                    <constraint firstItem="ci2-Uv-xmp" firstAttribute="centerY" secondItem="cjg-iF-o9B" secondAttribute="centerY" id="Swy-fX-FUS"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="2OR-Ow-woS"/>
                                             <constraint firstItem="hND-B6-TOb" firstAttribute="leading" secondItem="nTJ-F9-bZG" secondAttribute="leading" constant="20" id="BQA-dn-Pm8"/>
+                                            <constraint firstItem="cjg-iF-o9B" firstAttribute="top" secondItem="hND-B6-TOb" secondAttribute="bottom" constant="5" id="JxF-rw-zwr"/>
                                             <constraint firstItem="hND-B6-TOb" firstAttribute="centerX" secondItem="nTJ-F9-bZG" secondAttribute="centerX" id="MHQ-Uu-AY9"/>
-                                            <constraint firstItem="ci2-Uv-xmp" firstAttribute="centerX" secondItem="nTJ-F9-bZG" secondAttribute="centerX" id="SS0-sd-WD0"/>
+                                            <constraint firstItem="cjg-iF-o9B" firstAttribute="centerX" secondItem="nTJ-F9-bZG" secondAttribute="centerX" id="fxP-Wc-kUi"/>
                                             <constraint firstItem="hND-B6-TOb" firstAttribute="top" secondItem="nTJ-F9-bZG" secondAttribute="top" constant="10" id="piE-UW-vHz"/>
-                                            <constraint firstItem="ci2-Uv-xmp" firstAttribute="top" secondItem="hND-B6-TOb" secondAttribute="bottom" constant="5" id="r8W-c9-Zlq"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="kenanyGold"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVo-zP-m6R">
-                                <rect key="frame" x="20" y="120" width="374" height="60"/>
-                                <color key="backgroundColor" name="kenanyGreen"/>
+                                <rect key="frame" x="20" y="175" width="374" height="50"/>
+                                <color key="backgroundColor" name="kenanyGold"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="XhG-1N-B2f"/>
+                                    <constraint firstAttribute="height" constant="50" id="XhG-1N-B2f"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                 <color key="tintColor" name="kenanyGreen"/>
                                 <state key="normal" title="اختار الشركة ">
-                                    <color key="titleColor" name="kenanyGold"/>
+                                    <color key="titleColor" name="kenanyGreen"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                        <point key="value" x="0.5" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -6420,18 +6444,18 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfW-Fp-kvm">
-                                <rect key="frame" x="0.0" y="200" width="414" height="50"/>
+                                <rect key="frame" x="15" y="265" width="384" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="etR-ey-7ZP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="399" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28u-5x-tcV">
-                                                <rect key="frame" x="0.0" y="0.0" width="135.33333333333334" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="130.33333333333334" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-IN-e4U">
-                                                        <rect key="frame" x="41.333333333333343" y="16.333333333333343" width="53" height="17.666666666666671"/>
-                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
-                                                        <color key="textColor" name="kenanyGreen"/>
+                                                        <rect key="frame" x="42.333333333333343" y="22.333333333333314" width="45.666666666666657" height="15.333333333333336"/>
+                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
+                                                        <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -6441,24 +6465,18 @@
                                                     <constraint firstItem="FLU-IN-e4U" firstAttribute="centerX" secondItem="28u-5x-tcV" secondAttribute="centerX" id="Oh5-jr-upR"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="kenanyGold"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RoX-an-HRU">
-                                                <rect key="frame" x="139.33333333333331" y="0.0" width="135.33333333333331" height="50"/>
+                                                <rect key="frame" x="134.33333333333331" y="0.0" width="130.33333333333331" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usR-TN-MYy">
-                                                        <rect key="frame" x="36.666666666666657" y="16.333333333333343" width="62.333333333333343" height="17.666666666666671"/>
-                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
-                                                        <color key="textColor" name="kenanyGreen"/>
+                                                        <rect key="frame" x="38.333333333333314" y="22.333333333333314" width="54" height="15.333333333333336"/>
+                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
+                                                        <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -6468,40 +6486,28 @@
                                                     <constraint firstItem="usR-TN-MYy" firstAttribute="centerY" secondItem="RoX-an-HRU" secondAttribute="centerY" id="nHU-nn-fRg"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="kenanyGold"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-v1-kz8">
-                                                <rect key="frame" x="278.66666666666669" y="0.0" width="135.33333333333331" height="50"/>
+                                                <rect key="frame" x="268.66666666666669" y="0.0" width="130.33333333333331" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسم البورصة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmN-cD-Cis">
-                                                        <rect key="frame" x="33.999999999999993" y="16.333333333333343" width="67.333333333333314" height="17.666666666666671"/>
-                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
-                                                        <color key="textColor" name="kenanyGreen"/>
+                                                        <rect key="frame" x="36" y="22.333333333333314" width="58.333333333333343" height="15.333333333333336"/>
+                                                        <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
+                                                        <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="HhM-Sc-VCg"/>
+                                                    <constraint firstAttribute="height" constant="60" id="HhM-Sc-VCg"/>
                                                     <constraint firstItem="EmN-cD-Cis" firstAttribute="centerX" secondItem="tw2-v1-kz8" secondAttribute="centerX" id="gzg-8G-Za7"/>
                                                     <constraint firstItem="EmN-cD-Cis" firstAttribute="centerY" secondItem="tw2-v1-kz8" secondAttribute="centerY" id="ikG-xh-kcz"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="kenanyGold"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
@@ -6512,15 +6518,32 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="etR-ey-7ZP" secondAttribute="trailing" id="5h9-Nv-zBK"/>
+                                    <constraint firstAttribute="trailing" secondItem="etR-ey-7ZP" secondAttribute="trailing" constant="-15" id="5h9-Nv-zBK"/>
                                     <constraint firstAttribute="bottom" secondItem="etR-ey-7ZP" secondAttribute="bottom" id="7l1-7O-xXV"/>
                                     <constraint firstItem="etR-ey-7ZP" firstAttribute="top" secondItem="wfW-Fp-kvm" secondAttribute="top" id="b00-V0-NUI"/>
                                     <constraint firstItem="etR-ey-7ZP" firstAttribute="leading" secondItem="wfW-Fp-kvm" secondAttribute="leading" id="nlA-xp-KfV"/>
-                                    <constraint firstAttribute="height" constant="50" id="pWA-sP-163"/>
+                                    <constraint firstAttribute="height" constant="60" id="pWA-sP-163"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                        <point key="value" x="0.5" y="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OZw-CD-Zft">
-                                <rect key="frame" x="0.0" y="255" width="414" height="481"/>
+                                <rect key="frame" x="0.0" y="340" width="414" height="396"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CSK-SO-gZe">
                                     <size key="itemSize" width="128" height="128"/>
@@ -6539,21 +6562,66 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPW-9W-3d8">
+                                <rect key="frame" x="234" y="20" width="160" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NfE-ad-aGu">
+                                        <rect key="frame" x="120" y="0.0" width="40" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-jA-rd0">
+                                                <rect key="frame" x="8" y="9.6666666666666625" width="24" height="21"/>
+                                                <color key="tintColor" name="kenanyGreen"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="kenanyGold"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Mhh-jA-rd0" secondAttribute="bottom" constant="8" id="HxS-qD-jGv"/>
+                                            <constraint firstItem="Mhh-jA-rd0" firstAttribute="leading" secondItem="NfE-ad-aGu" secondAttribute="leading" constant="8" id="JCy-sS-f8b"/>
+                                            <constraint firstAttribute="trailing" secondItem="Mhh-jA-rd0" secondAttribute="trailing" constant="8" id="TwQ-pt-pvn"/>
+                                            <constraint firstItem="Mhh-jA-rd0" firstAttribute="top" secondItem="NfE-ad-aGu" secondAttribute="top" constant="8" id="YBT-mZ-zCf"/>
+                                            <constraint firstAttribute="width" constant="40" id="e9o-Sm-bZ1"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد التاريخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW2-sP-B4v">
+                                        <rect key="frame" x="49" y="11.33333333333333" width="61" height="17.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
+                                        <color key="textColor" name="kenanyGreen"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="IW2-sP-B4v" firstAttribute="centerY" secondItem="bPW-9W-3d8" secondAttribute="centerY" id="Bm9-Jj-b1Y"/>
+                                    <constraint firstAttribute="height" constant="40" id="HAz-JO-Wlq"/>
+                                    <constraint firstItem="NfE-ad-aGu" firstAttribute="leading" secondItem="IW2-sP-B4v" secondAttribute="trailing" constant="10" id="Ihc-Rl-hfr"/>
+                                    <constraint firstAttribute="trailing" secondItem="NfE-ad-aGu" secondAttribute="trailing" id="fVR-EM-2hA"/>
+                                    <constraint firstAttribute="bottom" secondItem="NfE-ad-aGu" secondAttribute="bottom" id="gTz-ah-Vta"/>
+                                    <constraint firstAttribute="width" constant="160" id="u2J-aY-I2K"/>
+                                    <constraint firstItem="NfE-ad-aGu" firstAttribute="top" secondItem="bPW-9W-3d8" secondAttribute="top" id="zAg-xd-Nwa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dTv-nu-1QB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dTv-nu-1QB" firstAttribute="trailing" secondItem="WVo-zP-m6R" secondAttribute="trailing" constant="20" id="35c-BD-GJq"/>
                             <constraint firstItem="WVo-zP-m6R" firstAttribute="top" secondItem="xp1-S9-yRi" secondAttribute="bottom" constant="20" id="CaW-C8-vBq"/>
-                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="trailing" secondItem="dTv-nu-1QB" secondAttribute="trailing" id="DC5-La-0fR"/>
+                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="trailing" secondItem="dTv-nu-1QB" secondAttribute="trailing" constant="-15" id="DC5-La-0fR"/>
                             <constraint firstItem="WVo-zP-m6R" firstAttribute="leading" secondItem="dTv-nu-1QB" secondAttribute="leading" constant="20" id="FAf-ah-sKU"/>
                             <constraint firstItem="OZw-CD-Zft" firstAttribute="leading" secondItem="dTv-nu-1QB" secondAttribute="leading" id="LF2-LX-Pke"/>
                             <constraint firstItem="dTv-nu-1QB" firstAttribute="trailing" secondItem="xp1-S9-yRi" secondAttribute="trailing" constant="20" id="LK1-j0-PGX"/>
-                            <constraint firstItem="xp1-S9-yRi" firstAttribute="top" secondItem="dTv-nu-1QB" secondAttribute="top" constant="20" id="MeO-Su-QLt"/>
-                            <constraint firstItem="OZw-CD-Zft" firstAttribute="top" secondItem="wfW-Fp-kvm" secondAttribute="bottom" constant="5" id="Ok7-Ht-ZVh"/>
-                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="leading" secondItem="dTv-nu-1QB" secondAttribute="leading" id="YGt-3i-80K"/>
+                            <constraint firstItem="OZw-CD-Zft" firstAttribute="top" secondItem="wfW-Fp-kvm" secondAttribute="bottom" constant="15" id="Ok7-Ht-ZVh"/>
+                            <constraint firstItem="xp1-S9-yRi" firstAttribute="top" secondItem="bPW-9W-3d8" secondAttribute="bottom" constant="15" id="Tlx-lm-Uq4"/>
+                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="leading" secondItem="dTv-nu-1QB" secondAttribute="leading" constant="15" id="YGt-3i-80K"/>
+                            <constraint firstItem="bPW-9W-3d8" firstAttribute="top" secondItem="dTv-nu-1QB" secondAttribute="top" constant="20" id="Yao-e3-K2d"/>
                             <constraint firstAttribute="bottom" secondItem="OZw-CD-Zft" secondAttribute="bottom" id="cx2-nd-qR0"/>
-                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="top" secondItem="WVo-zP-m6R" secondAttribute="bottom" constant="20" id="p0n-1p-duS"/>
+                            <constraint firstItem="dTv-nu-1QB" firstAttribute="trailing" secondItem="bPW-9W-3d8" secondAttribute="trailing" constant="20" id="fn3-ee-OU1"/>
+                            <constraint firstItem="wfW-Fp-kvm" firstAttribute="top" secondItem="WVo-zP-m6R" secondAttribute="bottom" constant="40" id="p0n-1p-duS"/>
                             <constraint firstItem="dTv-nu-1QB" firstAttribute="trailing" secondItem="OZw-CD-Zft" secondAttribute="trailing" id="pDS-kP-H06"/>
                             <constraint firstItem="xp1-S9-yRi" firstAttribute="leading" secondItem="SL2-pf-ou0" secondAttribute="leading" constant="20" id="q7p-HF-f1e"/>
                         </constraints>
@@ -6566,7 +6634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNv-kr-Mkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5233" y="6210"/>
+            <point key="canvasLocation" x="5231.884057971015" y="6209.5108695652179"/>
         </scene>
         <!--Filter Home-->
         <scene sceneID="WAP-3K-wcj">
@@ -6907,7 +6975,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyb-TQ-NIB">
-                                        <rect key="frame" x="316" y="20" width="68" height="32"/>
+                                        <rect key="frame" x="334.33333333333331" y="20" width="49.666666666666686" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -6967,7 +7035,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاصناف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Ii-BQZ">
-                                        <rect key="frame" x="320.66666666666669" y="20" width="63.333333333333314" height="32"/>
+                                        <rect key="frame" x="331" y="20" width="53" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7238,12 +7306,12 @@
                                 <rect key="frame" x="0.0" y="86" width="414" height="650"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L68-aj-bcA">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="570"/>
+                                        <rect key="frame" x="0.0" y="68" width="414" height="582"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختار الشركة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gno-wx-lAg">
-                                        <rect key="frame" x="313" y="20" width="81" height="20"/>
-                                        <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
+                                        <rect key="frame" x="171.33333333333334" y="20" width="71.666666666666657" height="17.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -7253,18 +7321,18 @@
                                             <constraint firstAttribute="height" constant="30" id="9ra-bJ-m7O"/>
                                             <constraint firstAttribute="width" constant="30" id="vGx-Dw-Gj4"/>
                                         </constraints>
-                                        <state key="normal" image="down"/>
+                                        <state key="normal" backgroundImage="dddd"/>
                                         <connections>
                                             <action selector="dismis:" destination="yb7-qZ-fLQ" eventType="touchUpInside" id="HWc-jK-6kY"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" name="kenanyGold"/>
                                 <constraints>
                                     <constraint firstItem="fSX-lD-LoA" firstAttribute="leading" secondItem="LXW-8F-fcO" secondAttribute="leading" constant="20" id="9Ry-XW-phz"/>
                                     <constraint firstItem="fSX-lD-LoA" firstAttribute="top" secondItem="LXW-8F-fcO" secondAttribute="top" constant="20" id="RkE-Pi-1kx"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gno-wx-lAg" secondAttribute="trailing" constant="20" id="SgQ-0s-AFO"/>
-                                    <constraint firstItem="L68-aj-bcA" firstAttribute="top" secondItem="fSX-lD-LoA" secondAttribute="bottom" constant="30" id="Vnl-hr-kRU"/>
+                                    <constraint firstItem="L68-aj-bcA" firstAttribute="top" secondItem="fSX-lD-LoA" secondAttribute="bottom" constant="18" id="Vnl-hr-kRU"/>
+                                    <constraint firstItem="Gno-wx-lAg" firstAttribute="centerX" secondItem="LXW-8F-fcO" secondAttribute="centerX" id="X6s-Uv-8hT"/>
                                     <constraint firstAttribute="trailing" secondItem="L68-aj-bcA" secondAttribute="trailing" id="kau-a3-fVp"/>
                                     <constraint firstAttribute="bottom" secondItem="L68-aj-bcA" secondAttribute="bottom" id="meV-og-WGp"/>
                                     <constraint firstAttribute="height" constant="650" id="nOa-oz-qVz"/>
@@ -7292,7 +7360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lww-pq-P2Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5845" y="6210"/>
+            <point key="canvasLocation" x="5844.9275362318849" y="6209.5108695652179"/>
         </scene>
         <!--Borsa Date Piker-->
         <scene sceneID="QCt-fu-ffr">
@@ -8041,8 +8109,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yat-ze-cFq">
                                 <rect key="frame" x="32" y="238" width="350" height="260"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="62.666666666666686" y="93" width="225" height="41"/>
+                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
+                                        <rect key="frame" x="62.666666666666686" y="105" width="225" height="41"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
@@ -8070,8 +8138,8 @@
                                             <action selector="dissssmis:" destination="yXa-29-vcW" eventType="touchUpInside" id="pDK-eE-4sM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-PJ-xLf">
-                                        <rect key="frame" x="95" y="164" width="160" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-PJ-xLf">
+                                        <rect key="frame" x="95" y="176" width="160" height="50"/>
                                         <color key="backgroundColor" name="kenanyGold"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="VH5-rX-eTy"/>
@@ -11702,14 +11770,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="0jf-r3-3ex">
-            <size key="intrinsicContentSize" width="225" height="41"/>
-        </designable>
         <designable name="buJ-Ty-hiC">
             <size key="intrinsicContentSize" width="-1" height="49"/>
-        </designable>
-        <designable name="ncb-ZE-mZ7">
-            <size key="intrinsicContentSize" width="211" height="35"/>
         </designable>
     </designables>
     <resources>
@@ -11719,7 +11781,8 @@
         <image name="Group 519" width="201.33332824707031" height="191"/>
         <image name="Screen Shot 2022-09-05 at 2.50.10 PM" width="92" height="42"/>
         <image name="add (1)" width="16" height="16"/>
-        <image name="applelogo" catalog="system" width="32" height="32"/>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="camera.filters" catalog="system" width="128" height="116"/>
         <image name="dddd" width="15" height="15"/>
         <image name="deeeee" width="97" height="39"/>

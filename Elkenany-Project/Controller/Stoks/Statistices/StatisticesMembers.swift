@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import Charts
 import Alamofire
 import JGProgressHUD
 
 
 class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolTwo , DataBackProtocol {
     
-    @IBOutlet weak var piechart: PieChartView!
     @IBOutlet weak var DetailsCCV: UICollectionView!
     @IBOutlet weak var toTitle: UIButton!
     @IBOutlet weak var fromTitle: UIButton!
@@ -25,38 +23,15 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     var LocalBorsaaaaas:statInsideFodder?
     var looooo:TestBorsaMember?
     var errorFromModel:ErrorModelForBorsa?
-    var enteries = [ChartDataEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         featchMainDataMembers()
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
-//        toTitle.titleLabel?.text = result
-//        fromTitle.titleLabel?.text = result
-        title = "تفاصيل البورصة"
+        title = "الاحصائيات"
         toTitle.setTitle(result, for: .normal)
         fromTitle.setTitle(result, for: .normal)
-
-//         Do any additional setup after loading the view.
-        for x in 0..<5 {
-            enteries.append(ChartDataEntry(x: Double(x), y: Double(x)))
-        }
-        
-//        for xcc in LocalBorsaaaaas?.data?.changesMembersss ?? [] {
-//            for ytt in xcc.change ?? ""{
-////                enteries.append(ChartDataEntry(x: Double(ytt), y: Double(ytt)))
-//                enteries.append(ChartDataEntry(x:Float (ytt), y: <#T##Double#>))
-//
-//
-//            }
-//        }
-        // Do any additional setup after loading the view.
-        let set = PieChartDataSet(enteries)
-        set.colors = ChartColorTemplates.colorful()
-        let data = PieChartData(dataSet: set)
-        piechart.data = data
-        
         DetailsCCV.delegate = self
         DetailsCCV.dataSource = self
         self.DetailsCCV.register(UINib(nibName: "StatisticesCell", bundle: nil), forCellWithReuseIdentifier: "StatisticesCell")
@@ -119,8 +94,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
         hud.show(in: self.view)
         self.toTitle.setTitle(dateTo, for: .normal)
         DispatchQueue.global(qos: .background).async {
-            //            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            //            print("this is token\(api_token ?? "")")
+
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
 
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
@@ -191,10 +165,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
-//        self.toTitle.setTitle(dateTo, for: .normal)
         DispatchQueue.global(qos: .background).async {
-            //            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            //            print("this is token\(api_token ?? "")")
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
 
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
@@ -282,16 +253,12 @@ extension StatisticesMembers:UICollectionViewDelegate, UICollectionViewDataSourc
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50)
+        return CGSize(width: collectionView.frame.width, height: 60)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let DetailsVC = storyboard?.instantiateViewController(identifier: "staticticesDetails") as! staticticesDetails
-//        let ComId = LocalBorsa2?.data?.changesMembers?[indexPath.item].id ?? 0
-//        UserDefaults.standard.set(ComId, forKey: "ID_Details")
-//        let ComName = LocalBorsa2?.data?.changesMembers?[indexPath.item].name ?? ""
-//        UserDefaults.standard.set(ComName, forKey: "Name_Details")
         navigationController?.pushViewController(DetailsVC, animated: true)
         
     }
