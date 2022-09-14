@@ -126,7 +126,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwL-S2-GWy">
                                                 <rect key="frame" x="393" y="0.0" width="35" height="32"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email (3)" translatesAutoresizingMaskIntoConstraints="NO" id="LrM-gI-ayL">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartphone-1" translatesAutoresizingMaskIntoConstraints="NO" id="LrM-gI-ayL">
                                                         <rect key="frame" x="2" y="2" width="31" height="28"/>
                                                     </imageView>
                                                 </subviews>
@@ -162,7 +162,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncL-zG-Qgf">
                                                 <rect key="frame" x="393" y="0.0" width="35" height="32"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email (3)" translatesAutoresizingMaskIntoConstraints="NO" id="Kl7-KO-XzX">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-call" translatesAutoresizingMaskIntoConstraints="NO" id="Kl7-KO-XzX">
                                                         <rect key="frame" x="2" y="2" width="31" height="28"/>
                                                     </imageView>
                                                 </subviews>
@@ -188,7 +188,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKR-bm-TXB">
                                                 <rect key="frame" x="0.0" y="0.0" width="378" height="32"/>
                                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
-                                                <state key="normal" title="+201094940872">
+                                                <state key="normal" title="+20502210279">
                                                     <color key="titleColor" name="kenanyblueblack"/>
                                                 </state>
                                                 <connections>
@@ -198,7 +198,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aO-RX-xZt">
                                                 <rect key="frame" x="393" y="0.0" width="35" height="32"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email (3)" translatesAutoresizingMaskIntoConstraints="NO" id="HOS-N5-VXB">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fax" translatesAutoresizingMaskIntoConstraints="NO" id="HOS-N5-VXB">
                                                         <rect key="frame" x="2" y="2" width="31" height="28"/>
                                                     </imageView>
                                                 </subviews>
@@ -315,7 +315,10 @@
     <resources>
         <image name="Screen Shot 2022-08-24 at 2.03.02 PM" width="783" height="539"/>
         <image name="email (3)" width="512" height="512"/>
+        <image name="fax" width="512" height="512"/>
+        <image name="phone-call" width="512" height="512"/>
         <image name="pin" width="512" height="512"/>
+        <image name="smartphone-1" width="512" height="512"/>
         <namedColor name="kenanyGold">
             <color red="1" green="0.58799999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

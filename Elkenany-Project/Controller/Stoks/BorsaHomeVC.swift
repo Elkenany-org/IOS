@@ -121,6 +121,11 @@ class BorsaHomeVC: UIViewController  {
     
     //MARK:- FeatchData for Borsa [Company sub_sections] and data for the main
     func featchBorsaSubSections(){
+        
+        //Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.Sector)"]
@@ -129,9 +134,13 @@ class BorsaHomeVC: UIViewController  {
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
+                    hud.dismiss()
+
                     print("============ error \(error)")
                     
                 }else {
+                    hud.dismiss()
+
                     let successData = Borsasuccess?.data?.sectors?.reversed() ?? []
                     self.sectorSubModel.append(contentsOf: successData)
                     let successDataaa = Borsasuccess?.data?.subSections ?? []
