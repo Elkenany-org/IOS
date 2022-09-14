@@ -25,6 +25,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var logosView: UIView!
 
+    @IBOutlet weak var updateLabel: UILabel!
     
     
     var variaTest = ""
@@ -58,7 +59,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         print("vTest \(variaTest)")
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
-        btnLabel.setTitle( result, for: .normal )
+//        btnLabel.setTitle( result, for: .normal )
         LogosandBanners()
         
 
@@ -180,6 +181,9 @@ class BorsaDetails: UIViewController, BorsaFilterss {
                     self.bannerssModel.append(contentsOf: successDatabanners)
                     DispatchQueue.main.async {
                         
+                    
+
+                        
                         if self.logossModel.isEmpty == true && self.bannerssModel.isEmpty == false {
                             self.logosView.isHidden = true
                             self.bannerView.isHidden = false
@@ -206,7 +210,6 @@ class BorsaDetails: UIViewController, BorsaFilterss {
                             self.bannersCV.reloadData()
                             self.logosCV.reloadData()
                         }
-                        
                         
 //
 //                        self.logosCV.reloadData()
@@ -348,7 +351,8 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+//        updateLabel.text = success?.data?.members?[indexPath.item]
+
 
         if collectionView == logosCV{
             if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
