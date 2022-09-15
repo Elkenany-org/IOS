@@ -323,6 +323,19 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         self.present(vc!, animated: true, completion: nil)
     }
     
+    
+    
+    func ss(ss:UICollectionViewCell){
+        ss.layer.cornerRadius = 5.0
+        ss.layer.borderWidth = 0.0
+        ss.layer.shadowColor = UIColor.darkGray.cgColor
+        ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        ss.layer.shadowRadius = 5.0
+        ss.layer.shadowOpacity = 0.4
+        ss.layer.masksToBounds = false
+        
+    }
+    
 }
 
 
@@ -358,17 +371,19 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
             if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
                 let imageeee = logossModel[indexPath.item].image ?? ""
             Logoscell.configureImage(image: imageeee)
-                Logoscell.logooImage.contentMode = .scaleToFill
+                ss(ss: Logoscell)
+                Logoscell.logooImage.contentMode = .scaleAspectFit
             return Logoscell
             }
         
         }
         else if collectionView == bannersCV{
-            if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell{
+            if let bannerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell{
             let imageeee = bannerssModel[indexPath.item].image ?? ""
-                Logoscell.configureCell(image: imageeee)
-                Logoscell.bannerImage.contentMode = .scaleToFill
-            return Logoscell
+                bannerCell.configureCell(image: imageeee)
+                bannerCell.bannerImage.contentMode = .scaleToFill
+                ss(ss: bannerCell )
+            return bannerCell
             }
         }
         else if collectionView == LocalBorsaCV{
@@ -441,7 +456,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: collectionView.frame.width, height: 65)
         
-        if collectionView == logosCV{ return CGSize(width: 65, height: 55)}
+        if collectionView == logosCV{ return CGSize(width: 65, height: 60)}
         else if collectionView == bannersCV{ return CGSize(width: collectionView.frame.width, height: 100)}
         else if collectionView == LocalBorsaCV{ return CGSize(width: collectionView.frame.width, height: 60)}
         else{  return CGSize(width: collectionView.frame.width, height: 60) }
@@ -518,45 +533,3 @@ extension BorsaDetails:BackDate{
     
 }
 
-
-//
-//extension BorsaDetails:UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == logosCV{ return logossModel.count}
-//        else if collectionView == bannarsCV{ return ban .count}
-//        else{ return 1 }
-//    }
-//
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        if collectionView == logosCV{
-//
-//            if let Logoscell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
-//            let imageeee = mainDatalLogos[indexPath.item].image ?? ""
-//            Logoscell.configureImage(image: imageeee)
-//            Logoscell.logooImage.contentMode = .scaleAspectFill
-//            return Logoscell
-//            }}
-//
-//
-//        else if collectionView == bannarsCV{
-//            if let BannersCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell {
-//                let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
-//                BannersCell.bannerImage.contentMode = .scaleAspectFit
-//                BannersCell.configureCell(image: imageeee)
-//                return BannersCell
-//            }
-//    }
-//        return UICollectionViewCell()
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == logosCV{ return CGSize(width:60, height: 60)}
-//        else if collectionView == bannarsCV { return CGSize(width: collectionView.frame.width, height: 120)}
-//        else{ return CGSize(width: 50, height: 100) }}
-//
-//}

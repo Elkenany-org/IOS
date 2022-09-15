@@ -16,11 +16,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="216" height="181"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
                         <rect key="frame" x="5" y="0.0" width="206" height="181"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="pcm-ox-ElF">
-                                <rect key="frame" x="5" y="1" width="196" height="178"/>
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="181"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="7"/>
@@ -30,10 +30,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pcm-ox-ElF" firstAttribute="leading" secondItem="8D6-Zq-rCM" secondAttribute="leading" constant="5" id="7ZK-J2-a2O"/>
-                            <constraint firstAttribute="bottom" secondItem="pcm-ox-ElF" secondAttribute="bottom" constant="2" id="GPX-H2-wHF"/>
-                            <constraint firstItem="pcm-ox-ElF" firstAttribute="top" secondItem="8D6-Zq-rCM" secondAttribute="top" constant="1" id="IHY-pb-EQ1"/>
-                            <constraint firstAttribute="trailing" secondItem="pcm-ox-ElF" secondAttribute="trailing" constant="5" id="dNg-DY-2pC"/>
+                            <constraint firstItem="pcm-ox-ElF" firstAttribute="leading" secondItem="8D6-Zq-rCM" secondAttribute="leading" id="7ZK-J2-a2O"/>
+                            <constraint firstAttribute="bottom" secondItem="pcm-ox-ElF" secondAttribute="bottom" id="GPX-H2-wHF"/>
+                            <constraint firstItem="pcm-ox-ElF" firstAttribute="top" secondItem="8D6-Zq-rCM" secondAttribute="top" id="IHY-pb-EQ1"/>
+                            <constraint firstAttribute="trailing" secondItem="pcm-ox-ElF" secondAttribute="trailing" id="dNg-DY-2pC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">

@@ -425,7 +425,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         else if collectionView == logosCV{
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
             let imageeee = logosSubModel[indexPath.item].image ?? ""
-            cell3.logooImage.contentMode = .scaleAspectFit
+            cell3.logooImage.contentMode = .scaleAspectFill
             ss(ss: cell3)
             
             cell3.configureImage(image: imageeee)
@@ -546,7 +546,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             return CGSize(width: collectionView.frame.width - 5, height: collectionView.frame.height )
         }
         else if collectionView == logosCV{
-            return CGSize(width: 80, height: 60)
+            return CGSize(width: 80, height: 70)
             
         }else if collectionView == BorsaCV{
             
