@@ -372,7 +372,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
                 let imageeee = logossModel[indexPath.item].image ?? ""
             Logoscell.configureImage(image: imageeee)
                 ss(ss: Logoscell)
-                Logoscell.logooImage.contentMode = .scaleAspectFit
+//                Logoscell.logooImage.contentMode = .scaleAspectFit
             return Logoscell
             }
         

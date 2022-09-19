@@ -16,6 +16,7 @@ class shipsVC: UIViewController {
     @IBOutlet weak var membershipV: UIView!
     @IBOutlet weak var notFoundView: UIView!
     
+    @IBOutlet weak var dateLabel: UILabel!
     let date = Date()
     let formatter = DateFormatter()
     var shipSubModel:ShipsModel?
@@ -28,7 +29,8 @@ class shipsVC: UIViewController {
         setupUI()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateDay = formatter.string(from: date)
-        dataPicker.setTitle(dateDay, for: .normal)
+//        dataPicker.setTitle(dateDay, for: .normal)
+        dateLabel.text = dateDay
         title = "حركة السفن"
     }
     
@@ -172,7 +174,8 @@ extension shipsVC:BackDate{
                         self.membershipV.isHidden = true
                         self.notFoundView.isHidden = true
                         self.shipCV.reloadData()
-                        self.dataPicker.setTitle(date, for: .normal)
+//                        self.dataPicker.setTitle(date, for: .normal)
+                        self.dateLabel.text = date
                         
                     }else if  self.shipsSubModelData.isEmpty == true{
                         self.shipCV.isHidden = true

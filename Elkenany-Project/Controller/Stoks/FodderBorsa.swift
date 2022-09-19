@@ -256,6 +256,16 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     }
     
     
+    func ss(ss:UICollectionViewCell){
+        ss.layer.cornerRadius = 5.0
+        ss.layer.borderWidth = 0.0
+        ss.layer.shadowColor = UIColor.darkGray.cgColor
+        ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        ss.layer.shadowRadius = 5.0
+        ss.layer.shadowOpacity = 0.4
+        ss.layer.masksToBounds = false
+        
+    }
     
     
     //MARK:- featch Fodder Borsa from feeds filter
@@ -405,6 +415,7 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
             
             if let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
                 let logoImage = fodderBorsaData?.data?.logos?[indexPath.item].image ?? ""
+                ss(ss: cell1)
                 cell1.configureImage(image: logoImage)
                 return cell1
             } }
@@ -412,6 +423,7 @@ extension FodderBorsa: UICollectionViewDelegate , UICollectionViewDataSource , U
         else {
             if let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as? SliderCell{
                 let bannerImage = fodderBorsaData?.data?.banners?[indexPath.item].image ?? ""
+                ss(ss: cell2)
                 cell2.configureCell(image: bannerImage)
                 return cell2
                 
