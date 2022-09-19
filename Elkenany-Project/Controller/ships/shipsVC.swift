@@ -121,14 +121,14 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "shipsCell", for: indexPath) as! shipsCell
         
         cell1.name.text = shipsSubModelData[indexPath.item].name ?? ""
-        cell1.date.text = shipsSubModelData[indexPath.item].date ?? ""
+        cell1.date.text = shipsSubModelData[indexPath.item].dirDate ?? ""
         cell1.container.text = String( shipsSubModelData[indexPath.item].load ?? 0)
         cell1.type.text = shipsSubModelData[indexPath.item].product ?? ""
         cell1.fromM.text = shipsSubModelData[indexPath.item].country ?? ""
-        cell1.arrivalDate.text = shipsSubModelData[indexPath.item].dirDate ?? ""
+        cell1.arrivalDate.text = shipsSubModelData[indexPath.item].date ?? ""
         cell1.distanition.text = shipsSubModelData[indexPath.item].company ?? ""
-        cell1.wakel.text = shipsSubModelData[indexPath.item].agent ?? ""
-        cell1.minaa.text = shipsSubModelData[indexPath.item].port ?? ""
+        cell1.wakel.text = shipsSubModelData[indexPath.item].port ?? ""
+        cell1.minaa.text = shipsSubModelData[indexPath.item].agent ?? ""
         return cell1
     }
     
