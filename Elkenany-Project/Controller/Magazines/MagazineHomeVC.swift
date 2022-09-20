@@ -52,7 +52,7 @@ class MagazineHomeVC: UIViewController {
         sectorsCV.dataSource = self
         
         self.sectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
-        magazinTV.register(UINib(nibName: "companiesCell", bundle: nil), forCellReuseIdentifier: "companiesCell")
+        magazinTV.register(UINib(nibName: "MagazineCell", bundle: nil), forCellReuseIdentifier: "MagazineCell")
         magazinTV.prefetchDataSource = self
         //Dynamice Hight cell
         magazinTV.estimatedRowHeight = 150
@@ -265,15 +265,15 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "companiesCell") as? companiesCell{
-            Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
-            Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
-            Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
-            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
-            let imageee = magazinSubModel[indexPath.row].image ?? ""
-            Companiescell.companyImage.contentMode = .scaleAspectFit
-            Companiescell.configureCellamagazan(image: imageee)
-            Companiescell.selectionStyle = .none
+        if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "MagazineCell") as? MagazineCell{
+//            Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
+//            Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
+//            Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
+//            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
+//            let imageee = magazinSubModel[indexPath.row].image ?? ""
+//            Companiescell.companyImage.contentMode = .scaleAspectFit
+//            Companiescell.configureCellamagazan(image: imageee)
+//            Companiescell.selectionStyle = .none
             return Companiescell
         }
         return UITableViewCell()
@@ -281,7 +281,7 @@ extension MagazineHomeVC:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 222
+        return 160
     }
     
     
@@ -326,7 +326,10 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 90, height: 60)
+        
+        let sizeOne = (collectionView.frame.size.width - 35 ) / 5
+
+        return CGSize(width:sizeOne, height: 55)
     }
     
     
