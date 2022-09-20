@@ -36,6 +36,16 @@ class MagazinVC: UIViewController {
         magazineDetailsTV.rowHeight = UITableView.automaticDimension
     }
     
+    func ss(ss:UITableViewCell){
+        ss.layer.cornerRadius = 20
+        ss.layer.borderWidth = 0.0
+        ss.layer.shadowColor = UIColor.black.cgColor
+        ss.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        ss.layer.shadowRadius = 10
+        ss.layer.shadowOpacity = 0.4
+        ss.layer.masksToBounds = false
+        
+    }
     
     
     //MARK:- Main Data
@@ -114,6 +124,7 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 let companyImage = magazineDetailsModel?.data?.image
                 cell.selectionStyle = .none
                 cell.configureImage(image: companyImage ?? "")
+                ss(ss: cell)
                 return cell }
             
         case 1:
@@ -121,6 +132,7 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
                 cell2.aboutCompany.text = magazineDetailsModel?.data?.about ?? ""
                 cell2.headTitle.text = "عن الدليل"
                 cell2.selectionStyle = .none
+                ss(ss: cell2)
                 return cell2 }
             
         case 2:
@@ -135,6 +147,7 @@ extension MagazinVC:UITableViewDelegate, UITableViewDataSource {
 
                 }
                 cell3.selectionStyle = .none
+                ss(ss: cell3)
                 return cell3 }
             
         default: print("default")}

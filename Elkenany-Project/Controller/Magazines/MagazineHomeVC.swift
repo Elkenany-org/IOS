@@ -290,7 +290,7 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
             cell.titleLabel.text = sectorSubModelMagazine[indexPath.item].name ?? ""
             if typeOfSectore == "poultry" {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             }else{
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
@@ -299,14 +299,14 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
             
         }else{
             let magazineecell = collectionView.dequeueReusableCell(withReuseIdentifier: "MagazineCell", for: indexPath) as! MagazineCell
-                //            Companiescell.companyName.text = magazinSubModel[indexPath.row].name ?? ""
-                //            Companiescell.companyDesc.text = magazinSubModel[indexPath.row].desc ?? ""
-                //            Companiescell.companyLocation.text = magazinSubModel[indexPath.row].address ?? ""
-                //            Companiescell.rating.rating = magazinSubModel[indexPath.row].rate ?? 0.0
-                //            let imageee = magazinSubModel[indexPath.row].image ?? ""
-                //            Companiescell.companyImage.contentMode = .scaleAspectFit
-                //            Companiescell.configureCellamagazan(image: imageee)
-                //            Companiescell.selectionStyle = .none
+            magazineecell.magazineName.text = magazinSubModel[indexPath.row].name ?? ""
+            magazineecell.descriptionnn.text = magazinSubModel[indexPath.row].desc ?? ""
+            magazineecell.locName.text = magazinSubModel[indexPath.row].address ?? ""
+            magazineecell.ratingView.rating = magazinSubModel[indexPath.row].rate ?? 0.0
+            let imageee = magazinSubModel[indexPath.row].image ?? ""
+            magazineecell.magazineImage.contentMode = .scaleAspectFit
+            magazineecell.configureCell(image:imageee)
+//            magazineecell.selectionStyle = .none
             
             return magazineecell
         }
@@ -340,7 +340,7 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
             if(cell.isSelected == true)
             {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
             FatchDatafromHomeHeader()
