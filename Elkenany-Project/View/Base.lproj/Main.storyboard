@@ -8222,8 +8222,8 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yat-ze-cFq">
                                 <rect key="frame" x="57" y="253" width="300" height="230"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="37.666666666666686" y="93" width="225" height="41"/>
+                                    <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jf-r3-3ex" customClass="CosmosView" customModule="Cosmos">
+                                        <rect key="frame" x="37.666666666666686" y="105" width="225" height="41"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
@@ -9884,10 +9884,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4vb-Px-EyN">
-                                <rect key="frame" x="0.0" y="146" width="414" height="590"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t1W-cL-6Kf">
                                 <rect key="frame" x="20" y="76" width="374" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -9902,27 +9898,47 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IKB-Xa-Du6">
+                                <rect key="frame" x="0.0" y="150" width="414" height="586"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QfT-r5-7CM">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pNn-pw-aSq">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Km4-hP-uhb">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iv5-eS-8Gx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Iv5-eS-8Gx" firstAttribute="trailing" secondItem="IKB-Xa-Du6" secondAttribute="trailing" id="0dk-Ml-teq"/>
                             <constraint firstItem="t1W-cL-6Kf" firstAttribute="leading" secondItem="Iv5-eS-8Gx" secondAttribute="leading" constant="20" id="8bO-QW-v4M"/>
                             <constraint firstItem="pzC-c5-hfy" firstAttribute="top" secondItem="dqZ-Op-5bf" secondAttribute="top" id="A4C-DN-Bhf"/>
                             <constraint firstItem="dqZ-Op-5bf" firstAttribute="top" secondItem="Iv5-eS-8Gx" secondAttribute="top" constant="15" id="Ejp-OH-fNY"/>
-                            <constraint firstItem="4vb-Px-EyN" firstAttribute="trailing" secondItem="Iv5-eS-8Gx" secondAttribute="trailing" id="K5w-VO-AQ5"/>
                             <constraint firstItem="dqZ-Op-5bf" firstAttribute="leading" secondItem="Iv5-eS-8Gx" secondAttribute="leading" constant="50" id="Mfk-3D-onM"/>
-                            <constraint firstItem="4vb-Px-EyN" firstAttribute="top" secondItem="t1W-cL-6Kf" secondAttribute="bottom" constant="20" id="UuV-pQ-Jxl"/>
+                            <constraint firstItem="IKB-Xa-Du6" firstAttribute="leading" secondItem="Iv5-eS-8Gx" secondAttribute="leading" id="VWn-da-vKW"/>
                             <constraint firstItem="Iv5-eS-8Gx" firstAttribute="trailing" secondItem="dqZ-Op-5bf" secondAttribute="trailing" constant="50" id="YJf-sl-ABw"/>
-                            <constraint firstAttribute="bottom" secondItem="4vb-Px-EyN" secondAttribute="bottom" id="YOz-wU-Hei"/>
                             <constraint firstItem="pzC-c5-hfy" firstAttribute="trailing" secondItem="dqZ-Op-5bf" secondAttribute="trailing" id="bNw-DE-gHB"/>
                             <constraint firstItem="t1W-cL-6Kf" firstAttribute="top" secondItem="pzC-c5-hfy" secondAttribute="bottom" constant="5" id="c6O-d6-Vb6"/>
+                            <constraint firstItem="IKB-Xa-Du6" firstAttribute="top" secondItem="t1W-cL-6Kf" secondAttribute="bottom" constant="24" id="dXu-OO-q0M"/>
                             <constraint firstAttribute="trailing" secondItem="t1W-cL-6Kf" secondAttribute="trailing" constant="20" id="gDU-SS-f6a"/>
                             <constraint firstItem="pzC-c5-hfy" firstAttribute="leading" secondItem="dqZ-Op-5bf" secondAttribute="leading" id="gH4-DL-9Xo"/>
-                            <constraint firstItem="4vb-Px-EyN" firstAttribute="leading" secondItem="Iv5-eS-8Gx" secondAttribute="leading" id="ssc-uJ-JO2"/>
+                            <constraint firstItem="Iv5-eS-8Gx" firstAttribute="bottom" secondItem="IKB-Xa-Du6" secondAttribute="bottom" id="qnC-aq-fSk"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="magazinTV" destination="4vb-Px-EyN" id="9Y8-KO-6RW"/>
+                        <outlet property="magazineCollection" destination="IKB-Xa-Du6" id="jO0-6r-6HH"/>
                         <outlet property="searchBar" destination="MZU-gR-BsT" id="fye-m6-OII"/>
                         <outlet property="searchView" destination="pzC-c5-hfy" id="Znd-7j-LPv"/>
                         <outlet property="sectorsCV" destination="t1W-cL-6Kf" id="7BW-Lv-LT9"/>
@@ -11811,14 +11827,8 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="0jf-r3-3ex">
-            <size key="intrinsicContentSize" width="225" height="41"/>
-        </designable>
         <designable name="buJ-Ty-hiC">
             <size key="intrinsicContentSize" width="-1" height="49"/>
-        </designable>
-        <designable name="ncb-ZE-mZ7">
-            <size key="intrinsicContentSize" width="211" height="35"/>
         </designable>
     </designables>
     <resources>
