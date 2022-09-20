@@ -23,7 +23,8 @@ pod 'Kingfisher', '~> 5.0'
 pod 'IQKeyboardManager' 
 pod 'Cosmos', '~> 23.0'
 pod 'Charts'
-pod 'ProgressHUD'
 pod 'SkeletonView'
+pod 'ProgressHUD'
+
 
 end

@@ -7,6 +7,7 @@
 
 import UIKit
 import JGProgressHUD
+import ProgressHUD
 
 class MagazineHomeVC: UIViewController {
     
@@ -86,9 +87,24 @@ class MagazineHomeVC: UIViewController {
     
     
     func FatchDatafromHome(){
+        
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+//        ProgressHUD.animationType = .circleStrokeSpin
+//        ProgressHUD.show(icon:.bolt )
+//        ProgressHUD.show(icon: .rotate)
+        ProgressHUD.show("", icon: .succeed, interaction: true)
+//        ProgressHUD.show(icon: <#T##AnimatedIcon#>)
+//        ProgressHUD.imageSuccess = UIImage(named: "success.png") ?? ""
+//        ProgressHUD.show
+
+//        ProgressHUD.show
+
+        
+
+
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2"]
-            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
+            let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2" , "page": "\(self.currentpaga)"]
+            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&page="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
                 (success:MagazineS?, filier:MagazineS?, error) in
                 //internet error
@@ -98,12 +114,17 @@ class MagazineHomeVC: UIViewController {
                 //Data Wrong From Server
                 
                 else if let loginError = filier {
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 //success
                 else {
+                    ProgressHUD.dismiss()
+
                     if success?.data?.nextPageURL == nil {
                     }
+
                     
                     let successDataa = success?.data?.data ?? []
                     print("current", self.currentpaga)
@@ -111,7 +132,13 @@ class MagazineHomeVC: UIViewController {
                     DispatchQueue.main.async {
                         self.magazineCollection.reloadData()
                     }
-                    self.currentpaga += 1
+                    
+                    if self.currentpaga <= self.magazineHomeModel?.data?.lastPage ?? 0 {
+                        self.currentpaga += 1
+
+                    }
+//                    self.currentpaga += 1
+
                     self.isFeatchingData = false
                 }
             }
@@ -121,6 +148,11 @@ class MagazineHomeVC: UIViewController {
     
     
     func FatchDatafromHomeHeader(){
+        
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+
+        
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeOfSectore)"   ,"sort" : "0"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
@@ -133,10 +165,14 @@ class MagazineHomeVC: UIViewController {
                 //Data Wrong From Server
                 
                 else if let loginError = filier {
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 //success
                 else {
+                    ProgressHUD.dismiss()
+
                     if success?.data?.nextPageURL == nil {
                         
                     }
@@ -235,7 +271,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
         searchBar.text = ""
         view1.isHidden = false
         view2.isHidden = false
-        //            magazinSubModel.removeAll()
+              magazinSubModel.removeAll()
         FatchDatafromHome()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "جاري التحميل"
@@ -250,7 +286,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
 extension MagazineHomeVC:UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= magazinSubModel.count - 1 && !isFeatchingData {
+            if index.item >= magazinSubModel.count - 1 && !isFeatchingData {
                 FatchDatafromHome()
                 break
             }

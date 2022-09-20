@@ -80,10 +80,10 @@ class NewsVC: UIViewController {
     func FatchDataforNewsHome(){
         
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)"]
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)" , "page" : "\(self.currentpaga)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&page="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -200,7 +200,12 @@ class NewsVC: UIViewController {
                         
                         self.AllNews.reloadData()
                     }
-                    self.currentpaga += 1
+                    
+                    if self.currentpaga <= self.news?.data?.lastPage ?? 0 {
+                        self.currentpaga += 1
+
+                    }
+                    
                     self.isFeatchingData = false
                 }
             }

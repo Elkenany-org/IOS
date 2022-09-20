@@ -18,7 +18,8 @@ struct RatingModel: Codable {
 struct RatingClass: Codable {
     let id: Int?
     let rate: String?
-    let companyID, userID: Int?
+    let companyID:String?
+    let userID: Int?
     let createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
