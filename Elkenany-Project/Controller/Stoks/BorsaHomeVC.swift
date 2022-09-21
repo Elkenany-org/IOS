@@ -386,7 +386,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == SelectedSector { return sectorSubModel.count }
-        else if collectionView == bannersCV { return bannersSubModel.count}
+        else if collectionView == bannersCV { return bannersSubModel.count ?? 0}
         else if collectionView == logosCV{ return logosSubModel.count }
         else if collectionView == BorsaCV{
             switch section {

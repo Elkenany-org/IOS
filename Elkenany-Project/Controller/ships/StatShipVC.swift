@@ -11,6 +11,8 @@ class StatShipVC: UIViewController {
     
     @IBOutlet weak var statShipCV: UICollectionView!
     @IBOutlet weak var btnTitle: UIButton!
+    
+    @IBOutlet weak var btnMonshaLabel: UIButton!
     @IBOutlet weak var fromDateTitle: UIButton!
     @IBOutlet weak var toDateTitle: UIButton!
     var MainModelStat:ShipsStatModel?
@@ -79,7 +81,7 @@ class StatShipVC: UIViewController {
     @IBAction func toType(_ sender: Any) {
         
         let vc = (storyboard?.instantiateViewController(identifier: "clockVC"))! as clockVC
-        
+        vc.MonshaDelegete = self
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -140,7 +142,6 @@ extension StatShipVC: countryReturn{
             let parm = ["country" : "\(country)"]
             let url = "https://elkenany.com/api/ships/statistics-ships?country="
             
-
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
                     //internet error
@@ -167,9 +168,43 @@ extension StatShipVC: countryReturn{
             }
         }
     }
+}
+
+extension StatShipVC: MonshaReturn{
+    func returnMonsha(Monsha: String , monshaNamee: String) {
+        DispatchQueue.global(qos: .background).async {
+            
+            let parm = ["type" : "\(Monsha)"]
+            let url = "https://elkenany.com/api/ships/statistics-ships?type="
+            
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
+                if let error = error{
+                    //internet error
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    guard let success = success else {return}
+                    self.MainModelStat = success
+                
+                    DispatchQueue.main.async {
+                  
+                        self.statShipCV.reloadData()
+                        self.btnMonshaLabel.setTitle(monshaNamee, for: .normal)
+                        print("hellllllllo")
+                        
+
+                    }
+                }
+            }
+        }
+    }
     
-    
-    
+
 }
 
 

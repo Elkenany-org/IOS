@@ -459,6 +459,14 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                 print("index vc " , indexPath.item)
                 navigationController?.pushViewController(CompanyVC, animated: true)
             }
+        }else{
+            
+            
+            if let url = NSURL(string: "\(bannersSubModel[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+            
+            
         }
     }
     
@@ -548,7 +556,6 @@ extension CompanyGuideVC: FilterDone{
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
                     
-                            self.filterTitle.setTitle("الاكثر تداولا", for: .normal)
 
                         
                     }

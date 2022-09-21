@@ -145,8 +145,8 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "companyInfoCell") as? companyInfoCell{
                 cell.companyName.text = companyDetailsModel?.data?.name ?? ""
                 cell.companyDesc.text = companyDetailsModel?.data?.shortDesc ?? ""
-                cell.RatingCompany.text = String(companyDetailsModel?.data?.countRate ?? 0)
-                cell.com_rating.rating = companyDetailsModel?.data?.countRate ?? 0
+                cell.RatingCompany.text = String(Int( companyDetailsModel?.data?.countRate ?? 0))
+                cell.com_rating.rating = companyDetailsModel?.data?.rate ?? 0
                 let companyImage = companyDetailsModel?.data?.image
                 cell.selectionStyle = .none
                 

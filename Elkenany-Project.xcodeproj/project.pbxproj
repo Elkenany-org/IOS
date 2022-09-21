@@ -186,6 +186,7 @@
 		327D90C9278B549D0037F1B7 /* standerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D90C7278B549C0037F1B7 /* standerHeader.swift */; };
 		327D90CA278B549D0037F1B7 /* standerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D90C8278B549C0037F1B7 /* standerHeader.xib */; };
 		328066BB277A172D004555E9 /* abouUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328066BA277A172D004555E9 /* abouUsVC.swift */; };
+		3283652328DB09B100DE0D88 /* MagazineExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3283652228DB09B100DE0D88 /* MagazineExtentions.swift */; };
 		3287A2FC27E2133600C38849 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3287A2FB27E2133600C38849 /* BlankView.swift */; };
 		3287A30E27E22EC400C38849 /* aboooooout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3287A30C27E22EC400C38849 /* aboooooout.swift */; };
 		3287A30F27E22EC400C38849 /* aboooooout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3287A30D27E22EC400C38849 /* aboooooout.xib */; };
@@ -501,6 +502,7 @@
 		327D90C7278B549C0037F1B7 /* standerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = standerHeader.swift; sourceTree = "<group>"; };
 		327D90C8278B549C0037F1B7 /* standerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = standerHeader.xib; sourceTree = "<group>"; };
 		328066BA277A172D004555E9 /* abouUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = abouUsVC.swift; sourceTree = "<group>"; };
+		3283652228DB09B100DE0D88 /* MagazineExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineExtentions.swift; sourceTree = "<group>"; };
 		3287A2FB27E2133600C38849 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		3287A30C27E22EC400C38849 /* aboooooout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboooooout.swift; sourceTree = "<group>"; };
 		3287A30D27E22EC400C38849 /* aboooooout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = aboooooout.xib; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 				325AE33328D9B54E0084D5F2 /* cell */,
 				323E8658283B7A9B00C65873 /* MagazineHomeVC.swift */,
 				323E8660283B7ADA00C65873 /* MagazinVC.swift */,
+				3283652228DB09B100DE0D88 /* MagazineExtentions.swift */,
 			);
 			path = Magazines;
 			sourceTree = "<group>";
@@ -1756,6 +1759,7 @@
 			files = (
 				3268BCB427EC78CF0083E678 /* ComparingDone.swift in Sources */,
 				3272F464276E701A00973031 /* MassegeVC.swift in Sources */,
+				3283652328DB09B100DE0D88 /* MagazineExtentions.swift in Sources */,
 				32343F2B274B89BD00921D99 /* UITableView+Extensions.swift in Sources */,
 				32FAB7AE27787215002400A2 /* ProfileVC.swift in Sources */,
 				32D05FDF28093BF2006C21F9 /* chatVC.swift in Sources */,

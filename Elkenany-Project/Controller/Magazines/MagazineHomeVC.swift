@@ -133,13 +133,13 @@ class MagazineHomeVC: UIViewController {
                         self.magazineCollection.reloadData()
                     }
                     
-                    if self.currentpaga <= self.magazineHomeModel?.data?.lastPage ?? 0 {
-                        self.currentpaga += 1
+//                    if self.currentpaga <= self.magazineHomeModel?.data?.lastPage ?? 0 {
+//                        self.currentpaga += 1
+//
+//                    }
+                    self.currentpaga += 1
 
-                    }
-//                    self.currentpaga += 1
-
-                    self.isFeatchingData = false
+                    self.isFeatchingData = true
                 }
             }
         }
@@ -184,7 +184,7 @@ class MagazineHomeVC: UIViewController {
                         self.magazineCollection.reloadData()
                     }
                     self.currentpaga += 1
-                    self.isFeatchingData = false
+                    self.isFeatchingData = true
                 }
             }
         }
@@ -195,18 +195,14 @@ class MagazineHomeVC: UIViewController {
     
     func SearchService(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+     
         let param = ["type": "\(self.typeOfSectore)" , "search" : self.searchBar.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
-                    hud.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
                     self.magazinSubModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.magazinSubModel.append(contentsOf: successData)
@@ -238,6 +234,21 @@ class MagazineHomeVC: UIViewController {
 }
 
 
+
+
+//MARK:pagination extension
+extension MagazineHomeVC:UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        for index in indexPaths {
+            if index.item >= magazinSubModel.count - 1 && !isFeatchingData {
+                FatchDatafromHome()
+                break
+            }
+        }
+    }
+}
+
+
 //MARK:- searchBAr delegets
 extension MagazineHomeVC : UISearchBarDelegate {
     func setupSearchBar() {
@@ -252,6 +263,12 @@ extension MagazineHomeVC : UISearchBarDelegate {
             magazinSubModel.removeAll()
             //Api func
             SearchService()
+        }else{
+            self.currentpaga = 1
+            magazinSubModel.removeAll()
+            FatchDatafromHome()
+
+            
         }
         //reload
         magazineCollection.reloadData()
@@ -262,7 +279,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
         if let cBtn = searchBar.value(forKey: "cancelButton") as? UIButton {
             cBtn.setTitle("الغاء", for: .normal)
             searchBar.tintColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-            searchBar.text = ""
+          
         }}
     
     
@@ -271,28 +288,15 @@ extension MagazineHomeVC : UISearchBarDelegate {
         searchBar.text = ""
         view1.isHidden = false
         view2.isHidden = false
-              magazinSubModel.removeAll()
+        magazinSubModel.removeAll()
+        self.currentpaga = 1
         FatchDatafromHome()
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        hud.dismiss()
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "جاري التحميل"
+//        hud.show(in: self.view)
+//        hud.dismiss()
     }}
 
-
-
-
-//MARK:pagination extension
-extension MagazineHomeVC:UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for index in indexPaths {
-            if index.item >= magazinSubModel.count - 1 && !isFeatchingData {
-                FatchDatafromHome()
-                break
-            }
-        }
-    }
-}
 
 
 
@@ -433,8 +437,7 @@ extension MagazineHomeVC: FilterShowMagazine {
                         
                         self.magazineCollection.reloadData()
                         print(success?.data ?? "")
-                        self.countryTitle.setTitle( coun_title, for: .normal)
-                        self.sortTtle.setTitle(sort_title, for: .normal)
+                  
                     }
                 }
             }

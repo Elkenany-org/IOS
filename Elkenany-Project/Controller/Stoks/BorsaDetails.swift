@@ -452,6 +452,25 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == bannersCV {
+            if let url = NSURL(string: "\(bannerssModel[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+            
+        }else if collectionView == logosCV{
+            if let url = NSURL(string: "\(logossModel[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+            
+        }else{
+            print("helloooo world")
+        }
+    }
+    
+    
+    
+    
     // cell height ----------------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: collectionView.frame.width, height: 65)
@@ -520,7 +539,6 @@ extension BorsaDetails:BackDate{
                     self.localBorsaData = success
                     DispatchQueue.main.async {
                         self.LocalBorsaCV.reloadData()
-                        self.btnLabel.setTitle( date, for: .normal )
                         self.LocalBorsaCV.isHidden = false
                         self.errorView.isHidden = true
                     }

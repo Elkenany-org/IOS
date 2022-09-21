@@ -8,6 +8,9 @@
 import UIKit
 
 
+protocol MonshaReturn {
+    func returnMonsha(Monsha :String , monshaNamee : String)
+}
 
 
 class clockVC: UIViewController {
@@ -62,13 +65,15 @@ class clockVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    var MonshaDelegete:MonshaReturn?
 
 }
 
 
 extension clockVC: UITableViewDelegate , UITableViewDataSource{
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return MainModelStat?.data?.products?.count ?? 0
 
     }
@@ -78,11 +83,20 @@ extension clockVC: UITableViewDelegate , UITableViewDataSource{
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedCell") as? SelectedCell {
             cell.SectreTitle.text =  MainModelStat?.data?.products?[indexPath.row].name ?? ""
-            
             return cell
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let monshaaa = String( MainModelStat?.data?.products?[indexPath.row].id ?? 0)
+        let monshaName =  MainModelStat?.data?.products?[indexPath.row].name ?? ""
+        MonshaDelegete?.returnMonsha(Monsha: monshaaa, monshaNamee: monshaName )
+        print("monshhhhha")
+        dismiss(animated: true, completion: nil)
+    }
+    
+ 
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

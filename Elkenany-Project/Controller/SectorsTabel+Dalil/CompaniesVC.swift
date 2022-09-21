@@ -74,6 +74,7 @@ class CompaniesVC: UIViewController{
         bannarsCV.delegate = self
         bannarsCV.dataSource = self
         CompaniesCV.delegate = self
+        CompaniesCV.prefetchDataSource = self
         CompaniesCV.dataSource = self
         CompaniesCV.register(UINib(nibName: "CompaniesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CompaniesCollectionViewCell")
         logosCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
@@ -397,12 +398,16 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == logosCV{
-            print("loooogos")
-        }
+            if let url = NSURL(string: "\(mainDatalLogos[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+                    }
         
         else if collectionView == bannarsCV{
-            print("bannnner")
-        }
+            if let url = NSURL(string: "\(mainDataModelBanners[indexPath.item].link ?? "")") {
+                UIApplication.shared.openURL(url as URL)
+            }
+                    }
         else{
             
             if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
@@ -433,7 +438,7 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
     extension CompaniesVC:UICollectionViewDataSourcePrefetching{
         func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
             for index in indexPaths {
-                if index.row >= mainDataModel.count - 1 && !isFeatchingData {
+                if index.item >= mainDataModel.count - 1 && !isFeatchingData {
                     FatchDatafromHome()
                     break
                 }
@@ -458,6 +463,11 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
                 mainDataModel.removeAll()
                 //Api func
                 SearchService()
+            }else{
+                
+                self.currentpaga = 1
+                mainDataModel.removeAll()
+                FatchDatafromHome()
             }
             //reload
             CompaniesCV.reloadData()
@@ -478,11 +488,10 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
             view1.isHidden = false
             view2.isHidden = false
             mainDataModel.removeAll()
+            
+            self.currentpaga = 1
             FatchDatafromHome()
-            let hud = JGProgressHUD(style: .dark)
-            hud.textLabel.text = "جاري التحميل"
-            hud.show(in: self.view)
-            hud.dismiss()
+          
         }}
     
     
