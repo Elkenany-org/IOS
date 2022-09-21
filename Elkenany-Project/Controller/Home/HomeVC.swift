@@ -65,20 +65,18 @@ class HomeVC: UIViewController {
     //MARK:- segment Handling color / bcColor / fonts
     fileprivate func SetupSegment() {
         if #available(iOS 13.0, *) {
-            //segmetMane.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             segmetMane.layer.borderColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
             segmetMane.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.5594755078, blue: 0.1821106031, alpha: 1)
             segmetMane.layer.borderWidth = 1
             segmetMane.layer.shadowRadius = 30
-//            let _font = UIFont.systemFont(ofSize: 20)
-//            UISegmentedControl.appearance()
-//                .setTitleTextAttributes([NSAttributedString.Key.font: _font], for: .normal)
             let attr = [NSAttributedString.Key.font: UIFont(name: "Cairo", size: 14.0)!]
             UISegmentedControl.appearance().setTitleTextAttributes(attr, for: UIControl.State.normal)
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmetMane.setTitleTextAttributes(titleTextAttributes, for:.selected)
             
             let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+//            segmetMane.setBackgroundImage(UIImage(named: "Group 2803") for: .normal, barMetrics: .default)
+            segmetMane.setBackgroundImage(UIImage(named: "Group 2803"), for: .selected, barMetrics: .compact)
 //            segmetMane.setTitleTextAttributes(titleTextAttributes1, for:.normal)
         } else {
             // Fallback on earlier versions
