@@ -51,6 +51,9 @@
                                             <constraint firstAttribute="width" constant="20" id="w8W-7x-gpm"/>
                                         </constraints>
                                         <state key="normal" image="share"/>
+                                        <connections>
+                                            <action selector="shareSocial:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ikR-9H-nqa"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منذ شهر واحد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-07-nbl">
                                         <rect key="frame" x="40" y="36" width="59" height="14"/>
@@ -101,7 +104,7 @@
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
         <image name="share" width="512" height="512"/>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

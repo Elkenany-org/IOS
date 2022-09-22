@@ -53,7 +53,7 @@ class AdsDetails: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
             let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
-            let param = ["id": "\(typeParameter ?? "")"]
+            let param = ["id": "\(self.ads_id)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
                 if let error = error{

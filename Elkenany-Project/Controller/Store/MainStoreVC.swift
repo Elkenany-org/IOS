@@ -237,7 +237,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             if typeOfSector == typeFromHomeForStore {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                     sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             } else {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -285,7 +285,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell
 //            if(cell.isSelected == true)
             {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
             FatchDataOfStore()
@@ -309,6 +309,10 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 
             }
+            
+            
+            
+            
         }
     }
     

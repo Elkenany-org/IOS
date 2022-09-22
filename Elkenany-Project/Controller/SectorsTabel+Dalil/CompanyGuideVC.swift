@@ -365,7 +365,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
 
                 
                 if typeOfSector == sectoreTypeFromHome {
-                    SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                    SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                     selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
                 } else {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -440,7 +440,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
 
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
             FatchGuidMainData()

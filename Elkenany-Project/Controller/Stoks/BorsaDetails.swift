@@ -399,7 +399,7 @@ extension BorsaDetails:UICollectionViewDelegate, UICollectionViewDataSource , UI
                 view2.isHidden = false
                 
                 if localBorsaData?.data?.members?[indexPath.item].type == 1 {
-                    cell1.rankView.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                    cell1.rankView.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 }
                 
                 

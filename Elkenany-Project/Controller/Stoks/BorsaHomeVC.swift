@@ -406,7 +406,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             let typeeee = sectorSubModel[indexPath.item].type ?? "test"
             
             if typeeee == Sector {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{ cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1) }
             return cell
@@ -473,7 +473,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             let cell = collectionView.cellForItem(at: indexPath) as! SelectedSectorCell
             if(cell.isSelected == true)
             {
-                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
             FatchBorsaBySector()

@@ -247,7 +247,8 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = storyboard?.instantiateViewController(identifier: "NewsVC") as! NewsVC
-            vc.FatchDataforNewsHomeFromMore()
+            vc.typeFromhome = "poultry"
+            vc.FatchDataforNewsHome()
             navigationController?.pushViewController(vc, animated: true)
         case 4:
             let vc = storyboard?.instantiateViewController(identifier: "showesVC") as! showesVC

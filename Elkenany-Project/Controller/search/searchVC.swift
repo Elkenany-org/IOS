@@ -146,8 +146,8 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
             
         case "stores":
             let newsvc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
-            newsvc.ads_from_search = searchSubModelMain[indexPath.row].id ?? 0
-            newsvc.fetchAdsDetailsFromHomeSearch()
+            newsvc.ads_id = searchSubModelMain[indexPath.row].id ?? 0
+            newsvc.fetchAdsDetails()
             navigationController?.pushViewController(newsvc, animated: true)
             
         case "showes":

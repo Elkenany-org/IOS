@@ -66,7 +66,7 @@ class HomeVC: UIViewController {
     fileprivate func SetupSegment() {
         if #available(iOS 13.0, *) {
             segmetMane.layer.borderColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-            segmetMane.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.5594755078, blue: 0.1821106031, alpha: 1)
+            segmetMane.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
             segmetMane.layer.borderWidth = 1
             segmetMane.layer.shadowRadius = 30
             let attr = [NSAttributedString.Key.font: UIFont(name: "Cairo", size: 14.0)!]

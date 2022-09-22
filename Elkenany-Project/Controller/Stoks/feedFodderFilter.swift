@@ -168,7 +168,7 @@ extension feedFodderFilter:UICollectionViewDelegate, UICollectionViewDataSource,
         if let feedCatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as? SelectedSectorCell{
             feedCatCell.titleLabel.text = FilterFeed?.data?.fodderCategories?[indexPath.item].name ?? ""
             if FilterFeed?.data?.fodderCategories?[indexPath.item].selected == 1 {
-                feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+                feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
 //                feedCatCell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{
                 feedCatCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
@@ -189,7 +189,7 @@ extension feedFodderFilter:UICollectionViewDelegate, UICollectionViewDataSource,
         
          let feedCatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         if FilterFeed?.data?.fodderCategories?[indexPath.item].selected != 1 {
-            feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
 //                feedCatCell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
         }else{
             feedCatCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
