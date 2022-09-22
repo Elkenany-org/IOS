@@ -30,7 +30,7 @@
                         <rect key="frame" x="10" y="10" width="490" height="267"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indastrial develpoment factories serives expo " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVA-fy-9hg">
-                                <rect key="frame" x="180" y="10" width="300" height="91.5"/>
+                                <rect key="frame" x="180" y="10" width="300" height="96.5"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
@@ -43,28 +43,28 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="by2-hg-4dP">
-                                <rect key="frame" x="376.5" y="113.5" width="103.5" height="57"/>
+                                <rect key="frame" x="376.5" y="118.5" width="103.5" height="52"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hHN-Wa-0ed">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المدينة " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYM-hn-szL">
-                                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="ldb-rg-txa">
-                                                <rect key="frame" x="78.5" y="0.0" width="25" height="25"/>
+                                                <rect key="frame" x="83.5" y="0.0" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="2db-yC-GXD"/>
-                                                    <constraint firstAttribute="width" constant="25" id="d3S-We-qY7"/>
+                                                    <constraint firstAttribute="height" constant="20" id="2db-yC-GXD"/>
+                                                    <constraint firstAttribute="width" constant="20" id="d3S-We-qY7"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BOh-uS-N5X">
-                                        <rect key="frame" x="0.0" y="32" width="103.5" height="25"/>
+                                        <rect key="frame" x="0.0" y="27" width="103.5" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-30-2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzx-XM-qJN">
                                                 <rect key="frame" x="0.0" y="0.0" width="73.5" height="25"/>
@@ -151,13 +151,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" name="kenanyGold"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -191,11 +185,8 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="pin" width="512" height="512"/>
-        <namedColor name="kenanyGold">
-            <color red="1" green="0.58799999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="kenanyblueblack">
             <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

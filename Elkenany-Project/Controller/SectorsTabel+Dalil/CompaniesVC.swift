@@ -104,8 +104,9 @@ class CompaniesVC: UIViewController{
     func FatchDatafromHome(){
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.subID_fromGuideHome , "page": self.currentpaga]
+            let header = ["ios" : ""]
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param,  headers: header , method: .get) {
                 (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
                 if let error = error{
@@ -382,10 +383,12 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
         } else{
             if let CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCollectionViewCell", for: indexPath) as? CompaniesCollectionViewCell {
                 CompanyCell.configureCell(data: mainDataModel[indexPath.row])
-                
-                //                let imageeee = mainDataModelBanners[indexPath.item].image ?? ""
-                //                CompanyCell.bannerImage.contentMode = .scaleAspectFit
-                //                CompanyCell.configureCell(image: imageeee)
+                if mainDataModel[indexPath.item].sponser == 1 {
+                    CompanyCell.backgroundViewwww.backgroundColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+                    CompanyCell.companyLocation.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
+                    CompanyCell.companyName.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
+                }
+   
                 return CompanyCell
                 
             }

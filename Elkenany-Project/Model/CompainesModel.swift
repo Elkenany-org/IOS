@@ -41,6 +41,7 @@ struct MainData: Codable {
     var rate: Double?
     var image: String?
     var desc, address: String?
+    var sponser: Int?
 }
 
 // MARK: - Sector

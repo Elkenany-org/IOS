@@ -15,6 +15,9 @@ class CompaniesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var companyLocation: UILabel!
     @IBOutlet weak var companyImage: UIImageView!
     
+    @IBOutlet weak var backgroundViewwww: UIView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

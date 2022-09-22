@@ -162,6 +162,19 @@ class showesVC: UIViewController {
     }
     
     
+    //Cell style --------------
+    func SetupCell(cell:UITableViewCell){
+        cell.layer.cornerRadius = 15.0
+        cell.layer.borderWidth = 0.0
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+        cell.layer.shadowRadius = 5.0
+        cell.layer.shadowOpacity = 0.4
+        cell.layer.masksToBounds = false
+        
+    }
+    
+    
     
     
     //MARK: to Main Filter
@@ -289,7 +302,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         UserDefaults.standard.set(typeOfSectorr, forKey: "TYPE_FILTER")
         if(cell.isSelected == true)
         {
-            cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
         }
         FeatchDataShowesHomeHeaders()
@@ -311,7 +324,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 60)
+        return CGSize(width: 70, height: 60)
     }
     
 }
@@ -335,6 +348,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
             showescell.configureCell(image: showImage)
             showescell.configureRating(ddd: subShowesModel[indexPath.row])
             showescell.selectionStyle = .none
+            SetupCell(cell: showescell)
             return showescell
         }
         return UITableViewCell()
