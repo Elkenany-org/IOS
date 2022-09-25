@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,25 +17,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="Gp6-Zd-yIg">
-                        <rect key="frame" x="0.0" y="0.0" width="295" height="268"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaS-sM-Kzd">
+                        <rect key="frame" x="5" y="5" width="285" height="258"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="Gp6-Zd-yIg">
+                                <rect key="frame" x="0.0" y="0.0" width="285" height="258"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="DaS-sM-Kzd" secondAttribute="top" id="C36-aF-a10"/>
+                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="DaS-sM-Kzd" secondAttribute="leading" id="hqN-1F-1Os"/>
+                            <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="j8m-eO-2iX"/>
+                            <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="ySq-1h-vRl"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                <point key="value" x="0.5" y="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
+                                <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </imageView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="59J-Mw-tnD"/>
-                <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="dTk-qN-tgA"/>
-                <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oJb-vC-Sk8"/>
-                <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="z4L-SH-SQA"/>
+                <constraint firstAttribute="trailing" secondItem="DaS-sM-Kzd" secondAttribute="trailing" constant="5" id="Mc1-zw-BIA"/>
+                <constraint firstAttribute="bottom" secondItem="DaS-sM-Kzd" secondAttribute="bottom" constant="5" id="gFM-UR-mjz"/>
+                <constraint firstItem="DaS-sM-Kzd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jEU-ji-8h0"/>
+                <constraint firstItem="DaS-sM-Kzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="vLg-Ex-3oa"/>
             </constraints>
             <size key="customSize" width="295" height="268"/>
             <connections>
@@ -45,5 +75,8 @@
     </objects>
     <resources>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
