@@ -103,7 +103,7 @@ class CompaniesVC: UIViewController{
     //MARK:- Main Data of Companies [main]
     func FatchDatafromHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["sub_id": self.subID_fromGuideHome , "page": self.currentpaga]
+            let param = ["sub_id": self.subID_fromGuideHome , "page" : self.currentpaga  ]
             let header = ["ios" : ""]
             let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param,  headers: header , method: .get) {
@@ -129,6 +129,7 @@ class CompaniesVC: UIViewController{
                     }
                     self.currentpaga += 1
                     self.isFeatchingData = false
+                    
                 }
             }
         }
@@ -381,17 +382,27 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
                 return BannersCell
             }
         } else{
-            if let CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCollectionViewCell", for: indexPath) as? CompaniesCollectionViewCell {
+            let CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCollectionViewCell", for: indexPath) as! CompaniesCollectionViewCell
                 CompanyCell.configureCell(data: mainDataModel[indexPath.row])
                 if mainDataModel[indexPath.item].sponser == 1 {
                     CompanyCell.backgroundViewwww.backgroundColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
                     CompanyCell.companyLocation.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                     CompanyCell.companyName.textColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
+                } else{
+                    
+                    CompanyCell.backgroundViewwww.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    CompanyCell.companyLocation.textColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+                    CompanyCell.companyName.textColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+                    
                 }
+            
+            
+            
+            
    
                 return CompanyCell
                 
-            }
+            
         }
         return UICollectionViewCell()
     }

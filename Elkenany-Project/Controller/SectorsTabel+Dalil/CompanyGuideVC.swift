@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import ProgressHUD
 
 class CompanyGuideVC: UIViewController, SortTitle {
     func SortTitleBack(value: String) {
@@ -99,9 +100,14 @@ class CompanyGuideVC: UIViewController, SortTitle {
     
     func FatchGuidMainData(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "جاري التحميل"
+//        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.show("", icon: .succeed, interaction: true)
+        ProgressHUD.animationType = .circleStrokeSpin
+
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.sectoreTypeFromHome)"]
@@ -109,10 +115,13 @@ class CompanyGuideVC: UIViewController, SortTitle {
             let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+//                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+//                    hud.dismiss()
+                    ProgressHUD.dismiss()
+
                     self.subModel.removeAll()
                     self.bannersSubModel.removeAll()
 
