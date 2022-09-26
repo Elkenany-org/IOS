@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>711464214583-5gploctchaj35oi5h7r17k2ri5ehat7q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.711464214583-5gploctchaj35oi5h7r17k2ri5ehat7q</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>711464214583-6c7544ig55laa1gh7vj413iaampaolpi.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDOhC7yiDPZnx0slt9eOhzdgdG3hbgCINU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>711464214583</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.company.elkenanyapp</string>
+	<key>PROJECT_ID</key>
+	<string>elkenany-fbdc6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>elkenany-fbdc6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:711464214583:ios:cbad9314c26757d71b5fb2</string>
+	<key>DATABASE_URL</key>
+	<string>https://elkenany-fbdc6.firebaseio.com</string>
+</dict>
+</plist>

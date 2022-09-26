@@ -9,9 +9,12 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 import AuthenticationServices
+import GoogleSignIn
+import FirebaseCore
+import FirebaseAuth
 
 
-class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
+class LoginVC: UIViewController, ASAuthorizationControllerDelegate  {
     var countries: [String] = []
 
     //Outlets in screen
@@ -27,10 +30,16 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate {
             let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
             countries.append(name)
         }
+        
+        
 
         
     }
     
+    
+    
+
+
     
     
    

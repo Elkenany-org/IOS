@@ -172,6 +172,7 @@
 		3272F464276E701A00973031 /* MassegeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F463276E701A00973031 /* MassegeVC.swift */; };
 		3272F46B276E99B200973031 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272F469276E99B200973031 /* StoreCell.swift */; };
 		3272F46C276E99B200973031 /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3272F46A276E99B200973031 /* StoreCell.xib */; };
+		327681A228E1B81C004EA501 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 327681A128E1B81C004EA501 /* GoogleService-Info.plist */; };
 		3276D2BA275CB2C100D95236 /* successCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276D2B8275CB2C100D95236 /* successCell.swift */; };
 		3276D2BB275CB2C100D95236 /* successCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3276D2B9275CB2C100D95236 /* successCell.xib */; };
 		3276D2C1275CC4FE00D95236 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276D2C0275CC4FE00D95236 /* ApiService.swift */; };
@@ -488,6 +489,7 @@
 		3272F463276E701A00973031 /* MassegeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassegeVC.swift; sourceTree = "<group>"; };
 		3272F469276E99B200973031 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		3272F46A276E99B200973031 /* StoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
+		327681A128E1B81C004EA501 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3276D2B8275CB2C100D95236 /* successCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = successCell.swift; sourceTree = "<group>"; };
 		3276D2B9275CB2C100D95236 /* successCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = successCell.xib; sourceTree = "<group>"; };
 		3276D2C0275CC4FE00D95236 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -776,6 +778,7 @@
 				323B21F7274A462B002CEB89 /* ViewController.swift */,
 				323B21FF274A462F002CEB89 /* Assets.xcassets */,
 				323B2204274A462F002CEB89 /* Info.plist */,
+				327681A128E1B81C004EA501 /* GoogleService-Info.plist */,
 				323B21FC274A462B002CEB89 /* Elkenany_Project.xcdatamodeld */,
 			);
 			path = "Elkenany-Project";
@@ -1606,6 +1609,7 @@
 				32FAB7A927786DE3002400A2 /* EditeProfileCell.xib in Resources */,
 				326D485B2782F24B009B298C /* testBorsaCell.xib in Resources */,
 				32F5FD1B2768BA6700E4DFE1 /* collectioncell.xib in Resources */,
+				327681A228E1B81C004EA501 /* GoogleService-Info.plist in Resources */,
 				326AAC19278C844A002EF222 /* DetailsCell.xib in Resources */,
 				323B21FB274A462B002CEB89 /* Main.storyboard in Resources */,
 				3208B8692785C5BE000E6C84 /* StatisticesCell.xib in Resources */,

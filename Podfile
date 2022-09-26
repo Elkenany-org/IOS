@@ -18,13 +18,17 @@ target 'Elkenany-Project' do
 
 pod 'Alamofire', '~> 4.8.2'
 pod 'JGProgressHUD'
-pod 'SDWebImage'
 pod 'Kingfisher', '~> 5.0'
 pod 'IQKeyboardManager' 
 pod 'Cosmos', '~> 23.0'
 pod 'Charts'
 pod 'SkeletonView'
 pod 'ProgressHUD'
+pod 'FirebaseMessaging'	
+pod 'FirebaseAuth'
+pod 'GoogleSignIn'
+
+
 
 
 end
