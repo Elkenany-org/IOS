@@ -42,8 +42,8 @@ class showesVC: UIViewController {
         SetupUI()
         title = "المعارض"
         //Dynamice Hight cell
-        showesTableView.estimatedRowHeight = 150
-        showesTableView.rowHeight = UITableView.automaticDimension
+//        showesTableView.estimatedRowHeight = 200
+//        showesTableView.rowHeight = UITableView.automaticDimension
     }
     
     
@@ -83,8 +83,8 @@ class showesVC: UIViewController {
     //MARK:- Data of all showes at home screen
     func FeatchDataShowesHome(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)"]
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)" , "page" : "\(self.currentpaga)"]
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort=&page="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
                     //internet error
@@ -112,8 +112,8 @@ class showesVC: UIViewController {
     //MARK:- Data of all showes at home screen
     func FeatchDataShowesHomeHeaders(){
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)"]
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort="
+            let param = ["type": "\(self.typeFromhome)" , "sort": "\(0)", "page" : "\(self.currentpaga)"]
+            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&sort=&page="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
                     //internet error
@@ -283,7 +283,7 @@ extension showesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell1.titleLabel.text = subSectoresModel[indexPath.item].name ?? "test"
         let typeee = "poultry"
         if typeee == "poultry" {
-            cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.5882352941, blue: 0, alpha: 1)
+            cell1.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
             csectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             
         }else{
@@ -346,7 +346,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
             showescell.showesView.text = String( subShowesModel[indexPath.row].viewCount ?? 0)
             let showImage = subShowesModel[indexPath.row].image ?? ""
             showescell.configureCell(image: showImage)
-            showescell.configureRating(ddd: subShowesModel[indexPath.row])
+//            showescell.configureRating(ddd: subShowesModel[indexPath.row])
             showescell.selectionStyle = .none
             SetupCell(cell: showescell)
             return showescell
@@ -355,7 +355,8 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.rowHeight
+//        return tableView.rowHeight
+        return 180
         
     }
     

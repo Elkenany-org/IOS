@@ -196,89 +196,89 @@ class showDetailsVC: UIViewController {
     
     
     
-//
-//    //MARK: not going services
-//    @IBAction func notgoing(_ sender: Any) {
-//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//
-//        if isloggineIn {
+
+    //MARK: not going services
+    @IBAction func notgoing(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+
+        if isloggineIn {
 //            NotGoingService()
-//        }else{
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .overFullScreen
-//                present(vc, animated: true, completion: nil)}}}
-//
-//
-//
-//    //MARK: Goooooooooing
-//    @IBAction func going(_ sender: Any) {
-//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//
-//        if isloggineIn {
+        }else{
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)}}}
+
+
+
+    //MARK: Goooooooooing
+    @IBAction func going(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+
+        if isloggineIn {
 //            GoingService()
-//        }else{
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .overFullScreen
-//                present(vc, animated: true, completion: nil)}}}
+        }else{
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)}}}
 //
-//
-//
-//    //MARK: Order place btn
-//    @IBAction func orderPlace(_ sender: Any) {
-//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//
-//        if isloggineIn {
-//            let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
-//            present(vc, animated: true, completion: nil)
-//        }else{
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .overFullScreen
-//                present(vc, animated: true, completion: nil)}}}
-//
-//
-//
-//    //rating
-//    @IBAction func ratingShow(_ sender: Any) {
-//        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-//
-//        if isloggineIn {
-//            let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
-//            present(vc, animated: true, completion: nil)
-//        }else{
-//            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
-//                vc.modalPresentationStyle = .overFullScreen
-//                present(vc, animated: true, completion: nil)}}}
-//
-//
-//
-//    //share
-//    @IBAction func sharingShow(_ sender: Any) {
-//        let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
-//        let secondActivityItem : NSURL = NSURL(string: "\(linkeeeee)")!
-//        let image : UIImage = UIImage(named: "AppIcon")!
-//        let activityViewController : UIActivityViewController = UIActivityViewController(
-//            activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
-//        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
-//        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
-//        activityViewController.activityItemsConfiguration = [
-//            UIActivity.ActivityType.message
-//        ] as? UIActivityItemsConfigurationReading
-//        activityViewController.excludedActivityTypes = [
-//            UIActivity.ActivityType.postToWeibo,
-//            UIActivity.ActivityType.print,
-//            UIActivity.ActivityType.assignToContact,
-//            UIActivity.ActivityType.saveToCameraRoll,
-//            UIActivity.ActivityType.addToReadingList,
-//            UIActivity.ActivityType.postToFlickr,
-//            UIActivity.ActivityType.postToVimeo,
-//            UIActivity.ActivityType.postToTencentWeibo,
-//            UIActivity.ActivityType.postToFacebook
-//        ]
-//        activityViewController.isModalInPresentation = true
-//        self.present(activityViewController, animated: true, completion: nil)
-//    }
-//
-//
+
+
+    //MARK: Order place btn
+    @IBAction func orderPlace(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+
+        if isloggineIn {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "orderPlace") as! orderPlace
+            present(vc, animated: true, completion: nil)
+        }else{
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)}}}
+
+
+
+    //rating
+    @IBAction func ratingShow(_ sender: Any) {
+        let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
+
+        if isloggineIn {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "addRatingVC") as! addRatingVC
+            present(vc, animated: true, completion: nil)
+        }else{
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: true, completion: nil)}}}
+
+
+
+    //share
+    @IBAction func sharingShow(_ sender: Any) {
+        let firstActivityItem = "    يمكنك الاستمتاع بتجربة فريدة مع ابلكيشن الكناني رقم واحد في المجال البيطري والزراعي في الشرق الاوسط"
+        let secondActivityItem : NSURL = NSURL(string: "")!
+        let image : UIImage = UIImage(named: "AppIcon")!
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem, image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.down
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        activityViewController.activityItemsConfiguration = [
+            UIActivity.ActivityType.message
+        ] as? UIActivityItemsConfigurationReading
+        activityViewController.excludedActivityTypes = [
+            UIActivity.ActivityType.postToWeibo,
+            UIActivity.ActivityType.print,
+            UIActivity.ActivityType.assignToContact,
+            UIActivity.ActivityType.saveToCameraRoll,
+            UIActivity.ActivityType.addToReadingList,
+            UIActivity.ActivityType.postToFlickr,
+            UIActivity.ActivityType.postToVimeo,
+            UIActivity.ActivityType.postToTencentWeibo,
+            UIActivity.ActivityType.postToFacebook
+        ]
+        activityViewController.isModalInPresentation = true
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
+
 //
 //    //segement setup
 //    fileprivate func SetupSegment() {

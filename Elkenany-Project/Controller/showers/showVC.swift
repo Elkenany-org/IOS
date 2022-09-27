@@ -141,8 +141,8 @@ class showVC: UIViewController {
         if #available(iOS 13.0, *) {
 
             segmentVieww.layer.borderColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-            segmentVieww.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.5594755078, blue: 0.1821106031, alpha: 1)
-            segmentVieww.layer.borderWidth = 1
+            segmentVieww.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
+            segmentVieww.layer.borderWidth = 0
             segmentVieww.layer.shadowRadius = 20
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentVieww.setTitleTextAttributes(titleTextAttributes, for:.selected)

@@ -28,6 +28,9 @@
 		3208B8702785C600000E6C84 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3208B86E2785C600000E6C84 /* CompanyCell.xib */; };
 		32136C9A28BB77B800A22154 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */; };
 		32136C9B28BB77B800A22154 /* CompaniesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */; };
+		3221CBCF28E32013005681AA /* forget_password_send_phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBCE28E32013005681AA /* forget_password_send_phone.swift */; };
+		3221CBD428E32D6B005681AA /* confirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBD328E32D6B005681AA /* confirmPasswordViewController.swift */; };
+		3221CBD928E33E7C005681AA /* password_code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBD828E33E7C005681AA /* password_code.swift */; };
 		322519B5276F7842001096DD /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322519B3276F7842001096DD /* SliderCell.swift */; };
 		322519B6276F7842001096DD /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 322519B4276F7842001096DD /* SliderCell.xib */; };
 		322858D127C78D6D0032D80E /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322858CF27C78D6D0032D80E /* SearchResultCell.swift */; };
@@ -330,6 +333,9 @@
 		3208B86E2785C600000E6C84 /* CompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
 		32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
 		32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompaniesCollectionViewCell.xib; sourceTree = "<group>"; };
+		3221CBCE28E32013005681AA /* forget_password_send_phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forget_password_send_phone.swift; sourceTree = "<group>"; };
+		3221CBD328E32D6B005681AA /* confirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPasswordViewController.swift; sourceTree = "<group>"; };
+		3221CBD828E33E7C005681AA /* password_code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = password_code.swift; sourceTree = "<group>"; };
 		322519B3276F7842001096DD /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		322519B4276F7842001096DD /* SliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		322519D027700C75001096DD /* main */ = {isa = PBXFileReference; lastKnownFileType = file; path = main; sourceTree = "<group>"; };
@@ -676,6 +682,15 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
+		3221CBCD28E31FA3005681AA /* Forget-password */ = {
+			isa = PBXGroup;
+			children = (
+				3221CBCE28E32013005681AA /* forget_password_send_phone.swift */,
+				3221CBD828E33E7C005681AA /* password_code.swift */,
+			);
+			path = "Forget-password";
+			sourceTree = "<group>";
+		};
 		322519B2276F7810001096DD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,6 +820,7 @@
 		323B2229274A4638002CEB89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3221CBCD28E31FA3005681AA /* Forget-password */,
 				32475F21284E483000ACC97B /* ships */,
 				323E8665283B871200C65873 /* Magazines */,
 				324389F6282BA652000F3AD6 /* Showes */,
@@ -933,6 +949,7 @@
 				323B225B274A5D38002CEB89 /* LoginVC.swift */,
 				324E0A742756BD8500DEB843 /* RegisterVC.swift */,
 				3270A46527577348008660F5 /* ForgetPasswordVC.swift */,
+				3221CBD328E32D6B005681AA /* confirmPasswordViewController.swift */,
 			);
 			path = "login + Register Controller";
 			sourceTree = "<group>";
@@ -1768,6 +1785,7 @@
 				32FAB7AE27787215002400A2 /* ProfileVC.swift in Sources */,
 				32D05FDF28093BF2006C21F9 /* chatVC.swift in Sources */,
 				32609585275F55750056A002 /* SectorDetailsCell.swift in Sources */,
+				3221CBCF28E32013005681AA /* forget_password_send_phone.swift in Sources */,
 				325528132779E32500BAAE65 /* MoreVC.swift in Sources */,
 				324E0A7E2756C0F600DEB843 /* HomeVC.swift in Sources */,
 				32438A02282BAD3D000F3AD6 /* ShowReview.swift in Sources */,
@@ -1873,6 +1891,7 @@
 				3298AB53279FFC4300249D4E /* subGuideFilter.swift in Sources */,
 				32F5FD1A2768BA6700E4DFE1 /* collectioncell.swift in Sources */,
 				326D48612782FAED009B298C /* StanderCell.swift in Sources */,
+				3221CBD928E33E7C005681AA /* password_code.swift in Sources */,
 				322C1005277A0726004A5DD9 /* AboutVC.swift in Sources */,
 				3298AB5927A0031200249D4E /* subFilterMain.swift in Sources */,
 				32A054382831158600FE1206 /* ShowwCell.swift in Sources */,
@@ -1898,6 +1917,7 @@
 				3276D2BA275CB2C100D95236 /* successCell.swift in Sources */,
 				32B30BD72851E74B0002BC7C /* shipsStat.swift in Sources */,
 				32ADC79F277C9B3F006C4140 /* customerserviceVC.swift in Sources */,
+				3221CBD428E32D6B005681AA /* confirmPasswordViewController.swift in Sources */,
 				32F12B412763A3CE003DE947 /* companyDetails.swift in Sources */,
 				32FAB7B4277888DA002400A2 /* ProfileData.swift in Sources */,
 				32365ED12762F2FF00273DB9 /* CompaniesVC.swift in Sources */,

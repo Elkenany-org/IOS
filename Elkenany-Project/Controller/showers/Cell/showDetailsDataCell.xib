@@ -43,7 +43,7 @@
     </objects>
     <resources>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

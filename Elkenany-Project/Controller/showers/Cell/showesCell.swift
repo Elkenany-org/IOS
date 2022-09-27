@@ -45,12 +45,12 @@ class showesCell: UITableViewCell {
     
     
     
-    
-    func configureRating(ddd: showesHomeData ) {
-        RatingVi.rating = ddd.rate ?? 0
-    
-    }
-    
+//    
+//    func configureRating(ddd: showesHomeData ) {
+//        RatingVi.rating = ddd.rate ?? 0
+//    
+//    }
+//    
     
     
 }
