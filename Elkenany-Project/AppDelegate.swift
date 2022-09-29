@@ -9,18 +9,11 @@ import UIKit
 import CoreData
 import IQKeyboardManager
 import UserNotifications
-import FirebaseMessaging
-import FirebaseCore
-import FirebaseAuth
 import GoogleSignIn
 
 
-
-
-
-
 @main 
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate   {
+class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenterDelegate    {
     let window: UIWindow? = nil
    
     
@@ -29,12 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window?.makeKeyAndVisible()
-        FirebaseApp.configure()
 
+        
         registerForPushNotifications()
-        Messaging.messaging().delegate = self
+//        Messaging.messaging().delegate = self
+
+        @available(iOS 9.0, *)
+        func application(_ application: UIApplication, open url: URL,
+                         options: [UIApplication.OpenURLOptionsKey: Any])
+          -> Bool {
+          return GIDSignIn.sharedInstance.handle(url)
+        }
     
-//        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
 
         //Manage-keybord
         IQKeyboardManager.shared().isEnabled = true
@@ -49,18 +48,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         application.registerForRemoteNotifications()
+ 
+    
+//        let clientID = FirebaseApp.app()?.options.clientID ?? ""
+
+        
+        // Create Google Sign In configuration object.
+//        let config = GIDConfiguration(clientID: clientID)
+
+   
+        
         return true
     }
 
     
-    @available(iOS 9.0, *)
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let handled = GIDSignIn.sharedInstance.handle(url)
-    return handled
-    // return GIDSignIn.sharedInstance().handle(url,
-    // sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-    // annotation: [:])
+    func application(
+      _ app: UIApplication,
+      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+      var handled: Bool
+
+      handled = GIDSignIn.sharedInstance.handle(url)
+      if handled {
+        return true
+      }
+
+      // Handle other custom URL types.
+
+      // If not handled by this app, return false.
+      return false
     }
+
     
     
 func registerForPushNotifications() {
@@ -75,18 +93,18 @@ func registerForPushNotifications() {
 
     
     
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-      print("Firebase registration token: \(String(describing: fcmToken))")
-
-      let dataDict: [String: String] = ["token": fcmToken ?? ""]
-      NotificationCenter.default.post(
-        name: Notification.Name("FCMToken"),
-        object: nil,
-        userInfo: dataDict
-      )
-      // TODO: If necessary send token to application server.
-      // Note: This callback is fired at each app startup and whenever a new token is generated.
-    }
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+//      print("Firebase registration token: \(String(describing: fcmToken))")
+//
+//      let dataDict: [String: String] = ["token": fcmToken ?? ""]
+//      NotificationCenter.default.post(
+//        name: Notification.Name("FCMToken"),
+//        object: nil,
+//        userInfo: dataDict
+//      )
+//      // TODO: If necessary send token to application server.
+//      // Note: This callback is fired at each app startup and whenever a new token is generated.
+//    }
 
     
     

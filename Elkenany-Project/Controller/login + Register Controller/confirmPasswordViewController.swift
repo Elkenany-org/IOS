@@ -9,14 +9,14 @@ import UIKit
 
 class confirmPasswordViewController: UIViewController {
     var forgetPasswordCodeModel: passwordCodeData?
-
+    
     @IBOutlet weak var changeTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     var emailll = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -34,15 +34,14 @@ class confirmPasswordViewController: UIViewController {
                 self.forgetPasswordCodeModel = success
                 DispatchQueue.main.async {
                     print("تم الارسال ")
-                    print(success.data ?? "" )
                     self.ErrorHandeling(errorMessage: "تم تغيير الرقم السري بنجاح")
                     
-                   
-          }    }
+                    
+                }    }
         }
     }
     
-
+    
     @IBAction func confirChanges(_ sender: Any) {
         forgetPasswordServicee()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
@@ -50,7 +49,7 @@ class confirmPasswordViewController: UIViewController {
         
     }
     
-
+    
     @IBAction func backToConfirmation(_ sender: Any) {
     }
     
@@ -60,6 +59,6 @@ class confirmPasswordViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     
 }

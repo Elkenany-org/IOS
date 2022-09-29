@@ -9,41 +9,16 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 import AuthenticationServices
-import GoogleSignIn
-import FirebaseCore
-import FirebaseAuth
 
 
-class LoginVC: UIViewController, ASAuthorizationControllerDelegate  {
+
+class LoginVC: UIViewController, ASAuthorizationControllerDelegate   {
     var countries: [String] = []
 
     //Outlets in screen
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var loginProviderStackView: UIStackView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        for code in NSLocale.isoCountryCodes  {
-            let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
-            countries.append(name)
-        }
-        
-        
 
-        
-    }
-    
-    
-    
-
-
-    
-    
-   
-    
     
     //MARK:- handel validation for textfield
     func ErrorHandeling(errorMessage:String){
@@ -113,6 +88,20 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate  {
         authorizationController.performRequests()
     }
     
+    
+//    
+//    @IBAction func gooogle(_ sender: Any) {
+//        let signInConfig = GIDConfiguration(clientID: "com.googleusercontent.apps.470730042029-u1q10j6a1ilfds1i7f2d76bvt0h14dlb")
+//
+//        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+//          guard error == nil else { return }
+//
+//          // If sign in succeeded, display the app's main content View.
+//            print("helllo ")
+//        }
+//        
+//    }
+//    
     
     
 //    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -196,6 +185,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate  {
             }
         }
     }
+
+
+
 }
-
-

@@ -24,9 +24,10 @@ pod 'Cosmos', '~> 23.0'
 pod 'Charts'
 pod 'SkeletonView'
 pod 'ProgressHUD'
-pod 'FirebaseMessaging'	
-pod 'FirebaseAuth'
 pod 'GoogleSignIn'
+
+
+
 
 
 

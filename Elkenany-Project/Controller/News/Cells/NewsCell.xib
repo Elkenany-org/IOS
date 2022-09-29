@@ -42,25 +42,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="m44-Lw-QUs">
-                                <rect key="frame" x="10" y="46" width="99" height="86"/>
+                                <rect key="frame" x="10" y="56" width="99" height="76"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8o-kK-vIq">
-                                        <rect key="frame" x="0.0" y="33" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="uMB-QD-vgq"/>
-                                            <constraint firstAttribute="width" constant="20" id="w8W-7x-gpm"/>
-                                        </constraints>
-                                        <state key="normal" image="share"/>
-                                        <connections>
-                                            <action selector="shareSocial:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ikR-9H-nqa"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منذ شهر واحد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bv0-07-nbl">
-                                        <rect key="frame" x="40" y="36" width="59" height="14"/>
+                                        <rect key="frame" x="0.0" y="31" width="59" height="14"/>
                                         <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="12"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8o-kK-vIq">
+                                        <rect key="frame" x="79" y="28" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="uMB-QD-vgq"/>
+                                            <constraint firstAttribute="width" constant="20" id="w8W-7x-gpm"/>
+                                        </constraints>
+                                        <color key="tintColor" name="kenanyGreen"/>
+                                        <state key="normal" image="clock" catalog="system">
+                                            <color key="titleColor" name="kenanyGold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareSocial:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ikR-9H-nqa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -69,7 +72,7 @@
                             <constraint firstAttribute="bottom" secondItem="m44-Lw-QUs" secondAttribute="bottom" constant="10" id="1mz-sM-TFB"/>
                             <constraint firstItem="09F-DX-lOp" firstAttribute="leading" secondItem="oDD-Yc-XOz" secondAttribute="trailing" constant="15" id="6jG-zR-UGC"/>
                             <constraint firstAttribute="trailing" secondItem="09F-DX-lOp" secondAttribute="trailing" constant="10" id="ESv-Hi-SPa"/>
-                            <constraint firstItem="m44-Lw-QUs" firstAttribute="top" secondItem="oDD-Yc-XOz" secondAttribute="bottom" constant="10" id="Oeg-1Q-yby"/>
+                            <constraint firstItem="m44-Lw-QUs" firstAttribute="top" secondItem="oDD-Yc-XOz" secondAttribute="bottom" constant="20" id="Oeg-1Q-yby"/>
                             <constraint firstItem="oDD-Yc-XOz" firstAttribute="top" secondItem="fjm-8X-A93" secondAttribute="top" constant="10" id="dyc-1Q-GOj"/>
                             <constraint firstAttribute="bottom" secondItem="09F-DX-lOp" secondAttribute="bottom" constant="10" id="fgt-9h-FIi"/>
                             <constraint firstItem="m44-Lw-QUs" firstAttribute="leading" secondItem="fjm-8X-A93" secondAttribute="leading" constant="10" id="jGh-qc-Dlf"/>
@@ -101,8 +104,11 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="clock" catalog="system" width="128" height="121"/>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
-        <image name="share" width="512" height="512"/>
+        <namedColor name="kenanyGold">
+            <color red="1" green="0.73333333333333328" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="kenanyGreen">
             <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
