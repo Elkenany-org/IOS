@@ -59,7 +59,7 @@ class CompaniesVC: UIViewController{
         setupUI()
         title = companyTitle
         FatchDatafromHome()
-        setTimer()
+//        setTimer()
         setupSearchBar()
         LogosandBanners()
         //        banersLogosConfig()

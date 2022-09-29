@@ -51,7 +51,7 @@ class BorsaHomeVC: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setTimer()
+//        setTimer()
         title = "البورصة اليومية"
         featchBorsaSubSections()
         setupSearchBar()

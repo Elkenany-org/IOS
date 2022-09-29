@@ -54,7 +54,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
     override func viewDidLoad() {
         super.viewDidLoad()
         SetupUI()
-        setTimer()
+//        setTimer()
         title = "تفاصيل البورصة"
         print("vTest \(variaTest)")
         formatter.dateFormat = "yyyy-MM-dd"
