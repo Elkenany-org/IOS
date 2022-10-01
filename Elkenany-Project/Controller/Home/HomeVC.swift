@@ -34,12 +34,12 @@ class HomeVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        animateEachLabel()
-
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        animateEachLabel()
+//
+//    }
+//    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -8,9 +8,10 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import AuthenticationServices
 
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController , ASAuthorizationControllerDelegate {
 
     //Outlets
     @IBOutlet weak var nameTF: UITextField!
@@ -34,6 +35,25 @@ class RegisterVC: UIViewController {
     }
     
     
+    @IBAction func logApple(_ sender: Any) {
+        handleAuthorizationAppleIDButtonPress()
+        
+    }
+    
+    
+    
+    /// - Tag: perform_appleid_request
+    @objc
+    func handleAuthorizationAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.performRequests()
+    }
+    
+    
 
     //MARK:- handel validation for textfield
     func ErrorHandeling(errorMessage:String){
@@ -42,6 +62,24 @@ class RegisterVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let userIdentifier = appleIDCredential.user
+        
+            let defaults = UserDefaults.standard
+            defaults.set(userIdentifier, forKey: "userIdentifier1")
+            
+            //Save the UserIdentifier somewhere in your server/database
+            let vc = HomeVC()
+            vc.userID = userIdentifier
+            self.present(vc, animated: true, completion: nil)
+            break
+        default:
+            break
+        }
+    }
     
    //MARK:- Register Data
     func registerData() {

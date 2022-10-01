@@ -63,7 +63,7 @@ class ServiceViewController: UIViewController {
         ServicesCV.collectionViewLayout = creatCompositionalLayout()
         self.ServicesCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
         self.ServicesCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
-        self.ServicesCV.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
+        self.ServicesCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
 
         ServicesCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
     }
@@ -100,12 +100,12 @@ class ServiceViewController: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.6), heightDimension: .fractionalHeight(0.9))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.70), heightDimension: .fractionalHeight(0.37))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.36))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -113,7 +113,7 @@ class ServiceViewController: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -140,7 +140,7 @@ class ServiceViewController: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -165,7 +165,7 @@ class ServiceViewController: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -280,11 +280,11 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         switch indexPath.section {
         
         case 0 :
-            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as? sliderCellShow{
+            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
 //                sectoreCell.SecrorsName.text = arrayOfData[indexPath.item]
-                sectoreCell.sliderImage.image = arrayOfImage[indexPath.item]
+                sectoreCell.logooImage.image = arrayOfImage[indexPath.item]
 //                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 15.0)
-                sectoreCell.sliderImage.contentMode = .scaleAspectFit
+                sectoreCell.logooImage.contentMode = .scaleToFill
                 Sectore(ss: sectoreCell)
                 return sectoreCell }
             

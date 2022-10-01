@@ -92,7 +92,7 @@ class SectorsVC: UIViewController {
         sectorsCV.delegate = self
         sectorsCV.collectionViewLayout = creatCompositionalLayout()
         self.sectorsCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
-        self.sectorsCV.register(UINib(nibName: "sliderCellShow", bundle: nil), forCellWithReuseIdentifier: "sliderCellShow")
+        self.sectorsCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
 
         self.sectorsCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
         sectorsCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
@@ -158,12 +158,12 @@ class SectorsVC: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.9))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.37))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.36))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -171,7 +171,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -198,7 +198,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -223,7 +223,7 @@ class SectorsVC: UIViewController {
         section.orthogonalScrollingBehavior = .continuous
         
         //headers
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: "header", alignment: .top)
         section.boundarySupplementaryItems = [header]
         
@@ -332,11 +332,11 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         
         switch indexPath.section {
         case 0 :
-            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "sliderCellShow", for: indexPath) as? sliderCellShow {
+            if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell {
 //                sectoreCell.SecrorsName.text = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
 //                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
-                sectoreCell.sliderImage.image = images[indexPath.item]
-                sectoreCell.sliderImage.contentMode = .scaleAspectFit
+                sectoreCell.logooImage.image = images[indexPath.item]
+                sectoreCell.logooImage.contentMode = .scaleToFill
                 Sectore(ss: sectoreCell)
                 //                sectoreCell.layer.cornerRadius = 20.0
                 
@@ -481,9 +481,13 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             case "guide":
                 
                 let guideVC = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
-                //                guideVC.sectorTypeFromRecomindition = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].type ?? ""
+                
                 let id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
-                UserDefaults.standard.set(id, forKey: "REC_Id_Com")
+//                UserDefaults.standard.set(id, forKey: "REC_Id_Com")
+                
+                guideVC.subID_fromGuideHome = id
+                guideVC.FatchDatafromHome()
+                guideVC.LogosandBanners()
 //                guideVC.FatchDatafromHomeUsingRecomindition()
                 
                 navigationController?.pushViewController(guideVC, animated: true)
