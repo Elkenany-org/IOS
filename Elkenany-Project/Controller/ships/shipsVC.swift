@@ -165,7 +165,6 @@ extension shipsVC:BackDate{
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let shipsArivalURL = "https://elkenany.com/api/ships/all-ships?date="
-            let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: shipsArivalURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
