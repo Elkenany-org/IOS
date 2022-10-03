@@ -8,15 +8,14 @@
 import UIKit
 import Alamofire
 import Kingfisher
-import JGProgressHUD
-
+import ProgressHUD
 class companyDetails: UIViewController {
     
     //outlets
-    var CompanyIdFromCompanies = 0
-    var companyDetailsModel:CompanyDetailsDataModel?
-    var companyIDHomeSearch = 0
     @IBOutlet weak var companyDetailsTV: UITableView!
+    var companyDetailsModel:CompanyDetailsDataModel?
+    var CompanyIdFromCompanies = 0
+    var companyIDHomeSearch = 0
     
     
     
@@ -31,9 +30,6 @@ class companyDetails: UIViewController {
         companyDetailsTV.estimatedRowHeight = 150
         companyDetailsTV.rowHeight = UITableView.automaticDimension
         FeatchCompanyInformations()
-
-        
-        
     }
     
     func ss(ss:UITableViewCell){
@@ -49,30 +45,19 @@ class companyDetails: UIViewController {
     
     
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    
     func FeatchCompanyInformations(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(self.CompanyIdFromCompanies)"]
-            print("parrrra", param)
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.companyDetailsModel = success
                     DispatchQueue.main.async {
@@ -86,23 +71,18 @@ class companyDetails: UIViewController {
     
     
     func FeatchCompanyHomeSearch(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            //            let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(self.CompanyIdFromCompanies)"]
-            print("parrrra", param)
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let companyDetailes = "https://elkenany.com/api/guide/company/?id="
-            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: headers, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.companyDetailsModel = success
                     DispatchQueue.main.async {
@@ -112,21 +92,6 @@ class companyDetails: UIViewController {
                 }
             }
         }
-    }
-    
-    
-    
-    
-    
-    @IBAction func RatingVC(_ sender: Any) {
-        
-        
-        
-    }
-    
-    
-    
-    @IBAction func DirectionBTN(_ sender: Any) {
     }
     
     
@@ -190,7 +155,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
             let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
             
             if isloggineIn {
-             
+                
                 if let vc: RatingCompanyVC = UIStoryboard(name: "Main", bundle:Bundle.main).instantiateViewController(withIdentifier:"RatingCompanyVC") as? RatingCompanyVC{
                     let comParameterID = companyDetailsModel?.data?.id ?? 0
                     vc.CompanyID = comParameterID
@@ -200,17 +165,11 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 print("helllllo ")
                 //show rating view to do rating
                 if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
-//                    vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true, completion: nil)
                 }
                 
-               
+                
             }
-            
-            
-            
-            
-            
         default:
             print("hello")
         }

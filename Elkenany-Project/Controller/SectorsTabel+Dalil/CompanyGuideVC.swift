@@ -38,7 +38,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
     private var subModel: [SubSection] = []
     private var  sectorSubModel:[Sector] = []
     private var  bannersSubModel:[bannersMain] = []
-
+    
     
     
     
@@ -51,8 +51,9 @@ class CompanyGuideVC: UIViewController, SortTitle {
         setupUI()
         setupSearchBar()
         title = "الدليل"
-//        filterTitle.setTitle("\(UserDefaults.standard.string(forKey: "TYPE_TIT_FILTER") ?? "الابجدي")", for: .normal)
     }
+    
+    
     
     //MARK:- Setup UI [ delegets + register nibs ]
     func setupUI() {
@@ -68,8 +69,6 @@ class CompanyGuideVC: UIViewController, SortTitle {
         self.guideCompanyCV.register(UINib(nibName: "GuideCompanyCell", bundle: nil), forCellWithReuseIdentifier: "GuideCompanyCell")
         self.bannersCollection.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
         self.logosCollection.register(UINib(nibName: "SliderCell", bundle: nil), forCellWithReuseIdentifier: "SliderCell")
-
-
     }
     
     
@@ -77,10 +76,8 @@ class CompanyGuideVC: UIViewController, SortTitle {
     
     //MARK:- Featch sectors
     func featchDataSelectors(){
-        let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
         let sectorsUrl = "https://elkenany.com/api/guide/section/?type=farm&sort="
-        let headers:HTTPHeaders = ["app-id": api_token ]
-        APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:GuideCompaniesDataModel?, NewsError:GuideCompaniesDataModel?, error) in
+        APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: nil, method: .get) {[weak self] (NewsSuccess:GuideCompaniesDataModel?, NewsError:GuideCompaniesDataModel?, error) in
             guard let self = self else {return}
             if let error = error{
                 print("error ===========================")
@@ -99,37 +96,35 @@ class CompanyGuideVC: UIViewController, SortTitle {
     //MARK:- featch Main Data of the Guide at Main Collection view and sectors at header
     
     func FatchGuidMainData(){
-        //Handeling Loading view progress
         
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-        ProgressHUD.show("", icon: .succeed, interaction: true)
         ProgressHUD.animationType = .circleStrokeSpin
-
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.sectoreTypeFromHome)"]
-            let headers = ["app-id": "\(api_token ?? "")" ]
             let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
                 if let error = error{
-//                    hud.dismiss()
                     ProgressHUD.dismiss()
                     print("============ error \(error)")
-                }else {
-//                    hud.dismiss()
+                }    else if let loginErrorr = FailureRequest {
+                    //Data Wrong From Server
                     ProgressHUD.dismiss()
-
+                    print("============ error \(loginErrorr)")
+                }
+                
+                
+                
+                else {
+                    ProgressHUD.dismiss()
                     self.subModel.removeAll()
                     self.bannersSubModel.removeAll()
-
                     let successData = SuccessfulRequest?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
-                    
                     let successDataBannerss = SuccessfulRequest?.data?.banners ?? []
                     self.bannersSubModel.append(contentsOf: successDataBannerss)
+                    
                     DispatchQueue.main.async {
                         
                         if SuccessfulRequest?.data?.banners?.isEmpty == true {
@@ -137,7 +132,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
                             self.guideCompanyCV.reloadData()
                             
                         }
-
+                        
                         else{
                             
                             self.bannersView.isHidden = false
@@ -145,11 +140,6 @@ class CompanyGuideVC: UIViewController, SortTitle {
                             self.guideCompanyCV.reloadData()
                         }
                         
-                        
-                        
-                        
-                        
-                        
                     }
                 }
             }
@@ -157,105 +147,15 @@ class CompanyGuideVC: UIViewController, SortTitle {
     }
     
     
-    //MARK:- featch Main Data of the Guide at Main Collection view from recomindition at home
-    func FatchGuidMainDataFromRecomindition(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let param = ["type": "\(self.sectorTypeFromRecomindition)" ]
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    let successData = success?.data?.subSections ?? []
-                    self.subModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        self.guideCompanyCV.reloadData()
-                        self.selectedSectorCV.reloadData()
-                        
-                    }
-                }
-            }
-        }
-    }
-    
-    
-    //MARK:- featch Main Data of the Guide by the selsected from header of Sectors
-    func FatchDataOfMainGuideBySelecteddddd(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("this is token\(api_token ?? "")")
-            let param = ["type": "\(self.sectoreTypeFromHome)"]
-            print("ppppp", param)
-            let headers = ["Authorization": "\(api_token ?? "")" ]
-            let companyGuide = "https://elkenany.com/api/guide/section/?type="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    self.subModel.removeAll()
-                    let successData = success?.data?.subSections ?? []
-                    self.subModel.append(contentsOf: successData)
-                    
-                    DispatchQueue.main.async {
-                        self.guideCompanyCV.reloadData()
-                        print(self.companyGuideModel?.data?.subSections ?? "")
-                    }
-                }
-            }
-        }
-    }
-    
-    
-    func FatchGuidMainDataaaaaaaaa(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let param = ["type": "poultry"]
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
-                if let error = error{
-                    hud.dismiss()
-                    print("============ error \(error)")
-                }else {
-                    hud.dismiss()
-                    let successData = SuccessfulRequest?.data?.subSections ?? []
-                    self.subModel.append(contentsOf: successData)
-                    DispatchQueue.main.async {
-                        self.guideCompanyCV.reloadData()
-                    }
-                }
-            }
-        }
-    }
-    
-    
+
     
     
     
     func SearchServiceeeeee(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        //        let searchValue = SearchTF.text ?? ""
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let param = ["type": "\(self.sectoreTypeFromHome)" , "search" : self.searchBarGuidView.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -267,10 +167,10 @@ class CompanyGuideVC: UIViewController, SortTitle {
             
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     let successData = success?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
@@ -295,19 +195,6 @@ class CompanyGuideVC: UIViewController, SortTitle {
             filterVC.presentHomeFilter = "home"
             present(filterVC, animated: true, completion: nil)
         }
-    }
-    
-    
-    
-    @IBAction func toFilterShortCut(_ sender: Any) {
-        
-        if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
-            filterVC.RunFilterDeleget = self
-            filterVC.selectedType = sectoreTypeFromSelecteHeader
-            filterVC.presentKey = "keeey"
-            present(filterVC, animated: true, completion: nil)
-        }
-
     }
     
     
@@ -356,7 +243,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             return subModel.count
         } else if collectionView == bannersCollection {
             return bannersSubModel.count
-
+            
         }else{
             return subModel.count
         }
@@ -371,7 +258,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             if  let SectorHeaderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as? SelectedSectorCell{
                 SectorHeaderCell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
                 let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
-
+                
                 
                 if typeOfSector == sectoreTypeFromHome {
                     SectorHeaderCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
@@ -401,10 +288,10 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
                     cell.configureCell(image: imageC )
                 }
                 return cell
-                }
+            }
             
         } else{
-    //logos
+            //logos
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SliderCell", for:indexPath ) as? SliderCell{
                 if let imageC = subModel[indexPath.item].image{
                     cell.configureCell(image: imageC )
@@ -415,7 +302,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return UICollectionViewCell()
     }
     
-
+    
     
     //Configuer Cells heights in Views ----------------
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -431,7 +318,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             
         } else if collectionView == bannersCollection {
             return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height )
-
+            
         }else{
             return CGSize(width: 75, height: 50)
             
@@ -447,7 +334,7 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             self.sectoreTypeFromHome = typeOfSector
             UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
-
+            
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell{
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 selectedSectorCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
@@ -538,9 +425,10 @@ extension CompanyGuideVC : UISearchBarDelegate {
 extension CompanyGuideVC: FilterDone{
     
     func RunFilter(filter: ()) {
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        //Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("Token", api_token ?? "")
@@ -554,18 +442,18 @@ extension CompanyGuideVC: FilterDone{
             let FilterGuide = "https://elkenany.com/api/guide/section/?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.subModel.removeAll()
                     
                     let successData = success?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
-                    
-
+                        
+                        
                         
                     }
                 }

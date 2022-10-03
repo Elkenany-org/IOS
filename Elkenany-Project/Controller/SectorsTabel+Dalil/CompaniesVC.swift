@@ -8,6 +8,7 @@
 import UIKit
 import  Alamofire
 import JGProgressHUD
+import ProgressHUD
 
 class CompaniesVC: UIViewController{
     
@@ -59,10 +60,8 @@ class CompaniesVC: UIViewController{
         setupUI()
         title = companyTitle
         FatchDatafromHome()
-//        setTimer()
         setupSearchBar()
         LogosandBanners()
-        //        banersLogosConfig()
     }
     
     
@@ -102,6 +101,7 @@ class CompaniesVC: UIViewController{
     
     //MARK:- Main Data of Companies [main]
     func FatchDatafromHome(){
+
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.subID_fromGuideHome , "page" : self.currentpaga  ]
             let header = ["ios" : ""]
@@ -115,10 +115,14 @@ class CompaniesVC: UIViewController{
                 //Data Wrong From Server
                 
                 else if let loginError = filier {
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 //success
                 else {
+                    
+                    ProgressHUD.dismiss()
+
                     if success?.data?.nextPageURL == nil {
                     }
                     let successData = success?.data?.data ?? []
@@ -138,6 +142,9 @@ class CompaniesVC: UIViewController{
     
     //MARK:- Main Data of Companies [main]
     func FatchDatafromHomeSearch(){
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.sub_id_home_search , "page": self.currentpaga]
             let HomeSearchURL = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
@@ -145,15 +152,21 @@ class CompaniesVC: UIViewController{
                 (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }
                 //Data Wrong From Server
                 
                 else if let loginError = filier {
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 //success
                 else {
+                    ProgressHUD.dismiss()
+
                     if success?.data?.nextPageURL == nil {
                     }
                     let successData = success?.data?.data ?? []
@@ -207,10 +220,9 @@ class CompaniesVC: UIViewController{
     
     //MARK:- search Service of Companies
     func SearchService(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let param = ["sub_id": "\(self.subID_fromGuideHome)" , "search" : self.searchBarView.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -219,10 +231,10 @@ class CompaniesVC: UIViewController{
             let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id&city_id&sort&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     let successData = success?.data?.data ?? []
                     self.mainDataModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
@@ -237,11 +249,10 @@ class CompaniesVC: UIViewController{
     //MARK:- logos and banners service
     
     func LogosandBanners(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        //        let searchValue = SearchTF.text ?? ""
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let param = ["sub_id":"\(self.subID_fromGuideHome)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -249,10 +260,10 @@ class CompaniesVC: UIViewController{
             let SearchGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     let successDatalo = success?.data?.logos ?? []
                     self.mainDatalLogos.append(contentsOf: successDatalo)
                     let successDataban = success?.data?.banners ?? []
@@ -308,39 +319,6 @@ class CompaniesVC: UIViewController{
     
 }
 
-
-
-//MARK:- TableView for companies  [Methods + Delegets]
-//extension CompaniesVC:UITableViewDelegate,UITableViewDataSource{
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return mainDataModel.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if let Companiescell = tableView.dequeueReusableCell(withIdentifier: "companiesCell") as? companiesCell{
-//        Companiescell.selectionStyle = .none
-//        Companiescell.configureCell(data: mainDataModel[indexPath.row])
-//            return Companiescell
-//        }
-//        return UITableViewCell()
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 222
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
-//            let idd = mainDataModel[indexPath.row].id
-//            UserDefaults.standard.set(idd, forKey: "IDDD")
-//            vc.CompanyIdFromCompanies = idd ?? 0
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
-//}
-//
 
 
 

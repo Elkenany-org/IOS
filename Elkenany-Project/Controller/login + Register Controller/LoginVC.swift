@@ -38,7 +38,7 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate   {
     }
     
     @IBAction func log(_ sender: Any) {
-        handleAuthorizationAppleIDButtonPress()
+        handleAppleIdRequest()
         
     }
     
@@ -78,15 +78,58 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate   {
     
     
     /// - Tag: perform_appleid_request
-    @objc
-    func handleAuthorizationAppleIDButtonPress() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.performRequests()
+//    @objc
+//    func handleAuthorizationAppleIDButtonPress() {
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//        let request = appleIDProvider.createRequest()
+//        request.requestedScopes = [.fullName, .email]
+//        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+//        authorizationController.delegate = self
+//        authorizationController.performRequests()
+//    }
+//
+    
+    @objc func handleAppleIdRequest() {
+    let appleIDProvider = ASAuthorizationAppleIDProvider()
+    let request = appleIDProvider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+    authorizationController.delegate = self
+    authorizationController.performRequests()
+        
+        
     }
+    
+    
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            
+            
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            
+            print(idTokenString)
+            print(userIdentifier)
+            print(fullName)
+            print(email)
+        }
+    }
+    
+    
+    
+    
+    
     
     
 //    
@@ -110,36 +153,53 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate   {
 //            let fullName = appleCredential.fullName
 //            let email = appleCredential.email
 //            print("userrrrr \(userIdentifier) ----------- \(String(describing: fullName)) ---------- \(String (describing: email) )")
+//            performSegue(withIdentifier: "HomeVC", sender: nil)
+//            
 //        }
-//        let vc = (storyboard?.instantiateViewController(identifier: "LoginVC"))! as LoginVC
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion:nil)
+//      
 //    }
-//
-//
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//        // Handle error.
-//    }
-//
+
+
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+        guard let error = error as? ASAuthorizationError else {
+                return
+            }
+
+            switch error.code {
+            case .canceled:
+                print("Canceled")
+            case .unknown:
+                print("Unknown")
+            case .invalidResponse:
+                print("Invalid Respone")
+            case .notHandled:
+                print("Not handled")
+            case .failed:
+                print("Failed")
+            @unknown default:
+                print("Default")
+            }    }
+
     
    
-        func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-            switch authorization.credential {
-            case let appleIDCredential as ASAuthorizationAppleIDCredential:
-                let userIdentifier = appleIDCredential.user
-            
-                let defaults = UserDefaults.standard
-                defaults.set(userIdentifier, forKey: "userIdentifier1")
-                
-                //Save the UserIdentifier somewhere in your server/database
-                let vc = HomeVC()
-                vc.userID = userIdentifier
-                self.present(vc, animated: true, completion: nil)
-                break
-            default:
-                break
-            }
-        }
+//        func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+//            switch authorization.credential {
+//            case let appleIDCredential as ASAuthorizationAppleIDCredential:
+//                let userIdentifier = appleIDCredential.user
+//
+//                let defaults = UserDefaults.standard
+//                defaults.set(userIdentifier, forKey: "userIdentifier1")
+//
+//                //Save the UserIdentifier somewhere in your server/database
+//                let vc = HomeVC()
+//                vc.userID = userIdentifier
+//                self.present(vc, animated: true, completion: nil)
+//                break
+//            default:
+//                break
+//            }
+//        }
         
     
     
@@ -189,3 +249,28 @@ class LoginVC: UIViewController, ASAuthorizationControllerDelegate   {
 
 
 }
+
+
+//
+//extension LoginVC: ASAuthorizationControllerPresentationContextProviding{
+//    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+//        let appleIDProvider = ASAuthorizationAppleIDProvider()
+//        appleIDProvider.getCredentialState(forUserID: userID) {  (credentialState, error) in
+//             switch credentialState {
+//                case .authorized:
+//                    // The Apple ID credential is valid.
+//                    break
+//                case .revoked:
+//                    // The Apple ID credential is revoked.
+//                    break
+//             case .notFound: break
+//                    // No credential was found, so show the sign-in UI.
+//                default:
+//                    break
+//             }
+//        }
+//    }
+//
+//
+//
+//}

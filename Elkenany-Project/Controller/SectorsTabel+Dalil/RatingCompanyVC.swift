@@ -7,7 +7,7 @@
 
 import UIKit
 import Cosmos
-import JGProgressHUD
+import ProgressHUD
 
 //call back using the rating value of company
 protocol ReatingValue {
@@ -68,12 +68,10 @@ class RatingCompanyVC: UIViewController {
                 SendDataOfRatingViewForMagazine()
             case "COMAPNIES":
                 SendDataOfRatingView()
-
+                
             default:
                 print("hello world . . . . Rating not completed")
             }
-            
-            
         }else{
             if let vc = storyboard?.instantiateViewController(identifier: "popupToSignIN") as? popupToSignIN {
                 self.present(vc, animated: true, completion: nil)
@@ -86,20 +84,19 @@ class RatingCompanyVC: UIViewController {
     //MARK:- Handling The service of rating
     func SendDataOfRatingView(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التقييم"
-        hud.show(in: self.view)
-        
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["company_id": "\(self.CompanyID)", "reat": "\(self.rat)"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyRating, parameters: param, headers: headers, method: .post) { (success:RatingModel?, filier:RatingModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -108,10 +105,9 @@ class RatingCompanyVC: UIViewController {
     //MARK:- Handling The service of rating
     func SendDataOfRatingViewForMagazine(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التقييم"
-        hud.show(in: self.view)
-        
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["maga_id": "\(self.magazineID)", "reat": "\(self.rat)"]
@@ -119,10 +115,10 @@ class RatingCompanyVC: UIViewController {
             let ratingUrl = "https://elkenany.com/api/magazine/rating-magazine"
             APIServiceForQueryParameter.shared.fetchData(url: ratingUrl , parameters: param, headers: headers, method: .post) { (success:MagazineRating?, filier:MagazineRating?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.dismiss(animated: true, completion: nil)
                 }
             }
