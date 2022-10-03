@@ -7,7 +7,8 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
+
 
 class MoreVC: UIViewController {
     
@@ -15,18 +16,14 @@ class MoreVC: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var MoreCollectionView: UICollectionView!
     @IBOutlet weak var userName: UILabel!
-    
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    
-    
     var codata:[MoreDataa] = MoreDataa.moredata
     var logoutmm:LogoutModel?
     var profileDataa:ProfileData?
     
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -37,8 +34,8 @@ class MoreVC: UIViewController {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn == true{
-            print("rtyuio")
-            
+            looogOutIn.isHidden = true
+            loginBtn.isHidden = false
             
         }else{
             looogOutIn.isHidden = true
@@ -63,26 +60,25 @@ class MoreVC: UIViewController {
     
     
     func logoutService(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            //            let headers:HTTPHeaders = ["Authorization": "Bearer \(api_token ?? "")" ]
             let headerrrs = ["Authorization": "Bearer \(api_token ?? "")"]
             let logoutURL = "https://elkenany.com/api/logout"
             APIServiceForQueryParameter.shared.fetchData(url: logoutURL, parameters: nil, headers: headerrrs, method: .post) { (logSuccess:LogoutModel?, logFilier:LogoutModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = logSuccess else {return}
                     self.logoutmm = success
                     DispatchQueue.main.async {
                         print("yaaaaaaaaaaa")
-                        UserDefaults.standard.removeObject(forKey: "API_TOKEN")
+//                        UserDefaults.standard.removeObject(forKey: "API_TOKEN")
                         
                     }
                 }
@@ -93,10 +89,10 @@ class MoreVC: UIViewController {
     //featch data of profile
     
     func FatchDataProfile(){
-        // Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
@@ -104,10 +100,10 @@ class MoreVC: UIViewController {
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:ProfileData?, filier:ProfileData?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.profileDataa = success
                     DispatchQueue.main.async {

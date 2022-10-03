@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 
 //1-protocol for dataBack
@@ -29,17 +29,17 @@ class ChooseStokeVC: UIViewController {
         CompanyTableView.dataSource = self
         CompanyTableView.register(UINib(nibName: "CompanyCell", bundle: nil), forCellReuseIdentifier: "companySelected")
         FatchlistOfStatisticesOut()
-
-
+        
+        
     }
     
-  
+    
     
     //viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
     func handelTap() {
         // Do any additional setup after loading the view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(closePop))
@@ -58,34 +58,34 @@ class ChooseStokeVC: UIViewController {
     
     
     //2-refrence from protocol
-     var StokeDeleget:DataBackBorsaStok?
+    var StokeDeleget:DataBackBorsaStok?
     
     
     //MARK:- featch Data of  Choose Borsa TableView Methodes
-        func FatchlistOfStatisticesOut(){
-            let hud = JGProgressHUD(style: .dark)
-            hud.textLabel.text = "جاري التحميل"
-            hud.show(in: self.view)
-            DispatchQueue.global(qos: .background).async {
-//                let typeFromHome = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
-                    let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-sections?type="
-                let param = ["type": "\(self.typeForStoke)"]
-                    APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: nil, method: .get) { (success:StatisticsStockSectionsModel?, filier:StatisticsStockSectionsModel?, error) in
-                        if let error = error{
-                            hud.dismiss()
-                            print("============ error \(error)")
-                        }else {
-                            hud.dismiss()
-                            guard let success = success else {return}
-                            self.listOfData = success
-                            DispatchQueue.main.async {
-                                self.CompanyTableView.reloadData()
-    
-                        }
+    func FatchlistOfStatisticesOut(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        DispatchQueue.global(qos: .background).async {
+            let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-sections?type="
+            let param = ["type": "\(self.typeForStoke)"]
+            APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: nil, method: .get) { (success:StatisticsStockSectionsModel?, filier:StatisticsStockSectionsModel?, error) in
+                if let error = error{
+                    ProgressHUD.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    ProgressHUD.dismiss()
+                    guard let success = success else {return}
+                    self.listOfData = success
+                    DispatchQueue.main.async {
+                        self.CompanyTableView.reloadData()
+                        
                     }
                 }
             }
         }
+    }
     
 }
 
@@ -107,7 +107,7 @@ extension ChooseStokeVC:UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("showBackid ------")
-
+        
         // 3- pass data to protocol
         let BackID = listOfData?.data?.changesSubs?[indexPath.row].id ?? 0
         StokeDeleget?.StokeId(StokeID: BackID)

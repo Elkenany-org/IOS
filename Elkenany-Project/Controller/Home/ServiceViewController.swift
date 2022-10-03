@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 class ServiceViewController: UIViewController {
     
@@ -28,27 +28,15 @@ class ServiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        print("did apeaar")
-        
-        //featchServesData()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        featchService()
-        //        GetHomeDataFromServerServices()
         GetHomeDataFromServer()
-        
-        print("will apeaar")
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //        GetHomeDataFromServer()
-        
-    }
+
     
     
     
@@ -175,10 +163,10 @@ class ServiceViewController: UIViewController {
     
     //MARK:- featch Data from server
     func GetHomeDataFromServer(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
@@ -192,7 +180,7 @@ class ServiceViewController: UIViewController {
                  FailureRequest:HomeTestModelss?,
                  error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
@@ -202,7 +190,7 @@ class ServiceViewController: UIViewController {
                 }
                 
                 else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = SuccessfulRequest else {return}
                     self.homeServiceDataModel = success
                     DispatchQueue.main.async {
@@ -281,9 +269,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         case 0 :
             if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell{
-//                sectoreCell.SecrorsName.text = arrayOfData[indexPath.item]
                 sectoreCell.logooImage.image = arrayOfImage[indexPath.item]
-//                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 15.0)
                 sectoreCell.logooImage.contentMode = .scaleToFill
                 Sectore(ss: sectoreCell)
                 return sectoreCell }
@@ -340,7 +326,6 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
     //MARK:- didSelecte to Show the screen related
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        var url : NSURL?
         
         
         switch indexPath.section {
@@ -403,7 +388,6 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             let idShowHome = homeServiceDataModel?.data?.show?[indexPath.item].id ?? 0
             Showesvc.presentKeyHome = "hoome"
             UserDefaults.standard.set(idShowHome, forKey: "IDDHOME")
-//            Showesvc.showeDataServiceHome()
             navigationController?.pushViewController(Showesvc, animated: true)
             
             
@@ -430,7 +414,6 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
-        //        view.title = indexPath.section == 2 ? "الخدامات" : "القطاعات"
         view.title = sectionsData[indexPath.section]
         return view
     }

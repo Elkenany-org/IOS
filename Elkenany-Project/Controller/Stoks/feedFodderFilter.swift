@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 protocol FilterFeedDone {
     func RunFilterr(filter:())
@@ -53,25 +53,23 @@ class feedFodderFilter: UIViewController {
     
     //MARK:- get data of filter Popup
     func GetFilterDataForFeed(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
                   ///data not real
             let stoID = UserDefaults.standard.string(forKey: "he") ?? ""
 
             let param = ["stock_id": "\(stoID)" , "mini_id" : "\(self.iddddd)"]
-
-//            let param = ["stock_id": "13" , "food_id" : "457"]
             let subGuideFilterURL = "https://elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:FeedModelData?, filier:FeedModelData?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.FilterFeed = success
                     DispatchQueue.main.async {
@@ -88,10 +86,10 @@ class feedFodderFilter: UIViewController {
     
     //MARK:- get data of filter Popup
     func GetFilterDataForFeedSelected(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
                   ///data not real
@@ -101,10 +99,10 @@ class feedFodderFilter: UIViewController {
             let subGuideFilterURL = "https://elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:FeedModelData?, filier:FeedModelData?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.FilterFeed = success
                     DispatchQueue.main.async {
@@ -140,18 +138,12 @@ extension feedFodderFilter:UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let SectionVC = storyboard?.instantiateViewController(identifier: "subFilterSection") as? subFilterSection {
         let feed_id = FilterFeed?.data?.fodderList?[indexPath.row].id ?? 0
-//            SectionVC.secId = sec_id
-            /// save idddddddddd
             UserDefaults.standard.set(feed_id, forKey: "FILTER_Feed_ID")
-//            FilterAnimation.shared.filteranmation(vieww: view)
 
-//            self.present(SectionVC, animated: true, completion: nil)
         RunFilterDelegettt?.RunFilterr(filter: ())
             dismiss(animated: true, completion: nil)
         
-//        }
     }
     
 }
@@ -169,7 +161,6 @@ extension feedFodderFilter:UICollectionViewDelegate, UICollectionViewDataSource,
             feedCatCell.titleLabel.text = FilterFeed?.data?.fodderCategories?[indexPath.item].name ?? ""
             if FilterFeed?.data?.fodderCategories?[indexPath.item].selected == 1 {
                 feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
-//                feedCatCell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{
                 feedCatCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
             }
@@ -190,7 +181,6 @@ extension feedFodderFilter:UICollectionViewDelegate, UICollectionViewDataSource,
          let feedCatCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedSectorCell", for: indexPath) as! SelectedSectorCell
         if FilterFeed?.data?.fodderCategories?[indexPath.item].selected != 1 {
             feedCatCell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
-//                feedCatCell.selectItem(at: indexPath, animated: true, scrollPosition: .right)
         }else{
             feedCatCell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
         }

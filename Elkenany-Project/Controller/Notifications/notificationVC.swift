@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
 
 class notificationVC: UIViewController {
 
@@ -51,10 +51,10 @@ class notificationVC: UIViewController {
     }
     
     func FatchDataOfNotif(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         
         let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
         let headers = ["Authorization": "Bearer \(api_token)" ]
@@ -63,10 +63,10 @@ class notificationVC: UIViewController {
             let notURL = "https://elkenany.com/api/v2/notifications"
             APIServiceForQueryParameter.shared.fetchData(url: notURL, parameters: nil, headers: headers, method: .get) { (success:NotificationModel?, filier:NotificationModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.notificationdata = success
                     DispatchQueue.main.async {

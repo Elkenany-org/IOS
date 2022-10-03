@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 protocol countryReturn {
     func returnCountry(country :String)
@@ -26,21 +27,28 @@ class organizationVC: UIViewController {
     
     
     func showeDataServiceeee(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/ships/statistics-ships"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
-                    
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.MainModelStat = success
                     DispatchQueue.main.async {

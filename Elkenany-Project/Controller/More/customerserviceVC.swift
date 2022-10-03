@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
 
 class customerserviceVC: UIViewController {
 
@@ -43,10 +43,10 @@ class customerserviceVC: UIViewController {
     //MARK:- Handel Login Data To Server
     
     func EditeMainInfoTap() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin 
+        ProgressHUD.show()
+         
         //Handel Parametars
         let parm = [
             "name": name.text,
@@ -64,16 +64,16 @@ class customerserviceVC: UIViewController {
             if let error = error {
                 // Internet Offline
                 print(error)
-                hud.dismiss()
+                ProgressHUD.dismiss()
                 
             }
             else if let loginError = RequestFailed {
                 //Data Wrong From Server
-                hud.dismiss()
+                ProgressHUD.dismiss()
                 print(loginError)
             }
             else {
-                hud.dismiss()
+                ProgressHUD.dismiss()
                 self.dismiss(animated: true, completion: nil)
             }
         }

@@ -7,9 +7,8 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
-import AVFoundation
-import AVKit
+import ProgressHUD
+
 
 class SectorsVC: UIViewController {
     
@@ -17,8 +16,7 @@ class SectorsVC: UIViewController {
     @IBOutlet weak var sectorsCV: UICollectionView!
     var homeDataSectorsModel:HomeSectorsDataModel?
     var homeGuide:GuideCompaniesDataModel?
-    var player: AVQueuePlayer?
-    var videoLooper: AVPlayerLooper?
+    
     @IBOutlet weak var videoViewContainer:UIView!
     var sss:HomeData?
     var sector:[Sectors]?
@@ -26,9 +24,9 @@ class SectorsVC: UIViewController {
     let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") ]
     var typeForRecomendition = ""
     
-//    let viewsw = ServiceViewController()
-
-
+    //    let viewsw = ServiceViewController()
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -39,50 +37,16 @@ class SectorsVC: UIViewController {
     //viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
         print("yeeeeees")
         setupUI()
         GetHomeDataFromServer()
         print("did apear 123567")
-//        self.initializeVideoPlayerWithVideo()
-  
-
+        
+        
     }
     
     
-    
-    func initializeVideoPlayerWithVideo() {
-
-        // get the path string for the video from assets
-        let videoString:String? = Bundle.main.path(forResource: "BackgroundAppVideo", ofType: "mov")
-        guard let unwrappedVideoPath = videoString else {return}
-
-        // convert the path string to a url
-        let videoUrl = URL(fileURLWithPath: unwrappedVideoPath)
-
-        let asset = AVAsset(url: videoUrl)
-        let item = AVPlayerItem(asset: asset)
-
-        // initialize the video player with the url
-        self.player = AVQueuePlayer()
-
-        // create a video layer for the player
-        let layer: AVPlayerLayer = AVPlayerLayer(player: player)
-
-        // make the layer the same size as the container view
-        layer.frame = videoViewContainer.bounds
-
-        // make the video fill the layer as much as possible while keeping its aspect size
-        layer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-
-        // add the layer to the container view
-        videoViewContainer.layer.addSublayer(layer)
-
-        videoLooper = AVPlayerLooper(player: self.player!, templateItem: item)
-        self.player?.play()
-
-    }
-
     
     
     //MARK:- featch Data from server
@@ -93,7 +57,7 @@ class SectorsVC: UIViewController {
         sectorsCV.collectionViewLayout = creatCompositionalLayout()
         self.sectorsCV.register(UINib(nibName: "SectorsCell", bundle: nil), forCellWithReuseIdentifier: "SectorsCell")
         self.sectorsCV.register(UINib(nibName: "logosCell", bundle: nil), forCellWithReuseIdentifier: "logosCell")
-
+        
         self.sectorsCV.register(UINib(nibName: "successCell", bundle: nil), forCellWithReuseIdentifier: "successCell")
         sectorsCV.register(UINib(nibName: "HeaderCell", bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: "HeaderCell")
     }
@@ -234,10 +198,10 @@ class SectorsVC: UIViewController {
     
     //MARK:- featch Data from server
     func GetHomeDataFromServer(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
@@ -249,7 +213,7 @@ class SectorsVC: UIViewController {
                  FailureRequest:HomeSectorsDataModel?,
                  error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
@@ -259,7 +223,7 @@ class SectorsVC: UIViewController {
                 }
                 
                 else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = SuccessfulRequest else {return}
                     self.homeDataSectorsModel = success
                     DispatchQueue.main.async {
@@ -292,7 +256,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
     //number of cells on collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
+        
         //collection count
         switch section {
         case 0:
@@ -332,17 +296,15 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         
         switch indexPath.section {
         case 0 :
+            
             if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell {
-//                sectoreCell.SecrorsName.text = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
-//                sectoreCell.SecrorsName.font = UIFont(name: "Cairo-Black", size: 16.0)
                 sectoreCell.logooImage.image = images[indexPath.item]
                 sectoreCell.logooImage.contentMode = .scaleToFill
                 Sectore(ss: sectoreCell)
-                //                sectoreCell.layer.cornerRadius = 20.0
-                
                 return sectoreCell }
             
         case 1 :
+            
             if let recomanditionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 recomanditionCell.SecrorsName.text = homeDataSectorsModel?.data?.recomandtion?[indexPath.row].name ?? "dev test"
                 recomanditionCell.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
@@ -358,7 +320,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 let successMembersImage = homeDataSectorsModel?.data?.logos?[indexPath.item].image ?? "dev test"
                 logosCell.configureCell(image: successMembersImage)
                 logosCell.sucessMembers.contentMode = .scaleAspectFill
-
+                
                 logosCell.layer.cornerRadius = 10
                 ss(ss: logosCell)
                 return logosCell }
@@ -385,28 +347,18 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 return guideCell }
             
         case 5 :
-                        if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
-                            storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
-                            storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
-                            let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
-                            storeCell.sectorImgCell.contentMode = .scaleAspectFill
-                            storeCell.configureCell(image: successMembersImage)
-                            ss(ss: storeCell)
-                            return storeCell }
-//            if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
-//                newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
-//                newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
-//                let successMembersImage = homeDataSectorsModel?.data?.news?[indexPath.item].image ?? ""
-//                newsCell.sectorImgCell.contentMode = .scaleToFill
-//
-//                newsCell.configureCell(image: successMembersImage)
-//                ss(ss: newsCell)
-//                return newsCell }
-//            print("esvvvs")
+            if let storeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
+                storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
+                storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
+                let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
+                storeCell.sectorImgCell.contentMode = .scaleAspectFill
+                storeCell.configureCell(image: successMembersImage)
+                ss(ss: storeCell)
+                return storeCell }
             
             
         case 6 :
-          
+            
             if let newsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectorsCell", for: indexPath) as? SectorsCell{
                 newsCell.SecrorsName.text = homeDataSectorsModel?.data?.news?[indexPath.row].name ?? "dev test"
                 newsCell.SecrorsName.font = UIFont(name: "Cairo", size: 10.0)
@@ -459,8 +411,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 newsvc.news_id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
                 newsvc.FatchDataOfNewsDetailsFromHomeRecomindition()
                 navigationController?.pushViewController(newsvc, animated: true)
-            //                UserDefaults.standard.set( homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id, forKey: "Home_Rec_Id")
-            
+                
             case "showes":
                 
                 let vc = (storyboard?.instantiateViewController(identifier: "CompanyGuideVC"))! as CompanyGuideVC
@@ -474,7 +425,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 vc.id_froooom_home = id_home
                 vc.fetchAdsDetailsHome()
                 navigationController?.pushViewController(vc, animated: true)
-
+                
             case "magazines":
                 print("hello")
                 
@@ -483,39 +434,25 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 let guideVC = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
                 
                 let id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
-//                UserDefaults.standard.set(id, forKey: "REC_Id_Com")
-                
                 guideVC.subID_fromGuideHome = id
                 guideVC.FatchDatafromHome()
                 guideVC.LogosandBanners()
-//                guideVC.FatchDatafromHomeUsingRecomindition()
                 
                 navigationController?.pushViewController(guideVC, animated: true)
-            //                UserDefaults.standard.set( homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id, forKey: "Home_Rec_Id")
-            
+                
             case "fodder":
                 
-                //                let vcBorsa = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
-                //                vcBorsa.featchBorsaSubSections()
-                //                navigationController?.pushViewController(vcBorsa, animated: true)
                 
                 print("hello")
                 
                 
             case "local":
                 
-                //                let vc = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
-                //                vc.featchBorsaSubSections()
-                //
-                //                navigationController?.pushViewController(vc, animated: true)
+                
                 print("hello")
                 
                 
             case "localstock":
-                
-                //                let vc = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
-                //                vc.featchBorsaSubSections()
-                //                navigationController?.pushViewController(vc, animated: true)
                 print("hello")
                 
                 
@@ -536,10 +473,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             if let url = NSURL(string: "\(homeDataSectorsModel?.data?.logos?[indexPath.item].link ?? "")") {
                 UIApplication.shared.openURL(url as URL)
             }
-        //            return print("hello")
-        
-        
-        
+            
         case 3 :
             let stokevc = (storyboard?.instantiateViewController(identifier: "BorsaDetails"))! as BorsaDetails
             let id_stoke = homeDataSectorsModel?.data?.stock?[indexPath.item].id ?? 0
@@ -553,7 +487,6 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
         case 4 :
             let guideVC = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
-            //                guideVC.sectorTypeFromRecomindition = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].type ?? ""
             let id = homeDataSectorsModel?.data?.guide?[indexPath.item].id ?? 0
             UserDefaults.standard.set(id, forKey: "REC_Id_Dalil")
             guideVC.FatchDatafromHomeUsingDalil()
@@ -563,52 +496,36 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             
         case 5 :
-            //            return print("hello")
-            
-        
             
             let StoreDtails = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
-              let id_home = homeDataSectorsModel?.data?.store?[indexPath.item].id ?? 0
-
+            let id_home = homeDataSectorsModel?.data?.store?[indexPath.item].id ?? 0
+            
             StoreDtails.keyFromHome = "keyhome"
             
             StoreDtails.id_froooom_home = id_home
             navigationController?.pushViewController(StoreDtails, animated: true)
-
-//            Storevc.keyFromHome = "keyhome"
-//            cell1.FatchDataOfNewsDetailsFromHomeCell()
-//            cell1.FatchDataOfNews()
-
             
         case 6 :
             let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
             newsvc.news_id_from_home = homeDataSectorsModel?.data?.news?[indexPath.item].id ?? 0
             newsvc.keyFromHome = "keyhome"
-
+            
             newsvc.FatchDataOfNewsDetailsFromHome()
             navigationController?.pushViewController(newsvc, animated: true)
             
             
-        
+            
         default:
             print("Hello world")
         }
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "HeaderCell", for: indexPath) as? HeaderCell else{
             return UICollectionReusableView()
         }
-        //        view.title = arr[indexPath.section]
         view.btnOulet.setTitle(arr[indexPath.section], for: .normal)
         
         return view

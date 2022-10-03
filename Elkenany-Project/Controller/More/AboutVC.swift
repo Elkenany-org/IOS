@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 import WebKit
-import JGProgressHUD
+import ProgressHUD
 
 class AboutVC: UIViewController {
 
@@ -26,18 +26,19 @@ class AboutVC: UIViewController {
     
     
     func FatchDataOfAboutUS(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1) 
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
+        
         DispatchQueue.global(qos: .background).async {
             let newsDetailsURL = "https://elkenany.com/api/about-us"
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: nil, headers: nil, method: .get) { (NewsDetailssuccess:AboutUSModell?, NewsDetailsfilier:AboutUSModell?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.DataModelAbout = success
                     DispatchQueue.main.async {

@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
 
 protocol testProtocol {
     var name:String { get }
@@ -51,7 +51,6 @@ class BorsaHomeVC: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        setTimer()
         title = "البورصة اليومية"
         featchBorsaSubSections()
         setupSearchBar()
@@ -122,10 +121,11 @@ class BorsaHomeVC: UIViewController  {
     //MARK:- FeatchData for Borsa [Company sub_sections] and data for the main
     func featchBorsaSubSections(){
         
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.Sector)"]
@@ -134,12 +134,12 @@ class BorsaHomeVC: UIViewController  {
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
 
                     print("============ error \(error)")
                     
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
 
                     let successData = Borsasuccess?.data?.sectors?.reversed() ?? []
                     self.sectorSubModel.append(contentsOf: successData)
@@ -155,12 +155,7 @@ class BorsaHomeVC: UIViewController  {
                     
                     DispatchQueue.main.async {
                       
-//                        self.bannersCV.reloadData()
-//                        self.logosCV.reloadData()
-//                        self.BorsaCV.reloadData()
-                        
-                        
-                        
+
                         if self.logosSubModel.isEmpty == true && self.bannersSubModel.isEmpty == false {
                             self.logosView.isHidden = true
                             self.bannerView.isHidden = false
@@ -197,6 +192,11 @@ class BorsaHomeVC: UIViewController  {
     }
     
     func featchBorsaSubSectionsFromMore(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "poultry"]
@@ -205,8 +205,12 @@ class BorsaHomeVC: UIViewController  {
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
+
                     
                     let successData = Borsasuccess?.data?.sectors ?? []
                     self.sectorSubModel.append(contentsOf: successData)
@@ -236,10 +240,10 @@ class BorsaHomeVC: UIViewController  {
     
     //MARK:- FeatchData for Borsa [Company sub_sections]
     func FatchBorsaBySector(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
@@ -248,10 +252,10 @@ class BorsaHomeVC: UIViewController  {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:BorsaHomeDataModel?, filier:BorsaHomeDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.BorsaSubModel.removeAll()
                     self.logosSubModel.removeAll()
                     self.bannersSubModel.removeAll()
@@ -269,13 +273,7 @@ class BorsaHomeVC: UIViewController  {
                     
                     DispatchQueue.main.async {
                         
-                        
-//                        self.SelectedSector.reloadData()
-                        //                        self.bannersCV.reloadData()
-                        //                        self.logosCV.reloadData()
-                        //                        self.BorsaCV.reloadData()
-                        
-                        
+
                         
                         if self.logosSubModel.isEmpty == true && self.bannersSubModel.isEmpty == false {
                             self.logosView.isHidden = true
@@ -334,7 +332,6 @@ class BorsaHomeVC: UIViewController  {
     @IBAction func mainStastices(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "statisticsInsideMain"))! as statisticsInsideMain
         vc.stoType = Sector
-        //        vc.stoType = sectorTypeFromHeader
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -354,8 +351,6 @@ class BorsaHomeVC: UIViewController  {
         let filtervc = (storyboard?.instantiateViewController(identifier: "FilterVC"))! as FilterVC
         filtervc.presentKey = "keeey"
         filtervc.RunFilterDeleget = self
-        //        filtervc.presentHomeFilter = "home"
-        
         present(filtervc, animated: true, completion: nil)
         
     }
@@ -437,7 +432,6 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             if indexPath.section == 0{
                 let cell4 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell4.companyTitle.text = BorsaSubModel[indexPath.item].name ?? ""
-                //                cell4.companiesCount.text = String( BorsaSubModel[indexPath.item].members ?? 0)
                 
                 let imageBorsaSubSection = BorsaSubModel[indexPath.row].image ?? ""
                 cell4.companyImage.contentMode = .scaleToFill
@@ -450,7 +444,6 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             else if indexPath.section == 1{
                 let cell5 = collectionView.dequeueReusableCell(withReuseIdentifier: "GuideCompanyCell", for: indexPath) as! GuideCompanyCell
                 cell5.companyTitle.text = fodderSubModel[indexPath.item].name ?? ""
-                //                cell5.companiesCount.text = String( fodderSubModel[indexPath.item].members ?? 0)
                 let imageBorsaFoder = fodderSubModel[indexPath.row].image ?? ""
                 cell5.configureCell(image: imageBorsaFoder)
                 ss(ss: cell5)
@@ -513,8 +506,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             
             else if indexPath.section == 1{
                 let vc = (storyboard?.instantiateViewController(identifier: "FodderBorsa"))! as FodderBorsa
-                //                vc.fodderParam = fodderSubModel[indexPath.item].type ?? ""
-                //                vc.fodder_id = fodderSubModel[indexPath.item].id ?? 0
+       
                 let FodderType = fodderSubModel[indexPath.item].type ?? ""
                 UserDefaults.standard.set(FodderType, forKey: "she")
                 
@@ -524,7 +516,6 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
                 let fooderTit = fodderSubModel[indexPath.item].name ?? ""
                 UserDefaults.standard.set(fooderTit, forKey: "BORSA_TITLEEEE")
                 
-                //                vc.fodderTypeParamter = FodderType
                 vc.fodderID = FodderID
                 vc.title = fooderTit
                 
@@ -626,11 +617,12 @@ extension BorsaHomeVC : UISearchBarDelegate {
         self.logosSubModel.removeAll()
         self.bannersSubModel.removeAll()
         self.fodderSubModel.removeAll()
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         featchBorsaSubSections()
-        hud.dismiss()
+        ProgressHUD.dismiss()
         
         print("cancellllld")
     }
@@ -642,6 +634,10 @@ extension BorsaHomeVC : UISearchBarDelegate {
 //MARK:- filter service
 extension BorsaHomeVC : FilterDone {
     func RunFilter(filter: ()) {
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
         let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
         let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
@@ -651,8 +647,12 @@ extension BorsaHomeVC : FilterDone {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
+
                     self.BorsaSubModel.removeAll()
                     self.fodderSubModel.removeAll()
                     let successData = Borsasuccess?.data?.subSections ?? []

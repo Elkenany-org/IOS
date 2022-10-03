@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 import Photos
 
 class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -40,11 +40,11 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
     
     
     func addAds() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "تم اضافة اعلان للسوق"
-        hud.show(in: self.view)
-        //Handel Parametars
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let typeParameter = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
 
         let parm = [
@@ -61,17 +61,17 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
             if let error = error {
                 // Internet Offline
                 print(error)
-                hud.dismiss()
+                ProgressHUD.dismiss()
 //                self.ErrorHandeling(errorMessage: error.localizedDescription)
             }
             else if let loginError = Failed {
                 //Data Wrong From Server
-                hud.dismiss()
+                ProgressHUD.dismiss()
 //                self.ErrorHandeling(errorMessage: loginError.error ?? "خطآ في تسجيل الدخول تاكد من البيانات الرقم السري او البريد الالكتروني ")
                 print(loginError)
             }
             else {
-                hud.dismiss()
+                ProgressHUD.dismiss()
 //                self.chatTV.reloadData()
                 
                 print("goooooooooood")

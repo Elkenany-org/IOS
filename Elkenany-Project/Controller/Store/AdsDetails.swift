@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
 import Kingfisher
 
 class AdsDetails: UIViewController {
@@ -49,6 +49,12 @@ class AdsDetails: UIViewController {
     
     //MARK:- store ads details
     func fetchAdsDetails(){
+        
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
@@ -57,8 +63,12 @@ class AdsDetails: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.storeDetails = success
                     self.salary.text = String((storeDetails?.data?.salary)! ) 
@@ -78,6 +88,10 @@ class AdsDetails: UIViewController {
     
     //MARK:- store ads details from search
     func fetchAdsDetailsFromHomeSearch(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
@@ -85,8 +99,12 @@ class AdsDetails: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.storeDetails = success
                     self.salary.text = String((storeDetails?.data?.salary)! )
@@ -106,7 +124,13 @@ class AdsDetails: UIViewController {
     
     
     func fetchAdsDetailsHome(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
+
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/ads-store-detials?id="
             //            let typeParameter = UserDefaults.standard.string(forKey: "ADS_ID")
@@ -114,8 +138,12 @@ class AdsDetails: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { [self] (success:AdsStoreDetailsDataModel?, filier:AdsStoreDetailsDataModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.storeDetails = success
                     self.salary.text = String((storeDetails?.data?.salary)! )
@@ -135,6 +163,7 @@ class AdsDetails: UIViewController {
     
     
     func creatChatRoom(){
+        
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://elkenany.com/api/store/start-chat?id="

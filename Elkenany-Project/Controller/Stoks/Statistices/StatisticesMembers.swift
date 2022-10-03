@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import JGProgressHUD
+import ProgressHUD
 
 
 class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolTwo , DataBackProtocol {
@@ -44,9 +44,10 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     func dataBackFromPicker(dateFrom: String) {
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         self.fromTitle.setTitle(dateFrom, for: .normal)
 
         DispatchQueue.global(qos: .background).async {
@@ -55,23 +56,22 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
             let FromPickerBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
-            //            let typeParameter = UserDefaults.standard.string(forKey: "SECTOR_TYPE")
             let param = ["type": "\(TParam)" , "to": "\(result)" , "from" : "\(dateFrom)" , "id" : "\(idParam)"]
             print(param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
             APIServiceForQueryParameter.shared.fetchData(url: FromPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }  else if let loginError = filier {
                     //Data Wrong From Server
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     
                     print(filier?.message ?? "")
                 }
                 
                 else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.LocalBorsaaaaas = success
                     DispatchQueue.main.async {
@@ -89,9 +89,10 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     func dataBackTOPicker(dateTo: String) {
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         self.toTitle.setTitle(dateTo, for: .normal)
         DispatchQueue.global(qos: .background).async {
 
@@ -107,17 +108,17 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             print("\(param)")
             APIServiceForQueryParameter.shared.fetchData(url: toPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else if let loginErrorr = filier {
                     //Data Wrong From Server
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     
                     print(loginErrorr.message ?? "")
                 }
                 
                 else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.LocalBorsaaaaas = success
                     DispatchQueue.main.async {
@@ -135,15 +136,11 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
         DispatchQueue.global(qos: .background).async {
-            //            let typePara = UserDefaults.standard.string(forKey: "she")
             let idParam = UserDefaults.standard.string(forKey: "he") ?? ""
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
             let param = ["id": "\(idParam)", "type": "\(TParam)" , "to" : "\(result)" , "mem_id" : "\(ComID)" ]
-            print("-------para \(param)")
             let companyDetailsurl = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
-            print("///// urllll \(companyDetailsurl)")
-            //            let idParameter = UserDefaults.standard.string(forKey: "ID_Details")
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailsurl, parameters: param, headers: nil, method: .get) { (Detailssuccess:statInsideFodder?, Detailsfilier:statInsideFodder?, error) in
                 if let error = error{
                     print("============ error \(error)")
@@ -162,9 +159,10 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     func featchMainDataMembers(){
         formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
 
@@ -178,10 +176,10 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             print("\(param)")
             APIServiceForQueryParameter.shared.fetchData(url: toPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.LocalBorsaaaaas = success
                     DispatchQueue.main.async {
@@ -247,7 +245,6 @@ extension StatisticesMembers:UICollectionViewDelegate, UICollectionViewDataSourc
         cell.typeTitle.text = LocalBorsaaaaas?.data?.changesMembersss?[indexPath.item].name ?? ""
         cell.pricetitle.text = String (LocalBorsaaaaas?.data?.changesMembersss?[indexPath.item].counts ?? 0)
         cell.chanageTitle.text = LocalBorsaaaaas?.data?.changesMembersss?[indexPath.item].change ?? ""
-//        cell.chanageTitle.text = String(LocalBorsaaaaas?.data?.changesMembersss?[indexPath.item].counts ?? 0.0 ) ?? ""
         return cell
     }
     

@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import JGProgressHUD
+import ProgressHUD
 
 class MainStoreVC: UIViewController  {
     
@@ -117,10 +118,11 @@ class MainStoreVC: UIViewController  {
     
     //MARK:- Featch main store by using search
     func FatchSearchOfStore(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -132,10 +134,10 @@ class MainStoreVC: UIViewController  {
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.storeSubModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.storeSubModel.append(contentsOf: successData)
@@ -152,18 +154,20 @@ class MainStoreVC: UIViewController  {
     //MARK:- Featch main store by using search
     func FatchSectorsOfStore(){
         //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
             let param = ["type": "\(self.typeFromHomeForStore)"]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     let successData = success?.data?.sectors?.reversed() ?? []
                     self.sectorSubModel.append(contentsOf: successData)
                     DispatchQueue.main.async {

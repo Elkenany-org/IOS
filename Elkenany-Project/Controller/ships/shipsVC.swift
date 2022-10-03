@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class shipsVC: UIViewController {
     
@@ -29,7 +30,6 @@ class shipsVC: UIViewController {
         setupUI()
         formatter.dateFormat = "yyyy-MM-dd"
         let dateDay = formatter.string(from: date)
-//        dataPicker.setTitle(dateDay, for: .normal)
         dateLabel.text = dateDay
         title = "حركة السفن"
     }
@@ -60,14 +60,20 @@ class shipsVC: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         let dateOfDay = formatter.string(from: date)
         let param = ["date" : "\(dateOfDay)"]
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let shipsURL = "https://elkenany.com/api/ships/all-ships?date="
             APIServiceForQueryParameter.shared.fetchData(url: shipsURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 
                 if let error = error{
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    
+                    ProgressHUD.dismiss()
+
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
                     
@@ -75,8 +81,9 @@ class shipsVC: UIViewController {
                         if  self.shipsSubModelData.isEmpty == false{
                             self.notFoundView.isHidden = true
                             self.shipCV.isHidden = false
-                            
-                        }else if  self.shipsSubModelData.isEmpty == true{
+                            self.shipCV.reloadData()
+
+                        }else if self.shipsSubModelData.isEmpty == true{
                             
                             self.notFoundView.isHidden = false
                             self.shipCV.isHidden = true
@@ -85,6 +92,7 @@ class shipsVC: UIViewController {
                             
                         }else{
                             print("hellllo erooorr")
+                            
                         }
                     }
                 }
@@ -147,6 +155,12 @@ extension shipsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColle
 extension shipsVC:BackDate{
     
     func backDateToMain(date: String) {
+        
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let param = ["date" : "\(date )"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
@@ -154,17 +168,24 @@ extension shipsVC:BackDate{
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: shipsArivalURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }    else if let loginErrorr = Datafailure {
+                    ProgressHUD.dismiss()
+
                     //Data Wrong From Server
                     print(loginErrorr.message ?? "6666666666666")
                     self.shipCV.isHidden = true
                     self.membershipV.isHidden = false
                     self.notFoundView.isHidden = true
+                    self.dateLabel.text = date
+
                     
                 } else {
-                    
+                    ProgressHUD.dismiss()
+
                     self.shipsSubModelData.removeAll()
                     let successData = Datasuccess?.data?.ships ?? []
                     self.shipsSubModelData.append(contentsOf: successData)
@@ -181,6 +202,8 @@ extension shipsVC:BackDate{
                         self.shipCV.isHidden = true
                         self.membershipV.isHidden = false
                         self.notFoundView.isHidden = false
+                        self.dateLabel.text = date
+
                     }
                 }
             }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class StatShipVC: UIViewController {
     
@@ -35,6 +36,10 @@ class StatShipVC: UIViewController {
     
     
     func showeDataServiceeee(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let parm = ["id" : "5"]
         DispatchQueue.global(qos: .background).async {
             let url = "https://elkenany.com/api/ships/statistics-ships"
@@ -43,14 +48,19 @@ class StatShipVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.MainModelStat = success
                 
@@ -145,14 +155,20 @@ extension StatShipVC: countryReturn{
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.MainModelStat = success
                 
@@ -172,6 +188,11 @@ extension StatShipVC: countryReturn{
 
 extension StatShipVC: MonshaReturn{
     func returnMonsha(Monsha: String , monshaNamee: String) {
+        
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["type" : "\(Monsha)"]
@@ -179,15 +200,21 @@ extension StatShipVC: MonshaReturn{
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     //internet error
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
+                    ProgressHUD.dismiss()
+
                     //Data Wrong From Server
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.MainModelStat = success
                 
@@ -210,6 +237,10 @@ extension StatShipVC: MonshaReturn{
 
 extension StatShipVC:  DataBackProtocol {
     func dataBackFromPicker(dateFrom: String) {
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["from" : "\(dateFrom)"]
@@ -219,14 +250,20 @@ extension StatShipVC:  DataBackProtocol {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.MainModelStat = success
                 
@@ -251,6 +288,10 @@ extension StatShipVC:  DataBackProtocol {
     
 extension StatShipVC: DataBackProtocolTwo  {
     func dataBackTOPicker(dateTo: String) {
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
             
@@ -260,15 +301,21 @@ extension StatShipVC: DataBackProtocolTwo  {
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
+
                     //internet error
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.MainModelStat = success
                 

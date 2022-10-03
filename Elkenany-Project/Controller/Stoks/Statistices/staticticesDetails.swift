@@ -18,7 +18,7 @@ class staticticesDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         featchBorsaDetails()
-
+        
         // Do any additional setup after loading the view.
         DetailsCollection.dataSource = self
         DetailsCollection.delegate = self
@@ -29,7 +29,7 @@ class staticticesDetails: UIViewController {
         
     }
     
-
+    
     
     //MARK:- FeatchData for Borsa [Company Logos]
     func featchBorsaDetails(){
@@ -51,9 +51,9 @@ class staticticesDetails: UIViewController {
             }
         }
     }
-
     
-
+    
+    
 }
 
 extension staticticesDetails:UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
@@ -75,7 +75,7 @@ extension staticticesDetails:UICollectionViewDelegate, UICollectionViewDataSourc
     
     // cell configuration --------------------- cell for row
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
         cell1.nameLabel.text = DetailsModel?.data?.members?[indexPath.item].name ?? "name"
         cell1.countlabel.text = String(DetailsModel?.data?.members?[indexPath.item].counts ?? 0)
@@ -104,7 +104,7 @@ extension staticticesDetails:UICollectionViewDelegate, UICollectionViewDataSourc
         
         let headerrrr2 = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "DetailsHeader", for: indexPath) as! DetailsHeader
         return headerrrr2
-}
+    }
     
     
 }

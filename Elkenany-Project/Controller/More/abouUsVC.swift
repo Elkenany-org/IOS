@@ -11,7 +11,6 @@ class abouUsVC: UIViewController {
     //outlets
     @IBOutlet weak var aboutUsCollection: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "اتصل بنا"
@@ -51,12 +50,7 @@ class abouUsVC: UIViewController {
 
 
 extension abouUsVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
-    
-    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 2
-//    }
-    
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -69,9 +63,6 @@ extension abouUsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
         switch indexPath.item {
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "aboutUsCell", for: indexPath) as! aboutUsCell
-//            cell.locationtitle.text = "مقر الشركة بالمنصورة"
-//            cell.mobile.text = "+20502210179"
-//            cell.fax.text = "+20502210179"
             return cell
             
         case 1:
@@ -83,24 +74,6 @@ extension abouUsVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
         }
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        switch indexPath.item {
-//        case 0:
-//            
-//            break
-//            
-//            
-//        case 1:
-//            
-//            break
-//            
-//            
-//        default:
-//            print("hellllllo")
-//        }
-        
     
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     

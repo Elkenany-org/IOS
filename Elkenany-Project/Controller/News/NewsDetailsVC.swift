@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 import Alamofire
 import WebKit
 class NewsDetailsVC: UIViewController {
@@ -40,8 +40,7 @@ class NewsDetailsVC: UIViewController {
     fileprivate func SetUpUI() {
         NewsDetailsCV.delegate = self
         NewsDetailsCV.dataSource = self
-//        newTable.delegate = self
-//        newTable.dataSource = self
+
         newTable.register(UINib(nibName: "detailOne", bundle: nil), forCellReuseIdentifier: "detailOne")
         newTable.register(UINib(nibName: "detailTwo", bundle: nil), forCellReuseIdentifier: "detailTwo")
         self.NewsDetailsCV.register(UINib(nibName: "collectioncell", bundle: nil), forCellWithReuseIdentifier: "collectioncell")
@@ -52,10 +51,10 @@ class NewsDetailsVC: UIViewController {
     
     //MARK:- FatchDataOfNewsDetails from home [main data from sector at home]
     func FatchDataOfNewsDetails(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
@@ -64,10 +63,10 @@ class NewsDetailsVC: UIViewController {
             let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
@@ -83,10 +82,10 @@ class NewsDetailsVC: UIViewController {
     
     //MARK:- FatchDataOfNewsDetails from home [main data from sector at home]
     func FatchDataOfNewsDetailsFromHomeSearch(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
@@ -95,10 +94,10 @@ class NewsDetailsVC: UIViewController {
             let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
@@ -113,10 +112,10 @@ class NewsDetailsVC: UIViewController {
     
     //MARK:- choose news from home collection to present the news collection
     func FatchDataOfNewsDetailsFromHome(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
@@ -124,10 +123,10 @@ class NewsDetailsVC: UIViewController {
             let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
@@ -143,10 +142,10 @@ class NewsDetailsVC: UIViewController {
     //MARK:- choose news from recommendition collection to present the news collection
     
     func FatchDataOfNewsDetailsFromHomeRecomindition(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
@@ -154,10 +153,10 @@ class NewsDetailsVC: UIViewController {
             let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {
@@ -174,10 +173,10 @@ class NewsDetailsVC: UIViewController {
     
     //MARK:- Featch Data Of News Details Insid from home
     func FatchDataOfNewsDetailsInsid(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
@@ -187,10 +186,10 @@ class NewsDetailsVC: UIViewController {
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = NewsDetailssuccess else {return}
                     self.newsDetails = success
                     DispatchQueue.main.async {

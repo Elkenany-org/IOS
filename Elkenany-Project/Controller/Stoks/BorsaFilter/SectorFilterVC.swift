@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 class SectorFilterVC: UIViewController {
 
@@ -29,19 +29,20 @@ class SectorFilterVC: UIViewController {
 
     //MARK:- get data of filter Popup
     func GetFilterDataBorsa(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+
         DispatchQueue.global(qos: .background).async {
             let SectoreFilterURL = "https://elkenany.com/api/localstock/filter-stock-show-sub-section?id=&type=&type_stock="
             let param = ["type": "poultry" , "id": "1", "type_stock": "local" ]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:StokeFilterDataModel?, filier:StokeFilterDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.borsaModelFilter = success
                     DispatchQueue.main.async {
@@ -54,10 +55,11 @@ class SectorFilterVC: UIViewController {
     }
 
     func GetFilterDataborsaBySectore(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+
         DispatchQueue.global(qos: .background).async {
           let paramaaa = UserDefaults.standard.string(forKey: "ID_FILTER") ?? ""
             let paramaaaType = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER") ?? ""
@@ -67,10 +69,10 @@ class SectorFilterVC: UIViewController {
             let param = ["type":"\(paramaaaType)" , "id": "\(paramaaa)", "type_stock": "local" ]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:StokeFilterDataModel?, filier:StokeFilterDataModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.borsaModelFilter = success
                     DispatchQueue.main.async {
