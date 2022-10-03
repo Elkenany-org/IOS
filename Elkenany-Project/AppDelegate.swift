@@ -24,16 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
         window?.makeKeyAndVisible()
 
         
-        registerForPushNotifications()
+//        registerForPushNotifications()
 //        Messaging.messaging().delegate = self
 
-        @available(iOS 9.0, *)
-        func application(_ application: UIApplication, open url: URL,
-                         options: [UIApplication.OpenURLOptionsKey: Any])
-          -> Bool {
-          return GIDSignIn.sharedInstance.handle(url)
-        }
-    
+//        @available(iOS 9.0, *)
+//        func application(_ application: UIApplication, open url: URL,
+//                         options: [UIApplication.OpenURLOptionsKey: Any])
+//          -> Bool {
+//          return GIDSignIn.sharedInstance.handle(url)
+//        }
+//
 
         //Manage-keybord
         IQKeyboardManager.shared().isEnabled = true
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
             window?.rootViewController = loginViewController
         }
         
-        application.registerForRemoteNotifications()
+//        application.registerForRemoteNotifications()
  
     
 //        let clientID = FirebaseApp.app()?.options.clientID ?? ""
@@ -62,34 +62,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
     }
 
     
-    func application(
-      _ app: UIApplication,
-      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
-    ) -> Bool {
-      var handled: Bool
-
-      handled = GIDSignIn.sharedInstance.handle(url)
-      if handled {
-        return true
-      }
-
-      // Handle other custom URL types.
-
-      // If not handled by this app, return false.
-      return false
-    }
+//    func application(
+//      _ app: UIApplication,
+//      open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+//    ) -> Bool {
+//      var handled: Bool
+//
+//      handled = GIDSignIn.sharedInstance.handle(url)
+//      if handled {
+//        return true
+//      }
+//
+//      // Handle other custom URL types.
+//
+//      // If not handled by this app, return false.
+//      return false
+//    }
 
     
     
-func registerForPushNotifications() {
-    UNUserNotificationCenter.current()
-      .requestAuthorization(
-        options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-        print("Permission granted: \(granted)")
-        guard granted else { return }
-        self?.getNotificationSettings()
-      }
-  }
+//func registerForPushNotifications() {
+//    UNUserNotificationCenter.current()
+//      .requestAuthorization(
+//        options: [.alert, .sound, .badge]) { [weak self] granted, _ in
+//        print("Permission granted: \(granted)")
+//        guard granted else { return }
+//        self?.getNotificationSettings()
+//      }
+//  }
 
     
     
@@ -108,56 +108,56 @@ func registerForPushNotifications() {
 
     
     
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-          print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-              UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
+//    func getNotificationSettings() {
+//        UNUserNotificationCenter.current().getNotificationSettings { settings in
+//          print("Notification settings: \(settings)")
+//            guard settings.authorizationStatus == .authorized else { return }
+//            DispatchQueue.main.async {
+//              UIApplication.shared.registerForRemoteNotifications()
+//            }
+//        }
+//    }
 
     
-    private func application(
-      _ application: UIApplication,
-      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-    ) {
-     
-        if #available(iOS 10.0, *) {
-          // For iOS 10 display notification (sent via APNS)
-          UNUserNotificationCenter.current().delegate = self
-
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in }
-          )
-        } else {
-          let settings: UIUserNotificationSettings =
-            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          application.registerUserNotificationSettings(settings)
-        }
-//        Messaging.messaging().apnsToken = deviceToken
-        application.registerForRemoteNotifications()
-    }
-
-    
-    
-    func application(application: UIApplication,
-                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    }
+//    private func application(
+//      _ application: UIApplication,
+//      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+//    ) {
+////
+//        if #available(iOS 10.0, *) {
+//          // For iOS 10 display notification (sent via APNS)
+//          UNUserNotificationCenter.current().delegate = self
+//
+//          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//          UNUserNotificationCenter.current().requestAuthorization(
+//            options: authOptions,
+//            completionHandler: { _, _ in }
+//          )
+//        } else {
+//          let settings: UIUserNotificationSettings =
+//            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//          application.registerUserNotificationSettings(settings)
+//        }
+////        Messaging.messaging().apnsToken = deviceToken
+//        application.registerForRemoteNotifications()
+//    }
 
     
     
-    func application(
-      _ application: UIApplication,
-      didFailToRegisterForRemoteNotificationsWithError error: Error
-    ) {
-      print("Failed to register: \(error)")
-    }
-
-    
+//    func application(application: UIApplication,
+//                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//    }
+//
+//
+//
+//    func application(
+//      _ application: UIApplication,
+//      didFailToRegisterForRemoteNotificationsWithError error: Error
+//    ) {
+//      print("Failed to register: \(error)")
+//    }
+//
+//
     
     
     

@@ -23,7 +23,7 @@ class MoreVC: UIViewController {
     var codata:[MoreDataa] = MoreDataa.moredata
     var logoutmm:LogoutModel?
     var profileDataa:ProfileData?
-
+    
     
     
     
@@ -37,18 +37,18 @@ class MoreVC: UIViewController {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
         
         if isloggineIn == true{
-         print("rtyuio")
-                
+            print("rtyuio")
+            
             
         }else{
             looogOutIn.isHidden = true
             loginBtn.isHidden = false
         }
-    
+        
         
     }
-        
-        
+    
+    
     
     
     
@@ -82,11 +82,8 @@ class MoreVC: UIViewController {
                     self.logoutmm = success
                     DispatchQueue.main.async {
                         print("yaaaaaaaaaaa")
-                        if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
-                            vc.modalPresentationStyle = .fullScreen
-                            self.present(vc, animated: true, completion: nil)
-                            
-                        }
+                        UserDefaults.standard.removeObject(forKey: "API_TOKEN")
+                        
                     }
                 }
             }
@@ -117,7 +114,7 @@ class MoreVC: UIViewController {
                         print("hellllo sucess")
                         self.userName.text = success.data?.name ?? " لا يوجد اسم مستخدم"
                         self.userEmail.text = success.data?.email ?? "لا يوجد اسم مستخدم"
-
+                        
                         let url = URL(string:success.data?.image ?? "")
                         self.userImage.kf.indicatorType = .activity
                         self.userImage.kf.setImage(with: url)
@@ -140,6 +137,12 @@ class MoreVC: UIViewController {
     
     @IBAction func logOutBTN(_ sender: Any) {
         logoutService()
+        
+        if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+            
+        }
     }
     
     
@@ -151,7 +154,7 @@ class MoreVC: UIViewController {
             self.present(vc, animated: true, completion: nil)
             
         }
-
+        
         
     }
     
@@ -313,13 +316,11 @@ extension MoreVC:UICollectionViewDelegate, UICollectionViewDataSource , UICollec
             self.present(activityViewController, animated: true, completion: nil)
             
         case 11:
-            //            let vc = storyboard?.instantiateViewController(identifier: "AboutVC") as! AboutVC
-            //            navigationController?.pushViewController(vc, animated: true)
+
             print("about elkenany")
             
         case 12:
-            //            let vc = storyboard?.instantiateViewController(identifier: "abouUsVC") as! abouUsVC
-            //            navigationController?.pushViewController(vc, animated: true)
+
             print("jjjjjjjjjjjjj")
             
         default:

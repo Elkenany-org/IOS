@@ -17,6 +17,8 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var emailUser: UILabel!
     var profileDataa:ProfileData?
+    var logoutmm:LogoutModel?
+
     
     
     
@@ -46,17 +48,16 @@ class ProfileVC: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
-
     }
     
     
     //from profile
     @IBAction func pressToLoginFromProfile(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
+            FatchDataProfileOut()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
-
     }
     
     //edite profile
@@ -114,6 +115,36 @@ class ProfileVC: UIViewController {
         }
     }
     
+    
+    
+    //featch data of profile
+    func FatchDataProfileOut(){
+        // Handeling Loading view progress
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "جاري التحميل"
+        hud.show(in: self.view)
+        DispatchQueue.global(qos: .background).async {
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            print("this is token\(api_token ?? "")")
+            let profileURL = "https://elkenany.com/api/logout"
+            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
+            APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:LogoutModel?, filier:LogoutModel?, error) in
+                if let error = error{
+                    hud.dismiss()
+                    print("============ error \(error)")
+                }else {
+                    hud.dismiss()
+                    guard let success = success else {return}
+                    self.logoutmm = success
+                    DispatchQueue.main.async {
+                        print("out sucess")
+                        UserDefaults.standard.removeObject(forKey: "API_TOKEN")
+                  
+                    }
+                }
+            }
+        }
+    }
     
     
 

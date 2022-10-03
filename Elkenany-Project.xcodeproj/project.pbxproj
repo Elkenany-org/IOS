@@ -288,6 +288,7 @@
 		32FAB7B4277888DA002400A2 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7B3277888DA002400A2 /* ProfileData.swift */; };
 		32FAB7B927789A27002400A2 /* MainInfoProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7B827789A27002400A2 /* MainInfoProfil.swift */; };
 		32FAB7BE27789A5C002400A2 /* PrivicyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */; };
+		32FD4D3A28EACA4900680C2C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FD4D3928EACA4900680C2C /* AuthenticationServices.framework */; };
 		32FFB0C7283E2804006BA87C /* magazineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB0C6283E2804006BA87C /* magazineModel.swift */; };
 		D0E16A948071A57CC628E641 /* Pods_Elkenany_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6966F1A87CC759DF3D17AF7 /* Pods_Elkenany_ProjectTests.framework */; };
 		E3472D6B3C26BF3D04F0DC4E /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F293128AA3C4CC876CE76F /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework */; };
@@ -604,6 +605,7 @@
 		32FAB7B3277888DA002400A2 /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		32FAB7B827789A27002400A2 /* MainInfoProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoProfil.swift; sourceTree = "<group>"; };
 		32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivicyProfile.swift; sourceTree = "<group>"; };
+		32FD4D3928EACA4900680C2C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		32FFB0C6283E2804006BA87C /* magazineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magazineModel.swift; sourceTree = "<group>"; };
 		5696519D039CFDC8B713BBAC /* Pods-Elkenany-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-ProjectTests/Pods-Elkenany-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A6B093D29BC88767023F4AF1 /* Pods-Elkenany-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-Project.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-Project/Pods-Elkenany-Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FD4D3A28EACA4900680C2C /* AuthenticationServices.framework in Frameworks */,
 				29B667ADBD5E61EC698CE594 /* Pods_Elkenany_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1457,6 +1460,7 @@
 		4B9F177ADE20449BE8886F88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32FD4D3928EACA4900680C2C /* AuthenticationServices.framework */,
 				BE69717F8CD817831F8882E7 /* Pods_Elkenany_Project.framework */,
 				D2F293128AA3C4CC876CE76F /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework */,
 				D6966F1A87CC759DF3D17AF7 /* Pods_Elkenany_ProjectTests.framework */,
