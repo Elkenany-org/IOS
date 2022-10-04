@@ -36,6 +36,7 @@ class MagazineHomeVC: UIViewController {
     private var isFeatchingData = false
     var typeOfSectore = "poultry"
     var typeHeader = ""
+    var titleeeFromHome = "دلائل والمجلات"
     
     //viewDidload
     override func viewDidLoad() {
@@ -44,7 +45,7 @@ class MagazineHomeVC: UIViewController {
         FeatchDataOfectores()
         setupUI()
         setupSearchBar()
-        title = "دلائل والمجلات"
+        title = titleeeFromHome
     }
     
     
@@ -59,9 +60,7 @@ class MagazineHomeVC: UIViewController {
         self.magazineCollection.register(UINib(nibName: "MagazineCell", bundle: nil), forCellWithReuseIdentifier: "MagazineCell")
 
         magazineCollection.prefetchDataSource = self
-        //Dynamice Hight cell
-//        magazinTV.estimatedRowHeight = 150
-//        magazinTV.rowHeight = UITableView.automaticDimension
+
     }
     
     
@@ -88,20 +87,10 @@ class MagazineHomeVC: UIViewController {
     
     func FatchDatafromHome(){
         
+        // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-//        ProgressHUD.animationType = .circleStrokeSpin
-//        ProgressHUD.show(icon:.bolt )
-//        ProgressHUD.show(icon: .rotate)
-        ProgressHUD.show("", icon: .succeed, interaction: true)
-//        ProgressHUD.show(icon: <#T##AnimatedIcon#>)
-//        ProgressHUD.imageSuccess = UIImage(named: "success.png") ?? ""
-//        ProgressHUD.show
-
-//        ProgressHUD.show
-
-        
-
-
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2" , "page": "\(self.currentpaga)"]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&page="
@@ -149,9 +138,10 @@ class MagazineHomeVC: UIViewController {
     
     func FatchDatafromHomeHeader(){
         
+        // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
         ProgressHUD.animationType = .circleStrokeSpin
-
+        ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeOfSectore)"   ,"sort" : "0"]
@@ -195,14 +185,18 @@ class MagazineHomeVC: UIViewController {
     
     func SearchService(){
         //Handeling Loading view progress
-     
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let param = ["type": "\(self.typeOfSectore)" , "search" : self.searchBar.text ?? ""]
         DispatchQueue.global(qos: .background).async {
             let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
                     self.magazinSubModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.magazinSubModel.append(contentsOf: successData)
@@ -402,11 +396,10 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
 extension MagazineHomeVC: FilterShowMagazine {
     
     func runFilterShow() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
-        
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let sec_type = UserDefaults.standard.string(forKey: "FILTER_SEC_TYPE")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
         let city_id = UserDefaults.standard.string(forKey: "FILTER_CITY_ID")
@@ -423,10 +416,10 @@ extension MagazineHomeVC: FilterShowMagazine {
             let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&country_id="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.magazinSubModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.magazinSubModel.append(contentsOf: successData)

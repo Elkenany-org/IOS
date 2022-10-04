@@ -21,7 +21,7 @@ class SectorsVC: UIViewController {
     var sss:HomeData?
     var sector:[Sectors]?
     var arr = [   "القطاع", "مقترح لك", "شركاء النجاح", "البورصة اليومية", "دليل الكناني", "السوق", "الاخبار" ]
-    let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") ]
+    let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") , #imageLiteral(resourceName: "Group 2800-1")]
     var typeForRecomendition = ""
     
     //    let viewsw = ServiceViewController()
@@ -409,19 +409,24 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 
                 let newsvc = (storyboard?.instantiateViewController(identifier: "NewsDetailsVC"))! as NewsDetailsVC
                 newsvc.news_id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                newsvc.title = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].name ?? ""
+
                 newsvc.FatchDataOfNewsDetailsFromHomeRecomindition()
                 navigationController?.pushViewController(newsvc, animated: true)
                 
             case "showes":
                 
                 let vc = (storyboard?.instantiateViewController(identifier: "CompanyGuideVC"))! as CompanyGuideVC
-                navigationController?.pushViewController(vc, animated: true)
                 UserDefaults.standard.set( homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id, forKey: "Home_Rec_Id")
+                vc.title = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].name ?? ""
+                navigationController?.pushViewController(vc, animated: true)
                 
             case "store":
                 
                 let vc = (storyboard?.instantiateViewController(identifier: "AdsDetails"))! as AdsDetails
                 let id_home = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                vc.title = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].name ?? ""
+
                 vc.id_froooom_home = id_home
                 vc.fetchAdsDetailsHome()
                 navigationController?.pushViewController(vc, animated: true)
@@ -434,6 +439,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 let guideVC = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
                 
                 let id = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].id ?? 0
+                guideVC.companyTitle = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].name ?? ""
+
                 guideVC.subID_fromGuideHome = id
                 guideVC.FatchDatafromHome()
                 guideVC.LogosandBanners()
@@ -480,6 +487,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             UserDefaults.standard.set(id_stoke, forKey: "REC_Id_Stoke")
             let type_stoke = homeDataSectorsModel?.data?.stock?[indexPath.item].type ?? ""
             UserDefaults.standard.set(type_stoke, forKey: "REC_type_Stoke")
+            stokevc.title = homeDataSectorsModel?.data?.stock?[indexPath.item].name ?? ""
             stokevc.FatchLocalBorsaFromHomeSelection()
             navigationController?.pushViewController(stokevc, animated: true)
             
@@ -488,6 +496,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         case 4 :
             let guideVC = (storyboard?.instantiateViewController(identifier: "CompaniesVC"))! as CompaniesVC
             let id = homeDataSectorsModel?.data?.guide?[indexPath.item].id ?? 0
+            guideVC.companyTitle = homeDataSectorsModel?.data?.guide?[indexPath.item].name ?? ""
             UserDefaults.standard.set(id, forKey: "REC_Id_Dalil")
             guideVC.FatchDatafromHomeUsingDalil()
             navigationController?.pushViewController(guideVC, animated: true)

@@ -393,13 +393,15 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             
         case 4 :
             
-            let Showesvc = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as! MagazinVC
+            let magazineVC = storyboard?.instantiateViewController(withIdentifier: "MagazinVC") as! MagazinVC
             let magazineID = homeServiceDataModel?.data?.magazine?[indexPath.item].id ?? 0
+            magazineVC.titleeeFromHome = homeServiceDataModel?.data?.magazine?[indexPath.item].name ?? ""
+
             UserDefaults.standard.set(magazineID, forKey: "testt")
-            Showesvc.magazineIdFromHome = magazineID
-            Showesvc.presentKK = "hommme"
-            Showesvc.FeatchCMagazineFromHome()
-            navigationController?.pushViewController(Showesvc, animated: true)
+            magazineVC.magazineIdFromHome = magazineID
+            magazineVC.presentKK = "hommme"
+            magazineVC.FeatchCMagazineFromHome()
+            navigationController?.pushViewController(magazineVC, animated: true)
             
             
         default:

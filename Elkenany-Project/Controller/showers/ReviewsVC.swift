@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ReviewsVC: UIViewController {
 
@@ -38,6 +39,11 @@ class ReviewsVC: UIViewController {
     
     
     func ReviwesServices(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+
         let parm = ["id": "5"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
@@ -46,14 +52,19 @@ class ReviewsVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowReview?, filier:ShowReview?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     let successDataa = success?.data?.review ?? []
                     self.subreviewModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
@@ -82,9 +93,6 @@ extension ReviewsVC: UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "reviewsCell") as? reviewsCell {
-//            cell.DateForMessage.text = MessageModel[indexPath.item].createdAt ?? ""
-//            cell.personName.text = MessageModel[indexPath.item].name ?? ""
-//            cell.messageContent.text = MessageModel[indexPath.item].massage ?? ""
             cell.configureRating(reviewsDataaa: subreviewModel[indexPath.row])
             return cell
         }

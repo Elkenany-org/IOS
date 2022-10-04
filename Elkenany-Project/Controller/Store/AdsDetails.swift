@@ -38,9 +38,13 @@ class AdsDetails: UIViewController {
         
         if keyFromHome == "keyhome"{
             fetchAdsDetailsHome()
+            title = "وصف الاعلان"
+
             
         }else{
             fetchAdsDetails()
+            title = "وصف الاعلان"
+
         }
         
     }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 class MagazinVC: UIViewController {
     
@@ -17,12 +17,13 @@ class MagazinVC: UIViewController {
     var companyIDHomeSearch = 0
     var magazineIdFromHome = 0
     var presentKK = ""
+    var titleeeFromHome = "بيانات الدليل"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cofiguerUI()
         FeatchCMagazineDetails()
-        title = "بيانات الدليل"
+        title = titleeeFromHome
     }
     
     //configuer ui
@@ -50,19 +51,20 @@ class MagazinVC: UIViewController {
     
     //MARK:- Main Data
     func FeatchCMagazineDetails(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.IdFromMagazine)"]
             let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.magazineDetailsModel = success
                     DispatchQueue.main.async {
@@ -77,20 +79,20 @@ class MagazinVC: UIViewController {
     
     //MARK:- Main Data From Home
     func FeatchCMagazineFromHome(){
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let idOfHome = UserDefaults.standard.string(forKey: "testt")
             let param = ["id": "\(idOfHome ?? "")"]
             let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.magazineDetailsModel = success
                     DispatchQueue.main.async {

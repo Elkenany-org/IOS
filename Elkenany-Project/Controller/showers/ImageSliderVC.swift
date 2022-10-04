@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import ProgressHUD
 class ImageSliderVC: UIViewController {
     
     
@@ -63,6 +63,10 @@ class ImageSliderVC: UIViewController {
     
     //MARK:- featch data from servier
     func SliderService(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
@@ -70,14 +74,17 @@ class ImageSliderVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.showModel = success
                     DispatchQueue.main.async {

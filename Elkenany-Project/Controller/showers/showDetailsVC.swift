@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import ProgressHUD
 
 class showDetailsVC: UIViewController {
 
@@ -16,16 +16,15 @@ class showDetailsVC: UIViewController {
     @IBOutlet weak var viewCount: UILabel!
     @IBOutlet weak var showDesc: UILabel!
     @IBOutlet weak var gooooootitle: UIButton!
-
     @IBOutlet weak var notGoingTitle: UIButton!
     @IBOutlet weak var goingTitle: UIButton!
+    
     var gingornotModel:AddPlaces?
     var showesModel:ShowesHome?
     var subShowesModel:[showesHomeData] = []
     var showModel:ShoweModel?
     var idOfShow = 0
     var presentKeyHome = ""
-//    var idShowHome = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +40,6 @@ class showDetailsVC: UIViewController {
         }else{
             showeDataService()
         }
-
-
-
     }
     
     
@@ -53,6 +49,11 @@ class showDetailsVC: UIViewController {
     }
     
     func showeDataService(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
@@ -61,15 +62,20 @@ class showDetailsVC: UIViewController {
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
                 if let error = error{
+
                     //internet error
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.showModel = success
                 
@@ -87,6 +93,11 @@ class showDetailsVC: UIViewController {
     }
     
     func showeDataServiceHome(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let idShowHome = UserDefaults.standard.string(forKey: "IDDHOME") ?? ""
         let parm = ["id" : "\(idShowHome)"]
         DispatchQueue.global(qos: .background).async {
@@ -96,14 +107,20 @@ class showDetailsVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.showModel = success
                 
@@ -122,6 +139,10 @@ class showDetailsVC: UIViewController {
     
     
     func showeDataServiceHomeREC(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let idShowHome = UserDefaults.standard.string(forKey: "IDDHOMEREC") ?? ""
         let parm = ["id" : "\(idShowHome)"]
         DispatchQueue.global(qos: .background).async {
@@ -131,14 +152,20 @@ class showDetailsVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
                     
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
+
                     guard let success = success else {return}
                     self.showModel = success
                 
@@ -217,7 +244,6 @@ class showDetailsVC: UIViewController {
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
 
         if isloggineIn {
-//            GoingService()
         }else{
             if let vc = storyboard?.instantiateViewController(withIdentifier: "popupToSignIN") as? popupToSignIN {
                 vc.modalPresentationStyle = .overFullScreen
@@ -281,60 +307,12 @@ class showDetailsVC: UIViewController {
     }
 
 
-//
-//    //segement setup
-//    fileprivate func SetupSegment() {
-//        if #available(iOS 13.0, *) {
-//
-//            segmentVieww.layer.borderColor = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-//            segmentVieww.selectedSegmentTintColor = #colorLiteral(red: 1, green: 0.5594755078, blue: 0.1821106031, alpha: 1)
-//            segmentVieww.layer.borderWidth = 1
-//            segmentVieww.layer.shadowRadius = 20
-//            let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//            segmentVieww.setTitleTextAttributes(titleTextAttributes, for:.selected)
-//            let attr = [NSAttributedString.Key.font: UIFont(name: "Cairo", size: 13.0)!]
-//            UISegmentedControl.appearance().setTitleTextAttributes(attr, for: UIControl.State.normal)
-//
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//    }
-//
-//
-//    //reviwes
-//    func ReviwesServices(){
-//        let parm = ["type" : "poultry"]
-//        DispatchQueue.global(qos: .background).async {
-//            let url = "https://elkenany.com/api/showes/all-showes?type=&sort="
-//
-//            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
-//                if let error = error{
-//                    //internet error
-//                    print("============ error \(error)")
-//
-//                }
-//                else if let loginError = filier {
-//                    //Data Wrong From Server
-//                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-//                }
-//                else {
-//                    let successDataa = success?.data?.data ?? []
-//                    self.subShowesModel.append(contentsOf: successDataa)
-//                    DispatchQueue.main.async {
-//                        for i in self.subShowesModel  {
-//                            print(i.deebLink ?? "")
-//                            self.linkeeeee = i.deebLink ?? ""
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//
-//
     //going
     func GoingService(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["show_id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
@@ -344,14 +322,19 @@ class showDetailsVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
 
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.gingornotModel = success
                     DispatchQueue.main.async {
@@ -372,6 +355,10 @@ class showDetailsVC: UIViewController {
 
     //notGoing
     func NotGoingService(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["show_id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
@@ -381,14 +368,19 @@ class showDetailsVC: UIViewController {
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
                 if let error = error{
                     //internet error
+                    ProgressHUD.dismiss()
+
                     print("============ error \(error)")
 
                 }
                 else if let loginError = filier {
                     //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
                     print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
                 }
                 else {
+                    ProgressHUD.dismiss()
                     guard let success = success else {return}
                     self.gingornotModel = success
                     DispatchQueue.main.async {

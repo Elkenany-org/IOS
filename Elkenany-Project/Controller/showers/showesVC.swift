@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import JGProgressHUD
+import ProgressHUD
 
 
 class showesVC: UIViewController {
@@ -62,14 +62,23 @@ class showesVC: UIViewController {
     
     //MARK: sectores
     func featchDataSelectors(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
         let sectorsUrl = "https://elkenany.com/api/showes/all-showes?type=&sort="
         let param = ["type": "\(self.typeFromhome)" ]
         APIServiceForQueryParameter.shared.fetchData(url: sectorsUrl , parameters: param, headers: nil, method: .get) {[weak self] (NewsSuccess:ShowesHome?, NewsError:ShowesHome?, error) in
             guard let self = self else {return}
             if let error = error{
+                ProgressHUD.dismiss()
+
                 print("error ===========================")
                 print(error.localizedDescription)
             }else{
+                ProgressHUD.dismiss()
+
                 let succeeeesss = NewsSuccess?.data?.sectors?.reversed() ?? []
                 self.subSectoresModel.append(contentsOf: succeeeesss)
                 DispatchQueue.main.async {
@@ -141,14 +150,21 @@ class showesVC: UIViewController {
     
     //MARK:- Featch Search Of showes
     func FatchSearchOfNews(){
+        
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
             let newsURL = "https://elkenany.com/api/showes/all-showes?type=&search="
             let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
+                    ProgressHUD.dismiss()
                     self.subShowesModel.removeAll()
                     let successDatae = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successDatae)
@@ -346,7 +362,6 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
             showescell.showesView.text = String( subShowesModel[indexPath.row].viewCount ?? 0)
             let showImage = subShowesModel[indexPath.row].image ?? ""
             showescell.configureCell(image: showImage)
-//            showescell.configureRating(ddd: subShowesModel[indexPath.row])
             showescell.selectionStyle = .none
             SetupCell(cell: showescell)
             return showescell
@@ -355,7 +370,6 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return tableView.rowHeight
         return 180
         
     }
@@ -365,9 +379,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = (storyboard?.instantiateViewController(identifier: "showVC")) as? showVC{
             let idd = subShowesModel[indexPath.row].id ?? 0
-            //            self.idFromSh = idd
             UserDefaults.standard.set(idd, forKey: "IDDD")
-            //            vc.CompanyIdFromCompanies = idd ?? 0
             vc.acceptedId = idd
             vc.acceptedTitle = subShowesModel[indexPath.item].name ?? "" 
             navigationController?.pushViewController(vc, animated: true)
@@ -383,10 +395,12 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
 extension showesVC: FilterShowMagazine {
     
     func runFilterShow() {
-        //Handeling Loading view progress
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "جاري التحميل"
-        hud.show(in: self.view)
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
+
         
         let sec_type = UserDefaults.standard.string(forKey: "FILTER_SEC_TYPE")
         let coun_id = UserDefaults.standard.string(forKey: "FILTER_COUN_ID")
@@ -402,10 +416,10 @@ extension showesVC: FilterShowMagazine {
             let SearchGuide = "https://elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
-                    hud.dismiss()
+                    ProgressHUD.dismiss()
                     self.subShowesModel.removeAll()
                     let successData = success?.data?.data ?? []
                     self.subShowesModel.append(contentsOf: successData)

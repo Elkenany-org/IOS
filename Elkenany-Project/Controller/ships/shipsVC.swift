@@ -163,7 +163,7 @@ extension shipsVC:BackDate{
         
         let param = ["date" : "\(date )"]
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let shipsArivalURL = "https://elkenany.com/api/ships/all-ships?date="
             APIServiceForQueryParameter.shared.fetchData(url: shipsArivalURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
@@ -194,7 +194,6 @@ extension shipsVC:BackDate{
                         self.membershipV.isHidden = true
                         self.notFoundView.isHidden = true
                         self.shipCV.reloadData()
-//                        self.dataPicker.setTitle(date, for: .normal)
                         self.dateLabel.text = date
                         
                     }else if  self.shipsSubModelData.isEmpty == true{
