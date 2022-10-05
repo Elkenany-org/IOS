@@ -87,7 +87,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="O6M-FD-4Tw">
-                                        <rect key="frame" x="20" y="306" width="374" height="168"/>
+                                        <rect key="frame" x="20" y="319" width="374" height="168"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الايميل او رقم التليفون" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rMb-Va-opC">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -181,10 +181,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vEK-Pl-Guh">
-                                        <rect key="frame" x="138" y="652" width="138.33333333333337" height="28"/>
+                                        <rect key="frame" x="123" y="678" width="168" height="37"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-qg-tG0">
-                                                <rect key="frame" x="0.0" y="0.0" width="45" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="37"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
                                                 <state key="normal" title="سجل الان">
                                                     <color key="titleColor" name="kenanyGold"/>
@@ -194,7 +194,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLM-2d-pJU">
-                                                <rect key="frame" x="52.999999999999993" y="0.0" width="85.333333333333314" height="28"/>
+                                                <rect key="frame" x="61" y="0.0" width="107" height="37"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -202,7 +202,7 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2800" translatesAutoresizingMaskIntoConstraints="NO" id="2hp-nB-jsi">
-                                        <rect key="frame" x="107" y="136" width="200" height="150"/>
+                                        <rect key="frame" x="107" y="149" width="200" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="3jh-i0-0EJ"/>
@@ -228,10 +228,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="8Uq-3G-7z2">
-                                        <rect key="frame" x="30" y="556" width="354" height="21"/>
+                                        <rect key="frame" x="30" y="569" width="354" height="34"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xZD-cQ-FBL">
-                                                <rect key="frame" x="0.0" y="9.6666666666666288" width="86.666666666666671" height="2"/>
+                                                <rect key="frame" x="0.0" y="16" width="86.666666666666671" height="2"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <rect key="contentStretch" x="0.0" y="0.14999999999999999" width="1" height="1"/>
                                                 <constraints>
@@ -244,14 +244,14 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="او سجل عبر" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Mzv-66-9Pt">
-                                                <rect key="frame" x="133.66666666666666" y="0.0" width="86.666666666666657" height="21"/>
+                                                <rect key="frame" x="133.66666666666666" y="0.0" width="86.666666666666657" height="34"/>
                                                 <rect key="contentStretch" x="0.20000000000000001" y="0.0" width="1" height="1"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGold"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3j3-At-kwG">
-                                                <rect key="frame" x="267.33333333333331" y="9.6666666666666288" width="86.666666666666686" height="2"/>
+                                                <rect key="frame" x="267.33333333333331" y="16" width="86.666666666666686" height="2"/>
                                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="5A9-0e-WrC"/>
@@ -265,7 +265,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoc-kZ-wir">
-                                        <rect key="frame" x="50" y="481" width="314" height="50"/>
+                                        <rect key="frame" x="50" y="494" width="314" height="50"/>
                                         <color key="backgroundColor" name="kenanyGold"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ERX-pe-d30"/>
@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfU-Gj-9wH">
-                                        <rect key="frame" x="50" y="587" width="314" height="45"/>
+                                        <rect key="frame" x="50" y="613" width="314" height="45"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP7-V3-Wds">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="45"/>
@@ -359,7 +359,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل الدخول" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-7G-zva">
-                                        <rect key="frame" x="161" y="115" width="92" height="21"/>
+                                        <rect key="frame" x="146.33333333333334" y="115" width="121.33333333333334" height="34"/>
                                         <color key="tintColor" name="kenanyGreen"/>
                                         <rect key="contentStretch" x="0.20000000000000001" y="0.0" width="1" height="1"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
@@ -449,13 +449,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="آنشاء حساب جديد " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWd-ik-uP6">
-                                <rect key="frame" x="152.66666666666666" y="40" width="108.66666666666666" height="18.666666666666671"/>
+                                <rect key="frame" x="148" y="40" width="118.33333333333331" height="30"/>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="16"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 516" translatesAutoresizingMaskIntoConstraints="NO" id="OIx-jx-dgG">
-                                <rect key="frame" x="117" y="58.666666666666657" width="180" height="130"/>
+                                <rect key="frame" x="117" y="70" width="180" height="130"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="t6R-xl-b0l"/>
@@ -481,7 +481,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a7Y-wb-0HX">
-                                <rect key="frame" x="20" y="198.66666666666663" width="374" height="340"/>
+                                <rect key="frame" x="20" y="210" width="374" height="340"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الاسم " textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lAI-2K-SDl">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -503,7 +503,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الايميل " textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LrE-En-0iI">
-                                        <rect key="frame" x="0.0" y="58.000000000000028" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="58" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cfW-lL-i9X"/>
                                         </constraints>
@@ -522,7 +522,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="رقم الهاتف" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-XG-scl">
-                                        <rect key="frame" x="0.0" y="116.00000000000003" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="116" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7PB-7f-e6e"/>
                                         </constraints>
@@ -541,7 +541,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الرقم السري" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvj-Ba-iJ8">
-                                        <rect key="frame" x="0.0" y="174.00000000000003" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="174" width="374" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="fBR-Oo-91H"/>
                                         </constraints>
@@ -612,10 +612,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="FMY-ra-4G4">
-                                <rect key="frame" x="30" y="558.66666666666663" width="354" height="21"/>
+                                <rect key="frame" x="30" y="570" width="354" height="34"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSf-G9-SlV">
-                                        <rect key="frame" x="0.0" y="9.6666666666667425" width="86.666666666666671" height="2"/>
+                                        <rect key="frame" x="0.0" y="16" width="86.666666666666671" height="2"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <rect key="contentStretch" x="0.0" y="0.14999999999999999" width="1" height="1"/>
                                         <constraints>
@@ -628,14 +628,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="او سجل عبر" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="bzl-oC-Kgy">
-                                        <rect key="frame" x="133.66666666666666" y="0.0" width="86.666666666666657" height="21"/>
+                                        <rect key="frame" x="133.66666666666666" y="0.0" width="86.666666666666657" height="34"/>
                                         <rect key="contentStretch" x="0.20000000000000001" y="0.0" width="1" height="1"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGold"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uu1-9f-0gf">
-                                        <rect key="frame" x="267.33333333333331" y="9.6666666666667425" width="86.666666666666686" height="2"/>
+                                        <rect key="frame" x="267.33333333333331" y="16" width="86.666666666666686" height="2"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="ftD-J3-vVe"/>
@@ -649,7 +649,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="div-i5-kjE">
-                                <rect key="frame" x="30" y="594.66666666666663" width="354" height="45"/>
+                                <rect key="frame" x="30" y="619" width="354" height="45"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3N-ZC-RhF">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="45"/>
@@ -710,17 +710,17 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BDx-ec-f72">
-                                <rect key="frame" x="142.66666666666669" y="659.66666666666663" width="128.66666666666669" height="28"/>
+                                <rect key="frame" x="128.66666666666666" y="684" width="156.99999999999997" height="37"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8F-E2-Xm9">
-                                        <rect key="frame" x="0.0" y="0.0" width="59" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="37"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
                                         <state key="normal" title="سجل الدخول">
                                             <color key="titleColor" name="kenanyGold"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لديك حساب؟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhJ-fJ-2as">
-                                        <rect key="frame" x="67" y="0.0" width="61.666666666666657" height="28"/>
+                                        <rect key="frame" x="81" y="0.0" width="76" height="37"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="14"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -832,13 +832,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="354"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تغيير كلمة المرور" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSe-03-kj3">
-                                        <rect key="frame" x="154.33333333333334" y="40" width="105.33333333333334" height="22.333333333333329"/>
+                                        <rect key="frame" x="136.33333333333331" y="40" width="141.33333333333331" height="35.666666666666657"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="19"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 519" translatesAutoresizingMaskIntoConstraints="NO" id="QXB-ye-U77">
-                                        <rect key="frame" x="106" y="82.333333333333314" width="200" height="200"/>
+                                        <rect key="frame" x="106" y="95.666666666666686" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="LUP-3Z-cCT"/>
                                             <constraint firstAttribute="width" constant="200" id="gSZ-ge-eUU"/>
@@ -969,7 +969,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تآكيد رقم الهاتف" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRx-gh-JLg">
-                                <rect key="frame" x="153" y="20" width="108.33333333333331" height="22.333333333333329"/>
+                                <rect key="frame" x="130" y="19.999999999999996" width="154" height="35.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="19"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
@@ -989,23 +989,23 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 519" translatesAutoresizingMaskIntoConstraints="NO" id="Qzh-s1-3H0">
-                                <rect key="frame" x="95" y="72.333333333333314" width="200" height="200"/>
+                                <rect key="frame" x="95" y="85.666666666666686" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="7ls-RV-fG5"/>
                                     <constraint firstAttribute="width" constant="200" id="LGB-1O-6Pa"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdp-Gi-ZeN">
-                                <rect key="frame" x="82" y="322.33333333333331" width="250" height="150"/>
+                                <rect key="frame" x="82" y="335.66666666666669" width="250" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="سوف يصلك رمز التآكيد علي الايميل الخاص بك " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZZ-bT-HdI">
-                                        <rect key="frame" x="10" y="10" width="230" height="35"/>
+                                        <rect key="frame" x="10" y="10.000000000000004" width="230" height="56.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4b-RQ-8EU">
-                                        <rect key="frame" x="20" y="55" width="210" height="50"/>
+                                        <rect key="frame" x="20" y="76.333333333333314" width="210" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8NV-2Z-eow">
                                                 <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
@@ -1168,10 +1168,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X6u-Ga-tQN">
-                                <rect key="frame" x="103.00000000000001" y="552.33333333333337" width="208.33333333333337" height="29"/>
+                                <rect key="frame" x="76" y="565.66666666666663" width="262.33333333333331" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43Y-3L-7I8">
-                                        <rect key="frame" x="0.0" y="0.0" width="77" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="39"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                         <state key="normal" title="ارسل مرة اخري">
                                             <color key="titleColor" red="0.14684632419999999" green="0.56760418499589038" blue="0.73756472095890413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1181,7 +1181,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رمز يصلك رمز التآكيد " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGn-zI-jIL">
-                                        <rect key="frame" x="85" y="0.0" width="123.33333333333331" height="29"/>
+                                        <rect key="frame" x="106.00000000000001" y="0.0" width="156.33333333333337" height="39"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
@@ -1189,7 +1189,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQh-IC-47L">
-                                <rect key="frame" x="107" y="621.33333333333337" width="200" height="50"/>
+                                <rect key="frame" x="107" y="644.66666666666663" width="200" height="50"/>
                                 <color key="backgroundColor" name="kenanyGold"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="FdY-E8-UgE"/>
@@ -1221,7 +1221,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل الرقم السري الجديد" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPZ-bB-ymr">
-                                <rect key="frame" x="82" y="487.33333333333331" width="250" height="44.999999999999943"/>
+                                <rect key="frame" x="82" y="500.66666666666674" width="250" height="45"/>
                                 <color key="tintColor" name="kenanyGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="6DU-Ov-gfV"/>
@@ -1343,13 +1343,13 @@
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JV-gt-c6q">
-                                        <rect key="frame" x="340.33333333333331" y="20" width="43.666666666666686" height="20"/>
+                                        <rect key="frame" x="322.33333333333331" y="14" width="61.666666666666686" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اول واكبر تطبيق خدمي في المجال البيطري والزراعي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYI-aE-VPz">
-                                        <rect key="frame" x="80" y="45" width="304" height="14"/>
+                                        <rect key="frame" x="80" y="51" width="304" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -1499,7 +1499,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rag-JC-X1u">
-                                <rect key="frame" x="0.0" y="134" width="414" height="438"/>
+                                <rect key="frame" x="0.0" y="145" width="414" height="438"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbs-Bg-kPh">
@@ -1509,14 +1509,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hi-U6-uWo">
-                                <rect key="frame" x="30" y="104" width="30" height="30"/>
+                                <rect key="frame" x="30" y="104" width="32" height="41"/>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="15"/>
                                 <state key="normal" title="مسح">
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohk-Na-OJ2">
-                                <rect key="frame" x="346" y="104" width="48" height="30"/>
+                                <rect key="frame" x="345" y="104" width="49" height="41"/>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="15"/>
                                 <state key="normal" title="اخر بحث">
                                     <color key="titleColor" systemColor="secondaryLabelColor"/>
@@ -1572,13 +1572,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="يرجي تسجيل الدخول اولا" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGi-sJ-VZB">
-                                                <rect key="frame" x="48.666666666666657" y="189.99999999999997" width="200" height="27"/>
+                                                <rect key="frame" x="20" y="189.99999999999997" width="257.33333333333331" height="43.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="23"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-dC-Qot">
-                                                <rect key="frame" x="48.666666666666657" y="232" width="200" height="50"/>
+                                                <rect key="frame" x="48.666666666666657" y="248.33333333333337" width="200" height="50"/>
                                                 <color key="backgroundColor" name="kenanyGold"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="0EP-P3-qoU"/>
@@ -1676,7 +1676,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاشعارات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rT-iw-D3A">
-                                                <rect key="frame" x="341" y="21.333333333333314" width="53" height="17.666666666666671"/>
+                                                <rect key="frame" x="326.33333333333331" y="15.999999999999998" width="67.666666666666686" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -1721,13 +1721,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عنوان الاشعارات " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVs-d3-OFN">
-                                        <rect key="frame" x="110" y="79.999999999999943" width="289" height="14"/>
+                                        <rect key="frame" x="110" y="79.999999999999943" width="289" height="22.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roh-2X-g6a">
-                                        <rect key="frame" x="110" y="108.99999999999994" width="289" height="31.666666666666657"/>
+                                        <rect key="frame" x="110" y="117.66666666666669" width="289" height="84.333333333333314"/>
                                         <string key="text">معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات معلومات عن الاشعارات </string>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="9"/>
                                         <color key="textColor" name="kenanyGreen"/>
@@ -1792,7 +1792,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعديل " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ph-tQ-Sc6">
-                                                <rect key="frame" x="34.333333333333314" y="10.333333333333327" width="30.666666666666671" height="16.333333333333329"/>
+                                                <rect key="frame" x="26.666666666666689" y="5.3333333333333268" width="38.333333333333343" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -1934,7 +1934,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="310" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0g4-UW-nwN">
-                                                                <rect key="frame" x="135.33333333333334" y="10.666666666666631" width="39.333333333333343" height="18.666666666666671"/>
+                                                                <rect key="frame" x="137" y="5" width="36.333333333333343" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="16"/>
                                                                 <color key="textColor" name="kenanyGreen"/>
                                                                 <nil key="highlightedColor"/>
@@ -1955,7 +1955,7 @@
                                                         <rect key="frame" x="0.0" y="55" width="310" height="40"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPF-sq-c8s">
-                                                                <rect key="frame" x="135.33333333333334" y="10.666666666666631" width="39.333333333333343" height="18.666666666666671"/>
+                                                                <rect key="frame" x="137" y="5" width="36.333333333333343" height="30"/>
                                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="16"/>
                                                                 <color key="textColor" name="kenanyGreen"/>
                                                                 <nil key="highlightedColor"/>
@@ -2029,13 +2029,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="يرجي تسجيل الدخول اولا" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sN4-QE-f7e">
-                                                <rect key="frame" x="48.666666666666657" y="190" width="200" height="27"/>
+                                                <rect key="frame" x="20" y="190" width="257.33333333333331" height="43.333333333333343"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="23"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfL-Z7-uck">
-                                                <rect key="frame" x="48.666666666666657" y="232" width="200" height="50"/>
+                                                <rect key="frame" x="48.666666666666657" y="248.33333333333331" width="200" height="50"/>
                                                 <color key="backgroundColor" name="kenanyGold"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="GeL-zt-6y2"/>
@@ -2309,13 +2309,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعديل البيانات الشخصية" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAC-Tm-Kgk">
-                                        <rect key="frame" x="257.66666666666669" y="26.333333333333314" width="136.33333333333331" height="18.666666666666671"/>
+                                        <rect key="frame" x="214.33333333333337" y="15" width="179.66666666666663" height="30"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V21-65-0xf">
-                                        <rect key="frame" x="20" y="23.333333333333314" width="25" height="25"/>
+                                        <rect key="frame" x="20" y="17.666666666666686" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="74c-pj-fbX"/>
                                             <constraint firstAttribute="width" constant="25" id="oIg-Xp-LxJ"/>
@@ -2490,13 +2490,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعديل الرقم السري " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34k-AR-wSq">
-                                        <rect key="frame" x="285.66666666666669" y="15" width="113.33333333333331" height="20"/>
+                                        <rect key="frame" x="243" y="15" width="156" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mz3-Kn-tjy">
-                                        <rect key="frame" x="15" y="12.666666666666657" width="25" height="25"/>
+                                        <rect key="frame" x="15" y="18.666666666666657" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="FWY-7U-aDJ"/>
                                             <constraint firstAttribute="height" constant="25" id="tGn-mt-XRD"/>
@@ -2652,16 +2652,16 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1yP-lW-gGY">
-                                <rect key="frame" x="10" y="59" width="314" height="33.666666666666657"/>
+                                <rect key="frame" x="10" y="59" width="314" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد اسم مستخدم " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFn-Q2-Gqs">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="16.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="26.333333333333332"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="14"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لايوجد ايميل مستخدم " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPG-n9-iMK">
-                                        <rect key="frame" x="0.0" y="18.333333333333329" width="314" height="15.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="28.333333333333329" width="314" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -2731,13 +2731,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWf-RI-5w5">
-                                <rect key="frame" x="175" y="203" width="64" height="29.333333333333343"/>
+                                <rect key="frame" x="162" y="203" width="90.333333333333314" height="47"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="25"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fz-ye-lP5">
-                                <rect key="frame" x="5" y="242.33333333333334" width="404" height="493.66666666666663"/>
+                                <rect key="frame" x="5" y="260" width="404" height="476"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -3141,7 +3141,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشكاوي والمقتراحات " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYJ-HS-0Tt">
-                                <rect key="frame" x="144.33333333333334" y="20" width="125.66666666666666" height="20"/>
+                                <rect key="frame" x="117.66666666666669" y="20" width="179" height="32"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
@@ -3374,7 +3374,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التصنيف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRz-Gj-eAG">
-                                                <rect key="frame" x="180.33333333333334" y="50" width="53.333333333333343" height="20"/>
+                                                <rect key="frame" x="172.33333333333334" y="50" width="69.666666666666657" height="32"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3444,7 +3444,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التصنيف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YI-w0-zwX">
-                                        <rect key="frame" x="180.33333333333334" y="50" width="53.333333333333343" height="20"/>
+                                        <rect key="frame" x="172.33333333333334" y="38" width="69.666666666666657" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -3547,7 +3547,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="القطاع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktb-ku-6ZZ">
-                                                <rect key="frame" x="334.33333333333331" y="24.666666666666629" width="42.666666666666686" height="21"/>
+                                                <rect key="frame" x="320.66666666666669" y="18" width="56.333333333333314" height="34"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3627,7 +3627,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="القسم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a37-ZD-fb7">
-                                                <rect key="frame" x="336.33333333333331" y="23.666666666666657" width="38.666666666666686" height="22.333333333333329"/>
+                                                <rect key="frame" x="317" y="16.999999999999996" width="58" height="35.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="19"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3707,7 +3707,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الدول" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izZ-eg-c6c">
-                                                <rect key="frame" x="340.66666666666669" y="23.666666666666657" width="34.333333333333314" height="22.333333333333329"/>
+                                                <rect key="frame" x="324.33333333333331" y="16.999999999999996" width="50.666666666666686" height="35.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="19"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3787,7 +3787,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الترتيب" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoO-oC-OTQ">
-                                                <rect key="frame" x="351" y="24.666666666666686" width="43" height="21"/>
+                                                <rect key="frame" x="331" y="18" width="63" height="34"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3873,7 +3873,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المدينة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkA-t4-bbN">
-                                                <rect key="frame" x="355" y="24" width="38" height="22.333333333333329"/>
+                                                <rect key="frame" x="323.33333333333331" y="17.333333333333311" width="69.666666666666686" height="35.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="19"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -3966,7 +3966,7 @@
                                 <rect key="frame" x="0.0" y="445.33333333333331" width="414" height="69.999999999999943"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الترتيب" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPA-L4-iW7">
-                                        <rect key="frame" x="351" y="24.333333333333371" width="43" height="21"/>
+                                        <rect key="frame" x="331" y="18" width="63" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -4033,7 +4033,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="القطاع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8it-bT-R4t">
-                                                <rect key="frame" x="185.66666666666666" y="24.666666666666686" width="42.666666666666657" height="21"/>
+                                                <rect key="frame" x="179" y="18" width="56.333333333333343" height="34"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -4118,7 +4118,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الترتيب" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZS1-ET-NSA">
-                                                <rect key="frame" x="185.66666666666666" y="24.666666666666629" width="43" height="21"/>
+                                                <rect key="frame" x="175.66666666666666" y="18" width="63" height="34"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -5265,8 +5265,8 @@
                                             <constraint firstItem="7OQ-du-rKP" firstAttribute="leading" secondItem="1lq-gK-VIP" secondAttribute="leading" constant="50" id="nrM-e0-U82"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26y-5A-yRu">
-                                        <rect key="frame" x="0.0" y="240" width="414" height="30"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26y-5A-yRu">
+                                        <rect key="frame" x="0.0" y="235" width="414" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 2545" translatesAutoresizingMaskIntoConstraints="NO" id="HP3-NO-yoo">
                                                 <rect key="frame" x="50" y="0.0" width="314" height="30"/>
@@ -5275,7 +5275,7 @@
                                                 <rect key="frame" x="50" y="0.0" width="314" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تنوية : تم اخر تحديث في يوم ٢٢/٣٣/٣٣٣٣ في الساعة ٠١:٢٢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXi-Fc-h8W">
-                                                        <rect key="frame" x="20" y="8.6666666666666572" width="274" height="13"/>
+                                                        <rect key="frame" x="20" y="4.6666666666666572" width="274" height="20.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="11"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -5309,7 +5309,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zD5-Yw-3MT">
-                                        <rect key="frame" x="0.0" y="280" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="240" width="414" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDS-MC-XyS">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -5321,7 +5321,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="80.333333333333329" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اتجاة السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xai-nZ-nHV">
-                                                                        <rect key="frame" x="14.999999999999996" y="18" width="50.666666666666657" height="14"/>
+                                                                        <rect key="frame" x="8" y="13.666666666666659" width="64.333333333333329" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5342,7 +5342,7 @@
                                                                 <rect key="frame" x="83.333333333333343" y="0.0" width="80.333333333333343" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حالة السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLe-Bp-ND5">
-                                                                        <rect key="frame" x="17.000000000000004" y="18" width="46.333333333333343" height="14"/>
+                                                                        <rect key="frame" x="10.000000000000004" y="13.666666666666659" width="60.333333333333343" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5363,7 +5363,7 @@
                                                                 <rect key="frame" x="166.66666666666666" y="0.0" width="80.666666666666657" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfM-5w-K9I">
-                                                                        <rect key="frame" x="15.666666666666682" y="18" width="49.666666666666657" height="14"/>
+                                                                        <rect key="frame" x="6" y="13.666666666666659" width="69" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5384,7 +5384,7 @@
                                                                 <rect key="frame" x="250.33333333333334" y="0.0" width="80.333333333333343" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5me-3b-yTv">
-                                                                        <rect key="frame" x="27.333333333333343" y="18" width="25.333333333333329" height="14"/>
+                                                                        <rect key="frame" x="23.333333333333339" y="13.666666666666659" width="33.666666666666657" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5405,7 +5405,7 @@
                                                                 <rect key="frame" x="333.66666666666669" y="0.0" width="80.333333333333314" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Al-ux8">
-                                                                        <rect key="frame" x="28.333333333333314" y="18" width="23.666666666666671" height="14"/>
+                                                                        <rect key="frame" x="24.333333333333314" y="13.666666666666659" width="31.666666666666671" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5460,7 +5460,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="97" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اتجاه السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5V-LV-YJc">
-                                                                        <rect key="frame" x="23.333333333333339" y="18" width="50.666666666666657" height="14"/>
+                                                                        <rect key="frame" x="16.333333333333336" y="13.666666666666659" width="64.333333333333314" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5481,7 +5481,7 @@
                                                                 <rect key="frame" x="99" y="0.0" width="97" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwm-2b-ufb">
-                                                                        <rect key="frame" x="23.666666666666654" y="18" width="49.666666666666657" height="14"/>
+                                                                        <rect key="frame" x="14" y="13.666666666666659" width="69" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5502,7 +5502,7 @@
                                                                 <rect key="frame" x="198" y="0.0" width="97" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السعر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1P-e4-bOj">
-                                                                        <rect key="frame" x="36" y="18" width="25.333333333333329" height="14"/>
+                                                                        <rect key="frame" x="31.666666666666654" y="13.666666666666659" width="33.666666666666657" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5523,7 +5523,7 @@
                                                                 <rect key="frame" x="297" y="0.0" width="97" height="50"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="he2-BL-elk">
-                                                                        <rect key="frame" x="36.666666666666686" y="18" width="23.666666666666671" height="14"/>
+                                                                        <rect key="frame" x="32.666666666666686" y="13.666666666666659" width="31.666666666666671" height="22.666666666666671"/>
                                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="12"/>
                                                                         <color key="textColor" name="kenanyGreen"/>
                                                                         <nil key="highlightedColor"/>
@@ -5586,10 +5586,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ep2-yg-z7l">
-                                        <rect key="frame" x="0.0" y="340" width="414" height="396"/>
+                                        <rect key="frame" x="0.0" y="300" width="414" height="436"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-hU-Daw">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="396"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="bk8-Vt-b45">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -5609,10 +5609,10 @@
                                                 </cells>
                                             </collectionView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jo-Jt-SOd">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="396"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="member not found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khe-ut-TpJ">
-                                                        <rect key="frame" x="70.333333333333343" y="178.66666666666663" width="273.33333333333326" height="38.666666666666657"/>
+                                                        <rect key="frame" x="72.333333333333343" y="187" width="269.66666666666663" height="62"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="33"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -5775,7 +5775,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكل" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY9-76-MFI">
-                                                                <rect key="frame" x="10" y="32" width="150.66666666666666" height="13"/>
+                                                                <rect key="frame" x="10" y="32" width="150.66666666666666" height="20.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="Cairo-Light" family="Cairo Light" pointSize="11"/>
                                                                 <color key="textColor" name="kenanyblueblack"/>
                                                                 <nil key="highlightedColor"/>
@@ -5850,7 +5850,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكل" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkc-03-lVO">
-                                                                <rect key="frame" x="10" y="33" width="150.33333333333334" height="13"/>
+                                                                <rect key="frame" x="10" y="33" width="150.33333333333334" height="20.666666666666671"/>
                                                                 <fontDescription key="fontDescription" name="Cairo-Light" family="Cairo Light" pointSize="11"/>
                                                                 <color key="textColor" name="kenanyblueblack"/>
                                                                 <nil key="highlightedColor"/>
@@ -6042,8 +6042,8 @@
                                             <constraint firstItem="xhF-FB-skV" firstAttribute="top" secondItem="JdR-Hc-B9G" secondAttribute="top" id="hIN-X9-dOm"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJe-KB-FNt">
-                                        <rect key="frame" x="0.0" y="320" width="414" height="30"/>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJe-KB-FNt">
+                                        <rect key="frame" x="0.0" y="315" width="414" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 2545" translatesAutoresizingMaskIntoConstraints="NO" id="6NT-po-XlH">
                                                 <rect key="frame" x="50" y="0.0" width="314" height="30"/>
@@ -6052,7 +6052,7 @@
                                                 <rect key="frame" x="50" y="0.0" width="314" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تنوية : تم اخر تحديث في يوم ٢٢/٣٣/٣٣٣٣ في الساعة ٠١:٢٢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRG-Ug-FK5">
-                                                        <rect key="frame" x="20" y="8.6666666666666856" width="274" height="13"/>
+                                                        <rect key="frame" x="20" y="4.6666666666666856" width="274" height="20.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="11"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -6086,10 +6086,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s15-Zu-UoA">
-                                        <rect key="frame" x="0.0" y="360" width="414" height="366"/>
+                                        <rect key="frame" x="0.0" y="320" width="414" height="406"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oGR-tj-idy">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="366"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="406"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1YG-0z-ejN">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -6256,13 +6256,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ الي " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uew-Xo-27F">
-                                                <rect key="frame" x="20" y="10" width="143" height="15.333333333333336"/>
+                                                <rect key="frame" x="20" y="10.000000000000002" width="143" height="24.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFO-z7-p56">
-                                                <rect key="frame" x="37.666666666666657" y="30.333333333333336" width="108" height="32"/>
+                                                <rect key="frame" x="39" y="39.666666666666664" width="105" height="43.999999999999993"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                                 <state key="normal" title="20 - 12 - 2021">
                                                     <color key="titleColor" name="kenanyblueblack"/>
@@ -6297,13 +6297,13 @@
                                         <rect key="frame" x="191" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ من " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btc-UU-B4l">
-                                                <rect key="frame" x="20" y="10" width="143" height="15.333333333333336"/>
+                                                <rect key="frame" x="20" y="10.000000000000002" width="143" height="24.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF4-Rp-Qnf">
-                                                <rect key="frame" x="37.666666666666657" y="30.333333333333336" width="108" height="32"/>
+                                                <rect key="frame" x="39" y="39.666666666666664" width="105" height="43.999999999999993"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                                 <state key="normal" title="20 - 12 - 2021">
                                                     <color key="titleColor" name="kenanyblueblack"/>
@@ -6402,7 +6402,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="122" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkM-JK-MUU">
-                                                <rect key="frame" x="34.666666666666664" y="16.333333333333314" width="52.999999999999993" height="17.666666666666671"/>
+                                                <rect key="frame" x="27" y="10.999999999999998" width="68.333333333333329" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -6429,7 +6429,7 @@
                                         <rect key="frame" x="126" y="0.0" width="122" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIa-XT-jrY">
-                                                <rect key="frame" x="30.000000000000004" y="16.333333333333314" width="62.333333333333343" height="17.666666666666671"/>
+                                                <rect key="frame" x="20.333333333333343" y="10.999999999999998" width="81.333333333333329" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -6456,7 +6456,7 @@
                                         <rect key="frame" x="252" y="0.0" width="122" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسم البورصة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="St4-De-KRs">
-                                                <rect key="frame" x="27.333333333333314" y="16.333333333333314" width="67.333333333333329" height="17.666666666666671"/>
+                                                <rect key="frame" x="18.666666666666686" y="10.999999999999998" width="84.666666666666671" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -6531,7 +6531,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختار البورصة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFx-Vv-SNp">
-                                        <rect key="frame" x="305" y="20" width="89" height="20"/>
+                                        <rect key="frame" x="287.33333333333331" y="20" width="106.66666666666669" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -6694,16 +6694,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الي" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5m-rr-gz3">
-                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxc-0l-hR3">
-                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <rect key="frame" x="21.666666666666657" y="41.333333333333329" width="140" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqb-NN-Vme">
-                                                        <rect key="frame" x="31.333333333333343" y="4.6666666666666714" width="77" height="26"/>
+                                                        <rect key="frame" x="32.333333333333343" y="0.0" width="75" height="35"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                                         <state key="normal" title="20 - 12 - 2021">
                                                             <color key="titleColor" name="kenanyblueblack"/>
@@ -6741,16 +6741,16 @@
                                         <rect key="frame" x="191" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="من" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hND-B6-TOb">
-                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjg-iF-o9B">
-                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <rect key="frame" x="21.666666666666657" y="41.333333333333329" width="140" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-Uv-xmp">
-                                                        <rect key="frame" x="31.333333333333343" y="4.6666666666666714" width="77" height="26"/>
+                                                        <rect key="frame" x="32.333333333333343" y="0.0" width="75" height="35"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                                         <state key="normal" title="20 - 12 - 2021">
                                                             <color key="titleColor" name="kenanyblueblack"/>
@@ -6828,7 +6828,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="130.33333333333334" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عدد التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-IN-e4U">
-                                                        <rect key="frame" x="42.333333333333343" y="22.333333333333314" width="45.666666666666657" height="15.333333333333336"/>
+                                                        <rect key="frame" x="35.666666666666657" y="17.666666666666686" width="59" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
                                                         <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
@@ -6849,7 +6849,7 @@
                                                 <rect key="frame" x="134.33333333333331" y="0.0" width="130.33333333333331" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مقدار التغير" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usR-TN-MYy">
-                                                        <rect key="frame" x="38.333333333333314" y="22.333333333333314" width="54" height="15.333333333333336"/>
+                                                        <rect key="frame" x="30.000000000000007" y="17.666666666666686" width="70.666666666666686" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
                                                         <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
@@ -6870,7 +6870,7 @@
                                                 <rect key="frame" x="268.66666666666669" y="0.0" width="130.33333333333331" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسم البورصة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmN-cD-Cis">
-                                                        <rect key="frame" x="36" y="22.333333333333314" width="58.333333333333343" height="15.333333333333336"/>
+                                                        <rect key="frame" x="28.666666666666622" y="17.666666666666686" width="73.333333333333314" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="13"/>
                                                         <color key="textColor" name="kenanyblueblack"/>
                                                         <nil key="highlightedColor"/>
@@ -6963,7 +6963,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد التاريخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW2-sP-B4v">
-                                        <rect key="frame" x="49" y="11.33333333333333" width="61" height="17.666666666666671"/>
+                                        <rect key="frame" x="36.333333333333321" y="5.9999999999999982" width="73.666666666666686" height="28.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -7043,13 +7043,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التصنيف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf0-cV-3eI">
-                                        <rect key="frame" x="180.33333333333334" y="50" width="53.333333333333343" height="20"/>
+                                        <rect key="frame" x="172.33333333333334" y="50" width="69.666666666666657" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCG-m8-hYC">
-                                        <rect key="frame" x="22" y="45" width="30" height="30"/>
+                                        <rect key="frame" x="22" y="51" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="MiA-PG-0cM"/>
                                             <constraint firstAttribute="height" constant="30" id="UnE-0L-Ujp"/>
@@ -7143,13 +7143,13 @@
                                 <rect key="frame" x="0.0" y="248" width="414" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXU-Vb-8In">
-                                        <rect key="frame" x="331.33333333333331" y="20" width="52.666666666666686" height="21"/>
+                                        <rect key="frame" x="312" y="20" width="72" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4B-hq-RrU">
-                                        <rect key="frame" x="30" y="18" width="25" height="25"/>
+                                        <rect key="frame" x="30" y="24.666666666666686" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="BHY-IP-I78"/>
                                             <constraint firstAttribute="height" constant="25" id="njQ-qI-kSr"/>
@@ -7210,13 +7210,13 @@
                                 <rect key="frame" x="0.0" y="248" width="414" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tky-Lp-gpV">
-                                        <rect key="frame" x="341.33333333333331" y="20" width="52.666666666666686" height="21"/>
+                                        <rect key="frame" x="322" y="20" width="72" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6x-G3-PKC">
-                                        <rect key="frame" x="30" y="18" width="25" height="25"/>
+                                        <rect key="frame" x="30" y="24.666666666666686" width="25" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Ed7-ge-Zg0"/>
                                             <constraint firstAttribute="height" constant="25" id="oye-lK-w87"/>
@@ -7350,7 +7350,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyb-TQ-NIB">
-                                        <rect key="frame" x="316" y="20" width="68" height="32"/>
+                                        <rect key="frame" x="334.33333333333331" y="20" width="49.666666666666686" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7410,7 +7410,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاصناف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glV-Ii-BQZ">
-                                        <rect key="frame" x="320.66666666666669" y="20" width="63.333333333333314" height="32"/>
+                                        <rect key="frame" x="331" y="20" width="53" height="20"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -7466,13 +7466,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المقارنة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZt-ED-XlA">
-                                        <rect key="frame" x="186.66666666666666" y="59" width="40.666666666666657" height="21"/>
+                                        <rect key="frame" x="171.66666666666666" y="46" width="70.666666666666657" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKA-zT-zbS">
-                                        <rect key="frame" x="20" y="54.666666666666657" width="30" height="30"/>
+                                        <rect key="frame" x="20" y="48" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="NzT-2P-5KS"/>
                                             <constraint firstAttribute="height" constant="30" id="wJQ-vI-k8h"/>
@@ -7548,16 +7548,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الي" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh0-Ka-H9Q">
-                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ueA-Nj-ofv">
-                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <rect key="frame" x="21.666666666666657" y="41.333333333333329" width="140" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeo-aD-ZyM">
-                                                        <rect key="frame" x="0.0" y="4.6666666666666714" width="140" height="26"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                                         <state key="normal" title="20 - 12 - 2021">
                                                             <color key="titleColor" name="kenanyblueblack"/>
@@ -7594,16 +7594,16 @@
                                         <rect key="frame" x="191" y="0.0" width="183" height="80"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="من" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV4-hB-c4b">
-                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="16.333333333333329"/>
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="143" height="26.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdm-bf-psL">
-                                                <rect key="frame" x="21.666666666666657" y="31.333333333333329" width="140" height="35"/>
+                                                <rect key="frame" x="21.666666666666657" y="41.333333333333329" width="140" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLp-ID-FvT">
-                                                        <rect key="frame" x="0.0" y="4.6666666666666714" width="140" height="26"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                                         <state key="normal" title="20 - 12 - 2021">
                                                             <color key="titleColor" name="kenanyblueblack"/>
@@ -7684,7 +7684,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد التاريخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVM-PK-3pn">
-                                        <rect key="frame" x="49" y="11.333333333333337" width="61" height="17.666666666666671"/>
+                                        <rect key="frame" x="36.333333333333321" y="5.9999999999999982" width="73.666666666666686" height="28.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -7742,7 +7742,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختار الشركة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gno-wx-lAg">
-                                        <rect key="frame" x="171.33333333333334" y="20" width="71.666666666666657" height="17.666666666666671"/>
+                                        <rect key="frame" x="162.33333333333334" y="20" width="89.666666666666657" height="28.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -7902,7 +7902,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الشركات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rq7-5q-971">
-                                                <rect key="frame" x="180.66666666666666" y="19.666666666666686" width="52.666666666666657" height="21"/>
+                                                <rect key="frame" x="171" y="13" width="72" height="34"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -8019,7 +8019,7 @@
                                 <rect key="frame" x="0.0" y="131" width="414" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاصناف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq0-DD-3n7">
-                                        <rect key="frame" x="179" y="24.666666666666657" width="56.333333333333343" height="21"/>
+                                        <rect key="frame" x="173.66666666666666" y="18" width="67" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -8591,7 +8591,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم الشركة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSx-wR-jlM">
-                                        <rect key="frame" x="111.66666666666666" y="58" width="77" height="20"/>
+                                        <rect key="frame" x="93.333333333333343" y="58" width="113.33333333333334" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -8723,7 +8723,7 @@
                                 <rect key="frame" x="0.0" y="150.66666666666666" width="414" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الموقع " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9h-Jn-5sB">
-                                        <rect key="frame" x="345.66666666666669" y="21.666666666666686" width="48.333333333333314" height="27"/>
+                                        <rect key="frame" x="308" y="13.333333333333346" width="86" height="43.333333333333343"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="23"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -8811,7 +8811,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد بيانات لهذا السوق" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klt-Jt-WN1">
-                                <rect key="frame" x="99.666666666666686" y="354" width="215" height="28"/>
+                                <rect key="frame" x="61.666666666666657" y="345.66666666666669" width="291" height="45"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="24"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
@@ -9021,16 +9021,16 @@
                                         <rect key="frame" x="0.0" y="140" width="80" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-4O-oOP">
-                                                <rect key="frame" x="21.666666666666657" y="13.333333333333343" width="37" height="13.333333333333336"/>
+                                                <rect key="frame" x="19.666666666666657" y="9.666666666666659" width="41" height="20.666666666666671"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGV-VJ-XOW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="13.333333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="20.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="جنية" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPp-QO-Zvk">
-                                                        <rect key="frame" x="20" y="0.0" width="17" height="13.333333333333334"/>
+                                                        <rect key="frame" x="20" y="0.0" width="21" height="20.666666666666668"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="11"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -9089,7 +9089,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwu-MN-mZ4">
-                                <rect key="frame" x="30" y="622" width="55" height="55"/>
+                                <rect key="frame" x="30" y="612" width="55" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-bs-zlW">
                                         <rect key="frame" x="10" y="10" width="35" height="35"/>
@@ -9128,10 +9128,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Sj1-T3-Tcl">
-                                <rect key="frame" x="30" y="677" width="354" height="29"/>
+                                <rect key="frame" x="30" y="667" width="354" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PyD-A2-gxv">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="39"/>
                                         <color key="backgroundColor" red="1" green="0.55947550779999999" blue="0.18211060309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -9158,7 +9158,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-YT-wGU">
-                                        <rect key="frame" x="202" y="0.0" width="152" height="29"/>
+                                        <rect key="frame" x="202" y="0.0" width="152" height="39"/>
                                         <color key="backgroundColor" red="1" green="0.55947550779999999" blue="0.18211060309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                         <color key="tintColor" red="0.18823529410000001" green="0.42745098040000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -9187,16 +9187,16 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="بط مسكوفي درجة اولي فرز اول " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ef7-UT-pGZ">
-                                <rect key="frame" x="140.66666666666666" y="200" width="132.99999999999997" height="14"/>
+                                <rect key="frame" x="125.66666666666669" y="200" width="163" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                 <color key="textColor" name="kenanyblueblack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn1-zs-7bL">
-                                <rect key="frame" x="20" y="284.33333333333331" width="374" height="90"/>
+                                <rect key="frame" x="20" y="319.33333333333331" width="374" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="معلومات التواصل" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V75-DC-vYh">
-                                        <rect key="frame" x="287.33333333333331" y="3.0000000000000009" width="76.666666666666686" height="15.333333333333336"/>
+                                        <rect key="frame" x="253.66666666666671" y="3" width="110.33333333333334" height="24.666666666666668"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                         <color key="textColor" name="kenanyGold"/>
                                         <nil key="highlightedColor"/>
@@ -9210,7 +9210,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PZs-QW-hx6">
-                                        <rect key="frame" x="10" y="18.333333333333371" width="354" height="30"/>
+                                        <rect key="frame" x="10" y="27.666666666666686" width="354" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنصورة شارع الجمهورية / الدور الاول / مصر الجديدة " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwz-1G-hf5">
                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="30"/>
@@ -9280,10 +9280,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbN-Lu-cfc">
-                                <rect key="frame" x="20" y="219" width="374" height="58.333333333333314"/>
+                                <rect key="frame" x="20" y="227.66666666666666" width="374" height="84.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="وصف الاعلان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTR-u0-42F">
-                                        <rect key="frame" x="302.66666666666669" y="5.0000000000000009" width="61.333333333333314" height="15.333333333333336"/>
+                                        <rect key="frame" x="289.33333333333331" y="5.0000000000000018" width="74.666666666666686" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                         <color key="textColor" name="kenanyGold"/>
                                         <nil key="highlightedColor"/>
@@ -9297,7 +9297,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكناني من اسرع الشركات الموجودة علي المستوي العالمي العاليوونحن هنا نسعد بخدمتكم من اجل الخدمات البييطرية الرئيسية " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1R-Yc-Iop">
-                                        <rect key="frame" x="10" y="25.333333333333343" width="359" height="28"/>
+                                        <rect key="frame" x="10" y="34.666666666666657" width="359" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="12"/>
                                         <color key="textColor" name="kenanyGreen"/>
@@ -9775,7 +9775,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="طلب مكان اخر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTr-lQ-Ns2">
-                                                <rect key="frame" x="169" y="21.333333333333343" width="76" height="17.666666666666671"/>
+                                                <rect key="frame" x="158" y="15.999999999999998" width="98" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -9916,7 +9916,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اضافة تقييم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThN-RQ-Rzm">
-                                                <rect key="frame" x="176" y="21.333333333333343" width="62" height="17.666666666666671"/>
+                                                <rect key="frame" x="163" y="15.999999999999998" width="88.333333333333314" height="28.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -10258,7 +10258,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="وصف الاعلان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIU-zg-MQ9">
-                                        <rect key="frame" x="171.66666666666666" y="21.333333333333329" width="70.666666666666657" height="17.666666666666671"/>
+                                        <rect key="frame" x="164" y="15.999999999999998" width="86.333333333333314" height="28.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -10517,7 +10517,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد محادثات " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCi-YD-d7M">
-                                        <rect key="frame" x="117.33333333333333" y="340" width="179.33333333333337" height="35"/>
+                                        <rect key="frame" x="94.666666666666671" y="340" width="224.66666666666663" height="56.333333333333314"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="30"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -10608,20 +10608,20 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الوصف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0H4-r0-59q">
-                                <rect key="frame" x="360.66666666666669" y="170" width="33.333333333333314" height="15.333333333333343"/>
+                                <rect key="frame" x="350.33333333333331" y="170" width="43.666666666666686" height="24.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fei-7o-H8f">
-                                <rect key="frame" x="20" y="185.33333333333334" width="374" height="52.666666666666657"/>
+                                <rect key="frame" x="20" y="194.66666666666666" width="374" height="118.33333333333334"/>
                                 <string key="text">بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أجهزالعقارات  بين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أبين أكثر من 90 مشغلًا محليًا ودوليًا بمختلف الموردين والواصفين بما في ذلك المهندسين المعماريين والمهندسين والمقاولين ومطوري العقارات ومركبي أجهزجهزومركبي أجهز</string>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uCi-fa-Cjy">
-                                <rect key="frame" x="20" y="248" width="374" height="95"/>
+                                <rect key="frame" x="20" y="323" width="374" height="95"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GAm-g0-1X8">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -10978,19 +10978,19 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inU-1w-UmS">
-                                <rect key="frame" x="20" y="160.33333333333334" width="90" height="25"/>
+                                <rect key="frame" x="20" y="169.66666666666666" width="90" height="25"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-ip-wVH">
                                         <rect key="frame" x="7" y="0.0" width="76" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="22222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ct-id-RE5">
-                                                <rect key="frame" x="0.0" y="0.0" width="47" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="33" height="25"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="10"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="المشاركون" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eX-9h-O7S">
-                                                <rect key="frame" x="49" y="0.0" width="27" height="25"/>
+                                                <rect key="frame" x="35" y="0.0" width="41" height="25"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="8"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -11076,7 +11076,7 @@
                                 <rect key="frame" x="0.0" y="455" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الانواع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-7O-weG">
-                                        <rect key="frame" x="187" y="19.666666666666686" width="40.333333333333343" height="21"/>
+                                        <rect key="frame" x="180.33333333333334" y="13" width="53.666666666666657" height="34"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="18"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11140,7 +11140,7 @@
                                 <rect key="frame" x="0.0" y="160.66666666666666" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنشآ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JA-h5-Wbk">
-                                        <rect key="frame" x="190" y="20" width="34" height="20"/>
+                                        <rect key="frame" x="180" y="14" width="54.333333333333343" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11203,7 +11203,7 @@
                                 <rect key="frame" x="0.0" y="528.66666666666663" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="العنوان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDR-0O-6p8">
-                                        <rect key="frame" x="188" y="20.666666666666742" width="38.333333333333343" height="18.666666666666671"/>
+                                        <rect key="frame" x="178" y="15" width="58" height="30"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="16"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11293,7 +11293,7 @@
                                 <rect key="frame" x="87" y="198" width="240" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد عارضون" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pW-zW-8sS">
-                                        <rect key="frame" x="49.333333333333343" y="119.99999999999999" width="141.33333333333334" height="29.333333333333329"/>
+                                        <rect key="frame" x="33.333333333333329" y="120" width="173.66666666666669" height="47"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="25"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11341,7 +11341,7 @@
                                 <rect key="frame" x="87" y="198" width="240" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد متحدثون" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwH-2n-QFR">
-                                        <rect key="frame" x="48.666666666666657" y="119.99999999999999" width="142.66666666666666" height="29.333333333333329"/>
+                                        <rect key="frame" x="24.333333333333329" y="120" width="191.33333333333337" height="47"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="25"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11540,7 +11540,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="43" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ميناء التفريغ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvx-87-JCl">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="13" width="41" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11558,7 +11558,7 @@
                                                 <rect key="frame" x="45" y="0.0" width="43.333333333333343" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الوكيل الملاحي" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYw-Hr-03f">
-                                                        <rect key="frame" x="1" y="19.666666666666657" width="41.333333333333336" height="21"/>
+                                                        <rect key="frame" x="1" y="13" width="41.333333333333336" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11576,7 +11576,7 @@
                                                 <rect key="frame" x="90.333333333333329" y="0.0" width="42.999999999999986" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الجهة المستوردة" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sge-3l-v1M">
-                                                        <rect key="frame" x="1" y="19.666666666666657" width="41" height="21"/>
+                                                        <rect key="frame" x="1" y="13" width="41" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11594,7 +11594,7 @@
                                                 <rect key="frame" x="135.33333333333334" y="0.0" width="43" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاريخ الوصول" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDk-GU-b6S">
-                                                        <rect key="frame" x="1" y="19.666666666666657" width="41" height="21"/>
+                                                        <rect key="frame" x="1" y="13" width="41" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11612,7 +11612,7 @@
                                                 <rect key="frame" x="180.33333333333334" y="0.0" width="43.333333333333343" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنشآ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZg-dr-azo">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41.333333333333336" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="21.666666666666657" width="41.333333333333336" height="17"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11630,7 +11630,7 @@
                                                 <rect key="frame" x="225.66666666666666" y="0.0" width="42.999999999999972" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="النوع" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygc-PI-jKY">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="21.666666666666657" width="41" height="17"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11648,7 +11648,7 @@
                                                 <rect key="frame" x="270.66666666666669" y="0.0" width="43" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحمولة  طن" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uah-Tx-MBA">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="13" width="41" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11666,7 +11666,7 @@
                                                 <rect key="frame" x="315.66666666666669" y="0.0" width="43.333333333333314" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاريخ التوجية" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hN2-hq-Srs">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41.333333333333336" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="13" width="41.333333333333336" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11684,7 +11684,7 @@
                                                 <rect key="frame" x="361" y="0.0" width="43" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اسم السفينة" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCb-NF-R94">
-                                                        <rect key="frame" x="1" y="24.666666666666657" width="41" height="10.666666666666664"/>
+                                                        <rect key="frame" x="1" y="13" width="41" height="34"/>
                                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="9"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -11751,7 +11751,7 @@
                                 <rect key="frame" x="0.0" y="225" width="414" height="511"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not membership" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWb-wC-KND">
-                                        <rect key="frame" x="79.333333333333329" y="235" width="255.66666666666669" height="41"/>
+                                        <rect key="frame" x="82.666666666666686" y="222.66666666666669" width="249" height="65.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="35"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11770,14 +11770,14 @@
                                         <rect key="frame" x="49.666666666666657" y="180" width="314.66666666666674" height="151"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="3vH-IF-9oQ">
-                                                <rect key="frame" x="107.33333333333334" y="6.3333333333333144" width="100" height="100"/>
+                                                <rect key="frame" x="107.33333333333334" y="-8.6666666666666856" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="F0r-4s-0As"/>
                                                     <constraint firstAttribute="width" constant="100" id="zHF-4M-hzN"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لا يوجد حركة سفن لهذا اليوم " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-tT-Lbd">
-                                                <rect key="frame" x="52.000000000000014" y="116.33333333333339" width="210.66666666666669" height="24.666666666666671"/>
+                                                <rect key="frame" x="20" y="101.33333333333337" width="274.66666666666669" height="39.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="21"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
@@ -11826,7 +11826,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/20/2222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDz-Zb-RBM">
-                                        <rect key="frame" x="53.333333333333321" y="12.333333333333329" width="66.666666666666686" height="15.333333333333336"/>
+                                        <rect key="frame" x="50.333333333333321" y="7.6666666666666732" width="69.666666666666686" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -11891,7 +11891,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-Lf-xCa">
-                                <rect key="frame" x="0.0" y="327" width="414" height="409"/>
+                                <rect key="frame" x="0.0" y="335.66666666666674" width="414" height="400.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ee2-Sg-5hY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -11917,13 +11917,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="165.66666666666666" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="من" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-cg-bl6">
-                                                <rect key="frame" x="76.666666666666657" y="0.0" width="12.666666666666671" height="15.333333333333334"/>
+                                                <rect key="frame" x="73.333333333333343" y="0.0" width="19" height="24.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-ks-k8P">
-                                                <rect key="frame" x="0.0" y="19.333333333333325" width="165.66666666666666" height="50.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="28.666666666666675" width="165.66666666666666" height="41.333333333333343"/>
                                                 <color key="backgroundColor" name="kenanyGold"/>
                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                                 <state key="normal" title="20 - 12 - 2021">
@@ -11967,13 +11967,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="186.33333333333334" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الي" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTC-lT-teP">
-                                                <rect key="frame" x="85" y="0.0" width="16" height="15.333333333333334"/>
+                                                <rect key="frame" x="82.333333333333329" y="0.0" width="21.666666666666671" height="24.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="13"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOB-k6-NdC">
-                                                <rect key="frame" x="0.0" y="19.333333333333325" width="186.33333333333334" height="50.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="28.666666666666675" width="186.33333333333334" height="41.333333333333343"/>
                                                 <color key="backgroundColor" name="kenanyGold"/>
                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                                 <state key="normal" title="20 - 12 - 2021">
@@ -12005,13 +12005,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1hi-4u-DQY">
-                                <rect key="frame" x="15" y="189" width="384" height="50"/>
+                                <rect key="frame" x="15" y="197.66666666666666" width="384" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POY-41-12V">
                                         <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dddd" translatesAutoresizingMaskIntoConstraints="NO" id="W5i-X1-ztw">
-                                                <rect key="frame" x="10" y="17.666666666666657" width="15" height="15"/>
+                                                <rect key="frame" x="10" y="17.666666666666686" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="15" id="15i-jN-uQL"/>
                                                     <constraint firstAttribute="height" constant="15" id="Qui-Jh-Fda"/>
@@ -12053,7 +12053,7 @@
                                         <rect key="frame" x="199.66666666666663" y="0.0" width="184.33333333333337" height="50"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dddd" translatesAutoresizingMaskIntoConstraints="NO" id="RKw-N1-ofG">
-                                                <rect key="frame" x="10" y="17.666666666666657" width="15" height="15"/>
+                                                <rect key="frame" x="10" y="17.666666666666686" width="15" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="6q3-0n-WBy"/>
                                                     <constraint firstAttribute="width" constant="15" id="GrV-zV-eba"/>
@@ -12097,19 +12097,19 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنشآ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVM-zZ-u8Y">
-                                <rect key="frame" x="370" y="170" width="24" height="14"/>
+                                <rect key="frame" x="357.66666666666669" y="170" width="36.333333333333314" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                 <color key="textColor" name="kenanyblueblack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الانواع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yW7-SR-5tu">
-                                <rect key="frame" x="167.66666666666666" y="170" width="27" height="14"/>
+                                <rect key="frame" x="161.33333333333334" y="170" width="33.333333333333343" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="12"/>
                                 <color key="textColor" name="kenanyblueblack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HL8-3X-9gP">
-                                <rect key="frame" x="15" y="259" width="384" height="60"/>
+                                <rect key="frame" x="15" y="267.66666666666669" width="384" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Heg-vJ-mBA">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="60"/>
@@ -12118,7 +12118,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الكمية" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oG6-a5-pNF">
-                                                        <rect key="frame" x="49.666666666666664" y="22" width="28.666666666666664" height="16.333333333333329"/>
+                                                        <rect key="frame" x="40.333333333333329" y="17" width="47.333333333333329" height="26.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -12134,7 +12134,7 @@
                                                 <rect key="frame" x="128" y="0.0" width="128" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنشآ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bE-BG-Fji">
-                                                        <rect key="frame" x="50" y="22" width="28" height="16.333333333333329"/>
+                                                        <rect key="frame" x="41.666666666666657" y="17" width="45" height="26.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -12150,7 +12150,7 @@
                                                 <rect key="frame" x="256" y="0.0" width="128" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="النوع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQh-S1-Ltj">
-                                                        <rect key="frame" x="52.000000000000007" y="22" width="24.333333333333336" height="16.333333333333329"/>
+                                                        <rect key="frame" x="47" y="17" width="34" height="26.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="14"/>
                                                         <color key="textColor" name="kenanyGreen"/>
                                                         <nil key="highlightedColor"/>
@@ -12217,7 +12217,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدد التاريخ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qns-Un-zI8">
-                                        <rect key="frame" x="49" y="11.333333333333337" width="61" height="17.666666666666671"/>
+                                        <rect key="frame" x="36.333333333333321" y="5.9999999999999982" width="73.666666666666686" height="28.333333333333329"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>
@@ -12286,7 +12286,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التصنيف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fC1-gk-TKT">
-                                        <rect key="frame" x="180.33333333333334" y="50" width="53.333333333333343" height="20"/>
+                                        <rect key="frame" x="172.33333333333334" y="38" width="69.666666666666657" height="32"/>
                                         <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="17"/>
                                         <color key="textColor" name="kenanyGreen"/>
                                         <nil key="highlightedColor"/>

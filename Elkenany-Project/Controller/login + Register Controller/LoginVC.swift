@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import JGProgressHUD
 import AuthenticationServices
+import GoogleSignIn
 
 
 
@@ -83,7 +84,6 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
 
     
     @objc func handleAppleIdRequest() {
- 
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.email , .fullName]
@@ -102,6 +102,8 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
         print(error.localizedDescription)
      }
     
+    
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
                 func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
@@ -110,116 +112,22 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
                         print(appleIDCredential.fullName?.givenName! ?? "")
                         print(appleIDCredential.email!)
 
+                    case let credential as ASPasswordCredential :
+                        print(credential.password)
                         
                     default:
                         print("errooor in case ")
                     }
                 }
-                
-
     }
     
     
-    
-    
-    
-    
-    
-    
+   
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return view.window!
     }
     
-    
-    
-    
-    
-    
-    
-    
-//
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//            guard let appleIDToken = appleIDCredential.identityToken else {
-//                print("Unable to fetch identity token")
-//                return
-//            }
-//
-//            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-//                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-//                return
-//            }
-//
-//
-//            let userIdentifier = appleIDCredential.user
-//            let fullName = appleIDCredential.fullName
-//            let email = appleIDCredential.email
-//
-//            print(idTokenString)
-//            print(userIdentifier)
-//            print(fullName)
-//            print(email)
-//        }
-//    }
-//
-//
-    
-    
-    
-    
-    
-//    
-//    @IBAction func gooogle(_ sender: Any) {
-//        let signInConfig = GIDConfiguration(clientID: "com.googleusercontent.apps.470730042029-u1q10j6a1ilfds1i7f2d76bvt0h14dlb")
-//
-//        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
-//          guard error == nil else { return }
-//
-//          // If sign in succeeded, display the app's main content View.
-//            print("helllo ")
-//        }
-//        
-//    }
-//    
-    
-    
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//        if let appleCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
-//            let userIdentifier = appleCredential.user
-//            let fullName = appleCredential.fullName
-//            let email = appleCredential.email
-//            print("userrrrr \(userIdentifier) ----------- \(String(describing: fullName)) ---------- \(String (describing: email) )")
-//            performSegue(withIdentifier: "HomeVC", sender: nil)
-//            
-//        }
-//      
-//    }
-
-//
-//    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//        // Handle error.
-//        guard let error = error as? ASAuthorizationError else {
-//                return
-//            }
-//
-//            switch error.code {
-//            case .canceled:
-//                print("Canceled")
-//            case .unknown:
-//                print("Unknown")
-//            case .invalidResponse:
-//                print("Invalid Respone")
-//            case .notHandled:
-//                print("Not handled")
-//            case .failed:
-//                print("Failed")
-//            @unknown default:
-//                print("Default")
-//            }    }
-
-    
-   
     
     
     //MARK:- Handel Login Data To Server
@@ -270,26 +178,3 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
 }
 
 
-//
-//extension LoginVC: ASAuthorizationControllerPresentationContextProviding{
-//    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-//        let appleIDProvider = ASAuthorizationAppleIDProvider()
-//        appleIDProvider.getCredentialState(forUserID: userID) {  (credentialState, error) in
-//             switch credentialState {
-//                case .authorized:
-//                    // The Apple ID credential is valid.
-//                    break
-//                case .revoked:
-//                    // The Apple ID credential is revoked.
-//                    break
-//             case .notFound: break
-//                    // No credential was found, so show the sign-in UI.
-//                default:
-//                    break
-//             }
-//        }
-//    }
-//
-//
-//
-//}

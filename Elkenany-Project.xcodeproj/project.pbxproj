@@ -211,7 +211,6 @@
 		3298AB7527A0133000249D4E /* subFilterOrganize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3298AB7427A0133000249D4E /* subFilterOrganize.swift */; };
 		329A6B96281936F400D67034 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B95281936F400D67034 /* Chats.swift */; };
 		329A6B9E2819435B00D67034 /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329A6B9D2819435B00D67034 /* StartChat.swift */; };
-		329AD2E728E500D900D1CA81 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 329AD2E628E500D900D1CA81 /* credentials.plist */; };
 		329E530F2834EEB40097B43B /* homeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E530E2834EEB40097B43B /* homeTestModel.swift */; };
 		32A054382831158600FE1206 /* ShowwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A054362831158600FE1206 /* ShowwCell.swift */; };
 		32A054392831158600FE1206 /* ShowwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A054372831158600FE1206 /* ShowwCell.xib */; };
@@ -529,7 +528,6 @@
 		3298AB7427A0133000249D4E /* subFilterOrganize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subFilterOrganize.swift; sourceTree = "<group>"; };
 		329A6B95281936F400D67034 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		329A6B9D2819435B00D67034 /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
-		329AD2E628E500D900D1CA81 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		329E530E2834EEB40097B43B /* homeTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeTestModel.swift; sourceTree = "<group>"; };
 		32A054362831158600FE1206 /* ShowwCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowwCell.swift; sourceTree = "<group>"; };
 		32A054372831158600FE1206 /* ShowwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowwCell.xib; sourceTree = "<group>"; };
@@ -799,7 +797,6 @@
 				323B21FF274A462F002CEB89 /* Assets.xcassets */,
 				323B2204274A462F002CEB89 /* Info.plist */,
 				32D17FFD28ED78D200FD85A3 /* GoogleService-Info.plist */,
-				329AD2E628E500D900D1CA81 /* credentials.plist */,
 				323B21FC274A462B002CEB89 /* Elkenany_Project.xcdatamodeld */,
 			);
 			path = "Elkenany-Project";
@@ -1642,7 +1639,6 @@
 				3268BCCF27EC9E090083E678 /* companyCompCell.xib in Resources */,
 				325AE34128D9BCB60084D5F2 /* magazineTVCell.xib in Resources */,
 				323B2244274A47E0002CEB89 /* onBoardingCell.xib in Resources */,
-				329AD2E728E500D900D1CA81 /* credentials.plist in Resources */,
 				3287A30F27E22EC400C38849 /* aboooooout.xib in Resources */,
 				322858D227C78D6D0032D80E /* SearchResultCell.xib in Resources */,
 				32F5FD222768C58400E4DFE1 /* newsDetailsCell.xib in Resources */,
@@ -2268,6 +2264,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-ProjectUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2288,6 +2285,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R77D9255D4;
 				INFOPLIST_FILE = "Elkenany-ProjectUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
