@@ -14,14 +14,11 @@ class SliderCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
     
     func configureCell(image:String) {
-        
         let url = URL(string:image)
         bannerImage.kf.indicatorType = .activity
         bannerImage.kf.setImage(with: url)
-        
-        
     }
+    
 }

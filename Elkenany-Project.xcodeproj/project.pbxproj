@@ -254,6 +254,7 @@
 		32D05FD928091D5D006C21F9 /* storeFeaturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D05FD728091D5D006C21F9 /* storeFeaturesCell.swift */; };
 		32D05FDA28091D5D006C21F9 /* storeFeaturesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D05FD828091D5D006C21F9 /* storeFeaturesCell.xib */; };
 		32D05FDF28093BF2006C21F9 /* chatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D05FDE28093BF2006C21F9 /* chatVC.swift */; };
+		32D17FFE28ED78D200FD85A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D17FFD28ED78D200FD85A3 /* GoogleService-Info.plist */; };
 		32D46E73282CF54200804D0B /* showesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D46E71282CF54200804D0B /* showesCell.swift */; };
 		32D46E74282CF54200804D0B /* showesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D46E72282CF54200804D0B /* showesCell.xib */; };
 		32E46C87280D4EF100419ED7 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E46C85280D4EF100419ED7 /* ChatCell.swift */; };
@@ -571,6 +572,7 @@
 		32D05FD728091D5D006C21F9 /* storeFeaturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeFeaturesCell.swift; sourceTree = "<group>"; };
 		32D05FD828091D5D006C21F9 /* storeFeaturesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = storeFeaturesCell.xib; sourceTree = "<group>"; };
 		32D05FDE28093BF2006C21F9 /* chatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatVC.swift; sourceTree = "<group>"; };
+		32D17FFD28ED78D200FD85A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32D46E71282CF54200804D0B /* showesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showesCell.swift; sourceTree = "<group>"; };
 		32D46E72282CF54200804D0B /* showesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = showesCell.xib; sourceTree = "<group>"; };
 		32E46C85280D4EF100419ED7 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
@@ -796,6 +798,7 @@
 				323B21F7274A462B002CEB89 /* ViewController.swift */,
 				323B21FF274A462F002CEB89 /* Assets.xcassets */,
 				323B2204274A462F002CEB89 /* Info.plist */,
+				32D17FFD28ED78D200FD85A3 /* GoogleService-Info.plist */,
 				329AD2E628E500D900D1CA81 /* credentials.plist */,
 				323B21FC274A462B002CEB89 /* Elkenany_Project.xcdatamodeld */,
 			);
@@ -1617,6 +1620,7 @@
 				32E46C88280D4EF100419ED7 /* ChatCell.xib in Resources */,
 				325528042779B85300BAAE65 /* NotificationCell.xib in Resources */,
 				322C100C277A0B16004A5DD9 /* aboutUsCell.xib in Resources */,
+				32D17FFE28ED78D200FD85A3 /* GoogleService-Info.plist in Resources */,
 				323ED99F275E522600D4620C /* RecomenditionCell.xib in Resources */,
 				32AB26BD27F07BD600D014E6 /* CompareingCell.xib in Resources */,
 				327D90CA278B549D0037F1B7 /* standerHeader.xib in Resources */,

@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +17,46 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-T6-bSX">
-                        <rect key="frame" x="0.0" y="5" width="277" height="140"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7J-Q5-Y4s">
+                        <rect key="frame" x="2" y="5" width="273" height="140"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="B9v-T6-bSX">
+                                <rect key="frame" x="0.0" y="0.0" width="273" height="140"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="B9v-T6-bSX" secondAttribute="trailing" id="8y0-mD-gBy"/>
+                            <constraint firstAttribute="bottom" secondItem="B9v-T6-bSX" secondAttribute="bottom" id="b7U-1U-Ykx"/>
+                            <constraint firstItem="B9v-T6-bSX" firstAttribute="top" secondItem="H7J-Q5-Y4s" secondAttribute="top" id="beZ-v2-UHY"/>
+                            <constraint firstItem="B9v-T6-bSX" firstAttribute="leading" secondItem="H7J-Q5-Y4s" secondAttribute="leading" id="rBX-Cb-0rt"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                                <point key="value" x="0.5" y="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </imageView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="B9v-T6-bSX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CJf-jA-7iv"/>
-                <constraint firstAttribute="bottom" secondItem="B9v-T6-bSX" secondAttribute="bottom" constant="5" id="EbP-gP-BoK"/>
-                <constraint firstItem="B9v-T6-bSX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="sPE-x1-TIY"/>
-                <constraint firstAttribute="trailing" secondItem="B9v-T6-bSX" secondAttribute="trailing" id="wf1-8R-WrL"/>
+                <constraint firstItem="H7J-Q5-Y4s" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="C61-Mp-JbL"/>
+                <constraint firstAttribute="trailing" secondItem="H7J-Q5-Y4s" secondAttribute="trailing" constant="2" id="GC3-U9-ebC"/>
+                <constraint firstItem="H7J-Q5-Y4s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="IVq-Bg-gLL"/>
+                <constraint firstAttribute="bottom" secondItem="H7J-Q5-Y4s" secondAttribute="bottom" constant="5" id="iyH-uc-Hzc"/>
             </constraints>
             <size key="customSize" width="277" height="150"/>
             <connections>
@@ -42,5 +67,8 @@
     </objects>
     <resources>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

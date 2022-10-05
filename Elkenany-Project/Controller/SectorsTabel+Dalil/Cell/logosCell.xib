@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D6-Zq-rCM">
-                        <rect key="frame" x="5" y="0.0" width="206" height="181"/>
+                        <rect key="frame" x="5" y="3" width="206" height="176"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="pcm-ox-ElF">
-                                <rect key="frame" x="0.0" y="0.0" width="206" height="181"/>
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="176"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="7"/>
@@ -61,8 +61,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8D6-Zq-rCM" secondAttribute="trailing" constant="5" id="X5e-Xi-POk"/>
-                <constraint firstItem="8D6-Zq-rCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zdz-dN-Q5z"/>
-                <constraint firstAttribute="bottom" secondItem="8D6-Zq-rCM" secondAttribute="bottom" id="xnZ-lV-aZx"/>
+                <constraint firstItem="8D6-Zq-rCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="Zdz-dN-Q5z"/>
+                <constraint firstAttribute="bottom" secondItem="8D6-Zq-rCM" secondAttribute="bottom" constant="2" id="xnZ-lV-aZx"/>
                 <constraint firstItem="8D6-Zq-rCM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="yUI-OK-oT4"/>
             </constraints>
             <size key="customSize" width="216" height="181"/>
