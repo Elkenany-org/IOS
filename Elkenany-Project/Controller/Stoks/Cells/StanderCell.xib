@@ -50,7 +50,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrc-cX-3Vc">
                                 <rect key="frame" x="0.0" y="0.0" width="140.5" height="147"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="privacy-policy (2)" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-0N-Slg">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-0N-Slg">
                                         <rect key="frame" x="55" y="58.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Put-2r-ZCV"/>
@@ -175,9 +175,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="privacy-policy (2)" width="512" height="512"/>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

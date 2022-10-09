@@ -137,6 +137,9 @@ extension StatShipVC:UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = (storyboard?.instantiateViewController(identifier: "ShipsDetailsVC"))! as ShipsDetailsVC
+        vc.proudectTypee = MainModelStat?.data?.ships?[indexPath.item].product ?? ""
+        vc.proudectID = MainModelStat?.data?.ships?[indexPath.item].id ?? 0
+        vc.countryTITle = MainModelStat?.data?.ships?[indexPath.item].country ?? ""
         navigationController?.pushViewController(vc, animated: true)
         
     }

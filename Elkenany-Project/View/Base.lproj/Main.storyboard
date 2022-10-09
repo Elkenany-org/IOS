@@ -12352,6 +12352,7 @@
                                                 <connections>
                                                     <action selector="ToDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="sXF-04-qCB"/>
                                                     <action selector="fromPickerDate:" destination="2nO-0N-YFm" eventType="touchUpInside" id="1dT-nO-67g"/>
+                                                    <action selector="fromPickerDate:" destination="Gma-Zg-8qv" eventType="touchUpInside" id="jXQ-jS-TQa"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -12403,6 +12404,7 @@
                                                 <connections>
                                                     <action selector="ToDate:" destination="HGi-xY-Wz1" eventType="touchUpInside" id="cW0-DN-azT"/>
                                                     <action selector="toPickerDate:" destination="2nO-0N-YFm" eventType="touchUpInside" id="X6R-vg-DNi"/>
+                                                    <action selector="toPickerDate:" destination="Gma-Zg-8qv" eventType="touchUpInside" id="ftg-Zp-qdf"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -12420,14 +12422,14 @@
                                     <constraint firstItem="pEz-jo-8NS" firstAttribute="top" secondItem="ss7-3f-E8e" secondAttribute="top" id="ynH-jK-ZYr"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المنشآ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqy-uB-pk8">
-                                <rect key="frame" x="338" y="180" width="56" height="32.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="النوع" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqy-uB-pk8">
+                                <rect key="frame" x="345.66666666666669" y="180" width="48.333333333333314" height="32.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="28"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRx-Lr-eyW">
-                                <rect key="frame" x="25" y="222.66666666666666" width="364" height="59.999999999999972"/>
+                                <rect key="frame" x="20" y="222.66666666666666" width="374" height="59.999999999999972"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dddd" translatesAutoresizingMaskIntoConstraints="NO" id="S0P-ze-m7U">
                                         <rect key="frame" x="10" y="22.666666666666686" width="15" height="15"/>
@@ -12437,7 +12439,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDo-8O-KeM">
-                                        <rect key="frame" x="27" y="0.0" width="332" height="60"/>
+                                        <rect key="frame" x="27" y="0.0" width="342" height="60"/>
                                         <fontDescription key="fontDescription" name="Cairo-Regular" family="Cairo" pointSize="14"/>
                                         <state key="normal" title="المنشآ">
                                             <color key="titleColor" name="kenanyGreen"/>
@@ -12575,7 +12577,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xr5-uK-X0j">
                                 <rect key="frame" x="0.0" y="362.66666666666674" width="414" height="373.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yjr-Ln-x4z">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yjr-Ln-x4z">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -12605,18 +12607,25 @@
                             <constraint firstItem="ss7-3f-E8e" firstAttribute="centerY" secondItem="Wnu-Ia-vgh" secondAttribute="centerY" id="UZn-92-YNg"/>
                             <constraint firstAttribute="trailing" secondItem="8Oy-oN-f1z" secondAttribute="trailing" constant="20" id="WU8-2m-qoQ"/>
                             <constraint firstItem="ss7-3f-E8e" firstAttribute="leading" secondItem="Oi6-59-Ht7" secondAttribute="leading" constant="20" id="Wcu-0o-8Cz"/>
-                            <constraint firstItem="JRx-Lr-eyW" firstAttribute="leading" secondItem="Oi6-59-Ht7" secondAttribute="leading" constant="25" id="Wgj-4b-giW"/>
+                            <constraint firstItem="JRx-Lr-eyW" firstAttribute="leading" secondItem="Oi6-59-Ht7" secondAttribute="leading" constant="20" id="Wgj-4b-giW"/>
                             <constraint firstItem="Oi6-59-Ht7" firstAttribute="trailing" secondItem="sqy-uB-pk8" secondAttribute="trailing" constant="20" id="YCy-lK-pCr"/>
                             <constraint firstItem="xr5-uK-X0j" firstAttribute="leading" secondItem="Oi6-59-Ht7" secondAttribute="leading" id="j3W-Rf-0ve"/>
                             <constraint firstItem="LZW-KI-hEz" firstAttribute="top" secondItem="5h0-EE-SNp" secondAttribute="bottom" constant="20" id="l26-XH-KL8"/>
                             <constraint firstItem="8Oy-oN-f1z" firstAttribute="leading" secondItem="Oi6-59-Ht7" secondAttribute="leading" constant="20" id="mfk-Nr-iBd"/>
-                            <constraint firstItem="Oi6-59-Ht7" firstAttribute="trailing" secondItem="JRx-Lr-eyW" secondAttribute="trailing" constant="25" id="o6G-kD-ugU"/>
+                            <constraint firstItem="Oi6-59-Ht7" firstAttribute="trailing" secondItem="JRx-Lr-eyW" secondAttribute="trailing" constant="20" id="o6G-kD-ugU"/>
                             <constraint firstItem="5h0-EE-SNp" firstAttribute="top" secondItem="Oi6-59-Ht7" secondAttribute="top" constant="30" id="pX1-RP-Vy8"/>
                             <constraint firstItem="Oi6-59-Ht7" firstAttribute="trailing" secondItem="LZW-KI-hEz" secondAttribute="trailing" constant="20" id="x7N-nq-07E"/>
                             <constraint firstItem="xr5-uK-X0j" firstAttribute="top" secondItem="8Oy-oN-f1z" secondAttribute="bottom" constant="5" id="xf7-yF-RHE"/>
                             <constraint firstItem="Oi6-59-Ht7" firstAttribute="trailing" secondItem="5h0-EE-SNp" secondAttribute="trailing" constant="20" id="yWm-aS-ezg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnMonshaLabel" destination="gDo-8O-KeM" id="4Rz-Zs-QxG"/>
+                        <outlet property="fromDateTitle" destination="QqZ-lL-svr" id="9aB-8s-L1E"/>
+                        <outlet property="proudectType" destination="sqy-uB-pk8" id="yzw-GX-Q8w"/>
+                        <outlet property="statDetailsShipCV" destination="xr5-uK-X0j" id="vPZ-Br-UeR"/>
+                        <outlet property="toDateTitle" destination="w5r-gs-fhq" id="Oc6-YB-df5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWJ-3c-wkf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
