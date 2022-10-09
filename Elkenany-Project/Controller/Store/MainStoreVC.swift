@@ -195,16 +195,10 @@ class MainStoreVC: UIViewController  {
         view2.isHidden = true
         viewShowSearch.isHidden = false
     }
+
     
-    @IBAction func shortCutFilter(_ sender: Any) {
-        if let filterVC = storyboard?.instantiateViewController(identifier: "FilterVC") as? FilterVC {
-            filterVC.testhidenHome = "home"
-            present(filterVC, animated: true, completion: nil)
-        }
-    }
     
     @IBAction func toAddAds(_ sender: Any) {
-        
         if let filterVC = storyboard?.instantiateViewController(identifier: "AdsViewController") as? AdsViewController {
             present(filterVC, animated: true, completion: nil)
         }

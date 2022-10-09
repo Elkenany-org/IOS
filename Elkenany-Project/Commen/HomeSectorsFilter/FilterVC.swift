@@ -50,9 +50,7 @@ class FilterVC: UIViewController {
 //            selectedVC.SortTitleDeleget = self
             present(selectedVC, animated: true, completion: nil)
         }else if testhidenHome == testhidenHomeeee {
-//            let selectedVCc = storyboard?.instantiateViewController(withIdentifier: "shortCutFilter") as!shortCutFilter
-//            selectedVC.SortTitleDeleget = self
-//            present(selectedVCc, animated: true, completion: nil)
+
             print("hello world")
         }else{
             print("hello world")
@@ -140,18 +138,6 @@ extension FilterVC:UICollectionViewDelegate, UICollectionViewDataSource , UIColl
             present(selectedVC, animated: true, completion: nil)
             
         case 1:
-//            let testhidenHome = "home"
-//            if presentHomeFilter == testhidenHome {
-//                let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SortByVC") as! SortByVC
-//    //            selectedVC.SortTitleDeleget = self
-//                present(selectedVC, animated: true, completion: nil)
-//            }else{
-//                let selectedVCc = storyboard?.instantiateViewController(withIdentifier: "shortCutFilter") as!shortCutFilter
-//    //            selectedVC.SortTitleDeleget = self
-//                present(selectedVCc, animated: true, completion: nil)
-//                print("hello world")
-//            }
-            
             let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SortByVC") as! SortByVC
             present(selectedVC, animated: true, completion: nil)
             

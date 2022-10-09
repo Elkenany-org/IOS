@@ -278,6 +278,7 @@ extension showesVC: UISearchBarDelegate {
         view1.isHidden = false
         view2.isHidden = false
         subShowesModel.removeAll()
+        self.currentpaga = 1
         FeatchDataShowesHome()
         print("cancellllld")
     }

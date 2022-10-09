@@ -18,6 +18,8 @@
 		32034F6727661E3200D6F863 /* aboutCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32034F6527661E3200D6F863 /* aboutCompanyCell.xib */; };
 		32034F6D27661E7200D6F863 /* CompanySocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32034F6B27661E7200D6F863 /* CompanySocialCell.swift */; };
 		32034F6E27661E7200D6F863 /* CompanySocialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32034F6C27661E7200D6F863 /* CompanySocialCell.xib */; };
+		32081BA628F2EF4500D4C18A /* StatisticsShipsDetialsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32081BA528F2EF4500D4C18A /* StatisticsShipsDetialsModel.swift */; };
+		32081BAB28F2F13E00D4C18A /* ShipsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32081BAA28F2F13E00D4C18A /* ShipsDetailsVC.swift */; };
 		3208B84F2785BCBD000E6C84 /* statisticsInsideMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208B84E2785BCBD000E6C84 /* statisticsInsideMain.swift */; };
 		3208B8572785BCEE000E6C84 /* FromPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208B8562785BCEE000E6C84 /* FromPicker.swift */; };
 		3208B85C2785BD02000E6C84 /* ToPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3208B85B2785BD02000E6C84 /* ToPicker.swift */; };
@@ -324,6 +326,8 @@
 		32034F6527661E3200D6F863 /* aboutCompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = aboutCompanyCell.xib; sourceTree = "<group>"; };
 		32034F6B27661E7200D6F863 /* CompanySocialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySocialCell.swift; sourceTree = "<group>"; };
 		32034F6C27661E7200D6F863 /* CompanySocialCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanySocialCell.xib; sourceTree = "<group>"; };
+		32081BA528F2EF4500D4C18A /* StatisticsShipsDetialsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsShipsDetialsModel.swift; sourceTree = "<group>"; };
+		32081BAA28F2F13E00D4C18A /* ShipsDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipsDetailsVC.swift; sourceTree = "<group>"; };
 		3208B84E2785BCBD000E6C84 /* statisticsInsideMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statisticsInsideMain.swift; sourceTree = "<group>"; };
 		3208B8562785BCEE000E6C84 /* FromPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromPicker.swift; sourceTree = "<group>"; };
 		3208B85B2785BD02000E6C84 /* ToPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToPicker.swift; sourceTree = "<group>"; };
@@ -1013,6 +1017,7 @@
 			children = (
 				32475F1C284E444700ACC97B /* shipsModel.swift */,
 				32B30BD62851E74B0002BC7C /* shipsStat.swift */,
+				32081BA528F2EF4500D4C18A /* StatisticsShipsDetialsModel.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -1193,6 +1198,7 @@
 				323E862028366D1100C65873 /* organizationVC.swift */,
 				323E861B28366AE700C65873 /* clockVC.swift */,
 				3246C0A6285219B700EA29B5 /* StatShipVC.swift */,
+				32081BAA28F2F13E00D4C18A /* ShipsDetailsVC.swift */,
 			);
 			path = ships;
 			sourceTree = "<group>";
@@ -1893,12 +1899,14 @@
 				32D05FD928091D5D006C21F9 /* storeFeaturesCell.swift in Sources */,
 				32034F562766134200D6F863 /* NewsFilterDataModel.swift in Sources */,
 				3298AB53279FFC4300249D4E /* subGuideFilter.swift in Sources */,
+				32081BA628F2EF4500D4C18A /* StatisticsShipsDetialsModel.swift in Sources */,
 				32F5FD1A2768BA6700E4DFE1 /* collectioncell.swift in Sources */,
 				326D48612782FAED009B298C /* StanderCell.swift in Sources */,
 				3221CBD928E33E7C005681AA /* password_code.swift in Sources */,
 				322C1005277A0726004A5DD9 /* AboutVC.swift in Sources */,
 				3298AB5927A0031200249D4E /* subFilterMain.swift in Sources */,
 				32A054382831158600FE1206 /* ShowwCell.swift in Sources */,
+				32081BAB28F2F13E00D4C18A /* ShipsDetailsVC.swift in Sources */,
 				32F543A827925E4A004EBD33 /* chooseComVC.swift in Sources */,
 				32609591275F757A0056A002 /* SelectedSectorCell.swift in Sources */,
 				3278B8462796D8DC00B5CA6F /* FirstFilterModel.swift in Sources */,

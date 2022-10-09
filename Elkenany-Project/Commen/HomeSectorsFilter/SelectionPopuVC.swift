@@ -21,6 +21,7 @@ class SelectionPopuVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         GetFilterData()
+        print("it presented ..... ")
     }
     
     
@@ -55,7 +56,7 @@ class SelectionPopuVC: UIViewController {
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
             let SectoreFilterURL = "https://elkenany.com/api/localstock/all-local-stock-sections?type="
-            let tttyyyyppppeeee = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? ""
+            let tttyyyyppppeeee = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER" ) ?? "farm"
             let param = ["type": "\(tttyyyyppppeeee)"]
             APIServiceForQueryParameter.shared.fetchData(url: SectoreFilterURL, parameters: param, headers: nil, method: .get) { (success:FirstFilterModel?, filier:FirstFilterModel?, error) in
                 if let error = error{
@@ -67,7 +68,8 @@ class SelectionPopuVC: UIViewController {
                     self.homeDataFilter = success
                     DispatchQueue.main.async {
                         self.SelectedPopup.reloadData()
-                        
+                        print("it get the data  ..... ")
+
                     }
                 }
             }

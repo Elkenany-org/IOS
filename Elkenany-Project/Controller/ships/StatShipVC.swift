@@ -135,6 +135,12 @@ extension StatShipVC:UICollectionViewDelegate, UICollectionViewDataSource, UICol
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = (storyboard?.instantiateViewController(identifier: "ShipsDetailsVC"))! as ShipsDetailsVC
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 50)
