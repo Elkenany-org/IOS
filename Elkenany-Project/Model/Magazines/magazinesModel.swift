@@ -20,17 +20,17 @@ struct MagazineData: Codable {
     let banners: [Bannerrs]?
     let logos: [loggss]?
     let data: [magazinesData]?
-    let currentPage, lastPage: Int?
-    let firstPageURL, nextPageURL, lastPageURL: String?
+//    let currentPage, lastPage: Int?
+//    let firstPageURL, nextPageURL, lastPageURL: String?
 
-    enum CodingKeys: String, CodingKey {
-        case sectors, banners, logos, data
-        case currentPage = "current_page"
-        case lastPage = "last_page"
-        case firstPageURL = "first_page_url"
-        case nextPageURL = "next_page_url"
-        case lastPageURL = "last_page_url"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case sectors, banners, logos, data
+//        case currentPage = "current_page"
+//        case lastPage = "last_page"
+//        case firstPageURL = "first_page_url"
+//        case nextPageURL = "next_page_url"
+//        case lastPageURL = "last_page_url"
+//    }
 }
 
 // MARK: - Datum

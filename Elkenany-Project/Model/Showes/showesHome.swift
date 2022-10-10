@@ -7,33 +7,22 @@
 
 import Foundation
 
-
 // MARK: - ShowesHome
 struct ShowesHome: Codable {
     let message, error: String?
-    let data: ShowesData?
+    let data: showsMainData?
 }
 
 // MARK: - DataClass
-struct ShowesData: Codable {
-    let sectors: [SectorsSelection]?
-    let banners, logos: [String]?
-    let data: [showesHomeData]?
-//    let currentPage, lastPage: Int?
-//    let firstPageURL, nextPageURL, lastPageURL: String?
-
-    enum CodingKeys: String, CodingKey {
-        case sectors, banners, logos, data
-//        case currentPage = "current_page"
-//        case lastPage = "last_page"
-//        case firstPageURL = "first_page_url"
-//        case nextPageURL = "next_page_url"
-//        case lastPageURL = "last_page_url"
-    }
+struct showsMainData: Codable { 
+    let sectors: [Sectorrrss]?
+    let banners :[Bannerrsshow]?
+    let logos: [loggssShow]?
+    let data: [ShowesDataModel]?
 }
 
 // MARK: - Datum
-struct showesHomeData: Codable {
+struct ShowesDataModel: Codable {
     let id: Int?
     let name: String?
     let rate: Double?
@@ -41,7 +30,7 @@ struct showesHomeData: Codable {
     let desc, address: String?
     let viewCount: Int?
     let date: String?
-    let goingState: String?
+    let goingState: Bool?
     let deebLink, link: String?
 
     enum CodingKeys: String, CodingKey {
@@ -55,9 +44,22 @@ struct showesHomeData: Codable {
 }
 
 // MARK: - Sector
-struct SectorsSelection: Codable {
+struct Sectorrrss: Codable {
     let id: Int?
     let name, type: String?
     let selected: Int?
 }
 
+
+struct Bannerrsshow: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}
+
+
+struct loggssShow: Codable {
+    var id: Int?
+    var link: String?
+    var image: String?
+}

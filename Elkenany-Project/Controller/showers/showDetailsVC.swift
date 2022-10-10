@@ -21,10 +21,12 @@ class showDetailsVC: UIViewController {
     
     var gingornotModel:AddPlaces?
     var showesModel:ShowesHome?
-    var subShowesModel:[showesHomeData] = []
+    var subShowesModel:[ShowesDataModel] = []
     var showModel:ShoweModel?
     var idOfShow = 0
+    var idS = 0
     var presentKeyHome = ""
+    var tillllle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +39,13 @@ class showDetailsVC: UIViewController {
         }else if presentKeyHome == "hommmmeREC" {
             showeDataServiceHomeREC()
 
+        }else if presentKeyHome == "searchHome"{
+            showeDataHomeSearch()
         }else{
+            title = UserDefaults.standard.string(forKey: "TitleSerch")
+
             showeDataService()
+
         }
     }
     
@@ -91,6 +98,57 @@ class showDetailsVC: UIViewController {
             }
         }
     }
+    
+    
+    
+    
+    func showeDataHomeSearch(){
+        // Handeling Loading view progress
+        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
+        
+//        let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
+        let parm = ["id" : "\(idS)"]
+        DispatchQueue.global(qos: .background).async {
+            let url = "https://elkenany.com/api/showes/one-show/?id="
+            
+
+            APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
+                if let error = error{
+
+                    //internet error
+                    ProgressHUD.dismiss()
+                    print("============ error \(error)")
+                    
+                }
+                else if let loginError = filier {
+                    //Data Wrong From Server
+                    ProgressHUD.dismiss()
+
+                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+                }
+                else {
+                    ProgressHUD.dismiss()
+                    guard let success = success else {return}
+                    self.showModel = success
+                
+                    DispatchQueue.main.async {
+                        self.viewCount.text = String(success.data?.viewCount ?? 0)
+                        self.showDesc.text = success.data?.shortDesc ?? ""
+                        self.imageCollection.reloadData()
+                        print("hellllllllo")
+                        print("helllllllllllllo", success.data?.shortDesc ?? "")
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    
     
     func showeDataServiceHome(){
         // Handeling Loading view progress

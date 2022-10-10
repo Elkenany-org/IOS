@@ -41,7 +41,8 @@ class MagazineHomeVC: UIViewController {
     //viewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
-        FatchDatafromHome()
+//        FatchDatafromHome()
+        FeatchDataOfmainMagazine()
         FeatchDataOfectores()
         setupUI()
         setupSearchBar()
@@ -55,11 +56,10 @@ class MagazineHomeVC: UIViewController {
         sectorsCV.dataSource = self
         magazineCollection.delegate = self
         magazineCollection.dataSource = self
-        
         self.sectorsCV.register(UINib(nibName: "SelectedSectorCell", bundle: nil), forCellWithReuseIdentifier: "SelectedSectorCell")
         self.magazineCollection.register(UINib(nibName: "MagazineCell", bundle: nil), forCellWithReuseIdentifier: "MagazineCell")
 
-        magazineCollection.prefetchDataSource = self
+//        magazineCollection.prefetchDataSource = self
 
     }
     
@@ -85,102 +85,84 @@ class MagazineHomeVC: UIViewController {
     
     
     
-    func FatchDatafromHome(){
-        
-        // Handeling Loading view progress
+    func FeatchDataOfmainMagazine(){
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2" , "page": "\(self.currentpaga)"]
-            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&page="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
-                (success:MagazineS?, filier:MagazineS?, error) in
-                //internet error
-                if let error = error{
-                    print("============ error \(error)")
-                }
-                //Data Wrong From Server
-                
-                else if let loginError = filier {
-                    ProgressHUD.dismiss()
-
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-                }
-                //success
-                else {
-                    ProgressHUD.dismiss()
-
-                    if success?.data?.nextPageURL == nil {
-                    }
-
-                    
-                    let successDataa = success?.data?.data ?? []
-                    print("current", self.currentpaga)
-                    self.magazinSubModel.append(contentsOf: successDataa)
-                    DispatchQueue.main.async {
-                        self.magazineCollection.reloadData()
-                    }
-                    
-//                    if self.currentpaga <= self.magazineHomeModel?.data?.lastPage ?? 0 {
-//                        self.currentpaga += 1
-//
-//                    }
-                    self.currentpaga += 1
-
-                    self.isFeatchingData = true
-                }
-            }
-        }
-    }
-    
-    
-    
-    func FatchDatafromHomeHeader(){
-        
-        // Handeling Loading view progress
-        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
-        ProgressHUD.animationType = .circleStrokeSpin
-        ProgressHUD.show()
-        
-        DispatchQueue.global(qos: .background).async {
-            let param = ["type": "\(self.typeOfSectore)"   ,"sort" : "0"]
+            let param = ["type": "\(self.typeOfSectore)"  ]
+            let haderrrr = ["android": "" ]
             let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
-                (success:MagazineS?, filier:MagazineS?, error) in
-                //internet error
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: haderrrr, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
                 if let error = error{
-                    print("============ error \(error)")
-                }
-                //Data Wrong From Server
-                
-                else if let loginError = filier {
-                    ProgressHUD.dismiss()
-
-                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
-                }
-                //success
-                else {
-                    ProgressHUD.dismiss()
-
-                    if success?.data?.nextPageURL == nil {
-                        
-                    }
-                    self.magazinSubModel.removeAll()
-                    let successDataa = success?.data?.data ?? []
-                    self.magazinSubModel.append(contentsOf: successDataa)
                     
+                    ProgressHUD.dismiss()
+
+                    print("============ error \(error)")
+                }else {
+                    ProgressHUD.dismiss()
+                    self.magazinSubModel.removeAll()
+                    let successDataa = SuccessfulRequest?.data?.data ?? []
+                    self.magazinSubModel.append(contentsOf: successDataa)
                     DispatchQueue.main.async {
                         self.magazineCollection.reloadData()
                     }
-                    self.currentpaga += 1
-                    self.isFeatchingData = true
                 }
             }
         }
     }
     
-    
+//    func FatchDatafromHome(){
+//
+//        // Handeling Loading view progress
+//        ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
+//        ProgressHUD.animationType = .circleStrokeSpin
+//        ProgressHUD.show()
+//        DispatchQueue.global(qos: .background).async {
+//            let param = ["type": "\(self.typeOfSectore)"  ,"sort" : "2" , "page": "\(self.currentpaga)"]
+//            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&page="
+//            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) {
+//                (success:MagazineS?, filier:MagazineS?, error) in
+//                //internet error
+//                if let error = error{
+//                    print("============ error \(error)")
+//                }
+//                //Data Wrong From Server
+//
+//                else if let loginError = filier {
+//                    ProgressHUD.dismiss()
+//
+//                    print("--========== \(loginError.error?.localizedCapitalized ?? "") ")
+//                }
+//                //success
+//                else {
+//                    ProgressHUD.dismiss()
+//
+//                    if success?.data?.nextPageURL == nil {
+//                    }
+//
+//
+//                    let successDataa = success?.data?.data ?? []
+//                    print("current", self.currentpaga)
+//                    self.magazinSubModel.append(contentsOf: successDataa)
+//                    DispatchQueue.main.async {
+//                        self.magazineCollection.reloadData()
+//                    }
+//
+////                    if self.currentpaga <= self.magazineHomeModel?.data?.lastPage ?? 0 {
+////                        self.currentpaga += 1
+////
+////                    }
+//                    self.currentpaga += 1
+//
+//                    self.isFeatchingData = true
+//                }
+//            }
+//        }
+//    }
+//
+//
+
     
     
     func SearchService(){
@@ -229,18 +211,18 @@ class MagazineHomeVC: UIViewController {
 
 
 
-
-//MARK:pagination extension
-extension MagazineHomeVC:UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for index in indexPaths {
-            if index.item >= magazinSubModel.count - 1 && !isFeatchingData {
-                FatchDatafromHome()
-                break
-            }
-        }
-    }
-}
+//
+////MARK:pagination extension
+//extension MagazineHomeVC:UICollectionViewDataSourcePrefetching {
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        for index in indexPaths {
+//            if index.item >= magazinSubModel.count - 1 && !isFeatchingData {
+////                FatchDatafromHome()
+//                break
+//            }
+//        }
+//    }
+//}
 
 
 //MARK:- searchBAr delegets
@@ -258,9 +240,7 @@ extension MagazineHomeVC : UISearchBarDelegate {
             //Api func
             SearchService()
         }else{
-            self.currentpaga = 1
             magazinSubModel.removeAll()
-            FatchDatafromHome()
 
             
         }
@@ -283,12 +263,8 @@ extension MagazineHomeVC : UISearchBarDelegate {
         view1.isHidden = false
         view2.isHidden = false
         magazinSubModel.removeAll()
-        self.currentpaga = 1
-        FatchDatafromHome()
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "جاري التحميل"
-//        hud.show(in: self.view)
-//        hud.dismiss()
+        FeatchDataOfmainMagazine()
+
     }}
 
 
@@ -367,7 +343,7 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
         
         if collectionView == sectorsCV {
             let typeOfSector = sectorSubModelMagazine[indexPath.item].type ?? "farm"
-            print("type ::: " , typeOfSector)
+            print("type ::: " , typeOfSectore)
             UserDefaults.standard.set(typeOfSector, forKey: "TYPE_FOR_FILTER")
             self.typeOfSectore = typeOfSector
             
@@ -377,7 +353,7 @@ extension MagazineHomeVC:UICollectionViewDelegate , UICollectionViewDataSource ,
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsCV.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
-            FatchDatafromHomeHeader()
+            FeatchDataOfmainMagazine()
         }
         
         else{

@@ -151,9 +151,12 @@ extension searchVC:UITableViewDelegate,UITableViewDataSource{
             navigationController?.pushViewController(newsvc, animated: true)
             
         case "showes":
-            let newsvc = (storyboard?.instantiateViewController(identifier: "showVC"))! as showVC
+            let newsvc = (storyboard?.instantiateViewController(identifier: "showDetailsVC"))! as showDetailsVC
             let homeShowId = searchSubModelMain[indexPath.row].id ?? 0
-            newsvc.idFromSh = homeShowId
+//            newsvc.tillllle = searchSubModelMain[indexPath.row].name ?? ""
+            UserDefaults.standard.set(searchSubModelMain[indexPath.row].name ?? "", forKey: "TitleSerch")
+            newsvc.idS = homeShowId
+            newsvc.presentKeyHome = "searchHome"
             navigationController?.pushViewController(newsvc, animated: true)
             
         case "magazines":

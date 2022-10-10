@@ -491,6 +491,7 @@ extension NewsVC: UISearchBarDelegate {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         FatchDataforNewsHome()
+        self.currentpaga = 1
         searchBarView.text = ""
         hud.dismiss()
         print("cancellllld")

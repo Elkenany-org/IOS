@@ -21,7 +21,7 @@ class showVC: UIViewController {
     //models
     var gingornotModel:AddPlaces?
     var showesModel:ShowesHome?
-    var subShowesModel:[showesHomeData] = []
+    var subShowesModel:[ShowesDataModel] = []
     var idFromSh = 0
     var testId = ""
     //vars
@@ -32,7 +32,8 @@ class showVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = acceptedTitle
+//        title = acceptedTitle
+       title = UserDefaults.standard.string(forKey: "TitleSerch")
     }
     
     
