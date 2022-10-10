@@ -32,8 +32,8 @@ class showVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = acceptedTitle
-       title = UserDefaults.standard.string(forKey: "TitleSerch")
+        title = acceptedTitle
+//       title = UserDefaults.standard.string(forKey: "TitleSerch")
     }
     
     

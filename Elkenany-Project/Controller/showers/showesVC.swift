@@ -340,7 +340,7 @@ extension showesVC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let showescell = tableView.dequeueReusableCell(withIdentifier: "showesCell") as? showesCell{
             showescell.showesName.text = subShowesModel[indexPath.row].name ?? ""
-//            showescell.countryName.text = subShowesModel[indexPath.row].address ?? ""
+            showescell.countryName.text = subShowesModel[indexPath.row].address ?? ""
             showescell.showesDate.text = subShowesModel[indexPath.row].date ?? ""
             showescell.showesDescription.text = subShowesModel[indexPath.row].desc ?? ""
             showescell.showesView.text = String( subShowesModel[indexPath.row].viewCount ?? 0)
@@ -414,8 +414,8 @@ extension showesVC: FilterShowMagazine {
                         
                         self.showesTableView.reloadData()
                         print(success?.data ?? "")
-                        self.ShowcountryTitle.setTitle( coun_title, for: .normal)
-                        self.ShowsortTitle.setTitle(sort_title, for: .normal)
+//                        self.ShowcountryTitle.setTitle( coun_title, for: .normal)
+//                        self.ShowsortTitle.setTitle(sort_title, for: .normal)
                         
                         
                     }
