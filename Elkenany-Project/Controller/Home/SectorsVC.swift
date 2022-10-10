@@ -21,7 +21,7 @@ class SectorsVC: UIViewController {
     var sss:HomeData?
     var sector:[Sectors]?
     var arr = [   "القطاع", "مقترح لك", "شركاء النجاح", "البورصة اليومية", "دليل الكناني", "السوق", "الاخبار" ]
-    let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") , #imageLiteral(resourceName: "Group 2800-1")]
+    let images:[UIImage] = [ #imageLiteral(resourceName: "Group 2800-1") , #imageLiteral(resourceName: "Group 1026")  , #imageLiteral(resourceName: "Group 1027") , #imageLiteral(resourceName: "Group 2802") , #imageLiteral(resourceName: "Group 1029") , #imageLiteral(resourceName: "Group 2907")]
     var typeForRecomendition = ""
     
     //    let viewsw = ServiceViewController()
@@ -299,7 +299,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             if let sectoreCell = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as? logosCell {
                 sectoreCell.logooImage.image = images[indexPath.item]
-                sectoreCell.logooImage.contentMode = .scaleToFill
+                sectoreCell.logooImage.contentMode = .scaleAspectFill
+                
                 Sectore(ss: sectoreCell)
                 return sectoreCell }
             

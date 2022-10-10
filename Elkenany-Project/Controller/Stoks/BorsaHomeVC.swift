@@ -420,7 +420,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
         else if collectionView == logosCV{
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "logosCell", for: indexPath) as! logosCell
             let imageeee = logosSubModel[indexPath.item].image ?? ""
-            cell3.logooImage.contentMode = .scaleAspectFill
+            cell3.logooImage.contentMode = .scaleToFill
             ss(ss: cell3)
             
             cell3.configureImage(image: imageeee)
