@@ -30,18 +30,17 @@ class MoreVC: UIViewController {
         FatchDataProfile()
         title = "القائمة"
         
-        /// reverse the functions bc this a check only ----
         let isloggineIn = UserDefaults.standard.bool(forKey: "LOGIN_STAUTS")
-        
+
         if isloggineIn == true{
-            looogOutIn.isHidden = true
-            loginBtn.isHidden = false
-            
-        }else{
+            looogOutIn.isHidden = false
+            loginBtn.isHidden = true
+
+        }else if isloggineIn == false {
             looogOutIn.isHidden = true
             loginBtn.isHidden = false
         }
-        
+                
         
     }
     
@@ -133,8 +132,10 @@ class MoreVC: UIViewController {
     
     @IBAction func logOutBTN(_ sender: Any) {
         logoutService()
+        UserDefaults.standard.set(false, forKey: "LOGIN_STAUTS")
         
         if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
+//            UserDefaults.standard.removeObject(forKey: "API_TOKEN")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
             

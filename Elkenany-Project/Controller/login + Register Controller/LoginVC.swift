@@ -36,6 +36,8 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
     @IBAction func toHomeVC(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "TabBarVC"))! as TabBarVC
         vc.modalPresentationStyle = .fullScreen
+        print("LOGGGG", UserDefaults.standard.bool(forKey: "LOGIN_STAUTS" ) )
+
         print(countries)
 
         self.present(vc, animated: true, completion:nil)
@@ -161,12 +163,13 @@ class LoginVC: UIViewController , ASAuthorizationControllerDelegate, ASAuthoriza
                 print("hello world login")
                 let vc = (self.storyboard?.instantiateViewController(identifier: "TabBarVC"))! as TabBarVC
                 vc.modalPresentationStyle = .fullScreen
+                
                 let apiToken = loginSuccess?.data?.apiToken ?? ""
                 UserDefaults.standard.set(apiToken, forKey: "API_TOKEN")
                 print("- toke - ", apiToken)
+//                UserDefaults.standard.set(Bool.self, forKey: "testLog")
                 UserDefaults.standard.set(true, forKey: "LOGIN_STAUTS")
                 print("LOGGGG", UserDefaults.standard.bool(forKey: "LOGIN_STAUTS" ) )
-                
                 self.present(vc, animated: true, completion:nil)
                 
             }
