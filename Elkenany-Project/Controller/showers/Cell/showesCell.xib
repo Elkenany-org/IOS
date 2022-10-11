@@ -42,19 +42,19 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="by2-hg-4dP">
-                                <rect key="frame" x="226.5" y="145" width="149.5" height="15"/>
+                                <rect key="frame" x="214.5" y="145" width="161.5" height="15"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hHN-Wa-0ed">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="15"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="15"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المدينة " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYM-hn-szL">
-                                                <rect key="frame" x="0.0" y="0.0" width="23" height="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="15"/>
                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="10"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ldb-rg-txa">
-                                                <rect key="frame" x="25" y="0.5" width="15" height="14"/>
+                                                <rect key="frame" x="36" y="0.5" width="15" height="14"/>
                                                 <color key="tintColor" name="kenanyGold"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="2db-yC-GXD"/>
@@ -64,16 +64,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="BOh-uS-N5X">
-                                        <rect key="frame" x="70" y="0.0" width="79.5" height="15"/>
+                                        <rect key="frame" x="81" y="0.0" width="80.5" height="15"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20-30-2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzx-XM-qJN">
-                                                <rect key="frame" x="0.0" y="0.0" width="52.5" height="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="15"/>
                                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="10"/>
                                                 <color key="textColor" name="kenanyGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xER-2k-E5q">
-                                                <rect key="frame" x="54.5" y="1" width="25" height="12.5"/>
+                                                <rect key="frame" x="55.5" y="1" width="25" height="12.5"/>
                                                 <color key="tintColor" name="kenanyGold"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="8tz-uq-M06"/>
@@ -120,14 +120,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="So I'm following a git repo for handling network requests. I have successfully implemented it into my application" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-KT-IHB">
-                                <rect key="frame" x="10" y="47.5" width="366" height="30.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="So I'm following a git repo for handling network requests. I have successfully implemented it into my application" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-KT-IHB">
+                                <rect key="frame" x="10" y="58.5" width="366" height="49"/>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="13"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indastrial develpoment factories serives expo " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVA-fy-9hg">
-                                <rect key="frame" x="10" y="15" width="366" height="17.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indastrial develpoment factories serives expo " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVA-fy-9hg">
+                                <rect key="frame" x="10" y="15" width="366" height="28.5"/>
                                 <fontDescription key="fontDescription" name="Cairo-Black" family="Cairo Black" pointSize="15"/>
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>

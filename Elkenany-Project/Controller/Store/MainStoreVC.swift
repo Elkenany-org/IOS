@@ -286,6 +286,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }
+            self.currentpaga = 1
             FatchDataOfStore()
             
         } else {

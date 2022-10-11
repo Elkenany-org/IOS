@@ -66,6 +66,18 @@ class searchVC: UIViewController {
         }
     }
     
+    
+ 
+    @IBAction func removeSearch(_ sender: Any) {
+        searchSubModelMain.removeAll()
+        self.searchTVV.reloadData()
+
+    }
+    
+    
+    
+    
+    
 }
 
 

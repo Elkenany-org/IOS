@@ -19,14 +19,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NotificationCell" id="gTV-IL-0wX" customClass="NotificationCell" customModule="Elkenany_Project" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="510" height="164"/>
+            <rect key="frame" x="0.0" y="0.0" width="510" height="99"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="510" height="164"/>
+                <rect key="frame" x="0.0" y="0.0" width="510" height="99"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JJ-n3-T07">
-                        <rect key="frame" x="15" y="10" width="480" height="144"/>
+                        <rect key="frame" x="15" y="3" width="480" height="93"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_2021-11-21 15.48.15" translatesAutoresizingMaskIntoConstraints="NO" id="iYs-Tc-Z2P">
                                 <rect key="frame" x="410" y="10" width="60" height="60"/>
@@ -44,7 +44,7 @@
                                 <color key="textColor" name="kenanyGreen"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-oB-cfC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t7-oB-cfC">
                                 <rect key="frame" x="10" y="33" width="395" height="19"/>
                                 <string key="text">اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  اشعار لشركة  شركة الكناني للخدمات البيطرية اشعار لشركة  شركة الكناني للخدمات البيطرية  </string>
                                 <fontDescription key="fontDescription" name="Cairo-SemiBold" family="Cairo SemiBold" pointSize="8"/>
@@ -68,7 +68,7 @@
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                 <real key="value" value="0.5"/>
@@ -85,24 +85,24 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="8JJ-n3-T07" secondAttribute="bottom" constant="10" id="XbW-nd-ZuJ"/>
+                <constraint firstAttribute="bottom" secondItem="8JJ-n3-T07" secondAttribute="bottom" constant="3" id="XbW-nd-ZuJ"/>
                 <constraint firstAttribute="trailing" secondItem="8JJ-n3-T07" secondAttribute="trailing" constant="15" id="chd-21-bU8"/>
-                <constraint firstItem="8JJ-n3-T07" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="nnm-Hy-QIJ"/>
+                <constraint firstItem="8JJ-n3-T07" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="nnm-Hy-QIJ"/>
                 <constraint firstItem="8JJ-n3-T07" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="oN6-JH-Knf"/>
             </constraints>
-            <size key="customSize" width="510" height="164"/>
+            <size key="customSize" width="510" height="99"/>
             <connections>
                 <outlet property="notDescription" destination="1t7-oB-cfC" id="U83-Ir-mnV"/>
                 <outlet property="notImage" destination="iYs-Tc-Z2P" id="jpu-EK-hvK"/>
                 <outlet property="notTitle" destination="g0e-6r-zau" id="pBn-FD-cH9"/>
             </connections>
-            <point key="canvasLocation" x="-120.28985507246378" y="44.196428571428569"/>
+            <point key="canvasLocation" x="-120.28985507246378" y="22.433035714285712"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -55,6 +55,8 @@ class ProfileVC: UIViewController {
     @IBAction func pressToLoginFromProfile(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC {
             FatchDataProfileOut()
+            UserDefaults.standard.set(false, forKey: "LOGIN_STAUTS")
+
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }

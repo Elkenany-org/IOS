@@ -146,7 +146,7 @@ class NewsVC: UIViewController {
                     if success?.data?.nextPageURL == nil {
                         
                     }
-                                        self.subNewsModel.removeAll()
+                    self.subNewsModel.removeAll()
 
                     let successData = success?.data?.data ?? []
                     print("current", self.currentpaga)
@@ -359,6 +359,7 @@ extension NewsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 
                 
             }
+            self.currentpaga = 1
             FatchDataforNewsHomeee()
             
         }else{
