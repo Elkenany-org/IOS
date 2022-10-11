@@ -26,7 +26,6 @@ pod 'SkeletonView'
 pod 'ProgressHUD'
 pod 'GoogleSignIn'
 pod 'FirebaseMessaging', '~> 4.1'
-pod 'FirebaseAnalytics'
 
 
 
