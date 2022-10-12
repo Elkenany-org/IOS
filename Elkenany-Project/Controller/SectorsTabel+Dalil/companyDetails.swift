@@ -137,6 +137,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
 
             }else{
                 if let cell2 = tableView.dequeueReusableCell(withIdentifier: "gallaryTVCell") as? gallaryTVCell{
+                    cell2.commID = CompanyIdFromCompanies
                     return cell2 }
             }
         case 3:
@@ -145,6 +146,7 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
 
             }else{
                 if let cell2 = tableView.dequeueReusableCell(withIdentifier: "proudectsCell") as? proudectsCell{
+                    cell2.comID = CompanyIdFromCompanies
                     return cell2 }
             }
 

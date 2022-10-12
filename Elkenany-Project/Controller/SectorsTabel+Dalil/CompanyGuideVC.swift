@@ -284,6 +284,8 @@ extension CompanyGuideVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         } else if collectionView == bannersCollection {
             //banners
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"SliderCell", for:indexPath ) as? SliderCell{
+//                SetupCell(cell: cell)
+
                 if let imageC = bannersSubModel[indexPath.item].image{
                     cell.configureCell(image: imageC )
                 }

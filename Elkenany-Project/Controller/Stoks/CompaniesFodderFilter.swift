@@ -68,6 +68,12 @@ class CompaniesFodderFilter: UIViewController {
     }
     
     
+    @IBAction func dismisBTN(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
 }
 
 //MARK:- tableView Methodes

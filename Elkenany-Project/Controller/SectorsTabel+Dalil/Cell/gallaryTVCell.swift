@@ -11,7 +11,7 @@ class gallaryTVCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
   
     var companyDetailsModel:CompanyDetailsDataModel?
 
-
+    var commID = 0
     @IBOutlet weak var hideStttak: UIStackView!
     @IBOutlet weak var gallaryCell: UICollectionView!
     override func awakeFromNib() {
@@ -28,7 +28,8 @@ class gallaryTVCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
     func FeatchCompanyInformations(){
  
         DispatchQueue.global(qos: .background).async {
-            let param = ["id": "2363"]
+            let userDD = UserDefaults.standard.value(forKey: "IDDD") ?? ""
+            let param = ["id": "\(userDD)"]
             let companyDetailes = "https://elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
@@ -59,7 +60,7 @@ class gallaryTVCell: UITableViewCell, UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: 110, height: 120)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

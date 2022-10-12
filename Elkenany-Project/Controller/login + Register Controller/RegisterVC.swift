@@ -116,9 +116,12 @@ class RegisterVC: UIViewController , ASAuthorizationControllerDelegate {
                 
            print("hello")
                 hud.dismiss()
-                print(RegisterSuccess?.data?.apiToken)
+//                print(RegisterSuccess?.data?.apiToken)
                 //Save it in local storge
-                UserDefaults.standard.set(RegisterSuccess?.data?.apiToken, forKey: "API_TOKEN")
+              let register =  RegisterSuccess?.data?.apiToken ?? ""
+                UserDefaults.standard.set(register, forKey: "API_TOKEN")
+                UserDefaults.standard.set(true, forKey: "LOGIN_STAUTS")
+
                 let vc = (storyboard?.instantiateViewController(identifier: "TabBarVC"))! as TabBarVC
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion:nil)

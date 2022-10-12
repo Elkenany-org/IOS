@@ -51,6 +51,7 @@ class confirmPasswordViewController: UIViewController {
     
     
     @IBAction func backToConfirmation(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     

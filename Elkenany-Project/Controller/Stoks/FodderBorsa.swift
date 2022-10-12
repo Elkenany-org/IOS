@@ -76,9 +76,9 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
         // Do any additional setup after loading the view.
         SetupUI()
         FatchLocalBorsaFodder()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let result = formatter.string(from: date)
-        btnLabel.setTitle( result, for: .normal)
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let result = formatter.string(from: date)
+//        btnLabel.setTitle( result, for: .normal)
     }
     
     
