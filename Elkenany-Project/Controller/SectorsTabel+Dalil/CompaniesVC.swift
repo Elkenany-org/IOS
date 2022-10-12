@@ -405,6 +405,7 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
             if let vc = (storyboard?.instantiateViewController(identifier: "companyDetails")) as? companyDetails{
                 let idd = mainDataModel[indexPath.row].id
                 UserDefaults.standard.set(idd, forKey: "IDDD")
+                vc.keeeeeySS = "ss"
                 vc.CompanyIdFromCompanies = idd ?? 0
                 navigationController?.pushViewController(vc, animated: true)
             }

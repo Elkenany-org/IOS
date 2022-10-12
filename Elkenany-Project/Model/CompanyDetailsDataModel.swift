@@ -28,7 +28,8 @@ struct MainDataa: Codable {
     var faxs: [Fax]?
     var social: [Social]?
     var addresses: [Address]?
-    var gallary, products: [MainData]?
+    var gallary:[gallaryCom]?
+     var products: [productsCom]?
     var localstock: [Localstock]?
     
     var cities: [City]?
@@ -42,6 +43,19 @@ struct MainDataa: Codable {
         case createdAt = "created_at"
         case phones, emails, mobiles, faxs, social, addresses, gallary, products, localstock,  cities
     }
+}
+
+//gallary
+struct gallaryCom:Codable {
+    var id: Int?
+    var image: String?
+    var name: String?
+}
+
+//gallary
+struct productsCom:Codable {
+    var image: String?
+    var name: String?
 }
 
 // MARK: - Address
@@ -96,4 +110,5 @@ struct Social: Codable {
         case socialIcon = "social_icon"
     }
 }
+
 

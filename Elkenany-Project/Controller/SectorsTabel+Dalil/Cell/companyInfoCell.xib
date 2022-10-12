@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-Ms-MSh" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="20" y="122.5" width="110" height="18"/>
+                                <rect key="frame" x="20" y="122.5" width="110" height="11"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
@@ -84,22 +84,22 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dMD-Mh-sGo">
-                                <rect key="frame" x="448" y="117.5" width="66" height="28"/>
+                                <rect key="frame" x="448" y="117.5" width="66" height="13"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="عميل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gH-KN-Tbw">
-                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="13"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFe-vX-Dz0">
-                                        <rect key="frame" x="24.5" y="0.0" width="6.5" height="28"/>
+                                        <rect key="frame" x="24.5" y="0.0" width="6.5" height="13"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقيم من" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ry-vy-QZh">
-                                        <rect key="frame" x="37" y="0.0" width="29" height="28"/>
+                                        <rect key="frame" x="37" y="0.0" width="29" height="13"/>
                                         <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="11"/>
                                         <color key="textColor" name="kenanyblueblack"/>
                                         <nil key="highlightedColor"/>
@@ -221,19 +221,14 @@
             <point key="canvasLocation" x="123.18840579710145" y="74.665178571428569"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="dzk-Ms-MSh">
-            <size key="intrinsicContentSize" width="110" height="18"/>
-        </designable>
-    </designables>
     <resources>
         <image name="photo_2021-11-21 15.48.15" width="1024" height="500"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="kenanyGold">
-            <color red="1" green="0.58799999952316284" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.73333333333333328" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="kenanyGreen">
-            <color red="0.12549019607843137" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.14901960784313725" green="0.42745098039215684" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="kenanyblueblack">
             <color red="0.0" green="0.19607843137254902" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

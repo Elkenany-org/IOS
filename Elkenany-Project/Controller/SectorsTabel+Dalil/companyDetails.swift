@@ -16,6 +16,7 @@ class companyDetails: UIViewController {
     var companyDetailsModel:CompanyDetailsDataModel?
     var CompanyIdFromCompanies = 0
     var companyIDHomeSearch = 0
+    var keeeeeySS = ""
     
     
     
@@ -27,9 +28,14 @@ class companyDetails: UIViewController {
         companyDetailsTV.register(UINib(nibName: "companyInfoCell", bundle: nil), forCellReuseIdentifier: "companyInfoCell")
         companyDetailsTV.register(UINib(nibName: "aboutCompanyCell", bundle: nil), forCellReuseIdentifier: "aboutCompanyCell")
         companyDetailsTV.register(UINib(nibName: "CompanySocialCell", bundle: nil), forCellReuseIdentifier: "CompanySocialCell")
+        companyDetailsTV.register(UINib(nibName: "gallaryTVCell", bundle: nil), forCellReuseIdentifier: "gallaryTVCell")
+        companyDetailsTV.register(UINib(nibName: "proudectsCell", bundle: nil), forCellReuseIdentifier: "proudectsCell")
+
         companyDetailsTV.estimatedRowHeight = 150
         companyDetailsTV.rowHeight = UITableView.automaticDimension
         FeatchCompanyInformations()
+        
+        
     }
     
     func ss(ss:UITableViewCell){
@@ -100,7 +106,7 @@ class companyDetails: UIViewController {
 extension companyDetails:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,6 +132,23 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 ss(ss: cell2)
                 return cell2 }
         case 2:
+            if companyDetailsModel?.data?.gallary?.count  == 0 {
+            print("vvvvvvvvv")
+
+            }else{
+                if let cell2 = tableView.dequeueReusableCell(withIdentifier: "gallaryTVCell") as? gallaryTVCell{
+                    return cell2 }
+            }
+        case 3:
+            if companyDetailsModel?.data?.products?.count  == 0 {
+            print("vvvvvvvvv")
+
+            }else{
+                if let cell2 = tableView.dequeueReusableCell(withIdentifier: "proudectsCell") as? proudectsCell{
+                    return cell2 }
+            }
+
+        case 4:
             if let cell3 = tableView.dequeueReusableCell(withIdentifier: "CompanySocialCell") as? CompanySocialCell {
                 cell3.com_id = CompanyIdFromCompanies
                 ss(ss: cell3)
@@ -134,6 +157,9 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
                 
                 return cell3
             }
+            
+    
+          
             
         default:
             print("hhhhhhhhh")
@@ -180,7 +206,48 @@ extension companyDetails:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        switch indexPath.row{
+        case 0:
         return tableView.rowHeight
+
+        case 1:
+        return tableView.rowHeight
+            
+        case 2:
+            
+            if companyDetailsModel?.data?.gallary?.count  == 0 {
+                return 0
+
+            }else{
+                return 200
+            }
+            
+        case 3:
+            
+            if companyDetailsModel?.data?.products?.count  == 0 {
+                return 0
+
+            }else{
+                return 200
+            }
+            
+
+        case 4:
+      
+        return tableView.rowHeight
+
+       
+            
+            
+            
+
+            
+        default:
+            print("hhhhhhhhh")
+        }
+        
+        
+        return 0
         
     }
     

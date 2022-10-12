@@ -34,10 +34,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="DaS-sM-Kzd" secondAttribute="top" id="C36-aF-a10"/>
-                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="DaS-sM-Kzd" secondAttribute="leading" id="hqN-1F-1Os"/>
-                            <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="j8m-eO-2iX"/>
-                            <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="ySq-1h-vRl"/>
+                            <constraint firstAttribute="bottom" secondItem="Gp6-Zd-yIg" secondAttribute="bottom" id="F0N-Xf-e71"/>
+                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="top" secondItem="DaS-sM-Kzd" secondAttribute="top" id="KL3-sr-TVl"/>
+                            <constraint firstItem="Gp6-Zd-yIg" firstAttribute="leading" secondItem="DaS-sM-Kzd" secondAttribute="leading" id="Mvi-NV-maP"/>
+                            <constraint firstAttribute="trailing" secondItem="Gp6-Zd-yIg" secondAttribute="trailing" id="nQU-RN-71B"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -61,10 +61,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="DaS-sM-Kzd" secondAttribute="trailing" constant="5" id="Mc1-zw-BIA"/>
-                <constraint firstAttribute="bottom" secondItem="DaS-sM-Kzd" secondAttribute="bottom" constant="5" id="gFM-UR-mjz"/>
-                <constraint firstItem="DaS-sM-Kzd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jEU-ji-8h0"/>
-                <constraint firstItem="DaS-sM-Kzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="vLg-Ex-3oa"/>
+                <constraint firstItem="DaS-sM-Kzd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HyK-Yn-GJe"/>
+                <constraint firstAttribute="trailing" secondItem="DaS-sM-Kzd" secondAttribute="trailing" constant="5" id="P8W-Se-mpk"/>
+                <constraint firstAttribute="bottom" secondItem="DaS-sM-Kzd" secondAttribute="bottom" constant="5" id="PRt-6E-b2J"/>
+                <constraint firstItem="DaS-sM-Kzd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="YVc-6I-uJK"/>
             </constraints>
             <size key="customSize" width="295" height="268"/>
             <connections>

@@ -30,6 +30,8 @@
 		3208B8702785C600000E6C84 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3208B86E2785C600000E6C84 /* CompanyCell.xib */; };
 		32136C9A28BB77B800A22154 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */; };
 		32136C9B28BB77B800A22154 /* CompaniesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */; };
+		3219997328F6B44400DFB1E8 /* GallaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3219997128F6B44400DFB1E8 /* GallaryCell.swift */; };
+		3219997428F6B44400DFB1E8 /* GallaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3219997228F6B44400DFB1E8 /* GallaryCell.xib */; };
 		3221CBCF28E32013005681AA /* forget_password_send_phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBCE28E32013005681AA /* forget_password_send_phone.swift */; };
 		3221CBD428E32D6B005681AA /* confirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBD328E32D6B005681AA /* confirmPasswordViewController.swift */; };
 		3221CBD928E33E7C005681AA /* password_code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221CBD828E33E7C005681AA /* password_code.swift */; };
@@ -291,6 +293,10 @@
 		32FAB7B927789A27002400A2 /* MainInfoProfil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7B827789A27002400A2 /* MainInfoProfil.swift */; };
 		32FAB7BE27789A5C002400A2 /* PrivicyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */; };
 		32FD4D3A28EACA4900680C2C /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32FD4D3928EACA4900680C2C /* AuthenticationServices.framework */; };
+		32FE64FA28F6B7FD0048E6BF /* gallaryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FE64F828F6B7FD0048E6BF /* gallaryTVCell.swift */; };
+		32FE64FB28F6B7FD0048E6BF /* gallaryTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FE64F928F6B7FD0048E6BF /* gallaryTVCell.xib */; };
+		32FE650128F6CACD0048E6BF /* proudectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FE64FF28F6CACD0048E6BF /* proudectsCell.swift */; };
+		32FE650228F6CACD0048E6BF /* proudectsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FE650028F6CACD0048E6BF /* proudectsCell.xib */; };
 		32FFB0C7283E2804006BA87C /* magazineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FFB0C6283E2804006BA87C /* magazineModel.swift */; };
 		D0E16A948071A57CC628E641 /* Pods_Elkenany_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6966F1A87CC759DF3D17AF7 /* Pods_Elkenany_ProjectTests.framework */; };
 		E3472D6B3C26BF3D04F0DC4E /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F293128AA3C4CC876CE76F /* Pods_Elkenany_Project_Elkenany_ProjectUITests.framework */; };
@@ -338,6 +344,8 @@
 		3208B86E2785C600000E6C84 /* CompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
 		32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
 		32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompaniesCollectionViewCell.xib; sourceTree = "<group>"; };
+		3219997128F6B44400DFB1E8 /* GallaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryCell.swift; sourceTree = "<group>"; };
+		3219997228F6B44400DFB1E8 /* GallaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryCell.xib; sourceTree = "<group>"; };
 		3221CBCE28E32013005681AA /* forget_password_send_phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forget_password_send_phone.swift; sourceTree = "<group>"; };
 		3221CBD328E32D6B005681AA /* confirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPasswordViewController.swift; sourceTree = "<group>"; };
 		3221CBD828E33E7C005681AA /* password_code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = password_code.swift; sourceTree = "<group>"; };
@@ -610,6 +618,10 @@
 		32FAB7B827789A27002400A2 /* MainInfoProfil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoProfil.swift; sourceTree = "<group>"; };
 		32FAB7BD27789A5C002400A2 /* PrivicyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivicyProfile.swift; sourceTree = "<group>"; };
 		32FD4D3928EACA4900680C2C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		32FE64F828F6B7FD0048E6BF /* gallaryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gallaryTVCell.swift; sourceTree = "<group>"; };
+		32FE64F928F6B7FD0048E6BF /* gallaryTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = gallaryTVCell.xib; sourceTree = "<group>"; };
+		32FE64FF28F6CACD0048E6BF /* proudectsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proudectsCell.swift; sourceTree = "<group>"; };
+		32FE650028F6CACD0048E6BF /* proudectsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = proudectsCell.xib; sourceTree = "<group>"; };
 		32FFB0C6283E2804006BA87C /* magazineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magazineModel.swift; sourceTree = "<group>"; };
 		5696519D039CFDC8B713BBAC /* Pods-Elkenany-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-ProjectTests/Pods-Elkenany-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A6B093D29BC88767023F4AF1 /* Pods-Elkenany-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Elkenany-Project.debug.xcconfig"; path = "Target Support Files/Pods-Elkenany-Project/Pods-Elkenany-Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1160,6 +1172,12 @@
 				3235B06627F7CFAF00657A7B /* logosTest.xib */,
 				32136C9828BB77B800A22154 /* CompaniesCollectionViewCell.swift */,
 				32136C9928BB77B800A22154 /* CompaniesCollectionViewCell.xib */,
+				3219997128F6B44400DFB1E8 /* GallaryCell.swift */,
+				3219997228F6B44400DFB1E8 /* GallaryCell.xib */,
+				32FE64F828F6B7FD0048E6BF /* gallaryTVCell.swift */,
+				32FE64F928F6B7FD0048E6BF /* gallaryTVCell.xib */,
+				32FE64FF28F6CACD0048E6BF /* proudectsCell.swift */,
+				32FE650028F6CACD0048E6BF /* proudectsCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1602,6 +1620,7 @@
 				322519B6276F7842001096DD /* SliderCell.xib in Resources */,
 				32609592275F757A0056A002 /* SelectedSectorCell.xib in Resources */,
 				326B75A12776B6AA00007F55 /* haederForborsa.xib in Resources */,
+				32FE650228F6CACD0048E6BF /* proudectsCell.xib in Resources */,
 				32A84DB527E9626400C1D3EF /* detailOne.xib in Resources */,
 				3272F46C276E99B200973031 /* StoreCell.xib in Resources */,
 				32034F6027661E1800D6F863 /* companyInfoCell.xib in Resources */,
@@ -1635,6 +1654,7 @@
 				326B759A2776B5A200007F55 /* localBorsaCell.xib in Resources */,
 				3293980A2771F5A000607C5B /* Cairo-Bold.ttf in Resources */,
 				32FAB7A927786DE3002400A2 /* EditeProfileCell.xib in Resources */,
+				3219997428F6B44400DFB1E8 /* GallaryCell.xib in Resources */,
 				326D485B2782F24B009B298C /* testBorsaCell.xib in Resources */,
 				32F5FD1B2768BA6700E4DFE1 /* collectioncell.xib in Resources */,
 				326AAC19278C844A002EF222 /* DetailsCell.xib in Resources */,
@@ -1650,6 +1670,7 @@
 				32F5FD222768C58400E4DFE1 /* newsDetailsCell.xib in Resources */,
 				326D48622782FAED009B298C /* StanderCell.xib in Resources */,
 				326E1E7D27677435008725DD /* logosCell.xib in Resources */,
+				32FE64FB28F6B7FD0048E6BF /* gallaryTVCell.xib in Resources */,
 				3235B06827F7CFAF00657A7B /* logosTest.xib in Resources */,
 				3268BCBB27EC83C50083E678 /* comparCell.xib in Resources */,
 				32136C9B28BB77B800A22154 /* CompaniesCollectionViewCell.xib in Resources */,
@@ -1831,6 +1852,7 @@
 				326AC1D6284E13940005D0EA /* shipsVC.swift in Sources */,
 				322D196427E274B40017A2B8 /* MansouraLocation.swift in Sources */,
 				32B97D4F276F3AB30069598D /* AdsStoreDetailsDataModel.swift in Sources */,
+				32FE650128F6CACD0048E6BF /* proudectsCell.swift in Sources */,
 				32366BE3275BC81B00DC2F98 /* SectorsCell.swift in Sources */,
 				325AE33628D9B5730084D5F2 /* MagazineCell.swift in Sources */,
 				32438A0C282BB0FC000F3AD6 /* Speakers.swift in Sources */,
@@ -1964,6 +1986,7 @@
 				32B97D5F276F5ABB0069598D /* BorsaHomeDataModel.swift in Sources */,
 				32609597275F75DA0056A002 /* CompanyGuideCell.swift in Sources */,
 				32438A11282BB20E000F3AD6 /* addPlaces.swift in Sources */,
+				3219997328F6B44400DFB1E8 /* GallaryCell.swift in Sources */,
 				3268BCA327EC64790083E678 /* ComapringHome.swift in Sources */,
 				32C4EFC92786FFF30034BD9F /* statisticsStockSectionsModel.swift in Sources */,
 				3208B86F2785C600000E6C84 /* CompanyCell.swift in Sources */,
@@ -1994,6 +2017,7 @@
 				32628C2B282F993300AB0068 /* ReviewsVC.swift in Sources */,
 				32B4671127E86A64002C32A5 /* FilterHome.swift in Sources */,
 				32438A07282BADEE000F3AD6 /* Showers.swift in Sources */,
+				32FE64FA28F6B7FD0048E6BF /* gallaryTVCell.swift in Sources */,
 				32628C21282F95D800AB0068 /* showVC.swift in Sources */,
 				3298AB7027A0130D00249D4E /* subFilterCity.swift in Sources */,
 				32CEEE23275ADB77007E6FC6 /* TabBarVC.swift in Sources */,
