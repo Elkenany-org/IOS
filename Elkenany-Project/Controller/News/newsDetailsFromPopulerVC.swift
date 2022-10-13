@@ -41,7 +41,7 @@ class newsDetailsFromPopulerVC: UIViewController {
 //            let idParameter = UserDefaults.standard.string(forKey: "NEWS_ID")
             let param = ["id": "\(self.id_MoreNwes)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
-            let newsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsURL = "https://admin.elkenany.com/api/news/news-detials?id="
 
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{

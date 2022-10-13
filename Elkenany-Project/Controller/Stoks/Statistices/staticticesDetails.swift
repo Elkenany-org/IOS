@@ -34,7 +34,7 @@ class staticticesDetails: UIViewController {
     //MARK:- FeatchData for Borsa [Company Logos]
     func featchBorsaDetails(){
         DispatchQueue.global(qos: .background).async {
-            let companyDetailsurl = "https://elkenany.com/api/localstock/statistics-detials-local-stock?id="
+            let companyDetailsurl = "https://admin.elkenany.com/api/localstock/statistics-detials-local-stock?id="
             let idParameter = UserDefaults.standard.string(forKey: "ID_Details")
             let param = ["id": "5"]
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailsurl, parameters: param, headers: nil, method: .get) { (Detailssuccess:DetailsDetailsMainModel?, Detailsfilier:DetailsDetailsMainModel?, error) in

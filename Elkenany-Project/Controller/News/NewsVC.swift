@@ -57,7 +57,7 @@ class NewsVC: UIViewController {
     //MARK:- Data of sectores at home
     func featchDataSelectors(){
         let api_token = String(UserDefaults.standard.string(forKey: "API_TOKEN") ?? "")
-        let sectorsUrl = "https://elkenany.com/api/news/news?type=farm&sort=&search="
+        let sectorsUrl = "https://admin.elkenany.com/api/news/news?type=farm&sort=&search="
         let headers:HTTPHeaders = ["app-id": api_token ]
         APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: headers, method: .get) {[weak self] (NewsSuccess:AllNewsDataModel?, NewsError:AllNewsDataModel?, error) in
             guard let self = self else {return}
@@ -83,7 +83,7 @@ class NewsVC: UIViewController {
             let param = ["type": "\(self.typeFromhome)" , "sort": "\(1)" , "page" : "\(self.currentpaga)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&page="
+            let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&page="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -126,7 +126,7 @@ class NewsVC: UIViewController {
             let param = ["type": "\(self.typeFromhome)" , "sort" : "\(1)"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -172,7 +172,7 @@ class NewsVC: UIViewController {
             let param = ["type": "poultry"]
 
             print("this para", param)
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 
@@ -225,7 +225,7 @@ class NewsVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&search="
             let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
@@ -431,7 +431,7 @@ extension NewsVC:FilterDone {
            
             let param = ["type": "\(typeFilter ?? "")" ,  "search": "\(sortFilter ?? "" )" ]
             let headers = ["app-id": "\(api_token ?? "")" ]
-            let newsURL = "https://elkenany.com/api/news/news?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&search="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 if let error = error{
                     hud.dismiss()

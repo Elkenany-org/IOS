@@ -21,7 +21,7 @@ class confirmPasswordViewController: UIViewController {
     }
     
     func forgetPasswordServicee(){
-        let sectorsUrl = "https://elkenany.com/api/forget-password-code"
+        let sectorsUrl = "https://admin.elkenany.com/api/forget-password-code"
         let param = ["code": "\(changeTextField.text ?? "")" , "email": "\(emailll)" , "password" : "\(newPasswordTextField.text ?? "")" ]
         let headerss = ["Accept": "application/json"]
         APIServiceForQueryParameter.shared.fetchData(url: sectorsUrl , parameters: param, headers: headerss, method: .post) {[weak self] (NewsSuccess:passwordCodeData?, NewsError:passwordCodeData?, error) in

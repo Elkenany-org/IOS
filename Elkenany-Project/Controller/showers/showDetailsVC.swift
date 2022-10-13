@@ -64,7 +64,7 @@ class showDetailsVC: UIViewController {
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show/?id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
@@ -111,7 +111,7 @@ class showDetailsVC: UIViewController {
 //        let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idS)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show/?id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
@@ -159,7 +159,7 @@ class showDetailsVC: UIViewController {
         let idShowHome = UserDefaults.standard.string(forKey: "IDDHOME") ?? ""
         let parm = ["id" : "\(idShowHome)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show/?id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
@@ -204,7 +204,7 @@ class showDetailsVC: UIViewController {
         let idShowHome = UserDefaults.standard.string(forKey: "IDDHOMEREC") ?? ""
         let parm = ["id" : "\(idShowHome)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show/?id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
@@ -374,7 +374,7 @@ class showDetailsVC: UIViewController {
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["show_id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show-going"
+            let url = "https://admin.elkenany.com/api/showes/one-show-going"
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
@@ -420,7 +420,7 @@ class showDetailsVC: UIViewController {
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["show_id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show-notgoing"
+            let url = "https://admin.elkenany.com/api/showes/one-show-notgoing"
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in

@@ -76,7 +76,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
     
     //MARK:- Featch sectors
     func featchDataSelectors(){
-        let sectorsUrl = "https://elkenany.com/api/guide/section/?type=farm&sort="
+        let sectorsUrl = "https://admin.elkenany.com/api/guide/section/?type=farm&sort="
         APIService.shared.fetchData(url: sectorsUrl , parameters: nil, headers: nil, method: .get) {[weak self] (NewsSuccess:GuideCompaniesDataModel?, NewsError:GuideCompaniesDataModel?, error) in
             guard let self = self else {return}
             if let error = error{
@@ -103,7 +103,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
         
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.sectoreTypeFromHome)"]
-            let companyGuide = "https://elkenany.com/api/guide/section/?type=&sort=&search="
+            let companyGuide = "https://admin.elkenany.com/api/guide/section/?type=&sort=&search="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:GuideCompaniesDataModel?, FailureRequest:GuideCompaniesDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -163,7 +163,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
             print("this is token\(api_token ?? "")")
             
             
-            let SearchGuide = "https://elkenany.com/api/guide/section/?type=&search="
+            let SearchGuide = "https://admin.elkenany.com/api/guide/section/?type=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
                 if let error = error{
@@ -441,7 +441,7 @@ extension CompanyGuideVC: FilterDone{
             let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
             print("new para" , param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")"  ]
-            let FilterGuide = "https://elkenany.com/api/guide/section/?type=&sort="
+            let FilterGuide = "https://admin.elkenany.com/api/guide/section/?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

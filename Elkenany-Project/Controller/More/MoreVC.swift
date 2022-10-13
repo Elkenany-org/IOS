@@ -66,7 +66,7 @@ class MoreVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headerrrs = ["Authorization": "Bearer \(api_token ?? "")"]
-            let logoutURL = "https://elkenany.com/api/logout"
+            let logoutURL = "https://admin.elkenany.com/api/logout"
             APIServiceForQueryParameter.shared.fetchData(url: logoutURL, parameters: nil, headers: headerrrs, method: .post) { (logSuccess:LogoutModel?, logFilier:LogoutModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -95,7 +95,7 @@ class MoreVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let profileURL = "https://elkenany.com/api/profile"
+            let profileURL = "https://admin.elkenany.com/api/profile"
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:ProfileData?, filier:ProfileData?, error) in
                 if let error = error{
@@ -120,11 +120,37 @@ class MoreVC: UIViewController {
     }
     
     
+    @IBAction func facebookBTN(_ sender: Any) {
+        if let url = URL(string:"https://www.facebook.com/elkenanyapp") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
+            } else {
+                print("Cannot open URL")
+            }
+    }
+    }
     
     
+    @IBAction func instaBTN(_ sender: Any) {
+        if let url = URL(string:"https://www.instagram.com/elkenany.app/") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
+            } else {
+                print("Cannot open URL")
+            }
+    }
+    }
     
     
-    
+    @IBAction func webBTN(_ sender: Any) {
+        if let url = URL(string:"https://www.elkenany.com/#/home") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
+            } else {
+                print("Cannot open URL")
+            }
+    }
+    }
     
     
     

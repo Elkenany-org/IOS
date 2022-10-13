@@ -40,7 +40,7 @@ class chatVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
-            let url = "https://elkenany.com/api/store/chats-massages?id="
+            let url = "https://admin.elkenany.com/api/store/chats-massages?id="
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .get) { (success:ChatMessages?, filier:ChatMessages?, error) in
                 if let error = error{
@@ -77,7 +77,7 @@ class chatVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
-            let url = "https://elkenany.com/api/store/add-massages"
+            let url = "https://admin.elkenany.com/api/store/add-massages"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: headers, method: .post) { (success:SendMessage?, filier:SendMessage?, error) in
                 if let error = error{

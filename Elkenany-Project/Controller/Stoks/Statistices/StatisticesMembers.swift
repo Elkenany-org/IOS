@@ -55,7 +55,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             let idParam = UserDefaults.standard.string(forKey: "he") ?? ""
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
-            let FromPickerBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
+            let FromPickerBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
             let param = ["type": "\(TParam)" , "to": "\(result)" , "from" : "\(dateFrom)" , "id" : "\(idParam)"]
             print(param)
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
@@ -103,7 +103,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             let idParam = UserDefaults.standard.string(forKey: "he") ?? ""
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
-            let toPickerBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-members?type=&from=&to=&id=&mem_id="
+            let toPickerBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&from=&to=&id=&mem_id="
             let param = ["type": "\(TParam)" , "to": "\(result)" , "from" : "\(dateTo )" , "id" : "\(idParam)"]
             print("\(param)")
             APIServiceForQueryParameter.shared.fetchData(url: toPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in
@@ -140,7 +140,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
             let param = ["id": "\(idParam)", "type": "\(TParam)" , "to" : "\(result)" , "mem_id" : "\(ComID)" ]
-            let companyDetailsurl = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
+            let companyDetailsurl = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&id=&from=&to=&mem_id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailsurl, parameters: param, headers: nil, method: .get) { (Detailssuccess:statInsideFodder?, Detailsfilier:statInsideFodder?, error) in
                 if let error = error{
                     print("============ error \(error)")
@@ -171,7 +171,7 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
             let idParam = UserDefaults.standard.string(forKey: "he") ?? ""
             let TParam = UserDefaults.standard.string(forKey: "she") ?? ""
 
-            let toPickerBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-members?type=&from=&to=&id=&mem_id="
+            let toPickerBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&from=&to=&id=&mem_id="
             let param = ["type": "\(TParam)" , "to": "\(result)"  , "id" : "\(idParam)"]
             print("\(param)")
             APIServiceForQueryParameter.shared.fetchData(url: toPickerBorsaURL, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in

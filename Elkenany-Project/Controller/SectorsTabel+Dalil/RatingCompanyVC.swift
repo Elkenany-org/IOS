@@ -112,7 +112,7 @@ class RatingCompanyVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["maga_id": "\(self.magazineID)", "reat": "\(self.rat)"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            let ratingUrl = "https://elkenany.com/api/magazine/rating-magazine"
+            let ratingUrl = "https://admin.elkenany.com/api/magazine/rating-magazine"
             APIServiceForQueryParameter.shared.fetchData(url: ratingUrl , parameters: param, headers: headers, method: .post) { (success:MagazineRating?, filier:MagazineRating?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

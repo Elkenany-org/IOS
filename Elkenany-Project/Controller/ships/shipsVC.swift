@@ -65,7 +65,7 @@ class shipsVC: UIViewController {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let shipsURL = "https://elkenany.com/api/ships/all-ships?date="
+            let shipsURL = "https://admin.elkenany.com/api/ships/all-ships?date="
             APIServiceForQueryParameter.shared.fetchData(url: shipsURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 
                 if let error = error{
@@ -164,7 +164,7 @@ extension shipsVC:BackDate{
         let param = ["date" : "\(date )"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
-            let shipsArivalURL = "https://elkenany.com/api/ships/all-ships?date="
+            let shipsArivalURL = "https://admin.elkenany.com/api/ships/all-ships?date="
             APIServiceForQueryParameter.shared.fetchData(url: shipsArivalURL,  parameters: param, headers: nil, method: .get) { (Datasuccess:ShipsModel?, Datafailure:ShipsModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

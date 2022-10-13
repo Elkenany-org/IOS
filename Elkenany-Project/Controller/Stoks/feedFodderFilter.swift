@@ -63,7 +63,7 @@ class feedFodderFilter: UIViewController {
             let stoID = UserDefaults.standard.string(forKey: "he") ?? ""
 
             let param = ["stock_id": "\(stoID)" , "mini_id" : "\(self.iddddd)"]
-            let subGuideFilterURL = "https://elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:FeedModelData?, filier:FeedModelData?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -96,7 +96,7 @@ class feedFodderFilter: UIViewController {
             let stoID = UserDefaults.standard.string(forKey: "he") ?? ""
 
             let param = ["stock_id": "\(stoID)" , "mini_id" : "\(self.iddddd)"]
-            let subGuideFilterURL = "https://elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/localstock/feeds-items?stock_id=&mini_id=&food_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:FeedModelData?, filier:FeedModelData?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

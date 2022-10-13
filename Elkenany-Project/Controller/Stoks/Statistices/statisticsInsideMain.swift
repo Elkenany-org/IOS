@@ -20,7 +20,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
         ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
-            let ListOfBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to=&id="
+            let ListOfBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to=&id="
             let typeParameter = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
             let param = ["type": "\(self.stoType)", "to": "\(dateFrom)" ,  "from": "\(result)" ]
             print("oooo", param)
@@ -74,7 +74,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(StokeID)", "type": "\(self.stoType)" , "from" : "2022-03-18" , "to" : "\(result)" ]
             print("-------para \(param)")
-            let chooseStockeURL = "https://elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to=&id="
+            let chooseStockeURL = "https://admin.elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to=&id="
             APIServiceForQueryParameter.shared.fetchData(url: chooseStockeURL, parameters: param, headers: nil, method: .get) { (Detailssuccess:StatisticsStockSectionsModel?, Detailsfilier:StatisticsStockSectionsModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -104,7 +104,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let ListOfBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to="
+            let ListOfBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to="
             //                    let typeParameter = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
             let param = ["type": "\(self.stoType)" , "to": "\(result)" ,  "from": "\(dateTo)" ]
             print("oooo", param)
@@ -148,7 +148,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let ListOfBorsaURL = "https://elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to="
+            let ListOfBorsaURL = "https://admin.elkenany.com/api/localstock/statistics-stock-sections?type=&from=&to="
             let param = ["type": "\(self.stoType)" , "to": "\(result)"  ]
             print("oooo", param)
             APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURL, parameters: param, headers: nil, method: .get) { (success:StatisticsStockSectionsModel?, filier:StatisticsStockSectionsModel?, error) in

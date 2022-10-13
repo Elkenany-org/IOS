@@ -33,7 +33,7 @@ class organizationVC: UIViewController {
         ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/ships/statistics-ships"
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{

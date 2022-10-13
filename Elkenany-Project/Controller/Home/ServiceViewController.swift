@@ -170,11 +170,11 @@ class ServiceViewController: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
-            let Servicesurl = "https://elkenany.com/api/home-services"
+            let Servicesurl = "https://admin.elkenany.com/api/home-services"
             
             APIServiceForQueryParameter.shared.fetchData(url: Servicesurl,
                                                          parameters: nil,
-                                                         headers: headers,
+                                                         headers: nil,
                                                          method: .get) {
                 (SuccessfulRequest:HomeTestModelss?,
                  FailureRequest:HomeTestModelss?,

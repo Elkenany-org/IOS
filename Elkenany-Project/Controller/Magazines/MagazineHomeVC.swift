@@ -68,7 +68,7 @@ class MagazineHomeVC: UIViewController {
     func FeatchDataOfectores(){
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeOfSectore)"  ]
-            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
+            let companyGuide = "https://admin.elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
                 if let error = error{
                     print("============ error \(error)")
@@ -92,7 +92,7 @@ class MagazineHomeVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let param = ["type": "\(self.typeOfSectore)"  ]
             let haderrrr = ["android": "" ]
-            let companyGuide = "https://elkenany.com/api/magazine/magazines?type=&sort="
+            let companyGuide = "https://admin.elkenany.com/api/magazine/magazines?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: haderrrr, method: .get) { (SuccessfulRequest:MagazineS?, FailureRequest:MagazineS?, error) in
                 if let error = error{
                     
@@ -172,7 +172,7 @@ class MagazineHomeVC: UIViewController {
         ProgressHUD.show()
         let param = ["type": "\(self.typeOfSectore)" , "search" : self.searchBar.text ?? ""]
         DispatchQueue.global(qos: .background).async {
-            let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&search="
+            let SearchGuide = "https://admin.elkenany.com/api/magazine/magazines?type=&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -389,7 +389,7 @@ extension MagazineHomeVC: FilterShowMagazine {
         
         
         DispatchQueue.global(qos: .background).async {
-            let SearchGuide = "https://elkenany.com/api/magazine/magazines?type=&sort=&country_id="
+            let SearchGuide = "https://admin.elkenany.com/api/magazine/magazines?type=&sort=&country_id="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:MagazineS?, filier:MagazineS?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

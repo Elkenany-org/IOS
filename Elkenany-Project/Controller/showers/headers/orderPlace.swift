@@ -40,7 +40,7 @@ class orderPlace: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
             let headers = ["Authorization": "Bearer \(api_token)" ]
-            let url = "https://elkenany.com/api/showes/one-show-place"
+            let url = "https://admin.elkenany.com/api/showes/one-show-place"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
                 if let error = error{

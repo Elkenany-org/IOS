@@ -58,7 +58,7 @@ class MagazinVC: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.IdFromMagazine)"]
-            let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            let companyDetailes = "https://admin.elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -86,7 +86,7 @@ class MagazinVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let idOfHome = UserDefaults.standard.string(forKey: "testt")
             let param = ["id": "\(idOfHome ?? "")"]
-            let companyDetailes = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            let companyDetailes = "https://admin.elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

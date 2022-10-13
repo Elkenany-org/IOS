@@ -93,7 +93,7 @@ class ProfileVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let profileURL = "https://elkenany.com/api/profile"
+            let profileURL = "https://admin.elkenany.com/api/profile"
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:ProfileData?, filier:ProfileData?, error) in
                 if let error = error{
@@ -128,7 +128,7 @@ class ProfileVC: UIViewController {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let profileURL = "https://elkenany.com/api/logout"
+            let profileURL = "https://admin.elkenany.com/api/logout"
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: profileURL, parameters: nil, headers: headers, method: .get) { (success:LogoutModel?, filier:LogoutModel?, error) in
                 if let error = error{

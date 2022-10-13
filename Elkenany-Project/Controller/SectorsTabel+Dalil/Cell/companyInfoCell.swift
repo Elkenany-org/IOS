@@ -35,7 +35,7 @@ class companyInfoCell: UITableViewCell {
     func FeatchDataOfCompanyInformation(){
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/guide/company/?id="
+            let companyGuide = "https://admin.elkenany.com/api/guide/company/?id="
             let idParameter = UserDefaults.standard.string(forKey: "COM_ID")
             let param = ["id": "\(idParameter ?? "")"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]

@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 
-let RegisterURL = "https://elkenany.com/api/register"
-let LoginURL = "https://elkenany.com/api/login"
-let HomeSectorsURL = "https://elkenany.com/api/home-sectors"
-let HomeServiceURL = "https://elkenany.com/api/home-services"
-let companyRating = "https://elkenany.com/api/guide/rating-company"
+let RegisterURL = "https://admin.elkenany.com/api/register"
+let LoginURL = "https://admin.elkenany.com/api/login"
+let HomeSectorsURL = "https://admin.elkenany.com/api/home-sectors"
+let HomeServiceURL = "https://admin.elkenany.com/api/home-services"
+let companyRating = "https://admin.elkenany.com/api/guide/rating-company"
 
 
 

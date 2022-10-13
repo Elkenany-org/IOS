@@ -58,7 +58,7 @@ class MainStoreVC: UIViewController  {
             let param = ["type": "\(self.typeFromHomeForStore)" , "sort" : "1"]
             let headers = ["app-id": "\(id_rec)" ]
             
-            let companyGuide = "https://elkenany.com/api/store/ads-store?type=&sort="
+            let companyGuide = "https://admin.elkenany.com/api/store/ads-store?type=&sort="
             print("URL", companyGuide)
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 
@@ -129,7 +129,7 @@ class MainStoreVC: UIViewController  {
 //            let type = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
             
             print("this is token\(api_token ?? "")")
-            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/store/ads-store?type=&sort=&search="
             let param = ["type": "\(self.typeFromHomeForStore)", "search" : "\(saerchParamter)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
@@ -160,7 +160,7 @@ class MainStoreVC: UIViewController  {
         ProgressHUD.show()
         
         DispatchQueue.global(qos: .background).async {
-            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort=&search="
+            let newsURL = "https://admin.elkenany.com/api/store/ads-store?type=&sort=&search="
             let param = ["type": "\(self.typeFromHomeForStore)"]
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
@@ -351,7 +351,7 @@ extension MainStoreVC:FilterDone {
             
             let param = ["type": "\(typeFilter ?? "")" ,  "sort": "1" ]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            let newsURL = "https://elkenany.com/api/store/ads-store?type=&sort="
+            let newsURL = "https://admin.elkenany.com/api/store/ads-store?type=&sort="
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
                     hud.dismiss()

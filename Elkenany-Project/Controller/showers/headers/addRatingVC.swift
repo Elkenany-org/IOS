@@ -35,7 +35,7 @@ class addRatingVC: UIViewController {
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
-            let url = "https://elkenany.com/api/showes/one-show-reat"
+            let url = "https://admin.elkenany.com/api/showes/one-show-reat"
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .post) { (success:AddPlaces?, filier:AddPlaces?, error) in
                 if let error = error{

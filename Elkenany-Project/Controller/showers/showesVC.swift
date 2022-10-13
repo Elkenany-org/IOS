@@ -68,7 +68,7 @@ class showesVC: UIViewController {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         
-        let sectorsUrl = "https://elkenany.com/api/showes/all-showes?type=&country_id=1"
+        let sectorsUrl = "https://admin.elkenany.com/api/showes/all-showes?type=&country_id=1"
         let param = ["type": "\(self.typeFromhome)" ]
         let headere = ["android": "" ]
 
@@ -102,7 +102,7 @@ class showesVC: UIViewController {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         
-        let sectorsUrl = "https://elkenany.com/api/showes/all-showes?type=&country_id=1"
+        let sectorsUrl = "https://admin.elkenany.com/api/showes/all-showes?type=&country_id=1"
         let param = ["type": "\(self.typeFromhome)" ]
         let headere = ["android": "" ]
 
@@ -139,7 +139,7 @@ class showesVC: UIViewController {
         ProgressHUD.show()
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
-            let newsURL = "https://elkenany.com/api/showes/all-showes?type=&search="
+            let newsURL = "https://admin.elkenany.com/api/showes/all-showes?type=&search="
             let param = ["type": "\(self.typeFromhome)", "search" : "\(saerchParamter)"]
             let headere = ["android": "" ]
 
@@ -397,7 +397,7 @@ extension showesVC: FilterShowMagazine {
         
         
         DispatchQueue.global(qos: .background).async {
-            let SearchGuide = "https://elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
+            let SearchGuide = "https://admin.elkenany.com/api/showes/all-showes?type=&city_id=&sort=&country_id="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: nil, method: .get) { (success:ShowesHome?, filier:ShowesHome?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

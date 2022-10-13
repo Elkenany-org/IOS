@@ -47,7 +47,7 @@ class ReviewsVC: UIViewController {
         let parm = ["id": "5"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN") ?? ""
-            let url = "https://elkenany.com/api/showes/one-show-review/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show-review/?id="
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShowReview?, filier:ShowReview?, error) in
                 if let error = error{

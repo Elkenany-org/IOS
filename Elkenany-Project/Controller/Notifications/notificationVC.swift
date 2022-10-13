@@ -60,7 +60,7 @@ class notificationVC: UIViewController {
         let headers = ["Authorization": "Bearer \(api_token)" ]
         DispatchQueue.global(qos: .background).async {
             
-            let notURL = "https://elkenany.com/api/v2/notifications"
+            let notURL = "https://admin.elkenany.com/api/v2/notifications"
             APIServiceForQueryParameter.shared.fetchData(url: notURL, parameters: nil, headers: headers, method: .get) { (success:NotificationModel?, filier:NotificationModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

@@ -32,7 +32,7 @@ class AboutVC: UIViewController {
         
         
         DispatchQueue.global(qos: .background).async {
-            let newsDetailsURL = "https://elkenany.com/api/about-us"
+            let newsDetailsURL = "https://admin.elkenany.com/api/about-us"
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: nil, headers: nil, method: .get) { (NewsDetailssuccess:AboutUSModell?, NewsDetailsfilier:AboutUSModell?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

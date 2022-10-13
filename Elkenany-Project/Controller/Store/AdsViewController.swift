@@ -56,7 +56,7 @@ class AdsViewController: UIViewController, UIImagePickerControllerDelegate & UIN
 
         let headers = ["Authorization":"Bearer \(api_token)"]
         //Networking
-        let url = "https://elkenany.com/api/store/add-ads-store"
+        let url = "https://admin.elkenany.com/api/store/add-ads-store"
         APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm , headers: headers, method: .post) { (Success:AddAds?, Failed:AddAds?, error) in
             if let error = error {
                 // Internet Offline

@@ -42,7 +42,7 @@ class StatShipVC: UIViewController {
         ProgressHUD.show()
         let parm = ["id" : "5"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/ships/statistics-ships"
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships"
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: nil, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
@@ -159,7 +159,7 @@ extension StatShipVC: countryReturn{
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["country" : "\(country)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships?country="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships?country="
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
@@ -205,7 +205,7 @@ extension StatShipVC: MonshaReturn{
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["type" : "\(Monsha)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships?type="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships?type="
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
                 if let error = error{
@@ -253,7 +253,7 @@ extension StatShipVC:  DataBackProtocol {
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["from" : "\(dateFrom)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships?from="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships?from="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in
@@ -305,7 +305,7 @@ extension StatShipVC: DataBackProtocolTwo  {
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["to" : "\(dateTo)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships?to="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships?to="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShipsStatModel?, filier:ShipsStatModel?, error) in

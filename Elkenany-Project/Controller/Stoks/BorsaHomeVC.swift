@@ -97,7 +97,7 @@ class BorsaHomeVC: UIViewController  {
         let param = ["type": "\(self.Sector)" , "search": "\(searchParamater)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
@@ -130,7 +130,7 @@ class BorsaHomeVC: UIViewController  {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "\(self.Sector)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
@@ -201,7 +201,7 @@ class BorsaHomeVC: UIViewController  {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let param = ["type": "poultry"]
             let headers = ["app-id": "\(api_token ?? "")" ]
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
             
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
@@ -247,7 +247,7 @@ class BorsaHomeVC: UIViewController  {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
             let param = ["type": "\(self.sectorTypeFromHeader )"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (success:BorsaHomeDataModel?, filier:BorsaHomeDataModel?, error) in
@@ -643,7 +643,7 @@ extension BorsaHomeVC : FilterDone {
         let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-sections?type=&search=&sort="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search=&sort="
             let headers = ["app-id": "\(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{

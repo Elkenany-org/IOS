@@ -27,7 +27,7 @@ class ForgetPasswordVC: UIViewController {
     
     //MARK: sectores
     func forgetPasswordService(){
-        let sectorsUrl = "https://elkenany.com/api/forget-password"
+        let sectorsUrl = "https://admin.elkenany.com/api/forget-password"
         let param = ["email": "\(emailTextField.text ?? "")" ]
         let headerss = ["Accept": "application/json"]
         APIServiceForQueryParameter.shared.fetchData(url: sectorsUrl , parameters: param, headers: headerss, method: .post) {[weak self] (NewsSuccess:Forget_password_send_phone?, NewsError:Forget_password_send_phone?, error) in

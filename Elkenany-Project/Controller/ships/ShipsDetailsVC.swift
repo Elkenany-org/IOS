@@ -45,7 +45,7 @@ func showeDataServiceeee(){
     DispatchQueue.global(qos: .background).async {
         let parm = ["id" : "\(self.proudectID)" , "country" :" \(self.countryTITle)" ]
 
-        let url = "https://elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
+        let url = "https://admin.elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
         
 
         APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:StatisticsShipsDetialsModel?,  filier:StatisticsShipsDetialsModel?, error) in
@@ -163,7 +163,7 @@ extension ShipsDetailsVC:  DataBackProtocol {
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["from" : "\(dateFrom)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:StatisticsShipsDetialsModel?, filier:StatisticsShipsDetialsModel?, error) in
@@ -215,7 +215,7 @@ extension ShipsDetailsVC: DataBackProtocolTwo  {
         DispatchQueue.global(qos: .background).async {
             
             let parm = ["to" : "\(dateTo)"]
-            let url = "https://elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
+            let url = "https://admin.elkenany.com/api/ships/statistics-ships-detials?from=&to=&country=&id="
             
 
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:StatisticsShipsDetialsModel?, filier:StatisticsShipsDetialsModel?, error) in

@@ -28,7 +28,7 @@ class proudectsCell: UITableViewCell , UICollectionViewDelegate, UICollectionVie
             let userDD = UserDefaults.standard.value(forKey: "IDDD") ?? ""
 
             let param = ["id": "\(userDD)"]
-            let companyDetailes = "https://elkenany.com/api/guide/company/?id="
+            let companyDetailes = "https://admin.elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     print("============ error \(error)")

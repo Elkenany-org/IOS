@@ -57,7 +57,7 @@ class customerserviceVC: UIViewController {
             "desc":desc.text,
         ]
     
-       let CustomerServiceRequestURL =  "https://elkenany.com/api/contuct-us"
+       let CustomerServiceRequestURL =  "https://admin.elkenany.com/api/contuct-us"
 
         //Networking
         APIService.shared.fetchData(url: CustomerServiceRequestURL, parameters: parm as Parameters, headers: nil, method: .post) { (RequestSuccess:EditeMainInfoModel?, RequestFailed:EditeMainInfoModel?, error) in

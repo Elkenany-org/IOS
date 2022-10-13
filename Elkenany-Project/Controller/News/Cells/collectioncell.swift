@@ -52,7 +52,7 @@ class collectioncell: UICollectionViewCell {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             let param = ["id": "\(self.id_param)"]
-            let newsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsURL = "https://admin.elkenany.com/api/news/news-detials?id="
 
             let headers = ["app-id": "\(api_token ?? "")" ]
 
@@ -77,7 +77,7 @@ class collectioncell: UICollectionViewCell {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             let param = ["id": "\(self.fromMore)"]
-            let newsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsURL = "https://admin.elkenany.com/api/news/news-detials?id="
 
             let headers = ["app-id": "\(api_token ?? "")" ]
 

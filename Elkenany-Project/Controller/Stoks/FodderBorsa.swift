@@ -22,7 +22,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             
             let param = ["type": "fodder" , "id": "\(self.fodderID)", "date": "\(date)" ]
             print("============== request \(param)")
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             
             //            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:FodderBorsaModel?, filier:FodderBorsaModel?, error) in
@@ -114,7 +114,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             //            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             
             //            let typeParameter = UserDefaults.standard.string(forKey: "she")
             //            let idParameter = UserDefaults.standard.string(forKey: "he")
@@ -188,7 +188,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             //            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&comp_id="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&comp_id="
             
             let COMP_ID_Parameter = UserDefaults.standard.string(forKey: "FILTER_COMP_ID") ?? ""
             //            let idParameter = UserDefaults.standard.string(forKey: "he")
@@ -227,7 +227,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
             //            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
-            let companyGuide =  "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
+            let companyGuide =  "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
             
             let Feed_ID_Parameter = UserDefaults.standard.string(forKey: "IDDD_FILTER") ?? ""
             //            let idParameter = UserDefaults.standard.string(forKey: "he")
@@ -283,7 +283,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
             //            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             
             let Feed_ID_Parameter = UserDefaults.standard.string(forKey: "FILTER_Feed_ID") ?? ""
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date=&food_id="
             
         
             

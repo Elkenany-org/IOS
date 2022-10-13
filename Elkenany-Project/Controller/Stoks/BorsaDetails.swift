@@ -128,7 +128,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             
             let param = ["type": "local" , "id": "\(self.loc_id)", "date": "\(result)" ]
             print("============== request \(param)")
@@ -168,7 +168,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
-            let SearchGuide = "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let SearchGuide = "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -234,7 +234,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide =   "https://elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
+            let companyGuide =   "https://admin.elkenany.com/api/localstock/new-local-stock-show-sub-section?id=&type=&date="
             let paramaaa = UserDefaults.standard.string(forKey: "ID_FILTER") ?? ""
       
             let param = ["type": "local" , "id": "\(paramaaa )", "date": "\(result)" ]
@@ -271,7 +271,7 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             print("this is token\(api_token ?? "")")
-            let companyGuide = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             let typeParameter = UserDefaults.standard.string(forKey: "REC_type_Stoke")
             let idParameter = UserDefaults.standard.string(forKey: "REC_Id_Stoke")
             
@@ -509,7 +509,7 @@ extension BorsaDetails:BackDate{
             let param = ["type": "\(typeParameter ?? "")" , "id": "\(idParameter ?? "")", "date": "\(date)" ]
             print("============== request \(param)")
             //            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
-            let statisticesByDate = "https://elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
+            let statisticesByDate = "https://admin.elkenany.com/api/localstock/local-stock-show-sub-section?type=&id=&date="
             
             APIServiceForQueryParameter.shared.fetchData(url: statisticesByDate, parameters: param, headers: nil, method: .get) { (success:LocaBorsa?, filier:LocaBorsa?, error) in
                 if let error = error{

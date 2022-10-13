@@ -57,7 +57,7 @@ class chooseComVC: UIViewController {
             
             let idParameter = UserDefaults.standard.string(forKey: "he")
             
-            let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id="
+            let ListOfBorsaURLOut = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&id="
             let param = ["type": "local" , "id": "\(idParameter ?? "")"]
             
             APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: nil, method: .get) { (success:StatisticesInsideModel?, filier:StatisticesInsideModel?, error) in
@@ -88,7 +88,7 @@ class chooseComVC: UIViewController {
             let idParameter = UserDefaults.standard.string(forKey: "he")
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             
-            let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-members?type=&id="
+            let ListOfBorsaURLOut = "https://admin.elkenany.com/api/localstock/statistics-stock-members?type=&id="
             let param = ["type": "fodder" , "id": "\(idParameter ?? "")"]
             let headers = ["Authorization": "Bearer \(api_token ?? "")" , "app" : "ios"]
             APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: headers, method: .get) { (success:statInsideFodder?, filier:statInsideFodder?, error) in

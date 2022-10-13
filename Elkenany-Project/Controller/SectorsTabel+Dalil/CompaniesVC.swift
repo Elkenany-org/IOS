@@ -105,7 +105,7 @@ class CompaniesVC: UIViewController{
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.subID_fromGuideHome , "page" : self.currentpaga  ]
             let header = ["ios" : ""]
-            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            let companyGuide = "https://admin.elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param,  headers: header , method: .get) {
                 (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
@@ -147,7 +147,7 @@ class CompaniesVC: UIViewController{
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let param = ["sub_id": self.sub_id_home_search , "page": self.currentpaga]
-            let HomeSearchURL = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            let HomeSearchURL = "https://admin.elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: HomeSearchURL, parameters: param, headers: nil, method: .get) {
                 (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
@@ -189,7 +189,7 @@ class CompaniesVC: UIViewController{
         DispatchQueue.global(qos: .background).async {
             let id_rec_dali = UserDefaults.standard.value(forKey: "REC_Id_Dalil") ?? ""
             let param = ["sub_id": id_rec_dali , "page": self.currentpaga]
-            let companyGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            let companyGuide = "https://admin.elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 //internet error
                 if let error = error{
@@ -228,7 +228,7 @@ class CompaniesVC: UIViewController{
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
             print("this is token\(api_token ?? "")")
-            let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id&city_id&sort&search="
+            let SearchGuide = "https://admin.elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id&city_id&sort&search="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -257,7 +257,7 @@ class CompaniesVC: UIViewController{
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["Authorization": "\(api_token ?? "")" ]
-            let SearchGuide = "https://elkenany.com/api/guide/sub-section?sub_id=&page="
+            let SearchGuide = "https://admin.elkenany.com/api/guide/sub-section?sub_id=&page="
             APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -506,7 +506,7 @@ extension CompaniesVC:UICollectionViewDelegate , UICollectionViewDataSource , UI
                 let headers = ["Authorization": "\(api_token ?? "")" ]
                 let param = ["section_id": "\(sec_id ?? "3")" , "sub_id" :  "\(sub_id ?? "63")" ,  "country_id" : "\(coun_id ?? "1")" , "city_id" : "\(city_id ?? "1")" , "sort" : "\(sort_val ?? "0")"]
                 
-                let SearchGuide = "https://elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id=&city_id=&sort="
+                let SearchGuide = "https://admin.elkenany.com/api/guide/sub-section?section_id=&sub_id=&country_id=&city_id=&sort="
                 APIServiceForQueryParameter.shared.fetchData(url: SearchGuide, parameters: param, headers: headers, method: .get) { (success:CompaniesDataModel?, filier:CompaniesDataModel?, error) in
                     if let error = error{
                         hud.dismiss()

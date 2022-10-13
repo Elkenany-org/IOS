@@ -57,7 +57,7 @@ class companyDetails: UIViewController {
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.CompanyIdFromCompanies)"]
-            let companyDetailes = "https://elkenany.com/api/guide/company/?id="
+            let companyDetailes = "https://admin.elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -82,7 +82,7 @@ class companyDetails: UIViewController {
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.CompanyIdFromCompanies)"]
-            let companyDetailes = "https://elkenany.com/api/guide/company/?id="
+            let companyDetailes = "https://admin.elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyDetailes, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()

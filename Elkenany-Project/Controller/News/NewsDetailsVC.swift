@@ -60,7 +60,7 @@ class NewsDetailsVC: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             let param = ["id": "\(self.newsIdFromHome)"]
             print(param)
-            let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsDetailsURL = "https://admin.elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -91,7 +91,7 @@ class NewsDetailsVC: UIViewController {
             let headers = ["app-id": "\(api_token ?? "")" ]
             let param = ["id": "\(self.id_home_search)"]
             print(param)
-            let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsDetailsURL = "https://admin.elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -120,7 +120,7 @@ class NewsDetailsVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
             let param = ["id": "\(self.news_id_from_home)"]
-            let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsDetailsURL = "https://admin.elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -150,7 +150,7 @@ class NewsDetailsVC: UIViewController {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let headers = ["app-id": "\(api_token ?? "")" ]
             let param = ["id": "\(self.news_id)"]
-            let newsDetailsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsDetailsURL = "https://admin.elkenany.com/api/news/news-detials?id="
             APIServiceForQueryParameter.shared.fetchData(url: newsDetailsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
@@ -182,7 +182,7 @@ class NewsDetailsVC: UIViewController {
             print("this is token\(api_token ?? "")")
             let param = ["id": "\(self.newsIdFromHome)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
-            let newsURL = "https://elkenany.com/api/news/news-detials?id="
+            let newsURL = "https://admin.elkenany.com/api/news/news-detials?id="
             
             APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (NewsDetailssuccess:NewsDetialsDataModel?, NewsDetailsfilier:NewsDetialsDataModel?, error) in
                 if let error = error{

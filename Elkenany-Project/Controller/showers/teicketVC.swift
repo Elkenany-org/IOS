@@ -64,7 +64,7 @@ class teicketVC: UIViewController {
         let idShow = UserDefaults.standard.string(forKey: "IDDD") ?? ""
         let parm = ["id" : "\(idShow)"]
         DispatchQueue.global(qos: .background).async {
-            let url = "https://elkenany.com/api/showes/one-show/?id="
+            let url = "https://admin.elkenany.com/api/showes/one-show/?id="
             
             APIServiceForQueryParameter.shared.fetchData(url: url, parameters: parm, headers: nil, method: .get) { (success:ShoweModel?, filier:ShoweModel?, error) in
                 if let error = error{

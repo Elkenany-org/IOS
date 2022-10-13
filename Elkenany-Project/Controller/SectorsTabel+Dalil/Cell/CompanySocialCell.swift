@@ -62,7 +62,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         //Handeling Loading view progress
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.com_id)"]
-            let companyContacts = "https://elkenany.com/api/guide/company/?id="
+            let companyContacts = "https://admin.elkenany.com/api/guide/company/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:CompanyDetailsDataModel?, filier:CompanyDetailsDataModel?, error) in
                 if let error = error{
                     print("============ error \(error)")
@@ -85,7 +85,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         //Handeling Loading view progress
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(self.magazineID)"]
-            let companyContacts = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            let companyContacts = "https://admin.elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
                     
@@ -108,7 +108,7 @@ class CompanySocialCell: UITableViewCell, UITableViewDelegate, UITableViewDataSo
         DispatchQueue.global(qos: .background).async {
             let idds = UserDefaults.standard.string(forKey: "testt")
             let param = ["id": "\(idds ?? "")"]
-            let companyContacts = "https://elkenany.com/api/magazine/magazine-detials/?id="
+            let companyContacts = "https://admin.elkenany.com/api/magazine/magazine-detials/?id="
             APIServiceForQueryParameter.shared.fetchData(url: companyContacts, parameters: param, headers: nil, method: .get) { (success:MagazineModel?, filier:MagazineModel?, error) in
                 if let error = error{
                     

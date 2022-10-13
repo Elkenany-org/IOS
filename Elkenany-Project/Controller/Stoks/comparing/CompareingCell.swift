@@ -26,7 +26,7 @@ class CompareingCell: UICollectionViewCell {
             let companies_id = [131, 133, 135]
             let fodder_items_id = [237, 238]
        let idComp =  UserDefaults.standard.string(forKey: "he") ?? ""
-        let SectoreFilterURL = "https://elkenany.com/api/localstock/comprison-fodder-get"
+        let SectoreFilterURL = "https://admin.elkenany.com/api/localstock/comprison-fodder-get"
         let param = ["companies_id[]" : companies_id , "fodder_items_id[]" : fodder_items_id] as [String : Any]
         
 //        let param = ["id" : "\(idComp)"]

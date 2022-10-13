@@ -50,7 +50,7 @@ class MainInfoProfil: UIViewController {
 //        let headers:HTTPHeaders = ["lang":"ar", "Content-Type": "application/json"]
         let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
         let headers:HTTPHeaders = ["app-id": "\(api_token ?? "")" ]
-       let profileUpdate =  "https://elkenany.com/api/profile-update"
+       let profileUpdate =  "https://admin.elkenany.com/api/profile-update"
 
         //Networking
         APIService.shared.fetchData(url: profileUpdate, parameters: parm as Parameters, headers: headers, method: .post) { (EditeSuccess:EditeMainInfoModel?, EditeFailed:EditeMainInfoModel?, error) in

@@ -68,7 +68,7 @@ class ChooseStokeVC: UIViewController {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let ListOfBorsaURLOut = "https://elkenany.com/api/localstock/statistics-stock-sections?type="
+            let ListOfBorsaURLOut = "https://admin.elkenany.com/api/localstock/statistics-stock-sections?type="
             let param = ["type": "\(self.typeForStoke)"]
             APIServiceForQueryParameter.shared.fetchData(url: ListOfBorsaURLOut, parameters: param, headers: nil, method: .get) { (success:StatisticsStockSectionsModel?, filier:StatisticsStockSectionsModel?, error) in
                 if let error = error{
