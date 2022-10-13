@@ -152,7 +152,15 @@ class MoreVC: UIViewController {
     }
     }
     
-    
+    @IBAction func TwitterBTN(_ sender: Any) {
+        if let url = URL(string:"https://twitter.com/Elkenanyapp") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.openURL(url)
+            } else {
+                print("Cannot open URL")
+            }
+    }
+    }
     
     
     
@@ -161,10 +169,9 @@ class MoreVC: UIViewController {
         UserDefaults.standard.set(false, forKey: "LOGIN_STAUTS")
         
         if let vc = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginVC{
-//            UserDefaults.standard.removeObject(forKey: "API_TOKEN")
+            UserDefaults.standard.removeObject(forKey: "API_TOKEN")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
-            
         }
     }
     
