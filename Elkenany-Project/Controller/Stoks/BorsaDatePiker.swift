@@ -18,6 +18,7 @@ class BorsaDatePiker: UIViewController {
     var selectedDate:Date?
     var dateString:String{
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "zh")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let _dataStr = dateFormatter.string(from: DatePicker.date)
         return _dataStr

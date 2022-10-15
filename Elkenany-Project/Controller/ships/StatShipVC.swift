@@ -28,6 +28,7 @@ class StatShipVC: UIViewController {
         statShipCV.dataSource = self
         self.statShipCV.register(UINib(nibName: "StatisticesCell", bundle: nil), forCellWithReuseIdentifier: "StatisticesCell")
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         fromDateTitle.setTitle(result, for: .normal)
         toDateTitle.setTitle(result, for: .normal)

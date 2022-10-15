@@ -22,6 +22,8 @@ class ToPicker: UIViewController {
     var dateString:String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-M-d"
+        dateFormatter.locale = Locale(identifier: "zh")
+
         let _dataStr = dateFormatter.string(from: toDatePicker.date)
         return _dataStr
     }
@@ -35,6 +37,9 @@ class ToPicker: UIViewController {
         dateFormatter.timeStyle = .none
 //        dateFormatter.dateStyle = .medium
         dateFormatter.dateFormat = "yyyy-M-d"
+        dateFormatter.locale = Locale(identifier: "zh")
+
+        
         dateFormatter.locale = Locale.current
 
 //        let currnt = dateFormatter.string(from: fromPickerDate.date)

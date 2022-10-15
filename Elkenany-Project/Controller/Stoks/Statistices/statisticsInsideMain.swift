@@ -12,6 +12,7 @@ import ProgressHUD
 class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocolTwo , DataBackBorsaStok{
     func dataBackFromPicker(dateFrom: String) {
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         toBackData.setTitle(dateFrom, for: .normal)
         // Handeling Loading view progress
@@ -70,6 +71,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         DispatchQueue.global(qos: .background).async {
             let param = ["id": "\(StokeID)", "type": "\(self.stoType)" , "from" : "2022-03-18" , "to" : "\(result)" ]
@@ -142,6 +144,7 @@ class statisticsInsideMain: UIViewController, DataBackProtocol, DataBackProtocol
     
     func featchMainDataStat(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)

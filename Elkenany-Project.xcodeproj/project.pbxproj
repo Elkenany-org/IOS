@@ -359,6 +359,8 @@
 		322519D527700C76001096DD /* Cairo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-SemiBold.ttf"; sourceTree = "<group>"; };
 		322519D627700C76001096DD /* Cairo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Light.ttf"; sourceTree = "<group>"; };
 		322519D727700C76001096DD /* Cairo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Bold.ttf"; sourceTree = "<group>"; };
+		322781C728FAD44400B7DF1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		322781C828FAD44500B7DF1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		322858CF27C78D6D0032D80E /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		322858D027C78D6D0032D80E /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		322C0FFF277A06C2004A5DD9 /* aboutElkenanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutElkenanyModel.swift; sourceTree = "<group>"; };
@@ -391,10 +393,8 @@
 		323B21F3274A462B002CEB89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		323B21F5274A462B002CEB89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		323B21F7274A462B002CEB89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		323B21FA274A462B002CEB89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		323B21FD274A462B002CEB89 /* Elkenany_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elkenany_Project.xcdatamodel; sourceTree = "<group>"; };
 		323B21FF274A462F002CEB89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		323B2202274A462F002CEB89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		323B2204274A462F002CEB89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		323B2209274A462F002CEB89 /* Elkenany-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Elkenany-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		323B220D274A462F002CEB89 /* Elkenany_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elkenany_ProjectTests.swift; sourceTree = "<group>"; };
@@ -1594,7 +1594,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 323B21E7274A462B002CEB89;
 			productRefGroup = 323B21F1274A462B002CEB89 /* Products */;
@@ -2065,7 +2064,7 @@
 		323B21F9274A462B002CEB89 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				323B21FA274A462B002CEB89 /* Base */,
+				322781C828FAD44500B7DF1D /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2073,7 +2072,7 @@
 		323B2201274A462F002CEB89 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				323B2202274A462F002CEB89 /* Base */,
+				322781C728FAD44400B7DF1D /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

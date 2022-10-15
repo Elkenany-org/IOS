@@ -28,6 +28,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
         super.viewDidLoad()
         featchMainDataMembers()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         title = "الاحصائيات"
         toTitle.setTitle(result, for: .normal)
@@ -43,6 +45,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     //MARK:-  featch data by from date from picker [type of borsa , from , to , copany id ]
     func dataBackFromPicker(dateFrom: String) {
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
@@ -88,6 +92,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     //MARK:-  featch data by to date from picker [type of borsa , from , to , copany id ]
     func dataBackTOPicker(dateTo: String) {
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
@@ -134,6 +140,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     
     func companyId(ComID: Int) {
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         DispatchQueue.global(qos: .background).async {
             let idParam = UserDefaults.standard.string(forKey: "he") ?? ""
@@ -158,6 +166,8 @@ class StatisticesMembers: UIViewController, DataBackCompany  , DataBackProtocolT
     
     func featchMainDataMembers(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)

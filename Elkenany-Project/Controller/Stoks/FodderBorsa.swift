@@ -104,6 +104,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     //MARK:- featch Fodder Borsa
     func FatchLocalBorsaFodder(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
@@ -178,6 +179,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     //MARK:- featch Fodder Borsa from comanies filter
     func FatchLocalBorsaFodderFromComapnies(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
@@ -217,6 +219,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     //MARK:- featch Fodder Borsa from feeds filter
     func FatchLocalBorsaFodderFromFilter(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
@@ -272,6 +275,7 @@ class FodderBorsa: UIViewController, FilterComaniesDone ,FilterFeedDone, BackDat
     //MARK:- featch Fodder Borsa from feeds filter
     func FatchLocalBorsaFodderFromFeeds(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let result = formatter.string(from: date)
         // Handeling Loading view progress
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)

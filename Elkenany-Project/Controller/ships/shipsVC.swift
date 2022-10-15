@@ -58,6 +58,7 @@ class shipsVC: UIViewController {
     //Get Ships data
     func GetshipsData(){
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
         let dateOfDay = formatter.string(from: date)
         let param = ["date" : "\(dateOfDay)"]
         // Handeling Loading view progress

@@ -58,6 +58,8 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         title = "تفاصيل البورصة"
         print("vTest \(variaTest)")
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         //        btnLabel.setTitle( result, for: .normal )
         LogosandBanners()
@@ -124,6 +126,8 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         ProgressHUD.show()
         
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         
         DispatchQueue.global(qos: .background).async {
@@ -229,6 +233,8 @@ class BorsaDetails: UIViewController, BorsaFilterss {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "zh")
+
         let result = formatter.string(from: date)
         
         DispatchQueue.global(qos: .background).async {
