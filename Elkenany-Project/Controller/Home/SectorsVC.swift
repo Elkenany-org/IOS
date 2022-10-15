@@ -391,18 +391,87 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
         switch indexPath.section {
         
         case 0 :
+            switch indexPath.item {
             
-            let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
-            navigationController?.pushViewController(SectorTables, animated: true)
-            let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
-            UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+            case 0:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectorFtomHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+                SectorTables.titleeeee = sectorTitle
+            case 1:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectorFtomHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+                SectorTables.titleeeee = sectorTitle
+            case 2:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectorFtomHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+                SectorTables.titleeeee = sectorTitle
+            case 3:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectorFtomHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+                SectorTables.titleeeee = sectorTitle
+            case 4:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "SectorDetailsTable"))! as SectorDetailsTable
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectorFtomHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+                SectorTables.titleeeee = sectorTitle
+            case 5:
+                let SectorTables = (storyboard?.instantiateViewController(identifier: "CompanyGuideVC"))! as CompanyGuideVC
+                navigationController?.pushViewController(SectorTables, animated: true)
+                let sectorTypeFrom = homeDataSectorsModel?.data?.sectors?[indexPath.row].type ?? ""
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYYYPE")
+                
+                UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+                
+                
+                SectorTables.sectoreTypeFromHome = sectorTypeFrom
+                let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
+//                SectorTables.titleeeee = sectorTitle
+                
             
-            UserDefaults.standard.set(sectorTypeFrom, forKey: "TYPE_FOR_FILTER")
+            default:
+                print("hello ")
+            }
             
-            
-            SectorTables.sectorFtomHome = sectorTypeFrom
-            let sectorTitle = homeDataSectorsModel?.data?.sectors?[indexPath.row].name ?? "dev test"
-            SectorTables.titleeeee = sectorTitle
+         
             
         case 1 :
             
