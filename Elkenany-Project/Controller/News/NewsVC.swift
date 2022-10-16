@@ -427,22 +427,22 @@ extension NewsVC:FilterDone {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
            
             let param = ["type": "\(typeFilter ?? "")" ,  "search": "\(sortFilter ?? "" )" ]
-            let headers = ["app-id": "\(api_token ?? "")" ]
             let newsURL = "https://admin.elkenany.com/api/news/news?type=&sort=&search="
-            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AllNewsDataModel?, filier:AllNewsDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
                 }else {
                     hud.dismiss()
                     self.subNewsModel.removeAll()
+                    self.typeFromhome = typeFilter ?? ""
                     let successData = success?.data?.data ?? []
                     self.subNewsModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.AllNews.reloadData()
+                        self.SelectedBySector.reloadData()
                     }
                 }
             }

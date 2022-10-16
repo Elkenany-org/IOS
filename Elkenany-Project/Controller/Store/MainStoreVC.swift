@@ -94,10 +94,10 @@ class MainStoreVC: UIViewController  {
                             self.StoresCV.reloadData()
                             self.StoresCV.isHidden = false
                             self.validationLabel.isHidden = true
-
-
+                            
+                            
                         }
-
+                        
                         
                     }
                     self.currentpaga += 1
@@ -126,7 +126,7 @@ class MainStoreVC: UIViewController  {
         let saerchParamter = searchView.text ?? ""
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-//            let type = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
+            //            let type = UserDefaults.standard.string(forKey: "TYYYPE") ?? ""
             
             print("this is token\(api_token ?? "")")
             let newsURL = "https://admin.elkenany.com/api/store/ads-store?type=&sort=&search="
@@ -195,7 +195,7 @@ class MainStoreVC: UIViewController  {
         view2.isHidden = true
         viewShowSearch.isHidden = false
     }
-
+    
     
     
     @IBAction func toAddAds(_ sender: Any) {
@@ -236,7 +236,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let typeOfSector = sectorSubModel[indexPath.item].type ?? ""
             if typeOfSector == typeFromHomeForStore {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
-                    sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+                sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             } else {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 
@@ -265,10 +265,8 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
         
         if collectionView == sectorsVC {
             return CGSize(width:(collectionView.frame.size.width - 40) / 5 , height: 60)
-            
         } else {
             return CGSize(width:collectionView.frame.width, height: 150)
-            
         }
         
     }
@@ -281,7 +279,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             self.typeFromHomeForStore = typeOfSectore
             print(" selceted ")
             if let cell = collectionView.cellForItem(at: indexPath) as? SelectedSectorCell
-//            if(cell.isSelected == true)
+            //            if(cell.isSelected == true)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 sectorsVC.selectItem(at: indexPath, animated: true, scrollPosition: .right)
@@ -306,12 +304,7 @@ extension MainStoreVC:UICollectionViewDelegate, UICollectionViewDataSource, UICo
             if(cell.isSelected == false)
             {
                 cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-                
             }
-            
-            
-            
-            
         }
     }
     
@@ -327,12 +320,9 @@ extension MainStoreVC:UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.row >= storeSubModel.count - 1 && !isFeatchingData {
-                
                 FatchDataOfStore()
                 break
-                
             }
-            
         }
     }
     
@@ -347,12 +337,9 @@ extension MainStoreVC:FilterDone {
         hud.textLabel.text = "جاري التحميل"
         hud.show(in: self.view)
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            
             let param = ["type": "\(typeFilter ?? "")" ,  "sort": "1" ]
-            let headers = ["Authorization": "Bearer \(api_token ?? "")" ]
             let newsURL = "https://admin.elkenany.com/api/store/ads-store?type=&sort="
-            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: headers, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: newsURL, parameters: param, headers: nil, method: .get) { (success:AdsStoreDataModel?, filier:AdsStoreDataModel?, error) in
                 if let error = error{
                     hud.dismiss()
                     print("============ error \(error)")
@@ -360,25 +347,23 @@ extension MainStoreVC:FilterDone {
                 else if let loginError = filier {
                     //Data Wrong From Server
                     hud.dismiss()
-                    //
                     print(loginError)
                 }
-                
-                
                 else {
                     hud.dismiss()
                     self.storeSubModel.removeAll()
+                    self.typeFromHomeForStore = typeFilter ?? ""
                     let successDataaa = success?.data?.data ?? []
-                    //                    print("current", self.currentpaga)
                     self.storeSubModel.append(contentsOf: successDataaa)
                     DispatchQueue.main.async {
                         if self.storeSubModel.count == 0 {
                             self.StoresCV.isHidden = true
-                            //                        self.errorHandeling.isHidden = false
+                            self.sectorsVC.reloadData()
+                            
                         }else{
                             self.StoresCV.reloadData()
+                            self.sectorsVC.reloadData()
                             self.StoresCV.isHidden = false
-                            //                            self.errorHandeling.isHidden = true
                         }
                         print(successDataaa)
                         

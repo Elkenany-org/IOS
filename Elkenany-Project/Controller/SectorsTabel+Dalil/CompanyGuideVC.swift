@@ -193,6 +193,7 @@ class CompanyGuideVC: UIViewController, SortTitle {
             filterVC.RunFilterDeleget = self
             filterVC.selectedType = sectoreTypeFromSelecteHeader
             filterVC.presentHomeFilter = "home"
+            
             present(filterVC, animated: true, completion: nil)
         }
     }
@@ -432,31 +433,24 @@ extension CompanyGuideVC: FilterDone{
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            print("Token", api_token ?? "")
+   
             let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
             let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
-            
-            print(" is token\(api_token ?? "")")
             let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
-            print("new para" , param)
-            let headers = ["Authorization": "Bearer \(api_token ?? "")"  ]
             let FilterGuide = "https://admin.elkenany.com/api/guide/section/?type=&sort="
-            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: headers, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: FilterGuide, parameters: param, headers: nil, method: .get) { (success:GuideCompaniesDataModel?, filier:GuideCompaniesDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
                     print("============ error \(error)")
                 }else {
                     ProgressHUD.dismiss()
                     self.subModel.removeAll()
-                    
+                    self.sectoreTypeFromHome = typeFilter ?? ""
                     let successData = success?.data?.subSections ?? []
                     self.subModel.append(contentsOf: successData)
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
-                        
-                        
-                        
+                        self.selectedSectorCV.reloadData()
                     }
                 }
             }

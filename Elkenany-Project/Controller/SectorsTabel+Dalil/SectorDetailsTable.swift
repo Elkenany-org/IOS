@@ -58,7 +58,7 @@ extension SectorDetailsTable:UITableViewDelegate,UITableViewDataSource{
         switch indexPath.row {
         case 0:
             let BorsaVC = (storyboard?.instantiateViewController(identifier: "BorsaHomeVC"))! as BorsaHomeVC
-            BorsaVC.Sector = sectorFtomHome
+            BorsaVC.SectorTypeHome = sectorFtomHome
             navigationController?.pushViewController(BorsaVC, animated: true)
             
         case 1:

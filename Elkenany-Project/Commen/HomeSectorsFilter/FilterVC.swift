@@ -22,7 +22,6 @@ class FilterVC: UIViewController {
     var presentKey = ""
     var presentHomeFilter = ""
     var testhidenHome = ""
-
     var shortCutTest = ""
     var selectedType = ""
     let vcc:CompanyGuideVC? = nil
@@ -45,9 +44,9 @@ class FilterVC: UIViewController {
         super.viewWillAppear(animated)
         let testhiden = "keeey"
         let testhidenHomeeee = "home"
+        
         if presentKey == testhiden {
             let selectedVC = storyboard?.instantiateViewController(withIdentifier: "SortByVC") as! SortByVC
-//            selectedVC.SortTitleDeleget = self
             present(selectedVC, animated: true, completion: nil)
         }else if testhidenHome == testhidenHomeeee {
 

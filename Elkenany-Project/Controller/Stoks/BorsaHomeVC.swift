@@ -36,7 +36,7 @@ class BorsaHomeVC: UIViewController  {
     var currentIndex = 0
     var itemsArray = [  "zoz" , "zoz" , "zoz"]
     var borsaData:BorsaHomeDataModel?
-    var Sector = "poultry"
+    var SectorTypeHome = "poultry"
     var sectorTypeFromHeader = ""
     private var  BorsaSubModel:[Sections] = []
     private var  fodderSubModel:[FodSections] = []
@@ -94,7 +94,7 @@ class BorsaHomeVC: UIViewController  {
     //MARK:- FeatchData for Borsa by saerching  [Sectors]
     func searchForBorsa(){
         let searchParamater = self.searchBarView.text ?? ""
-        let param = ["type": "\(self.Sector)" , "search": "\(searchParamater)"]
+        let param = ["type": "\(self.SectorTypeHome)" , "search": "\(searchParamater)"]
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
             let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
@@ -128,7 +128,7 @@ class BorsaHomeVC: UIViewController  {
         
         DispatchQueue.global(qos: .background).async {
             let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let param = ["type": "\(self.Sector)"]
+            let param = ["type": "\(self.SectorTypeHome)"]
             let headers = ["app-id": "\(api_token ?? "")" ]
             let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search="
             
@@ -331,7 +331,7 @@ class BorsaHomeVC: UIViewController  {
     //MARK:- statistics Inside Main
     @IBAction func mainStastices(_ sender: Any) {
         let vc = (storyboard?.instantiateViewController(identifier: "statisticsInsideMain"))! as statisticsInsideMain
-        vc.stoType = Sector
+        vc.stoType = SectorTypeHome
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -400,7 +400,7 @@ extension BorsaHomeVC: UICollectionViewDelegate, UICollectionViewDataSource , UI
             cell.titleLabel.text = sectorSubModel[indexPath.item].name ?? ""
             let typeeee = sectorSubModel[indexPath.item].type ?? "test"
             
-            if typeeee == Sector {
+            if typeeee == SectorTypeHome {
                 cell.cooo.backgroundColor = #colorLiteral(red: 1, green: 0.7333333333, blue: 0.2, alpha: 1)
                 SelectedSector.selectItem(at: indexPath, animated: true, scrollPosition: .right)
             }else{ cell.cooo.backgroundColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1) }
@@ -638,14 +638,14 @@ extension BorsaHomeVC : FilterDone {
         ProgressHUD.colorAnimation = #colorLiteral(red: 0.189121604, green: 0.4279403687, blue: 0.1901243627, alpha: 1)
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
-        let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
-        let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
-        let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
+    
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
+            let typeFilter = UserDefaults.standard.string(forKey: "TYPE_FOR_FILTER")
+            let sortFilter = UserDefaults.standard.string(forKey: "SORT_FOR_FILTER")
+            let param = ["type": "\(typeFilter ?? "")" , "sort": "\(sortFilter ?? "")"]
+       
             let companyGuide = "https://admin.elkenany.com/api/localstock/local-stock-sections?type=&search=&sort="
-            let headers = ["app-id": "\(api_token ?? "")" ]
-            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: headers, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
+            APIServiceForQueryParameter.shared.fetchData(url: companyGuide, parameters: param, headers: nil, method: .get) { (Borsasuccess:BorsaHomeDataModel?, Borsafilier:BorsaHomeDataModel?, error) in
                 if let error = error{
                     ProgressHUD.dismiss()
 
@@ -655,6 +655,7 @@ extension BorsaHomeVC : FilterDone {
 
                     self.BorsaSubModel.removeAll()
                     self.fodderSubModel.removeAll()
+                    self.SectorTypeHome = typeFilter ?? ""
                     let successData = Borsasuccess?.data?.subSections ?? []
                     self.BorsaSubModel.append(contentsOf: successData)
                     let successDatafodder = Borsasuccess?.data?.fodSections ?? []
@@ -662,6 +663,7 @@ extension BorsaHomeVC : FilterDone {
                     
                     DispatchQueue.main.async {
                         self.BorsaCV.reloadData()
+                        self.SelectedSector.reloadData()
                         
                     }
                 }
