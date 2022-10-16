@@ -120,7 +120,7 @@ class ServiceViewController: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.46))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.40))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -140,12 +140,12 @@ class ServiceViewController: UIViewController {
     func creatthirdSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .fractionalHeight(0.9))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.9))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.25))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -281,7 +281,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             let imageo = homeServiceDataModel?.data?.recomandtion?[indexPath.item].image ?? ""
             cell2.configureCell(image: imageo)
             cell2.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
-            cell2.sectorImgCell.contentMode = .scaleAspectFit
+            cell2.sectorImgCell.contentMode = .scaleToFill
             Sectore(ss: cell2)
             return cell2
             
@@ -289,6 +289,8 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             if  let logosCell = collectionView.dequeueReusableCell(withReuseIdentifier: "successCell", for: indexPath) as? successCell{
                 let successMembersImage = homeServiceDataModel?.data?.logos?[indexPath.item].image ?? "dev test"
                 logosCell.configureCell(image: successMembersImage)
+                logosCell.sucessMembers.contentMode = .scaleToFill
+
                 logosCell.layer.cornerRadius = 10
                 ss(ss: logosCell)
                 return logosCell }
@@ -300,7 +302,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             let imageo = homeServiceDataModel?.data?.show?[indexPath.item].image ?? ""
             cell4.configureCell(image: imageo)
             cell4.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
-            cell4.sectorImgCell.contentMode = .scaleAspectFit
+            cell4.sectorImgCell.contentMode = .scaleToFill
             Sectore(ss: cell4)
             return cell4
             
@@ -310,7 +312,7 @@ extension ServiceViewController: UICollectionViewDelegate, UICollectionViewDataS
             let imageo = homeServiceDataModel?.data?.magazine?[indexPath.item].image ?? ""
             cell5.configureCell(image: imageo)
             cell5.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
-            cell5.sectorImgCell.contentMode = .scaleAspectFit
+            cell5.sectorImgCell.contentMode = .scaleToFill
             Sectore(ss: cell5)
             return cell5
             

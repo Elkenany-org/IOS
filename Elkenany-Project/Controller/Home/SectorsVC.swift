@@ -122,7 +122,7 @@ class SectorsVC: UIViewController {
     func creatFirstSection() -> NSCollectionLayoutSection{
         let inset:CGFloat = 7
         //item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.8))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(0.8))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
@@ -154,7 +154,7 @@ class SectorsVC: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(0.46))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.6), heightDimension: .fractionalHeight(0.40))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -312,7 +312,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 recomanditionCell.SecrorsName.font = UIFont(name: "Cairo", size: 13.0)
                 let successMembersImage = homeDataSectorsModel?.data?.recomandtion?[indexPath.item].image ?? ""
                 recomanditionCell.configureCell(image: successMembersImage)
-                recomanditionCell.sectorImgCell.contentMode = .scaleAspectFill
+                recomanditionCell.sectorImgCell.contentMode = .scaleToFill
                 ss(ss: recomanditionCell)
                 return recomanditionCell }
             
@@ -321,7 +321,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
             if  let logosCell = collectionView.dequeueReusableCell(withReuseIdentifier: "successCell", for: indexPath) as? successCell{
                 let successMembersImage = homeDataSectorsModel?.data?.logos?[indexPath.item].image ?? "dev test"
                 logosCell.configureCell(image: successMembersImage)
-                logosCell.sucessMembers.contentMode = .scaleAspectFill
+                logosCell.sucessMembers.contentMode = .scaleToFill
                 
                 logosCell.layer.cornerRadius = 10
                 ss(ss: logosCell)
@@ -334,6 +334,8 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 stockCell.SecrorsName.font = UIFont(name: "Cairo", size: 12.0)
                 let successMembersImage = homeDataSectorsModel?.data?.stock?[indexPath.item].image ?? ""
                 stockCell.configureCell(image: successMembersImage)
+                stockCell.SecrorsName.contentMode = .scaleToFill
+
                 ss(ss: stockCell)
                 return stockCell }
             
@@ -343,7 +345,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 guideCell.SecrorsName.text = homeDataSectorsModel?.data?.guide?[indexPath.row].name ?? "dev test"
                 guideCell.SecrorsName.font = UIFont(name: "Cairo", size: 12.0)
                 let successMembersImage = homeDataSectorsModel?.data?.guide?[indexPath.item].image ?? ""
-                guideCell.sectorImgCell.contentMode = .scaleAspectFill
+                guideCell.sectorImgCell.contentMode = .scaleToFill
                 guideCell.configureCell(image: successMembersImage)
                 ss(ss: guideCell)
                 return guideCell }
@@ -353,7 +355,7 @@ extension SectorsVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 storeCell.SecrorsName.text = homeDataSectorsModel?.data?.store?[indexPath.row].name ?? "dev test"
                 storeCell.SecrorsName.font = UIFont(name: "Cairo", size: 14.0)
                 let successMembersImage = homeDataSectorsModel?.data?.store?[indexPath.item].image ?? ""
-                storeCell.sectorImgCell.contentMode = .scaleAspectFill
+                storeCell.sectorImgCell.contentMode = .scaleToFill
                 storeCell.configureCell(image: successMembersImage)
                 ss(ss: storeCell)
                 return storeCell }
