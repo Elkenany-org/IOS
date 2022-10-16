@@ -58,7 +58,7 @@ class subFilterSectore: UIViewController {
         DispatchQueue.global(qos: .background).async {
                   ///data not real
             let param = ["sector_id": "\(1)"]
-            let subGuideFilterURL = "https://elkenany.com/api/guide/filter-guide-companies?sector_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/guide/filter-guide-companies?sector_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:SubGuideFilter?, filier:SubGuideFilter?, error) in
                 if let error = error{
                     hud.dismiss()
@@ -111,13 +111,13 @@ extension subFilterSectore:UITableViewDelegate , UITableViewDataSource {
             UserDefaults.standard.set(sec_id, forKey: "FILTER_SEC_ID")
             UserDefaults.standard.set(sec_type, forKey: "FILTER_SEC_TYPE")
             FilterAnimation.shared.filteranmation(vieww: view)
-            
-            if (presntKEY == "show") || (presntKEY == "magazine") {
-                
-            }else{
-                self.present(SectionVC, animated: true, completion: nil)
-
-            }
+            dismiss(animated: true, completion: nil)
+//            if (presntKEY == "show") || (presntKEY == "magazine") {
+//
+//            }else{
+//                self.present(SectionVC, animated: true, completion: nil)
+//
+//            }
         
         }
     }

@@ -12,7 +12,7 @@ class subFilterCity: UIViewController {
     
     
     @IBOutlet weak var cityTV: UITableView!
-    var Con_ID_Param = 0
+    var Con_ID_Param = UserDefaults.standard.value(forKey: "FILTER_COUN_ID") ?? ""
     var cityModel:SubGuideFilter?
     
     
@@ -58,7 +58,7 @@ class subFilterCity: UIViewController {
         DispatchQueue.global(qos: .background).async {
             ///data not real
             let param = ["sector_id": "\(1)", "country_id": "\(self.Con_ID_Param)"]
-            let subGuideFilterURL = "https://elkenany.com/api/guide/filter-guide-companies?country_id=&sector_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/guide/filter-guide-companies?country_id=&sector_id="
             print("============== request \(param)")
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:SubGuideFilter?, filier:SubGuideFilter?, error) in
                 if let error = error{

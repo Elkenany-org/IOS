@@ -393,7 +393,7 @@ extension showesVC: FilterShowMagazine {
         let sort_title = UserDefaults.standard.string(forKey: "SORT_TITLE")
         let sort_val = UserDefaults.standard.string(forKey: "FILTER_SORT_VAL")
         
-        let param = ["type": "\(sec_type ?? "horses")" ,  "country_id" : "\(coun_id ?? "1")" , "sort" : "\(sort_val ?? "1")"]
+        let param = ["type": "\(sec_type ?? "horses")" ,  "country_id" : "\(coun_id ?? "1")" , "sort" : "\(sort_val ?? "1")" , "city_id":"\(city_id ?? "")"]
         
         
         DispatchQueue.global(qos: .background).async {

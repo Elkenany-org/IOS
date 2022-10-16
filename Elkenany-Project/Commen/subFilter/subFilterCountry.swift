@@ -52,7 +52,7 @@ class subFilterCountry: UIViewController {
         DispatchQueue.global(qos: .background).async {
             ///data not real
             let param = ["sector_id": "\(1)"]
-            let subGuideFilterURL = "https://elkenany.com/api/guide/filter-guide-companies?sector_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/guide/filter-guide-companies?sector_id="
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:SubGuideFilter?, filier:SubGuideFilter?, error) in
                 if let error = error{
                     hud.dismiss()
@@ -106,8 +106,8 @@ extension subFilterCountry:UITableViewDelegate , UITableViewDataSource {
             UserDefaults.standard.set(contryName, forKey: "COUN_TITLE")
 
             FilterAnimation.shared.filteranmation(vieww: view)
-
-            self.present(SectionVC, animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
+//            self.present(SectionVC, animated: true, completion: nil)
             
             
         }

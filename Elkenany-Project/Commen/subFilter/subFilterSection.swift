@@ -12,7 +12,7 @@ class subFilterSection: UIViewController {
     
     @IBOutlet weak var SectionPopupTV: UITableView!
     var subGuideFilter:SubGuideFilter?
-    var secId = 0
+    var secId = UserDefaults.standard.value(forKey: "FILTER_SEC_ID") ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class subFilterSection: UIViewController {
         DispatchQueue.global(qos: .background).async {
             ///data not real
             let param = ["sector_id": "\(self.secId)"]
-            let subGuideFilterURL = "https://elkenany.com/api/guide/filter-guide-companies?sector_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/guide/filter-guide-companies?sector_id="
             print("============== request \(param)")
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:SubGuideFilter?, filier:SubGuideFilter?, error) in
                 if let error = error{

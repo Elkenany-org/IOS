@@ -120,7 +120,7 @@ class ServiceViewController: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: inset, leading: inset, bottom: inset, trailing: inset)
         //group
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .fractionalHeight(0.40))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.6), heightDimension: .fractionalHeight(0.40))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         //section
@@ -168,8 +168,6 @@ class ServiceViewController: UIViewController {
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.show()
         DispatchQueue.global(qos: .background).async {
-            let api_token = UserDefaults.standard.string(forKey: "API_TOKEN")
-            let headers = ["Authorization": "\(api_token ?? "")" ]
             let Servicesurl = "https://admin.elkenany.com/api/home-services"
             
             APIServiceForQueryParameter.shared.fetchData(url: Servicesurl,

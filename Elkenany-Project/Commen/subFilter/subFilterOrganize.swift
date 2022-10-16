@@ -57,7 +57,7 @@ class subFilterOrganize: UIViewController {
         DispatchQueue.global(qos: .background).async {
             ///data not real
             let param = ["sector_id": "\(1)"]
-            let subGuideFilterURL = "https://elkenany.com/api/guide/filter-guide-companies?sector_id="
+            let subGuideFilterURL = "https://admin.elkenany.com/api/guide/filter-guide-companies?sector_id="
             print("============== request \(param)")
             APIServiceForQueryParameter.shared.fetchData(url: subGuideFilterURL, parameters: param, headers: nil, method: .get) { (success:SubGuideFilter?, filier:SubGuideFilter?, error) in
                 if let error = error{
@@ -103,10 +103,8 @@ extension subFilterOrganize:UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = OrganizeModel?.data?.sort?[indexPath.row].value ?? 0
         let sortName = OrganizeModel?.data?.sort?[indexPath.row].name ?? ""
-        UserDefaults.standard.set(value, forKey: "FILTER_SORT_VAL")
+        UserDefaults.standard.set(value, forKey: "FILTER_SO RT_VAL")
         UserDefaults.standard.set(sortName, forKey: "SORT_TITLE")
-
-        
         FilterAnimation.shared.filteranmation(vieww: view)
         dismiss(animated: true, completion: nil)
     }

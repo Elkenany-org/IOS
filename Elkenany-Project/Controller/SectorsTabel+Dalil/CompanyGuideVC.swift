@@ -451,6 +451,8 @@ extension CompanyGuideVC: FilterDone{
                     DispatchQueue.main.async {
                         self.guideCompanyCV.reloadData()
                         self.selectedSectorCV.reloadData()
+                        self.bannersCollection.reloadData()
+
                     }
                 }
             }
